@@ -1,0 +1,256 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,mathrsfs,wasysym}
+\usepackage{graphicx,caption,subcaption}
+\captionsetup{font=small}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono NL}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\begin{document}
+
+    \title{\textbf{实验二十九\ \ 虚拟仪器在物理实验中的应用}}
+    \author{1900011604 张植竣}
+    \date{2021年5月9日}
+
+    \maketitle
+
+    \section*{1\ \ 实验过程和数据处理}
+
+    \subsection*{1.1\ \ 创建一个模拟温度测量程序}
+
+    设计程序框图如下：
+
+    \begin{center}
+        \includegraphics[width = 0.8\textwidth]{./Data/Thermometer/Block_Diagram.jpg}
+        \captionof{figure}{模拟温度测量程序的程序框图}
+    \end{center}
+
+    程序运行时前面板如下：（左图读数为摄氏度，右图读数为华氏度）
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{./Data/Thermometer/C.jpg}
+            \subcaption{摄氏度}
+        \end{subfigure}
+        \vspace{0em}
+        \begin{subfigure}[t]{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{./Data/Thermometer/F.jpg}
+            \subcaption{华氏度}
+        \end{subfigure}
+        \caption{程序前面板}
+    \end{figure}
+
+    \subsection*{1.2\ \ 用虚拟仪器测量电阻的阻值}
+
+    \textbf{程序框图}
+
+    设计程序框图如下：
+
+    \begin{center}
+        \includegraphics[width = 0.8\textwidth]{./Data/Resistance/Block_Diagram.jpg}
+        \captionof{figure}{用虚拟仪器测量电阻阻值的程序框图}
+    \end{center}
+
+    \textbf{测量较小电阻的阻值}
+
+    测量数据列表如下：
+
+    \begin{table}[ht!]
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $U/\mathrm{V}$ & 0.000112305 & 0.0829102 & 0.162524 & 0.244365 \\
+        \hline
+        $I/\mathrm{mA}$ & 0.000292969 & 1.66016 & 3.32031 & 5.02705 \\
+        \hline
+        $U/\mathrm{V}$ & 0.327207 & 0.407788 & 0.488594 & 0.57127 \\
+        \hline
+        $I/\mathrm{mA}$ & 6.68848 & 8.34888 & 10.0068 & 11.6697 \\
+        \hline
+        $U/\mathrm{V}$ & 0.65624 & 0.73605 & 0.819468 & 0.901084 \\
+        \hline
+        $I/\mathrm{mA}$ & 13.3351 & 15.003 & 16.6588 & 18.3329 \\
+        \hline
+        $U/\mathrm{V}$ & 0.980439 & 1.06428 & 1.1473 & 1.22616 \\
+        \hline
+        $I/\mathrm{mA}$ & 0.0200008 & 0.0216816 & 0.0233414 & 0.0250256 \\
+        \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+
+    最小二乘法拟合$U = kI+b$得到：
+    \[
+    k = 49.1091258,\qquad b = -0.0006867,\qquad r = 0.9999921
+    \]
+    计算不确定度：
+    \[
+    \sigma_{k} = k\sqrt{\frac{1/r^2-1}{n-2}} = 0.0522318\,\Omega
+    \]
+    \[
+    \sigma_{R_x} = \frac{R_x}{R}\sigma_R = \frac{49.1091258\,\Omega}{100\,\Omega}\times\frac{0.01\,\Omega}{\sqrt{3}} = 0.0028353\,\Omega
+    \]
+    \[
+    \sigma = \sqrt{\sigma_{k}^2 + \sigma_{R_x}^2} = 0.05239\,\Omega
+    \]
+    测量结果为：
+    \[
+    R = (49.11\pm0.05)\,\Omega
+    \]
+    在虚拟仪器上作图如下：
+
+    \begin{center}
+        \includegraphics[width = 0.8\textwidth]{./Data/Resistance/50.jpg}
+        \captionof{figure}{测量较小电阻的阻值}
+    \end{center}
+
+    \textbf{测量较大电阻的阻值}
+
+    \begin{table}[ht!]
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $U/\mathrm{V}$ & 0.000166016 & 0.224604 & 0.45376 & 0.683462 \\
+        \hline
+        $I/\mathrm{mA}$ & 0 & 0.244141 & 0.442871 & 0.683594 \\
+        \hline
+        $U/\mathrm{V}$ & 0.907803 & 1.13202 & 1.35698 & 1.58216 \\
+        \hline
+        $I/\mathrm{mA}$ & 0.927734 & 1.17061 & 1.38198 & 1.61348 \\
+        \hline
+        $U/\mathrm{V}$ & 1.81159 & 2.03613 & 2.26079 & 2.48766 \\
+        \hline
+        $I/\mathrm{mA}$ & 1.85547 & 2.09961 & 2.34331 & 2.56489 \\
+        \hline
+        $U/\mathrm{V}$ & 2.71469 & 2.94434 & 3.16894 & 3.39425 \\
+        \hline
+        $I/\mathrm{mA}$ & 2.78467 & 3.02734 & 3.27148 & 3.50845 \\
+        \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+
+    最小二乘法拟合$U = kI+b$得到：
+    \[
+    k = 967.1759953,\qquad b = 0.0097593,\qquad r = 0.9999455
+    \]
+    计算不确定度：
+    \[
+    \sigma_{k} = k\sqrt{\frac{1/r^2-1}{n-2}} = 2.69917345\,\Omega
+    \]
+    \[
+    \sigma_{R_x} = \frac{R_x}{R}\sigma_R = \frac{967.1759953\,\Omega}{100\,\Omega}\times\frac{0.01\,\Omega}{\sqrt{3}} = 0.0558399\,\Omega
+    \]
+    \[
+    \sigma = \sqrt{\sigma_{k}^2 + \sigma_{R_x}^2} = 2.69975\,\Omega
+    \]
+    测量结果为：
+    \[
+    R_x = (967.2\pm2.7)\,\Omega
+    \]
+    在虚拟仪器上作图如下：
+
+    \begin{center}
+        \includegraphics[width = 0.8\textwidth]{./Data/Resistance/1000.jpg}
+        \captionof{figure}{测量较大电阻的阻值}
+    \end{center}
+
+    \subsection*{1.3\ \ 测量并绘制稳压二极管的伏安特性曲线}
+
+    设计程序框图如下：
+
+    \begin{center}
+        \includegraphics[width = 0.8\textwidth]{./Data/Diode/Block_Diagram.jpg}
+        \captionof{figure}{用虚拟仪器测量并绘制稳压二极管的伏安特性曲线程序框图}
+    \end{center}
+
+    \newpage
+    测量和计算的数据如下：
+
+    \begin{center}
+    \begin{tabular}[c]{|c|c|c|c|c|c|c|}
+        \hline
+        $U/\mathrm{V}$ & -5.56641 & -5.56152 & -5.55375 & -5.55166 & -5.54524 & -5.4838 \\
+        \hline
+        $I/\mathrm{mA}$ & -11.6211 & -9.22852 & -6.83003 & -4.39556 & -2.00469 & -0.0936523  \\
+        \hline
+        $U/\mathrm{V}$ & -5.24386 & -4.99512 & -4.74609 & -4.49707 & -4.24317 & -3.99417 \\
+        \hline
+        $I/\mathrm{mA}$ & -0.00283203 & 0 & 0 & 0 & 0 & 0  \\
+        \hline
+        $U/\mathrm{V}$ & -3.74512 & -3.49655 & -3.24793 & -2.99511 & -2.74689 & -2.49534 \\
+        \hline
+        $I/\mathrm{mA}$ & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \hline
+        $U/\mathrm{V}$ & -2.24696 & -1.99876 & -1.7462 & -1.49772 & -1.24809 & -1.00087 \\
+        \hline
+        $I/\mathrm{mA}$ & 0.0000488281 & 0 & 0 & 0 & 0 & 0 \\
+        \hline
+        $U/\mathrm{V}$ & -0.751914 & -0.498042 & -0.249023 & 0.000195313 & 0.249023 & 0.498037 \\
+        \hline
+        $I/\mathrm{mA}$ & 0 & 0 & 0 & 0 & 0 & 0.0000976563 \\
+        \hline
+        $U/\mathrm{V}$ & 0.698193 & 0.743198 & 0.765303 & 0.776953 & 0.784751 & 0.793647 \\
+        \hline
+        $I/\mathrm{mA}$ & 0.537256 & 2.53906 & 4.79814 & 7.16328 & 9.53535 & 11.9843 \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    计算电流为$\pm5\,\mathrm{mA}$附近的静态电阻值：
+    \[
+    R_+ = \frac{0.766565\,\mathrm{V}}{0.005000\,\mathrm{mA}} = 153.31\,\Omega
+    \]
+    \[
+    R_- = \frac{5.552061\,\mathrm{V}}{0.005000\,\mathrm{mA}} = 1110.42\,\Omega
+    \]
+    使用虚拟仪器绘制伏安特性曲线如下：
+
+    \begin{center}
+        \includegraphics[width = 0.8\textwidth]{./Data/Diode/U-I_Graph.jpg}
+        \captionof{figure}{稳压二极管的伏安特性曲线}
+    \end{center}
+
+    \newpage
+    \section*{2\ \ 思考题}
+
+    \begin{itemize}
+        \item[1.] 虚拟仪器是基于计算机的自动化测试仪器系统，相当于只保留仪器的传感器和接口卡实现信号输入，数据处理利用通用计算机，其余控制和显示输出都用键盘、鼠标、显示器等计算机外设实现。其测量是以计算机为中心的，测量对象的信息必须变成计算机能处理的信息，对测量对象的控制也是由计算机发出，而用户则通过计算机来控制测量和了解测量结果。拥有开发费用低、技术更新快、价格便宜、用户可以自定义仪器、系统开放灵活、可以网络共享、易与其它设备连接等优点。传统仪器是以仪器为中心的，信号的输入输出、测量、数据处理和显示都在仪器内完成。
+
+        \item[2.] 在物理实验中，虚拟仪器可以作为信号的发生器和接收器。例如在单缝、多缝光栅衍射实验中，可以利用虚拟仪器实现光强的测量和记录，在计算机上控制光强传感器的运动，并将测量得到的光强信号处理、显示；又例如在电学实验中，使用一块模数/数模转换卡，加上专门为函数发生器、示波器、电流表等功能编写的软件，可以承担电信号的发生和测量功能，原本由传统的电压表、电流表等实现的功能可以用计算机完成，方便数据的记录和传输，甚至能实现远程操作。
+
+        \item[3.] 因为本实验仪器各通道只能测量仪器对地的电压，故必须测量总电压，同时测待测电阻的电压和标准电阻上的电压会导致电路无法共地。
+
+        \item[4.] 标准电阻的阻值误差；传感器自身的灵敏度误差；电路中导线电阻、传感器内阻造成的误差；统计误差：数据点不严格分布在一条直线上，线性相关程度$r<1$导致的误差；模数转换误差：连续分布的电压、电流值离散化造成的舍入误差。
+
+        \item[5.] 通过稳压二极管正向和反向的最大电流不要超过$10\,\mathrm{mA}$。
+    \end{itemize}
+
+    \section*{3\ \ 分析与讨论}
+
+    \begin{itemize}
+        \item[1.] 设计测量二极管的程序框图时，思路是将原本测量电阻时的供电电压$U \in [0\,\mathrm{V}, 3.75\,\mathrm{V}]$改为$U \in [-7\,\mathrm{V}, 2.25\,\mathrm{V}]$；更好的思路是先正向测量，判断电流大于10mA后将循环变量$i$乘上$-1$实现反向测量，判断反向电流大于10mA后再停止。
+
+        \item[2.] 注意\texttt{while}循环是\texttt{Continue if True }还是\texttt{Stop if True }，默认选项是\texttt{Stop if True }，但是本实验要求的是\texttt{Continue if True }，如果没有改会导致程序控制错误。
+
+        \item[3.] 本实验处理数据时，因为没有相关信息，未考虑虚拟仪器的数据采集卡自身的灵敏度和模数转换误差，但是可以从电流、电压的测量值可以看出仪器的精度至少可以到$10^{-8}$，造成的误差应远小于统计误差和标准电阻阻值带来的误差。
+    \end{itemize}
+
+
+\end{document}

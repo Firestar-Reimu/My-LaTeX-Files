@@ -1,0 +1,1375 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage[fontset=none]{ctex}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+\title{\textbf{高等数学讲义}}
+\author{北京大学\ \ \ \ 张植竣}
+\date{\today}
+\maketitle
+
+\section{极限}
+
+\subsection{定义}
+
+\subsubsection{数列极限的$\varepsilon-N$定义}
+
+设$\{a_n\}$是一个给定的数列（均指\textbf{无穷数列}，下同），若存在一个实数$l$，使得对于任意给定的正数$\varepsilon$，\textbf{无论它多么小}，都存在一个正整数$N$，满足：
+\[
+\forall\ n>N,\quad |a_n-l|<\varepsilon
+\]
+则称数列$a_n$存在\textbf{极限}$l$，记作$\lim\limits_{n\to+\infty}a_n=l$或$a_n\to l\ (n\to \infty)$。显然这个极限是\textbf{唯一}的。
+
+存在极限的数列称为\textbf{收敛数列}，否则称为\textbf{发散数列}。
+
+\subsubsection{函数极限的$\varepsilon-N$定义}
+
+设$f(x)$是一个在区间$(a,b)$上有定义的函数，若存在一个实数$l$，使得对于任意给定的正数$\varepsilon$，\textbf{无论它多么小}，都存在一个正数$\delta$，满足：
+\[
+\forall\ 0<x-a<\delta,\quad |f(x)-l|<\varepsilon
+\]
+则称函数$f(x)$在点$a$处存在\textbf{右极限}$l$，记作$\lim\limits_{x\to a^+}f(x)=l$或$f(x)\to l\ (x\to a^+)$。
+
+同理，如果$f(x)$是一个在区间$(c,a)$上有定义的函数，存在一个实数$m$，使得对于任意给定的正数$\varepsilon$，\textbf{无论它多么小}，都存在一个正数$\delta$，满足：
+\[
+\forall\ 0<a-x<\delta,\quad |f(x)-m|<\varepsilon
+\]
+则称函数$f(x)$在点$a$处存在\textbf{左极限}$m$，记作$\lim\limits_{x\to a^-}f(x)=m$或$f(x)\to m\ (x\to a^-)$。
+
+显然，函数在$a$点的\textbf{极限}存在等价于函数在$a$点的\textbf{左极限和右极限存在且相等}。即如果$f(x)$是在$a$点的一个半径为$r$的\textbf{空心邻域}$\mathring{U}_r(a)=(a-r,a)\cup(a,a+r)$上有定义的函数，存在一个实数$k$，使得对于任意给定的正数$\varepsilon$，\textbf{无论它多么小}，都存在一个正数$\delta$，满足：
+\[
+\forall\ 0<|x-a|<\delta,\quad |f(x)-k|<\varepsilon
+\]
+则称函数$f(x)$在点$a$处存在\textbf{极限}$k$，记作$\lim\limits_{x\to a}f(x)=k$，或$f(x)\to k\ (x\to a)$。显然这个极限是唯一的。
+
+\subsubsection{无穷小}
+
+对于数列$\{a_n\}$，若$\lim\limits_{n\to+\infty}a_n=l$，则称数列$\{a_n\}$（随$n$趋于正无穷大）而趋于\textbf{无穷小}。
+
+对于自变量$x$的渐进行为$\mathcal{B}(x)$（可以指代$x\to a$或$x\to\infty$两种渐进行为），若函数$f$与$g$相比是\textbf{无穷小}，即$\lim\limits_{\mathcal{B}(x)}\dfrac{f(x)}{g(x)}=0$，则记作$f=o(g)$。若$g(x)\equiv1$，即$\lim\limits_{\mathcal{B}(x)}f(x)=0$，则$f=o(1)$称为对$\mathcal{B}(x)$的\textbf{无穷小}。
+
+如果对于$\mathcal{B}(x)$，$f=o(g)$且$g=o(1)$，则对于$\mathcal{B}(x)$，$f$是对$g$的\textbf{高阶无穷小}。
+
+记号$o(\cdot)$的运算规则为：
+\[
+Ao(f) + Bo(f) = o(f),\quad o(f) + o(o(f)) = o(f)
+\]
+
+如果对于$\mathcal{B}(x)$，函数$f$、$g$均为无穷小量，且$\lim\limits_{\mathcal{B}(x)}\dfrac{f(x)}{g(x)}=l\neq 0$，则对于$\mathcal{B}(x)$，$f$是对$g$的\textbf{同阶无穷小}。
+
+\subsubsection{无穷大}
+
+设$\{a_n\}$是一个给定的数列，若存在一个实数$l$，使得对于任意给定的正数$\varepsilon$，\textbf{无论它多么大}，都存在一个正整数$N$，满足：
+\[
+\forall\ n>N,\quad |a_n|>\varepsilon
+\]
+则称数列$\{a_n\}$（随$n$趋于正无穷大）而趋于\textbf{无穷大}，记作$a_n\to \infty\ (n\to+\infty)$。
+
+设$f(x)$是在$a$点的一个半径为$r$的\textbf{空心邻域}$\mathring{U}_r(a)=(a-r,a)\cup(a,a+r)$上有定义的函数，若存在一个实数$l$，使得对于任意给定的正数$\varepsilon$，\textbf{无论它多么大}，都存在一个正数$\delta$，满足：
+\[
+\forall\ 0<|x-a|<\delta,\quad |f(x)|>\varepsilon
+\]
+则称函数$f(x)$在$x\to a$时趋于\textbf{无穷大}。记作$f(x)\to\infty\ (x\to a)$。
+
+设$f(x)$是在\textbf{无穷的邻域}$\mathring{U}_r(\infty)=(-\infty,-r)\cup(r,+\infty)$上有定义的函数，若存在一个实数$l$，使得对于任意给定的正数$\varepsilon$，\textbf{无论它多么大}，都存在一个正数$\delta$，满足：
+\[
+\forall\ |x|<\delta,\quad |f(x)|>\varepsilon
+\]
+则称函数$f(x)$在$x\to\infty$时趋于\textbf{无穷大}。记作$f(x)\to\infty\ (x\to\infty)$。
+
+对于自变量$x$的渐进行为$\mathcal{B}(x)$（可以指代$x\to a$或$x\to\infty$两种渐进行为），若函数$f$对于$\mathcal{B}(x)$趋于无穷，则称$f$为关于$\mathcal{B}(x)$的无穷大。
+
+如果对于$\mathcal{B}(x)$，函数$f$与$g$都是无穷大，且$g$是$f$的无穷小，则对于$\mathcal{B}(x)$，$f$是对$g$的\textbf{高阶无穷大}。
+
+如果对于$\mathcal{B}(x)$，函数$f$、$g$均为无穷大量，且$\lim\limits_{\mathcal{B}(x)}\dfrac{f(x)}{g(x)}=l\neq 0$，则对于$\mathcal{B}(x)$，$f$是对$g$的\textbf{同阶无穷大}。
+
+\subsection{性质}
+
+\subsubsection{Heine定理}
+
+关系$\lim\limits_{x\to a}f(x)=A$成立当且仅当对于任何收敛于$a$的数列$\{x_n\}$且$x_n\neq a$，数列$\{f(x_n)\}$收敛于$A$。
+
+\subsubsection{单调有界必存在极限}
+
+对于数列$\{a_n\}$，如果$a_n<a_{n+1}(\forall\ n\in\mathbb{N}^+)$，就说$\{a_n\}$是\textbf{递增列}；如果$a_n>a_{n+1}(\forall\ n\in\mathbb{N}^+)$，就说$\{a_n\}$是\textbf{递降列}；如果$a_n\leqslant a_{n+1}(\forall\ n\in\mathbb{N}^+)$，就说$\{a_n\}$是\textbf{不降列}；如果$a_n\geqslant a_{n+1}(\forall\ n\in\mathbb{N}^+)$，就说$\{a_n\}$是\textbf{不增列}。这四种数列都叫\textbf{单调数列}。递增列和递降列又统称为\textbf{严格单调数列}。
+
+设$X\subseteq\mathbb{R}$是一个集合，如果存在一个数$c\in\mathbb{R}$，使$x\leqslant c(\forall\ x\in X)$，则称$X$是\textbf{上有界集}，最小的上界称为\textbf{上确界}，记作$\sup X$；如果存在一个数$c\in\mathbb{R}$，使$x\geqslant c(\forall\ x\in X)$，则称$X$是\textbf{下有界集}，最大的下界称为\textbf{下确界}，记作$\inf X$。显然这个定义也适用于数列和函数。实数集的任何非空有上界的子集有\textbf{唯一}的上确界，非空有下界的子集有\textbf{唯一}的下确界。
+
+单调数列的极限存在准则表述如下：不降列有极限的充要条件是它上有界，且$\lim\limits_{n\to+\infty}a_n=\sup\{a_n\}$；不增列有极限的充要条件是它下有界，且$\lim\limits_{n\to+\infty}a_n=\inf\{a_n\}$。简称“\textbf{单调数列有界必有极限}”。
+
+同理，对于函数：集合$E$上的不降函数$f(x):E\to\mathbb{R}$当$x\to\sup E$时有极限的充要条件是$f(x)$上有界，且其极限即为$f(x)$的上确界；$x\to\inf E$时有极限的充要条件是$f(x)$下有界，且其极限即为$f(x)$的下确界。集合$E$上的不增函数$f(x):E\to\mathbb{R}$当$x\to\sup E$时有极限的充要条件是$f(x)$下有界，且其极限即为$f(x)$的下确界；$x\to\inf E$时有极限的充要条件是$f(x)$上有界，且其极限即为$f(x)$的上确界。
+
+\subsubsection{极限的四则运算}
+
+设数列$\{a_n\}$、$\{b_n\}$都存在极限，$\lim\limits_{n\to+\infty}a_n=A$，$\lim\limits_{n\to+\infty}b_n=B$，则：
+\[
+\lim_{n\to+\infty}(a_n \pm b_n) = A \pm B,\quad
+\lim_{n\to\infty}(a_n \cdot b_n) = A \cdot B,\quad
+\lim_{n\to\infty}\frac{a_n}{b_n} = \frac{A}{B},\quad (B\neq0)
+\]
+同样地，设函数$f(x)$和$g(x)$都在$a$点的一个空心邻域$\mathring{U}(a)$中有定义，且它们在$a$点存在极限：
+\[
+\lim_{x\to a}f(x) = F,\quad \lim_{x\to a}g(x) = G
+\]
+则：
+\[
+\lim_{x\to a}[f(x) \pm g(x)] = F \pm G,\quad
+\lim_{x\to a}[f(x) \cdot g(x)] = F \cdot G,\quad
+\lim_{x\to a}\frac{f(x)}{g(x)} = \frac{F}{G},\quad (G\neq0)
+\]
+
+\subsubsection{复合函数的极限}
+
+设$f(x)$在$\mathring{U}(a)$上有定义，且$\lim\limits_{x\to a}f(x)=A$；$g(x)$在$\mathring{U}(A)$上有定义，且$\lim\limits_{x\to A}g(x)=B$；若还存在$\delta>0$使得在$0<|x-a|<\delta$时$f(x)\neq A$（该条件也可以改为$g(A)=B$），则$\lim\limits_{x\to a}g(f(x))=B$。
+
+\subsubsection{Cauchy准则}
+
+数列$\{a_n\}$收敛的充要条件是它是\textbf{Cauchy列}，即对于任意给定的正数$\varepsilon$，\textbf{无论它多么小}，都存在一个正整数$N$，满足：
+\[
+\forall\ m,n>N,\quad |a_m-a_n|<\varepsilon
+\]
+在$\mathring{U}(a)$上有定义的函数$f(x)$在$a$点收敛的充要条件是：对于任意给定的正数$\varepsilon$，\textbf{无论它多么小}，都存在一个正数$\delta$，满足：
+\[
+\forall\ x_1, x_2 \in (a-\delta, a+\delta),\quad \left|f(x_1)-f_(x_2)\right|<\varepsilon
+\]
+
+\subsubsection{夹逼定理}
+
+设$\{a_n\}$、$\{b_n\}$和$\{c_n\}$为三个序列，并且存在一个自然数$N$，使得：
+\[
+\forall\ n>N,\quad c_n \leqslant a_n \leqslant b_n
+\]
+且$\lim\limits_{n\to+\infty}b_n=\lim\limits_{n\to+\infty}c_n=l$，则$\lim\limits_{n\to+\infty}a_n=l$。
+
+设$f(x)$、$g(x)$和$h(x)$为都在$a$点的一个空心邻域$\mathring{U}(a)$中有定义的函数，并且存在一个自然数$\delta$，使得：
+\[
+\forall\ 0<|x-a|<\delta,\quad g(x) \leqslant f(x) \leqslant h(x)
+\]
+且$\lim\limits_{x\to a}g(x)=\lim\limits_{x\to a}h(x)=l$，则$\lim\limits_{x\to a}f(x)=l$。
+
+\subsubsection{Stolz定理}
+
+若数列$\{a_n\}$、$\{b_n\}$满足：
+\begin{enumerate}
+    \item $\{b_n\}$严格单调递减且$\lim\limits_{n\to+\infty}a_n=\lim\limits_{n\to+\infty}b_n=0$；
+
+    \item $\{b_n\}$严格单调递增；
+\end{enumerate}
+且存在极限：
+\[
+\lim_{n\to+\infty}\frac{a_{n+1}-a_n}{b_{n+1}-b_n} = l
+\]
+则有：
+\[
+\lim_{n\to\infty}\frac{a_n}{b_n} = \lim_{n\to+\infty}\frac{a_{n+1}-a_n}{b_{n+1}-b_n} = l
+\]
+
+
+\paragraph{例题}
+
+\begin{enumerate}
+
+    \item 证明数列极限的唯一性。
+
+    \item 求$\lim\limits_{n\to+\infty}(\sqrt{n+1}-\sqrt{n})$的值。
+
+    \item 自然对数的底$\mathrm{e}$的定义即为$\lim\limits_{n\to+\infty}\left(1+\dfrac{1}{n}\right)^n$的值，证明该极限存在且小于3。
+
+    \item 从几何观点出发，求$\lim\limits_{x\to 0}\dfrac{\sin x}{x}$的值。
+
+\end{enumerate}
+
+\paragraph{习题}
+
+\begin{enumerate}
+
+    \item 如果一个数列$\{a_n\}$的极限是$l$，那么任意取出该数列的无穷多项组成的子数列的极限$\{b_n\}$的极限是否还是$l$？若存在该数列的其中一个子数列$\{b_n\}$的极限是$l$，那么原数列$\{a_n\}$的极限是否一定是$l$？
+
+    \paragraph{解}
+    若存在该数列的其中一个子数列$\{b_n\}$的极限是$l$，那么原数列$\{a_n\}$的极限不一定是$l$，例如${a_n}=(-1)^n$存在一个子数列${b_n}\equiv1$的极限是1，但是显然原数列${a_n}$不存在极限。
+
+    \item 证明：设数列$\{a_n\}$、$\{b_n\}$分别有极限$A$和$B$，且$A>B$，则存在一个自然数$N$，使得：
+    \[
+    \forall\ n>N,\quad a_n > b_n
+    \]
+
+    \paragraph{解}
+    
+    取$\varepsilon=\dfrac{A-B}{2}$即可。
+
+    \item 证明数列极限的四则运算法则。
+
+    \item 讨论$a$的不同取值下$\lim\limits_{n\to+\infty}a^n$的值。
+
+    \paragraph{解}
+
+    分四种情况：
+    \[
+    \lim_{n\to+\infty}a^n = \left\{
+        \begin{aligned}
+            &0,\quad &|a|<1 \\
+            &N/A,\quad &|a|>1 \\
+            &1\quad &a=1 \\
+            &N/A,\quad &a=-1
+        \end{aligned}
+    \right.
+    \]
+    其中$|a|>1$时${a_n}$会趋于无穷大，$a=-1$时$a_n$的值在$-1$和$1$之间振荡。
+
+    \item 在复合函数极限定理中，“存在$\delta>0$使得在$0<|x-a|<\delta$时$f(x)\neq A$”的条件能否去掉？为什么？
+
+    \paragraph{解}
+    
+    不能丢掉，因为如果没有这个条件，只能导出$\lim\limits_{x\to a}g(f(x))=g(A)$，而不能导出$\lim\limits_{x\to a}g(f(x))=B$，例如构造一个函数$g(x)$，使得$x\neq A$时$g(x)\equiv B$且$g(A)\neq B$，则这样的函数满足定理的其余所有条件但无法推出结论。
+
+    \item 若数列$\{x_n\}$满足$\lim\limits_{n\to+\infty}x_n=a$，证明：
+    \[
+    \lim_{n\to+\infty}\frac{1}{n}\sum_{i=1}^n x_i=a
+    \]
+
+    \item 求$\lim\limits_{x\to-1}\left(\dfrac{1}{x+1}-\dfrac{3}{x^3+1}\right)$的值。
+
+    \paragraph{解}
+    
+    首先用$x^3+1=(x+1)(x^2-x+1)$化简，再分解因式消去$(x+1)$：
+    \begin{align*}
+        \lim_{x\to-1}\left(\frac{1}{x+1}-\frac{3}{x^3+1}\right)
+        &= \lim_{x\to-1}\frac{x^2-x-2}{x^3+1} \\
+        &= \lim_{x\to-1}\frac{(x+1)(x-2)}{(x+1)(x^2-x+1)} \\
+        &= \lim_{x\to-1}\frac{x-2}{x^2-x+1} \\
+        &= \frac{-3}{3} \\
+        &= -1
+    \end{align*}
+
+    \item 若$\{a_n\}$为正项数列，且满足：
+    \[
+    \lim_{n\to\infty}\sum_{i=1}^n a_n = A \in \mathbb{R}
+    \]
+    证明：
+    \[
+    \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^n na_n = \lim_{n\to\infty}\sqrt[n]{n!\prod_{i=1}^n a_n} = 0
+    \]
+
+\end{enumerate}
+
+\newpage
+\section{一元函数微分学}
+
+\subsection{定义}
+
+\subsubsection{函数的连续性}
+
+函数$f(x)$在$x=a$\textbf{连续}，等价于$\lim\limits_{x\to a}f(x)=f(a)$，即函数运算与极限运算可交换次序：$\lim\limits_{x\to a}f(x)=f\left(\lim\limits_{x\to a}x\right)$。
+
+\subsubsection{微分与导数}
+
+定义在集合$E\subseteq\mathbb{R}$上的函数$f(x)$叫做在$E$上的一点$a$\textbf{可微}（或\textbf{可导}），等价于存在一个关于自变量的增量$x-a$的线性函数$A(x-a)$，使得$x\to a$时，函数的增量$f(x)-f(a)$表示为：
+\[
+f(x) - f(a) = A(x-a) + o(x-a)
+\]
+其中$o(x-a)$为关于$x-a$的无穷小。线性函数$A(x-a)$称为函数$f(x)$在$x=a$的\textbf{微分}，记作$\mathrm{d}f$，说明微分是函数增量的\textbf{线性主部}。斜率$A$称为函数$f(x)$在$x=a$的\textbf{导数}，导数的定义也可以写作：
+\[
+A = \lim_{x\to a}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f(x)-f(a)}{x-a}
+\]
+记作：$f'(a)$或$\left.\dfrac{\mathrm{d}f}{\mathrm{d}x}\right|_{x=a}$。第二种记法体现出$f(x)$的导数是$y=f(x)$的微分$\mathrm{d}f$与$y=x$的微分$\mathrm{d}x$之商，故导数又称\textbf{微商}。
+
+若在集合$E$内每一点$x$处函数$f(x)$都可导，则称$f(x)$在$E$内可导，此时每一个$E$中的$x$都对应一个导数值$f'(x)$，这样便定义出一个新的函数$f'(x)$，它被称为$f(x)$的\textbf{导函数}，一般也简称导数。
+
+如果导函数在其定义域内可导，则可构造其导函数，即原函数的\textbf{二阶导数}，记作$f''(x)$或$\dfrac{\mathrm{d}^2f}{\mathrm{d}x^2}=\dfrac{\mathrm{d}}{\mathrm{d}x}\left(\dfrac{\mathrm{d}f}{\mathrm{d}x}\right)$，依次类推可得三阶、四阶……导数，统称为\textbf{高阶导数}。$n$阶导数可记作$f^{(n)}(x)$或$\dfrac{\mathrm{d}^n f}{\mathrm{d}x^n}$。特别地，$f(x)$本身可以被称为它自己的\textbf{零阶导数}，记作$f^{(0)}(x)$。
+
+\subsection{性质}
+
+\subsubsection{可导与连续的关系}
+
+\textbf{函数连续是可导的必要不充分条件}，即若函数$f(x)$在$(a,f(a))$处可导，则函数在该点连续，但函数在$(a,f(a))$处连续不一定在该点可导。
+
+\subsubsection{导数的四则运算}
+
+如果函数$f(x)$与$g(x)$都在$(a,b)$上有定义，且在$(a,b)$上的每一点都可导，则：
+\[
+[f(x) \pm g(x)]' = f'(x) \pm g'(x)
+\]
+\[
+[f(x) \cdot g(x)]' = f'(x) \cdot g(x) + f(x) \cdot g'(x)
+\]
+\[
+\left[\frac{f(x)}{g(x)}\right]' = \frac{f'(x)g(x)-f(x)g'(x)}{[g(x)]^2}
+\]
+
+\subsubsection{复合函数的导数}
+
+如果函数$y=f(x)$在$(a,b)$上有定义，且其值域包含在$(A,B)$中，又函数$z=g(y)$在$(A,B)$上有定义。若$f(x)$在$(a,b)$上可导，且$g(y)$在$(A,B)$上也可导，则对于任意一点$x\in(a,b)$，有：
+\[
+g'(x) = g'(y)f'(x)
+\]
+或写为更对称的形式：
+\[
+\frac{\mathrm{d}z}{\mathrm{d}x} = \frac{\mathrm{d}z}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}x}
+\]
+这个规则又称为\textbf{链式法则}。
+
+\subsubsection{反函数的导数}
+
+如果函数$y=f(x)$在$(a,b)$上连续、严格单调且其值域为$(A,B)$，且其反函数$x=g(y)$在$(A,B)$上可导且导数均不为0，则：
+\[
+f'(x) = \frac{1}{g'(y)}
+\]
+或写为更对称的形式：
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} = 1 \div \frac{\mathrm{d}x}{\mathrm{d}y}
+\]
+
+\subsubsection{L'Hospital法则}
+
+如果函数$f(x)$和$g(x)$在$(a,b)$上均可导，点$x_0\in(a,b)$（这里的$a$、$b$和$x_0$都可以是无穷大），且极限$\lim\limits_{x\to x_0}\dfrac{f'(x)}{g'(x)}$存在，又满足：
+\begin{enumerate}
+    \item $x\to x_0$时，$f(x)\to0$且$g(x)\to0$；
+
+    \item $x\to x_0$时，$g(x)\to\infty$；
+\end{enumerate}
+则有：
+\[
+\lim_{x\to x_0}\frac{f(x)}{g(x)} = \lim_{x\to x_0}\frac{f'(x)}{g'(x)}
+\]
+两个条件分别用于解决“$\dfrac{0}{0}$型未定式”和“$\dfrac{\infty}{\infty}$型未定式”的极限。
+
+\subsubsection{局部Taylor公式}
+
+设函数$f(x)$在$(a,b)$上有定义，且在点$x_0\in(a,b)$处有$n$阶导数，则有：
+\[
+\lim_{x\to x_0}\sum_{i=0}^n\frac{f^{(i)}(x_0)}{i!}(x-x_0)^i = f(x)
+\]
+即在$x_0$附近可以将$f(x)$展开为：
+\[
+\sum_{i=0}^n\frac{f^{(i)}(x_0)}{i!}(x-x_0)^i + o((x-x_0)^n)
+\]
+可以证明，上述形式的展开是唯一的。也就是说，不管使用何种方法（不一定通过求导）求出展开式的各项系数，这个展开式就一定是$f(x)$在$x_0$点的Taylor展开式。
+
+因为上述形式的Taylor公式只告诉我们当$x\to x_0$时函数值的性质，所以它被称为\textbf{局部Taylor公式}。其余项$o((x-x_0)^n)$称为\textbf{Peano型余项}。$f(x)$在$x_0=0$点的Taylor展开式又称\textbf{Maclaurin展开式}。
+
+\subsubsection{一元函数的极值}
+
+设函数$f(x)$在集合$E\subseteq\mathbb{R}$内有定义，且$x_0\in E$。若存在$x_0$的一个邻域，使得对该邻域内任何一点$x$，都有$f(x)\geqslant f(x_0)$，则称$f(x_0)$为$f(x)$的一个\textbf{极小值}，称$x_0$为一个\textbf{极小值点}。若存在$x_0$的一个邻域，使得对该邻域内任何一点$x$，都有$f(x)\leqslant f(x_0)$，则称$f(x_0)$为$f(x)$的一个\textbf{极大值}，称$x_0$为一个\textbf{极大值点}。
+
+一元函数在某点取极值的\textbf{充分条件}是在该点\textbf{一阶导数为零}，即$f'(x_0)=0$。
+
+若考虑其二阶导数，可以给出其极值点的性质：$f(x)$在$x_0$处取极大值的充分条件是$f'(x_0)=0$且$f''(x_0)<0$，$f(x)$在$x_0$处取极小值的充分条件是$f'(x_0)=0$且$f''(x_0)>0$。
+
+一般地，设$f(x)$在点$x_0$处有直到$n$阶导数，且$n>1$。如果$f'(x_0)=f''(x_0)=\cdots=f^{(n-1)}(x_0)=0$且$f^{(n)}(x_0)\neq0$，则当$n$为奇数时，在$x_0$处$f(x)$无极值；当$n$为偶数时，在$x_0$处$f(x)$有极值，$f^{(n)}(x_0)<0$时取极大值，$f^{(n)}(x_0)>0$时取极小值。
+
+\paragraph{例题}
+
+\begin{enumerate}
+
+    \item 求函数$f(x)=x^x$的导数。
+
+    \item 求函数$f(x)=\arcsin x$的导数。
+
+    \item 用L'Hospital法则证明$\lim\limits_{x\to0}\dfrac{\sin x}{x}=1$。
+
+    \item 求$f(x)=\sin x$在$x=0$处的Taylor展开式。
+
+\end{enumerate}
+
+\paragraph{习题}
+
+\begin{enumerate}
+
+    \item 证明导数的四则运算规则。
+
+    \item 求函数$f(x)=x\mathrm{e^{\mathrm{e}^x}}$的导数。
+    \[
+    \mathrm{e^{\mathrm{e}^x}}(x\mathrm{e}^x + 1)
+    \]
+
+    \item 求函数$f(x)=\ln(x+\sqrt{x^2+a^2})$的导数。
+    \[
+    \frac{1}{\sqrt{x^2+a^2}}
+    \]
+
+    \item 求函数$f(x)=\arctan\dfrac{1}{x}$的导数。
+    \[
+    -\frac{1}{1+x^2}
+    \]
+
+    \item 求函数$f(x)=\dfrac{x}{2}\sqrt{x^2+a^2}+\dfrac{a^2}{2}\ln\dfrac{x+\sqrt{x^2+a^2}}{a}$的导数。（$a>0$）
+    \[
+    \sqrt{a^2+x^2}
+    \]
+
+    \item 求$\lim\limits_{x\to0}\dfrac{\mathrm{e}^x-x-1}{x^2}$的值。
+    \begin{align*}
+        \lim_{x\to0}\frac{\mathrm{e}^x-x-1}{x^2}
+        &= \lim_{x\to0}\frac{\mathrm{e}^x-1}{2x} \\
+        &= \lim_{x\to0}\frac{\mathrm{e}^x}{2} \\
+        &= \frac{1}{2}
+    \end{align*}
+
+    \item 已知函数$f(x)=\sin x-\ln(1+x)$，证明$f'(x)$在区间$\left(-1,\dfrac{\pi}{2}\right)$内有唯一一个极大值点。
+
+    \paragraph{解}
+    
+    对$f(x)$求导得：
+    \[
+    f'(x) = \cos x - \frac{1}{1+x},\quad f''(x) = -\sin x + \frac{1}{1+x^2}
+    \]
+    当$x\in\left(-1,\dfrac{\pi}{2}\right)$时，$f''(x)$单调递减，而$f''(0)>0$，$f''\left(\dfrac{\pi}{2}\right)<0$，可得$f'(x)$在$\left(-1,\dfrac{\pi}{2}\right)$有唯一一个零点，设为$a$。
+    
+    则当$x\in(-1,a)$时，$f''(x)>0$，当$x\in\left(a,\dfrac{\pi}{2}\right)$时，$f''(x)<0$。
+
+    所以$f'(a)=0$，$f''(x)$在$(-1,a)$上单调递增，在$\left(a,\dfrac{\pi}{2}\right)$上单调递减。故$f'(x)$在$\left(-1,\dfrac{\pi}{2}\right)$上存在唯一个极大值点。
+
+    \item 求函数$f(x)=\arcsin x$在$x=0$处的Taylor展开式。
+
+    \paragraph{解}
+    
+    先考虑$f'(x)=\dfrac{1}{\sqrt{1-x^2}}$在$x=0$处的Taylor展开式，换元$u=x^2$并逐次求导展开求导：
+    \begin{align*}
+    \frac{1}{\sqrt{1+u}}
+    &= 1 + \frac{1}{1!}\left(-\frac{1}{2}\right)u + \frac{1}{2!}\left[\left(-\frac{1}{2}\right)\times\left(-\frac{3}{2}\right)\right]u^2 + \cdots + \frac{1}{n!}\left[\left(-\frac{1}{2}\right)\times\left(-\frac{3}{2}\right)\times\cdots\times\left(-\frac{-2n+1}{2}\right)\right]u^n + o(u^n) \\
+    &= \sum_{i=0}^n \frac{(-1)^n (2n-1)!!}{n! 2^n}u^n + o(u^n)
+    \end{align*}
+    代入$u=x^2$得：
+    \begin{align*}
+        \frac{1}{\sqrt{1-x^2}}
+        &= \sum_{i=0}^n \frac{(-1)^n (2n-1)!!}{n! 2^n}(-x^2)^n + o(x^{2n+1})\\
+        &= \sum_{i=0}^n \frac{(2n-1)!!}{n! 2^n}x^{2n} + o(x^{2n+1})
+    \end{align*}
+    上式两边同时对$x$积分得：
+    \begin{align*}
+        \arcsin x
+        &= \sum_{i=0}^n \frac{(2n-1)!!}{(2n+1)n! 2^n}x^{2n+1} + o(x^{2n+2}) \\
+        &= \sum_{i=0}^n \frac{(2n-1)!!}{(2n+1)(2n)!!}x^{2n+1} + o(x^{2n+2}) \\
+        &= \sum_{i=0}^n \frac{[(2n-1)!!]^2}{(2n+1)!}x^{2n+1} + o(x^{2n+2})
+    \end{align*}
+    其中$(2n)!!=2\times4\times\cdots\times(2n)=n!2^n$，$(2n-1)!!=1\times3\times\cdots\times(2n-1)=\dfrac{(2n)!}{(2n)!!}$
+
+\end{enumerate}
+
+\newpage
+\section{一元函数积分学}
+
+\subsection{定义}
+
+\subsubsection{原函数}
+
+若对于任意$x\in(a,b)$，函数$F(x)$的导函数$F'(x)=f(x)$，则称$F(x)$为$f(x)$在$(a,b)$上的一个\textbf{原函数}。一个函数的原函数\textbf{不唯一}，若$F(x)$为$f(x)$在$(a,b)$上的一个原函数，则对任意的常数$C$，函数$F(x)+C$也是$f(x)$的一个原函数。$f(x)$原函数的一般表达式称为$f(x)$的\textbf{不定积分}，记作：
+\[
+\int f(x)\,\mathrm{d}x = F(x)+C
+\]
+这里$f(x)$称为\textbf{被积函数}。
+
+\subsubsection{定积分}
+
+设$f(x)$是定义在闭区间$[a,b]$上的函数。对于区间$[a,b]$插入分点$x_i(i=0,1,\cdots,n)$，使它们满足$a = x_0 < x_2 < \cdots < x_n = b$，则称区间集$\{[x_{i-1},x_i]|i=1,2,\cdots,n\}$为对区间的一种\textbf{分划}$T$，并在每个区间都选取一个中间值$\xi_i\in[x_{i-1},x_i](i=1,2,\cdots,n)$。又记$\Delta x_i=x_i-x_{i-1}(i=1,2,\cdots,n)$，其中最大者为$\max\{\Delta x_i\}=\lambda(T)$是分划$T$的本质属性。
+
+定义函数$f(x)$在区间$[a,b]$的\textbf{Riemann和}为：
+\[
+R[a,b] = \sum_{i=1}^n f(\xi_i)\Delta x_i
+\]
+若对任意的分划$T$和$\xi_i$，极限：
+\[
+\lim_{\lambda(T)\to0}R[a,b] = \lim_{\lambda(T)\to0}\sum_{i=1}^n f(\xi_i)\Delta x_i
+\]
+都存在，则称$f(x)$在区间$[a,b]$\textbf{可积}。这个极限值称为$f(x)$在$[a,b]$上的\textbf{定积分}，记为：
+\[
+\int_a^b f(x)\,\mathrm{d}x = \lim_{\lambda(T)\to0}R[a,b]
+\]
+这里$f(x)$称为\textbf{被积函数}，$a$和$b$称为积分的\textbf{下限}与\textbf{上限}，$x$称为\textbf{积分变量}。这个定义下的定积分也称为\textbf{Riemann积分}。
+
+\subsection{性质}
+
+\subsubsection{函数的可积性}
+
+\textbf{闭区间上有界的连续函数或单调函数}在该区间上是可积的，但其原函数可能不是基本初等函数（也就是通常所说的“积不出来”），此时可以用其它方法给出定积分的值。
+
+\subsubsection{积分的运算性质}
+
+常数因子可以提到积分号之外：
+\[
+\int kf(x)\,\mathrm{d}x = k\int f(x)\,\mathrm{d}x
+\]
+函数的代数和的积分等于各函数积分的代数和：
+\[
+\int [f(x) \pm g(x)]\,\mathrm{d}x = \int f(x)\,\mathrm{d}x \pm \int g(x)\,\mathrm{d}x
+\]
+上面两条性质对不定积分和定积分皆成立，对于定积分，还有一条性质是“积分区域的可加性”：
+\[
+\int_a^b f(x)\,\mathrm{d}x = \int_a^c f(x)\,\mathrm{d}x + \int_a^c f(x)\,\mathrm{d}x
+\]
+
+\subsubsection{微积分基本定理}
+
+设函数$f(x)$在闭区间$[a,b]$内连续，又设$F(x)$是$f(x)$在$[a,b]$上的一个原函数，且$F(x)$在$[a,b]$内连续，则：
+\[
+\int_a^b f(x)\,\mathrm{d}x = F(b) - F(a) = F(x)|_a^b
+\]
+该定理将定积分与不定积分联系起来，从而将求定积分的问题归结于求不定积分（原函数）。
+
+\subsubsection{不定积分的第一换元公式}
+
+如果将被积函数$f(x)$分为两个部分，其中一个部分可以看作是某个中间变量$y=h(x)$的函数$g(y)$，且此函数的原函数$G(y)$是已知的，并且其中的第二个部分恰好是$h(x)$的导函数，这时就可以求出：
+\[
+\int f(x)\,\mathrm{d}x = \int g(h(x))h'(x)\,\mathrm{d}x = \int g(h(x))\,\mathrm{d}h(x) = G(h(x))+C
+\]
+
+\subsubsection{不定积分的第二换元公式}
+
+如果将积分变量$x$看作是另一变量$t$的函数$g(t)$，且新的被积函数$f(g(t))g'(t)$的原函数$F(t)=F(g^{-1}(x))$是已知的，这时就可以求出：
+\[
+\int f(x)\,\mathrm{d}x = \int f(g(t))\,\mathrm{d}g(t) = \int f(g(t))g'(t)\,\mathrm{d}t = F(t)+C = F(g^{-1}(x))+C
+\]
+
+\paragraph{三角换元}
+
+遇到含$\sqrt{a^2-x^2}$的不定积分时，利用关系$\sin^2 x+\cos^2 x=1$，即$1-\sin^2 x=\cos^2 x$，可以考虑用换元$x=a\sin t$，此时$\sqrt{a^2-x^2}=a\cos t$，$\mathrm{d}x=a\cos t\mathrm{d}t$；或用换元$x=a\cos t$，此时$\sqrt{a^2-x^2}=a\sin t$，$\mathrm{d}x=-a\sin t\mathrm{d}t$。
+
+遇到含$\sqrt{a^2+x^2}$的不定积分时，利用关系：$\cosh^2 x-\sinh^2 x=1$，即$1+\sinh^2 x=\cosh^2 x$，可以考虑用换元$x=a\sinh t$，此时$\sqrt{a^2+x^2}=a\cosh t$，$\mathrm{d}x=a\cosh t\mathrm{d}t$；也可以利用关系：$\sec^2 x-\tan^2 x=1$，即$1+\tan^2 x=\sec^2 x$，考虑用换元$x=a\tan t$，此时$\sqrt{a^2+x^2}=a\sec t$，$\mathrm{d}x=a\sec^2 t\mathrm{d}t$。
+
+\subsubsection{有理式的不定积分}
+
+\textbf{有理式}，又称\textbf{有理函数}，指的是两个关于自变量的多项式之商：
+\[
+R(x) = \frac{P(x)}{Q(x)} = \frac{\sum\limits_{i=0}^m a_i x^i}{\sum\limits_{i=0}^n b_i x^i}
+\]
+通常假定$P(x)$和$Q(x)$没有公因子，$a_m\neq0$，$b_m\neq0$。当$m<n$时，该有理式称为\textbf{真分式}，$m\geqslant n$时称为\textbf{假分式}。这里只讨论真分式，因为任何一个假分式都可以表示为一个真分式加一个容易求积分的多项式。
+
+有理函数$R(x)$求不定积分的关键步骤为用\textbf{待定系数法}将$f(x)$表示成两种基本\textbf{部分分式}之和：
+\[
+\frac{A}{(x-a)^n},\quad \frac{Bx+C}{(x^2+px+q)^n}\quad (n\geqslant1)
+\]
+此时这个积分是可以积出来的，它可以表示为多项式、对数函数$\ln x$和反正切函数$\arctan x$的线性叠加。
+
+\subsubsection{三角函数的不定积分}
+
+\textbf{三角函数有理式}，指的是对三角函数及常数函数进行有限次加减乘除所得的表达式，即两个关于自变量$\sin x$、$\cos x$的多项式之商：
+\[
+R(\sin x,\cos x) = \frac{P(\sin x,\cos x)}{Q(\sin x,\cos x)} = \frac{\sum\limits_{i=0}^m a_i \sin^i x + \sum\limits_{i=0}^m b_i \cos^i x}{\sum\limits_{i=0}^n c_i \sin^i x + \sum\limits_{i=0}^m d_i \cos^i x}
+\]
+这时可以将它化为有理函数进行积分，也就是说一定能积出来。一般有三种方法：
+
+\paragraph{万能替换}
+
+做替换$t=\tan\dfrac{x}{2}$，则有：
+\[
+\sin x = \frac{2t}{1+t^2},\quad \cos x = \frac{1-t^2}{1+t^2},\quad \mathrm{d}x = \frac{2\mathrm{d}t}{1+t^2}
+\]
+这个方法适用于任意三角函数有理式的积分，但并不总是最简单的。
+
+\paragraph{$R(\sin^2 x,\cos^2 x)$型或$R(\tan x)$型}
+
+做替换$t=\tan x$，则有：
+\[
+\sin^2 x = \frac{t^2}{1+t^2},\quad \cos^2 x = \frac{1}{1+t^2},\quad \mathrm{d}x = \frac{\mathrm{d}t}{1+t^2}
+\]
+
+\paragraph{$R(\sin^2 x,\cos x)\sin x$型或$R(\cos^2 x,\sin x)\cos x$型}
+
+对$R(\sin^2 x,\cos x)\sin x$型做替换$t=\cos x$，则有：
+\[
+\int R(\sin^2 x,\cos x)\sin x\,\mathrm{d}x = -\int R(1-t^2, t)\,\mathrm{dt}
+\]
+同样地，对$R(\cos^2 x,\sin x)\cos x$型做替换$t=\sin x$，则有：
+\[
+\int R(\cos^2 x,\sin x)\cos x\,\mathrm{d}x = \int R(1-t^2, t)\,\mathrm{dt}
+\]
+
+\subsubsection{分部积分公式}
+
+设$f(x)$和$g(x)$都是$[a,b]$上可导的函数，根据函数乘积的导数公式$[f(x)g(x)]'=f'(x)g(x)+f(x)g'(x)$得：
+\[
+f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
+\]
+两边取不定积分得\textbf{不定积分的分部积分公式}：
+\[
+\int f(x)g'(x)\,\mathrm{d}x = f(x)g(x) - \int f'(x)g(x)\,\mathrm{d}x
+\]
+或写为更对称的形式：
+\[
+\int f(x)\,\mathrm{d}g(x) = f(x)g(x) - \int g(x)\,\mathrm{d}f(x)
+\]
+原式两边取定积分得\textbf{定积分的分部积分公式}：
+\[
+\int_a^b f(x)g'(x)\,\mathrm{d}x = [f(x)g(x)]|_a^b - \int_a^b f'(x)g(x)\,\mathrm{d}x
+\]
+
+\paragraph{例题}
+
+\begin{enumerate}
+
+    \item 求不定积分：
+    \[
+    \int \tan x\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    \[
+    \int \tan x\,\mathrm{d}x = \frac{1}{\cos^2 x} + C
+    \]
+
+    \item 求不定积分：
+    \[
+    \int \sqrt{a^2-x^2}\,\mathrm{d}x
+    \]
+    \paragraph{解}
+    令$x=a\sin t$，得：
+    \[
+    \int \sqrt{a^2-x^2}\,\mathrm{d}x = \frac{a^2}{2}\arcsin\frac{x}{a} + \frac{1}{2}x\sqrt{a^2-x^2} + C
+    \]
+
+    \item 求不定积分：
+    \[
+    \int \ln x\,\mathrm{d}x
+    \]
+
+    \item 求定积分：
+    \[
+    \int_{1}^{2} x\ln x\,\mathrm{d}x
+    \]
+
+\end{enumerate}
+
+\paragraph{习题}
+
+\begin{enumerate}
+
+    \item 求不定积分：
+    \[
+    \int \mathrm{e}^{ax}\sin bx\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    
+    \begin{align*}
+        \int \mathrm{e}^{ax}\sin bx\,\mathrm{d}x
+        &= \frac{1}{a}\int \sin bx\,\mathrm{d}\mathrm{e}^{ax} \\
+        &= \frac{1}{a}\left(\sin bx\mathrm{e}^{ax} - \int \mathrm{e}^{ax}\,\mathrm{d}\sin bx\right) \\
+        &= \frac{1}{a}\left(\sin bx\mathrm{e}^{ax} - \frac{b}{a}\int \cos bx\,\mathrm{d}\mathrm{e}^{ax}\right) \\
+        &= \frac{1}{a}\sin bx\mathrm{e}^{ax} - \frac{b}{a^2}\left(\cos bx\mathrm{e}^{ax} - \int \mathrm{e}^{ax}\,\mathrm{d}\cos bx\right) \\
+        &= \frac{1}{a}\sin bx\mathrm{e}^{ax} - \frac{b}{a^2}\cos bx\mathrm{e}^{ax} - \frac{b^2}{a^2}\int \sin bx\mathrm{e}^{ax}\,\mathrm{d}x \\
+    \end{align*}
+    则有：
+    \[
+    \frac{a^2+b^2}{a^2}\int \mathrm{e}^{ax}\sin bx\,\mathrm{d}x = \frac{1}{a}\sin bx\mathrm{e}^{ax} - \frac{b}{a^2}\cos bx\mathrm{e}^{ax} = \frac{a\sin bx + b\cos bx}{a^2}\mathrm{e}^{ax}
+    \]
+    故：
+    \[
+    \int \mathrm{e}^{ax}\sin bx\,\mathrm{d}x = \frac{a\sin bx + b\cos bx}{a^2+b^2}\mathrm{e}^{ax}
+    \]
+
+    \item 求不定积分：
+    \[
+    \int \frac{x^{2n-1}}{x^n-1}\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    
+    换元$u=x^n-1$得：
+    \begin{align*}
+        \int \frac{x^{2n-1}}{x^n-1}\,\mathrm{d}x
+        &= \frac{1}{n}\int \left(1+\frac{1}{u}\right)\,\mathrm{d}u \\
+        &= \frac{1}{n}(x^n - 1) + \frac{1}{n}\ln|x^n-1| + C
+    \end{align*}
+
+    \item 求不定积分：
+    \[
+    \int \frac{\cos x}{5-3\cos x}\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+
+    换元$t=\tan\dfrac{x}{2}$得：
+    \[
+    \cos x = \frac{1-t^2}{1+t^2},\quad \mathrm{d}x = \frac{2}{1+t^2}\mathrm{d}t
+    \]
+    原积分化为：
+    \begin{align*}
+        \int \frac{1+t^2}{(1+4t^2)(1-t^2)}\,\mathrm{d}t
+        &= -\frac{2}{3}\int \frac{1}{1+4t^2}\,\mathrm{d}t + \frac{5}{3}\int \frac{1}{1+4t^2}\,\mathrm{d}t \\
+        &= -\frac{2}{3}\int \frac{1}{1+4t^2}\,\mathrm{d}t + \frac{5}{6}\int \frac{1}{1+(2t)^2}\,\mathrm{d}(2t) \\
+        &= -\frac{2}{3}\arctan t + \frac{5}{6}\arctan(2t) \\
+        &= -\frac{1}{3}x + \frac{5}{6}\arctan\left(2\tan\frac{x}{2}\right)
+    \end{align*}
+    即得：
+    \[
+    \int \frac{\cos x}{5-3\cos x}\,\mathrm{d}x = -\frac{1}{3}x + \frac{5}{6}\arctan\left(2\tan\frac{x}{2}\right)
+    \]
+
+    \item 求不定积分：
+    \[
+    \int x^3(\ln x)^2\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    
+    用两次分部积分：
+    \begin{align*}
+        \int x^3(\ln x)^2\,\mathrm{d}x
+        &= \int (\ln x)^2\,\mathrm{d}\left(\frac{1}{4}x^4\right) \\
+        &= \frac{1}{4}x^4(\ln x)^2 - \int \frac{1}{4}x^4\,\mathrm{d}(\ln x)^2 \\
+        &= \frac{1}{4}x^4(\ln x)^2 - \frac{1}{2}\int x^3\ln x\,\mathrm{d}x \\
+        &= \frac{1}{4}x^4(\ln x)^2 - \frac{1}{2}\left[\int \ln x\,\mathrm{d}\left(\frac{1}{4}x^4\right)\right] \\
+        &= \frac{1}{4}x^4(\ln x)^2 - \frac{1}{2}\left(\frac{1}{4}x^4\ln x - \int \frac{1}{4}x^4\,\mathrm{d}\ln x\right) \\
+        &= \frac{1}{4}x^4(\ln x)^2 - \frac{1}{8}x^4\ln x + \int \frac{1}{8}x^3\,\mathrm{d}x \\
+        &= \frac{1}{4}x^4(\ln x)^2 - \frac{1}{8}x^4\ln x + \frac{1}{32}x^4 + C
+    \end{align*}
+
+    \item 求不定积分：
+    \[
+    \int \frac{4}{x^3+4x}\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    
+    拆成两项积分：
+    \begin{align*}
+        \int \frac{4}{x^3+4x}\,\mathrm{d}x
+        &= \int \frac{1}{x}\,\mathrm{d}x - \int \frac{x}{x^2+4}\,\mathrm{d}x \\
+        &= \int \frac{1}{x}\,\mathrm{d}x - \frac{1}{2}\int \frac{1}{x^2+4}\,\mathrm{d}(x^2+4) \\
+        &= \ln\left|\frac{x}{\sqrt{x^2+4}}\right| + C
+    \end{align*}
+
+    \item 求定积分：
+    \[
+    \int_{0}^{1} \frac{\sqrt{x}}{1+\sqrt{x}}\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    
+    令$t = \sqrt x$，则：
+    \begin{align*}
+        \int_{0}^{1} \frac{\sqrt{x}}{1+\sqrt{x}}\,\mathrm{d}x
+        &= \int_{0}^{1} \frac{2t^2}{1+t}\,\mathrm{d}t \\
+        &= \int_{0}^{1} \left(2t - 2 + \frac{2}{t+1}\right)\,\mathrm{d}t \\
+        &= \left.t^2 - 2t + 2\ln(1+t)\right|_0^1 \\
+        &= 2\ln2 - 1
+    \end{align*}
+
+    \item 求定积分：
+    \[
+    \int_{0}^{1} \arcsin x\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    
+    $\arcsin x$的原函数可以通过分部积分法得出：
+    \[
+    \int \arcsin x\,\mathrm{d}x = x\arcsin x - \int \frac{x}{\sqrt{1-x^2}}\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + C
+    \]
+    但更快捷的方法是考虑对反函数积分：
+    \[
+    \int_{0}^{1} \arcsin x\,\mathrm{d}x = \frac{\pi}{2} - \int_0^\tfrac{\pi}{2} \sin\mathrm{d}x = \frac{\pi}{2} - 1
+    \]
+
+    \item 求定积分：
+    \[
+    \int_0^a x^4\sqrt{a^2 -x^2}\,\mathrm{d}x
+    \]
+
+    \paragraph{解}
+    
+    令$x = a\cos t$，则：
+    \begin{align*}
+        \int_0^a x^4\sqrt{a^2 -x^2}\,\mathrm{d}x
+        &= \int_\tfrac{\pi}{2}^0 a^4\cos^4 t \cdot a\sin t \cdot (-a\sin t)\,\mathrm{d}t \\
+        &= \int_0^\tfrac{\pi}{2} a^6(\cos^4 t-\cos^6 t)\,\mathrm{d}t \\
+        &= \frac{\pi}{32}a^6
+    \end{align*}
+
+\end{enumerate}
+
+\newpage
+\section{多元函数微分学}
+
+\subsection{定义}
+
+\subsubsection{实空间}
+
+定义全体$n$维有序数组$x=(x_1,x_2,\cdots,x_n)$组成的集合为$n$维\textbf{实空间}$\mathbb{R}^n=\{(x_1,x_2,\cdots,x_n)|x_i\in\mathbb{R},i=1,2,\cdots,n\}$，而每一个数组称为$\mathbb{R}^n$中的一个\textbf{点}。
+
+$\mathbb{R}^n$中两点$a=(a_1,a_2,\cdots,a_n)$、$b=(b_1,b_2,\cdots,b_n)$间的\textbf{距离}定义为：
+\[
+d(a,b) = \sqrt{\sum_i^n(a_i-b_i)^2}
+\]
+$\mathbb{R}^n$中点$a=(a_1,a_2,\cdots,a_n)$的半径为$r$的\textbf{邻域}为：
+\[
+U_r(a) = \{x\in\mathbb{R}^n|d(x,a)<r\}
+\]
+
+\subsubsection{多元函数}
+
+设有一个集合$E\subseteq\mathbb{R}^n$，如果对于$E$中的每一点$x=(x_1,x_2,\cdots,x_n)$，按照一定的规则$f$，都有一个唯一确定的实数$y\in\mathbb{R}$与之相对应，则称$f$为一个定义在$E$上的$n$元函数，$n>1$时就称为\textbf{多元函数}。这里$E$称为函数的\textbf{定义域}，$x$称为函数的\textbf{自变量}，$y$称为函数在$x$点的\textbf{值}或\textbf{因变量}，全体值的集合$f(E)$称为函数的\textbf{值域}。
+
+\subsubsection{全微分与偏导数}
+
+定义在集合$E\subseteq\mathbb{R}^n$上的函数$f(x)$叫做在$E$上的一点$a=(a_1,a_2,\cdots,a_n)$\textbf{可微}，等价于存在一个关于自变量的增量$x-a=(x_1-a_1,x_2-a_2,\cdots,x_n-a_n)$的线性函数$A(x-a)=(A_1(x_1-a_1),A_2(x_2-a_2),\cdots,A_n(x_n-a_n))$，使得$x\to a$时，函数的增量$f(x)-f(a)$表示为：
+\[
+f(x) - f(a) = \sum_{i=1}^n A_i(x_i-a_i) + o(d(x,a))
+\]
+其中$o(d(x,a))$为关于$d(x,a)$的无穷小。线性函数$A(x-a)$称为函数$f(x)$在$x=a$的\textbf{全微分}，记作$\mathrm{d}f$，说明微分是函数增量的\textbf{线性主部}。其中每一项$A_i(x_i-a_i)$的斜率$A_i$称为函数$f(x)$在$x=a$的\textbf{偏导数}，又称\textbf{偏微商}。偏导数的定义也可以写作：
+\[
+A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2,\cdots,x_i,\cdots,x_n))-f((a_1,a_2,\cdots,a_i,\cdots,a_n))}{x_i-a_i}
+\]
+记作：$\left.\dfrac{\partial f}{\partial x_i}\right|_{x=a}$。偏导数本质上是固定其余坐标不动，将$f$看作其中一个坐标的一元函数并对它求导。
+
+可见全微分的定义可以记为：
+\[
+\mathrm{d}f = \sum_{i=1}^n \frac{\partial f}{\partial x_i}\,\mathrm{d}x
+\]
+
+\subsubsection{高阶偏导数}
+
+设函数$f(x)$在集合$E\subseteq\mathbb{R}^n$内有偏导数$g(x)=\dfrac{\partial f}{\partial x_i}$，且$g(x)$在集合$E\subseteq\mathbb{R}^n$内也有偏导数$\dfrac{\partial g}{\partial x_j}$，这就构造出了$f(x)$的二阶偏导数：
+\[
+\frac{\partial^2 f}{\partial x_j\partial x_i} = \frac{\partial}{\partial x_j}\left(\frac{\partial f}{\partial x_i}\right)
+\]
+当$i=j$时又可以记为$\dfrac{\partial^2 f}{\partial x_i^2}$，$i\neq j$时称为混合偏导数。
+
+依次类推，可构造出$f(x)$的\textbf{高阶偏导数}。显然对于一个$n$元函数，其$m$阶偏导数有$n^m$种。
+
+\subsection{性质}
+
+\subsubsection{复合函数的偏导数}
+
+设$z=z(y)$是定义在$D\subseteq\mathbb{R}^m$上的函数，且对于$y=(y_1,y_2,\cdots,y_m)$，$y_j=y_j(x)$（其中$j\in\{1,2,\cdots,m\}$）是定义在$E\subseteq\mathbb{R}^n$上的函数。函数$y_j=y_j(x)$在其定义域内有偏导数，且函数$z=z(y)$在其定义域内有偏导数且连续，则有：
+\[
+\frac{\partial z}{\partial x_i} = \sum_{j=1}^m \left(\frac{\partial z}{\partial y_j} \cdot \frac{\partial y_j}{\partial x_i}\right)
+\]
+
+\subsubsection{多元函数的极值}
+
+设函数$f(x)$在集合$E\subseteq\mathbb{R}^n$内有定义，且$x_0\in E$。若存在$x_0$的一个邻域，使得对该邻域内任何一点$x$，都有$f(x)\geqslant f(x_0)$，则称$f(x_0)$为$f(x)$的一个\textbf{极小值}，称$x_0$为一个\textbf{极小值点}。若存在$x_0$的一个邻域，使得对该邻域内任何一点$x$，都有$f(x)\leqslant f(x_0)$，则称$f(x_0)$为$f(x)$的一个\textbf{极大值}，称$x_0$为一个\textbf{极大值点}。
+
+多元函数取得极值的\textbf{必要条件}是在该点\textbf{所有的一阶偏导数均为零}，即：
+\[
+\forall\ i\in\{1,2,\cdots,n\},\quad \frac{\partial f}{\partial x_i} = 0
+\]
+
+\paragraph{例题}
+
+\begin{enumerate}
+
+    \item 已知函数$z=y\mathrm{e}^{xy}$，求$\dfrac{\partial z}{\partial x}$、$\dfrac{\partial z}{\partial y}$、$\dfrac{\partial^2 z}{\partial x\partial y}$和$\dfrac{\partial^2 z}{\partial y^2}$。
+
+    \item 已知函数$z=x^2+y^2$，且$x=r\cos\theta$，$y=r\sin\theta$，求$\dfrac{\partial z}{\partial r}$和$\dfrac{\partial z}{\partial\theta}$。
+
+\end{enumerate}
+
+\paragraph{习题}
+
+\begin{enumerate}
+
+    \item 已知函数$u=(x^2+y^2)z^2+\sin x^2$，求$\dfrac{\partial u}{\partial x}$、$\dfrac{\partial^2 u}{\partial x\partial z}$和$\dfrac{\partial^2 u}{\partial x^2}$。
+
+    \item 证明函数$z=\ln\sqrt{x^2+y^2}+e^{ax}\cos by$（$a$、$b$为常数）满足二维Laplace方程：$\dfrac{\partial^2 z}{\partial x^2}+\dfrac{\partial^2 z}{\partial y^2}=0$。
+
+    \item 求函数$z=4xy-x^4-y^4+5$的极值。
+
+    \item 热力学基本方程为：$\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V$，其中$\mathrm{d}U$为内能的改变量，$\mathrm{d}Q=T\mathrm{d}S$为系统吸收的热量，$\mathrm{d}S$为熵变，$\mathrm{d}W=-p\mathrm{d}V$为外界对系统做的功。试由此导出热力学中的Maxwell关系：
+    \[
+    \left(\frac{\partial T}{\partial V}\right) = -\left(\frac{\partial p}{\partial S}\right)
+    \]
+
+\end{enumerate}
+
+\newpage
+\section{多元函数积分学}
+
+\subsection{定义}
+
+\subsubsection{面元}
+
+二重积分的面元$\mathrm{d}\sigma$在不同的坐标系中有不同的值。直角坐标系中$\mathrm{d}\sigma=\mathrm{d}x\mathrm{d}y$，极坐标系（柱坐标系）下$\mathrm{d}\sigma=r\mathrm{d}r\mathrm{d}\theta$。
+
+\subsubsection{体元}
+
+三重积分的体元$\mathrm{d}V$在不同的坐标系中有不同的值。直角坐标系中$\mathrm{d}V=\mathrm{d}x\mathrm{d}y\mathrm{d}z$，柱坐标系下$\mathrm{d}V=r\mathrm{d}r\mathrm{d}\theta\mathrm{d}z$，球坐标系下$\mathrm{d}V=r\sin\theta\mathrm{d}r\mathrm{d}\theta\mathrm{d}\varphi$。
+
+\subsubsection{二重积分}
+
+计算二重积分的基本方法是将二重积分的计算转化为连续计算两个定积分，即计算累次积分：
+\[
+\iint\limits_S f(x,y)\,\mathrm{d}x\mathrm{d}y = \int_a^b\left[\int_{y_1(x)}^{y_2(x)} f(x,y)\,\mathrm{d}y\right]\,\mathrm{d}x
+\]
+
+\subsubsection{三重积分}
+
+计算三重积分的基本方法是将三重积分的计算转化为计算一个定积分和一个二重积分：
+\[
+\iiint\limits_V f(x,y,z)\,\mathrm{d}x\mathrm{d}y\mathrm{d}z = \int_a^b\left[\iint\limits_S f(x,y)\,\mathrm{d}x\mathrm{d}y\right]\,\mathrm{d}z
+\]
+
+\paragraph{例题}
+
+\begin{enumerate}
+
+    \item 求二重积分：
+    \[
+    I = \iint\limits_S (x^3+xy)\,\mathrm{d}x\mathrm{d}y
+    \]
+    其中积分区域$S=\{(x,y)|0\leqslant x\leqslant1,x\leqslant y\leqslant3x\}$。
+
+    \paragraph{解} 先对$y$积分再对$x$积分：
+    \begin{align*}
+        I
+        &= \iint\limits_S (x^3+xy)\,\mathrm{d}x\mathrm{d}y \\
+        &= \int_0^1 \mathrm{d}x \int_x^{3x} (x^3+xy)\,\mathrm{d}y \\
+        &= \int_0^1 \mathrm{d}x \left(\left.x^3 y + \frac{1}{2}xy^2\right|_x^{3x}\right) \\
+        &= \int_0^1 (2x^4 + 4x^3)\,\mathrm{d}x \\
+        &= \left.\frac{2}{5}x^5 + x^4\right|_0^1 \\
+        &= \frac{7}{5}
+    \end{align*}
+
+    \item 求旋转抛物面$z=1-x^2-y^2$与$Oxy$平面围成的体积$V$。
+
+    \item 在极坐标中求圆$r=a$的面积。
+
+    \item 在球坐标中求球$r=a$的体积。
+
+\end{enumerate}
+
+\paragraph{习题}
+
+\begin{enumerate}
+
+    \item 求二重积分：
+    \[
+    I = \iint\limits_S (x^2-2y)\,\mathrm{d}x\mathrm{d}y
+    \]
+    其中积分区域$S=\{(x,y)|0\leqslant y\leqslant1,x\leqslant y\leqslant x+1\}$。
+
+    \paragraph{解}
+    
+    先对$x$积分，再对$y$积分：
+    \begin{align*}
+        I
+        &= \iint\limits_S (x^2-2y)\,\mathrm{d}x\mathrm{d}y \\
+        &= \int_0^1 \mathrm{d}y \int_{y-1}^y (x^2-2y)\,\mathrm{d}x \\
+        &= \int_0^1 \left(\left.\frac{1}{3}x^3-2xy\right|_{y-1}^y\right)\,\mathrm{d}y \\
+        &= \int_0^1 \left(y^2-3y+\frac{1}{3}\right)\,\mathrm{d}y \\
+        &= \left.\frac{1}{3}y^3-\frac{3}{2}y^2+\frac{1}{3}y\right|_0^1 \\
+        &= -\frac{5}{6}
+    \end{align*}
+
+    \item 求三重积分：
+    \[
+    I = \iiint\limits_V 2(xy+yz+zx)\mathrm{e}^y\,\mathrm{d}x\mathrm{d}y\mathrm{d}z
+    \]
+    其中积分区域$S=\{(x,y,z)|0\leqslant z\leqslant 1-x,0\leqslant y\leqslant\ln(1+x),0\leqslant x\leqslant1\}$。
+
+    \paragraph{解}
+    
+    先对$y$积分，再对$z$积分，最后对$x$积分：
+    \begin{align*}
+        I
+        &= \iiint\mathrm{d}x\mathrm{d}z\int_0^{\ln(1+x)} 2\left[(x+z)y\mathrm{e}^y+zx\mathrm{e}^y\right]\,\mathrm{d}y \\
+        &= \iiint\left\{2\left[(x+z)y\mathrm{e}^y+zx\mathrm{e}^y\right]\big|_0^{\ln(1+x)}\right\}\mathrm{d}x\mathrm{d}z \\
+        &= \int \mathrm{d}x \int_0^{1-x} \{2x[x+(1+x)\ln(1+x)]+2z[x^2+x+\ln(1+x)]\}\,\mathrm{d}z \\
+        &= \int\left\{2xz[x+(1+x)\ln(1+x)]+z^2[x^2+x+\ln(1+x)\big|_0^{1-x}\right\}\mathrm{d}x \\
+        &= \int_0^1 \{2x(1-x)[x+(1+x)\ln(1+x)]+(1-x)^2[x^2+x+\ln(1+x)\}\,\mathrm{d}x \\
+        &= \int_0^1 [(x^4-3x^3+x^2+x)-(x^3+x^2-x-1)\ln(1+x)]\,\mathrm{d}x \\
+        &= \int_0^1 (x^4-3x^3+x^2+x)\,\mathrm{d}x - \int_0^1 (1+x)^3\ln(1+x)\,\mathrm{d}(1+x) + \int_0^1 2(1+x)^2\ln(1+x)\,\mathrm{d}(1+x) \\
+        &= \left.\left(\frac{1}{5}x^5-\frac{3}{4}x^4+\frac{1}{3}x^3+\frac{1}{2}x^2\right)\right|_0^1 - \left.\left(\frac{1}{4}\ln(x+1)-\frac{1}{16}(x+1)^4\right)\right|_0^1 + \left.\left(\frac{2}{3}\ln(x+1)-\frac{2}{9}(x+1)^3\right)\right|_0^1 \\
+        &= \frac{17}{60} - \left(4\ln2 - \frac{15}{16}\right) + \left(\frac{16}{3}\ln2 - \frac{14}{9}\right) \\
+        &= -\frac{241}{720} + \frac{4}{3}\ln2
+    \end{align*}
+
+    \item 有一个半径为$R$，高度为$h$的圆柱体，其密度分布为$\rho=\rho_0+A\sqrt{r}$（$\rho_0$、$A$为常数），求它的质量$m$。
+
+    \paragraph{解}
+    
+    由题意，在柱坐标下积分：
+    \begin{align*}
+        m
+        &= \iiint\limits_V (\rho_0+A\sqrt{r})\,\mathrm{d}V \\
+        &= \iiint\limits_V (\rho_0+A\sqrt{r})r\,\mathrm{d}r\mathrm{d}\theta\mathrm{d}z \\
+        &= \int_0^h \mathrm{d}z \int_0^{2\pi} \mathrm{d}\theta \int_0^R (\rho_0+A\sqrt{r})r\,\mathrm{d}r \\
+        &= h \cdot 2\pi \cdot \left(\frac{1}{2}\rho_0 R^2 + \frac{2}{5}AR^\tfrac{5}{2}\right) \\
+        &= \pi h \left(\rho_0 R^2 + \frac{4}{5}AR^\tfrac{5}{2}\right)
+    \end{align*}
+
+    \item 有一个半径为$R$的球体，电荷体密度分布为$\rho=\rho_0\cos\theta$（$\rho_0$为常数），求它带的电荷量$q$。
+
+    \paragraph{解}
+    
+    由题意，在球坐标下积分：
+    \begin{align*}
+        q
+        &= \iiint\limits_V \rho_0\cos\theta\,\mathrm{d}V \\
+        &= \iiint\limits_V \rho_0\cos\theta \cdot r\sin\theta\,\mathrm{d}r\mathrm{d}\theta\mathrm{d}\phi \\
+        &= \int_0^{2\pi} \mathrm{d}\phi \int_0^\pi \sin\theta\cos\theta\,\mathrm{d}\theta \int_0^R \rho_0 r\,\mathrm{d}r \\
+        &= 2\pi \cdot 0 \cdot \frac{1}{2}\rho_0 R^2 \\
+        &= 0
+    \end{align*}
+
+\end{enumerate}
+
+\newpage
+\section{常微分方程}
+
+\subsection{定义}
+
+\subsubsection{常微分方程}
+
+一般说来，一个联系自变量$x$、未知的一元函数$f(x)$及其导数$f^{(i)}(x)$（其中$i\in\{1,2,\cdots,n\}$）的方程：
+\[
+P(x, f(x), f'(x), \cdots, f^{(n)}(x)) = 0
+\]
+称为一个$n$阶的常微分方程。
+
+\subsubsection{常微分方程的解}
+
+如果在区间$(a,b)$上存在一个函数$y=y(x)$，它有$n$阶导数，代入方程$P(x,f(x),f'(x),\cdots,f^{(n)}(x))=0$得到一个恒等式：
+\[
+P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
+\]
+则称$y(x)$是方程在$(a,b)$上的一个\textbf{特解}。
+
+如果$n$阶常微分方程$P(x,f(x),f'(x),\cdots,f^{(n)}(x))=0$有解：
+\[
+\varphi(x, C_1, C_2, \cdots, C_n)
+\]
+其中$C_i(i=1,2,\cdots,n)$为$n$个独立的任意常数，则称$\varphi(x,C_1,C_2,\cdots,C_n)$为方程的一个\textbf{通解}。
+
+
+\paragraph{例题}
+
+\begin{enumerate}
+
+    \item 解微分方程：$\dfrac{\mathrm{d}y}{\mathrm{d}x}=\sin(x+y+1)$。
+
+    \item 解微分方程：$IR+L\dfrac{\mathrm{d}I}{\mathrm{d}t}=E$。
+
+    \item 解微分方程：$2xy^4\mathrm{d}x+4x^2y^3\mathrm{d}y=0$。
+
+    \item 解微分方程：$y''+py'+qy'=0$（$p$、$q$为常数）。
+
+\end{enumerate}
+
+\paragraph{习题}
+
+\begin{enumerate}
+
+    \item 解微分方程：$\dfrac{\mathrm{d}y}{\mathrm{d}x}\sqrt{1+x^2}=xy^3$。
+
+    \paragraph{解} 分离变量得：
+
+    \[
+    \frac{\mathrm{d}y}{y^3} = \frac{x\mathrm{d}x}{\sqrt{1+x^2}}
+    \]
+    即：
+    \[
+    \frac{\mathrm{d}y}{y^3} = \frac{\mathrm{d}(1+x^2)}{2\sqrt{1+x^2}}
+    \]
+    解得：
+    \[
+    \sqrt{1+x^2} + \frac{1}{2y^2}+C = 0
+    \]
+    且要求$y\neq0$，$C<-1$。
+
+    \item 解微分方程：$x\dfrac{\mathrm{d}y}{\mathrm{d}x}-y=(x-1)\mathrm{e}^x$。
+
+    \paragraph{解} 
+    
+    本题可以用常数变易法求解，也可以使用全微分方程的解法：
+    \[
+    x\mathrm{d}y - y\mathrm{d}x = (x-1)\mathrm{e}^x\mathrm{d}x
+    \]
+    两边同时除以$x^2$：
+    \[
+    \frac{x\mathrm{d}y - y\mathrm{d}x}{x^2} = \frac{x-1}{x^2}\mathrm{e}^x\mathrm{d}x
+    \]
+    积分得：
+    \begin{align*}
+        \frac{y}{x}
+        &= \int \frac{x-1}{x^2}\mathrm{e}^x\,\mathrm{d}x \\
+        &= \int \frac{1}{x}\mathrm{e}^x\,\mathrm{d}x - \int \frac{1}{x^2}\mathrm{e}^x\,\mathrm{d}x \\
+        &= \int \frac{1}{x}\,\mathrm{d}\mathrm{e}^x - \int \frac{1}{x^2}\mathrm{e}^x\,\mathrm{d}x \\
+        &= \frac{1}{x}\mathrm{e}^x - \int \mathrm{e}^x\,\mathrm{d}\frac{1}{x} - \int \frac{1}{x^2}\mathrm{e}^x\,\mathrm{d}x \\
+        &= \frac{1}{x}\mathrm{e}^x + \int \frac{1}{x^2}\mathrm{e}^x\,\mathrm{d}x - \int \frac{1}{x^2}\mathrm{e}^x\,\mathrm{d}x \\
+        &= \frac{1}{x}\mathrm{e}^x + C
+    \end{align*}
+    解得：
+    \[
+    y = \mathrm{e}^x + Cx
+    \]
+
+    \item 解初值问题：
+    \[
+    x\frac{\mathrm{d}y}{\mathrm{d}x} + 2y = \sin x,\quad y(\pi) = \frac{1}{\pi}
+    \]
+
+    \paragraph{解} 
+    
+    原方程化为：
+    \[
+    \frac{\mathrm{d}y}{\mathrm{d}x} + \frac{2y}{x} - \frac{\sin x}{x} = 0
+    \]
+    该方程可以用常数变易法求解，首先解：
+    \[
+    \frac{\mathrm{d}y}{\mathrm{d}x} + \frac{2y}{x} = 0
+    \]
+    分离变量得：
+    \[
+    \frac{\mathrm{d}y}{y} = -\frac{2\mathrm{d}x}{x}
+    \]
+    积分得：
+    \[
+    y = \frac{C}{x^2}
+    \]
+    常数变易得：
+    \[
+    y = \frac{u(x)}{x^2},\quad \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{u'(x)}{x^2} - \frac{2u(x)}{x^3}
+    \]
+    代入原方程：
+    \[
+    \frac{u'(x)}{x^2} - \frac{2u(x)}{x^3} + \frac{2u(x)}{x^3} - \sin x = 0
+    \]
+    即得：
+    \[
+    u'(x) = x\sin x
+    \]
+    分部积分得到：
+    \begin{align*}
+        u(x)
+        &= \int x\sin x\,\mathrm{d}x \\
+        &= -\int x\,\mathrm{d}\cos x \\
+        &= \int \cos x\,\mathrm{d}\mathrm{e}^x - x\cos x \\
+        &= \sin x - x\cos x + C
+    \end{align*}
+    解得：
+    \[
+    y = \frac{\sin x - x\cos x + C}{x^2}
+    \]
+    代入初值条件得：
+    \[
+    y(\pi) = \frac{\sin\pi - \pi\cos\pi + C}{\pi^2} = \frac{1}{\pi}
+    \]
+    解得$C=0$，则：
+    \[
+    y(x) = \frac{\sin x - x\cos x}{x^2}
+    \]
+
+    \item 解初值问题：
+    \begin{align}
+        &\frac{\mathrm{d}x}{\mathrm{d}t} = x + y \\
+        &\frac{\mathrm{d}y}{\mathrm{d}t} = 4x + y
+    \end{align}
+    \[
+    x(0) = 1,\quad x'(0) = -5
+    \]
+
+    \paragraph{解}
+    
+    由(1)得：
+    \[
+    y = \frac{\mathrm{d}x}{\mathrm{d}t} - x,\quad \frac{\mathrm{d}y}{\mathrm{d}t} = \frac{\mathrm{d}^2 x}{\mathrm{d}t^2} - \frac{\mathrm{d}x}{\mathrm{d}t}
+    \]
+    代入(2)得：
+    \[
+    \frac{\mathrm{d}^2 x}{\mathrm{d}t^2} - 2\frac{\mathrm{d}x}{\mathrm{d}t} - 3x = 0
+    \]
+    其特征方程为$\lambda^2-2\lambda-3=0$，两特征根分别为$\lambda_1=-1$和$\lambda_2=3$。则方程组的通解为：
+    \[
+    x = C_1\mathrm{e}^{-t} + C_2\mathrm{e}^{3t},\quad y = -2C_1\mathrm{e}^{-t} + 2C_2\mathrm{e}^{3t}
+    \]
+    代入初值条件得：
+    \[
+    C_1 + C_2 = 1,\quad -C_1 + 3C_2 = -5
+    \]
+    解得$C_1=2$，$C_2=-1$，则该初值问题的解为：
+    \[
+    x = 2\mathrm{e}^{-t} - \mathrm{e}^{3t},\quad y = -4\mathrm{e}^{-t} - 2\mathrm{e}^{3t}
+    \]
+
+\end{enumerate}
+
+\newpage
+\section{矢量分析初步}
+
+\subsection{定义}
+
+\subsubsection{矢量}
+
+相比于数学中广义的向量，经典物理里面\textbf{矢量}通常指三维Euclid空间中有\textbf{大小}、\textbf{方向}、\textbf{叠加满足平行四边形法则}的量，与之相对的称为\textbf{标量}。
+
+\subsubsection{内积}
+
+矢量的\textbf{内积}（又称\textbf{点乘}）定义为：
+\[
+\bm{a} \cdot \bm{b} = \sum_{i=1}^n a_i b_i
+\]
+其结果是一个标量，大小等于$ab\cos\theta$（$\theta$为$\bm{a}$和$\bm{b}$的夹角）。
+
+矢量的内积满足交换律：$\bm{a}\cdot\bm{b}=\bm{b}\cdot\bm{a}$。
+
+矢量内积的导数规则为：
+\[
+\frac{\mathrm{d}(\bm{a}\cdot\bm{b})}{\mathrm{d}t} = \frac{\mathrm{d}\bm{a}}{\mathrm{d}t} \cdot \frac{\mathrm{d}\bm{b}}{\mathrm{d}t}
+\]
+
+\subsubsection{外积}
+
+矢量的\textbf{外积}（又称\textbf{叉乘}）定义为：
+\[
+(\bm{a} \times \bm{b})_i = \varepsilon_{ijk} a_j b_k
+\]
+其结果是一个矢量。这里的符号$\varepsilon_{ijk}$称为Levi-Civita符号，满足：
+\[
+\varepsilon_{123} = \varepsilon_{231} = \varepsilon_{321} = 1,\quad \varepsilon_{132} = \varepsilon_{213} = \varepsilon_{312} = -1
+\]
+在三维Euclid坐标下，可以表示为：
+\[
+\bm{a} \times \bm{b} = (a_y b_z - a_z b_y)\hat{x} + (a_z b_x - a_x b_z)\hat{y} + (a_x b_y - a_y b_x)\hat{z}
+\]
+有趣的是，在柱坐标和球坐标下，矢量外积有相同的形式：
+\[
+\bm{a} \times \bm{b} = (a_\theta b_z - a_z b_\theta)\hat{r} + (a_z b_r - a_r b_z)\hat{\theta} + (a_r b_\theta - a_\theta b_r)\hat{z}
+\]
+\[
+\bm{a} \times \bm{b} = (a_\theta b_\phi - a_\phi b_\theta)\hat{r} + (a_\phi b_r - a_r b_\phi)\hat{\theta} + (a_r b_\theta - a_\theta b_r)\hat{\phi}
+\]
+矢量的外积满足反交换律：$\bm{a}\times\bm{b}=-\bm{b}\times\bm{a}$。且矢量$(\bm{a}\times\bm{b})$与$\bm{a}$、$\bm{b}$都垂直，大小等于$ab\sin\theta$（$\theta$为$\bm{a}$和$\bm{b}$的夹角）。显然相互平行的两个矢量外积为零，矢量与其自身的外积也为零。
+
+两矢量$a$、$b$外积$(\bm{a}\times\bm{b})$的方向可以用\textbf{右手定则}判断：右手四指从$\bm{a}$的方向转向$\bm{b}$的方向，此时大拇指指向的方向即为$(\bm{a}\times\bm{b})$的方向。
+
+矢量外积的导数规则为：
+\[
+\frac{\mathrm{d}(\bm{a}\times\bm{b})}{\mathrm{d}t} = \frac{\mathrm{d}\bm{a}}{\mathrm{d}t} \times \bm{b} + \bm{a} \times \frac{\mathrm{d}\bm{b}}{\mathrm{d}t}
+\]
+
+\subsubsection{$\nabla$算符}
+
+在三维直角坐标系中，$\nabla$算符定义为：
+\[
+\nabla = \hat{x}\frac{\partial}{\partial x} + \hat{y}\frac{\partial}{\partial y} + \hat{z}\frac{\partial}{\partial z}
+\]
+该算符拥有\textbf{矢量性}和\textbf{微分性}的双重特点。可以作用于标量场和矢量场：
+\[
+\mathrm{div}\,\bm{f} = \nabla \cdot \bm{f} = \frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} + \frac{\partial f_z}{\partial z}
+\]
+\[
+\mathrm{rot}\,\bm{f} = \nabla \times \bm{f} = \varepsilon_{ijk}\partial_j f_k
+\]
+\[
+\mathrm{grad}\,\varphi = \nabla\varphi = \left(\frac{\partial f_x}{\partial x}, \frac{\partial f_y}{\partial y}, \frac{\partial f_z}{\partial z}\right)
+\]
+也可以作用于自身：
+\[
+\nabla^2 = \nabla \cdot \nabla = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}
+\]
+该算符称为Laplace算符。它可以作用于标量场和矢量场：
+\[
+\nabla^2 \varphi = \frac{\partial^2 \varphi}{\partial x^2} + \frac{\partial^2 \varphi}{\partial y^2} + \frac{\partial^2 \varphi}{\partial z^2}
+\]
+\[
+\nabla^2\bm{f} = (\nabla^2 f_x, \nabla^2 f_y,\nabla^2 f_z)
+\]
+在柱坐标系和球坐标系中，$\nabla$和$\nabla^2$有不同的表示形式和运算规律。
+
+\paragraph{习题}
+
+\begin{enumerate}
+
+    \item 已知$\bm{a}=(1,-1,4)$，$\bm{b}=(-5,1,-4)$，求$\bm{a}\cdot\bm{b}$和$\bm{a}\times\bm{b}$。
+
+    \paragraph{解}
+    
+    \[
+    \bm{a} \cdot \bm{b} = -22,\quad \bm{a} \times \bm{b} = (0,-16,-4)
+    \]
+
+    \item 已知$\bm{a}=(1,-1,4)$，$\bm{b}=(-5,1,-4)$，$\bm{c}=(8,1,0)$求$(\bm{a}\times\bm{b})\cdot\bm{c}$和$(\bm{a}\times\bm{b})\times\bm{c}$。
+
+    \paragraph{解}
+    
+    \[
+    (\bm{a}\times\bm{b})\cdot\bm{c} = -16,\quad (\bm{a}\times\bm{b})\times\bm{c} = (4,-32,128)
+    \]
+
+    \item 设矢量$\bm{r}=(x,y,z)$，其模长$r=\sqrt{x^2+y^2+z^2}$，求$\nabla\cdot\bm{r}$、$\nabla\times\bm{r}$、$\nabla\dfrac{1}{r}$和$\nabla^2\dfrac{1}{r}$。
+
+    \paragraph{解}
+    
+    \[
+    \nabla\cdot\bm{r} = 3,\quad \nabla\times\bm{r} = \bm{0},
+    \]
+    \begin{align*}
+        \nabla\frac{1}{r}
+        &= (-\frac{x}{(x^2+y^2+z^2)^\tfrac{3}{2}},-\frac{y}{(x^2+y^2+z^2)^\tfrac{3}{2}},-\frac{z}{(x^2+y^2+z^2)^\tfrac{3}{2}}) \\
+        &= -\frac{\bm{r}}{r^3}
+    \end{align*}
+    \begin{align*}
+        \nabla^2\frac{1}{r}
+        &= \frac{2x^2-y^2-z^2}{x^2+y^2+z^2} + \frac{2y^2-z^2-x^2}{x^2+y^2+z^2} + \frac{2z^2-x^2-y^2}{x^2+y^2+z^2} \\
+        &= 0
+    \end{align*}
+
+    \item 证明：$\bm{A}\times(\nabla\times\bm{A})+(\bm{A}\cdot\nabla)\bm{A}=\dfrac{1}{2}\nabla(\bm{A}\cdot\bm{A})$。
+
+    \paragraph{解}
+
+    较快的解法如下，需要利用$\nabla$算符的微分性和矢量性：
+    \begin{align*}
+        \nabla(\bm{A}\cdot\bm{B})
+        &= \nabla_{\bm{A}}(\bm{A}\cdot\bm{B}) + \nabla_{\bm{B}}(\bm{A}\cdot\bm{B}) \\
+        &= [\bm{B}\times(\nabla\times\bm{A}) + (\bm{B}\cdot\nabla)\bm{A}] + [\bm{A}\times(\nabla\times\bm{B}) + (\bm{A}\cdot\nabla)\bm{B}]
+    \end{align*}
+    此处$\nabla_{\bm{A}}$是作用于$\bm{A}$的算符，$\nabla_{\bm{B}}$是作用于$\bm{B}$的算符。上式中令$\bm{B}=\bm{A}$，即得：
+    \[
+    \bm{A}\times(\nabla\times\bm{A}) + (\bm{A}\cdot\nabla)\bm{A} = \frac{1}{2}\nabla(\bm{A}\cdot\bm{A})
+    \]
+    下面给出一种分量展开计算的方法：
+    
+    等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+    $\bm{A}\times(\nabla\times\bm{A})$的$\hat{i}$方向分量为：
+    \begin{align*}
+        \varepsilon_{ijk}A_j(\partial_i A_j - \partial_j A_i)
+        &= A_j(\partial_i A_j - \partial_j A_i) - A_k(\partial_k A_i - \partial_i A_k) \\
+        &= A_j\partial_i A_j - A_j\partial_j A_i - A_k\partial_k A_i + A_k\partial_i A_k
+    \end{align*}
+    $\dfrac{1}{2}\nabla A^2 = \dfrac{1}{2}\nabla(\bm{A}\cdot\bm{A})$的$\hat{i}$方向分量为：
+    \[
+    \frac{1}{2}\partial_i (A_i^2 + A_j^2 + A_k^2) = A_i \partial_i A_i + A_j \partial_i A_j + A_k \partial_i A_k
+    \]
+    $(\bm{A}\cdot\nabla)\bm{A}$的$\hat{i}$方向分量为：
+    \[
+    (A_i\partial_i + A_j\partial_j + A_k\partial_k)A_i = A_i\partial_i A_i + A_j\partial_j A_i + A_k\partial_k A_i
+    \]
+    则$\dfrac{1}{2}\nabla A^2 - (\bm{A}\cdot\nabla)\bm{A}$的$\hat{i}$的$\hat{i}$方向分量为：
+    \[
+    A_j\partial_i A_j - A_j\partial_j A_i - A_k\partial_k A_i + A_k\partial_i A_k
+    \]
+    与$\nabla(\bm{A}\cdot\bm{B})$的$\hat{i}$方向分量相等。
+
+    同理可以计算出$\hat{j}$方向分量和$\hat{k}$方向分量，由于对称性，它们也分别相等。
+
+    因此：
+    \[
+    \bm{A}\times(\nabla\times\bm{A}) = \frac{1}{2}\nabla A^2 - (\bm{A}\cdot\nabla)\bm{A}
+    \]
+
+\end{enumerate}
+
+\end{document}

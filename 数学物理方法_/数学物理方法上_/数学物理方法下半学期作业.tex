@@ -1,0 +1,1203 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+\title{\textbf{数学物理方法作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{}
+\maketitle
+
+\newpage
+\section*{第七章}
+\bigskip
+
+\begin{itemize}
+
+\item[1.(1)]
+对于$f(z)=\frac{\mathrm{e}^{z^2}}{z-1}=\frac{P(z)}{Q(z)}$,\ $P(1)=\mathrm{e}\neq0$,\ $Q(1)=0$,\ $Q'(1)=1\neq0$,\ 则$\mathrm{res}f(1)=\frac{P(1)}{Q'(1)}=\mathrm{e}$.
+
+\smallskip
+\item[1.(3)]
+对于$f(z)=\frac{z^2}{(1-\cos{z})^2}=\frac{P(z)}{Q(z)}$,\ $z_0=0$是$P(z)$的二阶零点,\ 是$Q(z)$的四阶零点,\ 则$z_0=0$是$f(z)$的二阶极点:
+\[
+\mathrm{res}f(0)
+={\lim_{z \to 0}}\left[\frac{\mathrm{d}}{\mathrm{d}z}z^2\frac{z^2}{(1-\cos{z})^2)}\right]
+={\lim_{z \to 0}}\frac{-2z^4\sin z}{1-\cos z}
+=0
+\]
+最后一步使用了两次l'Hospital法则.
+
+\smallskip
+\item[1.(5)]
+对于$f(z)=\frac{\mathrm{e}^z}{(z^2-1)^2)}=\frac{P(z)}{Q(z)}$,\ $z_0=1$是$P(z)$的解析点,\ 是$Q(z)$的二阶零点,\ 则:
+\[
+\mathrm{res}f(1)
+=\frac{1}{(2-1)!}{\lim_{z \to 1}}\left[\frac{\mathrm{d}}{\mathrm{d}z}(z-1)^2\frac{\mathrm{e}^z}{(z^2-1)^2}\right]
+={\lim_{z \to 1}}\frac{\mathrm{e}^z(z-1)}{(z+1)^3}
+=0
+\]
+
+\bigskip
+\item[2.(1)]
+对于$f(z)=\frac{1}{z^3-z^5}=\frac{1}{z^3(1+z)(1-z)}$,\ $z=0$是$f(z)$的三阶零点,\ $z=1$和$z=-1$是$f(z)$的一阶零点.
+
+对于$z=0$, 
+\[
+\mathrm{res}f(0)
+=\frac{1}{(3-1)!}{\lim_{z \to 0}}\left[\frac{\mathrm{d}^2}{\mathrm{d}z^2}\left(z^3\frac{1}{z^3-z^5}\right)\right]
+=\frac{1}{2}{\lim_{z \to 0}}\left(\frac{1}{(1-z)^3}+\frac{1}{(1+z)^3}\right)
+=1
+\]
+
+对于$z=1$,\ $f(z)=\frac{1}{z^3-z^5}=\frac{P(z)}{Q(z)}$,\ $P(1)=1\neq0$,\ $Q(1)=0$,\ $Q'(1)=-2\neq0$,\ 则$\mathrm{res}f(1)=\frac{P(1)}{Q'(1)}=-\frac{1}{2}$.
+
+对于$z=-1$,\ $f(z)=\frac{1}{z^3-z^5}=\frac{P(z)}{Q(z)}$,\ $P(-1)=1\neq0$,\ $Q(-1)=0$,\ $Q'(-1)=-2\neq0$,\ 则$\mathrm{res}f(-1)=\frac{P(-1)}{Q'(-1)}=-\frac{1}{2}$.
+
+\smallskip
+\item[2.(3)]
+对于$f(z)=\frac{z}{1-\cos z}$,\ 函数的奇点为$z_0=2k\pi\ (k\in \mathbb{Z})$.
+
+$k=0$时,\ $z_0$为函数的一阶极点,则:
+\[
+\mathrm{res}f(z_0)
+={\lim_{z \to z_0}}\left[z\left(\frac{z}{1-\cos z}\right)\right]
+={\lim_{z \to 0}}\frac{z^2}{1-\cos z}
+=2
+\]
+最后一步使用了l'Hospital法则.
+
+$k\neq0$时,\ $z_0$为函数的二阶极点,则求函数在该点的Laurent展开.
+
+令$t=z-z_0$,\ 则$\frac{z}{1-\cos z}=\frac{t+z_0}{1-\cos t}=\sum_{n=-2}^{\infty}{c_nt^n}$,\ 于是有:
+\[
+t+z_0
+=\left(\frac{1}{2}t^2-\frac{1}{24}t^4+-\dotsb\right)\left(c_{-2}t^{-2}+c_{-1}t^{-1}+c_0t^0+\dotsb\right)
+\]
+比较一次项系数:$\frac{1}{2}t^2\times c_{-1}t^{-1}=t$,\ 即得$\mathrm{res}f(z_0)=c_{-1}=2$.
+
+综上所述,函数在奇点的留数为:
+\[
+\mathrm{res}f(2k\pi)
+=2\ (k\in \mathbb{Z})
+\]
+
+\smallskip
+\item[2.(5)]
+对于$f(z)=e^{\frac{1}{2}\left(z-\frac{1}{z}\right)}$,\ 函数的奇点为$z_1=0$,\ $z_2=\infty$.
+
+求$f(z)$在z=0处的Laurent展开$\sum_{n=-\infty}^{\infty}{c_nt^n}$如下:
+\[
+\mathrm{e}^{\frac{1}{2}\left(z-\frac{1}{z}\right)}
+=\sum_{n=-2}^{\infty}\frac{1}{n!}\frac{1}{2^n}\left(z-\frac{1}{z}\right)^n
+=\frac{1}{0!}\frac{1}{2^0}\left(z-\frac{1}{z}\right)^0 +\frac{1}{1!}\frac{1}{2^1}\left(z-\frac{1}{z}\right)^1 +\frac{1}{2!}\frac{1}{2^2}\left(z-\frac{1}{z}\right)^2+\dotsb
+\]
+\[
+\mathrm{res}f(0)=c_{-1}=\sum_{n=0}^{\infty}\frac{1}{(2n+1)!}\frac{1}{2^{2n+1}}(-1)^{n+1}\tbinom{n}{2n+1}=-J_1(1)
+\]
+最后一步用到了$\tbinom{n}{2n+1}=\frac{(2n+1)!}{n!(n+1)!}$和$\Gamma(n+2)=(n+1)!$.
+
+则$\mathrm{res}f(\infty)=-\mathrm{res}f(0)=J_1(1)$
+
+\smallskip
+\item[2.(7)]
+对于$f(z)=\frac{1}{(z-1)\ln z}$,\ 因内含多值函数$\ln z$,\ 分类讨论如下:
+
+若取单值分支$\arg 1=0$,\ 则函数有二阶极点$z=1$,$f(z)$在该点的留数为:
+\[
+\mathrm{res}f(1)
+={\lim_{z \to 1}}\left[\frac{\mathrm{d}}{\mathrm{d}z}(z-1)^2\frac{1}{(z-1)\ln z}\right]
+={\lim_{z \to 1}}\frac{z\ln z-(z-1)}{z\ln^2 z}
+=\frac{1}{2}
+\]
+最后一步使用了两次l'Hospital法则.
+
+若取单值分支$\arg 1=2k\pi\ (k\in \mathbb{Z}\setminus\left\lbrace 0\right\rbrace )$,\ 则函数有一阶极点$z=1$,\ $f(z)$在该点的留数为:
+\[
+\mathrm{res}f(1)
+={\lim_{z \to 1}}(z-1)f(z)
+=\frac{1}{2k\pi \mathrm{i}}\quad (k\in \mathbb{Z}\setminus\left\lbrace 0\right\rbrace )
+\]
+
+\bigskip
+\item[4.(1)]
+在积分围道$|z-1|=1$内,\ 函数$\frac{1}{1+z^4}$有两个奇点$z_1=\mathrm{e}^{\frac{\mathrm{i}\pi}{4}}$和$z_2=\mathrm{e}^{\frac{-\mathrm{i}\pi}{4}}$.
+
+对于$f(z)=\frac{1}{1+z^4}=\frac{P(z)}{Q(z)}$,\ $P(z_1)=1\neq0$,\ $Q(z_1)=0$,\ $Q'(z_1)=-2\sqrt{2}+2\sqrt{2}\mathrm{i}\neq0$,\ 则$\mathrm{res}f(z_1)=\frac{P(z_1)}{Q'(z_1)}=-\frac{1+\mathrm{i}}{4\sqrt{2}}$.\ 同理可得$\mathrm{res}f(z_2)=-\frac{1-\mathrm{i}}{4\sqrt{2}}$.\ 故:
+\[
+\oint_{|z-1|=1}\frac{1}{1+z^4}
+=2\pi \mathrm{i}\left(-\frac{1+\mathrm{i}}{4\sqrt{2}}-\frac{1-\mathrm{i}}{4\sqrt{2}}\right)
+=-\frac{\pi \mathrm{i}}{\sqrt{2}}
+\]
+
+\smallskip
+\item[4.(3)]
+在积分围道$|z-1|=1$内,\ 函数$\frac{1}{z^2-1}\sin \frac{\pi z}{4}$有一个奇点$z=1$.\ 
+
+对于$f(z)=\frac{1}{z^2-1}\sin \frac{\pi z}{4}=\frac{P(z)}{Q(z)}$,\ $P(1)=\frac{\sqrt{2}}{2}\neq0$,\ $Q(1)=0$,\ $Q'(1)=2\neq0$,\ 则$\mathrm{res}f(1)=\frac{P(1)}{Q'(1)}=\frac{\sqrt{2}}{4}$.\ 故:
+\[
+\oint_{|z-1|=1}\frac{1}{z^2-1}\sin \frac{\pi z}{4}
+=2\pi \mathrm{i}\frac{\sqrt{2}}{4}
+=\frac{\sqrt{2}}{2}\pi \mathrm{i}
+\]
+
+\smallskip
+\item[4.(5)]
+在积分围道$|z|=n$内,\ 函数$\tan \pi z$有$2n$个奇点:$z_k=\frac{1}{2}+k\ (k\in \mathbb{Z},\ -n+1\leqslant k\leqslant n-1)$.\ 
+
+对于$f(z)=\tan \pi z=\frac{\sin \pi z}{\cos \pi z}=\frac{P(z)}{Q(z)}$,\ $P(z_k)=\pm1\neq0$,\ $Q(z_k)=0$,\ $Q'(z_k)=\mp\pi\neq0$,\ 则$\mathrm{res}f(z_k)=\frac{P(z_k)}{Q'(z_k)}=-\frac{1}{\pi}$.\ 故:
+\[
+\oint_{|z|=n}\tan \pi z
+=2\pi\mathrm{i}\sum_{k=-n+1}^{n-1}\left(-\frac{1}{\pi}\right)
+=-4n\mathrm{i}
+\]
+
+\smallskip
+\item[4.(7)]
+在积分围道$|z|=1$内,\ 函数$\frac{\mathrm{e}^z}{z^3}$有一个三阶极点$z=0$.\ 函数在该处的留数为:
+\[
+\mathrm{res}f(0)
+=\frac{1}{(3-1)!}{\lim_{z \to 0}}\left[\frac{\mathrm{d}^2}{\mathrm{d}z^2}\left( z^3\frac{e^z}{z^3}\right)\right]
+=\frac{1}{2}{\lim_{z \to 0}}\mathrm{e}^z
+=\frac{1}{2}
+\]
+故:
+\[
+\oint_{|z|=1}\frac{\mathrm{e}^z}{z^3}
+=2\pi \mathrm{i}\times\frac{1}{2}
+=\pi \mathrm{i}
+\]
+
+\bigskip
+\item[5.(1)]
+作变换$z=\mathrm{e}^{\mathrm{i}\theta}$,\ 则:
+\[
+\int_{0}^{2\pi}\cos^{2n}\theta \mathrm{d}\theta
+=\oint_{|z|=1}\left( \frac{z^2+1}{2z}\right) ^{2n}\frac{\mathrm{d}z}{\mathrm{i}z}
+=2\pi\sum_{|z|<1}\mathrm{res}f(z)
+\]
+其中:
+\[
+f(z)
+=\frac{1}{z}\left( \frac{z^2+1}{2z}\right) ^{2n}
+=\frac{\left( z^2+1\right) ^{2n}}{2^{2n}z^{2n+1}} 
+\]
+在积分围道$|z|=1$内,\ $f(z)$有一个$2n+1$阶极点$z=0$,\ 函数在该点处的留数为:
+\begin{align*}
+\mathrm{res}f(0)
+&=\frac{1}{(2n)!}{\lim_{z \to 0}}\left[\frac{\mathrm{d}^{2n}}{\mathrm{d}z^{2n}}z^{2n+1}f(z)\right] \\
+&=\frac{1}{(2n)!2^{2n}}{\lim_{z \to 0}}\left[\frac{\mathrm{d}^{2n}}{\mathrm{d}z^{2n}}\left(z^2+1\right) ^{2n}\right] \\
+&=\frac{1}{(2n)!2^{2n}}{\lim_{z \to 0}}\left[\frac{\mathrm{d}^{2n}}{\mathrm{d}z^{2n}}\sum_{k=0}^{2n}\tbinom{k}{2n}z^{2k}\right] \\
+&=\frac{1}{(2n)!2^{2n}}{\lim_{z \to 0}}\left[\frac{\mathrm{d}^{2n}}{\mathrm{d}z^{2n}}\tbinom{n}{2n}z^{2n}\right] \\
+&=\frac{1}{(2n)!2^{2n}}\tbinom{n}{2n}(2n)! \\
+&=\frac{(2n)!}{2^{2n}(n!)^2}
+\end{align*}
+故:
+\begin{align*}
+\int_{0}^{2\pi}\cos^{2n}\theta \mathrm{d}\theta
+&=\oint_{|z|=1}\left( \frac{z^2+1}{2z}\right) ^{2n}\frac{\mathrm{d}z}{\mathrm{i}z} \\
+&=2\pi\sum_{|z|<1}\mathrm{res}f(z) \\
+&=2\pi\frac{(2n)!}{2^{2n}(n!)^2} \\
+&=2\pi\frac{(2n-1)!!}{(2n)!!}
+\end{align*}
+
+\smallskip
+\item[5.(3)]
+作变换$z=\mathrm{e}^{\mathrm{i}\theta}$,\ 由$\sin(\theta+\pi)=\sin\theta$得:
+\begin{align*}
+\int_{0}^{\pi}\frac{\mathrm{d}\theta}{1+\sin^2\theta}
+&=\frac{1}{2}\int_{0}^{2\pi}\frac{\mathrm{d}\theta}{1+\sin^2\theta} \\
+&=\frac{1}{2}\oint_{|z|=1}\frac{4\mathrm{i}z}{z^4-6z+1}\mathrm{d}z \\
+&=2\mathrm{i}\oint_{|z|=1}\frac{z}{z^4-6z+1}\mathrm{d}z
+\end{align*}
+
+对于$f(z)=\frac{z}{z^4-6z+1}=\frac{P(z)}{Q(z)}$,\ 函数有四个一阶极点:$z_1=\sqrt{3-2\sqrt2}$,\ $z_2=-\sqrt{3-2\sqrt2}$,\ $z_3=\sqrt{3+2\sqrt2}$,\ $z_4=-\sqrt{3+2\sqrt2}$.
+
+在积分围道$|z|=1$内,\ $f(z)$有两个一阶极点$z_1$,\ $z_2$.
+
+对于$z_1=\sqrt{3-2\sqrt2}$,\ $P(z_1)=\sqrt{3-2\sqrt2}\neq0$,\ $Q(z_1)=0$,\ $Q'(z_1)=-8\sqrt2\neq0$,\ 则$\mathrm{res}f(z_1)=\frac{P(z_1)}{Q'(z_1)}=-\frac{1}{8\sqrt{2}}$.\ 同理可得$\mathrm{res}f(z_2)=-\frac{1}{8\sqrt{2}}$.\ 
+
+故:
+\begin{align*}
+\int_{0}^{\pi}\frac{\mathrm{d}\theta}{1+\sin^2\theta}
+&=\frac{1}{2}\int_{0}^{2\pi}\frac{\mathrm{d}\theta}{1+\sin^2\theta} \\
+&=\frac{1}{2}\oint_{|z|=1}\frac{4\mathrm{i}z}{z^4-6z+1}\mathrm{d}z \\
+&=2\mathrm{i}\oint_{|z|=1}\frac{z}{z^4-6z+1}\mathrm{d}z \\
+&=2\mathrm{i}\times 2\pi\mathrm{i}\sum_{|z|<1}\mathrm{res}f(z) \\
+&=2\mathrm{i}\times 2\pi\mathrm{i}\left(-\frac{1}{8\sqrt{2}}-\frac{1}{8\sqrt{2}}\right) \\
+&=\frac{\pi}{\sqrt2}
+\end{align*}
+
+\bigskip
+\item[6.(1)]
+考虑积分：$\oint_{C}\frac{z^2}{1+z^4}\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=-R$沿实轴到$z=R$,\ 再沿$|z|=R,\ 0<\arg z<\pi$的半圆$C_R$逆时针回到$z=-R$.即:
+\[
+\oint_{C}\frac{z^2}{1+z^4}\mathrm{d}z
+=\int_{-R}^{R}\frac{z^2}{1+z^4}\mathrm{d}z+\int_{C_R}\frac{z^2}{1+z^4}\mathrm{d}z
+\]
+取$R\rightarrow\infty$的极限,\ 则有:
+\[
+\int_{-\infty}^{\infty}\frac{x^2}{1+x^4}\mathrm{d}x
+=\int_{-\infty}^{\infty}\frac{z^2}{1+z^4}\mathrm{d}z
+=\lim_{R \to \infty}\oint_{C}\frac{z^2}{1+z^4}\mathrm{d}z-\lim_{R \to \infty}\int_{C_R}\frac{z^2}{1+z^4}\mathrm{d}z
+\]
+由大圆弧定理:
+\[
+\lim_{R \to \infty}\int_{C_R}\frac{z^2}{1+z^4}\mathrm{d}z=0
+\]
+故:
+\[
+\int_{-\infty}^{\infty}\frac{x^2}{1+x^4}\mathrm{d}x
+=\lim_{R \to \infty}\oint_{C}\frac{z^2}{1+z^4}\mathrm{d}z
+=2\pi\mathrm{i}\sum_{\mathrm{Im}\,z>0}\mathrm{res}f(z)
+\]
+函数$f(z)=\frac{z^2}{1+z^4}$,\ 在$\mathrm{Im}\,z>0$的区域内有两个奇点$z_1=\mathrm{e}^{\frac{\mathrm{i}\pi}{4}}$和$z_2=\mathrm{e}^{\frac{\mathrm{i}3\pi}{4}}$.
+
+对于$f(z)=\frac{z^2}{1+z^4}=\frac{P(z)}{Q(z)}$,\ $P(z_1)=\mathrm{e}^{\frac{\mathrm{i}\pi}{2}}\neq0$,\ $Q(z_1)=0$,\ $Q'(z_1)=4\mathrm{e}^{\frac{\mathrm{i}3\pi}{4}}\neq0$,\ 则$\mathrm{res}f(z_1)=\frac{P(z_1)}{Q'(z_1)}=\frac{1}{4}\mathrm{e}^{\frac{-\mathrm{i}\pi}{4}}$.\ 同理可得$\mathrm{res}f(z_2)=\frac{1}{4}\mathrm{e}^{\frac{-\mathrm{i}3\pi}{4}}$.\ 故:
+\[
+\int_{-\infty}^{\infty}\frac{x^2}{1+x^4}\mathrm{d}x
+=\lim_{R \to \infty}\oint_{C}\frac{z^2}{1+z^4}\mathrm{d}z
+=2\pi \mathrm{i}\left(\frac{1}{4}\mathrm{e}^{\frac{-\mathrm{i}\pi}{4}}+\frac{1}{4}\mathrm{e}^{\frac{-\mathrm{i}3\pi}{4}}\right)
+=\frac{\pi}{\sqrt2}
+\]
+
+\smallskip
+\item[6.(3)]
+考虑积分：$\oint_{C}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=-R$沿实轴到$z=R$,\ 再沿$|z|=R,\ 0<\arg z<\pi$的半圆$C_R$逆时针回到$z=-R$.即:
+\[
+\oint_{C}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z
+=\int_{-R}^{R}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z+\int_{C_R}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z
+\]
+取$R\rightarrow\infty$的极限,\ 则有:
+\[
+\int_{-\infty}^{\infty}\frac{1}{\left(1+x^2\right)^{n+1}}\mathrm{d}x
+=\int_{-\infty}^{\infty}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z
+=\lim_{R \to \infty}\oint_{C}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z-\lim_{R \to \infty}\int_{C_R}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z
+\]
+由大圆弧定理:
+\[
+\lim_{R \to \infty}\int_{C_R}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z=0
+\]
+故:
+\[
+\int_{-\infty}^{\infty}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}x
+=\lim_{R \to \infty}\oint_{C}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z
+=2\pi\mathrm{i}\sum_{\mathrm{Im}\,z>0}\mathrm{res}f(z)
+\]
+在$\mathrm{Im}\,z>0$的区域内,\ $f(z)=\frac{1}{\left(1+z^2\right)^{n+1}}$有一个$n+1$阶极点$z=\mathrm{i}$,\ 函数在该点处的留数为:
+\begin{align*}
+\mathrm{res}f(\mathrm{i})
+&=\frac{1}{n!}{\lim_{z \to \mathrm{i}}}\left[\frac{\mathrm{d}^{n}}{\mathrm{d}z^{n}}(z-\mathrm{i})^{n+1}f(z)\right] \\
+&=\frac{1}{n!}{\lim_{z \to \mathrm{i}}}\left[\frac{\mathrm{d}^{2n}}{\mathrm{d}z^{2n}}\frac{1}{(z+\mathrm{i})^{n+1}}\right] \\
+&=\frac{1}{n!}{\lim_{z \to \mathrm{i}}}\left[(-1)^n\frac{(2n)!}{n!}(z+\mathrm{i})^{-2n-1}\right] \\
+&=\frac{1}{n!}(-1)^n\frac{(2n)!}{n!(2\mathrm{i})^{2n+1}} \\
+&=\frac{(2n)!}{2^{2n}(n!)^2}\times\frac{1}{2\mathrm{i}} \\
+&=\frac{(2n-1)!!}{(2n)!!}\times\frac{1}{2\mathrm{i}}
+\end{align*}
+
+故:
+\[
+\int_{-\infty}^{\infty}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}x
+=\lim_{R \to \infty}\oint_{C}\frac{1}{\left(1+z^2\right)^{n+1}}\mathrm{d}z
+=2\pi \mathrm{i}\times\frac{(2n-1)!!}{(2n)!!}\times\frac{1}{2\mathrm{i}}
+=\pi\frac{(2n-1)!!}{(2n)!!}
+\]
+
+\bigskip
+\item[7.(1)]
+考虑积分：$\oint_{C}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=-R$沿实轴到$z=R$,\ 再沿$|z|=R,\ 0<\arg z<\pi$的半圆$C_R$逆时针回到$z=-R$.即:
+\[
+\oint_{C}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z
+=\int_{-R}^{R}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z+\int_{C_R}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z
+\]
+取$R\rightarrow\infty$的极限,\ 则有:
+\[
+\int_{-\infty}^{\infty}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z
+=\lim_{R \to \infty}\oint_{C}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z-\lim_{R \to \infty}\int_{C_R}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z
+\]
+由Jordan引理:
+\[
+\lim_{R \to \infty}\int_{C_R}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z=0
+\]
+故:
+\[
+\int_{-\infty}^{\infty}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z
+=\lim_{R \to \infty}\oint_{C}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z
+=2\pi\mathrm{i}\sum_{\mathrm{Im}\,z>0}\mathrm{res}f(z)
+\]
+函数$f(z)=\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}$,\ 在$\mathrm{Im}\,z>0$的区域内有两个奇点$z_1=e^{\frac{\mathrm{i}\pi}{4}}=\frac{\sqrt2}{2}+\frac{\sqrt2}{2}\mathrm{i}$和$z_2=e^{\frac{\mathrm{i}3\pi}{4}}=-\frac{\sqrt2}{2}+\frac{\sqrt2}{2}\mathrm{i}$.
+
+对于$f(z)=\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}=\frac{P(z)}{Q(z)}$,\ $P(z_1)=\mathrm{e}^{-\frac{\sqrt2}{2}+\frac{\sqrt2}{2}\mathrm{i}}\neq0$,\ $Q(z_1)=0$,\ $Q'(z_1)=-2\sqrt2+2\sqrt2\mathrm{i}\neq0$,\ 则:
+\begin{align*}
+\mathrm{res}f(z_1)
+&=\frac{P(z_1)}{Q'(z_1)} \\
+&=\frac{\mathrm{e}^{-\frac{\sqrt2}{2}+\frac{\sqrt2}{2}\mathrm{i}}}{-2\sqrt2+2\sqrt2\mathrm{i}} \\
+&=\mathrm{e}^{-\frac{\sqrt2}{2}}\left(\cos\frac{\sqrt2}{2}+\mathrm{i}\sin\frac{\sqrt2}{2}\right)\left(-\frac{1+\mathrm{i}}{2}\times\frac{1}{2\sqrt 2}\right) \\
+&=-\frac{\sqrt 2}{8}\mathrm{e}^{-\frac{\sqrt2}{2}}(1+\mathrm{i})\left(\cos\frac{\sqrt2}{2}+\mathrm{i}\sin\frac{\sqrt2}{2}\right) \\
+&=-\frac{\sqrt 2}{8}\mathrm{e}^{-\frac{\sqrt2}{2}}\left(\cos\frac{\sqrt2}{2}+\mathrm{i}\sin\frac{\sqrt2}{2}+\mathrm{i}\cos\frac{\sqrt2}{2}-\sin\frac{\sqrt2}{2}\right) \\
+&=\frac{\sqrt 2}{8}\mathrm{e}^{-\frac{\sqrt2}{2}}\left(\sin\frac{\sqrt2}{2}-\cos\frac{\sqrt2}{2}-\mathrm{i}\sin\frac{\sqrt2}{2}-\mathrm{i}\cos\frac{\sqrt2}{2}\right)
+\end{align*} 
+同理可得
+\[
+\mathrm{res}f(z_2)
+=\frac{\sqrt 2}{8}\mathrm{e}^{-\frac{\sqrt2}{2}}\left(\cos\frac{\sqrt2}{2}-\mathrm{i}\sin\frac{\sqrt2}{2}-\mathrm{i}\cos\frac{\sqrt2}{2}-\sin\frac{\sqrt2}{2}\right)
+\]
+由$\frac{\cos x}{1+x^4}$为偶函数得:
+\begin{align*}
+\int_{0}^{\infty}\frac{\cos x}{1+x^4}\mathrm{d}x
+&=\frac{1}{2}\int_{-\infty}^{\infty}\frac{\cos x}{1+x^4}\mathrm{d}x \\
+&=\mathrm{Re}\,\int_{-\infty}^{\infty}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z \\
+&=\mathrm{Re}\,\lim_{R \to \infty}\oint_{C}\frac{\mathrm{e}^{\mathrm{i}z}}{1+z^4}\mathrm{d}z \\
+&=\mathrm{Re}\, \left\lbrace 2\pi \mathrm{i}\left[\frac{\sqrt 2}{8}\mathrm{e}^{-\frac{\sqrt2}{2}}(-2\mathrm{i})\left(\cos\frac{\sqrt2}{2}+\sin\frac{\sqrt2}{2}\right)\right]\right\rbrace \\
+&=\frac{\sqrt2}{4}\pi\mathrm{e}^{-\frac{\sqrt2}{2}}\left(\cos\frac{\sqrt2}{2}+\sin\frac{\sqrt2}{2}\right) \\
+&=\frac{\pi}{2}\mathrm{e}^{-\frac{\sqrt2}{2}}\sin\left(\frac{\sqrt2}{2}+\frac{\pi}{4}\right)
+\end{align*}
+
+\smallskip
+\item[7.(3)]
+考虑积分：$\oint_{C}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z$,\ 积分围道C如下:
+
+从$z=-R$沿实轴到$z=R$,\ 再沿$|z|=R,\ 0<\arg z<\pi$的半圆$C_R$逆时针回到$z=-R$.即:
+\[
+\oint_{C}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z
+=\int_{-R}^{R}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z+\int_{C_R}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z
+\]
+取$R\rightarrow\infty$的极限,\ 则有:
+\[
+\int_{-\infty}^{\infty}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z
+=\lim_{R \to \infty}\oint_{C}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z-\lim_{R \to \infty}\int_{C_R}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z
+\]
+由Jordan引理:
+\[
+\lim_{R \to \infty}\int_{C_R}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z=0
+\]
+故:
+\[
+\int_{-\infty}^{\infty}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z
+=\lim_{R \to \infty}\oint_{C}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z
+=2\pi\mathrm{i}\sum_{\mathrm{Im}\,z>0}\mathrm{res}f(z)
+\]
+函数$f(z)=\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}$,\ 在$\mathrm{Im}\,z>0$的区域内有一个奇点$1+\mathrm{i}$.
+
+对于$f(z)=\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}=\frac{P(z)}{Q(z)}$,\ $P(1+\mathrm{i})=(1+\mathrm{i})\mathrm{e}^{-1+\mathrm{i}}\neq0$,\ $Q(1+\mathrm{i})=0$,\ $Q'(1+\mathrm{i})=2\mathrm{i}\neq0$,\ 则:
+\begin{align*}
+\mathrm{res}f(1+\mathrm{i})
+&=\frac{P(1+\mathrm{i})}{Q'(1+\mathrm{i})} \\
+&=\frac{(1+\mathrm{i})\mathrm{e}^{-1+\mathrm{i}}}{2\mathrm{i}} \\
+&=\frac{1}{2\mathrm{e}\mathrm{i}}(1+\mathrm{i})(\cos 1+\mathrm{i}\sin 1) \\
+&=\frac{1}{2\mathrm{e}\mathrm{i}}(\cos 1+\mathrm{i}\sin 1+\mathrm{i}\cos 1-\sin 1)
+\end{align*} 
+
+故:
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{x\sin x}{x^2-2x+2}\mathrm{d}x
+&=\mathrm{Im}\,\int_{-\infty}^{\infty}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z \\
+&=\mathrm{Im}\,\lim_{R \to \infty}\oint_{C}\frac{z\mathrm{e}^{\mathrm{i}z}}{z^2-2z+2}\mathrm{d}z \\
+&=\mathrm{Im}\, \left\lbrace 2\pi \mathrm{i}\left[\frac{1}{2\mathrm{e}\mathrm{i}}(\cos 1+\mathrm{i}\sin 1+\mathrm{i}\cos 1-\sin 1)\right]\right\rbrace \\
+&=\mathrm{Im}\, \left\lbrace \frac{\pi}{\mathrm{e}}(\cos 1+\mathrm{i}\sin 1+\mathrm{i}\cos 1-\sin 1)\right\rbrace \\
+&=\frac{\pi}{\mathrm{e}}(\sin 1+\cos 1)
+\end{align*}
+
+\bigskip
+\item[8.(1)]
+记$f(z)=\frac{1}{z(z-1)(z-2)}$.
+
+考虑积分：$\oint_{C}f(z)\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=-R$沿实轴向右,\ 经过三段半圆$C_{\delta_1}$,\ $C_{\delta_2}$,\ $C_{\delta_3}$绕过三个一阶极点$z_1=0$,\ $z_2=1$,\ $z_3=2$到$z=R$,\ 再沿$|z|=R,\ 0<\arg z<\pi$的半圆$C_R$逆时针回到$z=-R$.即:
+\begin{align*}
+\oint_{C}f(z)\mathrm{d}z
+=\int_{-R}^{-\delta_1}f(z)\mathrm{d}z+
+\int_{\delta_1}^{1-\delta_2}f(z)\mathrm{d}z+
+\int_{1+\delta_2}^{2-\delta_3}f(z)\mathrm{d}z+
+\int_{2+\delta_3}^{R}f(z)\mathrm{d}z \\
++\int_{C_R}f(z)\mathrm{d}z+
+\int_{C_{\delta_1}}f(z)\mathrm{d}z+
+\int_{C_{\delta_2}}f(z)\mathrm{d}z+
+\int_{C_{\delta_3}}f(z)\mathrm{d}z
+\end{align*}
+由Cauchy定理,\ $\oint_{C}f(z)\mathrm{d}z=0$.
+
+取$R\rightarrow\infty$,\ $\delta_i\rightarrow0\ (i=1,2,3)$的极限,\ 则有:
+\begin{align*}
+\mathrm{v.p.}\int_{-\infty}^{\infty}f(z)\mathrm{d}z
+&=\int_{-\infty}^{-\delta_1}f(z)\mathrm{d}z+
+\int_{\delta_1}^{1-\delta_2}f(z)\mathrm{d}z+
+\int_{1+\delta_2}^{2-\delta_3}f(z)\mathrm{d}z+
+\int_{2+\delta_3}^{\infty}f(z)\mathrm{d}z \\
+&=-\int_{C_R}f(z)\mathrm{d}z-
+\int_{C_{\delta_1}}f(z)\mathrm{d}z-
+\int_{C_{\delta_2}}f(z)\mathrm{d}z-\int_{C_{\delta_3}}f(z)\mathrm{d}z
+\end{align*}
+由大圆弧定理:
+\[
+\lim_{R \to \infty}\int_{C_R}f(z)\mathrm{d}z=0
+\]
+由小圆弧定理:
+\[
+\lim_{\delta_1 \to 0}\int_{C_{\delta_1}}f(z)\mathrm{d}z
+=\mathrm{i}\pi\lim_{z \to 0}zf(z)
+=\frac{\mathrm{i}\pi}{2}
+\]
+\[
+\lim_{\delta_2 \to 0}\int_{C_{\delta_2}}f(z)\mathrm{d}z
+=\mathrm{i}\pi\lim_{z \to 1}(z-1)f(z)
+=-\mathrm{i}\pi
+\]
+\[
+\lim_{\delta_3 \to 0}\int_{C_{\delta_3}}f(z)\mathrm{d}z
+=\mathrm{i}\pi\lim_{z \to 2}(z-2)f(z)
+=\frac{\mathrm{i}\pi}{2}
+\]
+故:
+\[
+\mathrm{v.p.}\int_{-\infty}^{\infty}\frac{1}{z(z-1)(z-2)}\mathrm{d}z
+=\frac{\mathrm{i}\pi}{2}-\mathrm{i}\pi+\frac{\mathrm{i}\pi}{2}
+=0
+\]
+
+\smallskip
+\item[8.(4)]
+记$f(z)=\frac{\mathrm{e}^{pz}}{1-\mathrm{e}^z}$,\ $I=\int_{-\infty}^{\infty}f(z)\mathrm{d}z$.
+
+考虑积分：$\oint_{C}f(z)\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=-R$沿实轴向右,\ 经过半圆$C_{\delta_1}$绕过奇点$z_1=0$到$z=R$,\ 再沿$\mathrm{Re}\,z=R$到$z=R+2\pi\mathrm{i}$,\ 再沿$\mathrm{Im}\,z=2\pi$经过半圆$C_{\delta_2}$绕过奇点$z_2=2\pi\mathrm{i}$到$z=-R+2\pi\mathrm{i}$,\ 
+最后沿$\mathrm{Re}\,z=-R$回到$z=-R$.即:
+\begin{align*}
+\oint_{C}f(z)\mathrm{d}z
+&=\int_{-R}^{-\delta_1}f(z)\mathrm{d}z+
+\int_{C_{\delta_1}}f(z)\mathrm{d}z+
+\int_{\delta_1}^{R}f(z)\mathrm{d}z+
+\int_{R}^{R+2\pi\mathrm{i}}f(z)\mathrm{d}z \\
+&\quad +
+\int_{R+2\pi\mathrm{i}}^{\delta_2+2\pi\mathrm{i}}f(z)\mathrm{d}z+
+\int_{C_{\delta_2}}f(z)\mathrm{d}z+
+\int_{-\delta_2+2\pi\mathrm{i}}^{-R+2\pi\mathrm{i}}f(z)\mathrm{d}z+
+\int_{-R+2\pi\mathrm{i}}^{-R}f(z)\mathrm{d}z
+\end{align*}
+由Cauchy定理,\ $\oint_{C}f(z)\mathrm{d}z=0$.
+
+取$R\rightarrow\infty$,\ $\delta_i\rightarrow0\ (i=1,2)$的极限,\ 则有:
+\begin{align*}
+I
+&=\int_{-R}^{-\delta_1}f(z)\mathrm{d}z+\int_{\delta_1}^{R}f(z)\mathrm{d}z \\
+-\mathrm{e}^{2\pi p\mathrm{i}}I
+&=\int_{R+2\pi\mathrm{i}}^{\delta_2+2\pi\mathrm{i}}f(z)\mathrm{d}z+\int_{-\delta_2+2\pi\mathrm{i}}^{-R+2\pi\mathrm{i}}f(z)\mathrm{d}z
+\end{align*}
+则有:
+\[
+(1-\mathrm{e}^{2\pi p\mathrm{i}})I
+=\int_{C_{\delta_1}}f(z)\mathrm{d}z+
+\int_{R}^{R+2\pi\mathrm{i}}f(z)\mathrm{d}z+
+\int_{C_{\delta_2}}f(z)\mathrm{d}z+
+\int_{-R+2\pi\mathrm{i}}^{-R}f(z)\mathrm{d}z
+\]
+由于:
+\[
+\left|\int_{R}^{R+2\pi\mathrm{i}}f(z)\mathrm{d}z\right| 
+=\left|\int_{0}^{2\pi}\frac{\mathrm{e}^{p(R+\mathrm{i}y)}}{1-\mathrm{e}^{R+\mathrm{i}y}}\mathrm{i}\mathrm{d}y\right|
+\leqslant\frac{\mathrm{e}^{pR}}{\mathrm{e}^{R}-1}\int_{0}^{2\pi}\mathrm{d}y
+=\frac{2\pi\mathrm{e}^{pR}}{\mathrm{e}^{R}-1}
+\]
+则:
+\[
+\lim_{R \to \infty}\int_{R}^{R+2\pi\mathrm{i}}f(z)\mathrm{d}z
+=\lim_{R \to \infty}\frac{2\pi\mathrm{e}^{pR}}{\mathrm{e}^{R}-1}
+=0
+\]
+由于:
+\[
+\left|\int_{-R+2\pi\mathrm{i}}^{-R}f(z)\mathrm{d}z\right| 
+=\left|\int_{2\pi}^{0}\frac{\mathrm{e}^{p(-R+\mathrm{i}y)}}{1-\mathrm{e}^{-R+\mathrm{i}y}}\mathrm{i}\mathrm{d}y\right|
+\leqslant\mathrm{e}^{-pR}\int_{2\pi}^{0}\mathrm{d}y
+=2\pi\mathrm{e}^{-pR}
+\]
+则:
+\[
+\lim_{R \to \infty}\int_{-R+2\pi\mathrm{i}}^{-R}f(z)\mathrm{d}z
+=\lim_{R \to \infty}2\pi\mathrm{e}^{-pR}
+=0
+\]
+由小圆弧定理:
+\begin{align*}
+\lim_{\delta_1 \to 0}\int_{C_{\delta_1}}f(z)\mathrm{d}z
+&=\mathrm{i}\pi\lim_{z \to 0}zf(z) \\
+&=\mathrm{i}\pi\lim_{z \to 0}\frac{z\mathrm{e}^{pz}}{1-\mathrm{e}^{z}} \\
+&=\mathrm{i}\pi\lim_{z \to 0}\frac{\mathrm{e}^{pz}+pz\mathrm{e}^{pz}}{-\mathrm{e}^{z}} \\
+&=-\mathrm{i}\pi
+\end{align*}
+\begin{align*}
+\lim_{\delta_2 \to 0}\int_{C_{\delta_2}}f(z)\mathrm{d}z
+&=\mathrm{i}\pi\lim_{z \to 2\pi\mathrm{i}}(z-2\pi\mathrm{i})f(z) \\
+&=\mathrm{i}\pi\lim_{z \to 2\pi\mathrm{i}}\frac{(z-2\pi\mathrm{i})\mathrm{e}^{pz}}{1-\mathrm{e}^{z}} \\
+&=\mathrm{i}\pi\lim_{z \to 0}\frac{\mathrm{e}^{pz}+p(z-2\pi\mathrm{i})\mathrm{e}^{pz}}{-\mathrm{e}^{z}} \\
+&=-\mathrm{i}\pi\mathrm{e}^{2p\pi\mathrm{i}}
+\end{align*}
+即得:
+\[
+(1-\mathrm{e}^{2\pi p\mathrm{i}})I
+=-\mathrm{i}\pi(1+\mathrm{e}^{2p\pi\mathrm{i}})
+\]
+\[
+I
+=\mathrm{i}\pi\frac{\mathrm{e}^{2p\pi\mathrm{i}}+1}{\mathrm{e}^{2\pi p\mathrm{i}}-1}
+=\mathrm{i}\pi\frac{\mathrm{e}^{p\pi\mathrm{i}}+\mathrm{e}^{-p\pi\mathrm{i}}}{\mathrm{e}^{p\pi\mathrm{i}}-\mathrm{e}^{-p\pi\mathrm{i}}}
+=\mathrm{i}\pi\frac{\mathrm{e}^{p\mathrm{i}}+\mathrm{e}^{-p\mathrm{i}}}{\mathrm{e}^{p\mathrm{i}}-\mathrm{e}^{-p\mathrm{i}}}
+=\pi\cot p
+\]
+故所求积分为:
+\[
+\int_{-\infty}^{\infty}\frac{\mathrm{e}^{pz}-\mathrm{e}^{qz}}{1-\mathrm{e}^z}\mathrm{d}z
+=\pi(\cot p-\cot q)
+\]
+\end{itemize}
+
+\newpage
+\section*{第八章}
+\bigskip
+
+\begin{itemize}
+\item[1.(1)]
+由$\Gamma(z+1)=z\Gamma(z)$,\ $\Gamma(1)=1$得:$\Gamma(n+1)=n!\quad(n\in\mathbb{Z})$.
+
+则:
+\[
+(2n)!!
+=2^nn!
+=2^n\Gamma(n+1)
+\]
+
+\smallskip
+\item[1.(2)]
+由$\Gamma(z+1)=z\Gamma(z)$,\ $\Gamma(1)=1$得:$\Gamma(n+1)=n!\quad(n\in\mathbb{Z})$.
+
+则:
+\[
+(2n-1)!!
+=\frac{(2n)!}{2^nn!}
+=\frac{\Gamma(2n+1)}{2^n\Gamma(n+1)}
+\]
+
+\smallskip
+\item[1.(3)]
+由$\Gamma(z+1)=z\Gamma(z)$得: 
+\[
+(1+\nu)(2+\nu)\dotsb(n+\nu)
+=\frac{\Gamma(n+1+\nu)}{\Gamma(1+\nu)}
+\]
+
+\smallskip
+\item[1.(4)]
+由$\Gamma(z+1)=z\Gamma(z)$及互余宗量定理$\Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin \pi z}$得: 
+\begin{align*}
+&\quad\ [n(n+1)-\nu(\nu+1)][(n-1)n-\nu(\nu+1)]\dotsb[0\cdot1-\nu(\nu+1)] \\
+&=(n-\nu)(n+\nu+1)(n-1-\nu)(n+\nu)\dotsb(-\nu)(\nu+1) \\
+&=\frac{\Gamma(n-\nu+1)}{\Gamma(-\nu)}\frac{\Gamma(n+\nu+2)}{\Gamma(\nu+1)} \\
+&=\frac{\Gamma(n-\nu+1)\Gamma(n+\nu+2)\Gamma(\nu-n)}{\Gamma(-\nu)\Gamma(\nu+1)\Gamma(\nu-n)} \\
+&=\frac{\sin(-\pi\nu)}{\sin\pi(\nu-n)}\frac{\Gamma(n+\nu+2)}{\Gamma(\nu-n)} \\
+&=-\frac{\sin\pi\nu}{\sin(\pi\nu-n\pi)}\frac{\Gamma(n+\nu+2)}{\Gamma(\nu-n)} \\
+&=(-1)^{n+1}\frac{\Gamma(n+\nu+2)}{\Gamma(\nu-n)}
+\end{align*}
+
+\bigskip
+\item[2]
+令$t=\ln\frac{1}{x}=-\ln x$,\ 则$x=\mathrm{e}^{-t}$,\ $\mathrm{d}x=-\mathrm{e}^{-t}\mathrm{d}t$.
+
+故:
+\[
+\int_{0}^{1}\left(\ln\frac{1}{x}\right)^{z-1}\mathrm{d}x
+=\int_{\infty}^{0}t^{z-1}\left(-\mathrm{e}^{-t}\right)\mathrm{d}t
+=\int_{0}^{\infty}\mathrm{e}^{-t}t^{z-1}\mathrm{d}t
+=\Gamma(z),\quad\mathrm{Re}\,z>0
+\]
+
+\bigskip
+\item[2.(1)]
+记$f(z)=z^{-\alpha}\mathrm{e}^{-z}$,\ 并规定正实轴上$\arg z=0$.
+
+考虑积分：$\oint_{C}f(z)\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=\delta$沿实轴向右到$z=R$,\ 经过四分之一圆弧$C_{R}$到$z=\mathrm{i}R$,\ 再沿虚轴向下到$z=\mathrm{i}\delta$,\ 再经过四分之一圆弧$C_{\delta}$回到$z=\delta$.即:
+\begin{align*}
+\oint_{C}f(z)\mathrm{d}z
+&=\int_{\delta}^{R}f(z)\mathrm{d}z+
+\int_{C_R}f(z)\mathrm{d}z+
+\int_{\mathrm{i}R}^{\mathrm{i}\delta}f(z)\mathrm{d}z+
+\int_{C_\delta}f(z)\mathrm{d}z \\
+&=\int_{\delta}^{R}x^{-\alpha}\mathrm{e}^{-x}\mathrm{d}x+
+\int_{C_R}f(z)\mathrm{d}z+
+\int_{R}^{\delta}\left(\mathrm{e}^{\frac{\mathrm{i}\pi}{2}}y\right)^{-\alpha}\mathrm{e}^{\mathrm{i}y}\mathrm{d}y+
+\int_{C_\delta}f(z)\mathrm{d}z
+\end{align*}
+由Cauchy定理,\ $\oint_{C}f(z)\mathrm{d}z=0$.
+
+当$\alpha<1$时,\ 有:
+\[
+\lim_{z\to 0}zf(z)
+=\lim_{z\to 0}z\cdot z^{-\alpha}\mathrm{e}^{-z}
+=0
+\]
+由小圆弧定理:
+\[
+\lim_{\delta\to 0}\int_{C_\delta}f(z)\mathrm{d}z
+=0
+\]
+当$\alpha>0$时,\ 有:
+\[
+\lim_{z\to\infty}z^{-\alpha}
+=0
+\]
+由Jordan引理:
+\[
+\lim_{R\to\infty}\int_{C_R}f(z)\mathrm{d}z
+=0
+\]
+取$R\rightarrow\infty$,\ $\delta\rightarrow0$的极限,\ 则有:
+\[
+\int_{\infty}^{0}\left(\mathrm{e}^{\frac{\mathrm{i}\pi}{2}}y\right)^{-\alpha}\mathrm{e}^{\mathrm{i}y}\mathrm{d}y
+=\mathrm{e}^{\frac{\mathrm{i}(1-\alpha)\pi}{2}}\int_{0}^{\infty}y^{-\alpha}\mathrm{e}^{-\mathrm{i}y}\mathrm{d}y
+=\int_{0}^{\infty}x^{-\alpha}\mathrm{e}^{-x}\mathrm{d}x
+=\Gamma(1-\alpha)
+\]
+即:
+\[
+\int_{0}^{\infty}x^{-\alpha}(\cos x-\mathrm{i}\sin x)\mathrm{d}x
+=\left[\cos\frac{(1-\alpha)\pi}{2}-\mathrm{i}\sin\frac{(1-\alpha)\pi}{2}\right]\Gamma(1-\alpha)
+\]
+分别比较实部和虚部,\ 得:
+\[
+\int_{0}^{\infty}x^{-\alpha}\sin x\,\mathrm{d}x
+=\Gamma(1-\alpha)\cos\frac{\alpha\pi}{2}
+\]
+\[
+\int_{0}^{\infty}x^{-\alpha}\cos x\,\mathrm{d}x
+=\Gamma(1-\alpha)\sin\frac{\alpha\pi}{2}
+\]
+又$x^{-\alpha}\sin x$是$0<\alpha<2$中的解析函数,\ 由解析函数的唯一性定理,\ 根据解析延拓原理可知:
+\[
+\int_{0}^{\infty}x^{-\alpha}\sin x\,\mathrm{d}x
+=\Gamma(1-\alpha)\cos\frac{\alpha\pi}{2}
+\]
+在$0<\alpha<2$中仍成立.
+
+\smallskip
+\item[2.(2)]
+记$f(z)=z^{\alpha-1}\mathrm{e}^{-z}$,\ 并规定正实轴上$\arg z=0$.
+
+考虑积分：$\oint_{C}f(z)\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=\delta$沿实轴向右到$z=R$,\ 经过圆弧$C_{R}$到$z=R\mathrm{e}^{\mathrm{i}\theta}$,\ 再沿直线$\arg z=\theta$斜向下到$z=\delta\mathrm{e}^{\mathrm{i}\theta}$,\ 再经过圆弧$C_{\delta}$回到$z=\delta$.即:
+\begin{align*}
+\oint_{C}f(z)\mathrm{d}z
+&=\int_{\delta}^{R}f(z)\mathrm{d}z+
+\int_{C_R}f(z)\mathrm{d}z+
+\int_{R\mathrm{e}^{\mathrm{i}\theta}}^{\delta\mathrm{e}^{\mathrm{i}\theta}}f(z)\mathrm{d}z+
+\int_{C_\delta}f(z)\mathrm{d}z \\
+&=\int_{\delta}^{R}x^{\alpha-1}\mathrm{e}^{-x}\mathrm{d}x+
+\int_{C_R}f(z)\mathrm{d}z+
+\int_{R}^{\delta}\left(r\mathrm{e}^{\mathrm{i}\theta}\right)^{\alpha-1}\mathrm{e}^{-r(\cos\theta+\mathrm{i}\sin\theta)}\mathrm{e}^{\mathrm{i}\theta}\mathrm{d}r+
+\int_{C_\delta}f(z)\mathrm{d}z
+\end{align*}
+由Cauchy定理,\ $\oint_{C}f(z)\mathrm{d}z=0$.
+
+当$\alpha>0$时,\ 有:
+\[
+\lim_{z\to 0}zf(z)
+=\lim_{z\to 0}z\cdot z^{\alpha-1}\mathrm{e}^{-z}
+=0
+\]
+由小圆弧定理:
+\[
+\lim_{\delta\to 0}\int_{C_\delta}f(z)\mathrm{d}z
+=0
+\]
+当$\alpha<1$时,\ 有:
+\[
+\lim_{z\to\infty}z^{\alpha-1}
+=0
+\]
+由Jordan引理:
+\[
+\lim_{R\to\infty}\int_{C_R}f(z)\mathrm{d}z
+=0
+\]
+取$R\rightarrow\infty$,\ $\delta\rightarrow0$的极限,\ 则有:
+\[
+\int_{0}^{\infty}r^{\alpha-1}\mathrm{e}^{-r(\cos\theta+\mathrm{i}\sin\theta)}\mathrm{d}r
+=\mathrm{e}^{-\mathrm{i}\alpha\theta}\Gamma(\alpha)
+\]
+分别比较实部和虚部,\ 并将积分变量$r$换成$x$,\ 得:
+\[
+\int_{0}^{\infty}x^{\alpha-1}\mathrm{e}^{-x\cos\theta}\sin(x\sin\theta)\mathrm{d}x
+=\sin(\alpha\theta)\Gamma(\alpha)
+\]
+\[
+\int_{0}^{\infty}x^{\alpha-1}\mathrm{e}^{-x\cos\theta}\cos(x\sin\theta)\mathrm{d}x
+=\cos(\alpha\theta)\Gamma(\alpha)
+\]
+
+\bigskip
+\item[3.(1)]
+由$\Gamma(z+1)=z\Gamma(z)$得:
+\[
+\ln\Gamma(z+1)
+=\ln z+\ln\Gamma(z)
+\]
+两边求导,\ 由$\psi(z)=\frac{\mathrm{d}}{\mathrm{d}z}\ln\Gamma(z)$得:
+\[
+\psi(z+1)
+=\frac{1}{z}+\psi(z)
+\]
+
+\smallskip
+\item[3.(2)]
+由$\psi(z+1)=\frac{1}{z}+\psi(z)$,\ 将$z$换元为$z+k-1$得:
+\[
+\psi(z+k)-\psi(z+k-1)
+=\frac{1}{z+k-1}
+\]
+两边对k求和得:
+\[
+\sum_{k=0}^{n}\psi(z+k)-\sum_{k=0}^{n}\psi(z+k-1)
+=\sum_{k=0}^{n}\frac{1}{z+k-1}
+\]
+\[
+\psi(z+n)-\psi(z)
+=\frac{1}{z}+\frac{1}{z+1}+\dotsb+\frac{1}{z+n-1}
+\]
+
+\smallskip
+\item[3.(3)]
+由互余宗量定理$\Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin \pi z}$得: 
+\[
+\ln\Gamma(z)+\ln\Gamma(1-z)=\ln\pi-\ln(\sin\pi z)
+\]
+两边求导,\ 由$\psi(z)=\frac{\mathrm{d}}{\mathrm{d}z}\ln\Gamma(z)$得:
+\[
+\psi(z)-\psi(1-z)
+=\left(-\frac{1}{\sin\pi z}\right)\pi\cos\pi z
+=-\pi\cot\pi z
+\]
+\[
+\psi(1-z)-\psi(z)
+=\pi\cot\pi z
+\]
+
+\smallskip
+\item[3.(4)]
+由倍乘公式$\Gamma(2z)=\frac{2^{2z-1}}{\sqrt\pi}\Gamma(z)\Gamma(z+\frac{1}{2})$得:
+\[
+\ln\Gamma(2z)
+=(2z-1)\ln 2-\frac{1}{2}\ln\pi+\ln\Gamma(z)+\ln\Gamma(z+\frac{1}{2})
+\] 
+两边求导,\ 由$\psi(z)=\frac{\mathrm{d}}{\mathrm{d}z}\ln\Gamma(z)$得:
+\[
+2\psi(2z)
+=2\ln 2+\psi(z)+\psi(z+\frac{1}{2})
+\]
+\[
+2\psi(2z)-\psi(z)-\psi(z+\frac{1}{2})
+=2\ln 2
+\]
+\end{itemize}
+
+\newpage
+\section*{第九章}
+\bigskip
+
+\begin{itemize}
+
+\item[1.(1)]
+由像函数导数的反演公式$\mathscr{L}\{(-1)^nt^nf(t)\}=F^{(n)}(p)$及$\mathscr{L}\{1\}=\frac{1}{p}$得:
+\[
+\mathscr{L}\{(-1)^nt^n\}
+=\frac{\mathrm{d}^n}{\mathrm{d}p^n}(\frac{1}{p})
+=(-1)^n\frac{n!}{p^{n+1}}
+\]
+由于Laplace变换是线性变换,\ 则:
+\[
+\mathscr{L}\{t^n\}
+=\frac{n!}{p^{n+1}}
+\]
+
+\smallskip
+\item[1.(3)]
+由Laplace变换的位移定理$\mathscr{L}\{\mathrm{e}^{p_0t}f(t)\}=F(p-p_0)$及$\mathscr{L}\{\sin\omega t\}=\frac{\omega}{p^2+\omega^2}$得:
+\[
+\mathscr{L}\{{e}^{\lambda t}\sin\omega t\}
+=\frac{\omega}{(p-\lambda)^2+\omega^2}
+\]
+
+\smallskip
+\item[1.(5)]
+由$\mathscr{L}\{1\}=\frac{1}{p}$及$\mathscr{L}\{\cos\omega t\}=\frac{p}{p^2+\omega^2}$得:
+\[
+\mathscr{L}\{1-\cos\omega t\}
+=\frac{1}{p}-\frac{p}{p^2+\omega^2}
+=\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}
+\]
+当$t\rightarrow0$时,\ 由l'Hospital法则得$\big|\frac{1-\cos\omega t}{t}\big|\rightarrow0$.
+
+由像函数积分的反演公式$\int_{p}^{\infty}\mathscr{L}\{f(t)\}\mathrm{d}t=\frac{f(t)}{t}$得:
+\begin{align*}
+\mathscr{L}\left\lbrace\frac{1-\cos\omega t}{t}\right\rbrace
+&=\int_{p}^{\infty}\left(\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}\right)\mathrm{d}t \\
+&=\ln p-\frac{1}{2}\ln(p+\mathrm{i}\omega)-\frac{1}{2}\ln(p-\mathrm{i}\omega)\bigg|_{p}^{\infty} \\
+&=\frac{1}{2}\ln\frac{p^2}{p^2+\omega^2}\bigg|_{p}^{\infty} \\
+&=\frac{1}{2}\ln\frac{p^2+\omega^2}{p^2}
+\end{align*}
+最后一步使用了l'Hospital法则.
+
+当$t\rightarrow0$时,\ 使用两次l'Hospital法则得$\big|\frac{1-\cos\omega t}{t}\big|\rightarrow\frac{\omega^2}{2}$.
+
+由像函数积分的反演公式$\int_{p}^{\infty}\mathscr{L}\{f(t)\}\mathrm{d}t=\frac{f(t)}{t}$得:
+\begin{align*}
+\mathscr{L}\left\lbrace\frac{1-\cos\omega t}{t^2}\right\rbrace 
+&=\int_{p}^{\infty}\frac{1}{2}\ln\frac{p^2+\omega^2}{p^2}\mathrm{d}t \\
+&=-\frac{p}{2}\ln\frac{p^2+\omega^2}{p^2}+\omega\arctan\frac{\omega}{p}
+\end{align*}
+
+\bigskip
+\item[3.(1)]
+$f(t)=|\sin\omega t|$为周期函数,\ 周期为$a=\frac{\pi}{\omega}$.\ 则:
+\begin{align*}
+\mathscr{L}\{f(t)\}
+&=\int_{0}^{\infty}\mathrm{e}^{-pt}f(t)\mathrm{d}t \\
+&=\sum_{n=0}^{\infty}\int_{na}^{(n+1)a}\mathrm{e}^{-pt}f(t)\mathrm{d}t \\
+&=\sum_{n=0}^{\infty}\int_{0}^{a}\mathrm{e}^{-p(t+na)}f(t)\mathrm{d}t \\
+&=\sum_{n=0}^{\infty}\left(\mathrm{e}^{-pa}\right)^{n}\int_{0}^{a}\mathrm{e}^{-pt}f(t)\mathrm{d}t \\
+&=\frac{1}{1-\mathrm{e}^{-pa}}\int_{0}^{a}\mathrm{e}^{-pt}f(t)\mathrm{d}t
+\end{align*}
+最后一步使用了$\sum_{n=0}^{\infty}z^n=\frac{1}{1-z}$.
+
+又因为:
+\begin{align*}
+\int_{0}^{a}\mathrm{e}^{-pt}|\sin\omega t|\mathrm{d}t
+&=\int_{0}^{a}\mathrm{e}^{-pt}\sin\omega t\mathrm{d}t \\
+&=\int_{0}^{a}\mathrm{e}^{-pt}\left(\frac{\mathrm{e}^{\mathrm{i}\omega t}-\mathrm{e}^{-\mathrm{i}\omega t}}{2\mathrm{i}}\right)\mathrm{d}t \\
+&=(1+\mathrm{e}^{-\frac{\pi p}{\omega}})\frac{\omega}{p^2+\omega^2}
+\end{align*}
+则:
+\[
+\mathscr{L}\left\lbrace|\sin\omega t|\right\rbrace 
+=\frac{(1+\mathrm{e}^{-\frac{\pi p}{\omega}})}{(1-\mathrm{e}^{-\frac{\pi p}{\omega}})}\frac{\omega}{p^2+\omega^2}
+=\frac{\omega}{p^2+\omega^2}\coth\frac{\pi p}{2\omega}
+\]
+
+\bigskip
+\item[4.(1)]
+记$F(p)=\frac{a^3}{p(p+a)^3}$.
+
+对于$G(p)=\mathrm{e}^{pt}F(p)=\frac{\mathrm{e}^{pt}a^3}{p(p+a)^3}$,\ 函数的奇点为$p_1=0$,\ $p_2=-a$.
+
+对于$p_1=0$,\ $G(p)=\frac{\mathrm{e}^{pt}a^3}{p(p+a)^3}=\frac{P(z)}{Q(z)}$,\ $P(0)=a^3\neq0$,\ $Q(0)=0$,\ $Q'(0)=a^3\neq0$,\ 则$\mathrm{res}G(0)=\frac{P(0)}{Q'(0)}=1$.
+
+对于$p_2=-a$,\ $p_2$为$G(p)$的三阶极点
+\begin{align*}
+\mathrm{res}f(-a)
+&=\frac{1}{(3-1)!}{\lim_{p\to -a}}\left[\frac{\mathrm{d}^2}{\mathrm{d}p^2}(p+a)^3\frac{\mathrm{e}^{pt}a^3}{p(p+a)^3}\right] \\
+&=\frac{1}{2}{\lim_{p\to -a}}\left[\left(p^2t^2-2pt+2\right)\mathrm{e}^{pt}\frac{a^3}{p^3}\right] \\
+&=-\left(\frac{1}{2}a^2t^2+at+1\right)\mathrm{e}^{-at}
+\end{align*}
+由$f(t)=\sum\mathrm{res}\{\mathrm{e}^{pt}F(p)\}\eta(t)$得:
+\[
+f(t)
+=\sum\mathrm{res}\{G(p)\}\eta(t)
+=\left[1-\left(\frac{1}{2}a^2t^2+at+1\right)\mathrm{e}^{-at}\right]\eta(t)
+\]
+
+\smallskip
+\item[4.(3)]
+记$F(p)=\frac{4p-1}{(p^2+p)(4p^2-1)}$.
+
+对于$G(p)=\mathrm{e}^{pt}F(p)=\frac{\mathrm{e}^{pt}(4p-1)}{(p^2+p)(4p^2-1)}$,\ 函数的奇点为$p_1=0$,\ $p_2=1$,\ $p_3=\frac{1}{2}$,\ $p_4=-\frac{1}{2}$,\ 均为一阶极点.
+
+对于$p_1=0$,\ $G(p)=\frac{\mathrm{e}^{pt}(4p-1)}{(p^2+p)(4p^2-1)}=\frac{P(z)}{Q(z)}$,\ $P(0)=-1\neq0$,\ $Q(0)=0$,\ $Q'(0)=-1\neq0$,\ 则$\mathrm{res}G(0)=\frac{P(0)}{Q'(0)}=1$.
+
+同理可得:
+\[
+\mathrm{res}G(1)
+=\frac{P(1)}{Q'(1)}
+=\frac{5}{3}\mathrm{e}^{-t}
+\]
+\[
+\mathrm{res}G(\frac{1}{2})
+=\frac{P(\frac{1}{2})}{Q'(\frac{1}{2})}
+=\frac{1}{3}\mathrm{e}^{\frac{1}{2}t}
+\]
+\[
+\mathrm{res}G(-\frac{1}{2})
+=\frac{P(-\frac{1}{2})}{Q'(-\frac{1}{2})}
+=-3\mathrm{e}^{\frac{1}{2}t}
+\]
+由$f(t)=\sum\mathrm{res}\{\mathrm{e}^{pt}F(p)\}\eta(t)$得:
+\[
+f(t)
+=\sum\mathrm{res}\{G(p)\}\eta(t)
+=\left(1+\frac{5}{3}\mathrm{e}^{-t}+\frac{1}{3}\mathrm{e}^{\frac{1}{2}t}-3\mathrm{e}^{\frac{1}{2}t}\right)\eta(t)
+\]
+
+\smallskip
+\item[4.(5)]
+由像函数导数的反演公式$\mathscr{L}\{(-1)^nt^nf(t)\}=F^{(n)}(p)$及$\mathscr{L}\{1\}=\frac{1}{p}$得:
+\[
+\mathscr{L}\left\lbrace(-1)^nt^n\right\rbrace
+=\frac{\mathrm{d}^n}{\mathrm{d}p^n}(\frac{1}{p})
+=(-1)^n\frac{n!}{p^{n+1}}
+\]
+由于Laplace变换是线性变换,\ 则:
+\[
+\mathscr{L}\{t^n\}
+=\frac{n!}{p^{n+1}}
+\]
+则有:
+\[
+\mathscr{L}\{t\}
+=\frac{1}{p^2}
+\]
+由Laplace变换的延迟定理$\mathscr{L}\left\lbrace f(t-\tau)\right\rbrace =\mathrm{e}^{-p\tau}F(p)$得:
+\[
+\mathscr{L}\{t-\tau\}
+=\frac{\mathrm{e}^{-p\tau}}{p^2}
+\]
+故$\frac{\mathrm{e}^{-p\tau}}{p^2}$的原函数为$(t-\tau)\eta(t-\tau)$
+
+\smallskip
+\item[5.(2)]
+设流过电感$L$的电流为$i_1(t)=i(t)$,\ 流过电容$C$的电流为$i_2(t)$.
+
+由节点电流方程,\ 流过电阻$R$的电流为$i_1(t)-i_2(t)$.
+
+由回路电压方程,\ 对左侧回路:
+\[
+E-L\frac{\mathrm{d}}{\mathrm{d}t}i_1(t)-\frac{1}{C}\int_{0}^{t}i_2(t)
+=0
+\]
+对右侧回路：
+\[
+\frac{1}{C}\int_{0}^{t}i_2(t)-\left[i_1(t)-i_2(t)\right]R
+=0
+\]
+对两式等号两边进行Laplace变换得:
+\begin{equation}
+\left\{
+\begin{array}{lr}
+\frac{E}{p}-LpI_1(p)-\frac{1}{C}\frac{I_2(p)}{p}=0 & \\
+\frac{1}{C}\frac{I_2(p)}{p}-\left[I_1(p)-I_2(p)\right]R=0 & 
+\end{array}
+\right.
+\end{equation}
+其中$I_1(p)=\mathscr{L}\{i_1(t)\}$,\ $I_2(p)=\mathscr{L}\{i_2(t)\}$.
+
+联立解得：
+\begin{equation}
+\left\{
+\begin{array}{lr}
+I_1=\frac{EC(1+pCR)}{LCp^2(1+pCR)+pCR)} & \\
+I_2=\frac{EC(pCR)}{LCp^2(1+pCR)+pCR)} & 
+\end{array}
+\right.
+\end{equation}
+代入初始条件$i(0)=0$,\ $q(0)=0$,\ 对$I_1$进行反演得:
+\begin{equation}
+i(t)=i_1(t)=\left\{
+\begin{array}{lr}
+\frac{E}{R}\left(1+A\mathrm{e}^{-\gamma_1t}-B\mathrm{e}^{-\gamma_2t}\right) &k<1 \\
+\frac{E}{R}\left(1-\mathrm{e}^{-\alpha t}-\frac{\alpha t}{2}\mathrm{e}^{-\alpha t}\right) &k=1 \\
+\frac{E}{R}\left[1-\mathrm{e}^{-\alpha t}(\cos\omega t+\frac{\alpha-\beta}{\omega}\sin\omega t)\right] &k>1
+\end{array}
+\right.
+\end{equation}
+其中$\alpha=\frac{1}{2RC}$,\ $\beta=\frac{R}{L}$,\ $k=4R^2\frac{C}{L}$,\ $\gamma_1=\alpha(1-\sqrt{1-k})$,\ $\gamma_2=\alpha(1+\sqrt{1-k})$,\ $A=\frac{\beta-\gamma_2}{\gamma_2-\gamma_1}$,\ $B=\frac{\beta-\gamma_1}{\gamma_2-\gamma_1}$.
+
+\smallskip
+\item[6.(1)]
+由像函数积分的反演公式$\int_{0}^{\infty}\frac{f(t)}{t}\mathrm{d}t=\int_{0}^{\infty}F(p)\mathrm{d}p$得:
+\begin{align*}
+\int_{0}^{\infty}\frac{\mathrm{e}^{-ax}-\mathrm{e}^{-bx}}{x}\cos cx\mathrm{d}x
+&=\int_{0}^{\infty}\mathscr{L}\left\lbrace\left(\mathrm{e}^{-ax}-\mathrm{e}^{-bx}\right)\cos cx\right\rbrace\mathrm{d}p \\
+&=\int_{0}^{\infty}\mathscr{L}\left\lbrace\left(\mathrm{e}^{-ax}-\mathrm{e}^{-bx}\right)\frac{\mathrm{e}^{\mathrm{i}cx}-\mathrm{e}^{-\mathrm{i}cx}}{2}\right\rbrace\mathrm{d}p \\
+&=\int_{0}^{\infty}\frac{1}{2}\mathscr{L}\left\lbrace\mathrm{e}^{(-a+\mathrm{i}c)x}-\mathrm{e}^{(-b+\mathrm{i}c)x}+\mathrm{e}^{(-a-\mathrm{i}c)x}-\mathrm{e}^{(-b-\mathrm{i}c)x}\right\rbrace\mathrm{d}p \\
+&=\int_{0}^{\infty}\frac{1}{2}\left(\frac{1}{p+a-\mathrm{i}c}-\frac{1}{p+b-\mathrm{i}c}+\frac{1}{p+a+\mathrm{i}c}-\frac{1}{p+b+\mathrm{i}c}\right)\mathrm{d}p \\
+&=\frac{1}{2}\ln\frac{(p+a-\mathrm{i}c)(p+a+\mathrm{i}c)}{(p+b-\mathrm{i}c)(p+b+\mathrm{i}c)}\bigg|_{0}^{\infty} \\
+&=\frac{1}{2}\ln\frac{(p+a)^2+c^2}{(p+b)^2+c^2}\bigg|_{0}^{\infty} \\
+&=\frac{1}{2}\ln\frac{b^2+c^2}{a^2+c^2}
+\end{align*}
+
+\smallskip
+\item[6.(3)]
+不妨设$t>0$.
+
+由含参数积分所定义函数的Laplace变换$\mathscr{L}\left\lbrace\int_{0}^{\infty}f(t,\tau)\mathrm{d}\tau\right\rbrace=\int_{0}^{\infty}\mathscr{L}\{f(t,\tau)\}\mathrm{d}\tau$得:
+\begin{align*}
+\mathscr{L}\left\lbrace\int_{0}^{\infty}\frac{\sin xt}{x\left(x^2+1\right)}\mathrm{d}x\right\rbrace
+&=\int_{0}^{\infty}\mathscr{L}\left\lbrace\frac{\sin xt}{x\left(x^2+1\right)}\right\rbrace\mathrm{d}x \\
+&=\int_{0}^{\infty}\frac{1}{x\left(x^2+1\right)}\frac{x}{p^2+x^2}\mathrm{d}x \\
+&=\int_{0}^{\infty}\frac{1}{\left(x^2+1\right)\left(x^2+p^2\right)}\mathrm{d}x \\
+&=\frac{1}{2}\int_{-\infty}^{\infty}\frac{1}{\left(x^2+1\right)\left(x^2+p^2\right)}\mathrm{d}x
+\end{align*}
+考虑积分：$\oint_{C}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z$,\ 积分围道$C$如下:
+
+从$z=-R$沿实轴到$z=R$,\ 再沿$|z|=R,\ 0<\arg z<\pi$的半圆$C_R$逆时针回到$z=-R$.即:
+\[
+\oint_{C}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z
+=\int_{-R}^{R}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z+\int_{C_R}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z
+\]
+取$R\rightarrow\infty$的极限,\ 则有:
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{1}{\left(x^2+1\right)\left(x^2+p^2\right)}\mathrm{d}x
+&=\int_{-\infty}^{\infty}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z \\
+&=\lim_{R \to \infty}\oint_{C}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z-\lim_{R \to \infty}\int_{C_R}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z
+\end{align*}
+由大圆弧定理:
+\[
+\lim_{R \to \infty}\int_{C_R}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z=0
+\]
+故:
+\[
+\int_{-\infty}^{\infty}\frac{1}{\left(x^2+1\right)\left(x^2+p^2\right)}\mathrm{d}x
+=\lim_{R \to \infty}\oint_{C}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}\mathrm{d}z
+=2\pi\mathrm{i}\sum_{\mathrm{Im}\,z>0}\mathrm{res}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}
+\]
+在$\mathrm{Im}\,z>0$的区域内,\ $F(z)=\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}$有两个奇点$z_1=\mathrm{i}$,\ $z_2=p\mathrm{i}$.
+
+对于$z_1=\mathrm{i}$,\ $F(z_1)=\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}=\frac{P(z)}{Q(z)}$,\ $P(z_1)=1\neq0$,\ $Q(z_1)=0$,\ $Q'(z_1)=2\mathrm{i}(p^2-1)\neq0$,\ 则$\mathrm{res}f(z_1)=\frac{P(z_1)}{Q'(z_1)}=\frac{1}{2\mathrm{i}(p^2-1)}$.
+
+对于$z_2=p\mathrm{i}$,\ $F(z_2)=\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)}=\frac{P(z)}{Q(z)}$,\ $P(z_2)=1\neq0$,\ $Q(z_2)=0$,\ $Q'(z_2)=-2p\mathrm{i}(p^2-1)\neq0$,\ 则$\mathrm{res}f(z_1)=\frac{P(z_1)}{Q'(z_1)}=-\frac{1}{2p\mathrm{i}(p^2-1)}$.
+
+故:
+\begin{align*}
+\int_{0}^{\infty}\frac{1}{\left(x^2+1\right)\left(x^2+p^2\right)}\mathrm{d}x
+&=\frac{1}{2}\int_{-\infty}^{\infty}\frac{1}{\left(x^2+1\right)\left(x^2+p^2\right)}\mathrm{d}x \\
+&=\pi\mathrm{i}\sum_{\mathrm{Im}\,z>0}\mathrm{res}\frac{1}{\left(z^2+1\right)\left(z^2+p^2\right)} \\
+&=\pi\mathrm{i}\left(\frac{1}{2\mathrm{i}(p^2-1)}-\frac{1}{2p\mathrm{i}(p^2-1)}\right) \\
+&=\pi\mathrm{i}\times\frac{1}{2p\mathrm{i}(p+1)} \\
+&=\frac{\pi}{2p(p+1)} \\
+&=\frac{\pi}{2}\left(\frac{1}{p}-\frac{1}{p+1}\right)
+\end{align*}
+
+求反演得:
+\[
+\int_{0}^{\infty}\frac{\sin xt}{x\left(x^2+1\right)}\mathrm{d}x
+=\frac{\pi}{2}\left(1-\mathrm{e}^{-t}\right)
+\]
+考虑$t\in\mathbb{R}$的情况,则有:
+\[
+\int_{0}^{\infty}\frac{\sin xt}{x\left(x^2+1\right)}\mathrm{d}x
+=\frac{\pi}{2}\left(1-\mathrm{e}^{-|t|}\right)\mathrm{sgn}(t)
+\]
+\end{itemize}
+
+\newpage
+\section*{第十章}
+\bigskip
+
+\begin{itemize}
+
+\item[2.(1)]
+当$x\neq t$时,\ $\delta(x-t)=0$.
+
+分段求得:
+\begin{equation}
+g(x;t)=\left\{
+\begin{array}{lr}
+A(t)\sinh kx+B(t)\cosh kx, &x<t \\
+C(t)\sinh kx+D(t)\cosh kx, &x>t 
+\end{array}
+\right.
+\end{equation}
+根据初值条件,\ 可以定出:
+\[
+A(t)
+=0
+\]
+\[
+B(t)
+=0
+\]
+由$g(x;t)$在$x=t$点连续得:
+\[
+g(t-0;t)
+=g(t+0;t)
+\]
+则:
+\[
+C(t)\sinh kt+D(t)\cosh kt
+=0
+\]
+将方程两边从$t-0$到$t+0$积分,\ 得:
+\[
+\frac{\mathrm{d}}{\mathrm{d}x}g(x;t)\bigg|_{t-0}^{t+0}
+=1
+\]
+于是有:
+\[
+kC(t)\cosh kx+kD(t)\sinh kx
+=1
+\]
+解得:
+\[
+C(t)
+=\frac{1}{k}\cosh kt
+\]
+\[
+C(t)
+=\frac{1}{k}\sinh kt
+\]
+最终得:
+\[
+g(x;t)
+=\frac{1}{k}\sinh k(x-t)\eta(x-t)
+\]
+
+\bigskip
+\item[3.(2)]
+设$y(x)=u(x)+v(x)$.
+
+由$u(x)$满足:
+\[
+\frac{\mathrm{d}^2}{\mathrm{d}x^2}u(x)-k^2u(x)
+=f(x),\quad x>0,\ k>0
+\]
+\[
+u(0)=0,\quad\frac{\mathrm{d}}{\mathrm{d}x}u(0)=0
+\]
+得:
+\[
+u(x)
+=\frac{1}{k}\int_{0}^{x}f(t)\sinh k(x-t)\mathrm{d}t
+\]
+
+则$v(x)$需满足:
+\[
+\frac{\mathrm{d}^2}{\mathrm{d}x^2}v(x)-k^2v(x)
+=0,\quad x>0,\ k>0
+\]
+\[
+v(0)=A,\quad\frac{\mathrm{d}}{\mathrm{d}x}v(0)=B
+\]
+解得:
+\[
+v(x)
+=A\cosh kx+\frac{B}{k}\sinh kx
+\]
+最终得:
+\[
+y(x)
+=A\cosh kx+\frac{B}{k}\sinh kx+\frac{1}{k}\int_{0}^{x}f(t)\sin k(x-t)\mathrm{d}t
+\]
+\end{itemize}
+\end{document}

@@ -1,0 +1,161 @@
+\documentclass[utf8,a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+    \title{\textbf{原子物理学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2021年3月8日}
+
+    \maketitle
+
+    \begin{itemize}
+
+        \subsection*{思考题}
+
+        \item[1.19(1)]
+        由Heisenberg不确定性和Compton波长的定义：
+        \[
+        \Delta x \Delta p \sim \dfrac{h}{4\pi},\qquad \lambda_\mathrm{C} = \frac{h}{m_0 c}
+        \]
+        得动量不确定度为：
+        \[
+        \Delta p \sim \frac{m_0 c}{4\pi}
+        \]
+        可见它大概位于非相对论性和相对论性的边界，说明Compton波长是局域电子达到相对论性运动的特征尺度。
+
+        \item[1.19(2)]
+        原子的尺度在$10^{-10}\,\mathrm{m}$的量级，原子核的尺度在$10^{-15}\,\mathrm{m}$的量级。而Compton波长$\lambda_\mathrm{C} = 2.41\times10^{-12}\,\mathrm{m}$，其介乎于原子的尺度和原子核的尺度之间。
+
+        \item[1.21(1)]
+        以$\mathrm{^{1}H}$原子为例，其电子基态动能为$E_{\mathrm{k}} = 13.6\,\mathrm{eV}$，则动量为：
+        \[
+        p = \sqrt{2m_\mathrm{e}E_\mathrm{k}} = 1.9928\times10^{-24}\,\mathrm{kg \cdot m/s}
+        \]
+        设动量的不确定度$\Delta p \sim p$，且此时$\Delta x \Delta p \sim \dfrac{h}{4\pi}$，则位置的不确定度：
+        \[
+        \Delta x \sim \frac{h}{4\pi\Delta p} = 2.646\times10^{-11}\,\mathrm{m}
+        \]
+        这正是$\mathrm{^{1}H}$原子的Bohr半径的一半，即电子位置的不确定度与电子轨道半径相当。因此原子中电子轨道的概念是没有意义的。
+
+        \item[1.21(2)]
+        此时电子动量为：
+        \[
+        p = \sqrt{2m_\mathrm{e}E_\mathrm{k}} = 1.7085\times10^{-24}\,\mathrm{kg \cdot m/s}
+        \]
+        电子位置的不确定度为$\Delta x \sim 10^{4}m$，则动量的不确定度为
+        \[
+        \Delta p \sim \frac{h}{4\pi\Delta x} = 5.273\times10^{-31}\,\mathrm{kg \cdot m/s}
+        \]
+        可见$\Delta p \ll p$，即电子动量的不确定度远小于电子动量。因此这时电子的轨道是有意义的。
+
+        \item[1.24]
+        由于$\hat{a}$和$\hat{b}$的对易子$[\hat{a},\hat{b}]$一般不为零，
+        \[
+        (\hat{a}+\hat{b})(\hat{a}-\hat{b}) = \hat{a}^2 + \hat{b}\hat{a} - \hat{a}\hat{b} - \hat{b}^2 = \hat{a}^2 - \hat{b}^2 - [\hat{a},\hat{b}]
+        \]
+        一般也不等于$\hat{a}^2 - \hat{b}^2$，即$(\hat{a}+\hat{b})(\hat{a}-\hat{b}) = \hat{a}^2 - \hat{b}^2$并不普遍成立。
+
+        \subsection*{习题}
+
+        \item[1.18]
+        Gauss型波函数为：
+        \[
+        \psi(x) = A\mathrm{e}^{-\tfrac{ax^2}{2}+\mathrm{i}\tfrac{px}{\hbar}}
+        \]
+        则归一化条件为：
+        \begin{align*}
+            \int_{-\infty}^{+\infty}\psi^*(x)\psi(x)\,\mathrm{d}x
+            &= \int_{-\infty}^{+\infty}A^2\mathrm{e}^{-ax^2}\,\mathrm{d}x \\
+            &= A^2\int_{-\infty}^{+\infty}\mathrm{e}^{-ax^2}\,\mathrm{d}x \\
+            &= A^2\sqrt{\frac{\pi}{a}} \\
+            &= 1
+        \end{align*}
+        解得：
+        \[
+        A = \sqrt[4]{\frac{a}{\pi}} = \left(\frac{\pi}{a}\right)^{-\tfrac{1}{4}}
+        \]
+
+        \item[1.23]
+        以$x$方向分量为例，根据表象变换公式：
+        \[
+        \psi(x) = \int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\hbar}}\mathrm{e}^{\tfrac{\mathrm{i}p_x x}{\hbar}}C(p_x)\,\mathrm{d}p_x
+        \]
+        \[
+        C(p_x) = \int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\hbar}}\mathrm{e}^{-\tfrac{\mathrm{i}p_x x}{\hbar}}\psi(x)\,\mathrm{d}x
+        \]
+        可以计算出：
+        \begin{align*}
+            \overline{x}
+            &= \int_{-\infty}^{+\infty}\psi^*(x)x\psi(x)\,\mathrm{d}x \\
+            &= \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\hbar}}\mathrm{e}^{\tfrac{\mathrm{i}p_x x}{\hbar}}C(p)\,\mathrm{d}p_x\right]^* x\psi(x)\,\mathrm{d}x \\
+            &= \int_{-\infty}^{+\infty}C^*(p_x)\left[\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\hbar}}\mathrm{e}^{-\tfrac{\mathrm{i}p_x x}{\hbar}}x\psi(x)\,\mathrm{d}x\right]\,\mathrm{d}p_x \\
+            &= \int_{-\infty}^{+\infty}C^*(p_x)\left[\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\hbar}}x\mathrm{e}^{-\tfrac{\mathrm{i}p_x x}{\hbar}}\psi(x)\,\mathrm{d}x\right]\,\mathrm{d}p_x \\
+            &= \int_{-\infty}^{+\infty}C^*(p_x)\left[\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\hbar}}\left(\mathrm{i}\hbar\frac{\partial}{\partial p_x}\right)\mathrm{e}^{-\tfrac{\mathrm{i}p_x x}{\hbar}}\psi(x)\,\mathrm{d}x\right]\,\mathrm{d}p_x \\
+            &= \int_{-\infty}^{+\infty}C^*(p_x)\left(\mathrm{i}\hbar\frac{\partial}{\partial p_x}\right)\left[\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\hbar}}\mathrm{e}^{-\tfrac{\mathrm{i}p_x x}{\hbar}}\psi(x)\,\mathrm{d}x\right]\,\mathrm{d}p_x \\
+            &= \int_{-\infty}^{+\infty}C^*(p_x)\left(\mathrm{i}\hbar\frac{\partial}{\partial p_x}\right)C(p_x)\,\mathrm{d}p_x
+        \end{align*}
+        故在$p$表象中$\hat{x} = \mathrm{i}\hbar\dfrac{\partial}{\partial p_x}$，同理可以计算出$y$方向分量和$z$方向分量，由于对称性：
+        \[
+        \left\{
+        \begin{aligned}
+            &\hat{x} = \mathrm{i}\hbar\frac{\partial}{\partial p_x} \\
+            &\hat{y} = \mathrm{i}\hbar\frac{\partial}{\partial p_y} \\
+            &\hat{z} = \mathrm{i}\hbar\frac{\partial}{\partial p_z} \\
+        \end{aligned}
+        \right.,\qquad
+        \hat{\bm{r}} = \mathrm{i}\hbar\nabla_p
+        \]
+
+        \item[1.30]
+        以$x$方向分量为例：
+
+        $\hat{\bm{p}} \times \hat{\bm{l}}$的$x$方向分量为：
+        \begin{align*}
+            [p_y,l_z]
+            &= p_y l_z - p_z l_y \\
+            &= \left(-\mathrm{i}\hbar\frac{\partial}{\partial y}\right) \cdot (-\mathrm{i}\hbar)\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right) - \left(-\mathrm{i}\hbar\frac{\partial}{\partial z}\right) \cdot (-\mathrm{i}\hbar)\left(z\frac{\partial}{\partial x} - x\frac{\partial}{\partial z}\right) \\
+            &= -\hbar^2\left(x\frac{\partial^2}{\partial y^2} - \frac{\partial}{\partial x} - y\frac{\partial^2}{\partial y \partial x}\right) + \hbar^2\left(\frac{\partial}{\partial x} + z\frac{\partial^2}{\partial z \partial x} - x\frac{\partial^2}{\partial z^2}\right) \\
+            &= \hbar^2\left(2\frac{\partial}{\partial x} + y\frac{\partial^2}{\partial y \partial x} + z\frac{\partial^2}{\partial z \partial x} - x\frac{\partial^2}{\partial z^2} - x\frac{\partial^2}{\partial y^2}\right)
+        \end{align*}
+        $\hat{\bm{l}} \times \hat{\bm{p}}$的$x$方向分量为：
+        \begin{align*}
+            [l_y,p_z]
+            &= l_y p_z - l_z p_y \\
+            &= (-\mathrm{i}\hbar)\left(z\frac{\partial}{\partial x} - x\frac{\partial}{\partial z}\right) \cdot \left(-\mathrm{i}\hbar\frac{\partial}{\partial z}\right) - (-\mathrm{i}\hbar)\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right) \cdot \left(-\mathrm{i}\hbar\frac{\partial}{\partial y}\right) \\
+            &= -\hbar^2\left(z\frac{\partial^2}{\partial x \partial z} - x\frac{\partial^2}{\partial z^2}\right) + \hbar^2\left(x\frac{\partial^2}{\partial y^2} - y\frac{\partial^2}{\partial x \partial y}\right) \\
+            &= \hbar^2\left(x\frac{\partial^2}{\partial z^2} + x\frac{\partial^2}{\partial y^2} - y\frac{\partial^2}{\partial x \partial y} - z\frac{\partial^2}{\partial x \partial z}\right)
+        \end{align*}
+        故$\hat{\bm{p}} \times \hat{\bm{l}} + \hat{\bm{l}} \times \hat{\bm{p}}$的$x$方向分量为：
+        \[
+        2\hbar^2\frac{\partial}{\partial x}
+        = 2\mathrm{i}\hbar\left(-\mathrm{i}\hbar\frac{\partial}{\partial x}\right)
+        = 2\mathrm{i}\hbar p_x
+        \]
+        同理可以计算出$y$方向分量和$z$方向分量，由于对称性：
+        \[
+        \hat{\bm{p}} \times \hat{\bm{l}} + \hat{\bm{l}} \times \hat{\bm{p}} = 2\mathrm{i}\hbar\hat{\bm{p}}
+        \]
+
+    \end{itemize}
+
+\end{document}

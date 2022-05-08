@@ -1,0 +1,150 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.25cm,right=2.25cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\large
+
+    \title{\textbf{实测天体物理\uppercase\expandafter{\romannumeral1}（光学与红外）作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2020年12月8日}
+
+    \maketitle
+
+    \section*{第一题}
+
+    取$\lambda_{\mathrm{eff}} = 4714\mathring{\mathrm{A}}$（对频率加权的平均波长），$\Delta\lambda = 988\mathring{\mathrm{A}}$，则有：
+    \[
+    h\nu = \frac{hc}{\lambda_{\mathrm{eff}}} = 4.213928051 \times 10^{-19}\,\mathrm{J}
+    \]
+    \[
+    \Delta\nu = \frac{c}{\lambda_{\mathrm{eff}} - \dfrac{\Delta\lambda}{2}} - \frac{c}{\lambda_{\mathrm{eff}} + \dfrac{\Delta\lambda}{2}} = 1.347703080 \times 10^{14}\,\mathrm{Hz}
+    \]
+    以下计算过程中$D$为望远镜有效口径，$d$为$Seeing\ disc$和艾里斑直径的较大者。
+
+    源信号：
+    \begin{align*}
+    S
+    &= \frac{f_{\mathrm{star}}}{h\nu} \cdot \frac{\pi}{4}D^2 \cdot QE \cdot t \\
+    &= \frac{1}{h\nu} \cdot \left(3631 \times 10^{-0.4m_{\mathrm{star}}} \times \Delta\nu \times 10^{-26}\right) \cdot \frac{\pi}{4}D^2 \cdot QE \cdot t \\
+    &= C_1 t
+    \end{align*}
+
+    \begin{align*}
+        C_1
+        &= C_1(m_{\mathrm{star}}, \, D) \\
+        &= \frac{1}{h\nu} \cdot \left(3631 \times 10^{-0.4m_{\mathrm{star}}} \times \Delta\nu \times 10^{-26}\right) \cdot \frac{\pi}{4}D^2 \cdot QE \\
+        &= 4560298170 \times 10^{-0.4m_{\mathrm{star}}} \times D^2
+    \end{align*}
+
+    噪声信号：
+    \begin{align*}
+        N
+        &= \sqrt{\left(\sqrt{N_{\mathrm{star}}^2 + N_{\mathrm{sky}}^2}\right)^2 + N_{\mathrm{sky}}^2} \\
+        &= \sqrt{\left(\sqrt{S + S_{\mathrm{sky}}}\right)^2 + S_{\mathrm{sky}}} \\
+        &= \sqrt{S + 2S_{\mathrm{sky}}} \\
+        &= \sqrt{C_1 t + 2 \cdot \frac{f_{\mathrm{star}}}{h\nu} \cdot \frac{\pi}{4}D^2 \cdot QE \cdot t + \frac{f_{\mathrm{sky}}}{h\nu} \cdot \frac{\pi}{4}D^2 \cdot QE \cdot t} \\
+        &= \sqrt{C_1 t + 2 \cdot \frac{1}{h\nu} \cdot \left(3631 \times 10^{-0.4m_{\mathrm{star}}} \times \Delta\nu \times \frac{\pi}{4}d^2 \times 10^{-26}\right) \cdot \frac{\pi}{4}D^2 \cdot QE \cdot t} \\
+        &= \sqrt{(C_1 + C_2)t}
+    \end{align*}
+
+    \begin{align*}
+        C_2
+        &= C_2(m_{\mathrm{sky}}, \, D, \, d) \\
+        &= 2 \cdot \frac{1}{h\nu} \cdot \left(3631 \times 10^{-0.4m_{\mathrm{sky}}} \times \Delta\nu \times \frac{\pi}{4}d^2 \times 10^{-26}\right) \cdot \frac{\pi}{4}D^2 \cdot QE \\
+        &= 7163299615 \times 10^{-0.4m_{\mathrm{sky}}} \times d^2 \times D^2
+    \end{align*}
+
+    而：
+    \[
+    \frac{S}{N} = \frac{C_1 t}{\sqrt{(C_1 + C_2)t}} = 10
+    \]
+    \[
+    t = \frac{100(C_1+C_2)}{C_1^2}\,(\mathrm{s})
+    \]
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_1.png}
+    \end{center}
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_2.png}
+    \end{center}
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_3.png}
+    \end{center}
+
+    \section*{第二题}
+
+    由：
+    \[
+    t = \frac{100(C_1+C_2)}{C_1^2} = 3600\,\mathrm{s}
+    \]
+    得：
+    \[
+    3600\, C_1^2 - 100\, C_1 - 100\, C_2 = 0
+    \]
+    取正根：
+    \[
+    C_1 = \frac{1 + \sqrt{1 + 144\, C_2}}{72}
+    \]
+    再由
+    \[
+    C_1 = 4560298170 \times 10^{-0.4m_{\mathrm{star}}} \times D^2
+    \]
+    得：
+    \[
+    m_{\mathrm{star}} = -2.5 \log_{10}\frac{C_1}{4560298170 \times D^2}
+    \]
+
+    注意$D = 1\,\mathrm{m}$时，艾里斑直径为$0.11862454\,\mathrm{arcsec} > 0.1\,\mathrm{arcsec}$
+
+    列表如下：
+
+    \vspace{2.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c| }
+                \hline
+                $m_{\mathrm{star}}\,(\mathrm{mag})$ & $m_{\mathrm{sky}}\,(\mathrm{mag/arcsec^2})$ & 19 & 21 & 23 \\
+                \hline
+                \multirow{4}{*}{$D = 1\,\mathrm{m}$} & $Seeing\ disc = 3\,\mathrm{arcsec}$ & 22.079 & 23.076 & 24.067 \\
+                \cline{2-5}
+                & $Seeing\ disc = 1\,\mathrm{arcsec}$ & 23.267 & 24.257 & 25.231 \\
+                \cline{2-5}
+                & $Seeing\ disc = 0.5\,\mathrm{arcsec}$ & 24.013 & 24.993 & 25.942 \\
+                \cline{2-5}
+                & $Seeing\ disc = 0.1\,\mathrm{arcsec}$ & 25.532 & 26.446 & 27.236 \\
+                \hline
+                \multirow{4}{*}{$D = 4\,\mathrm{m}$} & $Seeing\ disc = 3\,\mathrm{arcsec}$ & 23.586 & 24.585 & 25.583 \\
+                \cline{2-5}
+                & $Seeing\ disc = 1\,\mathrm{arcsec}$ & 24.777 & 25.775 & 26.768 \\
+                \cline{2-5}
+                & $Seeing\ disc = 0.5\,\mathrm{arcsec}$ & 25.528 & 26.523 & 27.510 \\
+                \cline{2-5}
+                & $Seeing\ disc = 0.1\,\mathrm{arcsec}$ & 27.262 & 28.237 & 29.173 \\
+                \hline
+                \multirow{4}{*}{$D = 10\,\mathrm{m}$} & $Seeing\ disc = 3\,\mathrm{arcsec}$ & 24.581 & 25.581 & 26.580 \\
+                \cline{2-5}
+                & $Seeing\ disc = 1\,\mathrm{arcsec}$ & 25.773 & 26.772 & 27.770 \\
+                \cline{2-5}
+                & $Seeing\ disc = 0.5\,\mathrm{arcsec}$ & 26.525 & 27.523 & 28.518 \\
+                \cline{2-5}
+                & $Seeing\ disc = 0.1\,\mathrm{arcsec}$ & 28.267 & 29.257 & 30.231 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+\end{document}

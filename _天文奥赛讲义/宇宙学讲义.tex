@@ -1,0 +1,499 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[shortlabels]{enumitem}
+\usepackage{setspace}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage[fontset=none]{ctex}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+\title{\textbf{宇宙学讲义}}
+\author{北京大学\ \ \ \ 张植竣}
+\date{\today}
+\maketitle
+
+\section*{宇宙动力学}
+
+\subsection*{宇宙学原理}
+
+宇宙在\textbf{大尺度上}是\textbf{均匀的}（物质分布），\textbf{各向同性的}（物理规律）。
+
+\subsection*{从宇宙学原理导出Hubble定律的形式}
+
+首先这是一个显然成立的方程:
+\[
+\bm{v}_{B\rightarrow P} = \bm{v}_{A\rightarrow P} - \bm{v}_{B\rightarrow A}
+\]
+
+以$\bm{v}(\cdot)$表示起始于P点的长度矢量$\bm{r}$变率的函数，以$\bm{u}(\cdot)$表示起始于B点的长度矢量$\bm{a}$变率的函数。考虑一个在P点的观测者观察A、B两颗恒星的退行速度，另一个在B点的观测者观测A恒星的退行速度，我们有：
+
+\begin{minipage}{0.56\linewidth}
+    \begin{align*}
+        &\bm{v}(\bm{r'}) = \bm{v}(\bm{r}) - \bm{u}(\bm{a}),
+        \quad \bm{r'} = \bm{r} - \bm{a} \\
+        &\bm{v}(\bm{r} - \bm{a}) = \bm{v}(\bm{r}) - \bm{u}(\bm{a}) \\
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+    \begin{center}
+        \begin{tikzpicture}[>=Stealth]
+            \draw [->] (0,0) -- (-1,2);
+            \draw [->] (0,0) -- (2,1.5);
+            \draw [->] (2,1.5) -- (-1,2);
+            \draw (-1.2,2.2) node {A};
+            \draw (2.25,1.5) node {B};
+            \draw (-0.05,-0.25) node {P};
+            \draw (0.5,2) node {$\bm{a}$};
+            \draw (-0.75,0.9) node {$\bm{r}$};
+            \draw (1.15,0.6) node {$\bm{r}'$};
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}
+
+宇宙的各向同性意味着$\bm{v}(\cdot)$和$\bm{u}(\cdot)$的函数形式是相同的。（速度的函数形式不能与你在宇宙的何处有关），于是有：
+\[
+\bm{v}(\bm{r} - \bm{a}) = \bm{v}(\bm{r}) - \bm{v}(\bm{a})
+\]
+
+同理可得：
+\[
+\bm{v}(k\bm{r}) = k\bm{v}(\bm{r}), \quad k \in \mathbb{R}
+\]
+
+这说明$\bm{v}(\cdot)$是$\bm{r}$的线性函数，满足此关系的速度函数只能是：
+\[
+\boxed{\bm{v}(\bm{r}) = H(t)\bm{r}}
+\]
+这便是\textbf{Hubble定律}。$H(t)$表示Hubble常数\textbf{可以随时间变化}（但是\textbf{不随空间变化}）。注意我们在这里并没有要求膨胀（可以是$H(t) \equiv 0$），但是只要宇宙学原理成立，而且宇宙正在膨胀，那么它必然满足这一规律。
+
+\subsection*{尺度因子与Hubble常数}
+
+考虑宇宙现在的一段长度$R_0$，因为宇宙在膨胀，在过去的某个$t$时刻这段长度应该是$R_t$，则\textbf{尺度因子}（无量纲量）定义为：
+\[
+\boxed{R(t) = \frac{R_t}{R_0}}
+\]
+
+显然，对\textbf{当前时刻}，$\boxed{R = 1}$。
+
+而Hubble常数定义为：
+\[
+\boxed{H = \frac{\dot{R}(t)}{R(t)}}
+\]
+
+并定义约化Hubble常数：
+\[
+h = \frac{H}{100\,\mathrm{km\cdot s^{-1}\cdot Mpc^{-1}}}
+\]
+
+注意$H$和$R$都是随时间变化的，所以我们说的Hubble常数都要加\textbf{“当前值”}才是约$70\,\mathrm{km\cdot s^{-1}\cdot Mpc^{-1}}$。
+
+\subsection*{宇宙学红移}
+
+过去某时刻$t$，某天体发射了一个光子，波长为$\lambda_t$，在当前被观测者观测到，此时波长为$\lambda_0$，从尺度因子的定义可以得到：
+\[
+\frac{\lambda_0}{\lambda_t} = \frac{R(0)}{R(t)}
+\]
+
+注意$\boxed{\lambda_t}$才是（发射时的）\textbf{静止波长}，$\boxed{\lambda_0}$是（接收到的）\textbf{红移以后的波长}，于是有：
+\[
+1 + z = 1 + \frac{\lambda_0 - \lambda_t}{\lambda_t} = \frac{\lambda_0}{\lambda_t} = \frac{R(0)}{R(t)}
+\]
+
+考虑到$R(0) = 1$，且$R(t) < 1$（发射时刻在过去）则有：
+\[
+1 + z = \frac{1}{R(t)} = \frac{1}{R} > 1
+\]
+
+故：
+\[
+\boxed{z = \frac{1}{R} - 1, \quad R = \frac{1}{1 + z}}
+\]
+
+这给出了宇宙学红移$z$与尺度因子$R$之间的关系。
+
+\subsection*{Newton宇宙学}
+
+膨胀宇宙的严格解需要用广义相对论才能得出，但是宇宙学原理告诉我们，宇宙各个局部的运动状态都是一样的，所以我们可以在一个十分小的局部内研究宇宙膨胀的动力学，在这个局部内星体的相对运动速度小于光速，于是可以利用Newton力学。考虑一个膨胀的球体，其质量守恒，体积以$V \propto R^3$变化，参考历元$t_0$时刻其密度为$\rho_0$，则任意时刻密度$\rho$与尺度因子$R$之间的关系为：
+\[
+\rho = \frac{\rho_0}{R^{3}}
+\]
+
+在牛顿引力的作用下，膨胀减速：
+\[
+\ddot{R} = -\frac{GM}{R^2} = -\frac{4\pi}{3}G \rho R = -\frac{4\pi G\rho_0}{3R^2}
+\]
+
+其中$R$为标度因子，负号表示引力沿径向向内（以向外为正方向）指向球心，（质量守恒，体积膨胀，密度并非常量）。
+两边同乘$\dot{R}$得到：
+\[
+\dot{R}\ddot{R} = -\frac{4\pi G\rho_0}{3R^2} \dot{R}
+\]
+
+两边同时积分：
+\[
+\frac{1}{2}\dot{R}^2 = \frac{4\pi G\rho_0}{3R} + C
+\]
+
+在广义相对论里面可以证明，\textbf{宇宙曲率参数}$\boxed{k = -2C}$，该参数描述了宇宙学的拓扑性质，宇宙诞生后$k$就保持不变。则上式可以写为：
+\[
+\boxed{\dot{R}^2 = \frac{8\pi G\rho_0}{3R} - k}
+\]
+
+下面分三种情况讨论：
+
+\textbf{若$k > 0$，宇宙闭合：}
+
+由$\ddot{R} < 0$得
+\[
+\dot{R}^2 \to 0,\qquad \frac{8\pi G\rho_0}{3R} \to k
+\]
+\begin{spacing}{2.0}
+宇宙在达到最大半径$\boxed{R_{\mathrm{max}} = \dfrac{8\pi G\rho_0}{3k}}$之后，开始收缩。
+\end{spacing}
+\bigskip
+
+\textbf{若$k < 0$，宇宙开放：}
+
+此时$\dot{R}^2 > 0$，$\dot{R} > 0$，$R \to +\infty$
+
+则有：（注意$k < 0$，$-k > 0$）
+\[
+\frac{8\pi G\rho_0}{3R} \to 0,\qquad \dot{R} \to \sqrt{-k}
+\]
+
+膨胀将永远继续下去，这样的宇宙是开放的。
+\bigskip
+
+\textbf{若$k = 0$，宇宙平直：}
+\[
+\dot{R}^2 = \frac{8\pi G\rho_0}{3R},\qquad \sqrt{R}\dot{R} = \sqrt{\frac{8\pi G\rho_0}{3}}
+\]
+
+\begin{spacing}{2.0}
+据定义，$\dot{R} = \dfrac{\mathrm{d}R}{\mathrm{d}t}$，分离变量后有：
+\end{spacing}
+
+\[
+\sqrt{R}\,\mathrm{d}R = \sqrt{\frac{8\pi G\rho_0}{3}}\mathrm{d}t
+\]
+
+两边积分得：
+\[
+\frac{2}{3}R^{\tfrac{3}{2}} = \sqrt{\frac{8\pi G\rho_0}{3}}t
+\]
+
+则
+\[
+\boxed{R = \sqrt[3]{6\pi G\rho_0}\cdot t^{\tfrac{2}{3}} \propto t^{\tfrac{2}{3}}}
+\]
+
+这说明宇宙总是在膨胀，但是膨胀速率减小。
+
+定义\textbf{减速因子}：
+\[
+\boxed{q = -\frac{R\ddot{R}}{\dot{R}^2}}
+\]
+
+这样的定义使$q$是一个正数，且分子、分母之间消去了长度和时间的量纲。即$q$是一个无量纲的量，并与选定的参考历元$t_0$无关。
+
+定义\textbf{宇宙临界密度：}
+\[
+\boxed{\rho_c = \frac{3H^2}{8\pi G}}
+\]
+
+其意义也可以从下式中理解：
+\[
+E = \frac{1}{2}m\dot{R}^2 - \frac{GMm}{R} = m\left(\frac{1}{2}H^2R^2 - \frac{G\rho_c R^3}{R}\right) = 0
+\]
+
+它与约化Hubble常数$h$的关系为：
+\[
+\rho_c(h) \approx 1.8785 \times 10^{-26}h^2\,\mathrm{kg/m^3}
+\]
+
+又定义\textbf{宇宙密度参数：}
+\[
+\boxed{\Omega_m = \frac{\rho}{\rho_c} = \frac{8\pi G\rho}{3H^2}}
+\]
+
+\begin{spacing}{2.0}
+因为$\ddot{R} = -\dfrac{4\pi}{3} G\rho R$，$H = \dfrac{\dot{R}}{R}$，故：
+\[
+q = \frac{4\pi G\rho}{3H^2} = \frac{1}{2}\Omega_m
+\]
+
+联立$\dot{R}^2 = \dfrac{8\pi G\rho_0}{3R}$及$H = \dfrac{\dot{R}}{R}$又得：
+\[
+H^2R^2 = \frac{8\pi G\rho_0}{3R}
+\]
+\end{spacing}
+
+则：
+\[
+H^2 = \frac{8\pi G\rho_0}{3R^3} = \frac{8\pi}{3}G\rho
+\]
+
+于是：
+\[
+\rho = \frac{3H^2}{8\pi G} = \rho_c,\qquad \Omega_m = 1,\qquad q = \frac{1}{2}
+\]
+
+综上，对于平直宇宙：$k = 0$，$\Omega_m = 1$，$q = \dfrac{1}{2}$
+
+\subsection*{宇宙学视界与Hubble距离}
+
+如果光源位于这样远的位置，使得观测者接收到的光子波长红移恰为无穷大（光子能量为零，即接收不到光子），则光源所在位置就被称为宇宙学视界。
+
+这里我们不加推导地给出宇宙学视界距离的表达式（严格推导较为复杂，并且需要用到Robertson-Walker度规）：
+\[
+\boxed{D = \frac{1}{1 - n}ct}
+\]
+
+其中$D$为视界半径，$c$为光速，$n$的意义为：真实宇宙半径$R \propto t^n$。
+
+Hubble距离定义为退行速度为光速的距离：
+\[
+\boxed{L_H = \frac{c}{H} \approx 2998h^{-1}\,\mathit{Mpc}}
+\]
+
+这给出了目前可见宇宙的近似大小。
+
+\subsection*{因果律}
+
+在$t=t_1$时尺度因子为$R_1$，光子最多前行距离为$ct_1$（忽略从大爆炸到光子脱耦的时间间隔）。
+
+在$t=t_2$时尺度因子为$R_2$，$x=0$和$x=ct_1$处发出的光经过距离$c(t_2-t_1)$到达观测者，则该两点在当前时刻看来的线距离为：
+\[
+c \, t_1\frac{R_2}{R_1}
+\]
+
+角距离为：
+\[
+\theta = \left(c \, t_1\frac{R_2}{R_1}\right) \div [c(t_2 - t_1)] = \frac{t_1 R_2}{(t_2 - t_1)R_1}
+\]
+
+当前时刻$R_2=1$，$t_2=t_0$为当前宇宙年龄，对于宇宙极早期$t_1=t$，
+$R_1=R$，$t_2 - t_1 \approx t_0$，应该有：
+\[
+\boxed{\theta_0 = \frac{t}{t_0 R}}
+\]
+
+也就是说，天空上张角大于$\theta_0$的两点之间在时间$t$之后没有因果联系。
+
+\section*{宇宙热力学}
+
+\subsection*{状态参量随空间的演化}
+
+在讨论宇宙的演化史时，我们经常需要知道状态参量$T$、$\rho$随时空变量$t$、$R$变化的规律。为此我们必须区分宇宙的两个组成部分：由光子组成的热辐射（记作$r$）和由有静质量粒子组成的物质（记作$m$）。光子是极端相对论性的，物质粒子一般是非相对论性的，由理想气体的压强公式：
+\[
+p = \frac{1}{3}n\overline{\bm{p}\cdot\bm{v}}
+\]
+
+其中$n$为粒子数密度，$\bm{p}$和$\bm{v}$分别为粒子的动量和速度，分别对辐射（$\overline{\bm{p}\cdot\bm{v}} = \bar{\varepsilon}$，$\bar{\varepsilon}$为单个粒子的平均动能）和物质（$\overline{\bm{p}\cdot\bm{v}} = 2\bar{\varepsilon}$）讨论得：
+\[
+\boxed{
+\left\{
+\begin{aligned}
+    &p_r = \frac{1}{3}u_r \\
+    &p_m = \frac{2}{3}u_m
+\end{aligned}
+\right.
+}
+\]
+
+其中$p$为压强，$u$为内能密度。
+
+宇宙膨胀可以用\textbf{绝热公式}描述：
+\[
+\boxed{\mathrm{d}U = -p\,\mathrm{d}V}
+\]
+
+下面分别讨论辐射和物质两种情况：
+
+\textbf{辐射的绝热膨胀：}
+
+将内能写成$U_r = u_r V$，则$\mathrm{d}U_r = V\mathrm{d}u_r + u_r\mathrm{d}V$，代入$p_r = \dfrac{1}{3}u_r$得：
+\[
+V\mathrm{d}u_r = \mathrm{d}U_r - u_r\mathrm{d}V = -p_r\mathrm{d}V - u_r\mathrm{d}V = -\frac{4}{3}u_r\mathrm{d}V
+\]
+
+即：
+\[
+\frac{\mathrm{d}u_r}{u_r} = -\frac{4}{3}\left(\frac{\mathrm{d}V}{V}\right)
+\]
+
+积分得：
+\[
+u_r \propto V^{-\tfrac{4}{3}} \propto R^{-4}
+\]
+
+因辐射的质量密度$\rho_r = \dfrac{u_r}{c^2}$，故有：
+\[
+\boxed{\rho_r \propto R^{-4}}
+\]
+
+又因为$\rho_r \propto T_r^{\,4}$（Stefan-Boltzmann定律），得到：
+\[
+\boxed{T_r \propto R^{-1}}
+\]
+\bigskip
+
+\textbf{物质的绝热膨胀：}
+
+将内能写成$U_m = N\overline{\varepsilon_m}$（$N$为总粒子数，$\overline{\varepsilon_m}$为单个粒子的平均动能），则$\mathrm{d}U_m = N\mathrm{d}\overline{\varepsilon_m}$。又因为：
+\[
+p_m = \frac{2}{3}u_m = \frac{2N\overline{\varepsilon_m}}{3V}
+\]
+
+于是可以将绝热公式$\mathrm{d}U = -p\,\mathrm{d}V$写为：
+\[
+N\mathrm{d}\overline{\varepsilon_m} = \frac{2N\overline{\varepsilon_m}\mathrm{d}V}{3V}
+\]
+
+即：
+\[
+\frac{\mathrm{d}\overline{\varepsilon_m}}{u_r} = -\frac{2}{3}\left(\frac{\mathrm{d}V}{V}\right)
+\]
+
+积分得：
+\[
+\overline{\varepsilon_m} \propto V^{-\tfrac{2}{3}} \propto R^{-2}
+\]
+
+因为$\overline{\varepsilon_m} \propto T_m$，故有：
+\[
+\boxed{T_m \propto R^{-2}}
+\]
+
+又因为质量守恒：$\rho_m V = \mathrm{const.}$，我们有：
+\[
+\rho_m \propto V^{-1} \propto R^{-3}
+\]
+
+由以上两式得：
+\[
+\boxed{\rho_m \propto T_m^{\,\tfrac{3}{2}}}
+\]
+
+\subsection*{宇宙的热演化规律}
+
+\textbf{宇宙从辐射统治转变为物质统治}：
+
+对比辐射膨胀规律$\rho_r \propto R^{-4}$与物质膨胀规律$\rho_m \propto R^{-3}$，可以看出，随着$R$的膨胀，$\rho_r$比$\rho_m$减小得快。让我们先来估算一下当前时刻（用下标0表示）$\rho_{r0}$和$\rho_{m0}$的大小。微波背景辐射的温度为$T_{r0}=2.7255\,\mathrm{K}$，按照Stefan-Boltzmann定律：
+\[
+\rho_{r0} = \frac{4\sigma}{c^3}T_{r0}^{\,4} = 4.645\times10^{-31}\,\mathrm{kg/m^3}
+\]
+
+而$\rho_{m0}$可以按照临界密度$\rho_c$估计：（宇宙近似是平直的，并取$h = 0.678$）
+\[
+\rho_{m0} = \rho_c = 8.635\times10^{-27}\,\mathrm{kg/m^3}
+\]
+
+则大约有$\rho_{m0} = 1.859 \times 10^{4}\rho_{r0}$。可见当今的宇宙是由物质统治的。
+
+设$\dfrac{\rho_m}{\rho_r} = k$，由于$\rho_r \propto R^{-4}$，$\rho_m \propto R^{-3}$，则：
+\[
+\frac{k_0}{k} = \frac{R_0}{R} = \frac{T_r}{T_{r0}}
+\]
+
+即在
+\[
+\frac{T_r}{T_{r0}} = \frac{\rho_{m0}}{\rho_{r0}} = 1.859 \times 10^4
+\]
+
+时，$\rho_r = \rho_m$（辐射与物质达到均衡）。那时的辐射温度$T_r = k_0 T_{r0} = 5.0667\times10^4\,\mathrm{K}$。由辐射——物质均衡时刻向上回溯，就进入辐射统治时期。时间上越早，辐射统治就越占优势，时间上越晚，物质统治就越占优势。极早期的宇宙里辐射是占绝对统治地位的。
+\bigskip
+
+\textbf{中性原子复合后辐射与物质产生温差}：
+
+由于$T_r \propto R^{-1}$，$T_m \propto R^{-2}$，在中性原子复合前由带电粒子组成的物质与辐射耦合在一起，共同处于热平衡态，温度相等。通常认为由辐射统治时期向物质统治时期的转变大体上发生在中性原子复合的时候，或此前不久。在辐射统治时期，共同温度等于$T_r$，在辐射与物质脱耦，中性原子复合后，随着$R$的增大，$T_m$下降得快，$T_r$下降得慢，$T_r > T_m$，差距越来越大。
+\bigskip
+
+\subsection*{状态参量随时间的演化}
+
+对于平直宇宙：
+\[
+E = \frac{1}{2}m\dot{R}^2 - \frac{GMm}{R} = \frac{1}{2}m\left(\dot{R}^2 - \frac{8\pi G\rho}{3R^2}\right) = 0
+\]
+
+可得：
+\[
+\frac{\dot{R}}{R} = \frac{\mathrm{d}\ln R}{\mathrm{d}t} = \sqrt{\frac{8\pi G\rho}{3}}
+\]
+
+又因为$\rho_r \propto R^{-4}$，$\rho_m \propto R^{-3}$，应该有：
+\[
+\frac{\mathrm{d}\ln R}{\mathrm{d}t} = -\frac{1}{4}\left(\frac{\mathrm{d}\ln\rho_r}{\mathrm{d}t}\right)
+\]
+\[
+\frac{\mathrm{d}\ln R}{\mathrm{d}t} = -\frac{1}{3}\left(\frac{\mathrm{d}\ln\rho_m}{\mathrm{d}t}\right)
+\]
+
+联立得：
+\[
+-\frac{1}{4}\left(\frac{\mathrm{d}\ln\rho_r}{\mathrm{d}t}\right) = \sqrt{\frac{8\pi G\rho_r}{3}}
+\]
+\[
+-\frac{1}{3}\left(\frac{\mathrm{d}\ln\rho_m}{\mathrm{d}t}\right) = \sqrt{\frac{8\pi G\rho_m}{3}}
+\]
+
+代入$\mathrm{d}\ln\rho = \dfrac{\mathrm{d}\rho}{\rho}$，分别解得：
+\[
+\frac{1}{2}\left(\rho_r^{-\tfrac{1}{2}} - \rho_{r0}^{-\tfrac{1}{2}}\right) = \sqrt{\frac{8\pi G}{3}}(t-t_0)
+\]
+\[
+\frac{2}{3}\left(\rho_m^{-\tfrac{1}{2}} - \rho_{m0}^{-\tfrac{1}{2}}\right) = \sqrt{\frac{8\pi G}{3}}(t-t_0)
+\]
+
+在$t \gg t_0$的情况下，$\rho_{r0} \gg \rho_r$，$\rho_{m0} \gg \rho_m$，上式中的初始项（带下标0的积分常数）可以忽略，于是得：
+\[
+t = \sqrt{\frac{3}{32\pi G\rho_r}} = \sqrt{\frac{1}{6\pi G\rho_m}}
+\]
+
+即对于辐射和物质都有：
+\[
+\boxed{t \propto \rho^{-\tfrac{1}{2}}}
+\]
+
+最终，我们得到这样的规律：
+\[
+\boxed{
+\left\{
+\begin{aligned}
+    &\text{辐射统治时期：}t \propto R^2,\qquad T_m = T_r \propto t^{-\tfrac{1}{2}} \\
+    &\text{物质统治时期：}t \propto R^{\tfrac{3}{2}},\qquad T_m \propto t^{-\tfrac{4}{3}},\qquad T_r \propto t^{-\tfrac{2}{3}} \\
+\end{aligned}
+\right.
+}
+\]
+
+\section*{参考书目}
+\bigskip
+\begin{enumerate}[{[1]\ },leftmargin=\parindent,align=left,labelwidth=\parindent,labelsep=0pt]
+	\item M. L. Kutner，天文学：物理新视野[\,M\,]。萧耐园，胡方浩译。长沙：湖南科学技术出版社，2005。
+	\item 向守平，天体物理概论[\,M\,]。安徽：中国科学技术大学出版社。
+	\item 赵凯华，罗蔚茵，新概念物理教程$\cdot$热学[\,M\,]。第二版。北京：高等教育出版社，1998。
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,314 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+    \title{\textbf{天体物理导论作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2021年4月5日}
+    \maketitle
+
+    \section*{第四章}
+
+    \begin{itemize}
+
+        \item[2.]
+        考虑通过气体压强$p_g$求解$T_0$和$\rho_0$的关系（理想气体状态方程）：
+        \[
+        p_g = \beta p_0 = \frac{N_\mathrm{A}k_\mathrm{B}}{\mu}\rho_0T_0
+        \]
+        即得：
+        \begin{equation}
+            \rho_0 \propto \frac{p_0}{T_0}
+        \end{equation}
+        之后考虑$p_0$、$\rho_0$和$T_0$关于$M$和$R$的关系，从中消去$R$和$p_0$，得到$\rho_0$关于$M$的关系。
+
+        由$\overline{\rho}=\dfrac{3M}{4\pi R^3}=\dfrac{3\rho_0}{\xi_1}|\theta'(\xi_1)|$得：
+        \begin{equation}
+            \rho_0 \propto \frac{M}{R^3}
+        \end{equation}
+        由流体引力平衡方程$K\rho_0^{\tfrac{1-n}{n}}=\dfrac{4\pi GR^2}{(n+1)\xi_1^2}$得：
+        \begin{equation}
+            \rho_0 \propto R^{\tfrac{2n}{1-n}}
+        \end{equation}
+        由状态方程$p_0=K\rho_0^{\tfrac{1+n}{n}}$得：
+        \begin{equation}
+            p_0 \propto \rho_0^{\tfrac{1+n}{n}}
+        \end{equation}
+        联立(2)式和(3)式，可得：
+        \[
+        R \propto M^{\tfrac{1-n}{3-n}}
+        \]
+        代入(3)得：
+        \begin{equation}
+            \rho_0 \propto M^{\tfrac{2n}{3-n}}
+        \end{equation}
+        将(4)代入(1)得：
+        \begin{equation}
+            \rho_0 \propto T_0^{n}
+        \end{equation}
+        又由题意：
+        \begin{equation}
+            T_0 \propto M^t
+        \end{equation}
+        联立(5)、(6)、(7)三式，可得：
+        \begin{equation}
+            t = \frac{2}{3-n}
+        \end{equation}
+        由题意$\rho\propto M^\alpha$，且由(6)、(7)有$\rho\propto T_0^n\propto M^{tn}$，则有：
+        \begin{equation}
+            \alpha = tn = \frac{2n}{3-n}
+        \end{equation}
+        联立(8)、(9)式消去$n$即得：
+        \[
+        \alpha = 3t-2 \in (-1,-\frac{1}{2})
+        \]
+        故中心密度$\rho_0$与$M$的关系为：
+        \[
+        \rho_0 \propto M^{3t-2}
+        \]
+
+        \item[3.]
+        一次$4\mathrm{^{1}H} \to \mathrm{^{4}He} + 2\mathrm{e^+} + 2\nu_\mathrm{e}$反应的质量亏损为：
+        \[
+        \Delta m = 4m_{\mathrm{p}} - m_{\alpha} - 2m_{\mathrm{e^+}} - 2m_{\nu_\mathrm{e}} = 4.4008\times10^{-26}\,\mathrm{g}
+        \]
+        释放能量为：
+        \[
+        \Delta E = \Delta mc^2 = 3.9552\times10^{-5}\,\mathrm{erg}
+        \]
+        则太阳内部单位时间（即$1\,\mathrm{s}$）释放的中微子个数为反应次数的两倍：
+        \[
+        N_{\nu_\mathrm{e}} = \frac{2L_{\mathrm{solar}}\Delta t}{\Delta E} = 1.97\times10^{38}
+        \]
+
+        \item[6.]
+        对于平衡的旋转流体中子星有：
+        \[
+        \omega_0 = 2e\sqrt{\frac{2\pi\rho G}{15}}
+        \]
+        则流体时（$\mu = 0$）的离心率$e$为：和分别为：
+        \[
+        e = \frac{1}{2T_0}\sqrt{\frac{30\pi}{\rho G}} = 0.086225
+        \]
+        参量$\varepsilon_0 = \dfrac{I-I_0}{I_0}$为：
+        \[
+        \varepsilon_0 = \frac{I-I_0}{I_0} = \frac{e^2}{3} = 2.478\times10^{-3}
+        \]
+        冷却后，中子星变为固体，总能量为：
+        \[
+        E = E_0 + \frac{L^2}{2I} + A\varepsilon^2 + \frac{\mu V}{2}(\varepsilon - \varepsilon_0)^2
+        \]
+        令$\dfrac{\mathrm{d}E}{\mathrm{d}\varepsilon} = 0$，大致有：
+        \[
+        \frac{1}{2}I_0\omega^2 = 2A\varepsilon + \mu V\varepsilon
+        \]
+        计算得平衡时的$\varepsilon$为：
+        \[
+        \varepsilon = 6.195\times10^{-4}
+        \]
+        积累的弹性势能为：
+        \[
+        E_\mathrm{el} = \frac{\mu V}{2}(\varepsilon - \varepsilon_0)^2 = 7.2359\times10^{42}\,\mathrm{erg}
+        \]
+
+        \item[\textbf{补充题}]
+        经典双星运动规律给出：
+        \[
+        E = -\frac{Gm_1 m_2}{2a},\qquad \frac{a^3}{T^2} = \frac{G(m_1 + m_2)}{4\pi^2}
+        \]
+        由$L_{\mathrm{gw}} = \dfrac{\mathrm{d}E}{\mathrm{d}t} = \dfrac{32 G^4 m_1^2 m_2^2 (m_1 + m_2)}{5c^5 a^5}$得：
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}t}\left(-\frac{Gm_1 m_2}{2a}\right) = \frac{32 G^4 m_1^2 m_2^2 (m_1 + m_2)}{5c^5 a^5}
+        \]
+        即：
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}t}\left(-\frac{1}{2a}\right) = -\frac{1}{2a^2}\left(\frac{\mathrm{d}a}{\mathrm{d}t}\right) = \frac{32 G^3 m_1 m_2 (m_1 + m_2)}{5c^5 a^5}
+        \]
+        这给出：
+        \[
+        \frac{\mathrm{d}a}{\mathrm{d}t} = -\frac{64 G^3 m_1 m_2 (m_1 + m_2)}{5c^5 a^3}
+        \]
+        又由$\dfrac{a^3}{T^2} = \dfrac{G(m_1 + m_2)}{4\pi^2}$得：
+        \[
+        T = 2\pi\sqrt{\frac{a^3}{G(m_1 + m_2)}}
+        \]
+        则：
+        \[
+        \frac{\mathrm{d}T}{\mathrm{d}a} = 3\pi\sqrt{\frac{a}{G(m_1 + m_2)}}
+        \]
+        于是有：
+        \begin{align*}
+            \frac{\mathrm{d}T}{\mathrm{d}t}
+            &= \frac{\mathrm{d}T}{\mathrm{d}a} \cdot \frac{\mathrm{d}a}{\mathrm{d}t} \\
+            &= 3\pi\sqrt{\frac{a}{G(m_1 + m_2)}} \cdot \left(-\frac{64 G^3 m_1 m_2 (m_1 + m_2)}{5c^5 a^3}\right) \\
+            &= -\frac{192\pi}{5} \cdot \frac{G^{\tfrac{5}{2}} (m_1 + m_2)^{\tfrac{1}{2}} m_1 m_2}{c^5 a^{\tfrac{5}{2}}} \\
+        \end{align*}
+        最后得到：
+        \begin{align*}
+            \left(-\frac{5}{192\pi} \cdot \frac{\mathrm{d}T}{\mathrm{d}t}\right)^{\tfrac{3}{5}}\frac{c^3 T}{2\pi G}
+            &= \frac{G^{\tfrac{3}{2}} (m_1 + m_2)^{\tfrac{3}{10}} (m_1 m_2)^\tfrac{3}{5}}{c^3 a^{\tfrac{3}{2}}} \cdot \frac{c^3 T}{2\pi G} \\
+            &= \frac{G^{\tfrac{3}{2}} (m_1 + m_2)^{\tfrac{3}{10}} (m_1 m_2)^\frac{3}{5}}{c^3 a^{\tfrac{3}{2}}} \cdot \frac{c^3}{2\pi G} \cdot 2\pi\sqrt{\dfrac{a^3}{G(m_1 + m_2)}} \\
+            &= \frac{(m_1 m_2)^{\tfrac{3}{5}}}{(m_1 + m_2)^{\tfrac{1}{5}}} \\
+        \end{align*}
+        即证明啾质量：
+        \[
+        \frac{(m_1 m_2)^{\tfrac{3}{5}}}{(m_1 + m_2)^{\tfrac{1}{5}}} = \left(-\frac{5}{192\pi} \cdot \frac{\mathrm{d}T}{\mathrm{d}t}\right)^{\tfrac{3}{5}}\frac{c^3 T}{2\pi G}
+        \]
+
+    \end{itemize}
+
+    \section*{第五章}
+
+    \begin{itemize}
+
+        \item[1.]
+        \setcounter{equation}{0}
+        质量守恒给出：$\rho_1 D = \rho_2(D-v_2)$
+        
+        动量守恒给出：$p_1 + \rho_1 D^2 = p_2 + \rho_2 (D-v_2)^2$
+        
+        能量守恒给出：$q + p_1 V_1 + \dfrac{1}{2}D^2 + U_1 = p_2 V_2 + \dfrac{1}{2}(D-v_2)^2 + U_2$
+        
+        引入比容$V = \dfrac{1}{D}$，则方程组变为：
+        \begin{equation}
+            \frac{D}{V_1} = \frac{D-v_2}{V_2}
+        \end{equation}
+        \begin{equation}
+            p_1 + \frac{D^2}{V_1} = p_2 + \frac{(D-v_2)^2}{V_2}
+        \end{equation}
+        \begin{equation}
+            q + p_1 V_1 + \frac{1}{2}D^2 + U_1 = p_2 V_2 + \frac{1}{2}(D-v_2)^2 + U_2
+        \end{equation}
+        由(1)得：
+        \begin{equation}
+            (D-v_2)^2 = \frac{V_2^2}{V_1^2}D^2
+        \end{equation}
+        (4)代入(2)得：
+        \[
+        p_1 + \frac{D^2}{V_1} = p_2 + \frac{V_2 D^2}{V_1^2}
+        \]
+        即：
+        \begin{equation}
+            D^2 = \frac{p_1-p_2}{V_2-V_1}V_1^2
+        \end{equation}
+        (4)和(5)代入(3)得：
+        \[
+        q + p_1 V_1 + \frac{p_1-p_2}{2(V_2-V_1)}V_1^2 + U_1
+        = p_2 V_2 + \frac{V_2^2}{V_1^2}\times\frac{p_1-p_2}{2(V_2-V_1)}V_1^2 + U_2
+        \]
+        \[
+        q + (p_1 V_1 - p_2 V_2) + \frac{p_1-p_2}{2(V_2-V_1)}(V_1^2 - V_2^2) + (U_1 - U_2) = 0
+        \]
+        \[
+        q + (p_1 V_1 - p_2 V_2) - \frac{1}{2}(p_1-p_2)(V_1+V_2) + (U_1 - U_2) = 0
+        \]
+        由$(p_1+p_2)(V_1-V_2) + (p_1-p_2)(V_1+V_2) = 2(p_1 V_1 - p_2 V_2)$即得Hugoniot方程：
+        \[
+        q + \frac{1}{2}(p_1+p_2)(V_1-V_2) + (U_1 - U_2) = 0
+        \]
+
+        \setcounter{equation}{0}
+        \item[3.]
+        相对论性能量——动量关系：
+        \[
+        E = \frac{m_0 c^2}{\sqrt{1-\beta^2}}
+        \]
+        其中$\beta = \dfrac{v}{c} < 1$。对于中微子：$1 - \beta \ll 1$，$\dfrac{1}{\sqrt{1-\beta^2}} \gg 1$。
+        
+        由$t = \dfrac{l}{v}$得：
+        \begin{equation}
+        \frac{\mathrm{d}t}{t} = -\frac{\mathrm{d}v}{v} = -\frac{\mathrm{d}\beta}{\beta}
+        \end{equation}
+        设能量为$E_1 = 20\,\mathrm{MeV}$的中微子速度为$v_1 = \beta_1 c$，能量为$E_2 = 10\,\mathrm{MeV}$的中微子速度为$v_2 = \beta_2 c$，则：
+        \[
+        \beta_1 > \beta_2,\qquad \frac{1}{\sqrt{1-\beta_1^2}} = \frac{2}{\sqrt{1-\beta_2^2}}
+        \]
+        可得方程：
+        \begin{equation}
+            4\beta_1^2 - \beta_2^2 = 3
+        \end{equation}
+        在(1)式中，由于$|\Delta t| = 10\,\mathrm{s} \ll t = 160000\,\mathrm{a} = 5.0492\times10^{12}\,\mathrm{s}$，且$\Delta \beta = \beta_1 - \beta_2 \ll \beta = \dfrac{\beta_1 + \beta_2}{2}$，可令$\mathrm{d}t = \Delta t = -10s$，$\mathrm{d}\beta = \Delta\beta$，则有：
+        \[
+        \frac{\mathrm{d}t}{t} = -\frac{\mathrm{d}\beta}{\beta} = \frac{2(\beta_1 - \beta_2)}{\beta_1 + \beta_2} = \lambda = 1.9805\times10^{-12}
+        \]
+        即：
+        \begin{equation}
+            (2-\lambda)\beta_1 = (2+\lambda)\beta_2
+        \end{equation}
+        联立(2)、(3)式可以解出：
+        \[
+        \beta_1 = 1 - 6.60\times10^{-13},\qquad
+        \beta_2 = 1 - 2.64\times10^{-12}
+        \]
+        且：
+        \[
+        \frac{1}{\sqrt{1-\beta_1^2}} = 870260.30,\qquad
+        \frac{1}{\sqrt{1-\beta_2^2}} = 435130.15
+        \]
+        则中微子的静质量为：
+        \[
+        m_0 = \frac{E_1\sqrt{1-\beta_1^2}}{c^2} = \frac{E_2\sqrt{1-\beta_2^2}}{c^2} = 22.98\,\mathrm{eV/c^2} = 4.1\times10^{-32}\,\mathrm{g}
+        \]
+
+        \item[5.]
+        如图所示：设O为观测者位置，S为超新星位置，R为回光位置，有：
+        \[
+        \|SO\| = d = 10\,\mathrm{kpc} = 3.26156\times10^4\,\mathrm{ly},\quad \alpha = 1''
+        \]
+        
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0) -- (-1,2);
+                \draw (0,0) -- (7,0);
+                \draw (7,0) -- (-1,2);
+                \draw (-1.25,2.1) node {R};
+                \draw (7.25,-0.25) node {O};
+                \draw (-0.25,-0.25) node {S};
+                \draw (7,0) ++(180:1) arc [start angle=180,radius=1,delta angle=-14];
+                \draw (5.75,0.15) node {$\alpha$};
+                \draw (3.25,1.25) node {$y$};
+                \draw (-0.75,1) node {$x$};
+                \draw (3.5,-0.25) node {$d$};
+            \end{tikzpicture}
+        \end{center}
+        
+        设$\|SR\| = x$，$\|OR\| = y$（单位均为光年），则$x$、$y$满足：
+        \[
+        x + y = d + 300
+        \]
+        \[
+        x^2 = y^2 + d^2 - 2yd\cos\alpha
+        \]
+        令$l = d + 300$，则解得：
+        \[
+        x = \frac{l^2 + d^2 - 2ld\cos\theta}{2l - 2d\cos\theta} = 150.000042\,\mathrm{ly}
+        \]
+        故星际介质与超新星爆发地点距离为150.000042光年。
+
+    \end{itemize}
+
+
+\end{document}

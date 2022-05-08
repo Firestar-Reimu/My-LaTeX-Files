@@ -1,0 +1,428 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm,wasysym}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+    \title{\textbf{理论力学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2020年11月11日}
+
+    \maketitle
+
+    \begin{itemize}
+
+        \section*{第三章}
+
+        \item[2.1]
+        由(3.12)与(3.13)式得轨道方程：
+        \[
+        r = \frac{l_0}{1+e\cos\phi}
+        \]
+        且
+        \[
+        l_0 = \frac{J^2}{m\alpha},\qquad e = \sqrt{1 + \frac{2EJ^2}{m\alpha^2}}
+        \]
+        代入：
+        \[
+        v = \frac{1}{2}\sqrt{\frac{GM_\oplus}{R_\oplus}},\qquad J = mvR_\oplus\sin45^\circ,\qquad E = \frac{1}{2}mv^2 - \frac{GM_\oplus m}{R_\oplus^2}
+        \]
+        得：
+        \[
+        l_0 = \frac{1}{8}R,\qquad e = \frac{5\sqrt{2}}{8}
+        \]
+        即轨道方程：
+        \[
+        r = \frac{R_\oplus}{8+5\sqrt{2}\cos\phi}
+        \]
+        令$r = R_\oplus$得：
+        \[
+        \phi = \arccos\left(-\frac{7\sqrt{2}}{10}\right)
+        \]
+        由于对称性，考虑到实际情况，取$\phi$为：
+        \[
+        \phi_0 = -\arccos\left(\frac{7\sqrt{2}}{10}\right) \approx -0.1419\,\mathrm{rad}
+        \]
+        则轨道方程为：
+        \[
+        r = \frac{R_\oplus}{8+5\sqrt{2}\cos(\phi-\phi_0)}
+        \]
+        \bigskip
+
+        \item[2.3]
+        由方程(3.14)并考虑到轨道闭合，$E<0$，得：
+        \[
+        E = \frac{1}{2}mv^2 -\frac{GM_{\astrosun}}{R} = -\frac{GM_{\astrosun}m}{2a}
+        \]
+        最小发射速度对应于最小能量，即轨道半长轴最小：
+        \[
+        a = \frac{0.7R + R}{2} = 0.85R
+        \]
+        解得最小发射速度：
+        \[
+        v = \sqrt{\frac{14GM_{\astrosun}}{17R}}
+        \]
+        \bigskip
+
+        \item[2.5]
+        临界状态是粒子在月球背面正对$\bm{v}_0$方向一点处击中月球，此时速度为$\bm{v}_1$，方向与月球表面相切。
+
+        设碰撞参数为$b$，由能量守恒和角动量守恒：
+        \[
+        \frac{1}{2}mv_0^2 = \frac{1}{2}mv_1^2 - \frac{GM_{\!\!\rightmoon}m}{a}
+        \]
+        \[
+        mv_0b = mv_1a
+        \]
+        代入月球的逃逸速度
+        \[
+        u = \sqrt{\frac{2GM_{\!\!\rightmoon}}{a}}
+        \]
+        化简，联立解得：
+        \[
+        b = a\sqrt{1+\frac{u^2}{v_0^2}}
+        \]
+        则碰撞总截面
+        \[
+        S = \pi b^2 = \pi a^2\left(1+\frac{u^2}{v_0^2}\right)
+        \]
+        \bigskip
+
+        \item[3.]
+        由方程(3.51)：
+        \[
+        f(x) = r_2\frac{x-r_1}{|x-r_1|^3} + r_1\frac{x+r_2}{|x+r_2|^3}
+        \]
+        由假设(3.58)：
+        \[
+        x_i = \pm 1 \pm \delta_x = \pm 1 \pm \beta\varepsilon^\alpha
+        \]
+        其中正负号取决于$L_i\ (i=1,2,3)$中$i$的值（由定义可以确定$L_i\ (i=1,2,3)$在$x$轴上的位置）。
+
+        考虑到三个Lagrange点的位置，分别去绝对值：
+
+        对于$L_1$点：
+        \[
+        f(x) = -\frac{r_2}{(x_1-r_1)^2} + \frac{r_1}{(x_1+r_2)^2} \tag{1}
+        \]
+        \[
+        x_1 = -1 + \beta\varepsilon^\alpha \tag{2}
+        \]
+        将(2)式代入(1)，并取$r_1=\varepsilon$，$r_2=1-\varepsilon$，得：
+        \[
+        -1 + \beta\varepsilon^\alpha = -\frac{1-\varepsilon}{(-1+\beta\varepsilon^\alpha-\varepsilon)^2} + \frac{\varepsilon}{\left(\beta\varepsilon^\alpha-\varepsilon\right)^2}
+        \]
+        化简，并舍去所有$\varepsilon$的高于一阶的项，即$\varepsilon^{m\alpha}\ (m>1)$和$\varepsilon^{1+n\alpha}\ (n>0)$的项，得到：
+        \[
+        -\beta^2\varepsilon^{2\alpha} + 3\beta^3\varepsilon^{3\alpha} - 3\beta^4\varepsilon^{4\alpha} + \beta^5\varepsilon^{5\alpha} = -\beta^2\varepsilon^{2\alpha} + \varepsilon
+        \]
+        比较系数得：
+        \[
+        3\beta^3\varepsilon^{3\alpha} = \varepsilon
+        \]
+        即：
+        \[
+        \alpha = \frac{1}{3},\qquad \beta = \frac{1}{\sqrt[3]{3}}
+        \]
+        则$\beta^4\varepsilon^{4\alpha}$与$\beta^5\varepsilon^{5\alpha}$为高于一阶的小量，可以舍去。
+
+        于是：
+        \[
+        x_1 = -1 + \beta\varepsilon^\alpha = -1 + \left(\frac{\varepsilon}{3}\right)^{\tfrac{1}{3}}
+        \]
+        \medskip
+
+        对于$L_2$点：
+        \[
+        f(x) = -\frac{r_2}{(x_2-r_1)^2} - \frac{r_1}{(x_2+r_2)^2} \tag{3}
+        \]
+        \[
+        x_2 = -1 - \beta\varepsilon^\alpha \tag{4}
+        \]
+        将(4)式代入(3)，并取$r_1=\varepsilon$，$r_2=1-\varepsilon$，得：
+        \[
+        -1 - \beta\varepsilon^\alpha = -\frac{1-\varepsilon}{(-1-\beta\varepsilon^\alpha-\varepsilon)^2} - \frac{\varepsilon}{\left(-\beta\varepsilon^\alpha-\varepsilon\right)^2}
+        \]
+        化简，并舍去所有$\varepsilon$的高于一阶的项，即$\varepsilon^{m\alpha}\ (m>1)$和$\varepsilon^{1+n\alpha}\ (n>0)$的项，得到：
+        \[
+        -\beta^2\varepsilon^{2\alpha} - 3\beta^3\varepsilon^{3\alpha} - 3\beta^4\varepsilon^{4\alpha} - \beta^5\varepsilon^{5\alpha} = -\beta^2\varepsilon^{2\alpha} - \varepsilon
+        \]
+        比较系数得：
+        \[
+        3\beta^3\varepsilon^{3\alpha} = \varepsilon
+        \]
+        即：
+        \[
+        \alpha = \frac{1}{3},\qquad \beta = \frac{1}{\sqrt[3]{3}}
+        \]
+        则$\beta^4\varepsilon^{4\alpha}$与$\beta^5\varepsilon^{5\alpha}$为高于一阶的小量，可以舍去。
+
+        于是：
+        \[
+        x_2 = -1 - \beta\varepsilon^\alpha = -1 - \left(\frac{\varepsilon}{3}\right)^{\tfrac{1}{3}}
+        \]
+        \medskip
+
+        对于$L_3$点：
+        \[
+        f(x) = \frac{r_2}{(x_3-r_1)^2} + \frac{r_1}{(x_1+r_2)^2} \tag{5}
+        \]
+        \[
+        x_3 = 1 + \beta\varepsilon^\alpha \tag{6}
+        \]
+        将(6)式代入(5)，并取$r_1=\varepsilon$，$r_2=1-\varepsilon$，得：
+        \[
+        1 + \beta\varepsilon^\alpha = \frac{1-\varepsilon}{(1+\beta\varepsilon^\alpha-\varepsilon)^2} + \frac{\varepsilon}{\left(2+\beta\varepsilon^\alpha-\varepsilon\right)^2}
+        \]
+        化简，并舍去所有$\varepsilon$的高于一阶的项，即$\varepsilon^{m\alpha}\ (m>1)$和$\varepsilon^{1+n\alpha}\ (n>0)$的项，得到：
+        \[
+        4 + 16\beta\varepsilon^\alpha + 25\beta^2\varepsilon^{2\alpha} + 19\beta^3\varepsilon^{3\alpha} + 7\beta^4\varepsilon^{4\alpha} + \beta^5\varepsilon^{5\alpha} - 12\varepsilon = 4 + 4\beta\varepsilon^\alpha + \beta^2\varepsilon^{2\alpha} -7\varepsilon
+        \]
+        比较系数得：
+        \[
+        12\beta\varepsilon^\alpha = 5\varepsilon
+        \]
+        即：
+        \[
+        \alpha = 1,\qquad \beta = \frac{5}{12}
+        \]
+        则$\beta^i\varepsilon^{i\alpha}\ (i=2,3,4,5)$为高于一阶的小量，可以舍去。
+
+        于是：
+        \[
+        x_3 = 1 + \beta\varepsilon^\alpha = 1 + \frac{5}{12}\varepsilon
+        \]
+        \medskip
+
+        综上：
+        \[
+        x_1 = -1 + \left(\frac{\varepsilon}{3}\right)^{\tfrac{1}{3}},\qquad
+        x_2 = -1 - \left(\frac{\varepsilon}{3}\right)^{\tfrac{1}{3}},\qquad
+        x_3 = 1 + \frac{5}{12}\varepsilon
+        \]
+        这便验证了(3.61)式。
+        \bigskip
+
+        \item[4.]
+        设
+        \[
+        \bm{x} = \bm{x_L} + \bm{X}
+        \]
+        其中偏离Lagrange点的位移为无穷小量：
+        \[
+        \bm{X} =
+        \begin{bmatrix}
+            \mathrm{d}x \\
+            \mathrm{d}y
+        \end{bmatrix}
+        \]
+        此时有效势能：
+        \[
+        V_{\mathrm{eff}}(\bm{x}) = V_{\mathrm{eff}}(\bm{x_L}) + \delta V_{\mathrm{eff}}
+        \]
+        由多元函数的Taylor展开：
+        \[
+        f(x) = f(x_0) + \left.(\partial_x\mathrm{d}x + \partial_y\mathrm{d}y)f(x)\right|_{x = x_0} + \frac{1}{2}\left.(\partial_x\mathrm{d}x + \partial_y\mathrm{d}y)^2\, f(x)\right|_{x = x_0} + o(\sqrt{\mathrm{d}x^2 + \mathrm{d}y^2})
+        \]
+        在Lagrange点处：
+        \[
+        \left.(\partial_x\mathrm{d}x + \partial_y\mathrm{d}y)V_{\mathrm{eff}}(x)\right|_{x = x_L} = 0
+        \]
+        则
+        \begin{align*}
+        \delta V_{\mathrm{eff}}
+        &= \frac{1}{2}\left.(\partial_x\mathrm{d}x + \partial_y\mathrm{d}y)^2\, V_{\mathrm{eff}}\right|_{x = x_L} \\
+        &= \frac{1}{2}\bm{X}^T\cdot\left.
+        \begin{bmatrix}
+            \partial_x^2 V_{\mathrm{eff}} &\partial_x\partial_y V_{\mathrm{eff}} \\
+            \partial_y\partial_x V_{\mathrm{eff}} &\partial_y^2 V_{\mathrm{eff}}
+        \end{bmatrix}\right|_{x=x_L}
+        \cdot\bm{X}
+        \end{align*}
+        对于三个共线的Lagrange点：
+        \[
+        \left.\begin{bmatrix}
+            \partial_x^2 V_{\mathrm{eff}} &\partial_x\partial_y V_{\mathrm{eff}} \\
+            \partial_y\partial_x V_{\mathrm{eff}} &\partial_y^2 V_{\mathrm{eff}}
+        \end{bmatrix}\right|_{x=x_L}
+        =
+        \begin{bmatrix}
+            -\varOmega_x^2 &0 \\
+            0 &\varOmega_y^2
+        \end{bmatrix}
+        \]
+        则偏离Lagrange点的有效势能的修正：
+        \[
+        \delta V_{\mathrm{eff}} = \frac{1}{2}\bm{X}^T\cdot
+        \begin{bmatrix}
+            -\varOmega_x^2 &0 \\
+            0 &\varOmega_y^2
+        \end{bmatrix}
+        \cdot\bm{X}
+        \]
+        对于两个不共线的Lagrange点：
+        \[
+        \left.\begin{bmatrix}
+            \partial_x^2 V_{\mathrm{eff}} &\partial_x\partial_y V_{\mathrm{eff}} \\
+            \partial_y\partial_x V_{\mathrm{eff}} &\partial_y^2 V_{\mathrm{eff}}
+        \end{bmatrix}\right|_{x=x_L}
+        =-3\pi^2
+        \begin{bmatrix}
+            1 &\sqrt{3}\lambda \\
+            \sqrt{3}\lambda &3
+        \end{bmatrix}
+        \]
+        则偏离Lagrange点的有效势能的修正：
+        \[
+        \delta V_{\mathrm{eff}} = -\frac{3\pi^2}{2}\bm{X}^T\cdot
+        \begin{bmatrix}
+            1 &\sqrt{3}\lambda \\
+            \sqrt{3}\lambda &3
+        \end{bmatrix}
+        \cdot\bm{X}
+        \]
+        \bigskip
+
+        \item[5.(a)]
+        体系的Lagrange量可以写为：
+        \[
+        L = \frac{1}{2}m_1\dot{\bm{x}}_1^2 + \frac{1}{2}m_2\dot{\bm{x}}_2^2 - k|\bm{x}_1-\bm{x}_2|^\beta
+        \]
+        引入质心坐标$\bm{R}$和相对坐标$\bm{x} = \bm{x}_1 - \bm{x}_2$，则Lagrange量：
+        \[
+        L = \frac{1}{2}m_1\left[\frac{\mathrm{d}}{\mathrm{d}t}\left(\bm{R} + \frac{m_2}{m_1+m_2}\bm{x}\right)\right]^2 + \frac{1}{2}m_2\left[\frac{\mathrm{d}}{\mathrm{d}t}\left(\bm{R} - \frac{m_1}{m_1+m_2}\bm{x}\right)\right]^2 - k|\bm{x}|^\beta
+        \]
+        即
+        \[
+        L = \frac{1}{2}(m_1+m_2)\dot{\bm{R}}^2 + \frac{1}{2}\frac{m_1m_2}{m_1+m_2}\dot{\bm{x}}^2 - k|\bm{x}|^\beta
+        \]
+        选取质心系，则质心坐标$\bm{R} = 0$，化简为：
+        \[
+        L = \frac{1}{2}\frac{m_1m_2}{m_1+m_2}\dot{\bm{x}}^2 - k|\bm{x}|^\beta
+        \]
+        引入折合质量：
+        \[
+        m = \frac{m_1m_2}{m_1+m_2}
+        \]
+        和径向坐标：
+        \[
+        r = |\bm{x}|
+        \]
+        则化为极坐标下的问题：
+        \[
+        L = \frac{1}{2}m\left(\dot{r}^2 + r^2\dot{\phi}^2\right) - kr^\beta
+        \]
+        由于上式不显含$\phi$，其对应的广义动量应当守恒，它实际上就是体系的角动量：
+        \[
+        J = \frac{\partial L}{\partial\dot{\phi}} = mr^2\dot{\phi} = \mathrm{const.}
+        \]
+        则体系运动化为一维问题：
+        \[
+        L = \frac{1}{2}m\dot{r}^2 + \frac{J^2}{2mr^2} - kr^\beta
+        \]
+        有效势能：
+        \[
+        V_{\mathrm{eff}}(r) = \frac{J^2}{2mr^2} + kr^\beta
+        \]
+        \medskip
+
+        \item[5.(b)]
+        体系总能量：
+        \[
+        E = \frac{1}{2}m\dot{r}^2 + \frac{J^2}{2mr^2} + kr^\beta
+        \]
+        由于$r(t)=r_0$为常数，$\dot{r} = 0$。
+        \[
+        E = \frac{J^2}{2mr^2} + kr^\beta
+        \]
+        由题意，扰动稳定说明：
+        \[
+        \left.\frac{\partial E}{\partial r}\right|_{r=r_0} = 0,\qquad \left.\frac{\partial^2 E}{\partial r^2}\right|_{r=r_0} = 0
+        \]
+        则：
+        \[
+        \left.\frac{\partial E}{\partial r}\right|_{r=r_0} = -\frac{J^2}{mr_0^3} + k\beta r_0^{\beta-1} = 0
+        \]
+        得到：
+        \[
+        \frac{J^2}{m} = k\beta r_0^{\beta+2}
+        \]
+        代入：
+        \[
+        \left.\frac{\partial^2 E}{\partial r^2}\right|_{r=r_0} = \frac{3J^2}{mr_0^4} + k\beta(\beta-1)r_0^{\beta-2} > 0
+        \]
+        得：
+        \[
+        (\beta+2)r_0^{\beta-2} > 0
+        \]
+        考虑到$\beta \neq 0$且$k\beta > 0$，得到$k$及$\beta$的取值范围：
+        \[
+        k \neq 0,\qquad \beta \in (-2,0)\cup(0,\infty)
+        \]
+        \medskip
+
+        \item[5.(c)]
+        等效一维谐振子的“劲度系数”：
+        \begin{align*}
+        K
+        &= \left.\frac{\partial^2 V}{\partial r^2}\right|_{r=r_0} \\
+        &= \frac{3J^2}{mr_0^4} + k\beta(\beta-1)r_0^{\beta-2} \\
+        &= k\beta(\beta+2)r_0^{\beta-2}
+        \end{align*}
+        其中利用了：
+        \[
+        \frac{J^2}{m} = k\beta r_0^{\beta+2}
+        \]
+        则本征（圆）频率为：
+        \[
+        \omega = \sqrt{\frac{K}{m}} = \sqrt{\frac{k\beta(\beta+2)r_0^{\beta-2}}{m}}
+        \]
+        \medskip
+
+        \item[5.(d)]
+        圆轨道的圆频率为：
+        \[
+        \varOmega = \dot{\phi} = \frac{J}{mr_0^2}
+        \]
+        代入：
+        \[
+        \frac{J^2}{m} = k\beta r_0^{\beta+2}
+        \]
+        得：
+        \[
+        \varOmega = \sqrt{\frac{k\beta r_0^{\beta-2}}{m}}
+        \]
+        则轨道闭合要求：
+        \[
+        \frac{\omega}{\varOmega} = \sqrt{\beta+2}
+        \]
+        为有理数。
+
+        当
+        \[
+        k>0,\qquad \beta = \frac{15}{25} = \frac{3}{5}
+        \]
+        时，
+        \[
+        \sqrt{\beta+2} = \sqrt{\frac{13}{10}}
+        \]
+        不是有理数，故轨道不闭合。
+
+        当
+        \[
+        k>0,\qquad \beta = -\frac{2}{9}
+        \]
+        时，
+        \[
+        \sqrt{\beta+2} = \frac{4}{3}
+        \]
+        是有理数，故轨道闭合。
+
+    \end{itemize}
+
+\end{document}

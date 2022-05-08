@@ -1,0 +1,637 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+    \title{\textbf{电动力学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2021年3月25日}
+    \maketitle
+
+    \section*{第二章}
+
+    \begin{itemize}
+
+        \item[1.(1)]
+        极化强度只有沿径向分量$P_r=\dfrac{K}{r}$，则球内极化电荷体密度为：
+        \[
+        \rho_p = -\nabla\cdot\bm{P} = -\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2P_r\right) = -\frac{K}{r^2}
+        \]
+        球面上极化电荷均匀分布，其面密度为：
+        \[
+        \sigma_p = \left.-\bm{n}\cdot\left(\bm{P}_2 - \bm{P}_1\right)\right|_{r=R} = \left.-\bm{n}\cdot\left(0 - \frac{K\bm{r}}{r^2}\right)\right|_{r=R} = \frac{K}{R}
+        \]
+
+        \item[1.(2)]
+        由于：
+        \[
+        \frac{\rho}{\rho_f} = \frac{\rho_p+\rho_f}{\rho_f} = \frac{\epsilon_0}{\epsilon}
+        \]
+        则有：
+        \[
+        \frac{\rho_p}{\rho_f} = \frac{\epsilon_0-\epsilon}{\epsilon}
+        \]
+        故自由电荷面密度为：
+        \[
+        \rho_f = \frac{\epsilon}{\epsilon_0-\epsilon}\cdot\left(-\frac{K}{r^2}\right)) = \frac{\epsilon K}{(\epsilon-\epsilon_0)r^2}
+        \]
+
+        \item[1.(3)]
+        球内电场强度：
+        \[
+        \bm{E}_1(\bm{r}) = \frac{\bm{P}}{\epsilon-\epsilon_0} = \frac{K\bm{r}}{(\epsilon-\epsilon_0)r^2}\quad (r<R)
+        \]
+        球内总电荷量：
+        \begin{align*}
+            Q
+            &= \int_0^R\rho\,\mathrm{d}V \\
+            &= \int_0^R\frac{\epsilon_0}{\epsilon}\rho_f\cdot4\pi r^2\,\mathrm{d}r \\
+            &= \frac{\epsilon_0 K}{(\epsilon-\epsilon_0)r^2}\cdot4\pi r^2\,\mathrm{d}r \\
+            &= \frac{4\pi\epsilon_0KR}{\epsilon-\epsilon_0}
+        \end{align*}
+        球内自由电荷量：
+        \[
+        Q_f = \frac{\epsilon}{\epsilon_0}Q = \frac{4\pi\epsilon KR}{\epsilon-\epsilon_0}
+        \]
+        球外电场强度：
+        \[
+        \bm{E_2}(\bm{r}) = \frac{\bm{r}}{4\pi\epsilon_0}\cdot\frac{Q_f}{r^3} = \frac{\epsilon KR\bm{r}}{\epsilon_0(\epsilon-\epsilon_0)r^3}\quad (r>R)
+        \]
+        球内电势分布：
+        \[
+        \varphi_1(r) = \int_r^R\bm{E}_1\,\mathrm{d}r' + \int_R^{+\infty}\bm{E}_2\,\mathrm{d}r' = \frac{K}{\epsilon-\epsilon_0}(\ln\frac{R}{r} + \frac{\epsilon}{\epsilon_0})\quad (r<R)
+        \]
+        球外电势分布：
+        \[
+        \varphi_2(r) = \int_r^{+\infty}\bm{E}_1\,\mathrm{d}r' = \frac{\epsilon KR}{\epsilon_0(\epsilon-\epsilon_0)r}\quad (r>R)
+        \]
+    
+        \item[2.(1)]
+        设未放入导体球时原点电势为$\varphi_0$。
+        
+        球外部分电势满足Laplace方程$\nabla^2\varphi=0$，一般解为：
+        \[
+        \varphi(r,\theta,\phi) = \sum_{l=0}^{+\infty}\left(A_l r^l + B_l r^{-l-1}\right)\mathrm{P}_l(\cos\theta)
+        \]
+        边界条件为：
+        \[
+        \left.\varphi\right|_{r=R_0} = \Phi_0,\quad
+        \left.\varphi\right|_{r\to+\infty} = -E_0 r\cos\theta + \varphi_0
+        \]
+        其中无穷远边界条件$-E_0r\cos\theta+\varphi_0=-E_0z+\varphi_0$为均匀外电场的电势分布。
+
+        则可以确定系数$A_l$的值：
+        \[
+        \varphi(r,\theta,\phi) = -E_0 r\cos\theta + \varphi_0 + \sum_{l=0}^{+\infty}B_l r^{-l-1}\mathrm{P}_l(\cos\theta)
+        \]
+        上式代入$\left.\varphi\right|_{r=R_0}=\Phi_0$，再利用$\mathrm{P}_0(\cos\theta)=1$，$\mathrm{P}_1(\cos\theta)=\cos\theta$得：
+        \[
+        \varphi(r,\theta,\phi) = -E_0 r\cos\theta + \varphi_0 + \frac{(\Phi_0-\varphi_0)R_0}{r} + \frac{E_0R_0^3}{r^2}\cos\theta
+        \]
+    
+        \item[2.(2)]
+        与(1)同理，设未放入导体球时原点电势为$\varphi_0$。
+        
+        在球外电势满足$\nabla^2\varphi=0$，其边界条件为：
+        \[
+        \left.\varphi\right|_{r=R_0} = \frac{Q}{4\pi\epsilon_0R_0} + \varphi_0,\quad
+        \left.\varphi\right|_{r\to{+\infty}} = -E_0 r\cos\theta + \varphi_0
+        \]
+        则有一般解：
+        \[
+        \varphi(r,\theta,\phi) = \sum_{l=0}^{+\infty}\left(A_l r^l + B_l r^{-l-1}\right)\mathrm{P}_l(\cos\theta)
+        \]
+        由无穷远边界条件，可以确定系数$A_l$的值：
+        \[
+        \varphi(r,\theta,\phi) = -E_0 r\cos\theta + \varphi_0 + \sum_{l=0}^{+\infty}B_l r^{-l-1}\mathrm{P}_l(\cos\theta)
+        \]
+        代入$\left.\varphi\right|_{r=R_0}=\dfrac{Q}{4\pi\epsilon_0R_0}+\varphi_0$，得：
+        \[
+        \varphi(r,\theta,\phi) = -E_0 r\cos\theta + \varphi_0 + \frac{Q}{4\pi\epsilon_0r} + \frac{E_0R_0^3}{r^2}\cos\theta
+        \]
+    
+        \item[4.]
+        若取$z$轴正方向与$\bm{p}_f$重合，坐标原点在电偶极子中点，则$\bm{p}_f=p_f\hat{z}$，问题关于角度$\phi$对称，球谐函数退化为Legendre函数$\mathrm{P}_l(\cos\theta)$。
+
+        电势$\varphi$满足的方程为：
+        \[
+        \left\{
+            \begin{aligned}
+                &\nabla^2\varphi_1 = \frac{\bm{p}_f}{\epsilon}\nabla\delta(z),\quad &r<R_0 \\
+                &\nabla^2\varphi_2 = 0,\quad &r>R_0
+            \end{aligned}
+        \right.
+        \]
+        其边界条件为：
+        \[
+        \left.\varphi_1\right|_{r=0} = +\infty,\quad
+        \left.\varphi_2\right|_{r\to+\infty} = 0
+        \]
+        \[
+        r = R_0:\quad \varphi_1 = \varphi_2,\quad \epsilon_1\frac{\partial\varphi_1}{\partial r} = \epsilon_2\frac{\partial\varphi_2}{\partial r}
+        \]
+        分离变量得一般解：
+        \[
+        \varphi(r,\theta,\phi) = \sum_{l=0}^{+\infty}\left(A_l r^l + B_l r^{-l-1}\right)\mathrm{P}_l(\cos\theta)
+        \]
+        由于球内外电势都是电偶极子产生的电势与极化电势的叠加，且极化电势满足Laplace方程，结合$r=0$和$r\to\infty$的边界条件得：
+        \[
+        \varphi_1 = \frac{p_f\cos\theta}{4\pi\epsilon_1r^2} + \sum_{l=0}^{+\infty}A_l r^l\mathrm{P}_l(\cos\theta),\quad
+        \varphi_2 = \frac{p_f\cos\theta}{4\pi\epsilon_2r^2} + \sum_{l=0}^{+\infty}B_l r^{-l-1}\mathrm{P}_l(\cos\theta)
+        \]
+        考虑到$r=R_0$处的边界条件，$l\neq1$时：
+        \[
+        A_lR_0^l = B_lR_0^{-l-1}
+        \]
+        \[
+        \epsilon_1lA_lR_0^{l-1} = \epsilon_2(-l-1)B_lR_0^{-l-2}
+        \]
+        即：
+        \[
+        A_l = B_lR_0^{-2l-1} = B_l\frac{\epsilon_2(-l-1)}{\epsilon_1l}R_0^{-2l-3}
+        \]
+        只可能是$A_l=B_l=0$。
+        
+        而$l=1$时：
+        \[
+        \frac{p_f}{4\pi\epsilon_1R_0^2} + A_1R_0 = \frac{p_f}{4\pi\epsilon_2R_0^2} + \frac{B_1}{R_0^2}
+        \]
+        \[
+        -\frac{2p_f}{4\pi R_0^3} + \epsilon_1A_1 = -\frac{2p_f}{4\pi R_0^3} - \frac{2\epsilon_2B_1}{R_0^3}
+        \]
+        解得：
+        \[
+        A_1 = \frac{p_f(\epsilon_1 - \epsilon_2)}{2\pi\epsilon_1(\epsilon_1 + 2\epsilon_2)R_0^3},\quad
+        B_1 = \frac{p_f(\epsilon_2 - \epsilon_1)}{4\pi\epsilon_2(\epsilon_1 + 2\epsilon_2)}
+        \]
+        最后得到电势分布：
+        \[
+        \left\{
+            \begin{aligned}
+                &\varphi_1 = \frac{p_f\cos\theta}{4\pi\epsilon_1 r^2} + \frac{p_f(\epsilon_1 - \epsilon_2)r\cos\theta}{2\pi\epsilon_1(\epsilon_1 + 2\epsilon_2)R_0^3},\quad &r<R_0 \\
+                &\varphi_2 = \frac{3p_f\cos\theta}{4\pi(\epsilon_1 + 2\epsilon_2)r^2},\quad &r>R_0
+            \end{aligned}
+        \right.
+        \]
+        由$\dfrac{p}{p_f}=\dfrac{p_p+p_f}{p_f}=\dfrac{\epsilon_0}{\epsilon_1}$及$\sigma_p=\epsilon_0\bm{n}\cdot(\bm{E}_2-\bm{E}_1)$得极化电荷分布：
+        \[
+        \left\{
+            \begin{aligned}
+                &\bm{p}_p = \frac{\epsilon_0 - \epsilon_1}{\epsilon_1}\bm{p}_f,\quad &r=0 \\
+                &\sigma_p = \frac{3\epsilon_0(\epsilon_1 - \epsilon_2)p_f}{2\pi\epsilon_1(\epsilon_1 + 2\epsilon_2)R_0^3},\quad &r=R_0
+            \end{aligned}
+        \right.
+        \]
+    
+        \item[5.]
+        以球心为坐标原点，令$z$轴正方向与$\bm{p}$重合，则问题关于角度$\phi$对称。
+
+        由静电屏蔽，$R_1<r<R_2$时电势$\varphi_2$为常数，$r>R_2$时必然有$\varphi_3=\dfrac{q}{4\pi\epsilon_0r}$，又因为电势法向连续：
+        \[
+        \varphi_2 = \left.\varphi_3\right|_{r=R_2} = \frac{q}{4\pi\epsilon_0R_2}
+        \]
+        电势满足的方程为：
+        \[
+        \left\{
+            \begin{aligned}
+                &\nabla^2\varphi_1 = \frac{1}{\epsilon_0}\bm{p}\cdot\nabla\delta(\bm{z}),\quad &r<R_1 \\
+                &\varphi_2 = \frac{q}{4\pi\epsilon_0R_2},\quad &R_1<r<R_2 \\
+                &\varphi_3 = \frac{q}{4\pi\epsilon_0r},\quad &r>R_2
+            \end{aligned}
+        \right.
+        \]
+        对于$\varphi_1$，边界条件为：
+        \[
+        \left.\varphi_1\right|_{r=0} = +\infty,\quad
+        \left.\varphi_1\right|_{r=R_1} = \left.\varphi_2\right|_{r=R_1} = \frac{q}{4\pi\epsilon_0R_2}
+        \]
+        则$\varphi_1$可以看作电偶极子产生的电势$\dfrac{p\cos\theta}{4\pi\epsilon_0r^2}$与极化电势的叠加，且极化电势满足Laplace方程$\nabla^2\varphi_1=0$，其一般解为：
+        \[
+        \varphi_1 = \frac{p\cos\theta}{4\pi\epsilon_0r^2} + \sum_{l=0}^{+\infty}A_l r^l\mathrm{P}_l(\cos\theta)
+        \]
+        代入$r=R_1$处的边界条件得：
+        \[
+        \frac{p\cos\theta}{4\pi\epsilon_0R_1^2} + \sum_{l=0}^{+\infty}A_l r^l\mathrm{P}_l(\cos\theta) = \frac{q}{4\pi\epsilon_0R_2}
+        \]
+        显然有：
+        \[
+        A_0 = \frac{q}{4\pi\epsilon_0R_2},\quad
+        A_1 = -\frac{p}{4\pi\epsilon_0R_1^3}
+        \]
+        \[
+        A_l = 0,\quad (l\geqslant2)
+        \]
+        最后得到电势分布：
+        \[
+        \left\{
+            \begin{aligned}
+                &\varphi_1 = \frac{q}{4\pi\epsilon_0R_2} + \frac{\bm{p}\cdot\bm{r}}{4\pi\epsilon_0}\left(\frac{1}{r^3} - \frac{1}{R_1^3}\right),\quad &r<R_1 \\
+                &\varphi_2 = \frac{q}{4\pi\epsilon_0R_2},\quad &R_1<r<R_2 \\
+                &\varphi_3 = \frac{q}{4\pi\epsilon_0r},\quad &r>R_2
+            \end{aligned}
+            \right.
+        \]
+        由$\bm{E}=-\nabla\varphi$电场分布：
+        \[
+        \left\{
+            \begin{aligned}
+                &\bm{E}_1 = \frac{p\cos\theta}{4\pi\epsilon_0}\left(\frac{2}{r^3} + \frac{1}{R_1^3}\right),\quad &r<R_1 \\
+                &\bm{E}_2 = 0,\quad &R_1<r<R_2 \\
+                &\bm{E}_3 = \frac{q}{4\pi\epsilon_0r^2},\quad &r>R_2
+            \end{aligned}
+        \right.
+        \]
+        面电荷分布：
+        \[
+        r=R_1:\quad \sigma_1 = \left.\epsilon_0\bm{n}\cdot(\bm{E}_2 - \bm{E}_1)\right|_{r=R_1} = \epsilon(0 - \frac{3p\cos\theta}{4\pi\epsilon_0R_1^3}) = \frac{3p\cos\theta}{4\pi R_1^3}
+        \]
+        \[
+        r=R_2:\quad \sigma_2 = \left.\epsilon_0\bm{n}\cdot(\bm{E}_3 - \bm{E}_2)\right|_{r=R_2} = \epsilon(0 - \frac{q}{4\pi\epsilon_0R_2^2}) = \frac{q}{4\pi R_2^2}
+        \]
+    
+        \item[9.]
+        因为静电屏蔽且导体球接地，$r\geqslant R_1$时$\varphi=0$。
+        
+        $r<R_1$时，电势$\varphi$满足的方程为：
+        \[
+        \nabla^2\varphi = -\frac{q}{\epsilon}\nabla\delta(\bm{x}-a\hat{z}),\quad r<R_1
+        \]
+        其边界条件为：
+        \[
+        \left|\left.\varphi\right|_{r=0}\right| < +\infty,\quad
+        \left.\varphi\right|_{r=R_1} = 0
+        \]
+        由系统关于$z$轴的对称性，设像电荷$q'$位于$z=b$处，且$b>R_1$。（否则球壳内相当于一个电偶极子，不可能在球壳内表面实现$\varphi=0$）
+        
+        $r<R_1$时：
+        \[
+        \varphi = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{d_1} + \frac{q'}{d_2}\right)
+        \]
+        其中$d_1=\sqrt{r^2+a^2-2ar\cos\theta}$，$d_2=\sqrt{r^2+b^2-2br\cos\theta}$。
+        
+        代入边界条件：$\left.\varphi\right|_{r=R_1}=0$得：
+        \[
+        \forall\ \theta\in[0,2\pi],\quad \frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{R_1^2+a^2-2aR_1\cos\theta}} + \frac{q'}{\sqrt{R_1^2+b^2-2bR_1\cos\theta}}\right) = 0
+        \]
+        这要求：
+        \[
+        \forall\ \theta\in[0,2\pi],\quad \frac{R_1^2+a^2-2aR_1\cos\theta}{R_1^2+b^2-2bR_1\cos\theta} = \left(\frac{q}{q'}\right)^2 = \mathrm{const.},\quad a\neq b
+        \]
+        即：
+        \[
+        \forall\ \theta\in[0,2\pi],\quad \frac{R_1^2-2aR_1\cos\theta+a^2}{b^2-2bR_1\cos\theta+R_1^2} = \mathrm{const.},\quad a\neq b
+        \]
+        显然有：
+        \[
+        \frac{R_1^2}{b^2} = \frac{a}{b} = \frac{a^2}{R_1^2}
+        \]
+        解得：
+        \[
+        b = \frac{R_1^2}{a}
+        \]
+        于是：
+        \[
+        \left(\frac{q}{q'}\right)^2 = \frac{R_1^2+a^2-2aR_1\cos\theta}{R_1^2+b^2-2bR_1\cos\theta} = \frac{a^2}{R_1^2}
+        \]
+        考虑到$q'$与$q$的电荷异号，像电荷的电荷量为：
+        \[
+        q' = -\frac{R_1}{a}q
+        \]
+        故电势分布为：
+        \[
+        \left\{
+            \begin{aligned}
+                &\varphi = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{r^2+a^2-2ar\cos\theta}} - \frac{R_1q}{\sqrt{a^2r^2+R_1^4-2arR_1^2\cos\theta}}\right),\quad &r<R_1 \\
+                &\varphi = 0,\quad &r\geqslant R_1
+            \end{aligned}
+        \right.
+        \]
+        此时球心电势$\left.\varphi\right|_{r=0}=\dfrac{q}{4\pi\epsilon_0}\left(\dfrac{1}{a}-\dfrac{1}{R_1}\right)<+\infty$保证有限。
+    
+        \item[11.]
+        以垂直于地面的$z$轴为系统的对称轴，为保证导体表面电势为0，可以考虑使$z=0$和$R=a$处电势均为0，则引入像电荷$q_1$、$q_2$和$q_3$如图：
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (-3,0) -- (-1.8,0);
+                \draw (1.8,0) -- (3,0);
+                \draw (1.8,0) arc [start angle=0, end angle=180, radius=1.8cm];
+                \draw [dashed] (-1.8,0) -- (1.8,0);
+                \draw [dashed] (-1.8,0) arc [start angle=180, end angle=360, radius=1.8cm];
+                \fill (0,2.7) circle [radius=2pt];
+                \fill (0,1.2) circle [radius=2pt];
+                \fill (0,-1.2) circle [radius=2pt];
+                \fill (0,-2.7) circle [radius=2pt];
+                \draw (0.35,2.7) node {$q$};
+                \draw (0.35,1.2) node {$q_3$};
+                \draw (0.35,-1.2) node {$q_2$};
+                \draw (0.35,-2.7) node {$q_1$};
+            \end{tikzpicture}
+        \end{center}
+        其中像电荷的电荷量分别为：
+        \[
+        q_1 = -q,\quad q_2 = \frac{a}{b}q,\quad q_3 = -\frac{a}{b}q
+        \]
+        位置分别为：
+        \[
+        q_1:z=-b,\quad q_2:z=-\frac{a^2}{b},\quad q_3:z=\frac{a^2}{b}
+        \]
+        这就保证了$z=0$和$R=a$处电势均为0，自然保证了导体表面电势为0。
+
+        故电势分布为：
+        \[
+        \varphi = \frac{1}{4\pi\epsilon_0}\left[\frac{q}{\sqrt{x^2+y^2+(z-b)^2}} - \frac{q}{\sqrt{x^2+y^2+(z+b)^2}} + \frac{qa/b}{\sqrt{x^2+y^2+(z+a^2/b)^2}} - \frac{qa/b}{\sqrt{x^2+y^2+(z-a^2/b)^2}}\right]
+        \]
+
+    
+        \item[12.]
+        设两个导体平面分别为$x=0$和$y=0$，点电荷$q$位于$(a,b,0)$，为保证在$x=0$和$y=0$处电势为0，引入像电荷如图：
+        \begin{center}
+            \begin{tikzpicture}[>=Stealth]
+                \draw [->] (-3,0) -- (3,0);
+                \draw [->] (0,-3) -- (0,3);
+                \fill (2.5,1.5) circle [radius=2pt];
+                \fill (-2.5,1.5) circle [radius=2pt];
+                \fill (-2.5,-1.5) circle [radius=2pt];
+                \fill (2.5,-1.5) circle [radius=2pt];
+                \draw (2.75,1.75) node {$q$};
+                \draw (-2.75,1.75) node {$-q$};
+                \draw (-2.75,-1.75) node {$q$};
+                \draw (2.75,-1.75) node {$-q$};
+                \draw (2.75,-0.25) node {$x$};
+                \draw (0.25,2.75) node {$y$};
+                \draw (-0.25,-0.25) node {$O$};
+            \end{tikzpicture}
+        \end{center}
+        其中与原电荷等量的像电荷$q$位于$(-a,-b,0)$，与原电荷等量异号的两个像电荷$-q$分别位于$(a,-b,0)$和$(-a,b,0)$。
+
+        这就保证了导体表面$x=0$和$y=0$处电势为0。
+
+        故电势分布为：
+        \begin{align*}
+        \varphi
+        &= \frac{1}{4\pi\epsilon_0}\left[\frac{q}{\sqrt{(x-a)^2+(y-b)^2+z^2}} - \frac{q}{\sqrt{(x-a)^2+(y+b)^2+z^2}} \right. \\
+        &\quad\left. +\ \frac{q}{\sqrt{(x+a)^2+(y+b)^2+z^2}} - \frac{q}{\sqrt{(x+a)^2+(y-b)^2+z^2}}\right]
+        \end{align*}
+    
+        \item[18.]
+        电势$\varphi$满足的方程为：
+        \[
+        \left\{
+            \begin{aligned}
+                &\nabla^2\varphi_1 = 0,\quad &r<R_0 \\
+                &\nabla^2\varphi_2 = 0,\quad &r>R_0 \\
+            \end{aligned}
+        \right.
+        \]
+        其边界条件为：
+        \[
+        \left|\left.\varphi_1\right|_{r=0}\right| < +\infty,\quad
+        \left.\varphi_2\right|_{r\to+\infty} = 0
+        \]
+        \[
+        r = R_0:\quad \varphi_1 = \varphi_2 = \varphi_0\,\mathrm{sgn}(\cos\theta) = \varphi_0[2\eta(\cos\theta)-1]
+        \]
+        则电势的一般解为：
+        \[
+        \varphi_1 = \sum_{l=0}^{+\infty}A_l r^l\mathrm{P}_l(\cos\theta),\quad
+        \varphi_2 = \sum_{l=0}^{+\infty}B_l r^{-l-1}\mathrm{P}_l(\cos\theta)
+        \]
+        考虑将$\eta(\cos\theta)$按照$\mathrm{P}_l(\cos\theta)$展开：（记$x=\cos\theta$，下同）
+        \[
+        \eta(x) = \sum_{l=0}^{+\infty}m_l\mathrm{P}_l(x)
+        \]
+        若$l=0$或$l=1$，直接积分：
+        \[
+        m_l = \frac{2l+1}{2}\int_{-1}^1\eta(x)\mathrm{P}_l(x)\,\mathrm{d}x = \frac{2l+1}{2}\int_{0}^1\mathrm{P}_l(x)\,\mathrm{d}x
+        \]
+        代入$\mathrm{P}_0(x)=1$和$\mathrm{P}_1(x)=x$得：
+        \[
+        m_0 = \frac{1}{2}\int_0^1\mathrm{P}_0(x)\,\mathrm{d}x = \frac{1}{2}
+        \]
+        \[
+        m_1 = \frac{3}{2}\int_0^1\mathrm{P}_1(x)\,\mathrm{d}x = \frac{3}{4}
+        \]
+        若$l>1$，利用Legendre多项式的性质$\mathrm{P}'_{l+1}(x)-\mathrm{P}'_{l-1}(x)=(2l+1)\mathrm{P}_l(x)$及$\mathrm{P}_l(1)\equiv1$得：
+        \begin{align*}
+            m_l
+            &= \frac{2l+1}{2}\int_{-1}^1\eta(x)\mathrm{P}_l(x)\,\mathrm{d}x \\
+            &= \frac{2l+1}{2}\int_{0}^1\mathrm{P}_l(x)\,\mathrm{d}x \\
+            &= \frac{1}{2}\left[\mathrm{P}_{l+1}(x)-\mathrm{P}_{l-1}(x)\right]\Big|_0^1 \\
+            &= \frac{1}{2}\left[\mathrm{P}_{l-1}(0)-\mathrm{P}_{l+1}(0)\right]
+        \end{align*}
+        又因为（其中$[x]$表示不大于$x$的最大整数）：
+        \[
+        \mathrm{P}_l(x) = \frac{1}{2^l l!}\frac{\mathrm{d}^l}{\mathrm{d}x^l}(x^2-1)^l = \sum_{r=0}^{[l/2]}\frac{(-1)^r(2l-2r)!}{2^l r!(l-r)!(l-2r)!}x^{l-2r}
+        \]
+        由于$l>1$，以下默认$r\geqslant1$，此时可以用$(2r)!=(2r-1)!!(2r)!!$化简得：
+        \[
+        \mathrm{P}_l(0)=\left\{
+            \begin{aligned}
+                &\frac{(-1)^r(2r-1)!!}{(2r)!!},\quad &l=2r \\
+                &0,\quad &l=2r+1 \\
+            \end{aligned}
+        \right.
+        \]
+        则$l=2r+1$时：
+        \begin{align*}
+        \mathrm{P}_{l-1}(0)-\mathrm{P}_{l+1}(0)
+        &= \frac{(-1)^r(2r-1)!!}{(2r)!!} - \frac{(-1)^{r+1}(2r+1)!!}{(2r+2)!!} \\
+        &= \frac{(-1)^r(2r-1)!!(2r+2)}{(2r+2)!!} - \frac{(-1)^{r+1}(2r-1)!!(2r+1)}{(2r+2)!!} \\
+        &= \left[(-1)^r(2r+2)-(-1)^{r+1}(2r+1)\right]\frac{(2r-1)!!}{(2r+2)!!} \\
+        &= \frac{(-1)^r(4r+3)(2r-1)!!}{(2r+2)!!} \\
+        &= \frac{(-1)^r(4r+3)(2r)!}{(2r)!!(2r+2)!!}
+        \end{align*}
+        这里的最后一步主要是为了包括进$r=0$，即$l=1$的情况。
+        
+        代入$m_l=\dfrac{1}{2}\left[\mathrm{P}_{l-1}(0)-\mathrm{P}_{l+1}(0)\right]$得：
+        \[
+        m_l = \left\{
+            \begin{aligned}
+                &0,\quad &l=2r \\
+                &\frac{(-1)^r(4r+3)(2r)!}{2(2r)!!(2r+2)!!}, &l=2r+1 \\
+            \end{aligned}
+            \right.
+        \]
+        综上，$\eta(\cos\theta)$按照$\mathrm{P}_l(\cos\theta)$的展开式为：
+        \[
+        \eta(\cos\theta) = \frac{1}{2} + \frac{1}{2}\sum_{r=0}^{+\infty}\frac{(-1)^r(4r+3)(2r)!}{(2r)!!(2r+2)!!}\mathrm{P}_{2r+1}(\cos\theta)
+        \]
+        于是：
+        \[
+        \mathrm{sgn}(\cos\theta) = 2\eta(\cos\theta) - 1 = \sum_{r=0}^{+\infty}\frac{(-1)^r(4r+3)(2r)!}{(2r)!!(2r+2)!!}\mathrm{P}_{2r+1}(\cos\theta)
+        \]
+        $r=R_0$处的边界条件化为：
+        \[
+        r = R_0:\quad \varphi_1 = \varphi_2 = \varphi_0\sum_{r=0}^{+\infty}\frac{(-1)^r(4r+3)(2r)!}{(2r)!!(2r+2)!!}\mathrm{P}_{2r+1}(\cos\theta)
+        \]
+        又因为：
+        \[
+        \varphi_1 = \sum_{l=0}^{+\infty}A_l r^l\mathrm{P}_l(\cos\theta),\quad
+        \varphi_2 = \sum_{l=0}^{+\infty}B_l r^{-l-1}\mathrm{P}_l(\cos\theta)
+        \]
+        最终得到电势分布为：
+        \[
+        \left\{
+            \begin{aligned}
+                &\varphi_1 = \varphi_0\sum_{r=0}^{+\infty}\frac{(-1)^r(4r+3)(2r)!}{(2r)!!(2r+2)!!}\left(\frac{r}{R_0}\right)^{2r+1}\mathrm{P}_{2r+1}(\cos\theta),\quad &r<R_0 \\
+                &\varphi_2 = \varphi_0\sum_{r=0}^{+\infty}\frac{(-1)^r(4r+3)(2r)!}{(2r)!!(2r+2)!!}\left(\frac{R_0}{r}\right)^{2r+2}\mathrm{P}_{2r+1}(\cos\theta),\quad &r>R_0 \\
+            \end{aligned}
+        \right.
+        \]
+
+    \end{itemize}
+
+    \subsection*{补充题}
+
+    \begin{itemize}
+
+        \item[3.(1)]
+        对于第一个电荷系统：
+
+        总电量为：
+        \[
+        Q = \sum_{i=1}^n q_i = -2q + q + q = 0
+        \]
+        电偶极矩为：
+        \[
+        \bm{p} = \sum_{i=1}^n \bm{r}q_i = 0\cdot(-2q) + l_1\hat{x}q + l_2\hat{y}q = (l_1\hat{x} + l_2\hat{y})q
+        \]
+        电四极矩需要分别计算，由$\mathsf{D}_{ij}=\sum\limits_{i=1}^n (3\bm{x}_i\bm{x}_j - r^2\delta_{ij})q_i$得：
+        \[
+        \mathsf{D}_{xx} = \sum_{i=1}^n (3x^2 - r^2)q_i = (0-0)\cdot(-2q) + (3l_1^2-l_1^2)q + (0-l_2^2)q = (2l_1^2-l_2^2)q
+        \]
+        \[
+        \mathsf{D}_{yy} = \sum_{i=1}^n (3y^2 - r^2)q_i = (0-0)\cdot(-2q) + (0-l_1^2)q + (3l_2^2-l_2^2)q = (2l_2^2-l_1^2)q
+        \]
+        \[
+        \mathsf{D}_{zz} = \sum_{i=1}^n (3z^2 - r^2)q_i = (0-0)\cdot(-2q) + (0-l_1^2)q + (0-l_2^2)q = -(l_1^2+l_2^2)q
+        \]
+        \[
+        \mathsf{D}_{xy} = \mathsf{D}_{yx} = \sum_{i=1}^n (3xy)q_i = 0
+        \]
+        \[
+        \mathsf{D}_{xz} = \mathsf{D}_{zx} = \sum_{i=1}^n (3xz)q_i = 0
+        \]
+        \[
+        \mathsf{D}_{yz} = \mathsf{D}_{zy} = \sum_{i=1}^n (3yz)q_i = 0
+        \]
+        故电四极矩为：
+        \[
+        \begin{bmatrix}
+            & (2l_1^2-l_2^2)q & 0 & 0 \\
+            & 0 & (2l_2^2-l_1^2)q & 0 \\
+            & 0 & 0 & -(l_1^2+l_2^2)q
+        \end{bmatrix}
+        \]
+        电势的领头阶为偶极矩的贡献：
+        \[
+        \varphi = \frac{1}{4\pi\epsilon_0}\left(\frac{\bm{p}\cdot\bm{r}}{r^3}\right) = \frac{1}{4\pi\epsilon_0}\left(\frac{(l_1\hat{x} + l_2\hat{y})q}{r^3}\right) = \frac{1}{4\pi\epsilon_0}\left(\frac{(l_1\sin\theta\cos\phi+l_2\sin\theta\sin\phi)q}{r^3}\right)
+        \]
+        其电场强度与$r^3$成反比。
+
+        \item[3.(2)]
+        对于第二个电荷系统：
+
+        总电量为：
+        \[
+        Q = \sum_{i=1}^n q_i = -2q + q + q = 0
+        \]
+        电偶极矩为：
+        \[
+        \bm{p} = \sum_{i=1}^n \bm{r}q_i = 0\cdot(-2q) + l_1\hat{x}q + (l_1\hat{x}+l_2\hat{y})q = (2l_1\hat{x} + l_2\hat{y})q
+        \]
+        电四极矩需要分别计算，由$\mathsf{D}_{ij}=\sum\limits_{i=1}^n (3\bm{x}_i\bm{x}_j - r^2\delta_{ij})q_i$得：
+        \[
+        \mathsf{D}_{xx} = \sum_{i=1}^n (3x^2 - r^2)q_i = (0-0)\cdot(-2q) + (3l_1^2-l_1^2)q + (3l_1^2-l_1^2-l_2^2)q = (4l_1^2-l_2^2)q
+        \]
+        \[
+        \mathsf{D}_{yy} = \sum_{i=1}^n (3y^2 - r^2)q_i = (0-0)\cdot(-2q) + (0-l_1^2)q + (3l_2^2-l_1^2-l_2^2)q = 2(l_2^2-l_1^2)q
+        \]
+        \[
+        \mathsf{D}_{zz} = \sum_{i=1}^n (3z^2 - r^2)q_i = (0-0)\cdot(-2q) + (0-l_1^2)q + (0-l_1^2-l_2^2)q = -(2l_1^2+l_2^2)q
+        \]
+        \[
+        \mathsf{D}_{xy} = \mathsf{D}_{yx} = \sum_{i=1}^n (3xy)q_i = 0\cdot(-2q) + 0\cdot q + 3l_1l_2q = 3l_1l_2q
+        \]
+        \[
+        \mathsf{D}_{xz} = \mathsf{D}_{zx} = \sum_{i=1}^n (3xz)q_i = 0
+        \]
+        \[
+        \mathsf{D}_{yz} = \mathsf{D}_{zy} = \sum_{i=1}^n (3yz)q_i = 0
+        \]
+        故电四极矩为：
+        \[
+        \begin{bmatrix}
+            & (4l_1^2-l_2^2)q & 3l_1l_2q & 0 \\
+            & 3l_1l_2q & 2(l_2^2-l_1^2)q & 0 \\
+            & 0 & 0 & -(2l_1^2+l_2^2)q
+        \end{bmatrix}
+        \]
+        电势的领头阶为偶极矩的贡献：
+        \[
+        \varphi = \frac{1}{4\pi\epsilon_0}\left(\frac{\bm{p}\cdot\bm{r}}{r^3}\right) = \frac{1}{4\pi\epsilon_0}\left(\frac{(2l_1\hat{x} + l_2\hat{y})q}{r^3}\right) = \frac{1}{4\pi\epsilon_0}\left(\frac{(2l_1\sin\theta\cos\phi+l_2\sin\theta\sin\phi)q}{r^3}\right)
+        \]
+        其电场强度与$r^3$成反比。
+
+        \item[4.]
+        设旋转椭球体内的电荷密度为$\rho$，则$\rho=\dfrac{3Q}{4\pi ab^2}$。
+
+        由于对称性：
+        \[
+        \iiint\limits_V xy\,\mathrm{d}V = \iiint\limits_V yz\,\mathrm{d}V = \iiint\limits_V zx\,\mathrm{d}V = 0
+        \]
+        即对称的位置会正负相消。
+
+        代入电四极矩的积分表达式：
+        \[
+        \mathsf{D}_{ij} = \iiint\limits_V (3\bm{x}_i\bm{x}_j-r^2\delta_{ij})\rho(\bm{r})\,\mathrm{d}V
+        \]
+        可得：
+        \[
+        \mathsf{D}_{xy} = \iiint\limits_V 3xy\rho\,\mathrm{d}V = 0
+        \]
+        同理，$\mathsf{D}_{yz}=\mathsf{D}_{zx}=0$，即电四极矩的对角元为0。
+
+        由于该椭球体在$x$、$y$方向的半径相同，设$x^2+y^2=t^2$，有：
+        \[
+        \iiint\limits_V t^2\,\mathrm{d}V = \int_{-a}^a \mathrm{d}z \int_{0}^{R(z)} 2\pi t^3\,\mathrm{d}t = \frac{8\pi ab^4}{15},\quad R(z) = b\sqrt{1-\frac{z^2}{a^2}}
+        \]
+        \[
+        \iiint\limits_V x^2\,\mathrm{d}V = \iiint\limits_V y^2\,\mathrm{d}V = \frac{1}{2}\iiint\limits_V t^2\,\mathrm{d}V = \frac{4\pi ab^4}{15}
+        \]
+        而$z$方向为：
+        \[
+        \iiint\limits_V z^2\,\mathrm{d}V = \frac{4\pi a^3b^2}{15}
+        \]
+        故有：
+        \[
+        \mathsf{D}_{zz} = \rho\iiint\limits_V (3z^2-r^2)\,\mathrm{d}V = \rho\iiint\limits_V (2z^2-2x^2)\,\mathrm{d}V = \frac{2}{5}(a^2-b^2)Q
+        \]
+        \[
+        \mathsf{D}_{xx} = \mathsf{D}_yy = -\frac{1}{2}\mathsf{D}_{zz} = -\frac{1}{5}(a^2-b^2)Q
+        \]
+
+    \end{itemize}
+\end{document}

@@ -1,0 +1,149 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,mathrsfs,wasysym}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=SimSun,RawFeature=+fwid]
+
+\begin{document}
+\title{\textbf{中子在早期宇宙的演化}}
+\author{\Large\textbf{张植竣}}
+\date{\today}
+\maketitle
+\begin{center}
+    院系：北京大学物理学院天文学系\hspace{2em}学号：1900011604\hspace{2em}邮箱：1900011604@pku.edu.cn
+    
+    \textbf{不愿意作演讲报告}
+\end{center}
+
+\section*{引言}
+
+中子是原子核的主要组分之一。没有中子的存在，元素周期表将会单调无味，也不会有“工业明珠”稀土元素、制造原子弹的放射性元素，甚至我们自己。而宇宙中占据其重子数$1/8$的中子在早期的宇宙演化中经历了什么呢？本文将会探讨中子的产生、平衡与脱耦，最终衰变或在原初核合成（BBN）中被固定在原子核中的过程。
+
+\section*{概念准备：脱耦}
+
+脱耦指的是某种粒子或其传递的相互作用不再与宇宙的其它成分发生反应，从而远离热平衡的过程。考虑宇宙中某个粒子间反应的速率$\Gamma=nSv$（$n$为数密度，$S$为粒子的碰撞截面积，$v$为粒子的热运动速度），以及宇宙的膨胀速率，即Hubble常数$H$，如果$\Gamma\ll H$，则此时反应中的各个粒子之间可以充分进行能量和动量交换并达到热平衡。但由于宇宙的加速膨胀，温度持续下降，粒子的数密度也降低，直到$\Gamma\sim H$的程度时，宇宙膨胀占主导而反应逐渐停止，反应中的粒子就会与宇宙这一团炽热的等离子体脱耦。对不同种类的粒子，$\Gamma$有不同的值，这便导致粒子脱耦的时间和温度会不一样。
+
+\section*{中子的产生}
+
+在大爆炸后$\sim10^{-6}\,\mathrm{s}$，宇宙温度$T\sim1\,\mathrm{GeV}$时，夸克脱耦（夸克——强子转变），此时夸克无法自由存在，并通过胶子相互结合成强子（重子和介子），中子就是在这个过程中产生的。这时中子与质子的数目比仍接近$1:1$。
+
+\section*{中子的平衡与脱耦}
+
+中子的平衡受以下弱相互作用反应控制：
+\begin{align*}
+    & \mathrm{n + e^+ \leftrightarrow p + \overline{\nu}_e} \\
+    & \mathrm{n + \nu_e \leftrightarrow p + e^-} \\
+    & \mathrm{n \leftrightarrow p + e^- + \overline{\nu}_e}
+\end{align*}
+热力学平衡时，质子——中子的数密度之比由两者的质量差决定：
+\[
+\kappa_\mathrm{eq} = \left(\frac{n_\mathrm{n}}{n_\mathrm{p}}\right)_\mathrm{eq} = \mathrm{e}^{-\tfrac{\Delta mc^2}{kT}}
+\]
+其中：
+\[
+\Delta m = (m_\mathrm{n} - m_\mathrm{p}) = 1.293\,\mathrm{MeV} = 1.5\times10^{10}\,\mathrm{K}
+\]
+而中子的脱耦温度$T_\mathrm{d}$可以通过如下方法估计：
+\[
+kT_\mathrm{d} \simeq m_\mathrm{n} - m_\mathrm{p} - m_\mathrm{e} = 0.782\,\mathrm{MeV}
+\]
+这给出中子脱耦时的相对丰度（相对于质子，下同）为：
+\[
+\kappa_\mathrm{d} =
+\left(\frac{n_\mathrm{n}}{n_\mathrm{p}}\right)_\mathrm{d} =
+\mathrm{e}^{-\tfrac{\Delta mc^2}{kT_\mathrm{d}}} \simeq
+\mathrm{e}^{-\tfrac{1.293}{0.782}}
+= 0.19
+\]
+即此时中子与质子的数量比约为$1:5$，这发生在大爆炸后$\sim2.6\,\mathrm{s}$。
+
+\section*{中子的固定\symbol{"2E3A}氘的形成瓶颈}
+
+中子脱耦后，其数量不断下降，因为产生中子的反应趋于停止，只剩下中子衰变能改变其丰度：
+\[
+\mathrm{n \rightarrow p + e^- + \overline{\nu}_e}
+\]
+自由中子的平均寿命为$\tau=880.3\pm1.1\,\mathrm{s}$。
+
+此时若不将中子固定到原子核内，它将会迅速衰变成质子，最后宇宙中将全部是氢原子！而保存中子的反应恰是氘的形成：
+\[
+\mathrm{n + p \leftrightarrow D + \gamma}
+\]
+这个反应的可逆性取决于高能光子$\gamma$的数量，而由于反应放热的量$\Delta E=2.225\,\mathrm{MeV}$（也就是氘的结合能）并没有远高于当时宇宙的温度$T_\mathrm{d}\simeq0.8\,\mathrm{MeV}$，这会使得大量处于麦克斯韦分布高能尾端的光子可以击碎氘核而重新释放质子和中子。简单的估计如下：
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[height=5cm]{Figure_1.png}
+        \subcaption{重子——光子比$\eta$对BBN反应结果的影响}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[height=5cm]{Figure_2.png}
+        \subcaption{BBN中核反应的方向}
+    \end{subfigure}
+\end{figure}
+
+宇宙中光子（绝大部分为主要为CMB光子）的数密度为：
+\[
+n_\gamma
+= \frac{u}{\overline{u}_\gamma}
+= \frac{aT^4}{2.7012kT}
+= \frac{7.5657\times10^{-15}\cdot2.7255^4}{2.7012\cdot1.381\times10^{-16}\cdot2.7255}
+= 4.1\times10^2\,\mathrm{cm}^{-3}
+\]
+
+其中$u$为宇宙中光子辐射场的能量密度，$a=\dfrac{4\sigma}{c}$，$\sigma$为Stefan-Boltzmann常数，$\overline{u}_\gamma=\dfrac{\pi}{30\zeta(3)}=2.7012kT$为温度为$T$的黑体辐射中光子的平均能量。
+
+而重子物质的数密度为：
+\[
+n_\mathrm{b}
+= \frac{\Omega_\mathrm{b}\cdot\rho_\mathrm{crit}}{\overline{m}_\mathrm{b}}
+= \frac{0.0488\cdot8.6\times10^{-15}}{1.67\times10^{-24}}
+= 2.5\times10^{-7}\,\mathrm{cm}^{-3}
+\]
+其中$\Omega_\mathrm{b}$为宇宙中重子的密度参数，$\rho_\mathrm{crit}=\dfrac{3H_0^2}{8\pi G}$为宇宙的临界密度，$\overline{m}_\mathrm{b}$为重子的平均质量，可以用质子质量估计。
+
+这便给出宇宙中的重子——光子数目比：（在大爆炸后约$1\,\mathrm{s}$到当前时刻基本守恒）
+\[
+\eta = \frac{n_\mathrm{b}}{n_\gamma} = 6.1\times10^{-10},\quad
+\eta^{-1} = 1.64\times10^9
+\]
+可以看出一个重子对应约$10^9$个光子，这样高的比例意味着光子非常容易与新生成的氘核碰撞并将其击碎，必须等待光子的动能和数密度减小。宇宙膨胀一段时间后，光子能量降低以至于有足够多的氘核驱动反应正向进行；但是这个时间不能太长，否则中子将会衰变殆尽以至于无法形成氘核。这个矛盾般的现象被称为“氘的形成瓶颈”。
+
+对这个反应的计算表明$T_\mathrm{D}\sim0.075\,\mathrm{MeV}$时可以大量形成氘核，瓶颈被打破。由Wien位移定律得$RT\equiv2.7255\,\mathrm{K}$，而早期宇宙为辐射主导，尺度因子$R\propto\sqrt{t}$，可得关系：
+\[
+t(\mathrm{s}) = \left(\frac{T}{1.5\times10^{10}\,\mathrm{K}}\right)^{-2} = \left(\frac{T}{1.3\,\mathrm{MeV}}\right)^{-2}
+\]
+这给出$T_\mathrm{D}$对应的时间为$t_\mathrm{D}\simeq300\,\mathrm{s}$，即需要等待约$300\,\mathrm{s}$（相比于$t_\mathrm{d}\sim2.6\,\mathrm{s}$，时间要膨胀100倍，温度下降到原来的$1/10$）才能大量合成氘核。合成氘核时的中子的相对丰度为：
+\[
+\kappa_\mathrm{D} = \kappa_\mathrm{D}\cdot\mathrm{e}^{-\tfrac{t_\mathrm{D}}{\tau}} = 0.19\cdot\mathrm{e}^{-\tfrac{300}{880.3}} \simeq 0.14
+\]
+即此时中子与质子的数量比约为$1:7$。由于几乎所有的中子经过原初核合成都转移到$^{4}\mathrm{He}$中，$^{4}\mathrm{He}$的相对丰度为：
+\[
+Y_\mathrm{He} = \frac{2\kappa_\mathrm{D}}{1+\kappa_\mathrm{D}} = 0.245
+\]
+
+\section*{总结}
+
+本文讨论了中子的产生、平衡与脱耦，最终衰变或在原初核合成（BBN）中被固定在原子核中的过程。对每一个过程的时间点、温度和此时的中子丰度进行了估计。可以发现中子在与质子的弱相互作用转化中就因质量较大而处于劣势，且由于自由中子不稳定而迅速衰变减少。但是此时氘的形成瓶颈及时地停止了这个趋势并把仅剩的$1/8$中子固定在了$^{4}\mathrm{He}$内。这是否是一个巧合，还是人择原理的结果？我们现在还不得而知，希望将来会有新理论解释这个谜。
+
+\section*{参考文献}
+
+Introduction to Cosmology, Max Pettini, Cambridge University.
+
+\end{document}

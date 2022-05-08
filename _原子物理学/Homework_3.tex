@@ -1,0 +1,186 @@
+\documentclass[utf8,a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+    \title{\textbf{原子物理学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2021年3月30日}
+
+    \maketitle
+
+    \begin{itemize}
+
+        \subsection*{思考题}
+
+        \item[1.27]
+
+
+        \item[1.32(2)]
+
+
+        \item[1.33]
+
+
+        \item[2.2]
+        因为氨分子的翻转是分子转动能级的跃迁，苯分子共振是电子能级间的跃迁。分子的质量大约是电子的$10^4$倍，则分子翻转相应地会比电子跃迁更难，需要的能量大约也相差$10^4$倍。
+
+        \subsection*{习题}
+
+        \item[1.39]
+
+
+        \item[2.1]
+        $\bm{H}$的本征多项式为：
+        \begin{align*}
+        |\lambda\bm{I} - \bm{H}|
+        &=
+        \begin{vmatrix}
+            \ \lambda-E_0 & A \\
+            A & \lambda-E_0 \ \\
+        \end{vmatrix} \\
+        &= (\lambda - E_0)^2 - A^2 \\
+        &= 0
+        \end{align*}
+        解得两个本征值：
+        \[
+        \lambda_1 = E_0 + A,\qquad \lambda_2 = E_0 - A
+        \]
+        对于本征值$\lambda_1 = E_0 + A$，解方程$(\lambda_1\bm{I} - \bm{H})\bm{X} = 0$：
+        \[
+        (\lambda_1\bm{I} - \bm{H})\bm{X}
+        =
+        \begin{bmatrix}
+            A & A \\
+            A & A \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            0 \\
+            0 \\
+        \end{bmatrix}
+        \]
+        解得$x_1 = -x_2$，则该方程的一个基础解系为：
+        \[
+        \bm{X}
+        =
+        \begin{bmatrix}
+            1 \\
+            -1 \\
+        \end{bmatrix}
+        \]
+        对于本征值$\lambda_2 = E_0 - A$，解方程$(\lambda_1\bm{I} - \bm{H})\bm{Y} = 0$：
+        \[
+        (\lambda_1\bm{I} - \bm{H})\bm{Y}
+        =
+        \begin{bmatrix}
+            -A & A \\
+            A & -A \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            y_1 \\
+            y_2 \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            0 \\
+            0 \\
+        \end{bmatrix}
+        \]
+        解得$y_1 = y_2$，则该方程的一个基础解系为：
+        \[
+        \bm{Y}
+        =
+        \begin{bmatrix}
+            1 \\
+            1 \\
+        \end{bmatrix}
+        \]
+        将$\{\bm{X},\bm{Y}\}$正交单位化得$\{\bm{\eta_1},\bm{\eta_2}\}$：
+        \[
+        \bm{\eta_1}
+        =
+        \begin{bmatrix}
+            \frac{\sqrt{2}}{2} \\
+            -\frac{\sqrt{2}}{2} \\
+        \end{bmatrix}
+        ,\qquad
+        \bm{\eta_2}
+        =
+        \begin{bmatrix}
+            \frac{\sqrt{2}}{2} \\
+            \frac{\sqrt{2}}{2} \\
+        \end{bmatrix}
+        \]
+        这就是分别属于本征值$\lambda_1 = E_0 + A$和$\lambda_2 = E_0 - A$的两个本征矢。
+
+        对角化变换如下：
+
+        令：
+        \[
+        \bm{T} = [\bm{\eta_1}, \bm{\eta_2}]
+        =
+        \begin{bmatrix}
+            \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\
+            -\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\
+        \end{bmatrix}
+        \]
+        则：
+        \[
+        \bm{T}^{-1}\bm{H}\bm{T}
+        =
+        \begin{bmatrix}
+            E_0 + A & 0 \\
+            0 & E_0 - A \\
+        \end{bmatrix}
+        \]
+
+        \item[3.3]
+
+
+        \subsection*{补充题}
+
+        \item[1.]
+        电子中微子行进$L$距离后处于$\mu$子中微子的状态的概率为：
+        \[
+        P(t) = \sin^2{2\theta}\sin^2{\frac{\Delta m^2 cL}{4p\hbar}} = \sin^2{2\theta}\sin^2{\frac{\Delta E^2 L}{4Ec\hbar}}
+        \]
+        概率最大要求：
+        \[
+        \frac{\Delta E^2 L}{4Ec\hbar} = \frac{\pi}{2} + n\pi,\qquad n\in\mathbb{N}^{+}\cup\{0\}
+        \]
+        代入$E = 10\,\mathrm{MeV}$，$\Delta E = 1\,\mathrm{MeV}$得：
+        \[
+        L = 12.4\,\mathrm{m} + n\times24.8\,\mathrm{m}\,,\qquad n\in\mathbb{N}^{+}\cup\{0\}
+        \]
+
+        \item[2.]
+
+        \item[3.]
+
+    \end{itemize}
+
+\end{document}

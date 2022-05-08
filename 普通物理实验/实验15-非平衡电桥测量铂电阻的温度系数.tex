@@ -1,0 +1,92 @@
+\documentclass[a4paper]{ctexbook}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\Large
+
+    \title{\textbf{实验十五\ \ 非平衡电桥测量铂电阻的温度系数}}
+    \author{\Large 1900011604 张植竣}
+    \date{\Large 2020年10月15日}
+
+    \maketitle
+
+    \section*{\zihao{3} 一\ \ 测量数据处理}
+    \bigskip
+
+    \subsection*{\zihao{-3} 测量铂电阻测温电路的输出——输入特性}
+
+    \textbf{\boldsymbol{$t=0.0\,\text{\textbf{\textcelsius}}$}时，Pt100电阻的阻值为\boldsymbol{$R_0 = 100.1\Omega$}。}
+
+    \textbf{干路电流为\boldsymbol{$I=2.001\mathrm{mA}$}。}
+
+    测量数据列表如下：
+
+    \begin{table}[ht!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|}
+                \hline
+                $t$/\textcelsius & 0.0 & 21.9 & 45.3 & 54.6 & 70.3 & 85.7 & 100.0 \\
+                \hline
+                $U_{out}$/mV & 0.00 & 16.72 & 34.52 & 41.69 & 53.53 & 65.27 & 76.10 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5cm}
+
+    拟合并计算得到：
+
+    \[
+    U_{out} = kt+b \quad
+    \begin{cases}
+        & k=0.7610168204 \\
+        & b=0.0454064652 \\
+        & r=0.9999984545
+    \end{cases}
+    \]
+
+    \noindent \textbf{计算得到铂电阻的温度系数为：\boldsymbol{$A_1=3.795\pm0.005\times10^{-3}\,\text{\textbf{\textcelsius}}^{-1}$}}
+
+    \bigskip
+    \section*{\zihao{3} 二\ \ 思考题}
+
+    \subsection*{\zihao{-3}(1) 实验中有哪些因素会引起输出——输入非线性误差？对测量的影响有多大？本实验采取了什么措施，用以改善非平衡电桥的线性？}
+
+    铂电阻的阻值——温度特性本来就不是严格的线性关系，实验中不严格满足$R_1 \gg R_T$，$R_2 \gg R_P$且$R_1 = R_2$，以及电流$I_0$有波动，检测$U_{out}$的电压表内阻不够大，都会引起输出——输入非线性误差。影响在$10^{-2}\Omega$的数量级。
+
+    本实验采取如下措施改善非平衡电桥的线性：电源使用恒流源，$R_1$和$R_2$用相同规格的电阻并尽量增大它们的阻值，用数字电压表测量输出电压$U_{out}$，处理数据时用最小二乘法直线拟合。
+
+    \medskip
+    \subsection*{\zihao{-3}(2) 处理实验数据时，如果发现$\boldsymbol{U_{out}-T}$拟合直线截距不为零，是何原因？这是否会影响测温精度？}
+
+    拟合直线截距不为零是因为$t=0$\,\textcelsius 时电桥没有完全平衡。在扣除截距之后，不会影响测温精度。
+
+    \bigskip
+    \section*{\zihao{3} 三\ \ 分析与讨论}
+
+    \begin{itemize}
+        \item[1.] 铂电阻温度系数的测量结果一般小于理论值，因为温度升高时铂电阻阻值增大，不满足分流$I_1=I_2$的条件，与$U_{out}=\frac{I_0}{2}(R_T-R_P)$之间有偏离。
+         
+        \medskip
+        \item[2.] 本实验中没有考虑数字温度计的测温精度，而数字式温度计只能精确到0.1\,\textcelsius ，相对不确定度显著大于测量$I_0$，所带来的系统误差影响将会非常大。
+
+    \end{itemize}
+
+    \bigskip
+    \section*{\zihao{3} 四\ \ 收获与感想}
+
+    \begin{itemize}
+        \item[1.] 测量温度时需要在断电停止加热一段时间后温度计示数不再上升且还没开始下降时测量，一般断电后温度计示数还能上升$3\sim 5\,$\textcelsius ，且水的温度越高，断电后温度计示数上升的空间就越小，平台期也越短，更难测准温度及对应的阻值。
+    \end{itemize}
+
+\end{document}

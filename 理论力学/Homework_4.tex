@@ -1,0 +1,449 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+    \title{\textbf{理论力学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2020年12月11日}
+
+    \maketitle
+
+    \begin{itemize}
+
+        \section*{第五章}
+
+        \item[4.2.(1)]
+        不妨假定$v_1 > v_2$，设圆柱体质心平动速度为$v$，绕轴转动速度为$\omega$，由：
+        \[
+        v + \omega a = v_1,\qquad v - \omega a = v_2
+        \]
+        得
+        \[
+        v = \frac{v_1 - v_2}{2},\qquad \omega = \frac{v_1 + v_2}{2a}
+        \]
+        设瞬心位于圆柱体轴下方$r$处，由：
+        \[
+        v - \omega r = 0
+        \]
+        得：
+        \[
+        r = \frac{v_1 - v_2}{v_1 + v_2}a
+        \]
+
+        \medskip
+        \item[4.2.(2)]
+        它应该只有绕轴转动的向心加速度，无角加速度和科里奥利加速度。则：
+        \[
+        a_A = \omega^2 a = \frac{(v_1 + v_2)^2}{4a}
+        \]
+        方向竖直向下。
+
+        \bigskip
+        \item[4.3.(1)]
+        设圆盘O与圆盘$\mathrm{O}'$的接触点为C（圆盘O上的点），而圆盘$\mathrm{O}'$与圆盘O的接触点为$\mathrm{C}'$（圆盘$\mathrm{O}'$上的点）。 \\
+        纯滚动时两点的相对速度应当为0。而C点速度已知，为：
+        \[
+        v_C = \omega a
+        \]
+        对于$\mathrm{C}'$点，应有：
+        \[
+        v_{C'} = v_{O'} - \omega' b
+        \]
+        则：
+        \[
+        v_{O'} = v_C + \omega' b = \omega a + \omega' b
+        \]
+        \[
+        \varOmega = \frac{v_{O'}}{a+b} = \frac{\omega a + \omega' b}{a+b}
+        \]
+
+        \medskip
+        \item[4.3.(2)]
+        求$t_1$：（注意到接触点O$\mathrm{O}'$的角速度也为$\varOmega$）
+        \[
+        t_1 = \frac{2\pi}{|\varOmega - \omega|} = \frac{2\pi(a+b)}{|\omega'-\omega|b}
+        \]
+
+        \medskip
+        \item[4.3.(3)]
+        求$t_2$：
+        \[
+        t_2 = \frac{2\pi}{\varOmega} = \frac{2\pi(a+b)}{\omega a + \omega' b}
+        \]
+
+        \bigskip
+        \item[4.4.(1)]
+        规定公转角速度$\bm{\omega}$方向竖直向上，即$+z$方向；设自转角速度为$\bm{\omega}_0$。
+        \[
+        \omega_0 \cdot h\tan\alpha = \omega \cdot \frac{h}{\cos\alpha}
+        \]
+        \[
+        \omega_0 = \frac{\omega}{\sin\alpha}
+        \]
+        $\bm{\omega}_0$方向沿圆锥轴线，与$\bm{\varOmega}$夹角为$\dfrac{\pi}{2}+\alpha$。
+        \[
+        \bm{\varOmega} = \bm{\omega} + \bm{\omega}_0 = -\frac{\omega}{\tan\alpha}\,\bm{\hat{y}}
+        \]
+        即角速度大小为$\varOmega = \dfrac{\omega}{\tan\alpha}$，方向水平向左。
+
+        \medskip
+        \item[4.4.(2)]
+        \[
+        \bm{v}_A = \bm{v}_1 + \bm{v}_2
+        \]
+        公转引起的速度大小为：（$d$为A点到过O点竖直转轴的距离）
+        \[
+        v_1 = \omega \cdot d = \omega \cdot \frac{h\cos{2\alpha}}{\cos\alpha} = \omega h \frac{\cos{2\alpha}}{\cos\alpha}
+        \]
+        自转引起的速度大小为：（$r$为圆锥体底面半径）
+        \[
+        v_2 = \omega_0 \cdot r = \frac{\omega}{\sin\alpha} \cdot h\tan\alpha = \frac{\omega h}{\cos\alpha}
+        \]
+        注意到$\bm{v}_1$和$\bm{v}_2$都沿$-\,\bm{\hat{x}}$方向，则
+        \[
+        \bm{v}_A = \bm{v}_1 + \bm{v}_2 = -\omega h \frac{\cos{2\alpha}}{\cos\alpha} - \frac{\omega h}{\cos\alpha} = -2\omega h\cos\alpha\,\bm{\hat{x}}
+        \]
+        （也可以用$\bm{v}_A = \bm{\varOmega} \times \bm{r}$计算）
+
+        圆锥的角加速度为：
+        \[
+        \bm{\beta} = \bm{\dot{\varOmega}} = \bm{\omega} \times \bm{\varOmega} = \frac{\omega^2}{\tan\alpha}\,\bm{\hat{x}}
+        \]
+        A点加速度由四部分构成：（$v_0$和$a_0$是A点在与圆锥无相对运动的参考系下的速度和加速度。）
+        \[
+        \bm{a}_A = \bm{a}_0 + \bm{\beta} \times \bm{r} + \bm{\varOmega} \times (\bm{\varOmega} \times \bm{r}) + 2 \cdot \bm{\varOmega} \times \bm{v}_0
+        \]
+        其中：
+        \[
+        \bm{a}_0 = 0,\qquad 2 \cdot \bm{\varOmega} \times \bm{v}_0 = 0
+        \]
+        （也可以由$\bm{a}_A = \bm{\dot{v}}_A = \bm{\dot{\varOmega}} \times \bm{r} + \bm{\varOmega} \times \bm{\dot{r}} = \bm{\beta} \times \bm{r} + \bm{\varOmega} \times (\bm{\varOmega} \times \bm{r})$推导出）
+        \begin{align*}
+        \bm{\varOmega} \times (\bm{\varOmega} \times \bm{r})
+        &= \left(-\frac{\omega}{\tan\alpha}\,\bm{\hat{y}}\right) \times \left[\left(-\frac{\omega}{\tan\alpha}\,\bm{\hat{y}}\right) \times \frac{h}{\cos\alpha}(\cos{2\alpha}\,\bm{\hat{y}} + \sin{2\alpha}\,\bm{\hat{z}})\right] \\
+        &= \left(-\frac{\omega}{\tan\alpha}\,\bm{\hat{y}}\right) \times \left(-2\omega h\cos\alpha\,\bm{\hat{x}}\right) \\
+        &= -\frac{2\omega^2 h\cos^2\alpha}{\sin\alpha}\,\bm{\hat{z}}
+        \end{align*}
+        \begin{align*}
+        \bm{\beta} \times \bm{r}
+        &= \left(\frac{\omega^2}{\tan\alpha}\,\bm{\hat{x}}\right) \times \frac{h}{\cos\alpha}(\cos{2\alpha}\,\bm{\hat{y}} + \sin{2\alpha}\,\bm{\hat{z}}) \\
+        &= \frac{\omega^2 h\cos{2\alpha}}{\sin\alpha}\,\bm{\hat{z}} - \frac{\omega^2 h\sin{2\alpha}}{\sin\alpha}\,\bm{\hat{y}}
+        \end{align*}
+        则：
+        \begin{align*}
+        \bm{a}_A
+        &= \bm{a}_0 + \bm{\beta} \times \bm{r} + \bm{\varOmega} \times (\bm{\varOmega} \times \bm{r}) + 2 \cdot \bm{\varOmega} \times \bm{v}_0 \\
+        &= 0 + \frac{\omega^2 h\cos{2\alpha}}{\sin\alpha}\,\bm{\hat{z}} - \frac{\omega^2 h\sin{2\alpha}}{\sin\alpha}\,\bm{\hat{y}} - \frac{2\omega^2 h\cos^2\alpha}{\sin\alpha}\,\bm{\hat{z}} + 0 \\
+        &= \frac{\omega^2 h(1-2\sin^2\alpha)}{\sin\alpha}\,\bm{\hat{z}} - 2\omega^2 h\cos\alpha\,\bm{\hat{y}} - \frac{2\omega^2 h\cos^2\alpha}{\sin\alpha}\,\bm{\hat{z}} \\
+        &= -2\omega^2 h\cos\alpha\,\bm{\hat{y}} - \frac{\omega^2 h}{\sin\alpha}\,\bm{\hat{z}}
+        \end{align*}
+
+        \medskip
+        \item[4.4.(3)]
+        圆锥的角加速度为：
+        \[
+        \bm{\beta} = \dfrac{\mathrm{d}\bm{\varOmega}}{\mathrm{d}t} = \bm{\omega} \times \bm{\varOmega} = \frac{\omega^2}{\tan\alpha}\,\bm{\hat{x}}
+        \]
+
+        \bigskip
+        \item[5.2]
+        由$\bm{J} = I\bm{\omega}$得：
+        \begin{equation}
+        J_x = I_1\omega_x,\qquad J_y = I_2\omega_y,\qquad J_z = I_3\omega_z
+        \end{equation}
+        由于$I_1 = I_2$，应有：
+        \[
+        \frac{J_y}{J_x} = \frac{\omega_y}{\omega_x}
+        \]
+        在球坐标系$(r,\theta,\phi)$下，即写为：
+        \[
+        \tan\phi_J = \tan\phi_\omega
+        \]
+        则刚体转动时$\bm{J}$、$\bm{\omega}$、$\bm{z}$在同一平面上。
+
+        而它们与$z$轴的夹角为：
+        \[
+        \tan\theta_J = \frac{\sqrt{J_x^2 + J_y^2}}{J_z},\qquad \tan\theta_\omega = \frac{\sqrt{\omega_x^2 + \omega_y^2}}{\omega_z}
+        \]
+        代入(1)得：
+        \[
+        \tan\theta_J = \frac{I_1}{I_3}\tan\theta_\omega
+        \]
+        故$I_1 = I_2 < I_3$且$\tan\theta_\omega > 0$时，$\tan\theta_J < \tan\theta_\omega$，$\theta_J < \theta_\omega$，即$\bm{J}$在$\bm{\omega}$和$\bm{z}$之间；
+
+        $I_1 = I_2 > I_3$且$\tan\theta_\omega > 0$时，$\tan\theta_J > \tan\theta_\omega$，$\theta_J > \theta_\omega$，即$\bm{\omega}$在$\bm{J}$和$\bm{z}$之间。
+
+        $I_1 = I_2 < I_3$且$\tan\theta_\omega < 0$时，$\tan\theta_J > \tan\theta_\omega$，$\theta_J > \theta_\omega$，即$\bm{J}$在$\bm{\omega}$和$\bm{z}$之间；
+
+        $I_1 = I_2 > I_3$且$\tan\theta_\omega < 0$时，$\tan\theta_J < \tan\theta_\omega$，$\theta_J < \theta_\omega$，即$\bm{\omega}$在$\bm{J}$和$\bm{z}$之间。
+
+        \bigskip
+        \item[5.4]
+        圆盘质心坐标为：
+        \[
+        (x,\, y) = (l\sin\theta + a\sin\phi,\, l\cos\theta + a\cos\phi)
+        \]
+        则质心速度为：
+        \[
+        (\dot{x},\, \dot{y}) = (\dot{\theta}l\cos\theta + \dot{\phi}a\cos\phi,\, -\dot{\theta}l\sin\theta + -\dot{\phi}a\cos\phi)
+        \]
+        \begin{align*}
+        L
+        &= T-V \\
+        &= \frac{1}{2}\cdot\left(\frac{1}{3}ml^2\right)\dot{\theta}^2 + \frac{1}{2}\cdot\left(\frac{1}{2}Ma^2\right)\dot{\phi}^2 + \frac{1}{2}M(\dot{x}^2+\dot{y}^2) + \left(mg\frac{l}{2} + Mgl\right)\cos\theta + Mga\cos\phi \\
+        &= \left(\frac{1}{6}ml^2 + \frac{1}{2}Ml^2\right)\dot{\theta}^2 + \frac{3}{4}Ma^2\dot{\phi}^2 + Mla\cos(\theta-\phi)\dot{\theta}\dot{\phi} + \left(mg\frac{l}{2} + Mgl\right)\cos\theta + Mga\cos\phi
+        \end{align*}
+        由Euler-Lagrange方程得体系的运动方程：
+        \[
+        \left(mg\frac{l}{2} + Mgl\right)\sin\theta + Mla\sin(\theta-\phi)\dot{\phi}^2 + \left(\frac{1}{3}ml^2 + Ml^2\right)\ddot{\theta} + Mla\cos(\theta-\phi)\ddot{\phi} = 0
+        \]
+        \[
+        Mga\sin\phi + \frac{3}{2}Ma^2\ddot{\phi} + Mla\cos(\theta-\phi)\ddot{\theta} - Mla\sin(\theta-\phi)\dot{\theta}^2 = 0
+        \]
+
+        \bigskip
+        \item[5.9]
+        取与刚体无相对运动的坐标系$Oxyz$，则：
+        \[
+        \varOmega_2 = \varOmega_{2x}\,\bm{\hat{x}} + \varOmega_{2y}\,\bm{\hat{y}} + \varOmega_{2z}\,\bm{\hat{z}} = \varOmega_2\sin\theta\cos\phi\,\bm{\hat{x}} + \varOmega_2\sin\theta\sin\phi\,\bm{\hat{y}} + \varOmega_2\cos\theta\,\bm{\hat{z}}
+        \]
+        \[
+        \bm{L} = I\bm{\varOmega} = \varOmega_{2x}I_1 + \varOmega_{2y}I_2 + (\varOmega_{2z}+\varOmega_1)I_3
+        \]
+        考虑到$I_1 = I_2$，化简为：
+        \[
+        \bm{L} = I\bm{\varOmega} = \varOmega_{2x}I_1 + \varOmega_{2y}I_1 + (\varOmega_{2z}+\varOmega_1)I_3
+        \]
+        \begin{align*}
+        \bm{N}
+        &= \frac{\mathrm{d}\bm{L}}{\mathrm{d}t} \\
+        &= \bm{\varOmega_2} \times \bm{L} \\
+        &= \left[\varOmega_{2y}\varOmega_1I_3 + \varOmega_{2y}\varOmega_{2z}(I_3-I_1)\right]\,\bm{\hat{x}} - \left[\varOmega_{2x}\varOmega_1I_3 + \varOmega_{2z}\varOmega_{2x}(I_3-I_1)\right]\,\bm{\hat{y}} \\
+        &= I_3\left(\varOmega_{2y}\varOmega_1\,\bm{\hat{x}} - \varOmega_{2x}\varOmega_1\,\bm{\hat{y}}\right)\cdot\left(1 + \frac{I_3-I_1}{I_3}\cdot\frac{\varOmega_{2z}}{\varOmega_1}\right) \\
+        &= I_3\left(\varOmega_{2y}\varOmega_1\,\bm{\hat{x}} - \varOmega_{2x}\varOmega_1\,\bm{\hat{y}}\right)\cdot\left(1 + \frac{I_3-I_1}{I_3}\cdot\frac{\varOmega_2}{\varOmega_1}\cos\theta\right)
+        \end{align*}
+        注意到：
+        \[
+        \bm{\varOmega_2} \times \bm{\varOmega_1} = \varOmega_{2y}\varOmega_1\,\bm{\hat{x}} - \varOmega_{2x}\varOmega_1\,\bm{\hat{y}}
+        \]
+        得：
+        \[
+        \bm{N} = I_3 \cdot (\bm{\varOmega_2}\times\bm{\varOmega_1}) \cdot \left(1 + \frac{I_3-I_1}{I_3}\cdot\frac{\varOmega_2}{\varOmega_1}\cos\theta\right)
+        \]
+
+        \bigskip
+        \item[5.10]
+        薄板的三个主轴惯量为：
+        \[
+        I_x = \frac{1}{12}ma^2,\qquad I_y = \frac{1}{12}mb^2,\qquad I_y = \frac{1}{12}m(a^2+b^2)
+        \]
+        薄板的角速度为：
+        \[
+        \bm{\omega}_0 = \frac{b\omega_0}{\sqrt{\left.a^2+b^2\right.}}\,\bm{\hat{x}} + \frac{a\omega_0}{\sqrt{\left.a^2+b^2\right.}}\,\bm{\hat{y}}
+        \]
+        薄板的角动量：
+        \[
+        \bm{L} = I\bm{\omega}_0 = \frac{ma^2b\omega_0}{12\sqrt{\left.a^2+b^2\right.}}\,\bm{\hat{x}} + \frac{mb^2a\omega_0}{12\sqrt{\left.a^2+b^2\right.}}\,\bm{\hat{y}}
+        \]
+        可见角动量矢量$\bm{L}$绕$\bm{\omega}_0$以角速度$\bm{\omega}_0$转动。
+        轴承提供的力矩：
+        \[
+        \bm{N} = \frac{\mathrm{d}\bm{L}}{\mathrm{d}t} = \bm{\omega} \times \bm{L} = \frac{m\omega_0^2ab(b^2-a^2)}{12\left(a^2+b^2\right)}\,\bm{\hat{z}}
+        \]
+        由于$a > b$，力矩大小为：
+        \[
+        N = \frac{m\omega_0^2ab(a^2-b^2)}{12\left(a^2+b^2\right)}
+        \]
+        轴承受到的作用力：
+        \[
+        F = \frac{N}{r} = \frac{N}{\sqrt{a^2+b^2}} = \frac{m\omega_0^2ab(a^2-b^2)}{12\left(a^2+b^2\right)^{\frac{3}{2}}}
+        \]
+
+        \bigskip
+        \item[6.(a)]
+        由于对称性，质心应位于$z$轴上，设坐标为$(0,\, 0,\, z_C)$。
+        \[
+        M(z-z_C) = 3mz_C
+        \]
+        \[
+        z_C = \frac{M}{3m+M}z
+        \]
+        质心坐标为$\left(0,\, 0,\, \dfrac{M}{3m+M}z\right)$。
+
+        \medskip
+        \item[6.(b)]
+        \[
+        M \, \left(0,\, 0,\, \frac{3m}{3m+M}z\right),\qquad m \, \left(\frac{\sqrt{3}}{3}a,\, 0,\, -\frac{M}{3m+M}z\right),
+        \]
+        \[
+        m \, \left(-\frac{\sqrt{3}}{6}a,\, \frac{1}{2}a,\, -\frac{M}{3m+M}z\right),\qquad m \, \left(-\frac{\sqrt{3}}{6}a,\, -\frac{1}{2}a,\, -\frac{M}{3m+M}z\right)
+        \]
+        \begin{align*}
+        I
+        &=
+        \begin{bmatrix}
+        I_{xx} & I_{xy} & I_{xz} \\
+        I_{yx} & I_{yy} & I_{yz} \\
+        I_{zx} & I_{zy} & I_{zz} \\
+        \end{bmatrix} \\
+        &=
+        \begin{bmatrix}
+        \sum\limits_{i}m_i\left(y_i^2+z_i^2\right) & -\sum\limits_{i}m_ix_iy_i & -\sum\limits_{i}m_ix_iz_i \\
+        -\sum\limits_{i}m_iy_ix_i & \sum\limits_{i}m_i\left(z_i^2+x_i^2\right) & -\sum\limits_{i}m_iy_iz_i \\
+        -\sum\limits_{i}m_iz_ix_i & -\sum\limits_{i}m_iz_iy_i & \sum\limits_{i}m_i\left(x_i^2+y_i^2\right) \\
+        \end{bmatrix} \\
+        &=
+        \begin{bmatrix}
+        \frac{1}{2}ma^2 + \frac{3mM}{3m+M}z^2 & 0 & 0 \\
+        0 & \frac{1}{2}ma^2 + \frac{3mM}{3m+M}z^2 & 0 \\
+        0 & 0 & ma^2 \\
+        \end{bmatrix}
+        \end{align*}
+
+        \medskip
+        \item[6.(c)]
+        设$M$的坐标为$(0,0,z_0)$，则所求的$z_0$满足
+        \[
+        \frac{3mM}{3m+M}z_0^2 = \frac{1}{2}ma^2
+        \]
+        \[
+        z_0 = a\sqrt{\frac{3m+M}{6M}}
+        \]
+
+        \medskip
+        \item[6.(d)]
+        转动惯量中只有$I_{xx}$、$I_{yy}$两个分量与$z_0$有关，由$\delta z_0^2 = 2z_0\delta z_0$得其变化为：
+        \[
+        \delta I_{xx} = \delta I_{yy} = 2z_0\frac{3mM}{3m+M}\delta z_0 = 2am\sqrt{\frac{3M}{2(3m+M)}}\delta z_0
+        \]
+
+        \setcounter{equation}{0}
+        \bigskip
+        \item[7.(a)]
+        设$\varOmega_3 - \varOmega_0 = \varepsilon \ll \varOmega_0$
+        \[
+        I_1\frac{\mathrm{d}\varOmega_1}{\mathrm{d}t} = (I_2 - I_3)\varOmega_2(\varOmega_0+\varepsilon)
+        \]
+        由于$\varOmega_2,\varepsilon \ll \varOmega_0$，$\varOmega_2\varepsilon$为二阶小量，可以舍去，上式化为：
+        \begin{equation}
+        I_1\frac{\mathrm{d}\varOmega_1}{\mathrm{d}t} = (I_2 - I_3)\varOmega_2\varOmega_0
+        \end{equation}
+        同理有：
+        \begin{equation}
+        I_2\frac{\mathrm{d}\varOmega_2}{\mathrm{d}t} = (I_3 - I_1)\varOmega_0\varOmega_1
+        \end{equation}
+        则有：
+        \[
+        \varOmega_2 = \frac{I_1}{(I_2 - I_3)\varOmega_0}\frac{\mathrm{d}\varOmega_1}{\mathrm{d}t}
+        \]
+        \begin{equation}
+        \frac{\mathrm{d}\varOmega_2}{\mathrm{d}t} = \frac{I_1}{(I_2 - I_3)\varOmega_0}\frac{\mathrm{d}^2\varOmega_1}{\mathrm{d}t^2}
+        \end{equation}
+        (3)代入(2)得：
+        \[
+        \frac{I_1I_2}{(I_2 - I_3)\varOmega_0}\frac{\mathrm{d}^2\varOmega_1}{\mathrm{d}t^2} = (I_3 - I_1)\varOmega_0\varOmega_1
+        \]
+        \begin{equation}
+        \frac{\mathrm{d}^2\varOmega_1}{\mathrm{d}t^2} + \varOmega_0^2\frac{(I_1-I_3)(I_2-I_3)}{I_1I_2}\varOmega_1 = 0
+        \end{equation}
+        同理：
+        \begin{equation}
+        \frac{\mathrm{d}^2\varOmega_2}{\mathrm{d}t^2} + \varOmega_0^2\frac{(I_2-I_1)(I_3-I_2)}{I_1I_2}\varOmega_2 = 0
+        \end{equation}
+        (4)、(5)两式即为所求。
+
+        \medskip
+        \item[7.(b)]
+        注意到$I_1<I_2<I_3$，则$(I_1-I_3)(I_2-I_3)>0$，$(I_2-I_1)(I_3-I_2)>0$。
+
+        由(4)得$\varOmega_1$的运动：
+        \[
+        \varOmega_1 = A_1\cos\omega_1t + B_1\sin\omega_1t
+        \]
+        这是一个小振动，其中常数$A_1$与$B_1$由初始条件确定，圆频率为：
+        \[
+        \omega_1 = \varOmega_0\sqrt{\frac{(I_1-I_3)(I_2-I_3)}{I_1I_2}}
+        \]
+        同理，由(5)得，$\varOmega_2$的运动也是一个小振动：
+        \[
+        \varOmega_2 = A_2\cos\omega_2t + B_2\sin\omega_2t
+        \]
+        其中常数$A_2$与$B_2$由初始条件确定，圆频率为：
+        \[
+        \omega_2 = \varOmega_0\sqrt{\frac{(I_2-I_1)(I_3-I_2)}{I_1I_2}}
+        \]
+
+        \medskip
+        \item[7.(c)]
+        同理可得$\varOmega_2$和$\varOmega_3$的运动方程：
+        \begin{equation}
+        \frac{\mathrm{d}^2\varOmega_2}{\mathrm{d}t^2} + \varOmega_0^2\frac{(I_3-I_2)(I_3-I_1)}{I_2I_3}\varOmega_2 = 0
+        \end{equation}
+        \begin{equation}
+        \frac{\mathrm{d}^2\varOmega_3}{\mathrm{d}t^2} + \varOmega_0^2\frac{(I_1-I_3)(I_1-I_2)}{I_2I_3}\varOmega_3 = 0
+        \end{equation}
+        注意到$I_1<I_2<I_3$，则$(I_3-I_2)(I_3-I_1)>0$，$(I_1-I_3)(I_1-I_2)>0$。
+
+        由(6)得$\varOmega_2$的运动：
+        \[
+        \varOmega_2 = A'_2\cos\omega'_2t + B'_2\sin\omega'_2t
+        \]
+        这是一个小振动，其中常数$A'_2$与$B'_2$由初始条件确定，圆频率为：
+        \[
+        \omega'_2 = \varOmega_0\sqrt{\frac{(I_3-I_2)(I_3-I_1)}{I_2I_3}}
+        \]
+        同理，由(7)得，$\varOmega_3$的运动也是一个小振动：
+        \[
+        \varOmega_3 = A'_3\cos\omega'_3t + B'_3\sin\omega'_3t
+        \]
+        其中常数$A'_3$与$B'_3$由初始条件确定，圆频率为：
+        \[
+        \omega'_3 = \varOmega_0\sqrt{\frac{(I_1-I_3)(I_1-I_2)}{I_2I_3}}
+        \]
+
+        \medskip
+        \item[7.(d)]
+        同理可得$\varOmega_1$和$\varOmega_3$的运动方程：
+        \begin{equation}
+        \frac{\mathrm{d}^2\varOmega_1}{\mathrm{d}t^2} - \varOmega_0^2\frac{(I_1-I_2)(I_2-I_3)}{I_3I_1}\varOmega_1 = 0
+        \end{equation}
+        \begin{equation}
+        \frac{\mathrm{d}^2\varOmega_3}{\mathrm{d}t^2} - \varOmega_0^2\frac{(I_1-I_2)(I_2-I_3)}{I_3I_1}\varOmega_3 = 0
+        \end{equation}
+        注意到$I_1<I_2<I_3$，则$(I_1-I_2)(I_2-I_3)>0$。
+
+        由(8)得$\varOmega_1$的运动：
+        \[
+        \varOmega_1 = A''_1\mathrm{e}^{\omega''t} + B''_1\mathrm{e}^{-\omega''t}
+        \]
+        这是一个不稳定运动，其中常数$A''_1$与$B''_1$由初始条件确定，系数为：
+        \[
+        \omega'' = \varOmega_0\sqrt{\frac{(I_1-I_2)(I_2-I_3)}{I_3I_1}}
+        \]
+        同理，由(9)得，$\varOmega_3$的运动也是一个小振动：
+        \[
+        \varOmega_3 = A''_3\mathrm{e}^{\omega''t} + B''_3\mathrm{e}^{-\omega''t}
+        \]
+        这是一个不稳定运动，其中常数$A''_3$与$B''_3$由初始条件确定，系数也为：
+        \[
+        \omega'' = \varOmega_0\sqrt{\frac{(I_1-I_2)(I_2-I_3)}{I_3I_1}}
+        \]
+        一般情况下$A''_1\neq0$且$A''_3\neq0$，$\varOmega_1$和$\varOmega_3$会发散，其发散速率为：
+        \[
+        \frac{\mathrm{d}\varOmega_1}{\mathrm{d}t} = \omega''A''_1\mathrm{e}^{\omega''t} - \omega''B''_1\mathrm{e}^{-\omega''t}
+        \]
+        \[
+        \frac{\mathrm{d}\varOmega_3}{\mathrm{d}t} = \omega''A''_3\mathrm{e}^{\omega''t} - \omega''B''_3\mathrm{e}^{-\omega''t}
+        \]
+
+    \end{itemize}
+
+\end{document}

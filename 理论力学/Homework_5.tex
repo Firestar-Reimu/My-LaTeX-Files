@@ -1,0 +1,497 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm,wasysym}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+    \title{\textbf{理论力学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2021年1月1日}
+
+    \maketitle
+
+    \begin{itemize}
+
+        \section*{第六章}
+
+        \item[6.1]
+        $L'(\dot{p},p,t)$的全微分为：
+        \[
+        \mathrm{d}L' = \frac{\partial L'}{\partial \dot{p}}\mathrm{d}\dot{p} + \frac{\partial L'}{\partial p}\mathrm{d}p + \frac{\partial L'}{\partial t}\mathrm{d}t
+        \]
+        同时也可以表示为：
+        \begin{align*}
+            \mathrm{d}L'
+            &= \mathrm{d}H + \dot{p}\mathrm{d}q + q\mathrm{d}\dot{p} \\
+            &= \left(\dot{q}\mathrm{d}p - \dot{p}\mathrm{d}q + \frac{\partial H}{\partial t}\mathrm{d}t\right) + \dot{p}\mathrm{d}q + q\mathrm{d}\dot{p} \\
+            &= q\mathrm{d}\dot{p} + \dot{q}\mathrm{d}p + \frac{\partial H}{\partial t}\mathrm{d}t \\
+        \end{align*}
+        比较得：
+        \[
+        \frac{\partial L'}{\partial \dot{p}} = q,\qquad \frac{\partial L'}{\partial p} = \dot{q} = \frac{\mathrm{d}q}{\mathrm{d}t},\qquad \frac{\partial L'}{\partial t}\mathrm{d}t = \frac{\partial H}{\partial t}\mathrm{d}t
+        \]
+        则显然有：
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L'}{\partial \dot{p}}\right) - \frac{\partial L'}{\partial p} = 0
+        \]
+        \bigskip
+
+        \setcounter{equation}{0}
+        \item[6.2]
+        质点的Lagrange量为：
+        \[
+        L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}(k_1 + k_2)x^2
+        \]
+        质点的Hamilton量为：
+        \[
+        H = \frac{p^2}{2m} + \frac{1}{2}(k_1 + k_2)x^2
+        \]
+        正则方程为：
+        \begin{equation}
+            \dot{x} = \frac{\partial H}{\partial p} = \frac{p}{m}
+        \end{equation}
+        \begin{equation}
+            \dot{p} = m\ddot{x} = -\frac{\partial H}{\partial q} = -(k_1 + k_2)x
+        \end{equation}
+        方程(1)显然成立，而由方程(2)得：
+        \[
+        \ddot{x} + \frac{k_1 + k_2}{m}x = 0
+        \]
+        解得：
+        \[
+        x = A\cos(\omega t + \phi),\qquad \omega = \sqrt{\frac{k_1 + k_2}{m}},\qquad A < \frac{a}{2}
+        \]
+        其中振幅$A$与相位$\phi$由初始条件决定。
+        \bigskip
+
+        \item[6.3]
+        单摆坐标为：
+        \[
+        \bm{r} = (x + l\sin\theta)\bm{\hat{x}} + (ax^2 - l\cos\theta)\bm{\hat{z}}
+        \]
+        则单摆速度为：
+        \[
+        \bm{v} = (\dot{x} + \dot{\theta}l\cos\theta)\bm{\hat{x}} + (2ax\dot{x} + \dot{\theta}l\sin\theta)\bm{\hat{y}}
+        \]
+        系统的Lagrange量为：
+        \begin{align*}
+            L
+            &= T-V \\
+            &= \frac{1}{2}m(\dot{x} + \dot{\theta}l\cos\theta)^2 - \frac{1}{2}m(2ax\dot{x} + \dot{\theta}l\sin\theta)^2 + mg(ax^2 - l\cos\theta) \\
+            &= \frac{1}{2}m(1+4a^2x^2)\dot{x}^2 - \frac{1}{2}ml^2\dot{\theta}^2 + ml(\cos\theta + 2ax\sin\theta)\dot{x}\dot{\theta} - mg(ax^2 - l\cos\theta)
+        \end{align*}
+        与$x$、$\theta$共轭的广义动量分别为：
+        \[
+        p_x = \frac{\partial L}{\partial\dot{x}} = m(1+4a^2x^2)\dot{x} + ml(\cos\theta + 2ax\sin\theta)\dot{\theta} = A\dot{x} + B\dot{\theta}
+        \]
+        \[
+        p_\theta = \frac{\partial L}{\partial\dot{\theta}} = ml^2\dot{\theta} + ml(\cos\theta + 2ax\sin\theta)\dot{x} = C\dot{x} + D\dot{\theta}
+        \]
+        其中：
+        \[
+        A = m(1+4a^2x^2),\qquad B = C = ml(\cos\theta +2ax\sin\theta),\qquad D = ml^2
+        \]
+        解得：
+        \[
+        \dot{x} = \frac{Dp_x - Bp_\theta}{AD - BC},\qquad \dot{\theta} = \frac{Ap_\theta - Cp_x}{AD - BC}
+        \]
+        则系统的Hamilton量为：
+        \begin{align*}
+            H
+            &= T+V \\
+            &= \frac{1}{2}m(\dot{x} + \dot{\theta}l\cos\theta)^2 + \frac{1}{2}m(2ax\dot{x} + \dot{\theta}l\sin\theta)^2 + mg(ax^2 - l\cos\theta) \\
+            &= \frac{1}{2}m(1+4a^2x^2)\dot{x}^2 - \frac{1}{2}ml^2\dot{\theta}^2 + ml(\cos\theta + 2ax\sin\theta)\dot{x}\dot{\theta} + mg(ax^2 - l\cos\theta) \\
+            &= \frac{A}{2}\cdot\left(\frac{Dp_x - Bp_\theta}{AD - BC}\right)^2 + \frac{D}{2}\cdot\left(\frac{Ap_\theta - Cp_x}{AD - BC}\right)^2 + \frac{B(Dp_x - Bp_\theta)(Ap_\theta - Cp_x)}{(AD - BC)^2} + mg(ax^2 - l\cos\theta) \\
+            &= \frac{Dp_x^2 + Ap_\theta^2 - (B+C)p_x p_\theta}{2(AD - BC)} \\
+            &= \frac{[p_\theta,\ p_x]\begin{bmatrix}A & B \\ C & D\end{bmatrix}\begin{bmatrix}p_\theta \\ p_x\end{bmatrix}}{2\begin{vmatrix}A & B \\ C & D\end{vmatrix}} + mg(ax^2 - l\cos\theta)
+        \end{align*}
+        其中：
+        \[
+        A = m(1+4a^2x^2),\qquad B = C = ml(\cos\theta +2ax\sin\theta),\qquad D = ml^2
+        \]
+        \bigskip
+
+        \item[6.5.(1)]
+        非相对论情况下，Lagrange量为：
+        \[
+        L = \frac{1}{2}m\bm{v}^2 + e\bm{v}\cdot\bm{A} -eV(r)
+        \]
+        正则动量为：
+        \[
+        \bm{P} = \frac{\partial L}{\partial\bm{v}} = m\bm{v} + e\bm{A}
+        \]
+        Hamilton量为：
+        \[
+        L = \frac{1}{2m}(\bm{P} - e\bm{A})^2 + eV(r) = \frac{1}{2m}\left(\bm{P} - \frac{e}{2}\bm{B}_0\times\bm{r}\right)^2 + eV(r)
+        \]
+        \medskip
+
+        \item[6.5.(2)]
+        在极坐标系下，
+        \[
+        \bm{A} = \frac{1}{2}\bm{B}_0\times\bm{r} = \frac{1}{2}(B_0\,\bm{\hat{z}})\times(r\bm{\hat{r}}) = \frac{1}{2}B_0 r \,\bm{\hat{\theta}}
+        \]
+        则Lagrange量为：
+        \begin{align*}
+            L
+            &= \frac{1}{2}m\bm{v}^2 + e\bm{v}\cdot\bm{A} -eV(r) \\
+            &= \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2) + e(\dot{r}\,\bm{\hat{r}} + r\dot{\theta}\,\bm{\hat{\theta}}) \cdot \left(\frac{1}{2}B_0 r \,\bm{\hat{\theta}}\right) - eV(r) \\
+            &= \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2) + \frac{1}{2}eB_0 r^2\dot{\theta} - eV(r)
+        \end{align*}
+        换系之后，Lagrange量变为：
+        \begin{align*}
+            L
+            &= \frac{1}{2}m\left[\dot{r}^2 + r^2\left(\dot{\theta} - \frac{eB_0}{2m}\right)^2\right] + \frac{1}{2}eB_0 r^2\left(\dot{\theta} - \frac{eB_0}{2m}\right) - eV(r) \\
+            &= \frac{1}{2}m\dot{r}^2 + \frac{1}{2}mr^2\dot{\theta}^2 - \frac{(eB_0 r)^2}{8m} - eV(r)
+        \end{align*}
+        正则动量为：
+        \[
+        p_r = \frac{\partial L}{\partial\dot{r}} = m\dot{r},\qquad p_\theta = \frac{\partial L}{\partial\dot{\theta}} = mr^2\dot{\theta}
+        \]
+        Hamlton量为：
+        \begin{align*}
+            H
+            &= \frac{1}{2}m\dot{r}^2 + \frac{1}{2}mr^2\dot{\theta}^2 - \frac{(eB_0 r)^2}{8m} + eV(r) \\
+            &= \frac{1}{2m}(p_r^2 + p_\theta^2) - \frac{(eB_0 r)^2}{8m} + eV(r) \\
+            &= \frac{1}{2m}(\bm{P}^2 - e\bm{A}^2) + eV(r)
+        \end{align*}
+        \bigskip
+
+        \item[6.6.(1)]
+        在极坐标中，系统的Lagrange量为：
+        \[
+        L = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2) + \frac{GMm}{r}
+        \]
+        则正则动量为：
+        \[
+        p_r = \frac{\partial L}{\partial\dot{r}} = m\dot{r},\qquad p_\theta = \frac{\partial L}{\partial\dot{\theta}} = mr^2\dot{\theta}
+        \]
+        Laplace–Runge–Lenz矢量为：
+        \begin{align*}
+            \bm{e}
+            &= \frac{1}{GMm^2}(\bm{p} \times \bm{J}) - \frac{\bm{r}}{r} \\
+            &= \frac{1}{GMm^2}(m\dot{r}\,\bm{\hat{r}} + mr\dot{\theta}\,\bm{\hat{\theta}}) \times (mr^2\dot{\theta}\,\bm{\hat{z}}) - \bm{\hat{r}} \\
+            &= \frac{1}{GM}(r^3\dot{\theta}^2\,\bm{\hat{r}} - r^2\dot{r}\dot{\theta}\,\bm{\hat{\theta}}) - \bm{\hat{r}} \\
+            &= \frac{1}{GMm^2}\left(\frac{p_\theta^2\,\bm{\hat{r}}}{r} - p_r p_\theta\,\bm{\hat{\theta}}\right) - \bm{\hat{r}}
+        \end{align*}
+        Hamilton量为：
+        \[
+        H = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2) - \frac{GMm}{r} = \frac{1}{2m}(p_r^2 + \frac{p_\theta^2}{r^2}) - \frac{GMm}{r}
+        \]
+        由$\dfrac{\partial\bm{\hat{r}}}{\partial r} = 0$、$\dfrac{\partial\bm{\hat{r}}}{\partial\theta} = \bm{\hat{\theta}}$、$\dfrac{\partial\bm{\hat{r}}}{\partial r} = 0$、$\dfrac{\partial\bm{\hat{r}}}{\partial r} = -\bm{\hat{r}}$得：
+        \[
+        \frac{\partial\bm{e}}{\partial r} = -\frac{1}{GMm^2}\left(\frac{p_\theta^2\,\bm{\hat{r}}}{r^2}\right),\qquad \frac{\partial\bm{e}}{\partial\theta} = \frac{1}{GMm^2}\left(\frac{p_\theta^2\,\bm{\hat{\theta}}}{r} + p_r p_\theta\,\bm{\hat{r}}\right) - \bm{\hat{\theta}}
+        \]
+        \[
+        \frac{\partial\bm{e}}{\partial p_r} = -\frac{p_\theta\,\bm{\hat{\theta}}}{GMm^2},\qquad \frac{\partial\bm{e}}{\partial p_\theta} = -\frac{p_r\,\bm{\hat{\theta}}}{GMm^2}
+        \]
+        \[
+        \frac{\partial H}{\partial r} = -\frac{p_\theta^2}{mr^3} + \frac{GMm}{r^2},\qquad \frac{\partial H}{\partial\theta} = 0
+        \]
+        \[
+        \frac{\partial H}{\partial p_r} = \frac{p_r}{m},\qquad \frac{\partial H}{\partial p_\theta} = \frac{p_\theta}{mr^2}
+        \]
+        则Poisson括号为：
+        \begin{align*}
+            [\bm{e},H]
+            &= \left(\frac{\partial\bm{e}}{\partial r} \cdot \frac{\partial H}{\partial p_r} + \frac{\partial\bm{e}}{\partial\theta} \cdot \frac{\partial H}{\partial p_\theta}\right) - \left(\frac{\partial\bm{e}}{\partial r} \cdot \frac{\partial H}{\partial r} + \frac{\partial\bm{e}}{\partial p_\theta} \cdot \frac{\partial H}{\partial\theta}\right) \\
+            &= -\frac{1}{GMm^2}\left(\frac{p_\theta^2\,\bm{\hat{r}}}{r^2}\right) \cdot \frac{p_r}{m} + \left[\frac{1}{GMm^2}\left(\frac{p_\theta^2\,\bm{\hat{\theta}}}{r} + p_r p_\theta\,\bm{\hat{r}}\right) - \bm{\hat{\theta}}\right] \cdot \frac{p_\theta}{mr^2} \\
+            &\quad\, + \frac{p_\theta\,\bm{\hat{\theta}}}{GMm^2} \cdot \left(-\frac{p_\theta^2}{mr^3} + \frac{GMm}{r^2}\right) \\
+            &= -\frac{1}{GMm^3}\cdot\frac{p_\theta p_r}{r^2}\,\bm{\hat{r}} + \frac{1}{GMm^3}\cdot\frac{p_\theta^3}{r^3}\,\bm{\hat{\theta}} + \frac{1}{GMm^3}\cdot\frac{p_\theta p_r}{r^2}\,\bm{\hat{r}} - \frac{p_\theta}{mr^2}\,\bm{\hat{\theta}} + \frac{p_\theta}{mr^2}\,\bm{\hat{\theta}} - \frac{1}{GMm^3}\cdot\frac{p_\theta^3}{r^3}\,\bm{\hat{\theta}} \\
+            &= 0
+        \end{align*}
+        则$\bm{e}$守恒，为常矢量。
+        \medskip
+
+        \item[6.6.(2)]
+        取$\bm{e}$为极轴方向，则$\bm{r} \cdot \bm{e} = re\cos\theta$
+
+        同时又有：
+        \begin{align*}
+        \bm{r} \cdot \bm{e}
+        &= \bm{r} \cdot \left[\frac{1}{GMm^2}(\bm{p} \times \bm{J}) - \frac{\bm{r}}{r}\right] \\
+        &= \frac{1}{GMm^2}\left[\bm{r} \cdot (\bm{p} \times \bm{J})\right] - r \\
+        &= \frac{1}{GMm^2}\left[\bm{J} \cdot (\bm{r} \times \bm{p})\right] - r \\
+        &= \frac{J^2}{GMm^2} - r
+        \end{align*}
+        即：
+        \[
+        re\cos\theta = \frac{J^2}{GMm^2} - r
+        \]
+        化简得轨道方程：
+        \[
+        r = \frac{J^2}{GMm^2} \cdot \frac{1}{1+e\cos\theta}
+        \]
+        这是极坐标系下，极轴沿长轴，偏心率为$e$的椭圆方程。
+
+        说明矢量$\bm{e}$取由力心到近日点的方向，大小等于偏心率$e$。
+        \bigskip
+
+        \item[7.3.(1)]
+        由
+        \[
+        Q = \ln\left(\frac{\sin p}{q}\right),\qquad P = q\cot p
+        \]
+        得：
+        \[
+        q = \frac{\sqrt{1-P^2\mathrm{e}^{2Q}}}{\mathrm{e}^{2Q}},\qquad p = \arccos{P\mathrm{e}^Q}
+        \]
+        于是有：
+        \[
+        \frac{\partial p}{\partial P} = \frac{-\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}},\qquad \frac{\partial p}{\partial Q} = \frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}
+        \]
+        \[
+        \frac{\partial q}{\partial P} = \frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}},\qquad \frac{\partial q}{\partial Q} = -\frac{\sqrt{1-P^2\mathrm{e}^{2Q}}}{\mathrm{e}^Q} - \frac{P^2\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}
+        \]
+        则：
+        \begin{align*}
+            [q,p]_{Q,P}
+            &= \frac{\partial q}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial p}{\partial Q} \\
+            &= \left(-\frac{\sqrt{1-P^2\mathrm{e}^{2Q}}}{\mathrm{e}^Q} - \frac{P^2\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right)\cdot\left(\frac{-\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right) - \\
+            &\quad\left(\frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right)\cdot\left(\frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right) \\
+            &= 1 + \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} - \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} \\
+            &= 1
+        \end{align*}
+        \[
+        [q,q]_{Q,P} = \frac{\partial q}{\partial Q}\cdot\frac{\partial q}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial q}{\partial Q} = 0
+        \]
+        \[
+        [p,p]_{Q,P} = \frac{\partial p}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial p}{\partial P}\cdot\frac{\partial p}{\partial Q} = 0
+        \]
+        即该变换保持最基本的Poisson括号不变，则它不改变任意两个力学量$f$、$g$之间的Poisson括号。
+        \[
+        [f,g]_{p,q} = [f,g]_{P,Q}
+        \]
+        故该变换为正则变换。
+        \medskip
+
+        \item[7.3.(2)]
+        由
+        \[
+        q = \sqrt{\frac{2Q}{k}}\cos P,\qquad p = \sqrt{2Qk}\sin P
+        \]
+        得：
+        \[
+        Q = \frac{1}{2}\left(q^2 k + \frac{p^2}{k}\right),\qquad P = \arctan\frac{p}{kq}
+        \]
+        于是有：
+        \[
+        \frac{\partial P}{\partial p} = \frac{qk}{q^2 k^2 + p^2},\qquad \frac{\partial P}{\partial q} = -\frac{pk}{q^2 k^2 + p^2}
+        \]
+        \[
+        \frac{\partial Q}{\partial p} = \frac{p}{k},\qquad \frac{\partial q}{\partial Q} = qk
+        \]
+        则：
+        \begin{align*}
+            [q,p]_{Q,P}
+            &= \frac{\partial q}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial p}{\partial Q} \\
+            &= qk\cdot\frac{qk}{q^2 k^2 + p^2} - pk\cdot\left(-\frac{pk}{q^2 k^2 + p^2}\right) \\
+            &= \frac{q^2 k^2 + p^2}{q^2 k^2 + p^2} \\
+            &= 1
+        \end{align*}
+        \[
+        [q,q]_{Q,P} = \frac{\partial q}{\partial Q}\cdot\frac{\partial q}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial q}{\partial Q} = 0
+        \]
+        \[
+        [p,p]_{Q,P} = \frac{\partial p}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial p}{\partial P}\cdot\frac{\partial p}{\partial Q} = 0
+        \]
+        即该变换保持最基本的Poisson括号不变，则它不改变任意两个力学量$f$、$g$之间的Poisson括号。
+        \[
+        [f,g]_{p,q} = [f,g]_{P,Q}
+        \]
+        故该变换为正则变换。
+        \bigskip
+
+        \item[3.(a)]
+        由$\dfrac{\partial S}{\partial q_i} = p_i$及$\dfrac{\partial S}{\partial t} = -H$得：
+        \[
+        \frac{\partial S}{\partial t} + \frac{1}{2m}\left(\frac{\partial S}{\partial\bm{x}}\right)^2 + \frac{1}{2}m\omega^2\bm{x}^2
+        \]
+        此即为作用量函数所满足的Hamilton-Jacobi方程。
+        \medskip
+
+        \item[3.(b)]
+        令$S(x_1,x_2,t) = T(t) + S_1(x_1) + S_2(x_2)$，分离变量得：
+        \[
+        \frac{\mathrm{d}T}{\mathrm{d}t} + \frac{1}{2m}\left[\left(\frac{\mathrm{d}S_1}{\mathrm{d}x_1}\right)^2 + \left(\frac{\mathrm{d}S_2}{\mathrm{d}x_2}\right)^2\right] + \frac{1}{2}m\omega^2\left(x_1^2 + x_2^2\right) = 0
+        \]
+        引入常数$\sigma$和$\tau$，可以表达为：
+        \[
+        \left\{
+        \begin{aligned}
+            &\frac{\mathrm{d}T}{\mathrm{d}t} + \sigma + \tau = 0 \\
+            &\frac{1}{2m}\left(\frac{\mathrm{d}S_1}{\mathrm{d}x_1}\right)^2 + \frac{1}{2}m\omega^2 x_1^2 - \sigma = 0 \\
+            &\frac{1}{2m}\left(\frac{\mathrm{d}S_2}{\mathrm{d}x_2}\right)^2 + \frac{1}{2}m\omega^2 x_2^2 - \tau = 0
+        \end{aligned}
+        \right.
+        \]
+        \medskip
+
+        \item[3.(c)]
+        由题意，令$\sigma = Q_1$、$\tau = Q_2$，积分得：
+        \[
+        T = -(Q_1 + Q_2)t
+        \]
+        \[
+        S_1 = \int_{0}^{x_1}\sqrt{2mQ_1 - m^2 \omega^2 \xi_1^2}\,\mathrm{d}\xi_1
+        \]
+        \[
+        S_2 = \int_{0}^{x_2}\sqrt{2mQ_2 - m^2 \omega^2 \xi_2^2}\,\mathrm{d}\xi_2
+        \]
+        则$S(x,y,t)$的完全解为：
+        \[
+        S = \int_{0}^{x_1}\sqrt{2mQ_1 - m^2 \omega^2 \xi_1^2}\,\mathrm{d}\xi_1 + \int_{0}^{x_2}\sqrt{2mQ_2 - m^2 \omega^2 \xi_2^2}\,\mathrm{d}\xi_2 - (Q_1 + Q_2)t
+        \]
+        \medskip
+
+        \item[3.(d)]
+        新的广义动量$P_i$定义为：
+        \[
+        P_i = -\frac{\partial S}{\partial Q_i} = -\int_{0}^{x_1}\frac{m}{\sqrt{2mQ_i - m^2 \omega^2 \xi_i^2}}\,\mathrm{d}\xi_i + t
+        \]
+        利用(6.182)式积分得：
+        \[
+        P_i = -\frac{1}{\omega}\arccos\left(\sqrt{\frac{m\omega^2}{2Q_i}}x_i\right) + t
+        \]
+        则：
+        \[
+        x_i = \sqrt{\frac{2Q_i}{m\omega^2}}\cos(-\omega t + \omega P_i) = \sqrt{\frac{2Q_i}{m\omega^2}}\cos(\omega t - \omega P_i)
+        \]
+        可以看出$P_i$与不同方向上振动的相位$\Delta\phi_i = -\omega P_i$相关联。
+        \medskip
+
+        \item[3.(e)]
+        由于粒子轨迹$\bm{x}(t)$由两个方向的同频率简谐振动叠加而成，且一般振幅、相位均不同，说明粒子轨道是闭合的椭圆。
+        \medskip
+
+        \item[3.(f)]
+        以下过程中令$\phi_i = \omega t - \omega P_i$。
+
+        注意到：
+        \[
+        I_i = \frac{1}{2\pi}\oint p_i \,\mathrm{d}x_i = \frac{1}{2\pi}\int_0^T p_i \frac{\mathrm{d}x_i}{\mathrm{d}t}\,\mathrm{d}t
+        \]
+        其中周期$T = \dfrac{2\pi}{\omega}$。
+
+        由$x_i = \sqrt{\dfrac{2Q_i}{m\omega^2}}\cos\phi$得：
+        \[
+        \frac{\mathrm{d}x_i}{\mathrm{d}t} = \omega\sqrt{\dfrac{2Q_i}{m\omega^2}}\sin\phi
+        \]
+        又：
+        \[
+        p_i = \frac{\partial S}{\partial x_i} = \sqrt{2mQ_i - m^2 \omega^2 x_i^2} = \sqrt{2mQ_i}\sin\phi
+        \]
+        则绝热不变量$I_i$为：
+        \begin{align*}
+            I_i
+            &= \frac{1}{2\pi}\int_0^T p_i \frac{\mathrm{d}x_i}{\mathrm{d}t}\,\mathrm{d}t \\
+            &= \frac{1}{2\pi}\int_0^T \omega\sqrt{\dfrac{2Q_i}{m\omega^2}}\sin\phi \cdot \sqrt{2mQ_i}\sin\phi \,\mathrm{d}t \\
+            &= \frac{Q_i}{\pi\omega}\int_0^{2\pi} \sin^2\phi \,\mathrm{d}\phi \\
+            &= \frac{Q_i}{\omega}
+        \end{align*}
+        由于总能量：
+        \[
+        E = H = Q_1 + Q_2 = \omega(I_1 + I_2)
+        \]
+        可见总能量仅仅依赖于它们特殊的线性组合。
+
+        各个$\omega_i$为：
+        \[
+        \omega_i = \frac{\partial E}{\partial I_i} = \omega
+        \]
+        \medskip
+
+        \item[3.(g)]
+        由$\dfrac{\partial S}{\partial q_i} = p_i$及$\dfrac{\partial S}{\partial t} = -H$得：
+        \[
+        \frac{\partial S}{\partial t} + \frac{1}{2m}\left[\left(\frac{\partial S}{\partial r}\right)^2 + \frac{1}{r^2}\left(\frac{\partial S}{\partial\theta}\right)^2\right] + \frac{1}{2}\omega^2 r^2
+        \]
+        此即为作用量函数所满足的Hamilton-Jacobi方程。
+
+        令$S(x_1,x_2,t) = T(t) + \varTheta(\theta) + R(r)$，分离变量得：
+        \[
+        \frac{\mathrm{d}T}{\mathrm{d}t} + \frac{1}{2m}\left[\left(\frac{\mathrm{d}R}{\mathrm{d}r}\right)^2 + \frac{1}{r^2}\left(\frac{\mathrm{d}\varTheta}{\mathrm{d}\theta}\right)^2\right] + \frac{1}{2}m\omega^2 r^2 = 0
+        \]
+        引入常数$\lambda$和$\kappa$，可以表达为：
+        \[
+        \left\{
+        \begin{aligned}
+            &\frac{\mathrm{d}T}{\mathrm{d}t} + \lambda = 0 \\
+            &\frac{1}{2m}\left(\frac{\mathrm{d}\varTheta}{\mathrm{d}\theta}\right)^2 - \kappa = 0 \\
+            &\frac{1}{2m}\left(\frac{\mathrm{d}R}{\mathrm{d}r}\right)^2 + \frac{1}{2}\omega^2 r^2 - \lambda + \frac{\kappa}{r^2} = 0
+        \end{aligned}
+        \right.
+        \]
+        积分得：
+        \[
+        S = \int_0^r \sqrt{2m\lambda - \frac{2m\kappa}{\rho^2} - m^2 \omega^2 \rho^2}\,\mathrm{d}\rho + \sqrt{2m\kappa}\theta - \lambda t
+        \]
+        \medskip
+
+        \item[3.(h)]
+        考虑与$r$及$\theta$相关的广义动量：
+        \begin{align*}
+            P_\kappa
+            &= -\frac{\partial S}{\partial\kappa} \\
+            &= -\int_0^r \frac{m}{\rho^2\sqrt{2m\lambda - \dfrac{2m\kappa}{\rho^2} - m^2 \omega^2 \rho^2}}\,\mathrm{d}\rho + \sqrt{\frac{m}{2\kappa}}\theta
+        \end{align*}
+        换元，令$u = \dfrac{1}{\rho^2}$，并利用(6.182)式：
+        \begin{align*}
+            P_\kappa
+            &= -\int_0^r \frac{m}{\rho^2\sqrt{2m\lambda - \dfrac{2m\kappa}{\rho^2} - m^2 \omega^2 \rho^2}}\,\mathrm{d}\rho + \sqrt{\frac{m}{2\kappa}}\theta \\
+            &= -\int_0^r \frac{mu}{\sqrt{2m\lambda - 2m\kappa u - \dfrac{m^2 \omega^2}{u}}}\,\left(-\frac{1}{2u\sqrt{u}}\mathrm{d}u\right) + \sqrt{\frac{m}{2\kappa}}\theta \\
+            &= \sqrt{\frac{m}{8\kappa}} \int_0^r \frac{1}{\sqrt{-\dfrac{1}{2m\kappa}\omega^2 + \dfrac{\lambda}{m\kappa}u - u^2}}\,\mathrm{d}u + \sqrt{\frac{m}{2\kappa}}\theta \\
+            &= \sqrt{\frac{m}{8\kappa}}\arccos\left(\frac{\lambda - 2m\kappa u}{\sqrt{\lambda^2 - 2\kappa\omega^2}}\right) + \sqrt{\frac{m}{2\kappa}}\theta
+        \end{align*}
+        代入回$u = \dfrac{1}{r^2}$，并整理得：
+        \[
+        r^2 = \frac{2m\kappa}{\left(\lambda + \sqrt{\lambda^2 - 2\kappa\omega^2}\right) - 2\sqrt{\lambda^2 - 2\kappa\omega^2}\cos^2(\theta - \Delta\theta)},\qquad \Delta\theta = p_\kappa\sqrt{\frac{2\kappa}{m}}
+        \]
+        即轨道方程具有以下形式：
+        \[
+        r^2 = \frac{C_1}{C_2 - C_3\cos^2\theta}
+        \]
+        代入$r^2 = x^2 + y^2$及$\cos\theta = \dfrac{x}{\sqrt{x^2 + y^2}}$可以化为：
+        \[
+        \frac{x^2}{A^2} + \frac{y^2}{B^2} = 1,\qquad A = \sqrt{\frac{C_1}{C_2 - C_3}},\qquad B = \sqrt{\frac{C_1}{C_3}}
+        \]
+        其中要求$C_2 - C_3 > 0$，而本题中
+        \[
+        C_2 - C_3 = \lambda - \sqrt{\lambda^2 - 2\kappa\omega^2} > 0
+        \]
+        显然成立，故轨迹为椭圆，与直角坐标中结论一致。
+        \medskip
+
+        \item[3.(i)]
+        新的广义动量：
+        \[
+        p_r = -\frac{\partial S}{\partial r} = -\sqrt{2m\lambda - \frac{2m\kappa}{r^2} - m^2 \omega^2 r^2}
+        \]
+        \[
+        p_\theta = -\frac{\partial S}{\partial\theta} = -\sqrt{2m\kappa}
+        \]
+        绝热不变量可以用留数定理积出：
+        \[
+        I_r = \frac{1}{2\pi}\oint p_r \,\mathrm{d}r = \frac{1}{2\pi}\int_0^{2\pi} p_r \frac{\mathrm{d}r}{\mathrm{d}\theta}\,\mathrm{d}\theta = \frac{\lambda}{\omega} + \sqrt{2m\kappa}
+        \]
+        \[
+        I_\theta = \frac{1}{2\pi}\oint p_\theta \,\mathrm{d}\theta = \frac{1}{2\pi}\int_0^{2\pi} \left(-\sqrt{2m\kappa}\right)\,\mathrm{d}\theta = -\sqrt{2m\kappa}
+        \]
+        则：
+        \begin{align*}
+            H
+            &= \frac{1}{2m}\left[p_r^2 + \frac{p_\theta^2}{r^2}\right] + \frac{1}{2}m\omega^2r^2 \\
+            &= \frac{1}{2m}\left[\left(2m\lambda - \frac{2m\kappa}{r^2} - m^2 \omega^2 r^2\right) + \frac{2m\kappa}{r^2}\right]  + \frac{1}{2}m\omega^2r^2 \\
+            &= \lambda \\
+            &= \omega(I_r + I_\theta)
+        \end{align*}
+
+    \end{itemize}
+
+\end{document}

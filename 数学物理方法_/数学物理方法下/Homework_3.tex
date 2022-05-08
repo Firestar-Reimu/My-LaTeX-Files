@@ -1,0 +1,756 @@
+\documentclass[fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\allowdisplaybreaks[4]
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+\title{\textbf{数学物理方法作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2020年10月23日}
+
+\maketitle
+
+\section*{第十四章}
+
+\begin{itemize}
+
+    \item[9.]
+    设方程的通解具有如下形式：
+    \[
+    u(x,t) = v(x,t) + w(x,t)
+    \]
+    可设齐次化函数（特解）为：
+    \[
+    v(x,t) = f(x)\cos\frac{\pi a}{l}t
+    \]
+    代入原方程并化简得$f(x)$满足的常微分方程边值问题：
+    \[
+    f''(x) + \frac{\pi^2}{l^2}f(x) = 0
+    \]
+    \[
+    f(0) = 1,\qquad
+    f'(l) = 0
+    \]
+    $f(x)$的通解为：
+    \[
+    f(x) = A\sin\frac{\pi}{l}x + B\cos\frac{\pi}{l}x
+    \]
+    代入边界条件可以定出：
+    \[
+    f(x) = \cos\frac{\pi}{l}x
+    \]
+    \[
+    v(x) = \cos\frac{\pi}{l}x\cos\frac{\pi a}{l}t
+    \]
+    于是通解$w(x,t)$满足：
+    \[
+    \frac{\partial^2 w}{\partial t^2} - a^2\frac{\partial^2 w}{\partial x^2} = 0
+    \]
+    \[
+    \left.w\right|_{x=0} = 0,\qquad
+    \left.\frac{\partial w}{\partial x}\right|_{x=l} = 0
+    \]
+    \[
+    \left.w\right|_{t=0} = 0,\qquad
+    \left.\frac{\partial w}{\partial t}\right|_{t=0} = \sin\frac{\pi}{2l}x
+    \]
+    设通解$w(x,t)$具有分离变量的形式：
+    \[
+    w(x,t) = X(x)T(t)
+    \]
+    代入方程可得：
+    \[
+    X(x)T''(t) = a^2X''(x)T(t)
+    \]
+    两端除以$a^2X(x)T(t)$得到：
+    \[
+    \frac{T''(t)}{a^2T(t)} = \frac{X''(x)}{X(x)} = -\lambda
+    \]
+    得到方程组：
+    \[
+    X''(x) + \lambda X(x) = 0
+    \]
+    \[
+    T''(t) + \lambda a^2T(t) = 0
+    \]
+    先对$X(x)$求解：
+    \[
+    X''(x) + \lambda X(x) = 0
+    \]
+    \[
+    X(0) = 0,\qquad
+    X'(l) = 0
+    \]
+    由$\lambda = 0$得到$X(x) = Ax + B$，代入边界条件得：
+    \[
+    A = B = 0
+    \]
+    此时：
+    \[
+    X(x) \equiv 0
+    \]
+    即$\lambda = 0$会导致零解，舍去。
+
+    若$\lambda \neq 0$，则$X(x)$的通解可以写为：
+    \[
+    X(x) = A\sin\sqrt\lambda x + B\cos\sqrt\lambda x
+    \]
+    代入边界条件得：
+    \[
+    B = 0,\qquad
+    A \neq 0
+    \]
+    \[
+    \sqrt{\lambda}l = \frac{2n+1}{2}\pi
+    \]
+    解得本征值和非零解：
+    \[
+    \lambda_n = \left(\frac{2n+1}{2l}\pi\right)^{\hspace{-0.25em}2},\qquad
+    n\in\mathbb{N^+}
+    \]
+    \[
+    X_n(x) = \sin\frac{2n+1}{2l}\pi x
+    \]
+    对于本征值$\lambda_n$，求解关于时间的方程得到：
+    \[
+    T_n(t) = C_n\sin\frac{2n+1}{2l}\pi at + D_n\cos\frac{2n+1}{2l}\pi at
+    \]
+    得到一般解：
+    \[
+    w(x,t) = \sum_{n = 1}^{\infty}\left(C_n\sin\frac{2n+1}{2l}\pi at + D_n\cos\frac{2n+1}{2l}\pi at\right)\sin\frac{2n+1}{2l}\pi x
+    \]
+    再代入初始条件：
+    \[
+    \left.w\right|_{t=0} = 0,\qquad
+    \left.\frac{\partial w}{\partial t}\right|_{t=0} = \sin\frac{\pi}{2l}x
+    \]
+    得到：
+    \[
+    D_n = 0,\qquad
+    C_0 = \frac{2l}{\pi a},\qquad
+    C_n(n \neq 0) = 0
+    \]
+    于是一般解：
+    \[
+    w(x,t) = \frac{2l}{\pi a}\sin\frac{\pi}{2l}at\sin\frac{\pi}{2l}x
+    \]
+    原定解问题之解为：
+    \[
+    u(x,t) = \cos\frac{\pi}{l}x\cos\frac{\pi a}{l}t + \frac{2l}{\pi a}\sin\frac{\pi}{2l}x\sin\frac{\pi}{2l}at
+    \]
+    \bigskip
+
+    \item[10.]
+    设方程的通解具有如下形式：
+    \[
+    u(x,t) = v(x,t) + w(x,t)
+    \]
+    可设齐次化函数（特解）为：
+    \[
+    v(x,t) = f(x)\mathrm{e}^{-\alpha^2\kappa t} + g(x)\mathrm{e}^{-\beta^2\kappa t}
+    \]
+    代入原方程并化简得$f(x)$与$g(x)$满足的常微分方程边值问题：
+    \[
+    f''(x) + \alpha^2f(x) = 0
+    \]
+    \[
+    f(0) = A,\qquad
+    f(l) = 0
+    \]
+    以及$g(x)$满足的常微分方程边值问题：
+    \[
+    g''(x) + \beta^2g(x) = 0
+    \]
+    \[
+    g(0) = 0,\qquad
+    g(l) = B
+    \]
+    解得
+    \begin{align*}
+    f(x)
+    &= -\frac{A}{\tan\alpha l}\sin\alpha x + A\cos\alpha x \\
+    &= \frac{A}{\sin\alpha l}\sin\alpha(l - x)
+    \end{align*}
+    \[
+    g(x) = \frac{B}{\sin\beta l}\sin\beta x
+    \]
+    则特解为：
+    \[
+    v(x,t) = \frac{A}{\sin\alpha l}\sin\alpha(l - x)\mathrm{e}^{-\alpha^2\kappa t} + \frac{B}{\sin\beta l}\sin\beta x\mathrm{e}^{-\beta^2\kappa t}
+    \]
+    于是通解$w(x,t)$满足：
+    \[
+    \frac{\partial w}{\partial t} - \kappa\frac{\partial^2 w}{\partial x^2} = 0
+    \]
+    \[
+    \left.w\right|_{x=0} = 0,\qquad
+    \left.w\right|_{x=l} = 0
+    \]
+    \[
+    \left.w\right|_{t=0} = -\frac{A}{\sin\alpha l}\sin\alpha(l - x) - \frac{B}{\sin\beta l}\sin\beta x
+    \]
+    设通解$w(x,t)$具有分离变量的形式：
+    \[
+    w(x,t) = X(x)T(t)
+    \]
+    代入方程可得：
+    \[
+    X(x)T'(t) = \kappa X''(x)T(t)
+    \]
+    两端除以$\kappa X(x)T(t)$得到：
+    \[
+    \frac{T'(t)}{\kappa T(t)} = \frac{X''(x)}{X(x)} = -\lambda
+    \]
+    得到方程组：
+    \[
+    X''(x) + \lambda X(x) = 0
+    \]
+    \[
+    T'(t) + \lambda\kappa T(t) = 0
+    \]
+    先对$X(x)$求解：
+    \[
+    X''(x) + \lambda X(x) = 0
+    \]
+    \[
+    X(0) = 0,\qquad
+    X(l) = 0
+    \]
+    由$\lambda = 0$得到$X(x) = Ax + B$，代入边界条件得：
+    \[
+    A = B = 0
+    \]
+    此时：
+    \[
+    X(x) \equiv 0
+    \]
+    即$\lambda = 0$会导致零解，舍去。
+
+    若$\lambda \neq 0$，则$X(x)$的通解可以写为：
+    \[
+    X(x) = A\sin\sqrt\lambda x + B\cos\sqrt\lambda x
+    \]
+    代入边界条件得：
+    \[
+    B = 0,\qquad
+    A \neq 0
+    \]
+    \[
+    \sqrt{\lambda}l = n\pi
+    \]
+    解得本征值和非零解：
+    \[
+    \lambda_n = \left(\frac{n\pi}{l}\right)^{2},\qquad
+    n\in\mathbb{N^+}
+    \]
+    \[
+    X_n(x) = \sin\frac{n\pi}{l}x
+    \]
+    对于本征值$\lambda_n$，求解关于时间的方程得到：
+    \[
+    T(t) = C_n\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t}
+    \]
+    得到一般解：
+    \[
+    w(x,t) = \sum_{n = 1}^{\infty}\left(C_n\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t}\right)\sin\frac{n\pi}{l}x
+    \]
+    再代入初始条件：
+    \[
+    \left.w\right|_{t=0} = -\frac{A}{\sin\alpha l}\sin\alpha(l - x) - \frac{B}{\sin\beta l}\sin\beta x
+    \]
+    得到：
+    \[
+    \sum_{n = 1}^{\infty}C_n\sin\frac{n\pi}{l}x = -\frac{A}{\sin\alpha l}\sin\alpha(l - x) - \frac{B}{\sin\beta l}\sin\beta x
+    \]
+    于是一般解：
+    \[
+    w(x,t) = \sum_{n = 1}^{\infty}2n\pi\left[\frac{A}{(\alpha l)^2-(n\pi)^2} - \frac{(-1)^nB}{(\beta l)^2-(n\pi)^2}\right]\left(\sin\frac{n\pi}{l}x\right)\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t}
+    \]
+    原定解问题之解为：
+    \begin{align*}
+    u(x,t)
+    &= \frac{A}{\sin\alpha l}\sin\alpha(l - x)\mathrm{e}^{-\alpha^2\kappa t} + \frac{B}{\sin\beta l}\sin\beta x\mathrm{e}^{-\beta^2\kappa t} \\
+    &\quad + \sum_{n = 1}^{\infty}2n\pi\left[\frac{A}{(\alpha l)^2-(n\pi)^2} - \frac{(-1)^nB}{(\beta l)^2-(n\pi)^2}\right]\left(\sin\frac{n\pi}{l}x\right)\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t}
+    \end{align*}
+
+\end{itemize}
+
+\newpage
+\section*{第十五章}
+
+\begin{itemize}
+
+    \item[1.]
+    在柱坐标下，记空间内任意一点的电势为$u(r,\theta,z)$。
+
+    显然该系统关于$z$对称，则此定解问题为：
+    \[
+    \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 u}{\partial\theta^2} = 0,\qquad
+    0 < r < a
+    \]
+    \[
+    u(a,\theta) =
+    \left\{
+    \begin{aligned}
+        V &, 0 < \theta < \pi \\
+        -V &, \pi < \theta < 2\pi
+    \end{aligned}
+    \right.
+    \]
+    设通解$u(r,\theta)$具有分离变量的形式：
+    \[
+    u(r,\theta) = R(r)\varTheta(\theta)
+    \]
+    代入方程可得：
+    \[
+    \frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right)\varTheta + \frac{R}{r^2}\frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} = 0
+    \]
+    两端除以${R\varTheta}$，再乘以$r^2$，得到：
+    \[
+    \frac{r}{R}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) = -\frac{1}{\varTheta}\frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} = -\lambda
+    \]
+    得到方程组：
+    \[
+    r\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) - \lambda R = 0
+    \]
+    \[
+    \frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} + \lambda\varTheta = 0
+    \]
+    先对$\varTheta(\theta)$求解：
+    \[
+    \frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} + \lambda\varTheta = 0
+    \]
+    \[
+    \varTheta(0) = \varTheta(2\pi),\qquad
+    \varTheta'(0) = \varTheta'(2\pi)
+    \]
+    由$\lambda = 0$得到$\varTheta(\theta) = A\theta + B$，代入边界条件得：
+    \[
+    A = 0
+    \]
+    此时$B$任意，取$B = 1$，即：
+    \[
+    \varTheta(\theta) = 1
+    \]
+    若$\lambda \neq 0$，则$\varTheta(\theta)$的通解可以写为：
+    \[
+    \varTheta(\theta) = A\sin\sqrt\lambda\theta + B\cos\sqrt\lambda\theta
+    \]
+    代入边界条件得：
+    \[
+    A\sin2\pi\sqrt{\lambda} + B\cos2\pi\sqrt{\lambda} = B
+    \]
+    \[
+    A\cos2\pi\sqrt{\lambda} - B\sin2\pi\sqrt{\lambda} = A
+    \]
+    这是一个关于$A$和$B$的线性方程组：
+    \[
+    \left\{
+    \begin{aligned}
+        & A\sin2\pi\sqrt{\lambda} + B(\cos2\pi\sqrt{\lambda} - 1) = 0 \\
+        & A(\cos2\pi\sqrt{\lambda} - 1) - B\sin2\pi\sqrt{\lambda} = 0
+    \end{aligned}
+    \right.
+    \]
+    线性方程组有非零解等价于系数行列式等于0：
+    \begin{align*}
+    &\quad
+    \begin{vmatrix}
+        \sin2\pi\sqrt{\lambda} & \cos2\pi\sqrt{\lambda} - 1 \ \\
+        \ \cos2\pi\sqrt{\lambda} - 1 & \sin2\pi\sqrt{\lambda}
+    \end{vmatrix} \\
+    &= \sin^2{2\pi\sqrt{\lambda}} + \left(\cos2\pi\sqrt{\lambda} - 1\right)^2 \\
+    &= 2\left(1 - 2\cos2\pi\sqrt{\lambda}\right) \\
+    &= 0
+    \end{align*}
+    即：
+    \[
+    \cos2\pi\sqrt{\lambda} = 1
+    \]
+    \[
+    \lambda_m = m^2,\qquad
+    m\in\mathbb{N^+}
+    \]
+    这时$\sin2\pi\sqrt{\lambda} = 0$，$A$和$B$可以取任意值，取两个线性无关的解作为本征函数：
+    \[
+    \varTheta_{m1}(\theta) = \sin m\theta
+    \]
+    \[
+    \varTheta_{m2}(\theta) = \cos m\theta
+    \]
+    对于本征值$\lambda_m$，这时径向方程为：
+    \[
+    r\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) - m^2 R = 0
+    \]
+    或写成：
+    \[
+    r^2\frac{\mathrm{d}^2 R}{\mathrm{d}r^2} + r\frac{\mathrm{d}R}{\mathrm{d}r} - m^2 R = 0
+    \]
+    做变量代换$t = \ln r$得：
+    \[
+    \frac{\mathrm{d}^2 R}{\mathrm{d}t^2} - m^2 R = 0
+    \]
+    当$m = 0$时，有解：
+    \[
+    R(r) = C_0 + D_0\ln r
+    \]
+    当$m \neq 0$时，有解：
+    \[
+    R(r) = C_m r^m + D_m r^{-m},\qquad
+    m \in \mathbb{N^+}
+    \]
+    因$r\to0$时，电势有界，得：
+    \[
+    D_m = 0,\qquad
+    m \in \mathbb{N^+}\cup\{0\}
+    \]
+    一般解为：
+    \[
+    u(r,\theta) = C_0 + \sum_{n = 1}^{\infty}r^{m}\left(A_m\sin{m\theta} + B_m\cos{m\theta}\right)
+    \]
+    代入边界条件，由本征函数的正交归一性得：
+    \begin{align*}
+    A_m
+    &= \frac{V}{\pi a^m}\left(\int_{0}^{\pi}\sin{m\theta}\,\mathrm{d}\theta - \int_{\pi}^{2\pi}\sin{m\theta}\,\mathrm{d}\theta\right) \\
+    &= \frac{2V}{m\pi a^m}[1-(-1)^m] \\
+    &= \left\{
+        \begin{matrix}
+            \ 0,\qquad & m = 2n \\
+            \ \dfrac{4V}{\pi a^{2n+1}}\dfrac{1}{2n+1},\qquad & m = 2n+1
+        \end{matrix}
+       \right.
+    \end{align*}
+    \begin{align*}
+    B_m
+    &= \frac{V}{(1+\delta_{m0})\pi a^m}\left(\int_{0}^{\pi}\cos{m\theta}\,\mathrm{d}\theta - \int_{\pi}^{2\pi}\cos{m\theta}\,\mathrm{d}\theta\right) \\
+    &= 0
+    \end{align*}
+    其中$\delta_{m0}$为Kronecker符号。
+
+    最后得解：
+    \begin{align*}
+    u(r,\theta,z)
+    &= \frac{4V}{\pi}\sum_{n = 1}^{\infty}\frac{1}{2n+1}\left(\frac{r}{a}\right)^{2n+1}\sin{(2n+1)\theta} \\
+    &= \frac{2V}{\pi}\arctan\frac{2ar\sin\theta}{a^2 - r^2}
+    \end{align*}
+    \bigskip
+
+    \item[4.(1)]
+    设方程的通解具有如下形式：
+    \[
+    u(x,y) = v(x,y) + w(x,y)
+    \]
+    由$\nabla^2 v = -4$可设齐次化函数（特解）为：
+    \[
+    v(x,y) = -x^2 - y^2
+    \]
+    即：
+    \[
+    v(r,\theta) = -r^2
+    \]
+    于是通解$w(x,y) = w(r,\theta)$满足：
+    \[
+    \nabla^2 w = 0
+    \]
+    \[
+    \left. w\right|_{r = a} = a^2
+    \]
+    设通解$w(r,\theta)$具有分离变量的形式：
+    \[
+    w(r,\theta) = R(r)\varTheta(\theta)
+    \]
+    代入方程可得：
+    \[
+    \frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right)\varTheta + \frac{R}{r^2}\frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} = 0
+    \]
+    两端除以${R\varTheta}$，再乘以$r^2$，得到：
+    \[
+    \frac{r}{R}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) = -\frac{1}{\varTheta}\frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} = -\lambda
+    \]
+    得到方程组：
+    \[
+    r\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) - \lambda R = 0
+    \]
+    \[
+    \frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} + \lambda\varTheta = 0
+    \]
+    先对$\varTheta(\theta)$求解：
+    \[
+    \frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} + \lambda\varTheta = 0
+    \]
+    \[
+    \varTheta(0) = \varTheta(2\pi),\qquad
+    \varTheta'(0) = \varTheta'(2\pi)
+    \]
+    由$\lambda = 0$得到$\varTheta(\theta) = A\theta + B$，代入边界条件得：
+    \[
+    A = 0
+    \]
+    此时$B$任意，取$B = 1$，即：
+    \[
+    \varTheta(\theta) = 1
+    \]
+    若$\lambda \neq 0$，则$\varTheta(\theta)$的通解可以写为：
+    \[
+    \varTheta(\theta) = A\sin\sqrt\lambda\theta + B\cos\sqrt\lambda\theta
+    \]
+    代入边界条件得：
+    \[
+    A\sin2\pi\sqrt{\lambda} + B\cos2\pi\sqrt{\lambda} = B
+    \]
+    \[
+    A\cos2\pi\sqrt{\lambda} - B\sin2\pi\sqrt{\lambda} = A
+    \]
+    这是一个关于$A$和$B$的线性方程组：
+    \[
+    \left\{
+    \begin{aligned}
+        & A\sin2\pi\sqrt{\lambda} + B(\cos2\pi\sqrt{\lambda} - 1) = 0 \\
+        & A(\cos2\pi\sqrt{\lambda} - 1) - B\sin2\pi\sqrt{\lambda} = 0
+    \end{aligned}
+    \right.
+    \]
+    线性方程组有非零解等价于系数行列式等于0：
+    \begin{align*}
+        &\quad
+        \begin{vmatrix}
+            \sin2\pi\sqrt{\lambda} & \cos2\pi\sqrt{\lambda} - 1 \ \\
+            \ \cos2\pi\sqrt{\lambda} - 1 & \sin2\pi\sqrt{\lambda}
+        \end{vmatrix} \\
+        &= \sin^2{2\pi\sqrt{\lambda}} + \left(\cos2\pi\sqrt{\lambda} - 1\right)^2 \\
+        &= 2\left(1 - 2\cos2\pi\sqrt{\lambda}\right) \\
+        &= 0
+    \end{align*}
+    即：
+    \[
+    \cos2\pi\sqrt{\lambda} = 1
+    \]
+    \[
+    \lambda_m = m^2,\qquad
+    m\in\mathbb{N^+}
+    \]
+    这时$\sin2\pi\sqrt{\lambda} = 0$，$A$和$B$可以取任意值，取两个线性无关的解作为本征函数：
+    \[
+    \varTheta_{m1}(\theta) = \sin m\theta
+    \]
+    \[
+    \varTheta_{m2}(\theta) = \cos m\theta
+    \]
+    对于本征值$\lambda_m$，这时径向方程为：
+    \[
+    r\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) - m^2 R = 0
+    \]
+    或写成：
+    \[
+    r^2\frac{\mathrm{d}^2 R}{\mathrm{d}r^2} + r\frac{\mathrm{d}R}{\mathrm{d}r} - m^2 R = 0
+    \]
+    做变量代换$t = \ln r$得：
+    \[
+    \frac{\mathrm{d}^2 R}{\mathrm{d}t^2} - m^2 R = 0
+    \]
+    当$m = 0$时，有解：
+    \[
+    R(r) = C_0 + D_0\ln r
+    \]
+    当$m \neq 0$时，有解：
+    \[
+    R(r) = C_m r^m + D_m r^{-m},\qquad
+    m \in \mathbb{N^+}
+    \]
+    因$r\to0$时，方程的解有界，得：
+    \[
+    D_m = 0,\qquad
+    m \in \mathbb{N^+}\cup\{0\}
+    \]
+    一般解为：
+    \[
+    u(r,\theta) = C_0 + \sum_{n = 1}^{\infty}r^{m}\left(A_m\sin{m\theta} + B_m\cos{m\theta}\right)
+    \]
+    代入边界条件：
+    \begin{align*}
+    \left. w\right|_{r = a}
+    &= C_0 + \sum_{n = 1}^{\infty}a^{m}\left(A_m\sin{m\theta} + B_m\cos{m\theta}\right) \\
+    &= a^2
+    \end{align*}
+    比较得：
+    \[
+    C_0 = a^2,\qquad
+    A_m = B_m = 0,\qquad
+    m \in \mathbb{N^+}
+    \]
+    即：
+    \[
+    w(r,\theta) = a^2
+    \]
+    最后得解：
+    \[
+    u(r,\theta) = a^2 - r^2
+    \]
+    即：
+    \[
+    u(x,y) = a^2 - x^2 - y^2
+    \]
+    \bigskip
+
+    \item[4.(3)]
+    设方程的通解具有如下形式：
+    \[
+    u(x,y) = v(x,y) + w(x,y)
+    \]
+    由$\nabla^2 v = -4xy$可设齐次化函数（特解）为：
+    \[
+    v(x,y) = -\frac{1}{3}(xy^3 + x^3 y)
+    \]
+    即：
+    \[
+    v(r,\theta) = -\frac{1}{6}r^4\sin2\theta
+    \]
+    于是通解$w(x,y) = w(r,\theta)$满足：
+    \[
+    \nabla^2 w = 0
+    \]
+    \[
+    \left. w\right|_{r = a} = \frac{1}{6}r^4\sin2\theta
+    \]
+    设通解$w(r,\theta)$具有分离变量的形式：
+    \[
+    w(r,\theta) = R(r)\varTheta(\theta)
+    \]
+    代入方程可得：
+    \[
+    \frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right)\varTheta + \frac{R}{r^2}\frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} = 0
+    \]
+    两端除以${R\varTheta}$，再乘以$r^2$，得到：
+    \[
+    \frac{r}{R}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) = -\frac{1}{\varTheta}\frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} = -\lambda
+    \]
+    得到方程组：
+    \[
+    r\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) - \lambda R = 0
+    \]
+    \[
+    \frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} + \lambda\varTheta = 0
+    \]
+    先对$\varTheta(\theta)$求解：
+    \[
+    \frac{\mathrm{d}^2 \varTheta}{\mathrm{d}\theta^2} + \lambda\varTheta = 0
+    \]
+    \[
+    \varTheta(0) = \varTheta(2\pi),\qquad
+    \varTheta'(0) = \varTheta'(2\pi)
+    \]
+    由$\lambda = 0$得到$\varTheta(\theta) = A\theta + B$，代入边界条件得：
+    \[
+    A = 0
+    \]
+    此时$B$任意，取$B = 1$，即：
+    \[
+    \varTheta(\theta) = 1
+    \]
+    若$\lambda \neq 0$，则$\varTheta(\theta)$的通解可以写为：
+    \[
+    \varTheta(\theta) = A\sin\sqrt\lambda\theta + B\cos\sqrt\lambda\theta
+    \]
+    代入边界条件得：
+    \[
+    A\sin2\pi\sqrt{\lambda} + B\cos2\pi\sqrt{\lambda} = B
+    \]
+    \[
+    A\cos2\pi\sqrt{\lambda} - B\sin2\pi\sqrt{\lambda} = A
+    \]
+    这是一个关于$A$和$B$的线性方程组：
+    \[
+    \left\{
+    \begin{aligned}
+        & A\sin2\pi\sqrt{\lambda} + B(\cos2\pi\sqrt{\lambda} - 1) = 0 \\
+        & A(\cos2\pi\sqrt{\lambda} - 1) - B\sin2\pi\sqrt{\lambda} = 0
+    \end{aligned}
+    \right.
+    \]
+    线性方程组有非零解等价于系数行列式等于0：
+    \begin{align*}
+        &\quad
+        \begin{vmatrix}
+            \sin2\pi\sqrt{\lambda} & \cos2\pi\sqrt{\lambda} - 1 \ \\
+            \ \cos2\pi\sqrt{\lambda} - 1 & \sin2\pi\sqrt{\lambda}
+        \end{vmatrix} \\
+        &= \sin^2{2\pi\sqrt{\lambda}} + \left(\cos2\pi\sqrt{\lambda} - 1\right)^2 \\
+        &= 2\left(1 - 2\cos2\pi\sqrt{\lambda}\right) \\
+        &= 0
+    \end{align*}
+    即：
+    \[
+    \cos2\pi\sqrt{\lambda} = 1
+    \]
+    \[
+    \lambda_m = m^2,\qquad
+    m\in\mathbb{N^+}
+    \]
+    这时$\sin2\pi\sqrt{\lambda} = 0$，$A$和$B$可以取任意值，取两个线性无关的解作为本征函数：
+    \[
+    \varTheta_{m1}(\theta) = \sin m\theta
+    \]
+    \[
+    \varTheta_{m2}(\theta) = \cos m\theta
+    \]
+    对于本征值$\lambda_m$，这时径向方程为：
+    \[
+    r\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d} r}\right) - m^2 R = 0
+    \]
+    或写成：
+    \[
+    r^2\frac{\mathrm{d}^2 R}{\mathrm{d}r^2} + r\frac{\mathrm{d}R}{\mathrm{d}r} - m^2 R = 0
+    \]
+    做变量代换$t = \ln r$得：
+    \[
+    \frac{\mathrm{d}^2 R}{\mathrm{d}t^2} - m^2 R = 0
+    \]
+    当$m = 0$时，有解：
+    \[
+    R(r) = C_0 + D_0\ln r
+    \]
+    当$m \neq 0$时，有解：
+    \[
+    R(r) = C_m r^m + D_m r^{-m},\qquad
+    m \in \mathbb{N^+}
+    \]
+    因$r\to0$时，方程的解有界，得：
+    \[
+    D_m = 0,\qquad
+    m \in \mathbb{N^+}\cup\{0\}
+    \]
+    一般解为：
+    \[
+    u(r,\theta) = C_0 + \sum_{n = 1}^{\infty}r^{m}\left(A_m\sin{m\theta} + B_m\cos{m\theta}\right)
+    \]
+    代入边界条件：
+    \begin{align*}
+    \left. w\right|_{r = a}
+    &= C_0 + \sum_{n = 1}^{\infty}a^{m}\left(A_m\sin{m\theta} + B_m\cos{m\theta}\right) \\
+    &= \frac{1}{6}r^4\sin2\theta
+    \end{align*}
+    比较得：
+    \[
+    A_2 = \frac{1}{6}a^2,\qquad A_m = 0\ (m \neq 2)
+    \]
+    即：
+    \[
+    w(r,\theta) = \frac{1}{6}a^2 r^2\sin2\theta
+    \]
+    最后得解：
+    \[
+    u(r,\theta) = \frac{1}{6}(a^2 - r^2)r^2\sin2\theta
+    \]
+    即：
+    \[
+    u(x,y) = \frac{1}{3}xy(a^2 - x^2 - y^2)
+    \]
+\end{itemize}
+
+\end{document}

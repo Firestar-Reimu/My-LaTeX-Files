@@ -1,0 +1,101 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{fontspec}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Code}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+\setmathfont{Fira Math}
+\setmathfont{XITS Math}[range={\mathscr,\mathbfscr}]
+\setmathfont{XITS Math}[range={\mathcal,\mathbfcal},StylisticSet=1]
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref,bookmark,highlightlatex}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=cyan,
+}
+\usepackage{geometry}
+\geometry{hmargin=1.5cm}
+
+\title{Host Galaxies of Type 1 AGNs}
+\author{Zhijun Zhang}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{Data Reduction and Image Decomposition}
+    \begin{itemize}
+        \item Data reduction including sky subtraction and PSFs.
+        
+        \item Decomposing and fitting the galaxy images using \texttt{GALFIT}.
+        
+        \item S\'{e}rsic profile:
+        \[
+        \mu(r) = \mu_e\mathrm{e}^{-\kappa\left[(r/R_e)^{1/n}-1\right]}
+        \]
+        
+        \item Employ Fourier modes to characterize asymmetry, which indicates interactions or mergers.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Derived Properties}
+    \begin{itemize}
+        \item AGN and host galaxy luminosities and spectrum.
+        
+        \item Virial BH masses:
+        \[
+        M_{\mathrm{BH}} = \frac{fv^2 R_0}{G}
+        \]
+        where $R_0$ is the broad line region (BLR) in AGN. The BLR is photoionized by the central continuum source, and it is gravitationally bound to the SMBH. The normalization coefficient $f=1.31$ for $v$ set to the FWHM of $H\beta$.
+        
+        \item Buldge type classification using the S\'{e}rsic index and bulge-to-total light ratio.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Statistical Trends}
+    \begin{itemize}
+        \item Host galaxies of Radio-loud($R=f_{6\,\mathrm{cm}}/f_{4400\mathring{A}}\geqslant10$) AGNs are brighter and more bulge-dominated than their radio-quiet counterparts.
+        
+        \item More disk dominance, higher fraction of pseudo-bulges, higher bar frequency, and lower merger fraction implicate secular processes as the main agent for BH growth in NLS1s.
+        
+        \item[?] Merging features
+        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item H$\beta$ narrow line Type 1 AGNs prefer to host in later-type, lower-luminosity galaxies.
+        
+        \item The fraction of AGN hosts shows that morphological signatures of tidal interactions merger signatures is larger for more luminous hosts.
+        
+        \item RL AGNs generally preferentially live in earlier-type, more massive hosts, but not specially interacting or merger systems.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion}
+    \begin{itemize}
+        \item Does dark matter distribution affect the $B/T$ measurement?
+        
+        \item What secular process does this article discuss?
+        
+        \item Why do the authors think that the trend about buldge dominating is precisely the opposite on Page 16?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+        \Huge Thank you for listening!
+    \end{center}
+\end{frame}
+
+\end{document}

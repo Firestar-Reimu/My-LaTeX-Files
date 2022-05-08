@@ -1,0 +1,260 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学宏包
+\usepackage{amsmath}
+
+%% 设置数学字体
+
+% 如果使用 unicode-math 包，需要将 \mathbf 命令换成 \symbf 命令
+% 且对 \mathscr 和 \mathcal 的粗体直接使用 \mathbfscr 和 \mathbfcal
+
+% 默认风格设置（Computer Modern/Latin Modern）
+\usepackage{mathrsfs}
+\usepackage{esint}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+
+% XCharter 风格设置
+% \usepackage[no-math]{fontspec}
+% \setmainfont{XCharter}
+% \usepackage{unicode-math}
+% \unimathsetup{bold-style=ISO,sans-style=italic}
+% \setmathfont{XCharter-Math.otf}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% Times New Roman 风格设置
+% 不需要 fontspec 和 unicode-math
+% \usepackage{newtx}
+% \usepackage{bm}
+% \renewcommand\mathbf\bm
+
+% 第二种 Times New Roman 风格设置
+% \usepackage[no-math]{fontspec}
+% \setmainfont{XITS}
+% \usepackage{unicode-math}
+% \unimathsetup{bold-style=ISO,sans-style=italic}
+% \setmathfont{XITS Math}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% Palatino 风格设置
+% 不需要 fontspec
+% \usepackage{unicode-math}
+% \unimathsetup{bold-style=ISO,sans-style=italic}
+% \usepackage{kpfonts-otf}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% 第二种 Palatino 风格设置
+% 不需要 unicode-math
+% \usepackage{fontspec}
+% \usepackage{newpxtext}
+% \usepackage{newpxmath}
+% \usepackage{bm}
+% \renewcommand\mathbf\bm
+
+% 第三种 Palatino 风格设置
+% \usepackage[no-math]{fontspec}
+% \setmainfont{TeX Gyre Pagella}
+% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \setmathfont{TeX Gyre Pagella Math}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% Century Schoolbook 风格
+% \usepackage[no-math]{fontspec}
+% \setmainfont{TeX Gyre Schola}
+% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \setmathfont{TeX Gyre Schola Math}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% Garamond 风格
+% \usepackage[no-math]{fontspec}
+% \setmainfont{EB Garamond}
+% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \setmathfont[StylisticSet={6,9,10}]{Garamond-Math.otf}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% Linux Libertine 风格
+% 不需要 fontspec 和 unicode-math
+% \usepackage[libertine]{newtx}
+% \usepackage{bm}
+% \renewcommand\mathbf\bm
+
+% 数学特殊字体
+% 可以自行配置 \mathcal \mathscr \mathfrak \mathbb 等字体样式
+\usepackage[scr=rsfso]{mathalpha}
+
+% \epsilon 符号重定义
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+% 中文
+% \usepackage[fontset=none]{ctex}
+% \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+% \setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold]
+
+\title{Maths Homework Template}
+\author{Author}
+\date{\today}
+
+\begin{document}
+
+    \maketitle
+
+    \medskip
+
+    \begin{enumerate}
+
+        \item
+        Answer to question 1:
+
+        Use inline equations for simple math $1+1=2$, and centered equations for more involved or important equations:
+        \begin{equation}
+            a^2 + b^2 = c^2.
+        \end{equation}
+
+        % 如果想要公式编号重新从 1 开始，可以在该公式前使用命令：
+        % \setcounter{equation}{0}
+        \begin{equation}
+            \frac{\mathrm{d}y}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
+        \end{equation}
+
+        It is recommended to write scalars without boldface like $E=\hbar\omega$, vectors in boldface, and matrices in sans-serif:
+        \begin{equation}
+            \mathbf{p} = \hbar\mathbf{k}
+        \end{equation}
+        \begin{equation}
+        \frac{\|\mathsf{A}\mathbf{x}\|_\infty}{\|\mathbf{x}\|_\infty} = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
+        \end{equation}
+
+        \textparagraph\ An example of a matrix:
+        \begin{equation}
+            \mathsf{M} =
+            \begin{bmatrix}
+                \dfrac{1+\sqrt{3}}{2} & \mathrm{e}^{-i\omega t} \\
+                -\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{3}}{2}
+            \end{bmatrix}
+        \end{equation}
+
+        \textparagraph\ An example of intergals:
+        \begin{equation}
+        \iiint \nabla \cdot \mathbf{\varPhi} \,\mathrm{d}V = \oiint \mathbf{\varPhi}\,\mathrm{d}\mathbf{S}
+        \end{equation}
+
+        \textparagraph\ An example of roots:
+        \begin{equation}
+        r = \sqrt[3]{\frac{3}{4\pi N}}
+        \end{equation}
+
+        \item
+        Answer to question 2:
+        \begin{align*}
+            I(x)
+            &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\mathrm{d}I(x) \\
+            &= 4\alpha\frac{I_0}{b}\int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\cos^2\left(\frac{\pi d}{\lambda D}\left(x+\frac{D}{R}\xi\right)\right)\mathrm{d}\xi \\
+            &= 4\alpha I_0\left(1+\frac{1}{u}\sin u\cos\left(\frac{2\pi d}{\lambda D}x\right)\right),\quad u = \dfrac{\pi db}{\lambda R}
+        \end{align*}
+
+        \item
+        Answer to question 3:
+        \[
+        Y_n(y) = \left\{
+        \begin{aligned}
+            0\qquad\qquad &,\qquad n = 2k \\
+            \frac{8a^2}{\pi^3 n^3}\left(1 - \frac{\cosh\dfrac{n\pi y}{a}}{\cosh\dfrac{n\pi b}{2a}}\right) &,\qquad n = 2k + 1
+        \end{aligned}
+        \right.
+        \]
+
+        \item
+        Answer to question 4:
+        \begin{align*}
+            u(x,t)
+            &= \frac{6Al(-1)^m}{ES(2m+1)^2\pi^2}\sin\frac{2m+1}{2l}\pi x\sin\frac{2m+1}{2l}\pi at \\
+            &\quad + \frac{2A(-1)^{m+1}}{ES(2m+1)\pi}\left(x\cos\frac{2m+1}{2l}\pi x\sin\frac{2m+1}{2l}\pi at + at\sin\frac{2m+1}{2l}\pi x\cos\frac{2m+1}{2l}\pi at\right) \\
+            &\quad + \frac{8Al(2m+1)}{ES\pi^2}\sum_{k=0,\: k \neq m}^{\infty}\frac{(-1)^k}{(2k+1)\left[(2m+1)^2-(2k+1)^2\right]}\sin\frac{2k+1}{2l}\pi x\sin\frac{2k+1}{2l}\pi at
+        \end{align*}
+
+        \item
+        Answer to question 5:
+        \begin{align*}
+            u(x,t)
+            &= \sum_{n=0}^\infty X_n(x)Y_n(y) \\
+            &= \frac{8a^2}{\pi^3}\sum_{k=0}^\infty \frac{1}{(2k+1)^3}\left(1 - \frac{\cosh\dfrac{2k+1}{a}\pi y}{\cosh\dfrac{2k+1}{2a}\pi b}\right)\sin\frac{2k+1}{a}\pi x
+        \end{align*}
+
+        \item
+        Answer to question 6:
+        \begin{align*}
+            \mathscr{L}\left\lbrace\frac{1-\cos\omega t}{t}\right\rbrace
+            &=\int_{p}^{\infty}\left(\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}\right)\mathrm{d}t\\
+            &=\ln p-\frac{1}{2}\ln(p+\mathrm{i}\omega)-\frac{1}{2}\ln(p-\mathrm{i}\omega)\bigg|_{p}^{\infty}\\
+            &=\frac{1}{2}\ln\frac{p^2}{p^2+\omega^2}\bigg|_{p}^{\infty}\\
+            &=\frac{1}{2}\ln\frac{p^2+\omega^2}{p^2}
+        \end{align*}
+
+        \item
+        Answer to question 7:
+        \begin{align*}
+            [q,p]_{Q,P}
+            &= \frac{\partial q}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial p}{\partial Q} \\
+            &= \left(-\frac{\sqrt{1-P^2\mathrm{e}^{2Q}}}{\mathrm{e}^Q} - \frac{P^2\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right)\cdot\left(\frac{-\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right) - \left(\frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right)\cdot\left(\frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right) \\
+            &= 1 + \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} - \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} \\
+            &= 1
+        \end{align*}
+
+        \item
+        Answer to question 8:
+        \[
+        \frac{4\pi R_{\odot}^2 \cdot \sigma T_{\odot}^4}{4\pi d^2} = 1352.83\,\mathrm{W/m^2}
+        \]
+        \[
+        T_{\odot} = 5763.43\,\mathrm{K}
+        \]
+        \[
+        \lambda_{\odot} = \frac{b}{T_{\odot}} = 5027.86\,\text{\AA}
+        \]
+
+    \end{enumerate}
+
+\end{document}

@@ -1,0 +1,468 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+    \title{\textbf{理论力学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2020年10月23日}
+
+    \maketitle
+
+    \begin{itemize}
+
+        \section*{第一章}
+
+        \item[1.(a)]
+        $A$点坐标为：
+        \[
+        (l_1\cos\theta, l_1\sin\theta)
+        \]
+        由勾股定理，$B$点坐标表示为：
+        \[
+        (l_1\cos\theta + \sqrt{l_2^2 - l_1^2\sin^2\theta}, 0)
+        \]
+        \medskip
+
+        \item[1.(b)]
+        由虚功原理得：
+        \[
+        P\cdot l_1\cos\theta\mathrm{d}\theta - Q\left(l_1\sin\theta\mathrm{d}\theta + \frac{{l_1}^2\sin\theta\cos\theta}{\sqrt{l_2^2 - l_1^2\sin^2\theta}}\right) = 0
+        \]
+        故解得：
+        \[
+        \frac{Q}{P} = \tan\theta + \frac{{l_1}\sin\theta}{\sqrt{l_2^2 - l_1^2\sin^2\theta}}
+        \]
+        \bigskip
+
+        \item[2.]
+        弹性绳伸长量原来为：
+        \[
+        \Delta x = 2\pi R\sin\theta - l_0
+        \]
+        以球心为原点，竖直向上为正方向，则弹性绳高度为：
+        \[
+        y = R\cos\theta
+        \]
+        由虚功原理得：
+        \[
+        k(2\pi R\sin\theta - l_0)\cdot2\pi R\cos\theta\mathrm{d}\theta + \sigma l_0 g\cdot(-R\sin\theta\mathrm{d}\theta)
+        \]
+        解得$\theta$是下列超越方程的解：
+        \[
+        \sigma l_0 g\tan\theta = 2\pi k(2\pi R\sin\theta - l_0),\qquad
+        \theta\in(0,\frac{\pi}{2})
+        \]
+
+        \newpage
+        \section*{第二章}
+
+        \item[1.]
+        由运动学方程$v^2 - v_0^2 = 2ax$及$\mathrm{d}s = \sqrt{1+(y')^2}\mathrm{d}x$得：
+        \[
+        \mathrm{d}t = \frac{\sqrt{1+(y')^2}\mathrm{d}x}{\sqrt{2gy}}
+        \]
+        得到总时间$T$作为运动曲线的泛函：
+        \begin{align*}
+        T
+        &= \int_{x_1}^{x_2}F(y,y',x)\,\mathrm{d}x \\
+        &= \int_{x_1}^{x_2}\frac{\sqrt{1+(y')^2}}{\sqrt{2gy}}\,\mathrm{d}x
+        \end{align*}
+        则最速降线要求：
+        \[
+        \delta F = 0
+        \]
+        可以发现：$F(y,y',x)$不显含$x$，即：
+        \[
+        \frac{\partial F}{\partial x} = 0
+        \]
+        考虑到时间平移不变性蕴含着能量守恒，对于泛函$F(y,y',x)$，应该有一个类似的守恒量：
+        \[
+        E = y'\frac{\partial F}{\partial y'} - F
+        \]
+        保持为常数$C$，即：
+        \begin{align*}
+        y'\frac{\partial F}{\partial y'} - F
+        &= y'\cdot\frac{y'}{\sqrt{2gy[1+(y')^2]}} - \frac{\sqrt{1+(y')^2}}{\sqrt{2gy}} \\
+        &= C
+        \end{align*}
+        分离变量得：
+        \[
+        \sqrt{\frac{2gC^2 y}{1 - 2gC^2 y}}\mathrm{d}y = \mathrm{d}x
+        \]
+        令：
+        \[
+        k = \frac{1}{4gC^2}
+        \]
+        化简得到该曲线满足的微分方程：
+        \[
+        \sqrt{\frac{y}{2k - y}}\mathrm{d}y = \mathrm{d}x
+        \]
+        考虑到：
+        \begin{align*}
+        \sqrt{\frac{1 - \cos\theta}{1 + \cos\theta}}
+        &= \sqrt{\frac{1 - \cos\theta}{1 + \cos\theta}}\sqrt{\frac{1 - \cos\theta}{1 - \cos\theta}} \\
+        &= \sqrt{\frac{(1 - \cos\theta)^2}{1 - \cos^2\theta}} \\
+        &= \frac{1 - \cos\theta}{\sin\theta}
+        \end{align*}
+        令：
+        \[
+        \frac{y}{2k - y} = \frac{1 - \cos\theta}{1 + \cos\theta}
+        \]
+        则可以解出：
+        \[
+        y = k(1 - \cos\theta)
+        \]
+        \begin{align*}
+        \sqrt{\frac{y}{2k - y}}\mathrm{d}y
+        &= \sqrt{\frac{k(1 - \cos\theta)}{k(1 + \cos\theta)}}k\sin\theta\mathrm{d}\theta \\
+        &= \frac{1 - \cos\theta}{\sin\theta}k\sin\theta\mathrm{d}\theta \\
+        &= k(1 - \cos\theta)\mathrm{d}\theta
+        \end{align*}
+        即：
+        \[
+        \mathrm{d}x = k(1 - \cos\theta)\mathrm{d}\theta
+        \]
+        积分得：
+        \[
+        x = k(\theta - \sin\theta) + C_1
+        \]
+        由$x = 0$时$\theta = 0$，定出$C_1 = 0$，则解出：
+        \[
+        \left\{
+        \begin{aligned}
+        & x = k(\theta - \sin\theta) \\
+        & y = k(1 - \cos\theta)
+        \end{aligned}
+        \right.
+        \]
+        这是一条摆线。
+        \bigskip
+
+        \item[2.]
+        由体系总能量（重力势能）最小得：：
+        \[
+        V = \int_{x_1}^{x_2}\lambda\sqrt{1 + (y')^2}gy\,\mathrm{d}x
+        \]
+        则最速降线要求：
+        \[
+        \delta V = 0
+        \]
+        可以发现：$V(y,y',x)$不显含$x$，即：
+        \[
+        \frac{\partial V}{\partial x} = 0
+        \]
+        考虑到时间平移不变性蕴含着能量守恒，对于泛函$E(y,y',x)$，应该有一个类似的守恒量：
+        \[
+        E = y'\frac{\partial V}{\partial y'} - V
+        \]
+        保持为常数$C$，即：
+        \begin{align*}
+            y'\frac{\partial V}{\partial y'} - V
+            &= y'\cdot\frac{\lambda gyy'}{\sqrt{1+(y')^2}} - \lambda\sqrt{1 + (y')^2}gy \\
+            &= C
+        \end{align*}
+        分离变量得：
+        \[
+        \sqrt{\frac{C^2}{\lambda^2 g^2 y^2 - C^2}}\mathrm{d}y = \mathrm{d}x
+        \]
+        令：
+        \[
+        k = \frac{\lambda g}{C}
+        \]
+        化简得到该曲线满足的微分方程：
+        \[
+        \frac{1}{\sqrt{k^2 y^2 - 1}}\mathrm{d}y = \mathrm{d}x
+        \]
+        两边积分得：
+        \[
+        \mathrm{arccosh}\,ky = kx + C_1
+        \]
+        即：
+        \[
+        y = \frac{1}{k}\cosh(kx + C_1)
+        \]
+        由两端悬挂点等高，即$y(x) = y(-x)$，定出$C_1 = 0$，则有：
+        \[
+        y = \frac{1}{k}\cosh kx
+        \]
+        由绳长为$L$，两端悬挂点之间距离为$b$，得：
+        \begin{align*}
+        \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\sqrt{1+(y')^2}\,\mathrm{d}x
+        &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\sqrt{1+\sinh^2{kx}}\,\mathrm{d}x \\
+        &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\cosh{kx}\,\mathrm{d}x \\
+        &= 2\sinh\frac{kb}{2} \\
+        &= L
+        \end{align*}
+        解得：
+        \[
+        k = \frac{\lambda g}{C} =\frac{2}{b}\mathrm{arcsinh}\frac{L}{2}
+        \]
+        综上，绳子平衡时构成的曲线的形状为：
+        \[
+        y = \frac{b}{2}\cosh{\frac{2}{b}}\;\frac{\mathrm{arcsinh}\dfrac{L}{2}x}{\mathrm{arcsinh}\dfrac{L}{2}}
+        \]
+        \bigskip
+
+        \item[3.(a)]
+        三维形式下自由粒子的作用量为：
+        \begin{align*}
+        S
+        &= -mc\int\mathrm{d}s \\
+        &= -mc\int\sqrt{c^2\mathrm{d}t^2 - \mathrm{d}\boldsymbol{x}^2} \\
+        &= -mc^2\int\sqrt{1 - \frac{\boldsymbol{v}^2}{c^2}}\,\mathrm{d}t \\
+        \end{align*}
+        则Lagrange量：
+        \[
+        L(\boldsymbol{v}) = -mc^2\sqrt{1 - \frac{\boldsymbol{v}^2}{c^2}}
+        \]
+        由Euler-Lagrange方程得到：
+        \[
+        \frac{\partial L}{\partial\boldsymbol{x}} = \frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\boldsymbol{v}}\right) = 0
+        \]
+        而粒子的广义动量为：
+        \[
+        \boldsymbol{p} = \frac{\partial L}{\partial\boldsymbol{v}} = \frac{m\boldsymbol{v}}{\sqrt{1 - \dfrac{\boldsymbol{v}^2}{c^2}}}
+        \]
+        则粒子的运动方程为：
+        \[
+        \frac{\mathrm{d}\boldsymbol{p}}{\mathrm{d}t} = 0
+        \]
+        即粒子做匀速直线运动。
+        \medskip
+
+        \item[3.(b)]
+        四维形式下自由粒子的作用量为：
+        \begin{align*}
+        S
+        &= -mc\int\mathrm{d}s \\
+        &= -mc\int\sqrt{\mathrm{d}x_\mu\mathrm{d}x^\mu}
+        \end{align*}
+        利用变分法，有：
+        \begin{align*}
+        \delta S
+        &= -mc\int\delta\sqrt{\mathrm{d}x_\mu\mathrm{d}x^\mu} \\
+        &= -mc\int\frac{\delta(\mathrm{d}x_\mu)\mathrm{d}x^\mu + \delta(\mathrm{d}x^\mu)\mathrm{d}x_\mu}{2\sqrt{\mathrm{d}x_\mu\mathrm{d}x^\mu}} \\
+        &= -mc\int\frac{\delta(\mathrm{d}x_\mu)\mathrm{d}x^\mu}{\sqrt{\mathrm{d}x_\mu\mathrm{d}x^\mu}} \\
+        &= -mc\int\frac{\mathrm{d}x^\mu}{\mathrm{d}s}\mathrm{d}(\delta x_\mu) \\
+        &= 0
+        \end{align*}
+        分部积分得：
+        \[
+        -mc\int\frac{\mathrm{d}x^\mu}{\mathrm{d}s}\mathrm{d}(\delta x_\mu)
+        = \left.-mc\frac{\mathrm{d}x^\mu}{\mathrm{d}s}\delta x_\mu\right|_{\tau_2}^{\tau_1} + mc\int\frac{\mathrm{d}^2 x^\mu}{\mathrm{d}s^2}\delta x_\mu\mathrm{d}s
+        = 0
+        \]
+        第一项是边界项，在端点处要求$\delta x_\mu = 0$，则边界项为零。
+
+        第二项中，由于$\delta x_\mu$是任意的变分，粒子的运动方程为：
+        \[
+        \frac{\mathrm{d}^2 x^\mu}{\mathrm{d}s^2} = 0
+        \]
+        即粒子做匀速直线运动。
+        \bigskip
+
+        \item[5.(a)]
+        设标量外场为$\varPhi(x)$，则一个相对论性粒子的作用量为：
+        \[
+        S = -mc\int\mathrm{e}^{\varPhi(x)}\,\mathrm{d}s
+        \]
+        利用变分法，有：
+        \begin{align*}
+        \delta S
+        &= -mc\int\mathrm{e}^{\varPhi(x)}\,\mathrm{d}s \\
+        &= -mc\int\left[(\delta\mathrm{d}s)\mathrm{e}^\varPhi + (\delta\mathrm{e}^\varPhi)\mathrm{d}s\right] \\
+        &= -mc\int\left[\mathrm{e}^\varPhi\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}(\delta x^\mu) + \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\mu}\delta x^\mu\mathrm{d}s\right] \\
+        &= 0
+        \end{align*}
+        分部积分得：
+        \begin{align*}
+        &\quad -mc\int\left[\mathrm{e}^\varPhi\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}(\delta x^\mu) + \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\mu}\delta x^\mu\mathrm{d}s\right] \\
+        &= \left.\mathrm{e}^\varPhi\frac{\mathrm{d}x^\mu}{\mathrm{d}s}\right|_{\tau_2}^{\tau_1} + mc\int\left[\delta x^\mu\mathrm{d}\left(\mathrm{e}^\varPhi\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\right) - \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\mu}\delta x^\mu\mathrm{d}s\right] \\
+        &= \left.\mathrm{e}^\varPhi\frac{\mathrm{d}x^\mu}{\mathrm{d}s}\right|_{\tau_2}^{\tau_1} + mc\int\left[\delta x^\mu\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}(\mathrm{e}^\varPhi) + \delta x^\mu\mathrm{e}^\varPhi\mathrm{d}\left(\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\right) - \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\mu}\delta x^\mu\mathrm{d}s\right]
+        \end{align*}
+        第一项是边界项，在端点处要求$\delta x^\mu = 0$，则边界项为零。
+
+        第二项中，代入：
+        \begin{align*}
+        \mathrm{d}(\mathrm{e}^\varPhi)
+        &= \mathrm{e}^\varPhi\,\mathrm{d}\varPhi \\
+        &= \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\nu}\mathrm{d}x^\nu \\
+        &= \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\nu}\frac{\mathrm{d}x^\nu}{\mathrm{d}s}\mathrm{d}s
+        \end{align*}
+        以及：
+        \begin{align*}
+        \mathrm{d}\left(\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\right)
+        &= \frac{\mathrm{d}}{\mathrm{d}s}\left(\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\right)\mathrm{d}s \\
+        &= \frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2}\mathrm{d}s
+        \end{align*}
+        化简得：
+        \begin{align*}
+        &\quad mc\int\left[\delta x^\mu\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}(\mathrm{e}^\varPhi) + \delta x^\mu\mathrm{e}^\varPhi\mathrm{d}\left(\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\right) - \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\mu}\delta x^\mu\mathrm{d}s\right] \\
+        &= mc\int\left[\delta x^\mu\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\nu}\frac{\mathrm{d}x^\nu}{\mathrm{d}s}\mathrm{d}s + \delta x^\mu\mathrm{e}^\varPhi\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2}\mathrm{d}s - \mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial x^\mu}\delta x^\mu\mathrm{d}s\right] \\
+        &= mc\int\left[\frac{\partial\varPhi}{\partial x^\nu}\frac{\mathrm{d}x^\nu}{\mathrm{d}s}\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}s + \frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2} - \frac{\partial\varPhi}{\partial x^\mu}\right]\delta x^\mu\mathrm{e}^\varPhi\mathrm{d}s \\
+        &= 0
+        \end{align*}
+        由于$\mathrm{e}^\varPhi > 0$，且$\delta x^\mu$是任意的变分，得到粒子的运动方程：
+        \[
+        \frac{\partial\varPhi}{\partial x^\nu}\frac{\mathrm{d}x^\nu}{\mathrm{d}s}\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}s + \frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2} = \frac{\partial\varPhi}{\partial x^\mu}
+        \]
+        \medskip
+
+        \item[5.(b)]
+        设标量外场为$\varPhi(x)$，则一个相对论性粒子的Lagrange量为：
+        \[
+        L = -mc^2\sqrt{1 - \frac{\boldsymbol{v}^2}{c^2}}\mathrm{e}^{\varPhi(\boldsymbol{x},t)}
+        \]
+        由Euler-Lagrange方程得到：
+        \[
+        \frac{\partial L}{\partial\boldsymbol{x}} = \frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\boldsymbol{v}}\right)
+        \]
+        \[
+        -mc^2\sqrt{1 - \frac{\boldsymbol{v}^2}{c^2}}\mathrm{e}^\varPhi\cdot\frac{\partial\varPhi}{\partial x} = \frac{\mathrm{d}}{\mathrm{d}t}\left(-\frac{m\boldsymbol{v}}{\sqrt{1 - \dfrac{\boldsymbol{v}^2}{c^2}}}\mathrm{e}^\varPhi\right)
+        \]
+        代入粒子的广义动量：
+        \[
+        \boldsymbol{p} = \frac{\partial L}{\partial\boldsymbol{v}} = \frac{m\boldsymbol{v}}{\sqrt{1 - \dfrac{\boldsymbol{v}^2}{c^2}}}
+        \]
+        化简为：
+        \[
+        mc^2\sqrt{1 - \frac{\boldsymbol{v}^2}{c^2}}\mathrm{e}^\varPhi\cdot\frac{\partial\varPhi}{\partial x} = \boldsymbol{p}\cdot\mathrm{e}^\varPhi\frac{\partial\varPhi}{\partial t} + \mathrm{e}^\varPhi\frac{\mathrm{d}\boldsymbol{p}}{\mathrm{d}t}
+        \]
+        \bigskip
+
+        \item[6.]
+        设矢量外场$A_\mu(x)$，则一个相对论性粒子的作用量为：
+        \[
+        S = -mc\int\mathrm{d}s - \frac{e}{c}\int A_\mu(x)\,\mathrm{d}x^\mu
+        \]
+        利用变分法，有：
+        \begin{align*}
+        \delta S
+        &= -mc\int\delta\sqrt{\mathrm{d}x_\mu\mathrm{d}x^\mu} - \frac{e}{c}\int\delta(A_\mu(x)\mathrm{d}x^\mu) \\
+        &= -mc\int\frac{\delta(\mathrm{d}x_\mu)\mathrm{d}x^\mu + \delta(\mathrm{d}x^\mu)\mathrm{d}x_\mu}{2\sqrt{\mathrm{d}x_\mu\mathrm{d}x^\mu}} - \frac{e}{c}\int[\delta A_\mu\mathrm{d}x^\mu + A_\mu\mathrm{d}(\delta x^\mu)] \\
+        &= -mc\int\frac{\delta(\mathrm{d}x^\mu)\mathrm{d}x_\mu}{\sqrt{\mathrm{d}x_\mu\mathrm{d}x^\mu}} - \frac{e}{c}\int[\delta A_\nu\mathrm{d}x^\nu + A_\mu\mathrm{d}(\delta x^\mu)] \\
+        &= -mc\int\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}(\delta x^\mu) - \frac{e}{c}\int\delta A_\nu\mathrm{d}x^\nu - \frac{e}{c}\int A_\mu\mathrm{d}(\delta x^\mu) \\
+        &= 0
+        \end{align*}
+        将含有$\mathrm{d}(\delta x^\mu)$的两项分部积分：
+        \[
+        -mc\int\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\mathrm{d}(\delta x^\mu)
+        = \left.-mc\frac{\mathrm{d}x_\mu}{\mathrm{d}s}\delta x^\mu\right|_{\tau_2}^{\tau_1} + mc\int\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2}\delta x^\mu\mathrm{d}s
+        = 0
+        \]
+        \[
+        -\frac{e}{c}\int A_\mu\mathrm{d}(\delta x^\mu) = \left.\frac{e}{c}A_\mu\delta x^\mu\right|_{\tau_2}^{\tau_1} + \frac{e}{c}\int \delta x^\mu\mathrm{d}A_\mu = 0
+        \]
+        它们的第一项是边界项，在端点处要求$\delta x_\mu = 0$，则边界项为零。
+
+        代入$\delta S$得：
+        \begin{align*}
+        \delta S
+        &= mc\int\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2}\delta x^\mu\mathrm{d}s - \frac{e}{c}\int\delta A_\nu\mathrm{d}x^\nu + \frac{e}{c}\int \delta x^\mu\mathrm{d}A_\mu \\
+        &= mc\int\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2}\delta x^\mu\mathrm{d}s - \frac{e}{c}\int(\partial_\mu A_\nu\delta x^\mu)\mathrm{d}x^\nu + \frac{e}{c}\int \delta x^\mu(\partial_\nu A_\mu\mathrm{d}x^\nu) \\
+        &= mc\int\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2}\delta x^\mu\mathrm{d}s - \frac{e}{c}\int\partial_\mu A_\nu\frac{\mathrm{d}x^\nu}{\mathrm{d}s}\delta x^\mu\mathrm{d}s + \frac{e}{c}\int\partial_\nu A_\mu\frac{\mathrm{d}x^\nu}{\mathrm{d}s}\delta x^\mu\mathrm{d}s \\
+        &= mc\int\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2}\delta x^\mu\mathrm{d}s - \frac{e}{c}\int(\partial_\mu A_\nu - \partial_\nu A_\mu)\frac{\mathrm{d}x^\nu}{\mathrm{d}s}\delta x^\mu\mathrm{d}s \\
+        &= 0
+        \end{align*}
+        由于$\delta x^\mu$是任意的变分，得到粒子的运动方程：
+        \[
+        mc\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2} = \frac{e}{c}(\partial_\mu A_\nu - \partial_\nu A_\mu)\frac{\mathrm{d}x^\nu}{\mathrm{d}s}
+        \]
+        记四维张量场强：
+        \[
+        F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu
+        \]
+        则运动方程写为：
+        \[
+        mc\frac{\mathrm{d}^2 x_\mu}{\mathrm{d}s^2} = \frac{e}{c}F_{\mu\nu}\frac{\mathrm{d}x^\nu}{\mathrm{d}s}
+        \]
+        \bigskip
+
+        \item[9.(a)]
+        系统的动能：
+        \[
+        T = \frac{1}{2}m\varOmega^2 R^2\sin^2\theta + \frac{1}{2}mR^2\dot{\theta}^2
+        \]
+        系统的势能：
+        \[
+        V = mgR\cos\theta
+        \]
+        则系统的Lagrange量为：
+        \[
+        L = T - V = \frac{1}{2}m\varOmega^2 R^2\sin^2\theta + \frac{1}{2}mR^2\dot{\theta}^2 - mgR\cos\theta
+        \]
+        \medskip
+
+        \item[9.(b)]
+        由Euler-Lagrange方程得$\theta$满足的运动方程为：
+        \[
+        \frac{\partial L}{\partial\theta} = \frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{\theta}}\right)
+        \]
+        \[
+        m\varOmega^2 R^2\sin\theta\cos\theta + mgR\sin\theta = mR^2\frac{\mathrm{d}\dot{\theta}}{\mathrm{d}t}
+        \]
+        化简为：
+        \[
+        \varOmega^2 R\sin\theta\cos\theta + g\sin\theta = R\ddot{\theta}
+        \]
+        若使$\theta$平衡，即$\ddot{\theta} = 0$，分以下两种情况：
+        \[
+        \sin\theta = 0
+        \]
+        \[
+        \cos\theta = -\frac{g}{\varOmega^2 R}
+        \]
+        则平衡位置为：
+        \[
+        \left\{
+        \begin{aligned}
+        & \theta = 0,\ \theta = \pi,\qquad & \varOmega < \sqrt{\frac{g}{R}} \\
+        & \theta = 0,\ \theta = \pi,\ \theta = \arccos\left({-\frac{g}{\varOmega^2 R}}\right),\qquad & \varOmega \geqslant \sqrt{\frac{g}{R}}
+        \end{aligned}
+        \right.
+        \]
+        \medskip
+
+        \item[9.(c)]
+        正则动量：
+        \[
+        p_\theta = \frac{\partial L}{\partial\dot{\theta}} = mR^2\dot{\theta}
+        \]
+        体系的Hamilton量：
+        \[
+        H = \dot{\theta}p_\theta - L = -\frac{1}{2}m\varOmega^2 R^2\sin^2\theta + \frac{1}{2}mR^2\dot{\theta}^2 + mgR\cos\theta
+        \]
+        \medskip
+
+        \item[9.(d)]
+        由于Hamilton量不显含时间：
+        \begin{align*}
+        \frac{\mathrm{d}H}{\mathrm{d}t}
+        &= \frac{\partial H}{\partial t} + \frac{\partial H}{\partial \theta}\dot{\theta} + \frac{\partial H}{\partial p_\theta}\dot{p_\theta} \\
+        &= \frac{\partial H}{\partial t} + \frac{\partial H}{\partial\theta}\frac{\partial H}{\partial p_\theta} + \frac{\partial H}{\partial p_\theta}\left(-\frac{\partial H}{\partial\theta}\right) \\
+        &= \frac{\partial H}{\partial t} \\
+        &= 0
+        \end{align*}
+        Hamilton量的数值是守恒量。
+
+        由于体系的Hamilton量：
+        \[
+        H = -\frac{1}{2}m\varOmega^2 R^2\sin^2\theta + \frac{1}{2}mR^2\dot{\theta}^2 + mgR\cos\theta
+        \]
+        而体系的总能量：
+        \[
+        E = T + V = \frac{1}{2}m\varOmega^2 R^2\sin^2\theta + \frac{1}{2}mR^2\dot{\theta}^2 + mgR\cos\theta
+        \]
+        故$H \neq T + V$。
+        \bigskip
+
+    \end{itemize}
+
+\end{document}

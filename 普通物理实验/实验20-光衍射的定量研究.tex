@@ -1,0 +1,403 @@
+\documentclass[a4paper,fontset=windows]{ctexbook}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption,subcaption}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\Large
+
+    \title{\textbf{实验二十\ \ 光衍射的定量研究}}
+    \author{\Large 1900011604 张植竣}
+    \date{\Large 2020年11月3日}
+
+    \maketitle
+
+    \section*{\zihao{3} 1\ \ 测量步骤与数据处理}
+    \bigskip
+
+    \subsection*{\zihao{-3} 1.1\ \ 测量单缝衍射的光强分布}
+
+    \begin{table}[ht!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c||c|c|}
+                \hline
+                 & 主极强 & 一级次级强（左） & 一级次级强（右） & $\Delta x/$mm & $z/$cm\\
+                \hline
+                位置$x/$mm & $x_0 = 9.800\,\mathrm{mm}$ & $x_1 = 5.670\,\mathrm{mm}$ & $x_2 = 13.890\,\mathrm{mm}$ & \multirow{2}{*}{4.110} & \multirow{2}{*}{78.76} \\
+                \cline{1-4}
+                相对光强$I$ & $I_0 = 3650$ & $I_1 = 166$ & $I_2 = 171$ & &  \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+    检验图像对称性：
+    \[
+    \frac{2(I_1 - I_2)}{I_1 + I_2}\times100\% = 2.97\%
+    \]
+    检验主极强与次级强的光强比：
+    \[
+    \frac{I_1 + I_2}{2I_0}\times100\% = 4.616\%
+    \]
+    测量单缝宽度$a$（ $\lambda = 632.8\,\mathrm{nm}$，下同）：
+    \[
+    a = \frac{c_1\lambda z}{\Delta x} = (173.4\pm1.2)\,\mu\mathrm{m}
+    \]
+    其中$c_1$是方程$\tan\pi x = \pi x$的最小正根：
+    \[
+    c_1 \approx 1.4303
+    \]
+    而
+    \[
+    \Delta x = \frac{1}{2}|x_2 - x_1|\quad\text{（下同）}
+    \]
+
+    \begin{center}
+    \includegraphics[width = 1\linewidth]{Figure_1.jpg}
+    \end{center}
+
+    \newpage
+    \subsection*{\zihao{-3} 1.2\ \ 测量多缝衍射的光强分布}
+
+    \begin{table}[ht!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c||c|c|}
+            \hline
+            & 主极强 & 一级暗条纹（左） & 一级暗条纹（右） & $\Delta x/$mm & $z/$cm\\
+            \hline
+            位置$x/$mm & $x_0 = 20.080\,\mathrm{mm}$ & $x_1 = 7.660\,\mathrm{mm}$ & $x_2 = 32.740\,\mathrm{mm}$ & \multirow{2}{*}{12.54} & \multirow{2}{*}{77.66} \\
+            \cline{1-4}
+            相对光强$I$ & $I_0 = 3790$ & $I_1 = 0$ & $I_2 = 0$ & &  \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    测量缝宽$a$：
+    \[
+    a = \frac{\lambda z}{\Delta x} = (39.2\pm1.1)\,\mu\mathrm{m}
+    \]
+
+    \begin{table}[ht!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c||c|c|}
+                \hline
+                & 主极强 & 一级次级强（左） & 一级次级强（右） & $\Delta x/$mm & $z/$cm\\
+                \hline
+                位置$x/$mm & $x_0 = 20.080\,\mathrm{mm}$ & $x_1 = 14.720\,\mathrm{mm}$ & $x_2 = 25.400\,\mathrm{mm}$ & \multirow{2}{*}{5.340} & \multirow{2}{*}{77.66} \\
+                \cline{1-4}
+                相对光强$I$ & $I_0 = 3691$ & $I_1 = 1697$ & $I_2 = 1723$ & &  \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+    检验图像对称性：
+    \[
+    \frac{2(I_1 - I_2)}{I_1 + I_2}\times100\% = 1.52\%
+    \]
+    测量缝间距$d$：
+    \[
+    d = \frac{\lambda z}{\Delta x} = (92.0\pm1.2)\,\mu\mathrm{m}
+    \]
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_2.jpg}
+    \end{center}
+
+    \newpage
+    \subsection*{\zihao{-3} 1.3\ \ 观察双圆孔、双方孔的衍射分布}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{5.jpg}
+            \subcaption*{\zihao{4} 圆孔衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{1.jpg}
+            \subcaption*{\zihao{4} 方孔衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{6.jpg}
+            \subcaption*{\zihao{4} 双圆孔衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{2.jpg}
+            \subcaption*{\zihao{4} 双方孔衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+    可见相比于圆孔、方孔衍射图样，双圆孔、双方孔衍射图样是多孔干涉的光强分布受单孔衍射光强分布调制的结果。
+
+    \newpage
+    \subsection*{\zihao{-3} 1.4\ \ 观察方孔和圆孔阵列衍射的光强分布}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{3.jpg}
+            \subcaption*{\zihao{5} 方孔方阵衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{4.jpg}
+            \subcaption*{\zihao{5} 方孔密排衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{7.jpg}
+            \subcaption*{\zihao{5} 圆孔方阵衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.36\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{8.jpg}
+            \subcaption*{\zihao{5} 圆孔密排衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+    \newpage
+    \subsection*{\zihao{-3} 1.4\ \ 观察其它衍射的光强分布}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{9.jpg}
+            \subcaption*{\zihao{5} 单方屏衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{10.jpg}
+            \subcaption*{\zihao{5} 等边三角形孔衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{11.jpg}
+            \subcaption*{\zihao{5} 等腰三角形孔衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{12.jpg}
+            \subcaption*{\zihao{5} 矩形方孔衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{13.jpg}
+            \subcaption*{\zihao{5} 单圆屏衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{14.jpg}
+            \subcaption*{\zihao{5} 五角星孔衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{15.jpg}
+            \subcaption*{\zihao{5} 单缝衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{16.jpg}
+            \subcaption*{\zihao{5} 双缝衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{17.jpg}
+            \subcaption*{\zihao{5} 三缝衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{18.jpg}
+            \subcaption*{\zihao{5} 四缝衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{19.jpg}
+            \subcaption*{\zihao{5} 五缝衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{20.jpg}
+            \subcaption*{\zihao{5} 单丝衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{21.jpg}
+            \subcaption*{\zihao{5} 双丝衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{22.jpg}
+            \subcaption*{\zihao{5} 三丝衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{23.jpg}
+            \subcaption*{\zihao{5} 四丝衍射图样}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{24.jpg}
+            \subcaption*{\zihao{5} 五丝衍射图样}
+        \end{subfigure}
+    \end{figure}
+
+
+    \newpage
+    \section*{\zihao{3} 2\ \ 分析与讨论}
+
+    \subsection*{\zihao{-3} 1.1\ \ 测量误差的来源分析}
+
+    \paragraph{\zihao{-3} 系统误差：\hspace{-1em}}夫琅和费衍射本来就是在傍轴条件下将球面波近似为平面波得到的规律。本实验中：
+    \[
+    \frac{z^2}{x^2}\sim10^4
+    \]
+    说明傍轴条件（振幅条件）得以满足。
+
+    \qquad 而计算缝宽、缝间距时所用的公式中也利用了小角近似：
+    \[
+    \sin\theta \approx \tan\theta = \frac{\Delta x}{z}
+    \]
+    所带来的误差估计为：
+    \[
+    \frac{|\tan\theta-\sin\theta|}{\sin\theta}
+    \]
+    对于单缝衍射测量缝宽、多缝衍射测量缝间距，其值约为$2\times10^{-5}$；对于多缝衍射测量缝宽，其值约为$1.3\times10^{-4}$，后面可以看到，这个值远小于随机误差的贡献。
+
+    \qquad 另一方面，仪器的允差和最小分度也会引起系统误差。测量$z$所用钢板尺最小分度值为$1\,\mathrm{mm}$，允差为$\pm0.20\,\mathrm{mm}$；测量$x_1$、$x_2$所用光强计最小分度为$0.010\,\mathrm{mm}$（单缝衍射）或$0.020\,\mathrm{mm}$（多缝衍射）。
+
+    \paragraph{\zihao{-3} 随机误差：\hspace{-1em}}本题中$\lambda=632.8\,\mathrm{nm}$，$c_1=1.4303$为给定值（即精确度可以任意高，如$c_1$可以计算到任意精度的小数位），测量量只有$x_1$，$x_2$和$z$，间接测量量有$\Delta x$。
+
+    \qquad $x_1$和$x_2$的误差来源是判断峰值（或谷值）位置的不确定性，其不确定度$\sigma_x$估计为最小分度值，则
+    \[
+    \sigma_{\Delta x} = \frac{1}{2}\sqrt{\sigma_{x_1}^2 + \sigma_{x_1}^2} = \frac{\sqrt{2}}{2}\sigma_{x_1} = \frac{\sqrt{2}}{2}\sigma_{x_2}
+    \]
+
+    \qquad $z$的误差来源是读数误差：单缝（或多缝）衍射平面与光学平台上钢板尺之间有一段很大的距离，需要借助另一把直尺对齐刻度线，其不确定度估计为$\sigma_z=5\,\mathrm{mm}$。
+
+    \subsection*{\zihao{-3} 1.2\ \ 不确定度的计算}
+
+    1.单缝衍射测量缝宽：$e_x = \sigma_x = 0.010\,\mathrm{mm}$，$e_z = 0.20\,\mathrm{mm}$，$\sigma_z=5\,\mathrm{mm}$。
+    \[
+    \sigma_{\Delta x} = \frac{\sqrt{2}}{2}\cdot\sqrt{\left(\frac{e_x}{\sqrt{3}}\right)^2 + \sigma_{x}^2} = 0.008164965809\,\mathrm{mm}
+    \]
+    \[
+    \sigma_z = \sqrt{\left(\frac{e_z}{\sqrt{3}}\right)^2 + \sigma_{z}^2} = 5.001333156\,\mathrm{mm}
+    \]
+    \[
+    \sigma_a = a\sqrt{\left(\frac{\sigma_{\Delta x}}{\Delta x}\right)^2 + \left(\frac{\sigma_z}{z}\right)^2} = 1.153999142\,\mu\mathrm{m}
+    \]
+    则测量结果表示为：$a = (173.4\pm1.2)\,\mu\mathrm{m}$。
+
+    \bigskip
+    2.多缝衍射测量缝宽：$e_x = \sigma_x = 0.020\,\mathrm{mm}$，$e_z = 0.20\,\mathrm{mm}$，$\sigma_z=5\,\mathrm{mm}$。
+    \[
+    \sigma_{\Delta x} = \frac{\sqrt{2}}{2}\cdot\sqrt{\left(\frac{e_x}{\sqrt{3}}\right)^2 + \sigma_{x}^2} = 0.01632993162\,\mathrm{mm}
+    \]
+    \[
+    \sigma_z = \sqrt{\left(\frac{e_z}{\sqrt{3}}\right)^2 + \sigma_{z}^2} = 5.001333156\,\mathrm{mm}
+    \]
+    \[
+    \sigma_a = a\sqrt{\left(\frac{\sigma_{\Delta x}}{\Delta x}\right)^2 + \left(\frac{\sigma_z}{z}\right)^2} = 1.139566528\,\mu\mathrm{m}
+    \]
+    则测量结果表示为：$d = (39.2\pm1.1)\,\mu\mathrm{m}$
+
+    \bigskip
+    3.多缝衍射测量缝间距：$e_x = \sigma_x = 0.020\,\mathrm{mm}$，$e_z = 0.20\,\mathrm{mm}$，$\sigma_z=5\,\mathrm{mm}$。
+    \[
+    \sigma_{\Delta x} = \frac{\sqrt{2}}{2}\cdot\sqrt{\left(\frac{e_x}{\sqrt{3}}\right)^2 + \sigma_{x}^2} = 0.01632993162\,\mathrm{mm}
+    \]
+    \[
+    \sigma_z = \sqrt{\left(\frac{e_z}{\sqrt{3}}\right)^2 + \sigma_{z}^2} = 5.001333156\,\mathrm{mm}
+    \]
+    \[
+    \sigma_a = a\sqrt{\left(\frac{\sigma_{\Delta x}}{\Delta x}\right)^2 + \left(\frac{\sigma_z}{z}\right)^2} = 1.236490848\,\mu\mathrm{m}
+    \]
+    则测量结果表示为：$d = (92.0\pm1.2)\,\mu\mathrm{m}$
+
+    \newpage
+    \section*{\zihao{3} 3\ \ 收获与感想}
+
+    \subsection*{\zihao{-3} 3.1\ \ 调节光路需要满足的六个条件}
+
+    1.远场条件；
+
+    2.光线平行于台面；
+
+    3.反射后的激光平行于台面；
+
+    4.激光垂直于狭缝；
+
+    5.务必确保衍射条纹与探测器扫描方向平行（保证对称性）；
+
+    6.狭缝垂直台面（等价于衍射条纹平行于台面）及探测器运动方向。
+
+    \subsection*{\zihao{-3} 3.2\ \ 实际调节中的注意事项}
+
+    1.衍射屏贴近反射镜摆放在光学平台的一端，光强计摆放在另一端，保证衍射屏到探测器的距离$z$要足够大；
+
+    2.用光屏接收激光器的激光，近调激光器（或光屏）的高度，远调激光器的仰角，使得不管光屏离激光器的距离多远，屏上激光点都在同一个高度上；
+
+    3.在探测器上放置一个反射镜，反射回来的光经该反射镜反射后；反射到激光器出口；
+
+    4.注意衍射屏也有一定的反射率，应有衍射图样反射到激光器出口，且主极强与激光器出口中心重合；
+
+    5.调整狭缝，使得衍射图样平行与光屏上的水平线；
+
+    6.用光强计粗扫，检验图像的对称性和主极强与次级强的光强比。
+
+
+\end{document}

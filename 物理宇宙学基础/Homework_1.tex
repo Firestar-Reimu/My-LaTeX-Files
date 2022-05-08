@@ -1,0 +1,161 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+\title{\textbf{物理宇宙学基础作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2021年4月7日}
+\maketitle
+
+\begin{itemize}
+
+    \item[1.(a)] 对于光子：
+    \[
+    (\mathrm{d}s)^2 = (c\mathrm{d}t)^2 - a^2\left[\frac{\mathrm{d}r^2}{1-kr^2} + r^2\left(\mathrm{d}\theta^2+\sin^2\theta\mathrm{d}\phi^2\right)\right]
+    \]
+    考虑$k=\theta=\phi\equiv0$，则$\mathrm{d}\theta=\mathrm{d}\phi=0$，得$c\mathrm{d}t=-a\mathrm{d}r$（负号表示接收光子），即：
+    \begin{equation}
+        \mathrm{d}r = -\frac{c\mathrm{d}t}{a}
+    \end{equation}
+    由Hubble常数的定义$H=\dfrac{\dot{a}}{a}$得：
+    \[
+    \frac{\mathrm{d}a}{\mathrm{d}t} = Ha,\quad
+    \frac{\mathrm{d}t}{a} = \frac{\mathrm{d}a}{Ha^2}
+    \]
+    代入(1)式得：
+    \begin{equation}
+        \mathrm{d}r = -\frac{c\mathrm{d}a}{Ha^2}
+    \end{equation}
+    又因为$a=\dfrac{1}{1+z}$，则有：
+    \[
+    z = \frac{1}{a} - 1,\quad
+        \mathrm{d}z = -\frac{\mathrm{d}a}{a^2}
+    \]
+    代入(2)式得：
+    \[
+    \mathrm{d}r = \frac{c\mathrm{d}z}{H} = \frac{c\mathrm{d}z}{H_0\sqrt{\Omega_\mathrm{m}(1+z)^3+\Omega_\Lambda}}
+    \]
+    积分得：
+    \begin{equation}
+        r = \int_0^{z}\frac{c\mathrm{d}z'}{H_0\sqrt{\Omega_\mathrm{m}(1+z')^3+\Omega_\Lambda}}
+    \end{equation}
+
+    \begin{itemize}
+        \item[$\bullet$] 对于$\Omega_\mathrm{m}=1$的情况，(3)式变为：
+        \[
+        r = \int_0^{z}\frac{c\mathrm{d}z'}{H_0\sqrt{(1+z')^3}}
+        \]
+        积分得：
+        \[
+        r = \frac{2c}{H_0}\left(1-\frac{1}{\sqrt{1+z}}\right)
+        \]
+        即：
+        \[
+        D(z) = \omega(z)R_0 = \frac{2cR_0}{H_0}\left(1-\frac{1}{\sqrt{1+z}}\right)
+        \]
+
+        \item[$\bullet$] 对于$\Omega_\Lambda=1$的情况，(3)式变为：
+        \[
+        r = \int_0^{z}\frac{c}{H_0}\mathrm{d}z'
+        \]
+        积分得：
+        \[
+        r = \frac{c}{H_0}z
+        \]
+        即：
+        \[
+        D(z) = \omega(z)R_0 = \frac{c}{H_0}z
+        \]
+    \end{itemize}
+
+    \item[1.(b)]
+    由$\dfrac{\mathrm{d}a}{\mathrm{d}t}=Ha$得：
+    \[
+    \frac{\mathrm{d}a}{a} = H\mathrm{d}t = H_0\sqrt{\Omega_\mathrm{m}a^{-3}+\Omega_\Lambda}\mathrm{d}t
+    \]
+
+    \begin{itemize}
+        \item[$\bullet$] 对于$\Omega_\mathrm{m}=1$的情况：
+        \[
+        \frac{\mathrm{d}a}{a} = \frac{H_0\mathrm{d}t}{\sqrt{a^3}}
+        \]
+        积分得：
+        \[
+        a = \sqrt[3]{\frac{9}{4}H_0^2t^2}
+        \]
+        又因为$z\to\infty$时$r\to r_\infty=\dfrac{2c}{H_0}$，得：
+        \begin{align*}
+            V
+            &= a^3(\tau_0)\int_0^{r_\infty}x^2\mathrm{d}x\int_0^\pi\sin\theta\mathrm{d}\theta\int_0^{2\pi}\mathrm{d}\phi \\
+            &= 4\pi\cdot\left(\frac{8c^3}{3H_0^3}\right)\cdot\left(\frac{9}{4}H_0^2\tau_0^2\right) \\
+            &= 24\pi\frac{c^3\tau_0^2}{H_0^3}
+        \end{align*}
+
+        \item[$\bullet$] 对于$\Omega_\Lambda=1$的情况：
+        \[
+        \frac{\mathrm{d}a}{a} = H_0\mathrm{d}t
+        \]
+        积分得：
+        \[
+        a = \mathrm{e}^{H_0 t}
+        \]
+        又因为$z\to\infty$时$r\to \infty$，得：
+        \[
+        V = a^3(\tau_0)\int_0^{r_\infty}x^2\mathrm{d}x\int_0^\pi\sin\theta\mathrm{d}\theta\int_0^{2\pi}\mathrm{d}\phi = \infty
+        \]
+    \end{itemize}
+    
+    对比：$\Omega_\mathrm{m}=1$时，$V$是半径为$\dfrac{2c}{H_0}$的球的体积，可观测范围是有限值；而$\Omega_\Lambda=1$时，可观测范围$V$无限大，能包括整个宇宙。
+
+    \item[2.] 考虑两个光信号，第一个从$t=t_1$（即$z=1$时）到$t=t_0$（当前时刻），第二个从$t=t_1+\Delta t_1$到$t=t_0+\Delta t_0$（十年之后）。这里$\Delta t_0=10\,\mathrm{yr}=3.1557\times10^8\,\mathrm{s}$。
+    
+    两个光信号传播的共动距离不变给出：
+    \[
+    \int_{t_1}^{t_0}\frac{c\mathrm{d}t}{a(t)} = \int_{t_1+\Delta t_1}^{t_0+\Delta t_0}\frac{c\mathrm{d}t}{a(t)}
+    \]
+    由于宇宙膨胀，在$\Delta t_0\ll(t_0-t_1)$且$\Delta t_1\ll(t_0-t_1)$时有：
+    \[
+    \frac{\mathrm{d}t_1}{\mathrm{d}t_0} = \frac{a(t_1)}{a(t_0)},\quad
+        \frac{\Delta t_1}{\Delta t_0} = \frac{a(t_1)}{a(t_0)}
+    \]
+    于是红移$z$与观测时刻$t_0$的关系为：
+    \begin{align*}
+        \frac{\mathrm{d}z}{\mathrm{d}t_0}
+        &= \frac{\mathrm{d}}{\mathrm{d}t_0}\left[\frac{a(t_0)}{a(t_1)}-1\right] \\
+        &= \frac{1}{a(t_1)}\left[\frac{\mathrm{d}a(t_0)}{\mathrm{d}t_0}\right] - \frac{a(t_0)}{a(t_1)^2}\left[\frac{\mathrm{d}a(t_1)}{\mathrm{d}t_1} \cdot \frac{\mathrm{d}t_1}{\mathrm{d}t_0}\right] \\
+        &= \frac{1}{a(t_1)}\left[\frac{\mathrm{d}a(t_0)}{\mathrm{d}t_0}\right] - \frac{a(t_0)}{a(t_1)^2}\left[\frac{\mathrm{d}a(t_1)}{\mathrm{d}t_1} \cdot \frac{a(t_1)}{a(t_0)}\right] \\
+        &= \frac{\dot{a}(t_0)}{a(t_1)} - \frac{\dot{a}(t_1)}{a(t_1)} \\
+        &= \frac{a(t_0)}{a(t_1)}H(t_0) - H(t_1) \\
+        &= (1+z)H_0 - H_0\sqrt{\Omega_\mathrm{m}(1+z)^3+\Omega_\Lambda} \\
+        &= 5.66\times10^{-19}\,\mathrm{s}^{-1}
+    \end{align*}
+    则红移的变化为：
+    \[
+    \Delta z = \frac{\mathrm{d}z}{\mathrm{d}t_0}\cdot\Delta t_0 = 1.79\times10^{-10}
+    \]
+    考虑到$z=\dfrac{\lambda-\lambda_0}{\lambda_0}$，当$\Delta z\ll z$时，$\Delta\lambda=\lambda_0\Delta z$。光学波段$\lambda_0\sim10^{-7}\,\mathrm{m}$，造成观测到的波长变化为$\Delta\lambda\sim10^{-17}\,\mathrm{m}$。而这样小的长度在实际应用中显然是无法分辨的。
+
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,242 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym,nicefrac}
+\usepackage{graphicx,caption}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{footnote}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{fontspec,color}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=SimSun,RawFeature=+fwid]
+
+\begin{document}
+    \title{\textbf{原子核壳层模型与“幻数”}}
+    \author{\Large\textbf{张植竣}}
+    \date{\today}
+    \maketitle
+    \begin{center}
+        院系：北京大学物理学院天文学系\hspace{2em}学号：1900011604\hspace{2em}邮箱：1900011604@pku.edu.cn
+
+        \textbf{不愿意作演讲报告}
+    \end{center}
+
+    \section*{引言}
+
+    随着元素放射性的发现，科学家开始关注原子核的稳定性。实验中发现质子数、中子数取某些特殊值，即“幻数”时，原子核最稳定，不容易发生衰变。类比核外电子壳层排布与化学性质稳定性的关系，1949年Mayer与Jensen提出了原子核的强“自旋——轨道耦合”壳层模型，并因此获得了1963年的Nobel物理学奖。“幻数”理论揭示了元素周期表内“稳定岛”的内在规律并预言了新的“稳定岛”。寻找超铀元素中的“稳定岛”是当今核物理的热门课题之一。
+
+    \section*{“幻数”的实验发现}
+
+    1948年，Mayer发表了论文\textit{On Closed Shells in Nuclei}，指出质子数为偶数的重元素（原子序数$Z\geqslant34$）中同位素比例超过60\%的元素只有$\mathrm{^{88}Sr}$、$\mathrm{^{138}Ba}$和$\mathrm{^{140}Ce}$三种，而它们的中子数分别为50、82和82。而且中子数为50和82的同中子数核素数量很多，其中绝大多数也是稳定的，或半衰期异常长（如$\mathrm{^{87}Rb}$）。它还讨论了质子数为20、50和82，中子数为126的情形。这篇论文汇总了大量观测资料，开启了“幻数”发现的先例，也建立了壳层模型的基础。
+
+    现在科学界公认的“幻数”有：
+    \[
+    2,8,20,28,50,82,126
+    \]
+    实验表明，当中子数$N$或质子数$Z$取这些“幻数”（质子取前6项）时，原子核的中子分离能或质子分离能：
+    \[
+    E_\mathrm{n} = \left(m_\mathrm{Z,A-1} + m_\mathrm{n} - m_\mathrm{Z,A}\right)c^2
+    \]
+    \[
+    E_\mathrm{p} = \left(m_\mathrm{Z-1,A-1} + m_\mathrm{p} - m_\mathrm{Z,A}\right)c^2
+    \]
+    会取极大值。表明$N$或$Z$取“幻数”的“幻核”最稳定。而两者都取幻数的“双幻核”，如$\mathrm{^{4}He}$、$\mathrm{^{16}O}$、$\mathrm{^{208}Pb}$等，尤其稳定。量子力学告诉我们元素的化学稳定性与核外电子的壳层排布有关，电子充满各级壳层时元素化学性质最稳定（即稀有气体）。与元素周期律中电子壳层排布与化学性质的关系类比，不难联想到原子核的稳定性规律也可能与原子核的壳层结构有关。所以，核子“幻数”的存在最直接地表明，原子核中核子能级存在壳层结构。
+
+    \section*{原子核壳层模型的理论推导}
+
+    原子核的现代壳层模型建立的标志是1949年Mayer与Jensen的研究小组独自提出了“自旋——轨道耦合”对原子核内核子势场的影响。计算结果与当时发现的所有“幻数”完美地符合。下面我们分三步推导原子核壳层排布和“幻数”的值：
+
+    \subsection*{原子核内核子感受到的势}
+
+    实际原子核中的单粒子势更接近于Woods-Saxon势：
+    \[
+    V(r,A) = -\frac{V_0}{1+\mathrm{e}^{\tfrac{r-R(A)}{a}}}
+    \]
+    其中$A$为核子数，各个常数的值约为：
+    \[
+    V_0 \approx 57\,\mathrm{MeV},\qquad R(A) \approx 1.25A^{\tfrac{1}{3}}\,\mathrm{fm},\qquad a \approx 0.65\,\mathrm{fm}
+    \]
+    $V_0$是势阱深度，$R$刻画势阱半径，$a$表征核表面附近势阱边缘的陡峭程度。
+
+    我们还需要加入三个修正项：第一个是对称性引起的势：
+    \[
+    \Delta V_\mathrm{sym} = \pm27\left[\frac{N-Z}{A}\right]\,\mathrm{MeV}
+    \]
+    其中对质子取$+$号，对中子取$-$号。第二个是质子间库仑排斥的势，它只对质子有效，会提升势阱的高度。第三个是下一节将会讲到的“自旋——轨道耦合”修正，这个与自旋与轨道角动量之间方向为平行与反平行有关。加入三项修正之后就得到图1中所描述的核子感受到的势。
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width = 0.75\textwidth]{nucpot.png}
+        \caption{核子感受到的势}
+    \end{figure}
+
+    然而对于Woods-Saxon势，Schr\"{o}dinger方程没有解析解，在应用时只能用数值解法。理论计算中广泛应用的是三维各向同性谐振子势。由于它的解析解较易求出，而且矩阵运算极为方便，因此研究时常常用它作一个初步的近似，其势函数如下：
+    \[
+    V = \frac{1}{2}Kr^2 = \frac{1}{2}\mu\omega^2r^2,\qquad \omega = \sqrt{\frac{K}{\mu}}
+    \]
+    其中$\mu$为粒子质量，$K$是刻画位势强度的参量，$\omega$为经典谐振子自然振动的角频率。由径向方程：
+    \[
+    R''_l + \frac{2}{r}R'_l + \left[\frac{2\mu}{\hbar^2}\left(E - V\right) - \frac{l(l+1)}{r^2}\right]R_l = 0
+    \]
+    其中$l$为角量子数，$R_l$为径向波函数，$E$为粒子能量。代入势函数表达式并取自然单位制$\hbar = \mu = \omega = 1$，化简得：
+    \[
+    R''_l + \frac{2}{r}R'_l + \left[2E - r^2 - \frac{l(l+1)}{r^2}\right]R_l = 0
+    \]
+    $r = 0$和$r = \infty$是方程的两个奇点。在正则奇点$r = 0$的临域，上式可以渐进地表达为：
+    \[
+    R''_l + \frac{2}{r}R'_l - \frac{l(l+1)}{r^2}R_l = 0
+    \]
+    这是一个Euler方程，该方程有多项式解：
+    \[
+    R_l(r) = Ar^l + Br^{-l-1}
+    \]
+    由于$r \to 0$时径向波函数$R_l$有限，应有$B = 0$，$R_l(r) \propto r^l$。
+
+    \noindent 当$r \to \infty$时，径向方程化为：
+    \[
+    R''_l - r^2 R_l = 0
+    \]
+    这是一个二阶线性常系数齐次微分方程，该方程有指数解：\footnote{曾谨言《量子力学》原文中指数解为$\mathrm{e}^{\pm\tfrac{r^2}{2}}$，并说明该解在$r\to\infty$时$r^2 + 1 \approx r^2$，该解近似满足方程。余深感不解，计算发现特征根法解出的指数解$\mathrm{e}^{\pm r}$仍能给出$u_l(r)$满足的方程$u''_l + \dfrac{2}{r}(l+1-r^2)u_l + \left[2E - 2l - 3\right]u_l = 0$，且不需近似。}
+    \[
+    R_l(r) = C\mathrm{e}^r + D\mathrm{e}^{-r}
+    \]
+    由于$r \to \infty$时径向波函数$R_l$有限，应有$C = 0$，$R_l(r) \propto \mathrm{e}^{-r}$。
+
+    综上，径向波函数的解可以表示为：
+    \[
+    R_l(r) = r^l\mathrm{e}^{-r}u_l(r)
+    \]
+    代入原方程，可以得到$u_l(r)$满足的方程为：
+    \[
+    u''_l + \frac{2}{r}(l+1-r^2)u_l + \left[2E - 2l - 3\right]u_l = 0
+    \]
+    再令$\xi = r^2$，$\gamma = l + \dfrac{3}{2}$，$\alpha = \dfrac{1}{2}\left(\gamma - E\right)$则方程化为：
+    \[
+    \xi\frac{\mathrm{d}^2 u_l}{\mathrm{d}\xi^2} + \left(\gamma-\xi\right)\frac{\mathrm{d} u_l}{\mathrm{d}\xi} - \alpha u_l = 0
+    \]
+    这正是关于$(\alpha,\gamma,\xi)$的合流超几何方程（满足$\gamma$不能是整数），其解为：
+    \[
+    u_l(\xi) = P\mathrm{F}(\alpha,\gamma,\xi) \xi^{1-\gamma} + Q\mathrm{F}(\alpha-\gamma+1,2-\gamma,\xi)
+    \]
+    由于$r \to 0$时$u_l$有限，应有$Q = 0$，则：
+    \[
+    u_l(\xi) \propto \mathrm{F}(\alpha,\gamma,\xi) = \sum_{k=0}^{\infty}\frac{(\alpha-1+k)!(\gamma-1)!}{(\alpha-1)!(\gamma-1+k)!}\cdot\frac{\xi^k}{k!}
+    \]
+    可以看出，$\mathrm{F}(\alpha,\gamma,\xi)$一般是无穷级数，在$\xi \to \infty$时发散行为与$\mathrm{e}^\xi$相同，欲满足$\xi \to \infty$时$u_l(\xi)$有限，必须使无穷级数断为一个多项式，这就要求$\alpha \leqslant 0$，即：
+    \[
+    \alpha = \frac{1}{2}\left(l + \frac{3}{2} - E\right) = -n_r,\qquad n_r \in \{0\}\cup\mathbb{N}^{+}
+    \]
+    其中$n_r$为径向量子数。
+
+    \noindent 故$E = 2n_r + l + \dfrac{3}{2}$，恢复原来的量纲，得：
+    \[
+    E = \left(2n_r + l + \dfrac{3}{2}\right)\hbar\omega
+    \]
+
+    令$N = 2n_r + l$，则：
+    \[
+    E = E_N = \left(N + \frac{3}{2}\right)\hbar\omega,\qquad N \in \{0\}\cup\mathbb{N}^{+}
+    \]
+    这就是三维各向同性谐振子的能量本征值公式。可见能级$N$只依赖于径向量子数$n_l$和角量子数$l$的一种特殊的组合$N=2n_r+l$。因此，对于给定的能级$E_N$（即给定$N$），$n_l$和$l$可以有多种组合形式。考虑$m_l$可以有从$-l$到$l$的$2l+1$个取值，能级简并度为：
+    \[
+    f_N = \sum m_l = \frac{1}{2}(N+1)(N+2)
+    \]
+    由于自旋有两个方向，能级简并度为：
+    \[
+    F_N = (N+1)(N+2)
+    \]
+    于是得到幻数为：
+    \[
+    \sum_{N=0}^a(N+1)(N+2) = \frac{1}{3}(a+1)(a+2)(a+3) = 2,\ 8,\ 20,\ 40,\ 70,\cdots
+    \]
+    这个数列的前三项与实验中发现的“幻数”是吻合的，但是从第四项就开始偏离，说明该模型需要修正。这就是下面要介绍的“自旋——轨道耦合”修正。
+
+    \subsection*{加入“自旋\symbol{"2E3A}轨道耦合”修正}
+
+    设自旋量子数为$s$（为表述方便下面只取$s$为正值），我们用量子数$j=l \pm s$来描述原子核。1949年Mayer和Jensen等人提出，在核内平均场运动的核子，还感受到一项“自旋——轨道耦合”的作用：
+    \[
+    \lambda(r)\bm{s}\cdot\bm{l},\qquad \lambda(r) = \frac{1}{2\mu^2 c^2 r}\cdot\frac{\mathrm{d}V}{\mathrm{d}r}
+    \]
+    考虑“自旋——轨道耦合”的影响：“自旋——轨道耦合”效应使得同一能级上量子数$j$不同的状态能量不同，产生分裂。如果$s$与$l$平行，即自旋与轨道平行，则$j=l+s$，耦合能量为正；如果$s$与$l$反平行，即自旋与轨道反平行，则$j=l-s$，耦合能量为负。则有：
+    \begin{align*}
+    \Delta E
+    &= E_{j=l+s} - E_{j=l-s} \\
+    &= \langle\lambda(r)\rangle\{\langle\bm{s}\cdot\bm{l}\rangle_{j=l+s} - \langle\bm{s}\cdot\bm{l}\rangle_{j=l-s}\} \\
+    &= \frac{\hbar^2}{2}\langle\lambda(r)\rangle(2l+1)
+    \end{align*}
+    “自旋——轨道耦合”效应的强度大致正比于$l$。
+
+    \subsection*{计算“幻数”}
+
+    考虑到势函数的修正和“自旋——轨道耦合”的影响，我们可以预见到：在每个能级$N$，能量分裂为两个子能级，其中$j$较大者能量较低，且$l$越大时分裂效应越显著，例如$1g_{\nicefrac{9}{2}}$能级的能量明显低于$1g_{\nicefrac{7}{2}}$能级（见图2）。这使得核子的能量壳层不完全取决于量子数$n$，而是相互有少许错开，这就导致了“幻数”与之前预测的$\sum\limits_{N=0}^a(N+1)(N+2)$有偏差。
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.75\textwidth]{shellmod.png}
+        \caption{原子核壳层模型示意图}
+    \end{figure}
+
+    \noindent 每一个壳层的状态数应为：
+    \begin{itemize}
+        \item 第1壳层: 2个状态 （$N = 0,\ j = ​\nicefrac{1}{2}$）
+        \item 第2壳层: 6个状态 （$N = 1,\ j = ​\nicefrac{1}{2},\ \nicefrac{3}{2}$）
+        \item 第3壳层: 12个状态 （$N = 2,\ j = ​\nicefrac{1}{2},\ ​\nicefrac{3}{2},\ \nicefrac{5}{2}$）
+        \item 第4壳层: 8个状态 （$N = 3,\ j = ​\nicefrac{7}{2}$）
+        \item 第5壳层: 22个状态 （$N = 3,\ j = ​\nicefrac{1}{2},\ ​\nicefrac{3}{2},\ \nicefrac{5}{2};\  N = 4,\ j = ​\nicefrac{9}{2}$）
+        \item 第6壳层: 32个状态 （$N = 4,\ j = ​\nicefrac{1}{2},\ ​\nicefrac{3}{2},\ ​\nicefrac{5}{2},\ \nicefrac{7}{2};\  N = 5,\ j = ​\nicefrac{11}{2}$）
+        \item 第7壳层: 44个状态 （$N = 5,\ j = ​\nicefrac{1}{2},\ ​\nicefrac{3}{2},\ ​\nicefrac{5}{2},\ ​\nicefrac{7}{2},\ \nicefrac{9}{2};\  N = 6,\ j = ​\nicefrac{13}{2}$）
+    \end{itemize}
+    于是给出幻数：
+    \begin{itemize}
+        \item $2=2$
+        \item $8=2+6$
+        \item $20=2+6+12$
+        \item $28=2+6+12+8$
+        \item $50=2+6+12+8+22$
+        \item $82=2+6+12+8+22+32$
+        \item $126=2+6+12+8+22+32+44$
+    \end{itemize}
+
+    \section*{展望\symbol{"2E3A}寻找下一个“稳定岛”}
+
+    下一个预测的“幻数”是$Z = 114$和$N = 184$，$Z = 120$及$Z = 126$也是可能的质子“幻数”。那么根据壳层模型的理论，这样的核素的半衰期相比于附近的核素会更长。这些同位素至今为止未能被合成。但114号元素$\mathrm{Fl}$的少于184个中子的同位素比元素周期表中邻近元素的同位素衰变要慢得多，大致在$10^0\sim10^2\,\mathrm{s}$量级。目前合成的中子数最多的核素为$\mathrm{^{293}Lv}$和$\mathrm{^{294}Ts}$，都只有177个中子，远没有达到“幻数”$N = 184$，但中子数趋近“幻数”的趋势有所表现：112号元素$\mathrm{Cn}$的两种同位素中，$\mathrm{^{285}Cn}$比$\mathrm{^{277}Cn}$多出8个中子，而它的半衰期也高了5个数量级。\footnote{\textit{Zagrebaev, V.; Karpov, A.; Greiner, W. (2013). "Future of superheavy element research: Which nuclei could be synthesized within the next few years?". Journal of Physics.}}另一方面，也有研究指出：部分超铀元素的原子核可能不像“幻数”理论预言的一样呈球形，可能对“幻数”的预测值产生偏差。\footnote{\textit{\'{C}wiok, S.; Nazarewicz, W.; Heenen, P. H. (1999). "Structure of Odd-N Superheavy Elements". Physical Review Letters.}}
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.75\textwidth]{islsta.png}
+        \caption{“稳定岛”示意图}
+    \end{figure}
+
+    \section*{总结}
+
+    本文从Woods-Saxon势及其近似——三维各向同性谐振子势出发，引入Mayer与Jensen的创造：“自旋——轨道耦合”，计算得到了已知的所有“幻数”。最后由“幻数”理论引向元素周期表内的“稳定岛”。对于超铀元素中未知的“稳定岛”，介绍了当前的一些研究成果。
+
+    \section*{参考文献}
+    \begin{itemize}
+
+        \item[1.] Island of Stability -- Wikipedia, https://en.wikipedia.org/wiki/Island\_of\_stability
+
+        \item[2.] Nuclear Shell Model -- Wikipedia, https://en.wikipedia.org/wiki/Nuclear\_shell\_model
+
+        \item[3.] Magic Number (Physics) -- Wikipedia, https://en.wikipedia.org/wiki/Magic\_number\_(physics)
+
+        \item[4.] \textit{Nave, C. R. Shell Model of Nucleus. HyperPhysics.}
+
+        \item[5.] \textit{Mayer, Maria G. (1948). On Closed Shells in Nuclei. Physical Review.}
+
+        \item[6.] \textit{Mayer, Maria G. (1949). On Closed Shells in Nuclei. II. Physical Review.}
+
+        \item[7.] \textit{Zagrebaev, V.; Karpov, A.; Greiner, W. (2013). "Future of superheavy element research: Which nuclei could be synthesized within the next few years?". Journal of Physics.}
+
+        \item[8.] \textit{\'{C}wiok, S.; Nazarewicz, W.; Heenen, P. H. (1999). "Structure of Odd-N Superheavy Elements". Physical Review Letters.}
+
+        \item[9.] 曾谨言；（2013）；《量子力学》；科学出版社。
+
+        \item[10.] 赵凯华，罗蔚茵；（2008）；《新概念物理教程——量子力学》；高等教育出版社。
+    \end{itemize}
+\end{document}

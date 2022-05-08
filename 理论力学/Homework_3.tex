@@ -1,0 +1,421 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm,wasysym}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+    \title{\textbf{理论力学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2020年11月11日}
+
+    \maketitle
+
+    \begin{itemize}
+
+        \section*{第四章}
+
+        \item[3.1.(1)]
+        系统的Lagrange量为：
+        \begin{align*}
+        L
+        &= \left[\frac{1}{2}m\dot{x}_1^2 + \frac{1}{2}m\dot{x}_2^2\right] - \left[\frac{1}{2}kx_1^2 + \frac{1}{2}kx_2^2 + \frac{1}{2}k(x_1+x_2)^2\right] \\
+        &= \frac{1}{2}\boldsymbol{\dot{x}}^{\mathrm{T}}\boldsymbol{m}\boldsymbol{\dot{x}} - \frac{1}{2}\boldsymbol{x}^{\mathrm{T}}\boldsymbol{k}\boldsymbol{x} \\
+        &= \frac{1}{2}
+        [\dot{x}_1\ \dot{x}_2]
+        \begin{bmatrix}
+            m & 0 \\
+            0 & m
+        \end{bmatrix}
+        \begin{bmatrix}
+            \dot{x}_1 \\
+            \dot{x}_2
+        \end{bmatrix}
+        + \frac{1}{2}
+        [x_1\ x_2]
+        \begin{bmatrix}
+            2k & k \\
+            k & 2k
+        \end{bmatrix}
+        \begin{bmatrix}
+            x_1 \\
+            x_2
+        \end{bmatrix}
+        \end{align*}
+        解久期方程：
+        \[
+        \left|\omega^2\boldsymbol{m}- \boldsymbol{k}\right|
+        = \det
+        \begin{bmatrix}
+            \omega^{2}m-2k & -k \\
+            -k & \omega^{2}m-2k
+        \end{bmatrix}
+        = (\omega^{2}m-2k)^2 - k^2
+        = 0
+        \]
+        得两个本征频率：
+        \[
+        \omega_1 = \sqrt{\frac{3k}{m}},\qquad \omega_2 = \sqrt{\frac{k}{m}}
+        \]
+        此即为体系的小振动频率，其中$\omega_1$对应于两质点同向运动的情况，$\omega_2$对应于相向运动的情况。
+        \medskip
+
+        \item[3.1.(2)]
+        对于系统的平衡位置：
+        \[
+        2kx_0 + kx_0 = \frac{q^2}{4\pi\epsilon_0(l_0+2x_0)^2}
+        \]
+        则$x_0$为方程：
+        \[
+        4x_0^3 + 4l_0x_0^2 + l_0^{2}x_0 - \frac{q^2}{12\pi\epsilon_{0}k} = 0
+        \]
+        的正根（分析可知该方程仅有唯一正根）。 \\
+        库仑势可以展开到二阶：
+        \[
+        V = \frac{q^2}{4\pi\epsilon_0(l_0+2x_0+x_1+x_2)} = V_0 - V_0\frac{x_1+x_2}{l_0+2x_0} + V_0\frac{(x_1+x_2)^2}{(l_0+2x_0)^2}
+        \]
+        其中：
+        \[
+        V_0 = \frac{q^2}{4\pi\epsilon_0(l_0+2x_0)}
+        \]
+        系统的Lagrange量为：
+        \begin{align*}
+            L
+            &=
+            \left[\frac{1}{2}m\dot{x}_1^2 + \frac{1}{2}m\dot{x}_2^2\right] - \left[\frac{1}{2}k(x_1+x_0)^2 + \frac{1}{2}k(x_2+x_0)^2 + \frac{1}{2}k(x_1+x_2+2x_0)^2 + V\right. \\
+            &\quad \left.- 2\times\frac{1}{2}kx_0^2 - \frac{1}{2}k(2x_0)^2 - V_0\right] \\
+            &= \left[\frac{1}{2}m\dot{x}_1^2 + \frac{1}{2}m\dot{x}_2^2\right] - \left[\frac{1}{2}kx_1^2 + \frac{1}{2}kx_2^2 + \frac{1}{2}a(x_1+x_2)^2\right] \\
+            &= \frac{1}{2}\boldsymbol{\dot{x}}^{\mathrm{T}}\boldsymbol{m}\boldsymbol{\dot{x}} - \frac{1}{2}\boldsymbol{x}^{\mathrm{T}}\boldsymbol{k}\boldsymbol{x} \\
+            &= \frac{1}{2}
+            [\dot{x}_1\ \dot{x}_2]
+            \begin{bmatrix}
+                m & 0 \\
+                0 & m
+            \end{bmatrix}
+            \begin{bmatrix}
+                \dot{x}_1 \\
+                \dot{x}_2
+            \end{bmatrix}
+            + \frac{1}{2}
+            [x_1\ x_2]
+            \begin{bmatrix}
+                2k+a & k+a \\
+                k+a & 2k+a
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2
+            \end{bmatrix}
+        \end{align*}
+        解久期方程：
+        \[
+        \left|\omega^2\boldsymbol{m}- \boldsymbol{k}\right|
+        = \det
+        \begin{bmatrix}
+            \omega^{2}m-2k-a & -k-a \\
+            -k-a & \omega^{2}m-2k-a
+        \end{bmatrix}
+        = (\omega^{2}m-2k-a)^2 - (k+a)^2
+        = 0
+        \]
+        其中：
+        \[
+        a = \frac{2V_0}{(l_0+2x_0)^2} = \frac{q^2}{2\pi\epsilon_0(l_0+2x_0)^3}
+        \]
+        得两个本征频率：
+        \[
+        \omega_1 = \sqrt{\frac{3k+2a}{m}} = \sqrt{\frac{1}{m}\left(3k+\frac{q^2}{\pi\epsilon_0(l_0+2x_0)^3}\right)},\qquad \omega_2 = \sqrt{\frac{k}{m}}
+        \]
+        此即为体系的小振动频率，其中$\omega_1$对应于两质点同向运动的情况，$\omega_2$对应于相向运动的情况。
+        \bigskip
+
+        \item[3.2]
+        系统的Lagrange量为：
+        \begin{align*}
+            L
+            &= \left[\frac{1}{2}\cdot\frac{1}{3}ml^2\dot{\phi}_1^2 + \frac{1}{2}\cdot\frac{1}{12}ml^2\dot{\phi}_2^2 + \frac{1}{2}m\left(l\dot{\phi}_1+\frac{l}{2}\dot{\phi}_2\right)^2\right] \\
+            &\quad - \left[mg\frac{l}{2}\cos\phi_1 + mg(l\cos\phi_1+\frac{l}{2}\cos\phi_2) - mg\frac{l}{2} - mg\frac{3l}{2}\right] \\
+            &= \frac{1}{2}\boldsymbol{\dot{\phi}}^{\mathrm{T}}\boldsymbol{m}\boldsymbol{\dot{\phi}} - \frac{1}{2}\boldsymbol{\phi}^{\mathrm{T}}\boldsymbol{k}\boldsymbol{\phi} \\
+            &= \frac{1}{2}
+            [\dot{\phi}_1\ \dot{\phi}_2]
+            \begin{bmatrix}
+                \frac{4}{3}ml^2 & \frac{1}{2}ml^2 \\
+                \frac{1}{2}ml^2 & \frac{1}{3}ml^2
+            \end{bmatrix}
+            \begin{bmatrix}
+                \dot{\phi}_1 \\
+                \dot{\phi}_2
+            \end{bmatrix}
+            + \frac{1}{2}
+            [\phi_1\ \phi_2]
+            \begin{bmatrix}
+                \frac{3}{2}mgl & 0 \\
+                0 & \frac{1}{2}mgl
+            \end{bmatrix}
+            \begin{bmatrix}
+                \phi_1 \\
+                \phi_2
+            \end{bmatrix}
+        \end{align*}
+        解久期方程：
+        \begin{align*}
+        \left|\omega^2\boldsymbol{m}- \boldsymbol{k}\right|
+        &= \det
+        \begin{bmatrix}
+            \frac{4}{3}\omega^2ml^2-\frac{3}{2}mgl & \frac{1}{2}\omega^2ml^2 \\
+            \frac{1}{2}\omega^2ml^2 & \frac{1}{3}\omega^2ml^2-\frac{1}{2}mgl
+        \end{bmatrix} \\
+        &= \frac{7}{36}\omega^4m^2l^4 - \frac{7}{6}\omega^2m^2gl^3 + \frac{3}{4}m^2g^2l^2 \\
+        &= 0
+        \end{align*}
+        得两个本征频率：
+        \[
+        \omega_1 = \sqrt{\frac{21+6\sqrt{7}}{7}\cdot\frac{g}{l}},\qquad \omega_2 = \sqrt{\frac{21-6\sqrt{7}}{7}\cdot\frac{g}{l}}
+        \]
+        此即为体系的小振动频率。
+
+        \item[3.3.(1)]
+        对于系统的平衡位置：
+        \[
+        2kx_0 = mg
+        \]
+        系统的Lagrange量为：
+        \begin{align*}
+            L
+            &= \left[\frac{1}{2}m\left(\frac{\dot{x}_1+\dot{x}_2}{2}\right)^2 + \frac{1}{2}\cdot\left(\frac{1}{12}ml^2\right)\cdot\left(\frac{\dot{x}_1 - \dot{x}_2}{l}\right)^2\right] \\
+            &\quad - \left[\frac{1}{2}k(x_1+x_0)^2 + \frac{1}{2}k(x_2+x_0)^2 - 2\times\frac{1}{2}kx_0^2 - mg\left(\frac{x_1+x_2}{2}\right)\right] \\
+            &= \left[\frac{1}{2}m\left(\frac{\dot{x}_1+\dot{x}_2}{2}\right)^2 + \frac{1}{2}\cdot\left(\frac{1}{12}ml^2\right)\cdot\left(\frac{\dot{x}_1 - \dot{x}_2}{l}\right)^2\right] - \left[\frac{1}{2}kx_1^2 + \frac{1}{2}kx_2^2\right] \\
+            &= \frac{1}{2}\boldsymbol{\dot{x}}^{\mathrm{T}}\boldsymbol{m}\boldsymbol{\dot{x}} - \frac{1}{2}\boldsymbol{x}^{\mathrm{T}}\boldsymbol{k}\boldsymbol{x} \\
+            &= \frac{1}{2}
+            [\dot{x}_1\ \dot{x}_2]
+            \begin{bmatrix}
+                \frac{1}{3}m & \frac{1}{6}m \\
+                \frac{1}{6}m & \frac{1}{3}m
+            \end{bmatrix}
+            \begin{bmatrix}
+                \dot{x}_1 \\
+                \dot{x}_2
+            \end{bmatrix}
+            + \frac{1}{2}
+            [x_1\ x_2]
+            \begin{bmatrix}
+                k & 0 \\
+                0 & k
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2
+            \end{bmatrix}
+        \end{align*}
+        解久期方程：
+        \[
+        \left|\omega^2\boldsymbol{m}- \boldsymbol{k}\right|
+        = \det
+        \begin{bmatrix}
+            \frac{1}{3}\omega^2m-k & \frac{1}{6}\omega^2m \\
+            \frac{1}{6}\omega^2m & \frac{1}{3}\omega^2m-k
+        \end{bmatrix}
+        = \left(\frac{1}{3}\omega^2m-k\right)^2 - \left(\frac{1}{6}\omega^2m\right)^2
+        = 0
+        \]
+        得两个本征频率：
+        \[
+        \omega_1 = \sqrt{\frac{6k}{m}},\qquad \omega_2 = \sqrt{\frac{2k}{m}}
+        \]
+        此即为体系的小振动频率，其中$\omega_1$对应于杆发生转动的情况（即$x_1$与$x_2$反向且大小相同），$\omega_2$对应于杆不发生转动的情况（即$x_1$与$x_2$同向且大小相同）。
+        \bigskip
+
+        \item[3.3.(2)]
+        根据对称性，系统有两种简振模式： \\
+        1. 杆发生转动（即$x_1$与$x_2$反向且大小相同）： \\
+        由$\boldsymbol{M} = I\boldsymbol{\beta}$得：
+        \[
+        2\cdot kx\cdot\frac{l}{2} = \frac{1}{12}ml^2\ddot{\theta}
+        \]
+        小角近似下有：
+        \[
+        x = \frac{l}{2}\theta
+        \]
+        代入并化简得：
+        \[
+        k\theta = \frac{1}{6}m\ddot{\theta}
+        \]
+        解得本征频率为：
+        \[
+        \omega_1 = \sqrt{\frac{6k}{m}}
+        \]
+        2. 杆不发生转动（即$x_1$与$x_2$同向且大小相同）： \\
+        由弹簧并联公式$k = k_1+k_2$得：
+        \[
+        2kx = m\ddot{x}
+        \]
+        解得本征频率为：
+        \[
+        \omega_2 = \sqrt{\frac{2k}{m}}
+        \]
+        \bigskip
+
+        \item[3.4.(1)]
+        系统的Lagrange量为：
+        \begin{align*}
+            L
+            &= \left[\frac{1}{2}m\dot{x}_1^2 + \frac{1}{2}M\dot{x}_2^2 + \frac{1}{2}m\dot{x}_3^2\right] - \left[\frac{1}{2}k(x_1-x_2)^2 + \frac{1}{2}k(x_3-x_2)^2\right] \\
+            &= \frac{1}{2}\boldsymbol{\dot{x}}^{\mathrm{T}}\boldsymbol{m}\boldsymbol{\dot{x}} - \frac{1}{2}\boldsymbol{x}^{\mathrm{T}}\boldsymbol{k}\boldsymbol{x} \\
+            &= \frac{1}{2}
+            [\dot{x}_1\ \dot{x}_2\ \dot{x}_3]
+            \begin{bmatrix}
+                m & 0 & 0 \\
+                0 & M & 0 \\
+                0 & 0 & m
+            \end{bmatrix}
+            \begin{bmatrix}
+                \dot{x}_1 \\
+                \dot{x}_2 \\
+                \dot{x}_3
+            \end{bmatrix}
+            + \frac{1}{2}
+            [x_1\ x_2\ x_3]
+            \begin{bmatrix}
+                k & -k & 0 \\
+                -k & 2k & -k \\
+                0 & -k & k
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2 \\
+                x_3
+            \end{bmatrix}
+        \end{align*}
+        解久期方程：
+        \begin{align*}
+        \left|\omega^2\boldsymbol{m}- \boldsymbol{k}\right|
+        &= \det
+        \begin{bmatrix}
+            \omega^{2}m-k & k & 0 \\
+            k & \omega^{2}M-2k & k \\
+            0 & k & \omega^{2}m-k
+        \end{bmatrix} \\
+        &= m^2M\omega^6-2km(m+M)\omega^4+k^2(2m+M)\omega^2 \\
+        &= 0
+        \end{align*}
+        得三个本征频率：
+        \[
+        \omega_1 = 0,\qquad \omega_2 = \sqrt{\frac{k}{m}},\qquad \omega_3 = \sqrt{\frac{k}{m}+\frac{k}{2M}}
+        \]
+        此即为体系的小振动频率。
+        \medskip
+
+        \item[3.4.(2)]
+        设三个广义坐标为：
+        \[
+        q_1 = x_2 - x_1,\qquad q_2 = x_2,\qquad q_3 = x_3 - x_2
+        \]
+        则：
+        \[
+        x_1 = q_2 - q_1,\qquad x_2 = q_2,\qquad x_3 = q_3 + q_2
+        \]
+        系统的Lagrange量为：
+        \begin{align*}
+            L
+            &= \left[\frac{1}{2}m(\dot{q}_2-\dot{q}_1)^2 + \frac{1}{2}M\dot{q}_2^2 + \frac{1}{2}m(\dot{q}_3+\dot{q}_2)^2\right] - \left[\frac{1}{2}kq_1^2 + \frac{1}{2}kq_3^2\right] \\
+            &= \frac{1}{2}\boldsymbol{\dot{q}}^{\mathrm{T}}\boldsymbol{m}\boldsymbol{\dot{q}} - \frac{1}{2}\boldsymbol{q}^{\mathrm{T}}\boldsymbol{k}\boldsymbol{q} \\
+            &= \frac{1}{2}
+            [\dot{q}_1\ \dot{q}_2\ \dot{q}_3]
+            \begin{bmatrix}
+                m & 0 & 0 \\
+                0 & M & 0 \\
+                0 & 0 & m
+            \end{bmatrix}
+            \begin{bmatrix}
+                \dot{q}_1 \\
+                \dot{q}_2 \\
+                \dot{q}_3
+            \end{bmatrix}
+            + \frac{1}{2}
+            [q_1\ q_2\ q_3]
+            \begin{bmatrix}
+                k & -k & 0 \\
+                -k & 2k & -k \\
+                0 & -k & k
+            \end{bmatrix}
+            \begin{bmatrix}
+                q_1 \\
+                q_2 \\
+                q_3
+            \end{bmatrix}
+        \end{align*}
+        解久期方程：
+        \begin{align*}
+            \left|\omega^2\boldsymbol{m}- \boldsymbol{k}\right|
+            &= \det
+            \begin{bmatrix}
+                \omega^{2}m-k & -\omega^{2}m & 0 \\
+                -\omega^{2}m & \omega^{2}(2m+M) & \omega^{2}m \\
+                0 & \omega^{2}m & \omega^{2}m-k
+            \end{bmatrix} \\
+            &= m^2M\omega^6-2km(m+M)\omega^4+k^2(2m+M)\omega^2 \\
+            &= 0
+        \end{align*}
+        得三个本征频率：
+        \[
+        \omega_1 = 0,\qquad \omega_2 = \sqrt{\frac{k}{m}},\qquad \omega_3 = \sqrt{\frac{k}{m}+\frac{k}{2M}}
+        \]
+        此即为体系的小振动频率。 \\
+        可见结果与(1)中相同，说明体系小振动频率的值不依赖于广义坐标的选取。
+        \bigskip
+
+        \item[3.5.(1)]
+        由题意，该系统的等效质量矩阵和等效劲度系数矩阵为：
+        \[
+        \boldsymbol{m} =
+        \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & -1 \\
+            0 & 0 & -1 & 2
+        \end{bmatrix},\qquad
+        \boldsymbol{k} =
+        \begin{bmatrix}
+            \omega_0^2 & 0 & 0 & 0 \\
+            0 & \omega_0^2 & 0 & 0 \\
+            0 & 0 & 2\omega_0^2 & -2\omega_0^2 \\
+            0 & 0 & -2\omega_0^2 & 3\omega_0^2
+        \end{bmatrix}
+        \]
+        由线性代数中的公式：
+        \[
+        \det
+        \begin{bmatrix}
+            \boldsymbol{A} & \boldsymbol{0} \\
+            \boldsymbol{C} & \boldsymbol{B}
+        \end{bmatrix}
+        =
+        \det\boldsymbol{A}\cdot\det\boldsymbol{B}
+        \]
+        解久期方程：
+        \begin{align*}
+            \left|\omega^2\boldsymbol{m}- \boldsymbol{k}\right|
+            &= \det
+            \begin{bmatrix}
+                \omega^2-\omega_0^2 & 0 & 0 & 0 \\
+                0 & \omega^2-\omega_0^2 & 0 & 0 \\
+                0 & 0 & \omega^2-2\omega_0^2 & -\omega^2+2\omega_0^2 \\
+                0 & 0 & -\omega^2+2\omega_0^2 & 2\omega^2-3\omega_0^2
+            \end{bmatrix} \\
+            &= (\omega^2-\omega_0^2)^2(\omega^4-3\omega^2\omega_0^2+2\omega_0^4) \\
+            &= 0
+        \end{align*}
+        得四个本征频率：
+        \[
+        \omega_1 = \omega_2 = \omega_3 = \omega_0,\qquad \omega_4 = \sqrt{2}\omega_0
+        \]
+        此即为体系的小振动频率。
+
+    \end{itemize}
+
+\end{document}

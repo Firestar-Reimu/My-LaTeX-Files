@@ -1,0 +1,182 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{fontspec}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Code}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+\setmathfont{Fira Math}
+\setmathfont{XITS Math}[range={\mathscr,\mathbfscr}]
+\setmathfont{XITS Math}[range={\mathcal,\mathbfcal},StylisticSet=1]
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref,bookmark}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=cyan,
+}
+\usepackage{geometry}
+\geometry{hmargin=1.5cm}
+
+\title{Planet Hunters}
+\author{Zhijun Zhang}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{HAT-P-7b: Abstract}
+    \begin{itemize}
+        \item Extremely tilted orbit, either retrograde or nearly polar.
+        \item Evidence for an additional planet or companion star.
+        \item Possible explanations.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{HAT-P-7 System: Model Parameters}
+
+    HAT-P-7: F6V star, $M = 1.5M_\odot$, $R = 1.8R_\odot$.
+
+    HAT-P-7b: $M = 1.8M_{\mathrm{Jup}}$, $R = 1.2R_{\mathrm{Jup}}$.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.4\textwidth]{1.jpg}
+        \caption*{A typical Hot-Jupiter}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{HAT-P-7b: Evidence for a Third Body}
+
+    \begin{itemize}
+        \item Adding a parameter $\gamma$ representing an extra radial acceleration fits better.
+        \item The RVs from 2009 are systematically redshifted by approximately $40\,\mathrm{m/s}$ compared to RVs from 2007.
+        \item An order-of-magnitude relation:
+        \[
+        \frac{M_c\sin{i_c}}{a_c^2} \sim \frac{\dot{\gamma}}{G} = (0.121 \pm 0.014)M_{\mathrm{Jup}}\,\mathrm{AU}^{-2}
+        \]
+        where $M_c$ is the companion mass, $i_c$ its orbital inclination, $a_c$ its orbital distance.
+        \item[?] Why do they think the additional companion produce a radial acceleration? Is this assumption only for simplicity?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{HAT-P-7b: Evidence for a Third Body}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.4\textwidth]{2.jpg}
+        \caption*{Phased radial velocity variation of HAT-P-7}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{HAT-P-7b: Evidence for a Spin–orbit Misalignment}
+    \begin{itemize}
+        \item The inversed Rossiter – McLaughlin effect which indicates that the orbital “north pole” and the stellar “north pole” point in nearly opposite directions on the sky.
+        \item \textbf{Rossiter – McLaughlin effect:} A transiting planet in a well-aligned prograde orbit would first pass in front of the blueshifted (approaching) half of the star, causing an anomalous redshift of the observed starlight. Then, the planet would cross to the redshifted (receding) half of the star, causing an anomalous blueshift.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{HAT-P-7b: Radial Velocities}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.4\textwidth]{3.jpg}
+        \caption{The anomalous RV}
+    \end{figure}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.75\textwidth]{4.jpg}
+        \caption{The Rossiter – McLaughlin effect}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{HAT-P-7b: Evidence for a Spin–orbit Misalignment}
+    \begin{itemize}
+        \item[?] Why do they need to do a photometry observation? Maybe we could look at \href{https://iopscience.iop.org/article/10.1088/0004-637X/693/1/794}{Winn et al. 2009}
+        \item[?] The difference between $\lambda$ and $\psi$. Why they need $\lambda$?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{HAT-P-7b: Discussion}
+    \begin{itemize}
+        \item  Close encounters between planets throw a planet inward, where its orbit is ultimately shrunk and circularized by tidal dissipation.
+        \item Kozai effect(as $L = \sqrt{1-e^2}\cos{i}$ is a constant, highly inclined orbits can become very eccentric): the gravitational force from a distant body on a highly inclined orbit strongly modulates an inner planet’s orbital eccentricity and inclination.
+        \item An inward-migrating outer planet that captures an inner planet into a mean motion resonance.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{KIC 8462852: Abstract}
+    \begin{itemize}
+        \item T. S. Boyajian et al. discovered that star KIC 8462852 has unusually and maybe irregularly big dips of its flux, sometimes over 20\%.
+        \item Fernando J. Ballesteros suggests that a large, ringed body whose
+        transit produces the first dimming and a swarm of Trojan objects sharing its orbit that causes the second period of multiple dimmings.
+        \item Peter Foukal explains it as convective stars can store the required fluxes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{KIC 8462852: Properties}
+    Estimates from spectroscopy:
+    \[
+    M = 1.43M_\odot,\quad L = 4.68L_\odot,\quad R = 1.58R_\odot,\quad T_{\text{eff}} = 6750\,\mathrm{K}
+    \]
+    A main-sequence F3V star.
+\end{frame}
+
+\begin{frame}{KIC 8462852: Where's the flux?}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=1\textwidth]{5.jpg}
+        \includegraphics[width=0.75\textwidth]{6.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{KIC 8462852: Main observations}
+    \begin{itemize}
+    \item Spectroscopy: gives the properties of the star.
+    \item Imaging: found a companion star. (KIC 8462852 B is proved not a orbiting binary star, see  \href{https://iopscience.iop.org/article/10.3847/2041-8213/aab492}{Clemens et al. 2018} and \href{https://iopscience.iop.org/article/10.3847/1538-4357/abdd33}{Pearce et al. 2021}.)
+    \item Radial velocity: limits on a close companion, which shows that that there are no objects heavier than a super-Jupiter in close orbits with $P \lesssim 2\,\mathrm{d}$, and likely no heavier in mass than a brown dwarf for $P \lesssim 300\,\mathrm{d}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{KIC 8462852: Planet and its Trojans?}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.9\textwidth]{7.jpg}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{KIC 8462852: Convective Star?}
+    \begin{itemize}
+        \item Thermal plugs
+        \item The diverted heat is stored as a very small global heating and
+        expansion of that envelope, with negligible influence on the
+        photospheric temperature and luminosity.
+        \item Magnetic activity
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{KIC 8462852: Other possibilities?}
+    \begin{itemize}
+        \item Large comets: \href{https://ui.adsabs.harvard.edu/abs/2016DDA....4720402B/abstract}{Bodman \& Quillen 2016}.
+        \item Gas exoplanets and its gas moons: \href{https://ui.adsabs.harvard.edu/abs/2019MNRAS.489.5119M/abstract}{Martinez et al.}
+        \item[?] Dyson Swarm?
+    \end{itemize}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=1\textwidth]{8.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+        \Huge Thank you for listening!
+    \end{center}
+\end{frame}
+
+\end{document}

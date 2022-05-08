@@ -1,0 +1,120 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize,graphicx}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+\title{\textbf{物理宇宙学基础作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2021年4月7日}
+\maketitle
+
+\begin{itemize}
+
+    \item[1.(a)]
+    测得波长$\lambda=(1+z)(1+z_v)\lambda_0$，而$z_v=\dfrac{v}{c}=0.001$，又因为$H=\dfrac{cz}{r}$，则：
+    \[
+    \frac{\delta H}{H} = \frac{\delta z}{z} = \frac{z_v(1+z)}{z}
+    \]
+    \begin{itemize}
+        \item[$\bullet$] $z=0.001$时：$\dfrac{\delta H}{H}=\dfrac{z_v(1+z)}{z}=1.001$
+
+        \item[$\bullet$] $z=0.01$时：$\dfrac{\delta H}{H}=\dfrac{z_v(1+z)}{z}=0.101$
+
+        \item[$\bullet$] $z=0.1$时：$\dfrac{\delta H}{H}=\dfrac{z_v(1+z)}{z}=0.011$
+    \end{itemize}
+
+    \item[1.(b)]
+    高红移时更明显。有以下两个原因：
+    \begin{itemize}
+        \item[$\bullet$] 由于$\dfrac{\delta H}{H}=z_v+\dfrac{z_v}{z}$，在宇宙学红移$z$较小，$z_v\sim z$时，$\dfrac{\delta H}{H}\sim1$，即$H$测量值的相对误差约有$100\%$，非常不精确（共动距离$r$和宇宙学红移$z$也类似）；而当$z$很大时，$z_v\ll z$时$\dfrac{\delta H}{H}\sim z_v\ll1$，较为精确。测量$r$和$z$误差更小，更容易在径向上将目标星系团与其余星系区分。
+        
+        \item[$\bullet$] 如图1，对于当前的宇宙$\Omega_{\mathrm{m},0}=0.3$，$\Omega_{\Lambda,0}=0.7$，在$z=1$时天体的角向弥散最小，
+        天球上测量经纬度坐标误差更小，更容易在角向上将目标星系团与其余星系区分。
+        
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[width=0.48\linewidth]{Homework_4_1.png}
+            \caption{$1\,\mathrm{Mpc}$对应的角距离随宇宙学红移$z$的变化关系}
+        \end{figure}
+    \end{itemize}
+    \item[1.(c)]
+    由位力定理$-2\langle K\rangle=\langle U\rangle$得：
+    \[
+    M\langle v^2\rangle = \frac{3GM^2}{5R},\quad
+    \langle v^2\rangle = \frac{3GM}{5R}
+    \]
+    因为质量$M$守恒，而$R\propto\dfrac{1}{1+z}$，有：
+    \[
+    \sigma_v = \sqrt{\frac{\langle v^2\rangle}{3}} \propto \frac{1}{\sqrt{R}} \propto \sqrt{1+z}
+    \]
+    这个现象与(b)中结论不矛盾，因为(b)中$\dfrac{\delta H}{H}\propto z^{-1}$，与$\sigma_v\propto\sqrt{1+z}$相比，仍然是$\dfrac{\delta H}{H}$占主导。故总体上高红移时分辨星系团更好。
+
+    \item[2.(a)]
+    考虑一个非常遥远的天体，它的径向距离为：
+    \[
+    \Delta r_a = \frac{c\Delta z}{H(z)}
+    \]
+    切向距离为：
+    \[
+    \Delta r_\tau = r\Delta\theta = (1+z)d_A(z)\Delta\theta
+    \]
+    若天体为球对称结构，则$\Delta r_a=\Delta r_\tau$，即：
+    \[
+    \frac{c\Delta z}{H(z)} = (1+z)d_A(z)\Delta\theta
+    \]
+    Alcock-Paczy\'{n}ski测试考虑两者之比：
+    \[
+       \frac{\Delta z}{\Delta\theta} = \frac{1+z}{c}d_A(z)H(z) = \frac{1+z}{c}d_A(z)H_0\sqrt{E(z)}
+    \]
+    其中：
+    \[
+    \sqrt{E(z)} = \frac{\Delta z}{\Delta\theta}\cdot\frac{c}{H_0(1+z)d_A(z)} = \sqrt{\Omega_\mathrm{m}(1+z)^{3}+\Omega_k(1+z)^{2}+\Omega_\Lambda(1+z)}
+    \]
+    由此可以得出$\Omega_\mathrm{m}$，$\Omega_k$和$\Omega_\Lambda$的值。
+
+    \item[2.(b)]
+    由于
+    \[
+    d_A(z) = \frac{r}{1+z} = \frac{1}{1+z}\int_0^z\frac{c\mathrm{d}z'}{H_0\sqrt{E(z')}}
+    \]
+    代入$\dfrac{\Delta z}{\Delta\theta}$的表达式得：
+    \[
+    \frac{\Delta z}{\Delta\theta} = \frac{1+z}{c}H_0\sqrt{E(z)}\cdot\frac{1}{1+z}\int_0^z\frac{c\mathrm{d}z'}{H_0\sqrt{E(z')}} = \sqrt{E(z)}\int_0^z\frac{\mathrm{d}z'}{\sqrt{E(z')}}
+    \]
+    \begin{itemize}
+        \item[$\bullet$] $z=0.5$，$\Omega_\mathrm{m}=0.27$，$\Omega_\Lambda=0.73$时：
+        \[
+    \frac{\Delta z}{\Delta\theta}=\sqrt{E(z)}\int_0^z\frac{\mathrm{d}z'}{\sqrt{E(z')}}=0.571
+        \]
+
+        \item[$\bullet$] $z=0.5$，$\Omega_\mathrm{m}=1$时：
+        \[
+    \frac{\Delta z}{\Delta\theta}=\sqrt{E(z)}\int_0^z\frac{\mathrm{d}z'}{\sqrt{E(z')}}=0.674
+        \]
+    \end{itemize}
+
+    \item[2.(c)]
+    实际应用中，红移$z$测不准导致$\Delta z$和$\Delta\theta$的测量精度较低，不同的宇宙学模型对$\dfrac{\Delta z}{\Delta\theta}$的影响不大，并且完全球对称的天体难以找到，这些都给Alcock-Paczy\'{n}ski测试带来了困难。
+\end{itemize}
+
+\end{document}

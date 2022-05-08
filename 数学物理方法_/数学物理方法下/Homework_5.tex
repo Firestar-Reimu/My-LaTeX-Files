@@ -1,0 +1,537 @@
+\documentclass[fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\allowdisplaybreaks[4]
+\usepackage{parskip}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+    \title{\textbf{数学物理方法作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2020年11月20日}
+
+    \maketitle
+
+    \section*{第十七章}
+    \bigskip
+
+    \begin{itemize}
+
+    \item[1.(1)]
+    \begin{align*}
+    \int_0^1\sqrt{1-x}\sin(a\sqrt{x})\,\mathrm{d}x
+    &= \int_0^{\tfrac{\pi}{2}}\cos\theta\sin(a\sin\theta)\cdot(2\sin\theta\cos\theta\,\mathrm{d}\theta) \\
+    &= \int_0^{\tfrac{\pi}{2}}\cos\theta\sin(a\sin\theta)\sin2\theta\,\mathrm{d}\theta \\
+    &= -\frac{1}{a}\int_0^{\tfrac{\pi}{2}}\sin2\theta\left[-\sin(a\sin\theta)a\cos\theta \,\mathrm{d}\theta \right] \\
+    &= -\frac{1}{a}\int_0^{\tfrac{\pi}{2}}\sin2\theta\,\mathrm{d}\left[\cos(a\sin\theta)\right] \\
+    &= \left.\frac{1}{a}\cos(a\sin\theta)\sin2\theta\,\right|_0^\tfrac{\pi}{2} - \frac{1}{a}\int_0^{\tfrac{\pi}{2}}\sin2\theta\mathrm{d}\left[\cos(a\sin\theta)\right] \\
+    &= \frac{1}{a}\int_0^{\tfrac{\pi}{2}}\cos(a\sin\theta)\,\mathrm{d}(\sin2\theta) \\
+    &= \frac{2}{a}\int_0^{\tfrac{\pi}{2}}\cos(a\sin\theta)\cos2\theta\,\mathrm{d}\theta \\
+    &= \frac{2}{a}\int_0^{\tfrac{\pi}{2}}\left[\cos(a\sin\theta)\cos2\theta + \sin(a\sin\theta)\sin2\theta\right]\,\mathrm{d}\theta \\
+    &= \frac{1}{a}\int_0^{\pi}\left[\cos(a\sin\theta)\cos2\theta + \sin(a\sin\theta)\sin2\theta\right]\,\mathrm{d}\theta \\
+    &= \frac{1}{a}\int_0^{\pi}\cos(a\sin2\theta-2\theta)\,\mathrm{d}\theta \\
+    &= \frac{\pi}{a}\cdot\frac{1}{\pi}\int_0^{\pi}\cos(a\sin2\theta-2\theta)\,\mathrm{d}\theta \\
+    &= \frac{\pi}{a}\mathrm{J}_2(a)
+    \end{align*}
+    \medskip
+
+    \item[1.(3)]
+    \begin{align*}
+    &\quad \int_0^{\infty}\mathrm{e}^{-ax}\mathrm{J}_\nu(bx)x^{\nu+1}\,\mathrm{d}x \\
+    &= \int_0^{\infty}\mathrm{e}^{-ax}\sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(k+\nu+1)}\left(\frac{bx}{2}\right)^{2k+\nu}x^{\nu+1}\,\mathrm{d}x \\
+    &= \int_0^{\infty}\mathrm{e}^{-ax}\sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(k+\nu+1)}\left(\frac{b}{2}\right)^{2k+\nu}x^{2k+2\nu+1}\,\mathrm{d}x \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(k+\nu+1)}\left(\frac{b}{2}\right)^{2k+\nu}\int_0^{\infty}\mathrm{e}^{-ax}x^{2k+2\nu+1}\,\mathrm{d}x \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(k+\nu+1)}\frac{b^{2k+\nu}}{2^{2k+\nu}a^{2k+2\nu+2}}\int_0^{\infty}\mathrm{e}^{-ax}(ax)^{2k+2\nu+1}\,\mathrm{d}(ax) \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(k+\nu+1)}\frac{b^{2k+\nu}}{2^{2k+\nu}a^{2k+2\nu+2}}\Gamma(2k+2\nu+2) \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(k+\nu+1)}\frac{b^{2k+\nu}}{2^{2k+\nu}a^{2k+2\nu+2}}\cdot\frac{2^{2k+2\nu+1}}{\sqrt{\pi}}\Gamma(k+\nu+1)\Gamma(k+\nu+\frac{3}{2}) \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{k!}\frac{b^{2k+\nu}}{a^{2k+2\nu+2}}\cdot\frac{2^{\nu+1}}{\sqrt{\pi}}\Gamma\left(k+\nu+\frac{3}{2}\right) \\
+    &= \frac{2^{\nu+1}b^{\nu}}{\sqrt{\pi}a^{2\nu+2}}\sum_{k=0}^{\infty}\frac{(-1)^k}{k!}\left(\frac{b}{a}\right)^{2k}\Gamma\left(k+\nu+\frac{3}{2}\right) \\
+    &= \frac{2^{\nu+1}b^{\nu}}{\sqrt{\pi}a^{2\nu+2}}\sum_{k=0}^{\infty}\frac{(-1)^k}{k!}\left(k+\nu+\frac{1}{2}\right)\cdots\left(1+\nu+\frac{1}{2}\right)\left(\frac{b}{a}\right)^{2k}\Gamma\left(\nu+\frac{3}{2}\right) \\
+    &= \frac{2^{\nu+1}b^{\nu}}{\sqrt{\pi}a^{2\nu+2}}\Gamma\left(\nu+\frac{3}{2}\right)\sum_{k=0}^{\infty}\frac{1}{k!}\left(-k-\nu-\frac{1}{2}\right)\cdots\left(-1-\nu-\frac{1}{2}\right)\left(\frac{b}{a}\right)^{2k} \\
+    &= \frac{2^{\nu+1}b^{\nu}}{\sqrt{\pi}a^{2\nu+2}}\Gamma\left(\nu+\frac{3}{2}\right)\left[1+\left(\frac{b}{a}\right)^2\right]^{-\nu-\tfrac{3}{2}} \\
+    &= \frac{2^{\nu+1}ab^{\nu}}{\sqrt{\pi}a^{2\nu+3}}\Gamma\left(\nu+\frac{3}{2}\right)\left[1+\left(\frac{b}{a}\right)^2\right]^{-\nu-\tfrac{3}{2}} \\
+    &= \frac{2^{\nu+1}ab^{\nu}}{\sqrt{\pi}}\Gamma\left(\nu+\frac{3}{2}\right)\left(a^2+b^2\right)^{-\nu-\tfrac{3}{2}} \\
+    &= \frac{2^{\nu+1}ab^{\nu}}{\sqrt{\pi}}\Gamma\left(\nu+\frac{3}{2}\right)\left(a^2+b^2\right)^{-\nu-\tfrac{3}{2}} \\
+    &= \frac{2a(2b)^{\nu}}{\sqrt{\pi}}\frac{\Gamma\left(\nu+\tfrac{3}{2}\right)}{\left(a^2+b^2\right)^{\nu+\tfrac{3}{2}}}
+    \end{align*}
+    \bigskip
+
+    \item[2.(1)]
+    由于：
+    \[
+    \mathrm{e}^{\tfrac{x}{2}\left(t-\tfrac{1}{t}\right)} = \sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)t^n
+    \]
+    \[
+    \cos{x} = \frac{1}{2}(\mathrm{e}^{\mathrm{i}x} + \mathrm{e}^{-\mathrm{i}x})
+    \]
+    令$t = \mathrm{i}$得：
+    \begin{align*}
+    \cos{x}
+    &= \frac{1}{2}(\mathrm{e}^{\mathrm{i}x} + \mathrm{e}^{-\mathrm{i}x}) \\
+    &= \frac{1}{2}(\mathrm{e}^{\tfrac{x}{2}\left(\mathrm{i}-\tfrac{1}{\mathrm{i}}\right)} + \mathrm{e}^{\tfrac{x}{2}\left(-\mathrm{i}+\tfrac{1}{\mathrm{i}}\right)}) \\
+    &= \frac{1}{2}\left[\sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)\,\mathrm{i}^n + \sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)(-\mathrm{i})^n\right] \\
+    &= \sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)\cdot\frac{\mathrm{i}^n - (-\mathrm{i})^n}{2} \\
+    &= \sum_{n=-\infty}^{\infty}(-1)^n \mathrm{J}_{2n}(x)
+    \end{align*}
+    由
+    \[
+    \mathrm{J}_{-n}(x) = (-1)^n \mathrm{J}_n(x)
+    \]
+    得
+    \[
+    \mathrm{J}_{-2n}(x) = (-1)^{2n}\mathrm{J}_{2n}(x) = \mathrm{J}_{2n}(x)
+    \]
+    于是：
+    \begin{align*}
+    \cos{x}
+    &= \sum_{n=-\infty}^{\infty}(-1)^n \mathrm{J}_{2n}(x) \\
+    &= \mathrm{J}_0(x) + 2\sum_{n=1}^{\infty}(-1)^n \mathrm{J}_{2n}(x)
+    \end{align*}
+    同理，由于：
+    \[
+    \sin{x} = \frac{1}{2\mathrm{i}}(\mathrm{e}^{\mathrm{i}x} - \mathrm{e}^{-\mathrm{i}x})
+    \]
+    令$t = \mathrm{i}$得：
+    \begin{align*}
+    \cos{x}
+    &= \frac{1}{2}(\mathrm{e}^{\mathrm{i}x} - \mathrm{e}^{-\mathrm{i}x}) \\
+    &= \frac{1}{2\mathrm{i}}(\mathrm{e}^{\tfrac{x}{2}\left(\mathrm{i}-\tfrac{1}{\mathrm{i}}\right)} - \mathrm{e}^{\tfrac{x}{2}\left(-\mathrm{i}+\tfrac{1}{\mathrm{i}}\right)}) \\
+    &= \frac{1}{2\mathrm{i}}\left[\sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)\,\mathrm{i}^n - \sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)(-\mathrm{i})^n\right] \\
+    &= \sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)\cdot\frac{\mathrm{i}^n - (-\mathrm{i})^n}{2\mathrm{i}} \\
+    &= \sum_{n=0}^{\infty}(-1)^n \mathrm{J}_{2n+1}(x) - \sum_{n=-\infty}^{0}(-1)^n \mathrm{J}_{-2n-1}(x)
+    \end{align*}
+    由
+    \[
+    \mathrm{J}_{-n}(x) = (-1)^n \mathrm{J}_n(x)
+    \]
+    得
+    \[
+    \mathrm{J}_{-2n-1}(x) = (-1)^{2n+1}\mathrm{J}_{2n+1}(x) = -\mathrm{J}_{2n+1}(x)
+    \]
+    于是：
+    \begin{align*}
+    \sin{x}
+    &= \sum_{n=0}^{\infty}(-1)^n \mathrm{J}_{2n+1}(x) - \sum_{n=-\infty}^{0}(-1)^n \mathrm{J}_{-2n-1}(x) \\
+    &= 2\sum_{n=0}^{\infty}(-1)^n \mathrm{J}_{2n+1}(x)
+    \end{align*}
+    \medskip
+
+    \item[2.(3)]
+    由于：
+    \[
+    \mathrm{e}^{\tfrac{x}{2}\left(t-\tfrac{1}{t}\right)} = \sum_{n=-\infty}^{\infty}\mathrm{J}_n(x)t^n
+    \]
+    令$t=1$得：
+    \[
+    1 = \sum_{n=-\infty}^{\infty}\mathrm{J}_n(x) = \mathrm{J}_0(x)+2\sum_{n=1}^{\infty}\mathrm{J}_{2n}(x)
+    \]
+    由于：
+    \[
+    \mathrm{J}'_\nu(x) = \frac{1}{2}\left[\mathrm{J}_{\nu-1}(x) - \mathrm{J}_{\nu+1}(x)\right]
+    \]
+    上式两边对$x$求导得：
+    \[
+    \mathrm{J}''_\nu(x) = \frac{1}{2}\left[\mathrm{J}'_{\nu-1}(x) - \mathrm{J}'_{\nu+1}(x)\right]
+    \]
+    代入：
+    \[
+    \mathrm{J}'_{\nu+1}(x) = \frac{1}{2}\left[\mathrm{J}_{\nu}(x) - \mathrm{J}_{\nu+2}(x)\right]
+    \]
+    \[
+    \mathrm{J}'_{\nu-1}(x) = \frac{1}{2}\left[\mathrm{J}_{\nu-2}(x) - \mathrm{J}_{\nu}(x)\right]
+    \]
+    得：
+    \[
+    \mathrm{J}''_\nu(x) = \frac{1}{4}\mathrm{J}_{\nu+2}(x) - \frac{1}{2}\mathrm{J}_\nu(x) + \frac{1}{4}\mathrm{J}_{\nu-2}(x)
+    \]
+    另一方面：
+    \begin{align*}
+    &\quad \frac{\mathrm{d}^2}{\mathrm{d}x^2}\left[2\sum_{n=1}^{\infty}(2n)^2\mathrm{J}_{2n}(x)\right] \\
+    &= 2\sum_{n=1}^{\infty}(2n)^2\mathrm{J}''_{2n}(x) \\
+    &= 2\sum_{n=1}^{\infty}(2n)^2\left[\frac{1}{4}\mathrm{J}_{2n+2}(x) - \frac{1}{2}\mathrm{J}_{2n}(x) + \frac{1}{4}\mathrm{J}_{2n-2}(x)\right] \\
+    &= 2\left\{\mathrm{J}_0(x) + 2\mathrm{J}_2(x) + \sum_{n=2}^{\infty}\left[(n-1)^2-2n^2+(n+1)^2\right]\mathrm{J}_{2n}(x)\right\} \\
+    &= 2\left[\mathrm{J}_0(x) + 2\mathrm{J}_2(x) + \sum_{n=2}^{\infty}2\mathrm{J}_{2n}(x)\right] \\
+    &= 2\left[\mathrm{J}_0(x)+2\sum_{n=1}^{\infty}\mathrm{J}_{2n}(x)\right] \\
+    &= 2
+    \end{align*}
+    即级数
+    \[
+    y = 2\sum_{n=1}^{\infty}(2n)^2\mathrm{J}_{2n}(x)
+    \]
+    满足微分方程：
+    \[
+    \frac{\mathrm{d}^2 y}{\mathrm{d}x^2}= 2
+    \]
+    该方程的通解为：
+    \[
+    y = x^2 + px + q
+    \]
+    又因为$y$仅含偶数阶Bessel函数，为偶函数，则$p=0$；
+    且$x=0$时$y=0$，则$q=0$。 \\
+    故解得：
+    \[
+    x^2 = 2\sum_{n=1}^{\infty}(2n)^2\mathrm{J}_{2n}(x)
+    \]
+    \bigskip
+
+    \item[3.(1)]
+    \begin{align*}
+    \int_0^x x^{-n}\mathrm{J}_{n+1}(x)\,\mathrm{d}x
+    &= -\int_0^x\mathrm{d}\left[x^{-n}\mathrm{J}_n(x)\right] \\
+    &= \left.-x^{-n}\mathrm{J}_n(x)\right|_0^x \\
+    &= -x^{-n}\mathrm{J}_n(x) + \lim_{x \to 0}\frac{\mathrm{J}_n(x)}{x^n}
+    \end{align*}
+    代入Bessel函数在$x \to 0$时的渐进表达式：
+    \[
+    \mathrm{J}_n(x) = \frac{1}{n!}\left(\frac{x}{2}\right)^n + O(x^{n+2})
+    \]
+    得：
+    \begin{align*}
+    \int_0^x x^{-n}\mathrm{J}_{n+1}(x)\,\mathrm{d}x
+    &= -x^{-n}\mathrm{J}_n(x) + \lim_{x \to 0}\frac{\mathrm{J}_n(x)}{x^n} \\
+    &= -x^{-n}\mathrm{J}_n(x) + \lim_{x \to 0}\left[\frac{1}{n!}\left(\frac{1}{2}\right)^n + O(x^{2})\right] \\
+    &= -x^{-n}\mathrm{J}_n(x) + \frac{1}{2^n n!}
+    \end{align*}
+    \medskip
+
+    \item[3.(3)]
+    \begin{align*}
+    &\quad \int_0^t \mathrm{J}_0(\sqrt{x(t-x)})\,\mathrm{d}x \\
+    &= \int_0^t\sum_{k=0}^{\infty}\frac{(-1)^k}{(k!)^2}\left[\frac{\sqrt{x(t-x)}}{2}\right]^{2k}\,\mathrm{d}x \\
+    &= \int_0^t\sum_{k=0}^{\infty}\frac{(-1)^k}{(k!)^2}\left[\frac{x(t-x)}{4}\right]^{k}\,\mathrm{d}x \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{(k!)^2 4^k}\int_0^t x^k(t-x)^k\,\mathrm{d}x \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{(k!)^2 4^k}\cdot t^{2k+1}\int_0^1 \left(\frac{x}{t}\right)^k\left[1-\left(\frac{x}{t}\right)\right]^k\,\mathrm{d}\left(\frac{x}{t}\right) \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{(k!)^2 4^k}\cdot t^{2k+1}\mathrm{B}(k+1,k+1) \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{(k!)^2 4^k}\cdot t^{2k+1}\frac{(k!)^2}{(2k+1)!} \\
+    &= \sum_{k=0}^{\infty}\frac{(-1)^k}{(2k+1)!}\frac{t^{2k+1}}{2^{2k}} \\
+    &= 2\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k+1)!}\left(\frac{t}{2}\right)^{2k+1} \\
+    &= 2\sin\frac{t}{2}
+    \end{align*}
+    \bigskip
+
+    \item[4.]
+    膜振动问题与$\theta$无关，得$r$方向方程：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - \frac{c^2}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r}\right) = 0
+    \]
+    其中$c$为波速，边界条件和初始条件为：
+    \[
+    \Big|u|_{r=0}\Big| < \infty,\qquad \left.u\right|_{r=R} = 0
+    \]
+    \[
+    \left.u\right|_{t=0} = A\left(1 - \frac{r^2}{R^2}\right),\qquad \left.\frac{\partial u}{\partial t}\right|_{t=0} = 0
+    \]
+    分离变量：
+    \[
+    u(r,t) = D(r)T(t)
+    \]
+    得到：
+    \[
+    T''(t) + c^2 k^2 T(t) = 0,\qquad \frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}D}{\mathrm{d}r}\right) + k^2 D(r) = 0
+    \]
+    \[
+    |D(0)| < \infty,\qquad D(R) = 0
+    \]
+    \[
+    \left.D\right|_{t=0} = A\left(1 - \frac{r^2}{R^2}\right),\qquad \left.\frac{\partial D}{\partial t}\right|_{t=0} = 0
+    \]
+    令$x = kr$，$y(x) = D(r)$得：
+    \[
+    \frac{1}{x}\frac{\mathrm{d}}{\mathrm{d}x}\left(x\frac{\mathrm{d}y}{\mathrm{d}x}\right) + y(x) = 0
+    \]
+    这是一个零阶Bessel方程，通解为：
+    \[
+    D(r) = P\mathrm{J}_0(kr) + Q\mathrm{N}_0(kr)
+    \]
+    由$|D(0)| < \infty$得$Q = 0$，则$P \neq 0$，取$P = 1$。
+
+    由$D(R) = 0$得$\mathrm{J}_0(kR) = 0$，设$\mu_i$是$\mathrm{J}_0(x)$从小到大的第$i$个正零点，则$kR = \mu_i$。
+
+    本征值和本征函数分别为：
+    \[
+    k_i^2 = \left(\frac{\mu_i}{R}\right)^2,\qquad D_i(r) = \mathrm{J}_0\left(\frac{\mu_i r}{R}\right)
+    \]
+    代入关于$T$的方程得：
+    \[
+    T_i(t) = A_i\cos\frac{c\mu_i}{R}t + B_i\sin\frac{c\mu_i}{R}t
+    \]
+    一般解为：
+    \[
+    u(r,t) = \sum_{i=1}^{\infty}\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)\left[A_i\cos\frac{c\mu_i}{R}t + B_i\sin\frac{c\mu_i}{R}t\right]
+    \]
+    由$\left.\dfrac{\partial u}{\partial t}\right|_{t=0} = 0$得：$B_i = 0$；由$\left.u\right|_{t=0} = A\left(1 - \dfrac{r^2}{R^2}\right)$得：
+    \[
+    \left.u(r,t)\right|_{t=0} = A\left(1 - \frac{r^2}{R^2}\right) = \sum_{i=1}^{\infty}A_i\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)
+    \]
+    由本征函数的正交性叠加系数得：
+    \[
+    A_i = \frac{1}{\Big|\Big|\mathrm{J}_0\left(\dfrac{\mu_i r}{R}\right)\Big|\Big|^2}\int_0^R A\left(1 - \frac{r^2}{R^2}\right)\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)r \,\mathrm{d}r
+    \]
+    令$x = \dfrac{r}{R}$得：
+    \begin{align*}
+    A_i
+    &= \frac{1}{\Big|\Big|\mathrm{J}_0\left(\dfrac{\mu_i r}{R}\right)\Big|\Big|^2}\int_0^R A\left(1 - \frac{r^2}{R^2}\right)\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)r \,\mathrm{d}r \\
+    &= \frac{AR^2}{\Big|\Big|\mathrm{J}_0\left(\dfrac{\mu_i r}{R}\right)\Big|\Big|^2}\int_0^1 \left(1-x^2\right)\mathrm{J}_0(\mu_i x)x \,\mathrm{d}x \\
+    &= \frac{AR^2}{\Big|\Big|\mathrm{J}_0\left(\dfrac{\mu_i r}{R}\right)\Big|\Big|^2} \cdot \frac{2\mathrm{J}_2(\mu_i)}{\mu_i^2} \\
+    &= \frac{2AR^2}{R^2 \mathrm{J}_1^2(\mu_i)} \cdot \frac{4\mathrm{J}_1(\mu_i)}{\mu_i^3} \\
+    &= \frac{8A}{\mu_i^3 \mathrm{J}_1(\mu_i)}
+    \end{align*}
+    故原问题的解为：
+    \[
+    u(r,t) = \sum_{i=1}^{\infty}\frac{8A}{\mu_i^3 \mathrm{J}_1(\mu_i)}\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)\cos\frac{c\mu_i}{R}t
+    \]
+    \bigskip
+
+    \item[5.]
+    分离变量：
+    \[
+    u = R(r)\varPhi(\phi)T(t)
+    \]
+    得：
+    \[
+    \frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}R}{\mathrm{d}r}\right) + \left(k^2 - \frac{\lambda}{r^2}\right)R = 0,\qquad |R(0)| < \infty,\qquad R(a) = 0
+    \]
+    \[
+    \varPhi''(\phi) + \lambda\varPhi(\phi) = 0,\qquad \varPhi(0) = \varPhi(2\pi),\qquad \varPhi'(0) = \varPhi'(2\pi)
+    \]
+    \[
+    T'(t) + \kappa k^2T = 0
+    \]
+    对于$\phi$的本征值问题，采用复本征函数：
+    \[
+    \lambda = m^2,\qquad m \in \mathbb{Z}
+    \]
+    \[
+    \varPhi_m(\phi) = \mathrm{e}^{im\phi}
+    \]
+    对于$r$的本征值问题，令$x = kr$，$y(x) = R(r)$，则方程化为Bessel方程，其通解为：
+    \[
+    R(r) = C\mathrm{J}_m(kr) + D\mathrm{N}_m(kr)
+    \]
+    由$|R(0)| < \infty$得$D = 0$，则$C \neq 0$，取$C = 1$。
+
+    由$R(a) = 0$得$\mathrm{J}_m(kR) = 0$，设$\mu_j^{(m)}$是$\mathrm{J}_m(x)$从小到大的第$j$个正零点，则$ka = \mu_j^{(m)}$。
+
+    本征值和本征函数分别为：
+    \[
+    k_{mj}^2 = \left(\frac{\mu_j^{(m)}}{a}\right)^2,\qquad R_{mj}(r) = \mathrm{J}_0\left(\frac{\mu_j^{(m)} r}{R}\right)
+    \]
+    代入关于$T$的方程得：
+    \[
+    T_j(t) = C_{mj}\mathrm{e}^{-\kappa k_{mj}^2 t}
+    \]
+    一般解为：
+    \[
+    u(r,\phi,t) = \sum_{j=1}^{\infty}\sum_{m=-\infty}^{\infty} \mathrm{J}_m\left(\frac{\mu_j^{(m)}}{a}\right) \mathrm{e}^{im\phi}C_{mj}\mathrm{e}^{-\kappa k_{mj}^2 t}
+    \]
+    由$\left.u\right|_{t=0} = u_0\sin(2\phi)$得：
+    \[
+    u_0\sin(2\phi) = \sum_{j=1}^{\infty}\sum_{m=-\infty}^{\infty} \mathrm{J}_m\left(\frac{\mu_j^{(m)}}{a}\right) \mathrm{e}^{im\phi}C_{mj}
+    \]
+    由本征函数的正交性叠加系数得：
+    \begin{align*}
+        C_{mj}
+        &= \frac{1}{2\pi\Bigg|\Bigg|\mathrm{J}_m\left(\dfrac{\mu_j^{(m)}r}{a}\right)\Bigg|\Bigg|^2} \int_0^a\int_0^{2\pi} \mathrm{J}_m\left(\frac{\mu_j^{(m)}r}{a}\right)u_0\sin(2\phi)\mathrm{e}^{im\phi}r \,\mathrm{d}r\mathrm{d}\phi \\
+        &= \frac{1}{2\pi\Bigg|\Bigg|\mathrm{J}_m\left(\dfrac{\mu_j^{(m)}r}{a}\right)\Bigg|\Bigg|^2} \int_0^a \mathrm{J}_m\left(\frac{\mu_j^{(m)}r}{a}\right)r \,\mathrm{d}r \int_0^{2\pi} u_0\sin(2\phi)\mathrm{e}^{im\phi}\,\mathrm{d}\phi
+    \end{align*}
+    注意到：
+    \begin{align*}
+    \int_0^{2\pi} u_0\sin(2\phi)\mathrm{e}^{im\phi}\,\mathrm{d}\phi
+    &= \int_0^{2\pi}\frac{u_0}{2i}\left[\mathrm{e}^{i(m+2)\phi} - \mathrm{e}^{i(m-2)\phi}\right]\mathrm{d}\phi \\
+    &= \left\{
+    \begin{aligned}
+        & \pm\pi i u_0,\qquad m = \pm2 \\
+        & 0,\qquad m \neq \pm2
+    \end{aligned}
+    \right.
+    \end{align*}
+    又$\mathrm{J}_2(x) = \mathrm{J}_{-2}(x)$，本征值只能取$m = 2$。
+
+    下面省略$C$下标的2和$\mu_j$上标的$(2)$，此时$C_{j}$的取值为：
+    \begin{align*}
+    C_{j}
+    &= \frac{\pi i u_0}{2\pi\Bigg|\Bigg|\mathrm{J}_2\left(\frac{\mu_jr}{a}\right)\Bigg|\Bigg|^2} \int_0^a \mathrm{J}_2\left(\dfrac{\mu_j r}{a}\right)r \,\mathrm{d}r \\
+    &= \frac{2i u_0}{\mu_j^4 \mathrm{J}_0^2(\mu_j)}\left[4 - (\mu_j^2 + 4)\mathrm{J}_0(\mu_j)\right]
+    \end{align*}
+    故原问题的解为：
+    \[
+    u(r,\phi,t) = 4u_0\sin(2\phi)\sum_{j=1}^{\infty} \frac{4 - (\mu_j^2 + 4)\mathrm{J}_0(\mu_j)}{\mu_j^4 \mathrm{J}_0^2(\mu_j)}\mathrm{J}_2\left(\frac{\mu_j r}{a}\right)\mathrm{e}^{-\kappa\left(\tfrac{\mu_j}{a}\right)^2 t}
+    \]
+    其中$\mu_j$是$\mathrm{J}_2(x)$从小到大的第$j$个正零点。
+    \bigskip
+
+    \item[8.(1)]
+    膜振动问题与$\theta$无关，得$r$方向方程：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - \frac{c^2}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r}\right) = A\sin\omega t
+    \]
+    对应的齐次方程为：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - \frac{c^2}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r}\right) = 0
+    \]
+    其中$c$为波速，边界条件和初始条件为：
+    \[
+    \Big|u|_{r=0}\Big| < \infty,\qquad \left.u\right|_{r=R} = 0
+    \]
+    \[
+    \left.u\right|_{t=0} = 0,\qquad \left.\frac{\partial u}{\partial t}\right|_{t=0} = 0
+    \]
+    分离变量：
+    \[
+    u(r,t) = D(r)T(t)
+    \]
+    得到：
+    \[
+    T''(t) + c^2 k^2 T(t) = 0,\qquad \frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}D}{\mathrm{d}r}\right) + k^2 D(r) = 0
+    \]
+    \[
+    |D(0)| < \infty,\qquad D(R) = 0
+    \]
+    \[
+    \left.D\right|_{t=0} = 0,\qquad \left.\frac{\partial D}{\partial t}\right|_{t=0} = 0
+    \]
+    令$x = kr$，$y(x) = D(r)$得：
+    \[
+    \frac{1}{x}\frac{\mathrm{d}}{\mathrm{d}x}\left(x\frac{\mathrm{d}y}{\mathrm{d}x}\right) + y(x) = 0
+    \]
+    这是一个零阶Bessel方程，通解为：
+    \[
+    D(r) = P\mathrm{J}_0(kr) + Q\mathrm{N}_0(kr)
+    \]
+    由$|D(0)| < \infty$得$Q = 0$，则$P \neq 0$，取$P = 1$。
+
+    由$D(R) = 0$得$\mathrm{J}_0(kR) = 0$，设$\mu_i$是$\mathrm{J}_0(x)$从小到大的第$i$个正零点，则$kR = \mu_i$。
+
+    本征值和本征函数分别为：
+    \[
+    k_i^2 = \left(\frac{\mu_i}{R}\right)^2,\qquad D_i(r) = \mathrm{J}_0\left(\frac{\mu_i r}{R}\right)
+    \]
+    一般解为：
+    \[
+    u(r,t) = \sum_{i=1}^{\infty}\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)T_i(t)
+    \]
+    将$u(r,t)$代入
+    \[
+    \frac{\partial^2 u}{\partial t^2} - \frac{c^2}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r}\right) = A\sin\omega t
+    \]
+    得到：
+    \[
+    \sum_{i=1}^{\infty}\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)T''_i(t) + \sum_{i=1}^{\infty}\left(\frac{\mu_i c}{R}\right)^2\mathrm{J}_0\left(\frac{\mu_i r}{R}\right) T_i(t) = \sum_{i=1}^{\infty}\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)A_i\sin\omega t
+    \]
+    \[
+    T_i(0) = 0,\qquad T'_i(0) = 0
+    \]
+    即将非齐次项按相应齐次问题本征函数展开，展开系数$A_i$满足：
+    \[
+    \sum_{i=1}^{\infty}A_i\mathrm{J}_0\left(\frac{\mu_i r}{R}\right) = A
+    \]
+    解得：
+    \[
+    A_i = \frac{2A}{\mu_i \mathrm{J}_1(\mu_i)}
+    \]
+    方程化为：
+    \[
+    T''_i(t) + \left(\frac{\mu_i c}{R}\right)^2 T_i(t) = \frac{2A}{\mu_i \mathrm{J}_1(\mu_i)}\sin\omega t
+    \]
+    再解出：
+    \[
+    T_i(t) = \frac{2AR^2}{\mu_i \mathrm{J}_1(\mu_i)\left[(\mu_i c)^2 - (\omega R)^2\right]}\left[\sin\omega t - \frac{\omega R}{\mu_i c}\sin\left(\frac{\mu_i c}{R}t\right)\right]
+    \]
+    于是原问题的解为：
+    \[
+    u(r,t) = \sum_{i=1}^{\infty}\frac{2AR^2}{\mu_i \mathrm{J}_1(\mu_i)\left[(\mu_i c)^2 - (\omega R)^2\right]}\left[\sin\omega t - \frac{\omega R}{\mu_i c}\sin\left(\frac{\mu_i c}{R}t\right)\right]\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)
+    \]
+    发生共振时：$\omega_0 = \dfrac{\mu_i c}{R}$。
+
+    取$\omega \to \omega_0$的极限，由L'Hospital法则得此时$u(r,t)$的解为：
+    \begin{align*}
+    u(r,t)
+    &= -\frac{AR}{c\mu_i^2 \mathrm{J}_1(\mu_i)}\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)\left[t\cos\left(\frac{\mu_i c}{R}t\right) - \frac{R}{\mu_i c}\sin\left(\frac{\mu_i c}{R}t\right)\right] \\
+    &\quad + \sum_{i=1,\: i \neq j}^{\infty}\frac{2AR^2}{\mu_i^2 \left(\mu_i^2 - \mu_j^2\right)\mathrm{J}_1(\mu_i)}\left[\mu_i\sin\left(\frac{\mu_i c}{R}t\right) - \mu_j\sin\left(\frac{\mu_j c}{R}t\right)\right]\mathrm{J}_0\left(\frac{\mu_i r}{R}\right)
+    \end{align*}
+    \bigskip
+
+    \item[11.]
+    温度分布与$\theta$和$\phi$均无关，得$r$方向的方程：
+    \[
+    \frac{\partial u}{\partial t} - \frac{\kappa}{r^2}\frac{\partial}{\partial r}\left(r^2 \frac{\partial u}{\partial r}\right) = 0
+    \]
+    设$u(r,t) = R(r)T(t)$，分离变量得：
+    \[
+    \frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r^2\frac{\mathrm{d}R}{\mathrm{r}}\right) + k^2R(r) = 0
+    \]
+    \[
+    \left|R(0)\right| < \infty,\qquad R(a) = 0,\qquad \left.R\right|_{t=0} = u_0
+    \]
+    \[
+    T'(t) + \kappa k^2 T(t) = 0
+    \]
+    关于$r$的方程做代换$x = kr$，$y(x) = R(r)$后可以化为零阶球Bessel方程，其解为：
+    \[
+    y(x) = Aj_0(x) + Bn_0(x)
+    \]
+    即：
+    \[
+    R(r) = Aj_0(kr) + Bn_0(kr)
+    \]
+    由$\left|R(0)\right| < \infty$得$B = 0$，则$A \neq 0$。
+
+    由$R(a) = 0$得$j_0(ka) = 0$，则本征值和本征函数分别为：
+    \[
+    k_n = \frac{\mu_n}{a},\qquad R_n(r) = j_0\left(\frac{\mu_n r}{a}\right)
+    \]
+    其中$\mu_n$是零阶球Bessel函数从小到大的第$n$个正零点。
+
+    代入关于$t$的方程，解得：
+    \[
+    T_n(t) = \mathrm{e}^{-\kappa\left(\tfrac{\mu_n}{a}\right)^2 t}
+    \]
+    则一般解为：
+    \[
+    u(r,t) = \sum_{i=1}^{\infty} A_n j_0\left(\frac{\mu_n r}{a}\right)\mathrm{e}^{-\kappa\left(\tfrac{\mu_n}{a}\right)^2 t}
+    \]
+    由$\left.u\right|_{t=0}$叠加系数：
+    \[
+    u_0 = \sum_{i=n}^{\infty} A_n j_0\left(\frac{\mu_n r}{a}\right)
+    \]
+    作代换$x_n = k_n r = \dfrac{\mu_n r}{a}$，注意到$j_0(x) = \dfrac{\sin x}{x}$，此时$\mu_n = n\pi$，$x_n = \dfrac{n\pi r}{a}$，于是：
+    \[
+    u_0 = \sum_{i=n}^{\infty} A_n j_0(x_n)
+    \]
+    解得系数：
+    \[
+    A_n = \frac{1}{\|j_0(x_n)\|^2} \int_0^a u_0 j_0(x_n)x_n^2 \,\mathrm{d}x_n
+    \]
+    得：
+    \begin{align*}
+    \|j_0(x_n)\|^2
+    &= \int_0^{n\pi}\left(\frac{\sin x_n}{x_n}\right)^2 x_n^2 \,\mathrm{d}x_n \\
+    &= \left.\frac{1}{2}x - \frac{1}{4}\sin{2x}\right|_0^{n\pi} \\
+    &= \frac{1}{2}n\pi
+    \end{align*}
+    \begin{align*}
+    \int_0^a u_0 j_0(x_n)x_n^2 \,\mathrm{d}x_n
+    &= \int_0^{n\pi} u_0\left(\frac{\sin x_n}{x_n}\right) x_n^2 \,\mathrm{d}x_n \\
+    &= u_0(\sin x - x\cos x)\big|_0^{n\pi} \\
+    &= (-1)^{n-1}u_0 n\pi
+    \end{align*}
+    于是：
+    \[
+    A_n = \frac{1}{\|j_0(x_n)\|^2} \int_0^a u_0 j_0(x_n)x_n^2 \,\mathrm{d}x_n = 2u_0 (-1)^{n-1}
+    \]
+    原问题的解为：
+    \begin{align*}
+    u(r,t)
+    &= 2u_0 \sum_{n=1}^{\infty} (-1)^{n-1}j_0\left(\frac{\mu_n r}{a}\right)\mathrm{e}^{-\kappa\left(\tfrac{\mu_n}{a}\right)^2 t} \\
+    &= \frac{2u_0 a}{\pi r}\sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}\sin\left(\frac{\mu_n r}{a}\right)\mathrm{e}^{-\kappa\left(\tfrac{\mu_n}{a}\right)^2 t}
+    \end{align*}
+
+    \end{itemize}
+
+\end{document}
+

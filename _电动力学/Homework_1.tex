@@ -1,0 +1,737 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+    \title{\textbf{电动力学作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2021年3月14日}
+    \maketitle
+
+    \section*{第一章}
+
+    \begin{itemize}
+
+        \item[1.]
+        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+
+        $\nabla(\bm{A}\cdot\bm{B})$的$\hat{i}$方向分量为：
+        \begin{align*}
+            &\quad \partial_i(A_i B_i + A_j B_j + A_k B_k) \\
+            &= A_i \partial_i B_i + A_j \partial_i B_j + A_k \partial_i B_k + B_i \partial_i A_i + B_j \partial_i A_j + B_k \partial_i A_k
+        \end{align*}
+        $\bm{B}\times(\nabla\times\bm{A})$的$\hat{i}$方向分量为：
+        \begin{align*}
+            \varepsilon_{ijk}B_j(\partial_i A_j - \partial_j A_i)
+            &= B_j(\partial_i A_j - \partial_j A_i) - B_k(\partial_k A_i - \partial_i A_k) \\
+            &= B_j\partial_i A_j - B_j\partial_j A_i - B_k\partial_k A_i + B_k\partial_i A_k
+        \end{align*}
+        $(\bm{B}\cdot\nabla)\bm{A}$的$\hat{i}$方向分量为：
+        \[
+            (B_i\partial_i + B_j\partial_j + B_k\partial_k)A_i = B_i\partial_i A_i + B_j\partial_j A_i + B_k\partial_k A_i
+        \]
+        同理，$\bm{A}\times(\nabla\times\bm{B})$的$\hat{i}$方向分量为：
+        \[
+            A_j\partial_i B_j - A_j\partial_j B_i - A_k\partial_k B_i + A_k\partial_i B_k
+        \]
+        $(\bm{A}\cdot\nabla)\bm{B}$的$\hat{i}$方向分量为：
+        \[
+            A_i\partial_i B_i + A_j\partial_j B_i + A_k\partial_k B_i
+        \]
+        则$\bm{B}\times(\nabla\times\bm{A}) + (\bm{B}\cdot\nabla)\bm{A} + \bm{A}\times(\nabla\times\bm{B}) + (\bm{A}\cdot\nabla)\bm{B}$的$\hat{i}$方向分量为：
+        \begin{align*}
+            &\quad (B_j\partial_i A_j - B_j\partial_j A_i - B_k\partial_k A_i + B_k\partial_i A_k) + (B_i\partial_i A_i + B_j\partial_j A_i + B_k\partial_k A_i) \\
+            &\quad + (A_j\partial_i B_j - A_j\partial_j B_i - A_k\partial_k B_i + A_k\partial_i B_k) + (A_i\partial_i B_i + A_j\partial_j B_i + A_k\partial_k B_i) \\
+            &= A_i \partial_i B_i + A_j \partial_i B_j + A_k \partial_i B_k + B_i \partial_i A_i + B_j \partial_i A_j + B_k \partial_i A_k
+        \end{align*}
+        与$\nabla(\bm{A}\cdot\bm{B})$的$\hat{i}$方向分量相等。
+
+        同理可以计算出$\hat{j}$方向分量和$\hat{k}$方向分量，由于对称性，它们也分别相等。
+
+        因此：
+        \[
+            \nabla(\bm{A}\cdot\bm{B}) = \bm{B}\times(\nabla\times\bm{A}) + (\bm{B}\cdot\nabla)\bm{A} + \bm{A}\times(\nabla\times\bm{B}) + (\bm{A}\cdot\nabla)\bm{B}
+        \]
+
+        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+
+        $\bm{A}\times(\nabla\times\bm{A})$的$\hat{i}$方向分量为：
+        \begin{align*}
+            \varepsilon_{ijk}A_j(\partial_i A_j - \partial_j A_i)
+            &= A_j(\partial_i A_j - \partial_j A_i) - A_k(\partial_k A_i - \partial_i A_k) \\
+            &= A_j\partial_i A_j - A_j\partial_j A_i - A_k\partial_k A_i + A_k\partial_i A_k
+        \end{align*}
+        $\dfrac{1}{2}\nabla A^2 = \dfrac{1}{2}\nabla(\bm{A}\cdot\bm{A})$的$\hat{i}$方向分量为：
+        \[
+            \frac{1}{2}\partial_i (A_i^2 + A_j^2 + A_k^2) = A_i \partial_i A_i + A_j \partial_i A_j + A_k \partial_i A_k
+        \]
+        $(\bm{A}\cdot\nabla)\bm{A}$的$\hat{i}$方向分量为：
+        \[
+            (A_i\partial_i + A_j\partial_j + A_k\partial_k)A_i = A_i\partial_i A_i + A_j\partial_j A_i + A_k\partial_k A_i
+        \]
+        则$\dfrac{1}{2}\nabla A^2 - (\bm{A}\cdot\nabla)\bm{A}$的$\hat{i}$的$\hat{i}$方向分量为：
+        \[
+            A_j\partial_i A_j - A_j\partial_j A_i - A_k\partial_k A_i + A_k\partial_i A_k
+        \]
+        与$\nabla(\bm{A}\cdot\bm{B})$的$\hat{i}$方向分量相等。
+
+        同理可以计算出$\hat{j}$方向分量和$\hat{k}$方向分量，由于对称性，它们也分别相等。
+
+        因此：
+        \[
+            \bm{A}\times(\nabla\times\bm{A}) = \frac{1}{2}\nabla A^2 - (\bm{A}\cdot\nabla)\bm{A}
+        \]
+
+        \item[3.(1)]
+        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+        \begin{align*}
+            \partial_i r
+            &= \partial_i \sqrt{(x-x')^2 + (y-y')^2 + (z-z')^2} \\
+            &= \frac{2(x-x')}{2\sqrt{(x-x')^2 + (y-y')^2 + (z-z')^2}} \\
+            &= \frac{x-x'}{r}
+        \end{align*}
+        则有：
+        \[
+            \nabla r = \frac{1}{r}\left[(x-x')\hat{i} + (y-y')\hat{j} + (z-z')\hat{k}\right] = \frac{\bm{r}}{r}
+        \]
+        同理：
+        \begin{align*}
+            \partial'_i r
+            &= \partial'_i \sqrt{(x'-x)^2 + (y'-y)^2 + (z'-z)^2} \\
+            &= \frac{2(x'-x)}{2\sqrt{(x'-x)^2 + (y'-y^2 + (z'-z)^2}} \\
+            &= \frac{x'-x}{r}
+        \end{align*}
+        则有：
+        \[
+            \nabla' r = \dfrac{1}{r}\left[(x'-x)\hat{i} + (y'-y)\hat{j} + (z'-z)\hat{k}\right] = -\frac{\bm{r}}{r}
+        \]
+        故$\nabla r = -\nabla' r = \dfrac{\bm{r}}{r}$。
+
+        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+        \begin{align*}
+            \partial_i\left(\frac{1}{r}\right)
+            &= \partial_i \left[(x-x')^2 + (y-y')^2 + (z-z')^2\right]^{-\frac{1}{2}} \\
+            &= -\frac{1}{2}\left[(x-x')^2 + (y-y')^2 + (z-z')^2\right]^{-\frac{3}{2}} \cdot 2(x-x') \\
+            &= -\frac{x-x'}{r^3}
+        \end{align*}
+        则有：
+        \[
+            \nabla\frac{1}{r} = -\frac{1}{r^3}\left[(x-x')\hat{i} + (y-y')\hat{j} + (z-z')\hat{k}\right] = -\frac{\bm{r}}{r^3}
+        \]
+        同理：
+        \begin{align*}
+            \partial'_i\left(\frac{1}{r}\right)
+            &= \partial'_i \left[(x'-x)^2 + (y'-y)^2 + (z'-z)^2\right]^{-\frac{1}{2}} \\
+            &= -\frac{1}{2}\left[(x'-x)^2 + (y'-y)^2 + (z'-z)^2\right]^{-\frac{3}{2}} \cdot 2(x'-x) \\
+            &= -\frac{x'-x}{r^3}
+        \end{align*}
+        则有：
+        \[
+            \nabla'\frac{1}{r} = -\frac{1}{r^3}\left[(x'-x)\hat{i} + (y'-y)\hat{j} + (z'-z)\hat{k}\right] = \frac{\bm{r}}{r^3}
+        \]
+        故$\nabla\dfrac{1}{r} = -\nabla'\dfrac{1}{r} = -\dfrac{\bm{r}}{r}$。
+
+        \textsection 根据公式$\nabla\times(f\bm{A}) = f(\nabla\times\bm{A}) + (\nabla f)\times\bm{A}$得：
+        \[
+            \nabla\times(\frac{\bm{r}}{r^3}) = \frac{1}{r^3}(\nabla\times\bm{r}) + \left(\nabla\frac{1}{r^3}\right)\times\bm{r}
+        \]
+        与上两题同理，可以得到：
+        \[
+            \nabla\frac{1}{r^3} = -\nabla'\frac{1}{r^3} = -\frac{3}{r^5}\bm{r}
+        \]
+        下面计算$\nabla\times\bm{r}$，由于$\bm{r}$的三个分量相互独立，应有：
+        \begin{align*}
+            \nabla\times\bm{r}
+            &= (\partial_j r_k - \partial_k r_j)\hat{i} + (\partial_k r_i - \partial_i r_k)\hat{j} + (\partial_i r_j - \partial_j r_i)\hat{k} \\
+            &= (0-0)\hat{i} + (0-0)\hat{j} + (0-0)\hat{k} \\
+            &= \bm{0}
+        \end{align*}
+        代入得：
+        \begin{align*}
+            \nabla\times(\frac{\bm{r}}{r^3})
+            &= \frac{1}{r^3}\nabla\times\bm{r} + (\nabla\frac{1}{r^3})\times\bm{r} \\
+            &= \frac{1}{r^3}\cdot\bm{0} + \left(-\frac{3}{r^5}\bm{r}\right)\times\bm{r} \\
+            &= \bm{0} + \bm{0} \\
+            &= \bm{0}
+        \end{align*}
+        其中最后一步用到了公式：“任何矢量与自身的外积为零矢量”，即$\bm{r}\times\bm{r} = \bm{0}$。
+
+        \textsection 根据公式$\nabla\cdot(f\bm{A}) = f(\nabla\cdot\bm{A}) + (\nabla f)\cdot\bm{A}$可得：
+        \begin{align*}
+            \nabla\cdot\left(\frac{\bm{r}}{r^3}\right)
+            &= \frac{1}{r^3}\cdot(\nabla\cdot\bm{r}) + \left(\nabla\frac{1}{r^3}\right)\cdot\bm{r} \\
+            &= \frac{1}{r^3}\left[\partial_i (x-x') + \partial_i (y-y') + \partial_k (z-z')\right] + \left(-\frac{3}{r^5}\bm{r}\right)\cdot\bm{r} \\
+            &= \frac{1}{r^3}\cdot(1+1+1) - \frac{3}{r^5}\cdot r^2 \\
+            &= \frac{3}{r^3} - \frac{3}{r^3} \\
+            &= 0 \qquad (r \neq 0)
+        \end{align*}
+        同理：
+        \begin{align*}
+            \nabla'\cdot\left(\frac{\bm{r}}{r^3}\right)
+            &= \frac{1}{r^3}\cdot(\nabla\cdot\bm{r}) + \left(\nabla'\frac{1}{r^3}\right)\cdot\bm{r} \\
+            &= \frac{1}{r^3}\left[\partial'_i (x-x') + \partial'_i (y-y') + \partial'_k (z-z')\right] + \left(\frac{3}{r^5}\bm{r}\right)\cdot\bm{r} \\
+            &= \frac{1}{r^3}\cdot(-1-1-1) + \frac{3}{r^5}\cdot r^2 \\
+            &= -\frac{3}{r^3} + \frac{3}{r^5}\cdot r^2 \\
+            &= 0 \qquad (r \neq 0)
+        \end{align*}
+        故在$r \neq 0$时，$\nabla\cdot\left(\dfrac{\bm{r}}{r^3}\right) = -\nabla'\cdot\left(\dfrac{\bm{r}}{r^3}\right) = 0$。
+
+        \item[3.(2)]
+        \textsection 根据定义：
+        \begin{align*}
+        \nabla\cdot\bm{r}
+        &= \partial_i (x-x') + \partial_i (y-y') + \partial_k (z-z') \\
+        &= 1 + 1 + 1 \\
+        &= 3
+        \end{align*}
+
+        \textsection 根据定义，由于$\bm{r}$的三个分量相互独立，应有：
+        \begin{align*}
+            \nabla\times\bm{r}
+            &= (\partial_j r_k - \partial_k r_j)\hat{i} + (\partial_k r_i - \partial_i r_k)\hat{j} + (\partial_i r_j - \partial_j r_i)\hat{k} \\
+            &= (0-0)\hat{i} + (0-0)\hat{j} + (0-0)\hat{k} \\
+            &= \bm{0}
+        \end{align*}
+
+        \textsection 结果应是一个矢量，以$\hat{i}$方向分量为例：
+        \begin{align*}
+            (\bm{a}\cdot\nabla)\bm{r}
+            &= (a_i\partial_i + a_j\partial_j + a_k\partial_k)(x-x') \\
+            &= a_i\partial_i(x-x') + a_j\partial_j(x-x') + a_k\partial_k(x-x')
+        \end{align*}
+        由于$\bm{r}$的三个分量相互独立，应有：
+        \[
+            \partial_j(x-x') = \partial_k(x-x') = 0
+        \]
+        则有：
+        \[
+            (\bm{a}\cdot\nabla)\bm{r} = a_i\partial_i(x-x') = a_i
+        \]
+        故$(\bm{a}\cdot\nabla)\bm{r} = a_i\hat{i} + a_j\hat{j} + a_k\hat{k} = \bm{a}$。
+
+        \textsection 根据定义：
+        \begin{align*}
+            \nabla(\bm{a}\times\bm{r})
+            &= \nabla\left[a_i(x-x') + a_j(y-y') + a_k(z-z')\right] \\
+            &= a_i\hat{i} + a_j\hat{j} + a_k\hat{k} \\
+            &= \bm{a}
+        \end{align*}
+
+        \textsection 根据定义：
+        \[
+            \nabla\cdot[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] = \partial_i[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] + \partial_j[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] + \partial_k[\bm{E}_0\sin(\bm{k}\cdot\bm{r})]
+        \]
+        以$\partial_i[\bm{E}_0\sin(\bm{k}\cdot\bm{r})]$为例：
+        \begin{align*}
+            \partial_i\left\{\bm{E}_0\sin[\bm{k}\cdot\bm{r}]\right\}
+            &= \partial_i\left\{\bm{E}_0\sin\left[k_x(x-x') + k_y(y-y') + k_z(z-z')\right]\right\} \\
+            &= E_{0_i}k_x\cos\left[k_x(x-x') + k_y(y-y') + k_z(z-z')\right] \\
+            &= E_{0_i}k_x\cos(\bm{k}\cdot\bm{r})
+        \end{align*}
+        则有：
+        \begin{align*}
+            \nabla\cdot[\bm{E}_0\sin(\bm{k}\cdot\bm{r})]
+            &= \partial_i[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] + \partial_j[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] + \partial_k[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] \\
+            &= \left(E_{0_i}k_x + E_{0_j}k_y + E_{0_k}k_z\right)\cos(\bm{k}\cdot\bm{r}) \\
+            &= (\bm{E}_0\cdot\bm{k})\cos(\bm{k}\cdot\bm{r})
+        \end{align*}
+
+        \textsection 注意到$\sin(\bm{k}\cdot\bm{r})]$是一个标量函数。根据公式$\nabla\times(f\bm{A}) = f(\nabla\times\bm{A}) + (\nabla f)\times\bm{A}$得：
+        \[
+            \nabla\times[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] = \sin(\bm{k}\cdot\bm{r})(\nabla\times\bm{E}_0) + [\nabla\sin(\bm{k}\cdot\bm{r})]\times\bm{E}_0
+        \]
+        以$\hat{i}$方向分量为例：
+        \begin{align*}
+            &\quad \sin(\bm{k}\cdot\bm{r})(\partial_j E_{0_k} - \partial_k E_{0_j}) + \left[\partial_j\sin(\bm{k}\cdot\bm{r})E_{0_k} - \partial_k\sin(\bm{k}\cdot\bm{r})E_{0_j}\right] \\
+            &= \sin(\bm{k}\cdot\bm{r})(0 - 0) + \left[k_y\cos(\bm{k}\cdot\bm{r})E_{0_k} - k_z\cos(\bm{k}\cdot\bm{r})E_{0_j}\right] \\
+            &= (k_y E_{0_k} - k_z E_{0_j})\cos(\bm{k}\cdot\bm{r})
+        \end{align*}
+        则有：
+        \begin{align*}
+            &\quad \nabla\times[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] \\
+            &= \sin(\bm{k}\cdot\bm{r})(0 - 0) + \left[k_y\cos(\bm{k}\cdot\bm{r})E_{0_k} - k_z\cos(\bm{k}\cdot\bm{r})E_{0_j}\right] \\
+            &= (k_y E_{0_k} - k_z E_{0_j})\cos(\bm{k}\cdot\bm{r})\hat{i} + (k_z E_{0_i} - k_i E_{0_k})\cos(\bm{k}\cdot\bm{r})\hat{j} + (k_x E_{0_j} - k_y E_{0_i})\cos(\bm{k}\cdot\bm{r})\hat{k} \\
+            &= \left[(k_y E_{0_k} - k_z E_{0_j})\hat{i} + (k_z E_{0_i} - k_i E_{0_k})\hat{j} + (k_x E_{0_j} - k_y E_{0_i})\hat{k}\right]\cos(\bm{k}\cdot\bm{r}) \\
+            &= (\bm{k}\times\bm{E}_0)\cos(\bm{k}\cdot\bm{r})
+        \end{align*}
+
+        \item[6.]
+        由题意得：
+        \[
+            \bm{A} = \frac{1}{R^3}\left[(m_j R_k - m_k R_j)\hat{i} + (m_k R_i - m_i R_k)\hat{j} + (m_i R_j - m_j R_i)\hat{k}\right]
+        \]
+        \[
+            \phi = \frac{1}{R^3}(m_i R_i + m_j R_j + m_k R_k)
+        \]
+        $\nabla\times\bm{A}$与$\nabla\phi$均为矢量，以$\hat{i}$方向分量为例：
+        \begin{align*}
+            &\quad \hat{i}\cdot(\nabla\times\bm{A}) \\
+            &= \partial_j\left[\frac{1}{R^3}(m_i R_j - m_j R_i)\right] - \partial_k\left[\frac{1}{R^3}(m_k R_i - m_i R_k)\right] \\
+            &= \left[\left(-\frac{3R_j}{R^5}\right)\cdot(m_i R_j - m_j R_i) + \frac{1}{R^3}\cdot m_i\right] - \left[\left(\frac{3R_k}{R^5}\right)\cdot(m_k R_i - m_i R_k) + \frac{1}{R^3}\cdot(-m_i)\right] \\
+            &= -\frac{3m_i R_j^2}{R^5} + \frac{3R_i m_j R_j}{R^5} + \frac{m_i}{R^3} + \frac{3R_i m_k R_k}{R^5} - \frac{3m_i R_k^2}{R^5} + \frac{m_i}{R^3} \\
+            &= \frac{2m_i}{R^3} + \frac{3R_i(m_j R_j + m_k R_k)}{R^5} - \frac{3m_i(R_j^2 + R_k^2)}{R^5} \\
+            &= \left(\frac{3m_i}{R^3} - \frac{m_i}{R^3}\right) + \frac{3R_i(m_j R_j + m_k R_k)}{R^5} - \frac{3m_i(R_j^2 + R_k^2)}{R^5} \\
+            &= -\frac{m_i}{R^3} + \left(\frac{3m_i}{R^3} - \frac{3m_i(R_j^2 + R_k^2)}{R^5}\right) + \frac{3R_i(m_j R_j + m_k R_k)}{R^5} \\
+            &= -\frac{m_i}{R^3} + \left(\frac{3m_i(R_i^2 + R_j^2 + R_k^2)}{R^5} - \frac{3m_i(R_j^2 + R_k^2)}{R^5}\right) + \frac{3R_i(m_j R_j + m_k R_k)}{R^5} \\
+            &= -\frac{m_i}{R^3} + \frac{3m_i R_i^2}{R^5} + \frac{3R_i(m_j R_j + m_k R_k)}{R^5} \quad(R \neq 0)
+        \end{align*}
+        \begin{align*}
+            &\quad \hat{i}\cdot(\nabla\phi) \\
+            &= (m_i R_i + m_j R_j + m_k R_k)\cdot\left(-\frac{3R_i}{R^5}\right) + m_i\cdot\frac{1}{R^3} \\
+            &= \frac{m_i}{R^3} - \frac{3R_i(m_i R_i + m_j R_j + m_k R_k)}{R^5} \\
+            &= \frac{m_i}{R^3} - \frac{3m_i R_i^2}{R^5} - \frac{3R_i(m_j R_j + m_k R_k)}{R^5} \quad(R \neq 0)
+        \end{align*}
+        则有在$r \neq 0$时，$\hat{i}\cdot(\nabla\times\bm{A}) = -\hat{i}\cdot(\nabla\phi)$。
+
+        同理可以计算出$\hat{j}$方向分量和$\hat{k}$方向分量，由于对称性，它们也分别互为相反数。
+
+        故在$r \neq 0$时，$\nabla\times\bm{A} = -\nabla\phi$。
+
+        \item[7.(1)]
+        取球坐标$(r,\theta,\phi)$，坐标原点与介质球心重合。
+
+        根据对称性，电场强度只有沿径向$\hat{r}$的分量，Gauss面取为球心与介质球心重合，半径为$r$的球面。
+
+        分三种情况讨论：
+
+        $0 < r < r_1$时：
+        \[
+            \oiint \bm{D}\,\mathrm{d}\bm{S} = \varepsilon\oiint \bm{E}\,\mathrm{d}\bm{S} = 4\pi r^2\varepsilon_0\bm{E} = 0
+        \]
+        则此时$\bm{E} = \bm{0}$
+
+        $r_1 < r < r_2$时：
+        \[
+            \oiint \bm{D}\,\mathrm{d}\bm{S} = \varepsilon\oiint \bm{E}\,\mathrm{d}\bm{S} = 4\pi r^2\varepsilon\bm{E} = \frac{4\pi}{3}(r^3 - r_1^3)\rho_f
+        \]
+        则此时$\bm{E} = \dfrac{\rho_f(r^3 - r_1^3)}{3\varepsilon r^2}\hat{r}$
+
+        $r > r_2$时：
+        \[
+            \oiint \bm{D}\,\mathrm{d}\bm{S} = \varepsilon\oiint \bm{E}\,\mathrm{d}\bm{S} = 4\pi r^2\varepsilon_0\bm{E} = \frac{4\pi}{3}(r_2^3 - r_1^3)\rho_f
+        \]
+        则此时$\bm{E} = \dfrac{\rho_f(r_2^3 - r_1^3)}{3\varepsilon_0 r^2}\hat{r}$
+
+        综上，空间各点的电场分布为：
+        \[
+            \bm{E} = \left\{
+        \begin{aligned}
+            & 0,\qquad& 0 < r < r_1 \\
+            & \frac{\rho_f(r^3 - r_1^3)}{3\varepsilon r^2}\hat{r},\qquad& r_1 < r < r_2 \\
+            & \frac{\rho_f(r_2^3 - r_1^3)}{3\varepsilon_0 r^2}\hat{r},\qquad& r > r_2
+        \end{aligned}
+        \right.
+        \]
+
+        \item[7.(2)]
+        \textsection 极化体电荷只分布在介质内部，设其体密度为$\rho_p$。
+
+        在介质中有以下方程组：
+        \[
+            \nabla\cdot\bm{D} = \varepsilon\nabla\cdot\bm{E} = \rho_f
+        \]
+        \[
+            \nabla\cdot\bm{E} = \frac{\rho_f + \rho_p}{\varepsilon_0}
+        \]
+        联立解得：
+        \[
+            \rho_p = \left(\frac{\varepsilon_0}{\varepsilon} - 1\right)\rho_f \quad r_1 < r < r_2
+        \]
+
+        \textsection 极化面电荷只分布在界面$r = r_1$及$r = r_2$，设其面密度为$\sigma_p$。
+
+        在界面处有以下方程组：（这里法向量$\bm{n} = \bm{r}$）
+        \[
+            \bm{n}\cdot(\bm{E}_2 - \bm{E}_1) = E_2 - E_1 = \frac{\sigma_f + \sigma_p}{\varepsilon_0}
+        \]
+        \[
+            \bm{n}\cdot(\bm{D}_2 - \bm{D}_1) = D_2 - D_1 = \sigma_f
+        \]
+        联立解得：
+        \[
+            \sigma_p = \left\{
+        \begin{aligned}
+            & 0,\qquad& r = r_1 \\
+            & \frac{\rho_f(r_2^3 - r_1^3)}{3r_2^2}\left(1 - \frac{\varepsilon_0}{\varepsilon}\right),\qquad& r = r_2
+        \end{aligned}
+        \right.
+        \]
+
+        \item[8.(1)]
+        取柱坐标$(r,\theta,z)$，坐标原点在圆柱的轴线上，$z$轴与圆柱轴线重合并沿$\bm{J}_f$方向。
+
+        根据对称性，磁感应强度只有沿角向$\hat{\theta}$的分量，Amp\'{e}re环路取为$(r,\theta)$平面内，圆心在圆柱轴线上，半径为$r$的圆。
+
+        分三种情况讨论：
+
+        $0 < r < r_1$时：
+        \[
+            \oint \bm{H}\,\mathrm{d}\bm{l} = \frac{1}{\mu}\oint \bm{B}\,\mathrm{d}\bm{l} = 2\pi r\frac{B}{\mu_0} = 0
+        \]
+        则此时$\bm{B} = \bm{0}$
+
+        $r_1 < r < r_2$时：
+        \[
+            \oint \bm{H}\,\mathrm{d}\bm{l} = \frac{1}{\mu}\oint \bm{B}\,\mathrm{d}\bm{l} = 2\pi r\frac{B}{\mu} = \pi(r^2 - r_1^2)J_f
+        \]
+        则此时$\bm{B} = \dfrac{\mu J_f(r^2 - r_1^2)}{2r}\hat{\theta}$
+
+        $r > r_2$时：
+        \[
+            \oint \bm{H}\,\mathrm{d}\bm{l} = \frac{1}{\mu}\oint \bm{B}\,\mathrm{d}\bm{l} = 2\pi r\frac{B}{\mu_0} = \pi(r_2^2 - r_1^2)J_f
+        \]
+        则此时$\bm{B} = \dfrac{\mu_0 J_f(r_2^2 - r_1^2)}{2r}\hat{\theta}$
+
+        综上，空间各点的磁感应强度分布为：
+        \[
+            \bm{B} = \left\{
+        \begin{aligned}
+            & 0,\qquad& 0 < r < r_1 \\
+            & \frac{\mu J_f(r^2 - r_1^2)}{2r}\hat{\theta},\qquad& r_1 < r < r_2 \\
+            & \frac{\mu_0 J_f(r_2^2 - r_1^2)}{2r}\hat{\theta},\qquad& r > r_2
+        \end{aligned}
+        \right.
+        \]
+
+        \item[8.(2)]
+        \textsection 磁化体电流只分布在介质内部，设其面密度为$J_m$。
+
+        在介质中有以下方程组：
+        \[
+            \nabla\times\bm{H} = \frac{1}{\mu}\nabla\times\bm{B} = \bm{J}_f
+        \]
+        \[
+            \nabla\times\bm{B} = \mu_0(\bm{J}_f + \bm{J}_m)
+        \]
+        联立解得：
+        \[
+            \bm{J}_m = \left(\frac{\mu}{\mu_0} - 1\right)\bm{J}_f \quad r_1 < r < r_2
+        \]
+
+        \textsection 磁化面电流只分布在界面$r = r_1$及$r = r_2$，设其面密度为$\bm{\alpha}_m$。
+
+        在界面处有以下方程组：（这里法向量$\bm{n} = \bm{r}$）
+        \[
+            \bm{n}\times(\bm{H}_2 - \bm{H}_1) = H_2 - H_1 = \bm{\alpha}_f
+        \]
+        \[
+            \bm{n}\times(\bm{B}_2 - \bm{B}_1) = B_2 - B_1 = \mu_0\left(\bm{\alpha}_f + \bm{\alpha}_m\right)
+        \]
+        联立解得：
+        \[
+            \bm{\alpha}_m = \left\{
+        \begin{aligned}
+            & \bm{0},\qquad& r = r_1 \\
+            & \frac{\mu_0 \bm{J}_f(r_2^2 - r_1^2)}{2r_2}\left(1 - \frac{\mu}{\mu_0}\right),\qquad& r = r_2
+        \end{aligned}
+        \right.
+        \]
+
+        \item[11.(1)]
+        根据对称性，$\bm{E}$和$\bm{D}$只有垂直于电容器极板的分量，以该方向为$\hat{z}$方向建立空间直角坐标系。
+
+        对于电容器，必有电压关系：
+        \[
+            \mathscr{E} = E_1 l_1 + E_2 l_2
+        \]
+        因为介质绝缘，导体极板内无电场，由Gauss定律，应有：
+        \[
+            \omega_{f1} + \omega_{f2} = 0
+        \]
+        而在极板与介质的界面应有：
+        \[
+            E_1 = \frac{\omega_{f_1}}{\varepsilon_1},\qquad E_2 = -\frac{\omega_{f_2}}{\varepsilon_2}
+        \]
+        联立解得：
+        \[
+            \omega_f = \mathscr{E}\frac{\varepsilon_1 \varepsilon_2}{\varepsilon_1 l_2 + \varepsilon_2 l_1}
+        \]
+        即$\omega_{f1} = -\omega_{f2} = \mathscr{E}\dfrac{\varepsilon_1 \varepsilon_2}{\varepsilon_1 l_2 + \varepsilon_2 l_1}$。
+
+        \item[11.(2)]
+        \textsection 在介质内部，由$\bm{D} = \varepsilon\bm{E}$得：
+        \[
+            D_1 = \varepsilon_1 E_1,\qquad D_2 = \varepsilon_2 E_2
+        \]
+        在介质分界面上：（这里法向量$\bm{n} = \bm{z}$）
+        \[
+            \bm{n}\cdot(\bm{D}_2 - \bm{D}_1) = D_2 - D_1 = \omega_f
+        \]
+        联立解得：
+        \[
+            \omega_f = 0
+        \]
+
+        \textsection 若介质漏电，则会产生沿$\hat{z}$方向的电流$\bm{J}$。导体极板内有电流，$\omega_{f1} + \omega_{f2} \neq 0$
+
+        由电流连续性方程：
+        \[
+            \bm{n}\cdot(\bm{J}_2 - \bm{J}_1) = 0
+        \]
+        由Ohm定律：
+        \[
+            \bm{J}_1 = \sigma_1\bm{E}_1,\qquad \bm{J}_2 = \sigma_2\bm{E}_2
+        \]
+        而电压关系仍然成立：
+        \[
+            \mathscr{E} = E_1 l_1 + E_2 l_2 = \frac{J_1 l_1}{\sigma_1} + \frac{J_2 l_2}{\sigma_2}
+        \]
+        解得：
+        \[
+            J_1 = J_2 = \mathscr{E}\frac{\sigma_1 \sigma_2}{\sigma_1 l_2 + \sigma_2 l_1}
+        \]
+        则电场强度：
+        \[
+            E_1 = \frac{\mathscr{E}\sigma_2}{\sigma_1 l_2 + \sigma_2 l_1},\qquad E_2 = \frac{\mathscr{E}\sigma_1}{\sigma_1 l_2 + \sigma_2 l_1}
+        \]
+        而在极板与介质的界面应有：
+        \[
+            E_1 = \frac{\omega_f}{\varepsilon_1},\qquad E_2 = -\frac{\omega_f}{\varepsilon_2}
+        \]
+        于是：
+        \[
+            \omega_{f1} = \mathscr{E}\frac{\varepsilon_1 \sigma_2}{\sigma_1 l_2 + \sigma_2 l_1},\qquad \omega_{f2} = -\mathscr{E}\frac{\varepsilon_2 \sigma_1}{\sigma_1 l_2 + \sigma_2 l_1}
+        \]
+
+        \textsection 在介质内部，由$\bm{D} = \varepsilon\bm{E}$得：
+        \[
+            D_1 = \varepsilon_1 E_1,\qquad D_2 = \varepsilon_2 E_2
+        \]
+        在介质分界面上：（这里法向量$\bm{n} = \bm{z}$）
+        \[
+            \bm{n}\cdot(\bm{D}_2 - \bm{D}_1) = D_2 - D_1 = \omega_f
+        \]
+        联立解得：
+        \[
+            \omega_f = \mathscr{E}\frac{\varepsilon_2 \sigma_1 - \varepsilon_1 \sigma_2}{\sigma_1 l_2 + \sigma_2 l_1}
+        \]
+
+        \item[12.(1)]
+        由于绝缘介质分界面无自由电荷，边界条件为：
+        \[
+            \bm{n}\times(\bm{D}_2 - \bm{D}_1) = \sigma_f = 0
+        \]
+        又因为：
+        \[
+            \bm{D}_1 = \varepsilon_1\bm{E}_1,\qquad \bm{D}_2 = \varepsilon_2\bm{E}_2
+        \]
+        则：
+        \[
+            \bm{n}\times(\bm{D}_2 - \bm{D}_1) = \varepsilon_2 E_2\cos\theta_2 - \varepsilon_1 E_1\cos\theta_1 = 0
+        \]
+        另一方面，对于电场强度有：
+        \[
+            \bm{n}\times(\bm{E}_2 - \bm{E}_1) = E_2\sin\theta_2 - E_1\sin\theta_1 = 0
+        \]
+        两式相除即得：
+        \[
+            \frac{\tan\theta_2}{\tan\theta_1} = \frac{\varepsilon_2}{\varepsilon_1}
+        \]
+
+        \item[12.(2)]
+        由电流连续性方程：
+        \[
+            \bm{n}\cdot(\bm{J}_2 - \bm{J}_1) = J_2\cos\theta_2 - J_1\cos\theta_1 = 0
+        \]
+        由Ohm定律：
+        \[
+            \bm{J}_1 = \sigma_1\bm{E}_1,\qquad \bm{J}_2 = \sigma_2\bm{E}_2
+        \]
+        则有：
+        \[
+            \sigma_2 E_2\cos\theta_2 - \sigma_1 E_1\cos\theta_1 = 0
+        \]
+        另一方面，对于电场强度有：
+        \[
+            \bm{n}\times(\bm{E}_2 - \bm{E}_1) = E_2\sin\theta_2 - E_1\sin\theta_1 = 0
+        \]
+        两式相除即得：
+        \[
+            \frac{\tan\theta_2}{\tan\theta_1} = \frac{\sigma_2}{\sigma_1}
+        \]
+
+        \item[14.(1)]
+        考虑中间长为$l$的一段介质，由电荷守恒定律得：
+        \[
+            I = -\frac{\partial q}{\partial t} = -l\frac{\partial \lambda_f}{\partial t}
+        \]
+        则两极板之间距离轴$r$处的传导电流密度为：
+        \[
+            \bm{j} = \frac{I}{2\pi rl} = -\frac{1}{2\pi r}\frac{\partial \lambda_f}{\partial t}
+        \]
+        由Gauss定理得，距离轴$r$处：
+        \[
+            2\pi rl\bm{E} = \frac{1}{\varepsilon}\lambda_f l,\quad a<r<b
+        \]
+        即$r$处电场强度为：
+        \[
+            \bm{E} = \frac{\lambda_f}{2\pi\varepsilon r}
+        \]
+        则位移电流密度为：
+        \[
+            \bm{j}_{\mathrm{D}} = \varepsilon\frac{\partial\bm{E}}{\partial t}= \frac{1}{2\pi r}\frac{\partial \lambda_f}{\partial t}
+        \]
+        由于$\bm{j}+\bm{j}_{\mathrm{D}}=0$，电容器内部无电流、无磁场。
+
+        \item[14.(2)]
+        由于距离轴$r$处的电场强度为：
+        \[
+            \bm{E} = \frac{\lambda_f}{2\pi\varepsilon r}
+        \]
+        则传导电流为：
+        \[
+            \bm{j} = \sigma\bm{E} = \frac{\sigma\lambda_f}{2\pi\varepsilon r}
+        \]
+        即：
+        \[
+            \bm{j} = -\frac{1}{2\pi r}\frac{\partial \lambda_f}{\partial t} = \frac{\sigma\lambda_f}{2\pi\varepsilon r}
+        \]
+        化简得：
+        \[
+            \frac{\partial \lambda_f}{\partial t} = -\frac{\sigma}{\varepsilon}\lambda_f
+        \]
+        解得$\lambda_f$随时间的衰减规律为：
+        \[
+            \lambda_f = \lambda_0\mathrm{e}^{-\tfrac{\sigma}{\varepsilon}t}
+        \]
+
+        \item[14.(3)]
+        与轴相距为$r$的地方的能量耗散功率密度为：
+        \[
+            w = \frac{j^2}{\sigma} = \sigma\left(\frac{\lambda_f}{2\pi\varepsilon r}\right)^2
+        \]
+
+        \item[14.(4)]
+        两极板之间的电势差为：
+        \[
+            U = \int_a^b \bm{E}\cdot\mathrm{d}\bm{r} = \int_a^b \frac{\lambda_f}{2\pi\varepsilon r}\cdot\mathrm{d}\bm{r} = \frac{\lambda_f}{2\pi\varepsilon}\ln\frac{b}{a}
+        \]
+        考虑中间长为$l$的一段介质，这段的总能量耗散功率为：
+        \[
+            W = \iiint w\,\mathrm{d}V = \int_a^b \sigma\left(\frac{\lambda_f}{2\pi\varepsilon r}\right)^2 \cdot (2\pi rl\,\mathrm{d}r) = -\frac{\lambda_f^2 l\sigma}{2\pi\varepsilon^2}\ln\frac{b}{a}
+        \]
+        而它的静电能为：
+        \[
+            E = \frac{1}{2}QU = \frac{1}{2}(\lambda_f l) \cdot \left(\frac{\lambda_f}{2\pi\varepsilon}\ln\frac{b}{a}\right) = \frac{\lambda_f^2 l}{4\pi\varepsilon}\ln\frac{b}{a}
+        \]
+        代入$\dfrac{\partial \lambda_f}{\partial t}=-\dfrac{\sigma}{\varepsilon}\lambda_f$，得到静电能减少率为：
+        \[
+            \left|\frac{\partial E}{\partial t}\right| = \left|\left(2\lambda_f\frac{\partial\lambda_f}{\partial t}\right)\frac{l}{4\pi\varepsilon}\ln\frac{b}{a}\right| = \left|-\frac{\lambda_f^2 l\sigma}{2\pi\varepsilon^2}\ln\frac{b}{a}\right| = \frac{\lambda_f^2 l\sigma}{2\pi\varepsilon^2}\ln\frac{b}{a}
+        \]
+        可见两者是相等的。
+
+    \end{itemize}
+
+    \subsection*{补充题}
+
+    \begin{itemize}
+    
+        \item[3.]
+        设电磁场的能量密度为$w$，能流密度矢量为$\bm{S}$，电磁力的功率密度为$W$，则能量守恒定理可以写为：
+        \[
+            \frac{\mathrm{d}}{\mathrm{d}t}\iiint w\,\mathrm{d}V + \oiint \bm{S}\cdot\bm{\sigma} + \iiint W\,\mathrm{d}V = 0
+        \]
+        改写成微分形式为：
+        \[
+            \frac{\partial w}{\partial t} + \nabla\cdot\bm{S} + W = 0
+        \]
+        由 Lorentz 力公式得：
+        \[
+            W = \bm{f}\cdot\bm{v} = (\rho\bm{E}+\bm{j}\times\bm{B})\cdot\bm{v} = \rho\bm{E}\cdot\bm{v} = \bm{E}\cdot\bm{j}
+        \]
+        在介质中：
+        \[
+            \bm{j} = \frac{1}{\mu}\nabla\times\bm{B} - \varepsilon\frac{\partial\bm{E}}{\partial t}
+        \]
+        则电磁力的功率密度为：
+        \begin{align*}
+            W
+            &= \bm{E}\cdot\bm{j} \\
+            &= \frac{1}{\mu}\bm{E}\cdot(\nabla\times\bm{B}) - \varepsilon\bm{E}\cdot\frac{\partial\bm{E}}{\partial t} \\
+            &= \frac{1}{\mu}[-\nabla\cdot(\bm{E}\times\bm{B}) + \bm{B}\cdot(\nabla\times\bm{E})] - \varepsilon\bm{E}\cdot\frac{\partial\bm{E}}{\partial t} \\
+            &= \frac{1}{\mu}[-\nabla\cdot(\bm{E}\times\bm{B}) - \bm{B}\cdot\frac{\partial\bm{B}}{\partial t}] - \varepsilon\bm{E}\cdot\frac{\partial\bm{E}}{\partial t} \\
+            &= -\frac{1}{\mu}\nabla\cdot(\bm{E}\times\bm{B}) - \frac{1}{\mu}\bm{B}\cdot\frac{\partial\bm{B}}{\partial t} - \varepsilon\bm{E}\cdot\frac{\partial\bm{E}}{\partial t} \\
+            &= -\frac{1}{\mu}\nabla\cdot(\bm{E}\times\bm{B}) - \frac{1}{2}\cdot\frac{\partial}{\partial t}\left(\varepsilon E^2+\frac{1}{\mu}B^2\right)
+        \end{align*}
+        即：
+        \[
+            \frac{1}{2}\cdot\frac{\partial}{\partial t}\left(\varepsilon E^2+\frac{1}{\mu}B^2\right) + \frac{1}{\mu}\nabla\cdot(\bm{E}\times\bm{B}) + W = 0
+        \]
+        令：
+        \[
+            w = \frac{1}{2}\left(\varepsilon E^2+\frac{1}{\mu}B^2\right),\quad S = \frac{1}{\mu}\bm{E}\times\bm{B}
+        \]
+        即证明了能量守恒定理$\dfrac{\partial w}{\partial t} + \nabla\cdot\bm{S} + W = 0$。
+
+        \item[4.(1)]
+        电磁波的动量密度为：
+        \[
+            \bm{g} = \frac{1}{c^2}\bm{E}\times\bm{H} = \varepsilon\bm{E}\times\bm{B} = \frac{\varepsilon}{c}E_0^2\cos(kx-\omega t)\hat{z}
+        \]
+        则平均动量密度为：
+        \begin{align*}
+            \bm{g}_{\mathrm{avg}}
+            &= \frac{1}{T}\int_0^{T} \bm{g}\,\mathrm{d}t \\
+            &= \frac{\omega}{2\pi}\int_0^{\tfrac{2\pi}{\omega}} \frac{\varepsilon}{c}E_0^2\cos(kx-\omega t)\hat{z}\,\mathrm{d}t \\
+            &= \frac{\omega}{2\pi} \cdot \left(\frac{\varepsilon}{c}E_0^2 \cdot \frac{\pi}{\omega}\right) \\
+            &= \frac{\varepsilon}{2c}E_0^2
+        \end{align*}
+
+        \item[4.(2)]
+        电磁波全部被吸收时，平板所受的压强为：
+        \[
+            p = cg = \frac{\varepsilon}{2}E_0^2
+        \]
+
+        \item[4.(3)]
+        电磁波全部被反射时，平板所受的压强为：
+        \[
+            p = 2cg = \varepsilon E_0^2
+        \]
+
+        \item[8.]
+        根据对称性，半径为$r$的均匀带电球在球内会产生沿径向的电场强度，由 Gauss 定理得：
+        \[
+            4\pi r^2 \cdot E = \frac{1}{\varepsilon_0}\rho\cdot\frac{4\pi}{3}r^3
+        \]
+        即：
+        \[
+            \bm{E} = \frac{\rho\bm{r}}{3\varepsilon_0}
+        \]
+        而该球中的空洞可以看作是原有的半径$r=R$，电荷密度为$\rho$的带电球与一个半径$r=\dfrac{R}{2}$，电荷密度为$-\rho$的带电球叠加，故空洞内部任意一点$\mathrm{P}$的电场强度为：
+        \[
+            \bm{E} = \frac{\rho\bm{r}}{3\varepsilon_0} - \frac{\rho\bm{r}'}{3\varepsilon_0} = \frac{\rho}{3\varepsilon_0}(\bm{r}-\bm{r}')
+        \]
+        其中$\bm{r}$为$\mathrm{O}$指向$\mathrm{P}$的矢量，$\bm{r}'$为$\mathrm{O'}$指向$\mathrm{P}$的矢量
+        
+        则$\bm{r}-\bm{r}'=\overrightarrow{\mathrm{OP}}-\overrightarrow{\mathrm{O'P}}=\overrightarrow{\mathrm{OO'}}$，记作$\bm{r}_0$，为一大小为$\dfrac{R}{2}$的常矢量。
+
+        于是空洞内部的电场为一均匀电场，大小为：
+        \[
+            \bm{E} = \frac{\rho R}{6\varepsilon_0}
+        \]
+        方向沿$\overrightarrow{\mathrm{OO'}}$。
+
+    \end{itemize}
+
+\end{document}

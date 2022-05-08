@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+
+\begin{document}
+
+\title{\textbf{Exercise 1}}
+\author{}
+\date{}
+
+\maketitle
+
+\subsection*{Problem 1: Measuring flat universes}
+
+In the following consider two flat $(k=0)$, expanding universes: one that is matter dominated, i.e. $\Omega_\mathrm{m}=1$, and one that is dominated by a cosmological constant, i.e. $\Omega_\Lambda=1$.
+
+\begin{itemize}
+    \item[(a)] Derive for both universes an expression for the comoving distance
+    \[
+    D(z) = \omega(z)R_0
+    \]
+    as a function of redshift $z$.
+
+    \item[(b)] The "observable universe" is the part of the universe up to redshift $z=\infty$. Compute for both of our universes the comoving volume of this region, i.e. the volume of the corresponding region on the spatial hypersurface of constant time $\tau_0$. Is there a qualitative difference between the two volumes? What is the meaning of the "observable universe" in the context of causality?
+    
+    \textit{Hint:} The spatial volume element for the Robertson Walker (RW) metric at time $\tau$ is
+    \[
+    \mathrm{d}V = R^3(\tau)S_k^2(\omega)\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi\,\mathrm{d}\omega
+    \]
+\end{itemize}
+
+\subsection*{Problem 2: Change of redshift with time}
+
+The redshift of a given source of light should change with time and in principle we could detect this effect by observing the source over a certain timespan. Assume a flat concordance cosmology with $H_0=73\,\mathrm{km/(s\cdot Mpc)}$, $\Omega_\mathrm{m}=0.3$ and $\Omega_\Lambda=0.7$. How much would the redshift of a source at redshift $z=1$ change within ten years? Do you think this might be observable in practice and what complications might arise?
+
+\end{document}

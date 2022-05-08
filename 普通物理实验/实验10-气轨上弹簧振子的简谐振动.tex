@@ -1,0 +1,340 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.25cm,right=2.25cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\Large
+
+\title{\huge\textbf{实验十\ \ 气轨上弹簧振子的简谐振动}}
+\author{\LARGE 1900011604 张植竣}
+\date{\LARGE 2020年11月11日}
+
+\maketitle
+
+\section*{\zihao{-2} 1\ \ 实验数据与数据处理}
+\bigskip
+
+\subsection*{\zihao{3} 1.1\ \ 弹簧振子的振动周期和振幅的关系}
+
+以下表格中，$L \to R$表示振子自左向右释放，此时光电门对准挡光片右边缘；$R \to L$表示振子自右向左释放，此时光电门对准挡光片左边缘。
+
+\vspace{0.5em}
+\begin{table}[ht!]\Large
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c|c|c|c| }
+            \hline
+            \multicolumn{8}{ |c| }{$L \to R$} \\
+            \hline
+            \multirow{4}{*}{$A$/cm} & 10.00 & \multirow{4}{*}{$T$/s} & 1.98599 & 1.98657 & 1.98657 & \multirow{4}{*}{$\overline{T_L}$/s} & 1.986377 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 20.00 & & 1.98895 & 1.98949 & 1.98924 & & 1.989227\\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 30.00 & & 1.99097 & 1.99141 & 1.99147 & & 1.991283 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 40.00 & & 1.99227 & 1.99200 & 1.99238 & & 1.992217 \\
+            \hline
+            \multicolumn{8}{ |c| }{$R \to L$} \\
+            \hline
+            \multirow{4}{*}{$A$/cm} & 10.00 & \multirow{4}{*}{$T$/s} & 1.98594 & 1.98587 & 1.98600 & \multirow{4}{*}{$\overline{T_R}$/s} & 1.985937 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 20.00 & & 1.98955 & 1.98924 & 1.98946 & & 1.989417 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 30.00 & & 1.99085 & 1.99120 & 1.99121 & & 1.991087 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 40.00 & & 1.99191 & 1.99211 & 1.99218 & & 1.992067 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+\vspace{-0.5em}
+
+\begin{table}[ht!]\Large
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c| }
+            \hline
+            $A$/cm & 10.00 & 20.00 & 30.00 & 40.00 \\
+            \hline
+            $\overline{T}$/s & 1.986157 & 1.989322 & 1.991185 & 1.992142 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+\vspace{-0.5em}
+
+\begin{center}
+    \includegraphics[width = 1\linewidth]{Figure_1.png}
+\end{center}
+
+可以发现，随振幅$A$的增大，弹簧振子的周期$T$略微增大，且$A$越大，$T$增大的速度越缓慢。由于$T$随$A$的变化较小，可以近似认为弹簧振子做简谐振动。
+
+\newpage
+\subsection*{\zihao{3} 1.2\ \ 弹簧振子的振动周期和振子质量的关系}
+
+\begin{table}[ht!]\Large
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c|c|c|c| }
+            \hline
+            \multicolumn{8}{ |c| }{$L \to R$} \\
+            \hline
+            \multirow{5}{*}{$m_1$/kg} & 0.45601 & \multirow{5}{*}{$T$/s} & 1.99227 & 1.99200 & 1.99238 & \multirow{5}{*}{$\overline{T_L}$/s} & 1.9922167 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 0.50726 & & 2.09785 & 2.09802 & 2.09785 & & 2.0979067 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 0.55928 & & 2.20122 & 2.20135 & 2.20140 & & 2.2013233 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 0.61158 & & 2.30079 & 2.30082 & 2.30080 & & 2.3008033 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 0.66403 & & 2.39643 & 2.39637 & 2.39637 & & 2.3963900 \\
+            \hline
+            \multicolumn{8}{ |c| }{$R \to L$} \\
+            \hline
+            \multirow{5}{*}{$m_1$/g} & 0.45601 & \multirow{5}{*}{$T$/s} & 1.99191 & 1.99211 & 1.99218 & \multirow{5}{*}{$\overline{T_R}$/s} & 1.9920667 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 0.50726 & & 2.09814 & 2.09796 & 2.09786 & & 2.0979867 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 0.55928 & & 2.20070 & 2.20098 & 2.20101 & & 2.2008967 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 0.61158 & & 2.30018 & 2.30005 & 2.30018 & & 2.3000137 \\
+            \cline{2-2} \cline{4-6} \cline{8-8}
+            & 664.03 & & 2.39618 & 2.39612 & 2.39609 & & 2.3961300 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+\vspace{-0.5em}
+
+\begin{table}[ht!]\Large
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c|c| }
+            \hline
+            $m_1$/kg & 0.45601 & 0.50726 & 0.55928 & 0.61158 & 0.66403 \\
+            \hline
+            $\overline{T}$/s & 1.9921417 & 2.0979067 & 2.2011100 & 2.3004085 & 2.3962600 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+\vspace{-0.5em}
+
+由简谐振动中关系：
+\[
+    T = 2\pi\sqrt{\frac{m}{k}} = 2\pi\sqrt{\frac{m_0 + m_1}{k}}
+\]
+其中$T$为弹簧振子的运动周期，$m_0$为弹簧的等效质量，$m_1$为振子的质量，$k$为弹簧的等效劲度系数。
+
+则$T^2$与$m_1$应该成线性关系：
+
+\[
+    T^2 = ax+b = \frac{4\pi^2}{k}m_1 + \frac{4\pi^2}{k}m_0
+\]
+\[
+    k = \frac{4\pi^2}{a},\qquad m_0= \frac{b}{a}
+\]
+
+\newpage
+作$T^2-m_1$图像如下：
+
+\begin{center}
+    \includegraphics[width = 1\linewidth]{Figure_2.png}
+\end{center}
+
+可见$T^2$与$m_1$大致成线性关系，用最小二乘法作直线拟合，得到数据：
+
+\vspace{0.5em}
+\begin{table}[ht!]\Large
+    \begin{center}
+        \begin{tabular}{ |c|c|c| }
+            \hline
+            $a$ & $b$ & $r$ \\
+            \hline
+            8.527932977 & 0.0772292704 & 0.9999953013 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+\vspace{-0.5em}
+
+间接测量得到：
+\[
+    k = 4.629306739\,\mathrm{N/m},\qquad m_0 = 9.056036276\,\mathrm{g}
+\]
+斜率$a$的A类不确定度（由于$T^2$与$m_1$不严格成线性引起的不确定度）：
+\[
+    \sigma_{a,A} = a\sqrt{\dfrac{1/r^2-1}{n-2}} = 0.01509345061
+\]
+斜率$a$的B类不确定度（由于$T$的测量误差引起的不确定度）：
+\[
+    \sigma_{a,B} = \frac{\sigma_y}{\sqrt{\sum\limits_{i=1}^{5}\left(x_i-\bar{x}\right)^2}}
+\]
+其中$x=m_1$，$y=T^2$，且有：
+\[
+    \sigma_y = 2T\sigma_{_T},\qquad \sigma_{_T} = \frac{e_{_T}}{\sqrt{3}}
+\]
+$e_{_{T}}=10^{-5}\,\mathrm{s}$为光电门允差。估计$\sigma_y$为：
+\[
+    \sigma_y = \frac{2}{5}\sum_{i=1}^{5}T_i\cdot\frac{e_{_T}}{\sqrt{3}} = 5.075059825\times10^{-6}
+\]
+而
+\[
+    \sum\limits_{i=1}^{5}\left(x_i-\bar{x}\right)^2 = 0.02707800588
+\]
+得：
+\[
+    \sigma_{a,B} = 3.084131073\times10^{-5}
+\]
+斜率的总不确定度为：
+\[
+    \sigma_a = \sqrt{\sigma_{a,A}^2 + \sigma_{a,B}^2} = 0.01509348212
+\]
+则测量等效劲度系数$k$的不确定度为：
+\[
+    \sigma_k = \frac{4\pi^2}{a^2}\sigma_a = 8.19335221\times10^{-3}\,\mathrm{N/m}
+\]
+截距$b$的不确定度为：
+\[
+    \sigma_b = \sigma_y\sqrt{\frac{\overline{x^2}}{\sum\limits_{i=1}^{5}\left(x_i-\bar{x}\right)^2}} = 1.740837167\times10^{-5}
+\]
+则测量弹簧等效质量$m_0$的不确定度为：
+\[
+    \sigma_{m_0} = m_0\sqrt{\left(\frac{\sigma_a}{a}\right)^2 + \left(\frac{\sigma_b}{b}\right)^2} = 0.01615763415\times10^{-2}\,\mathrm{g}
+\]
+综上，间接测量得到的等效劲度系数$k$与弹簧等效质量$m_0$为：
+\[
+    k = (4.629\pm0.008)\,\mathrm{N/m}
+\]
+\[
+    m_0 = (9.056\pm0.016)\,\mathrm{g}
+\]
+
+\newpage
+\subsection*{\zihao{3} 1.3\ \ 振动系统的机械能和位移的关系}
+
+实验中保持振子从右向左释放，振子质量$m = m_0 + m_1 = 465.066\,\mathrm{g}$，振幅$A = 40\,\mathrm{cm}$。测量得光电门两个挡光边缘之间的距离为：$\delta_x = 10.02\,\mathrm{mm}$。以下表格中标“$-$”的部分没有测量数据，默认为0。
+
+系统的动能为：
+\[
+    E_k = \frac{1}{2}mv^2 = \frac{1}{2}m\cdot\frac{\delta_x^2}{\overline{\delta_t}^2}
+\]
+系统的势能为：
+\[
+    E_p = \frac{1}{2}kx^2
+\]
+
+\vspace{0.5em}
+\begin{table}[ht!]\Large
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c|c|c| }
+            \hline
+            $x$/cm & 0.00 & 20.00 & 28.30 & 30.00 & 34.60 & 40.00 \\
+            \hline
+            \multirow{3}{*}{$\delta_t$/s} & 0.00795 & 0.00925 & 0.01150 & 0.01228 & 0.01670 & $-$ \\
+            \cline{2-7}
+            & 0.00794 & 0.00928 & 0.01154 & 0.01228 & 0.01669 & $-$ \\
+            \cline{2-7}
+            & 0.00794 & 0.00924 & 0.01153 & 0.01231 & 0.01667 & $-$ \\
+            \hline
+            $\overline{\delta_t}$/s & 0.007943 & 0.009257 & 0.011523 & 0.012290 & 0.016687 & $-$ \\
+            \hline
+            $v$/s & 1.261435 & 1.082463 & 0.869540 & 0.815297 & 0.600479 & $-$ \\
+            \hline
+            $E_k$/J & 0.370011 & 0.272465 & 0.175818 & 0.154567 & 0.083846 & $-$ \\
+            \hline
+            $E_p$/J & $-$ & 0.092580 & 0.185366 & 0.208305 & 0.277083 & 0.370320 \\
+            \hline
+            $E$/J & 0.370011 & 0.365045 & 0.361184 & 0.362872 & 0.360928 & 0.370320 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+由动能：
+\[
+    E_k = \frac{1}{2}m\cdot\frac{\delta_x^2}{\overline{\delta_t}^2}
+\]
+动能的不确定度：
+\[
+    \sigma_{_{E_k}} = E_k\cdot\sqrt{\left(\frac{\sigma_m}{m}\right)^2 + \left(\frac{2\sigma_{\delta_x}}{\delta_x}\right)^2 + \left(\frac{2\sigma_{\overline{\delta_t}}}{\overline{\delta_t}}\right)^2}
+\]
+游标卡尺的允差为$e_{\delta_x} = 0.02\,\mathrm{mm}$，则$\delta_x$的不确定度：
+\[
+    \sigma_{\delta_x} = \frac{e_{\delta_x}}{\sqrt{3}} = 1.154700538\times10^{-2}\,\mathrm{mm}
+\]
+电子秤的允差为$e_{m_1}=0.01\,\mathrm{g}$，则质量的不确定度：
+\begin{align*}
+    \sigma_m
+    &= \sqrt{\sigma_{m_0}^2 + \sigma_{m^1}^2} \\
+    &= \sqrt{\sigma_{m_0}^2 + \left(\frac{e_{m_1}}{\sqrt{3}}\right)^2} \\
+    &= 5.775763174\times10^{-3}
+\end{align*}
+
+势能的不确定度：
+\[
+    \sigma_{_{E_p}} = E_p\cdot\sqrt{\left(\frac{\sigma_k}{k}\right)^2 + \left(\frac{2\sigma_x}{x}\right)^2} = E_p\cdot\sqrt{\left(\frac{\sigma_k}{k}\right)^2 + \left(\frac{2e_x}{\sqrt{3}x}\right)^2}
+\]
+其中极限误差$e_x$与操作有关，估计为$0.10\,\mathrm{cm}$。
+
+则总能量的不确定度为：
+\[
+    \sigma_{_E} = \sqrt{\sigma_{_{E_k}}^2 + \sigma_{_{E_p}}^2}
+\]
+
+计算并整理得以下表格：
+\vspace{0.5em}
+\begin{table}[ht!]\Large
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c|c|c| }
+            \hline
+            $x$/cm & 0.00 & 20.00 & 28.30 & 30.00 & 34.60 & 40.00 \\
+            \hline
+            $E_k$/J & 0.370011 & 0.272465 & 0.175818 & 0.154567 & 0.083846 & $-$ \\
+            \hline
+            $\sigma_{_{E_k}}$/J & 0.001589 & 0.001348 & 0.000826 & 0.000695 & 0.000364 & $-$ \\
+            \hline
+            $E_p$/J & $-$ & 0.092580 & 0.185366 & 0.208305 & 0.277083 & 0.370320 \\
+            \hline
+            $\sigma_{_{E_p}}$/J & $-$ & 0.000559 & 0.000824 & 0.000882 & 0.001047 & 0.001254 \\
+            \hline
+            $E$/J & 0.370011 & 0.365045 & 0.361184 & 0.362872 & 0.360928 & 0.370320 \\
+            \hline
+            $\sigma_{_E}$/J & 0.001589 & 0.001459 & 0.001167 & 0.001124 & 0.001108 & 0.001254 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+可以发现总能量$E$在
+\[
+\overline{E} = \sum_{i=1}^{6}E_i = (0.3651\pm0.0017)\,\mathrm{J}
+\]
+附近波动，偏差约在3\%，可以认为在简谐振动过程中总能量守恒。
+
+理论上分析总能量$E$应该随离平衡位置$x$的减小而减小（因为振子在向平衡位置运动过程中有能量耗散），但是实验中并没有明显观察到这一现象。推测可能是因为气垫导轨没有完全水平，且不同位置喷气不均匀，使得弹簧振子在运动中受水平方向力作用，或振子质量不均匀，质心与几何中心（即挡光片位置）不重合。
+
+作$E-x$图如下：
+
+\begin{center}
+    \includegraphics[width = 1\linewidth]{Figure_3.png}
+\end{center}
+
+\begin{center}
+    \includegraphics[width = 1\linewidth]{Figure_4.png}
+\end{center}
+
+\section*{\zihao{3} 2\ \ 收获与感想}
+
+1.对比前两个实验中的$T_L$和$T_R$数据以及$\overline{T_L}$和$\overline{T_R}$的数据，可以发现绝大部分情况下有$T_L>T_R$、$\overline{T_L}>\overline{T_R}$，可能是因为气轨是从右向左喷气的，使得弹簧振子在运动中受向左的推动力作用，或振子质量不均匀，质心与几何中心（即挡光片位置）不重合。
+
+\bigskip
+2.为了提高弹簧振子从左向右释放和从右向左释放的对称性，可以在调换方向时将骑码位置左右互换。
+
+\end{document}

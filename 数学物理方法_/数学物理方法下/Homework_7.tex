@@ -1,0 +1,267 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm,wasysym,esint}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+\title{\textbf{数学物理方法作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2020年12月18日}
+\maketitle
+
+\section*{第十八章}
+\bigskip
+
+\begin{itemize}
+
+\item[4.]
+将$f$按本征函数展开：
+\[
+f = \sum_k{A_k\varPhi_k}
+\]
+原问题化为：
+\[
+\nabla^2u + \sum_k{A_k\varPhi_k} = 0
+\]
+\[
+u\big|_{\varSigma} = 0
+\]
+另一方面有：
+\[
+\sum_k{\frac{A_k}{\lambda_k}\left(\nabla^2\varPhi_k + \lambda_k\varPhi_k\right)} = \nabla^2\left(\sum_k{\frac{A_k}{\lambda_k}\varPhi_k}\right) + \sum_k{A_k\varPhi_k} = 0
+\]
+\[
+\left.\sum_k{\frac{A_k}{\lambda_k}\varPhi_k}\right|_{\varSigma} = 0
+\]
+对比得原问题的解为：
+\[
+u = \sum_k{\frac{A_k}{\lambda_k}\varPhi_k}
+\]
+
+\end{itemize}
+
+\newpage
+\section*{第十九章}
+\bigskip
+
+\begin{itemize}
+
+\item[1.]
+对$t$做Laplace变换：
+\[
+\mathscr{L}\left\{u(x,t)\right\} = U(x,p),\qquad \mathscr{L}\left\{\frac{\partial u}{\partial t}\right\} = pU(x,p),\qquad \mathscr{L}\left\{\frac{\partial^2 u}{\partial x^2}\right\} = \frac{\mathrm{d}^2U}{\mathrm{d}x^2}
+\]
+方程与边界条件化为：
+\[
+\frac{\mathrm{d}^2U}{\mathrm{d}x^2} - \frac{p}{\kappa}U = 0,\qquad \left.U(x,p)\right|_{x=0} = \frac{u_0}{p}
+\]
+由方程解出：
+\[
+U(x,p) = A\mathrm{e}^{\sqrt{p/\kappa}x} + B\mathrm{e}^{-\sqrt{p/\kappa}x}
+\]
+代入边界条件得：
+\[
+U(x,p) = \frac{u_0}{p}\mathrm{e}^{-\sqrt{p/\kappa}x}
+\]
+反演后得：
+\[
+u(x,t) = u_0\,\mathrm{erfc}\frac{x}{2\sqrt{\kappa t}}
+\]
+
+\bigskip
+\item[3.]
+对$t$做Laplace变换：
+\[
+\mathscr{L}\left\{u(x,t)\right\} = U(x,p),\qquad \mathscr{L}\left\{\frac{\partial u}{\partial t}\right\} = pU(x,p),\qquad \mathscr{L}\left\{\frac{\partial^2 u}{\partial x^2}\right\} = \frac{\mathrm{d}^2U}{\mathrm{d}x^2}
+\]
+方程与边界条件化为：
+\[
+\frac{\mathrm{d}^2U}{\mathrm{d}x^2} - \frac{p}{\kappa}U = 0,\qquad \left.U(x,p)\right|_{x=0} = \frac{A}{p+\alpha^2\kappa},\qquad \left.U(x,p)\right|_{x=l} = \frac{B}{p+\beta^2\kappa}
+\]
+由方程解出：
+\[
+U(x,p) = C\mathrm{e}^{\sqrt{p/\kappa}x} + D\mathrm{e}^{-\sqrt{p/\kappa}x}
+\]
+代入边界条件得：
+\begin{align*}
+U(x,p)
+&= \frac{\mathrm{e}^{-\sqrt{p/\kappa}l}}{\mathrm{e}^{\sqrt{p/\kappa}l} - \mathrm{e}^{-\sqrt{p/\kappa}l}}\left[\frac{B\mathrm{e}^{\sqrt{p/\kappa}l}}{p+\beta^2\kappa} - \frac{A}{p+\alpha^2\kappa}\right]\mathrm{e}^{\sqrt{p/\kappa}x} \\
+&\quad + \frac{1}{\mathrm{e}^{\sqrt{p/\kappa}l} - \mathrm{e}^{-\sqrt{p/\kappa}l}}\left[\frac{A\mathrm{e}^{\sqrt{p/\kappa}l}}{p+\alpha^2\kappa} - \frac{B}{p+\beta^2\kappa}\right]\mathrm{e}^{-\sqrt{p/\kappa}x} \\
+&= \frac{A\sinh\sqrt{p/\kappa}(l-x)}{(p+\alpha^2\kappa)\sinh\sqrt{p/\kappa}l} + \frac{B\sinh\sqrt{p/\kappa}x}{(p+\beta^2\kappa)\sinh\sqrt{p/\kappa}l}
+\end{align*}
+反演得：
+\[
+u(x,t) = \frac{1}{2\pi i}\int_{s-i\infty}^{s+i\infty}U(x,p)\mathrm{e}^{pt}\,\mathrm{d}p = \sum_{n=1}^{\infty}\mathrm{res}(P_n)
+\]
+其中$p = P_n$为$U(x,p)\mathrm{e}^{pt}$在全复平面内的孤立奇点。
+
+为方便计算留数，令：
+\[
+V(x,p) = \frac{A\sinh\sqrt{p/\kappa}(l-x)}{(p+\alpha^2\kappa)\sinh\sqrt{p/\kappa}l}\mathrm{e}^{pt},\qquad W(x,p) = \frac{B\sinh\sqrt{p/\kappa}x}{(p+\beta^2\kappa)\sinh\sqrt{p/\kappa}l}\mathrm{e}^{pt}
+\]
+则反演公式变为：
+\[
+u(x,t) = \sum_{n=1}^{\infty}\mathrm{res}(p_n) + \sum_{n=1}^{\infty}\mathrm{res}(p'_n)
+\]
+其中$p_n$为$V(x,p)$在全复平面内的孤立奇点，$p'_n$为$W(x,p)$在全复平面内的孤立奇点。则：
+\[
+V(x,p) = \frac{P(x,p)}{Q(x,p)},\qquad \frac{\partial Q(x,p)}{\partial p} = \sinh\sqrt{\dfrac{p}{\kappa}}l + \frac{(p+\alpha^2\kappa)l}{2\sqrt{p\kappa}}\cosh\sqrt{\dfrac{p}{\kappa}}l
+\]
+\[
+W(x,p) = \frac{P'(x,p)}{Q'(x,p)},\qquad \frac{\partial Q'(x,p)}{\partial p} = \sinh\sqrt{\dfrac{p}{\kappa}}l + \frac{(p+\beta^2\kappa)l}{2\sqrt{p\kappa}}\cosh\sqrt{\dfrac{p}{\kappa}}l
+\]
+且：
+\[
+\mathrm{res}(p_n) = \frac{P(x,p_n)}{\left.\dfrac{\partial Q(x,p)}{\partial p}\right|_{p = p_n}}\,\qquad \mathrm{res}(p'_n) = \frac{P'(x,p'_n)}{\left.\dfrac{\partial Q'(x,p)}{\partial p}\right|_{p = p'_n}}
+\]
+
+由$p+\alpha^2\kappa = 0$及$p+\beta^2\kappa = 0$可以得到两个特殊奇点：
+\[
+p_0 = -\alpha^2\kappa,\qquad p'_0 = -\beta^2\kappa
+\]
+其留数为：
+\[
+\mathrm{res}(p_0) = \frac{A\sinh\sqrt{p/\kappa}(l-x)}{\sinh\sqrt{p/\kappa}l}\mathrm{e}^{-\alpha^2\kappa t} = \frac{A\sin\alpha(l-x)}{\sin\alpha l}\mathrm{e}^{-\alpha^2\kappa t}
+\]
+\[
+\mathrm{res}(p'_0) = \frac{B\sin\sqrt{p/\kappa}x}{\sin\sqrt{p/\kappa}l}\mathrm{e}^{-\beta^2\kappa t} = \frac{B\sin\beta x}{\sin\beta l}\mathrm{e}^{-\beta^2\kappa t}
+\]
+由$\sinh\sqrt{\dfrac{p}{\kappa}}l = 0$得：（注意$p=0$为孤立奇点）
+\[
+\sqrt{\dfrac{p}{\kappa}}l = n\pi i,\qquad p_n = p'_n = -\frac{n^2\pi^2\kappa}{l^2},\qquad n \in \mathbb{N}^+
+\]
+其留数为：
+\begin{align*}
+\mathrm{res}(p_n)
+&= \frac{A\sinh(\dfrac{n\pi i}{l})(l-x)}{\dfrac{(p+\alpha^2\kappa)l}{2\sqrt{p\kappa}}\cosh(\dfrac{n\pi i}{l})l}\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t} \\
+&= 2n\pi\frac{A\sin(\dfrac{n\pi}{l})(l-x)}{(-1)^n\left[(\alpha l)^2-(n\pi)^2\right]}\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t} \\
+&= 2n\pi\frac{A\sin(\dfrac{n\pi}{l})x}{(\alpha l)^2-(n\pi)^2}\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t} \\
+\end{align*}
+\begin{align*}
+\mathrm{res}(p'_n)
+&= \frac{B\sinh(\dfrac{n\pi i}{l})x}{\dfrac{(p+\beta^2\kappa)l}{2\sqrt{p\kappa}}\cosh(\dfrac{n\pi i}{l})l}\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t} \\
+&= 2in\pi\frac{iB\sin(\dfrac{n\pi}{l})x}{(-1)^n\left[(\beta l)^2-(n\pi)^2\right]}\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t} \\
+&= -2n\pi(-1)^n\frac{B\sin(\dfrac{n\pi}{l})x}{(\beta l)^2-(n\pi)^2}\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t} \\
+\end{align*}
+
+则：
+\begin{align*}
+u(x,t)
+&= \frac{A}{\sin\alpha l}\sin\alpha(l-x)\mathrm{e}^{-\alpha^2\kappa t} + \frac{B}{\sin\beta l}\sin\beta x\mathrm{e}^{-\beta^2\kappa t} \\
+&\quad + \sum_{n=1}^{\infty}2n\pi\left[\frac{A}{(\alpha l)^2-(n\pi)^2} - \frac{(-1)^nB}{(\beta l)^2-(n\pi)^2}\right]\left(\sin\frac{n\pi}{l}x\right)\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^{2}\kappa t}
+\end{align*}
+
+\bigskip
+\item[5.]
+定义：
+\[
+\mathscr{F}^{2}f(m,k) = \frac{1}{2\pi}\iint\limits_{\mathbb{R}^2} f(x,y)\mathrm{e}^{-i(mx+ky)}\,\mathrm{d}x\mathrm{d}y
+\]
+其逆变换为：
+\[
+\mathscr{F}^{-2}f(m,k) = \frac{1}{2\pi}\iint\limits_{\mathbb{R}^2} f(x,y)\mathrm{e}^{i(mx+ky)}\,\mathrm{d}x\mathrm{d}y
+\]
+\[
+\mathscr{F}^{2}u(x,y,t) = U(m,k,t),\qquad \mathscr{F}^{2}\left\{\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right\} = -\left(m^2+k^2\right)U(m,k,t)
+\]
+\[
+\mathscr{F}^{2}\varPhi(x,y) = \varPhi(m,k),\qquad \mathscr{F}^{2}\psi(x,y) = \Psi(m,k)
+\]
+则原问题化为：
+\[
+\frac{\mathrm{d}^2U}{\mathrm{d}t^2} + a^2\left(k^2+m^2\right)U = 0,\qquad \left.U\right|_{t = 0} = \varPhi(m,k),\qquad \left.\frac{\mathrm{d}U}{\mathrm{d}t}\right|_{t = 0} = \varPhi(m,k)
+\]
+解得：
+\[
+U(m,k,t) = \varPhi(m,k)\cos\left(a\sqrt{m^2+k^2}t\right) + \frac{\Psi(m,k)}{a\sqrt{m^2+k^2}}\sin\left(a\sqrt{m^2+k^2}t\right)
+\]
+设：
+\[
+h(x,y,t) = \mathscr{F}^{-2}\left[\frac{\sin\left(a\sqrt{m^2+k^2}t\right)}{a\sqrt{m^2+k^2}}\right]
+\]
+则由Fourier变换的卷积定理：
+\[
+U(k,m,t) = V(k,m,t) + W(x,y,t) = \mathscr{F}^{2}\psi(x,y)\mathscr{F}^{2}h(x,y,t) + \frac{\partial}{\partial t}\left[\mathscr{F}^{2}\varPhi(x,y)\mathscr{F}^{2}h(x,y,t)\right]
+\]
+对第一项做反演：
+\[
+v(x,y,t) = \frac{1}{2\pi}\iint\limits_{\mathbb{R}^2}\psi(x',y')\left\{\frac{1}{2\pi}\iint\limits_{\mathbb{R}^2}\frac{\sin{a\lambda t}}{a\lambda}\mathrm{e}^{i\left[m(x-x')+k(y-y')\right]}\mathrm{d}m\mathrm{d}k\right\}\mathrm{d}x'\mathrm{d}y'
+\]
+其中$\lambda = \sqrt{m^2+k^2}$。
+
+换为极坐标得：
+\[
+v(x,y,t) = \frac{1}{2\pi}\iint\limits_{\mathbb{R}^2}\psi(x',y')\left\{\frac{1}{2\pi}\iint\limits_{\mathbb{R}^2}\frac{\sin{a\lambda t}}{a\lambda}\mathrm{e}^{i\lambda r\cos(\theta-\varPhi)}\lambda\mathrm{d}\lambda\mathrm{d}\theta\right\}\mathrm{d}x'\mathrm{d}y'
+\]
+其中$r = \sqrt{(x-x')^2+(y-y')^2}$。
+\[
+\frac{\sin{a\lambda t}}{a} = \lambda t \cdot \frac{\sin{a\lambda t}}{a\lambda t} = \lambda t\cdot \sqrt{\frac{\pi}{2a\lambda t}}\mathrm{J}_{\frac{1}{2}}(a\lambda t)
+\]
+\[
+\mathrm{e}^{i\lambda r\cos(\theta-\varPhi)} = \sum_{n=0}^{\infty}\mathrm{J}_{n}(\lambda r)\mathrm{e}^{in(\theta-\varPhi)}
+\]
+由以下公式：
+\[
+\int_{0}^{\infty}t^{1-\mu+\nu}\mathrm{J}_{\mu}(at)\mathrm{J}_{\nu}(bt)\,\mathrm{d}t = \frac{b^\nu(a^2-b^2)^{\mu-\nu-1}}{2^{\mu-\nu+1}a^{\mu}\Gamma(\mu-\nu)}\eta(a-b)
+\]
+取$\mu=\dfrac{1}{2}$，$\nu=0$，得：
+\begin{align*}
+&\quad \iint\limits_{\mathbb{R}^2}\frac{\sin{a\lambda t}}{a\lambda}\mathrm{e}^{i\lambda r\cos(\theta-\varPhi)}\lambda\mathrm{d}\lambda\mathrm{d}\theta \\
+&= \iint\limits_{\mathbb{R}^2}\lambda t\cdot \sqrt{\frac{\pi}{2a\lambda t}}\mathrm{J}_{\frac{1}{2}}(a\lambda t)\sum_{n=0}^{\infty}\mathrm{J}_{n}(\lambda r)\mathrm{e}^{in(\theta-\varPhi)}\,\mathrm{d}\lambda\mathrm{d}\theta \\
+&= \int_{0}^{\infty}2\pi\cdot \sqrt{\frac{\pi\lambda t}{2a}}\mathrm{J}_{\frac{1}{2}}(a\lambda t)\mathrm{J}_{0}(\lambda r)\,\mathrm{d}\lambda \\
+&= 2\pi\cdot \sqrt{\frac{\pi t}{2a}}\int_{0}^{\infty}\lambda^{\frac{1}{2}}\mathrm{J}_{\frac{1}{2}}(\lambda at)\mathrm{J}_{0}(\lambda r)\,\mathrm{d}\lambda \\
+&= 2\pi\cdot \frac{\eta(at-r)}{a\sqrt{(at)^2-r^2}}
+\end{align*}
+故：
+\[
+v(x,y,t) = \frac{1}{2\pi a}\iint\limits_{\mathbb{R}^2}\psi(x',y')\frac{\eta(at-r)}{\sqrt{(at)^2-r^2}}\mathrm{d}x'\mathrm{d}y' = \frac{1}{2\pi a}\iint\limits_{S}\frac{\psi(x',y')}{\sqrt{(at)^2-r^2}}\mathrm{d}x'\mathrm{d}y'
+\]
+其中$S$为以$(x,y)$为圆心，$at$为半径的圆域。
+
+同理可得：
+\[
+w(x,y,t) = \frac{\partial}{\partial t}\left[\frac{1}{2\pi a}\iint\limits_{S}\frac{\psi(x',y')}{\sqrt{(at)^2-r^2}}\mathrm{d}x'\mathrm{d}y'\right]
+\]
+综上：
+\[
+u(x,y,t) = \frac{1}{2\pi a}\left[\iint\limits_{S}\frac{\psi(x',y')}{\sqrt{(at)^2-r^2}}\mathrm{d}x'\mathrm{d}y' + \frac{\partial}{\partial t}\iint\limits_{S}\frac{\psi(x',y')}{\sqrt{(at)^2-r^2}}\mathrm{d}x'\mathrm{d}y'\right]
+\]
+
+\end{itemize}
+
+\newpage
+\section*{第二十章}
+\bigskip
+
+\begin{itemize}
+
+\item[1.]
+由Green第二公式，考虑：
+\[
+\iiint\limits_V(\varPhi\nabla^2\varPhi' - \varPhi'\nabla^2\varPhi)\,\mathrm{d}V = \iint\limits_\varSigma(\varPhi\nabla\varPhi' - \varPhi'\nabla\varPhi)\cdot\mathrm{d}\bm{\varSigma}
+\]
+由静电场的Coulomb定理和Gauss定理得：
+\[
+\nabla^2\varPhi = -\frac{\rho}{\varepsilon_0},\qquad \nabla^2\varPhi' = -\frac{\rho'}{\varepsilon_0}
+\]
+\[
+\nabla\varPhi = -\bm{E} = -\frac{\sigma}{\varepsilon_0}\bm{n},\qquad \nabla\varPhi' = -\bm{E'} = -\frac{\sigma'}{\varepsilon_0}\bm{n}
+\]
+代入得：
+\[
+-\frac{1}{\varepsilon_0}\iiint\limits_V(\varPhi'\rho-\varPhi\rho')\,\mathrm{d}V = -\frac{1}{\varepsilon_0}\iint\limits_\varSigma(\varPhi\sigma'-\varPhi'\sigma)\,\mathrm{d}\varSigma
+\]
+整理即得：
+\[
+\iiint\limits_V\rho\varPhi'\,\mathrm{d}V + \iint\limits_\varSigma\sigma\varPhi'\,\mathrm{d}\varSigma = \iiint\limits_V\rho'\varPhi\,\mathrm{d}V + \iint\limits_\varSigma\sigma'\varPhi\,\mathrm{d}\varSigma
+\]
+原命题得证。
+
+\end{itemize}
+\end{document}

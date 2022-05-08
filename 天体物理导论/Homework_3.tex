@@ -1,0 +1,164 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+    \title{\textbf{天体物理导论作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2021年4月20日}
+    \maketitle
+
+    \section*{第六章}
+
+    \begin{itemize}
+
+        \item[1.]
+        推导$r_{\mathrm{co}}$如下：
+        
+        由Kepler第三定律得：
+        \[
+        \frac{r_{\mathrm{co}}^3}{P^2} = \frac{GM}{4\pi^2}
+        \]
+        整理得：
+        \[
+        r_{\mathrm{co}} = \left(\frac{GM}{4\pi^2}\right)^{\tfrac{1}{3}}P^{\tfrac{2}{3}}
+        \]
+        推导$r_{\mathrm{m}}$如下：
+        
+        由于磁偶极子产生磁场的磁感应强度分布$B \sim \mu r^{-3}$，取$\mu = BR^3$，其中$B$为中子星表面磁场，则$r = r_{\mathrm{m}}$处磁感应强度为：
+        \[
+        B_{r_{\mathrm{m}}} = \frac{BR^3}{r_{\mathrm{m}}^3}
+        \]
+        由粒子的动能密度与磁能密度相等得：
+        \[
+        \frac{B_{r_{\mathrm{m}}}^2}{8\pi} = \frac{1}{2}\rho v^2
+        \]
+        假设粒子在到达$r_{\mathrm{m}}$前近似自由落体，则有：
+        \[
+        v = \sqrt{\frac{2GM}{r_{\mathrm{m}}^2}}
+        \]
+        又因为：
+        \[
+        \dot{M} = 4\pi r_{\mathrm{m}}^2\rho v
+        \]
+        则有：
+        \[
+        \frac{B_{r_{\mathrm{m}}}^2}{8\pi} = \frac{1}{2}v^2\cdot\frac{\dot{M}}{4\pi r_{\mathrm{m}}^2 v} = \frac{\dot{M}v}{8\pi r_{\mathrm{m}}^2}
+        \]
+        即：
+        \[
+        B_{r_{\mathrm{m}}}^2 = \frac{\dot{M}\sqrt{2GM}}{r_{\mathrm{m}}^2\sqrt{r_{\mathrm{m}}}}
+        \]
+        整理得：
+        \[
+        r_{\mathrm{m}}^{-\tfrac{5}{2}} = \frac{B_{r_{\mathrm{m}}}^2}{\dot{M}\sqrt{2GM}}
+        \]
+        代入$B_{r_{\mathrm{m}}}$，即得：
+        \[
+        r_{\mathrm{m}}^{\tfrac{7}{2}} = \frac{R^6 B^2}{\dot{M}\sqrt{2GM}}
+        \]
+        故磁层半径为：
+        \[
+        r_{\mathrm{m}} = \left({\frac{R^6 B^2}{\dot{M}\sqrt{2GM}}}\right)^{\tfrac{2}{7}}
+        \]
+
+        \item[3.]
+        大规模吸积发生的必要条件一般为：$R<r_{\mathrm{m}}<r_{\mathrm{co}}<r_{\mathrm{L}}$，具体上需要满足：$r_{\mathrm{m}}<r_{\mathrm{br}}<r_{\mathrm{co}}$，即：
+        \[
+        \omega_{\mathrm{s}} = \left(\frac{r_{\mathrm{m}}}{r_{\mathrm{co}}}\right)^{\tfrac{3}{2}} < \omega_{\mathrm{c}} = 0.35
+        \]
+        其中：
+        \[
+        r_{\mathrm{m}} = \left({\frac{R^6 B^2}{\dot{M}\sqrt{2GM}}}\right)^{\tfrac{2}{7}},\qquad
+        \dot{M} = \pi R_{\mathrm{a}}^2 V\rho,\qquad
+        R_{\mathrm{a}} = \frac{GM}{V^2}
+        \]
+        代入数据可以计算出：
+        \[
+        r_{\mathrm{m}} = 1.4310\times10^{11}\,\mathrm{cm}
+        \]
+        而：
+        \[
+        r_{\mathrm{co}} = \left(\frac{GM}{4\pi^2}\right)^{\tfrac{1}{3}}P^{\tfrac{2}{3}} = CP^{\tfrac{2}{3}}
+        \]
+        代入数据计算得：
+        \[
+        C = 1.8337\times10^{12}\,\mathrm{cm \cdot s^{-\tfrac{1}{3}}}
+        \]
+        则有：
+        \[
+        P > \frac{r_{\mathrm{m}}^{\tfrac{3}{2}}}{\omega_{\mathrm{c}}C^{\tfrac{3}{2}}} = 8.4345\times10^{4}\,\mathrm{s}
+        \]
+
+        \item[\textbf{补充题}]
+        不是。因为暗物质粒子之间的相互作用极弱，在下落过程中无法达到热平衡，因而无法定义温度；而Bondi吸积需要气体达到热平衡。实际上暗物质粒子的下落过程可以近似用双曲轨道描述，只有靠近黑洞视界的粒子才可能被吸积。对于Schwarzschild黑洞可以用Schwarzschild半径作为吸积半径，Kerr黑洞的吸积率更加复杂，但都不是Bondi吸积率。
+
+    \end{itemize}
+
+    \section*{第七章}
+
+    \begin{itemize}
+
+        \item[\textbf{补充题}]
+        推导极端相对论性理想气体状态方程如下：
+
+        在气体中任取一面元$\Delta S$，并取$x$方向沿其法线方向。考虑速度为$\bm{v_i}$的粒子，设其数密度为$n_i$。在$\Delta t$时间内，只有处于以$\Delta S$为底，以$\bm{v_i}\cdot{\bm{x}}\Delta t$为高的柱体内的粒子才能与$\Delta S$相碰。这里显然要求$\bm{v_i}\cdot\bm{x} > 0$，记该组粒子的数密度为$n_i^+$，则该柱体中的粒子数为：
+        \[
+        N_i = n_i^+\Delta S(\bm{v_i}\cdot{\bm{x}})\Delta t
+        \]
+        传递的动量为：
+        \[
+        \Delta\bm{p_i} = N_i\cdot(2\bm{p_i}\cdot\bm{x}) = 2n_i^+\Delta S(\bm{v_i}\cdot{\bm{x}})\Delta t(\bm{p_i}\cdot\bm{x})\hat{x}
+        \]
+        由于气体分子速度分布各向同性，$n_i^+ = n_i^-$，即$2n_i^+ = n_i$，于是有：
+        \[
+        \Delta\bm{p_i} = n_i\Delta S(\bm{v_i}\cdot{\bm{x}})\Delta t(\bm{p_i}\cdot\bm{x})\hat{x}
+        \]
+        施加的压强为：
+        \[
+        P_i = \frac{\Delta\bm{p_i}}{\Delta t\Delta S} = n_i(\bm{v_i}\cdot{\bm{x}})(\bm{p_i}\cdot\bm{x})
+        \]
+        总压强为：
+        \begin{align*}
+            P
+            &= \sum_i P_i \\
+            &= \sum_i n_i(\bm{v_i}\cdot{\bm{x}})(\bm{p_i}\cdot\bm{x}) \\
+            &= n\sum_i \frac{n_i(\bm{v_i}\cdot{\bm{x}})(\bm{p_i}\cdot\bm{x})}{n} \\
+            &= n\overline{\bm{p_x}\cdot\bm{v_x}}
+        \end{align*}
+        由于粒子热运动各向同性，$\overline{\bm{p_x}\cdot\bm{v_x}} = \overline{\bm{p_y}\cdot\bm{v_y}} = \overline{\bm{p_z}\cdot\bm{v_z}}$，则$\overline{\bm{p}\cdot\bm{v}} = 3\overline{\bm{p_x}\cdot\bm{v_x}}$，即有：
+        \[
+        P = \frac{1}{3}n\overline{\bm{p}\cdot\bm{v}}
+        \]
+        对于极端相对论性理想气体，$v \approx c$，$p \approx mc$，单个粒子的动能$\varepsilon_\mathrm{k} \approx mc^2$，则：
+        \[
+        P = \frac{1}{3}n\overline{mv^2} = \frac{1}{3}nmc^2 = \frac{1}{3}n\varepsilon_\mathrm{k}
+        \]
+        记粒子的能量密度$\rho = n\varepsilon_\mathrm{k}$，即有：
+        \[
+        P = \frac{1}{3}\rho
+        \]
+
+    \end{itemize}
+
+\end{document}

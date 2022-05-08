@@ -1,0 +1,273 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,caption,subcaption}
+\captionsetup{font=small}
+\captionsetup[sub]{font=tiny}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+    \title{\textbf{实验三十五\ \ 阿贝成像原理与空间滤波}}
+    \author{1900011604 张植竣}
+    \date{2021年4月3日}
+
+    \maketitle
+
+    \section*{1\ \  实验现象描述与解释}
+
+    \subsection*{1.1\ \ 一维光栅衍射}
+
+    \textbf{测量一维光栅的像面空间频率}
+
+    \begin{minipage}{0.63\textwidth}
+        测量20级条纹的宽度，为$88.0\,\mathrm{mm}$。
+
+        取平均值，测得像面空间频率为：
+        \[
+        f = \frac{N}{l} = \frac{20}{88.0} = 0.22727\,\mathrm{mm^{-1}}
+        \]
+        直尺的最小分度为$1\,\mathrm{mm}$，允差为$\pm0.1\,\mathrm{mm}$，估计由条纹边缘不够锐利及人眼估读引起的误差为$\pm0.2\,\mathrm{mm}$。则估计误差为：
+        \[
+        \sigma_l = \sqrt{0.1^2 + 0.2^2}\,\mathrm{mm} = 0.2236\,\mathrm{mm}
+        \]
+        则像面空间频率的不确定度为：
+        \[
+        \sigma_f = f\frac{\sigma_l}{l} = 0.0005775\,\mathrm{mm^{-1}}
+        \]
+        故像面空间频率表示为：
+        \[
+        f = (0.2273 \pm 0.0006)\,\mathrm{mm^{-1}}
+        \]
+        平均每级条纹宽度约为$4.4\,\mathrm{mm}$。其中暗条纹宽度约为$1.4\,\mathrm{mm}$，亮条纹宽度约为$3.0\,\mathrm{mm}$。
+    \end{minipage}
+    \begin{minipage}{0.1\textwidth}
+        \hspace{0em}
+    \end{minipage}
+    \begin{minipage}{0.2\textwidth}
+        \centering
+        \includegraphics[width = 1\textwidth]{1.jpg}
+        \captionof{figure}{通过全部衍射点}
+    \end{minipage}
+
+    \textbf{在频谱面放上可调狭缝及其他附加光阑进行空间滤波，记录像面特点及条纹间距，并解释之}
+
+    \begin{itemize}
+        \item 通过全部衍射点：纵向条纹，空间频率为$(0.22727 \pm 0.00006)\,\mathrm{mm^{-1}}$。
+        \item 只通过0级衍射点：近乎均匀的红色亮斑。这是因为只有一个次波源，空间频率为0，不发生衍射，相当于一个点光源成像的结果。
+        \item 只通过0，$\pm$1级衍射点：图像亮暗不反转，空间频率不变，但清晰度降低。这是由于高频信号被遮挡导致小尺度的细节没有体现在像面上。
+        \item 通过除$\pm$1级外的衍射点：空间频率变为原来的2倍，清晰度降低。因为$\pm$1级衍射斑被遮挡后，基频变为$\pm$2级衍射斑的空间频率，即原来的两倍。
+        \item 通过除0级外的衍射点：图像亮暗反转，空间频率不变，亮条纹宽度约为$1.4\,\mathrm{mm}$，暗条纹宽度约为$3.0\,\mathrm{mm}$，但亮暗对比没有原来强烈。这是因为0级衍射斑被遮挡后，空间频率为0的成分（即占光强极大的成分）丢失。
+    \end{itemize}
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{2.jpg}
+            \subcaption{通过除0级外的衍射点}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{3.jpg}
+            \subcaption{通过除$\pm$1级外的衍射点}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{4.jpg}
+            \subcaption{只通过0级衍射点}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{5.jpg}
+            \subcaption{只通过0，$\pm$1级衍射点}
+        \end{subfigure}
+        \caption{一维光栅衍射}
+    \end{figure}
+
+    \subsection*{1.2\ \ 二维光栅衍射}
+
+    \textbf{测量二维光栅衍射的像面网格间距}
+
+    测量20级网格的宽度，为$88.3\,\mathrm{mm}$。
+
+    取平均值，测得像面网格间距为：
+    \[
+    f = \frac{N}{l} = \frac{20}{88.3} = 0.22650\,\mathrm{mm^{-1}}
+    \]
+    直尺的最小分度为$1\,\mathrm{mm}$，允差为$\pm0.1\,\mathrm{mm}$，估计由条纹边缘不够锐利及人眼估读引起的误差为$\pm0.2\,\mathrm{mm}$。则估计误差为：
+    \[
+    \sigma_l = \sqrt{0.1^2 + 0.2^2}\,\mathrm{mm} = 0.2236\,\mathrm{mm}
+    \]
+    则像面网格间距的不确定度为：
+    \[
+    \sigma_f = f\frac{\sigma_l}{l} = 0.0005736\,\mathrm{mm^{-1}}
+    \]
+    故像面网格间距表示为：
+    \[
+    f = (0.2265 \pm 0.0006)\,\mathrm{mm^{-1}}
+    \]
+
+    \textbf{在频谱面上利用小孔及不同取向的狭缝光阑进行空间滤波，观察并记录像面变化，测量像面条纹间距，并解释之}
+
+    \begin{itemize}
+        \item 通过全部衍射点：方形网格纹路，像面网格间距为$(0.22650 \pm 0.00006)\,\mathrm{mm^{-1}}$。
+        \item 只通过中央衍射点：几乎均匀的红色亮斑，中间有非常细密的方格纹路。红色亮斑是因为只有一个次波源，空间频率为0，不发生衍射，相当于一个点光源成像的结果；细密的网格纹路是因为光阑宽度有限，部分高频信号从光阑外射出没有被遮挡。
+        \item 横向狭缝光阑：纵向条纹，像面空间频率不变，仍为$(0.22650 \pm 0.00006)\,\mathrm{mm^{-1}}$。这是因为横向狭缝只允许二维光栅的横向成分通过，相当于横向一维光栅，而横向光栅的成像即为纵向条纹。
+        \item 纵向狭缝光阑：横向条纹，像面空间频率不变，仍为$(0.22650 \pm 0.00006)\,\mathrm{mm^{-1}}$。这是因为纵向狭缝只允许二维光栅的纵向成分通过，相当于纵向一维光栅，而纵向光栅的成像即为纵向条纹。
+        \item $45^\circ$方向的狭缝光阑：与之成$90^\circ$的另一个$45^\circ$方向的条纹，20级条纹宽度测量为$62.2\,\mathrm{mm}$，即空间频率为$(0.32154 \pm 0.00006)\,\mathrm{mm^{-1}}$大约变为原来的$1.4196 \approx \sqrt{2}$倍。这是因为纵向狭缝只允许二维光栅的对角线方向成分通过，相当于对角线方向空间频率为原来$\dfrac{1}{\sqrt{2}}$的一维光栅，成像条纹的空间频率即为原来的$\sqrt{2}$倍。
+    \end{itemize}
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{6.jpg}
+            \subcaption{通过全部衍射点}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{7.jpg}
+            \subcaption{只通过中央衍射点}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{8.jpg}
+            \subcaption{通过中央衍射点时的方格纹路}
+        \end{subfigure}
+        \caption{二维光栅衍射}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{9.jpg}
+            \subcaption{横向狭缝光阑}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{10.jpg}
+            \subcaption{纵向狭缝光阑}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{11.jpg}
+            \subcaption{$45^\circ$方向的狭缝光阑}
+        \end{subfigure}
+        \caption{二维光栅衍射}
+    \end{figure}
+
+    \subsection*{1.3\ \ 高低通滤波实验}
+
+    \textbf{将光栅和光字叠在一起进行高低通滤波实验，观察并记录其频谱面如何分布}
+
+    频谱面分布是二维点阵，屏上是清晰的“光”字像，像中有方格纹路。“光”字和二维光栅卷积，每一个光栅的衍射光点处有一个“光”字的像，叠加成一个有网格的“光”字像。
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{12.jpg}
+            \subcaption{“光”字像}
+        \end{subfigure}{\tiny}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{13.jpg}
+            \subcaption{每一个衍射光点处有一个“光”字}
+        \end{subfigure}
+        \caption{光}
+    \end{figure}
+
+
+    \textbf{利用$\phi=1\,\mathrm{mm}$和$\phi=0.3\,\mathrm{mm}$的圆孔光阑进行滤波，记录像面变化，并解释之。}
+
+    \begin{itemize}
+        \item 利用$\phi=1\,\mathrm{mm}$的圆孔光阑进行滤波时，“光”字变模糊，方格花纹消失。这是因为圆孔光阑只允许二维光栅的中央衍射点（空间频率为0）和“光”字连续谱的低频成分通过，而高频的细节成分被过滤掉。
+        \item 利用$\phi=0.3\,\mathrm{mm}$的圆孔光阑进行滤波时，“光”字更加模糊，方格花纹消失，像的周边有一些不规则的亮斑。这是因为圆孔光阑只允许二维光栅的中央衍射点（空间频率为0）和“光”字连续谱的更低频成分通过，而高频的细节成分被过滤掉得更多，不规则亮斑反映了光阑的边缘粗糙且光阑有一定厚度，不是理想小孔光阑。
+    \end{itemize}
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{14.jpg}
+            \subcaption{圆孔光阑：$\phi$=1mm}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{15.jpg}
+            \subcaption{圆孔光阑：$\phi$=0.3mm}
+        \end{subfigure}
+        \caption{高低通滤波实验}
+    \end{figure}
+
+    \textbf{将频谱面上光阑平移，使不在光轴上的一个衍射点通过光阑，观察并记录像面变化，并解释之}
+
+    像面变暗，“光”字像中仍有方格纹路。这是因为通过的光强变小，但二维光栅通过的成分空间频率不为0，所以仍有方格出现。
+
+    \subsection*{1.4\ \ 将衍射物换成十字板，在频谱面上放一圆屏光阑滤去频谱中心部分，观察并记录像面变化，并解释之}
+
+    \begin{itemize}
+    \item 放置光阑之前，看到的是较为均匀的十字像，中间偏亮，边缘偏暗；
+    \item 放置光阑之后，看到的是空心十字像，边缘亮而锐利，中间暗，中间不规则的亮斑对应十字板上面的灰尘、污渍。
+    \end{itemize}
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{16.jpg}
+            \subcaption{十字：不挡}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{17.jpg}
+            \subcaption{十字：挡中间}
+        \end{subfigure}
+        \caption{十字}
+    \end{figure}
+
+    \subsection*{1.5\ \ 用激光束分别照射$f_1 = 20\,\mathrm{mm^{-1}}$和$f_2 = 200\,\mathrm{mm^{-1}}$的两个正交光栅，观察各自的频谱分布并记录之。将两光栅重叠，观察并记录频谱特点。先后转动两光栅之一，观察并记录频谱面上的变化，并解释之}
+
+    \begin{itemize}
+        \item 两个光栅的频谱分布均为方格纹路，光栅的空间频率较大（即更密）者像的空间频率较小（更稀疏）。
+        \item 将两光栅重叠，频谱为空间频率较小的方格纹路的每一点都有一个以之为中心的光栅频率较大的方格纹路。较高级次的衍射点因光强太低难以看清，更倾向于多个十字网格呈十字形分布。
+    \end{itemize}
+
+    \section*{2\ \  收获与感想}
+
+    \subsection*{阿贝成像原理}
+
+    成像的步骤本质上就是两次Fourier变换。低频信息主要反映了物的大致分布，高频信息主要反映了物的细节。由于透镜的孔径是有限的，总有一部分衍射角度较大的高次成分（高频信息），不能进入到物镜而被丢失了。如果高频信息受到了孔径的限制而不能到达像平面，则无论显微镜有多大的放大倍数，也不可能在像平面上显示出这些高频信息所反映的细节。
+
+    \subsection*{将带有光栅的物准确成像}
+
+    将带有光栅的物准确成像时，需要在物的前面放置一块毛玻璃，使光变为非相干光，像面上光栅的结构模糊，再微调光屏的位置使得带光栅的像或者像轮廓清晰。毛玻璃的作用是消除光栅自成像效应，以便准确判定物的几何光学成像位置。成像位置确定后，拿掉毛玻璃，用光屏接收像。
+
+    \subsection*{确定频谱面位置}
+
+    去掉物，用毛玻璃在成像透镜的后焦面附近移动，当毛玻璃散射产生的散斑达到最大限度时，照在毛玻璃上的光斑最小，此毛玻璃所在平面就是频谱面。
+
+\end{document}

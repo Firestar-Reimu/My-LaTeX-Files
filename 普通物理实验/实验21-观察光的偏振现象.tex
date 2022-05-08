@@ -1,0 +1,381 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{bm}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}
+
+\title{\textbf{实验二十一\ \ 观察光的偏振现象}}
+\author{1900011604 张植竣}
+\date{2020年11月24日}
+
+\maketitle
+
+\section*{1\ \  实验数据与数据处理}
+
+\subsection*{1.1\ \ 用偏振光镜验证布儒斯特定律}
+
+\begin{minipage}{0.6\linewidth}\linespread{2.0}\selectfont
+    \textbf{偏振光镜构造如图所示，玻璃片P可绕水平轴$\boldsymbol{y'}$转动，玻璃片堆A可分别绕水平轴$\boldsymbol{y}$及竖直轴$\boldsymbol{z}$转动，相应转角可由刻度盘（未画出）读出。平台T上可放置待观察的样品。Q是一环形平台。}
+
+    \textbf{调节P使之与$\boldsymbol{z}$轴成$\boldsymbol{33^\circ}$角。改变激光管S的仰角并移动S的位置，使光通过T和Q的中心，沿$\boldsymbol{z}$轴投射于A。使光以布儒斯特角$\boldsymbol{57^\circ}$入射于P，其反射光为线偏振光。在此基础上进行下面实验。}
+\end{minipage}
+\begin{minipage}{0.36\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{1.png}
+    \end{center}
+\end{minipage}
+\bigskip
+
+\textbf{(1).先使A$\hspace{0.5em}\boldsymbol{/}\hspace{-0.8em}\boldsymbol{/}\hspace{0.5em}$P，绕$\boldsymbol{z}$轴转A，观察A的反射光的强度变化，并简要解释之。}
+
+A绕$z$轴转$360^\circ$时，反射光光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，相互之间约隔$90^\circ$。光强达到极小值时对应的角度约为$8^\circ$、$188^\circ$。这是因为激光以玻璃的布儒斯特角入射时，p光强反射率降为0,此时从玻璃片P处反射的光只有s光（振动方向垂直于纸面）。而玻璃片堆A的作用与偏振片类似，当A平面与P平面平行，再转过$90^\circ$时，照射过来的激光相对于A是p光，透射光（振动方向垂直于纸面）光强达到最大值，反射光光强达到最小值。
+
+\bigskip
+\textbf{(2).同(1)，但观察透射光的强度变化，并予以解释。}
+
+A绕$z$轴转$360^\circ$时，透射光光强也经历“极大$\to$极小$\to$极大$\to$极小”的过程，相互之间约隔$90^\circ$，光强达到极小值时对应的角度为$89^\circ$、$269^\circ$。且相位与反射光变化差大约$81^\circ$。而玻璃片堆A的作用与偏振片类似，当A平面与P平面平行时，照射过来的激光相对于A是s光，透射光（振动方向垂直于纸面）光强达到最小值，反射光光强达到最大值。下图展示了角度约为$269^\circ$时各光束的偏振情况。
+
+\begin{center}
+    \includegraphics[width = 0.4\linewidth]{2.png}
+\end{center}
+
+\bigskip
+\textbf{(3).将A绕$\boldsymbol{z}$轴转至反射光消光位置，然后将A绕$\boldsymbol{y}$轴转动，观察反射光的强度变化。}
+
+随$\beta$增加时，反射光强度先变小后变大，且反射光在$\beta_0=56^\circ$达到最小。注意到玻璃的布儒斯特角$\theta_B = 57^\circ$，而$\beta_0 \approx \theta_B$。实际上A转至反射光消光位置时，照射过来的激光相对于A是p光，实验现象表明p光反射率$R_{\mathrm{p}}$随入射角先下降直至为零再上升，入射角等于布儒斯特角$\theta_B$时$R_{\mathrm{p}}=0$。
+
+\bigskip
+\textbf{(4).同(3)，但观察透射光的强度变化。}
+
+没有明显变化。理论上光强反射率与透射率之和为100\%，A转至反射光消光位置时，照射过来的激光相对于A是p光，由(3)的结论知透射光的强度应先增强再减弱。可能是由于人眼对光强是对数相应，光强的对数变化太小（即数量级改变不大）以至于人眼觉察不出来。
+
+\bigskip
+\textbf{(5).利用P的反射光确定一偏振片的透光方向或用已知透光方向的偏振片确认P的反射光为线偏振光。}
+
+将偏振片放置在平台T上，使P的反射光正入射于偏振片。旋转偏振片时发生两次消光，此时偏振片的透光方向与入射光（s光）垂直，即与P的法线方向共面。
+
+\newpage
+\subsection*{1.2\ \ 观察双折射现象}
+
+\textbf{(1).以小灯照明铝板上的小孔，孔上放方解石块\uppercase\expandafter{\romannumeral1}（负单轴晶体）。通过它观看小孔，转动方解石。记录所见现象并加以思考。}
+
+出现两个小孔的像，转动方解石的时候其中一个像的位置不变，另一个像的位置同向转动。这是因为光通过方解石后分成两束光：寻常光（o光）和非寻常光（e光），o光的传播具有各向同性，其传播速度与方向角无关，波面为球面；e光的传播具有各向异性，其传播速度与方向角有关且一般不与o光传播速度相同，波面为旋转椭球面。
+
+\vspace{1em}
+\begin{minipage}{0.32\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{double_rotate_1.jpg}
+    \end{center}
+\end{minipage}
+\begin{minipage}{0.32\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{double_rotate_2.jpg}
+    \end{center}
+\end{minipage}
+\begin{minipage}{0.32\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{double_rotate_3.jpg}
+    \end{center}
+\end{minipage}
+
+\vspace{1em}
+\begin{minipage}{0.32\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{double_rotate_dark_1.jpg}
+    \end{center}
+\end{minipage}
+\begin{minipage}{0.32\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{double_rotate_dark_2.jpg}
+    \end{center}
+\end{minipage}
+\begin{minipage}{0.32\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{double_rotate_dark_3.jpg}
+    \end{center}
+\end{minipage}
+
+\bigskip
+\textbf{(2).将方解石块\uppercase\expandafter{\romannumeral2}放在小孔上（磨面压小孔），作同样的观察。}
+
+只出现一个小孔的像，且转动方解石的时候像的位置不变。这是因为晶体内部存在一个特殊的方向，称之为晶体的光轴。光沿这个方向o光与e光速度相同，不发生双折射。
+
+\vspace{1em}
+\begin{minipage}{0.48\linewidth}
+    \begin{flushright}
+        \includegraphics[width = 0.8\linewidth]{optic_axis_1.jpg}
+        \hspace{1em}
+    \end{flushright}
+\end{minipage}
+\begin{minipage}{0.48\linewidth}
+    \begin{flushleft}
+        \hspace{1em}
+        \includegraphics[width = 0.8\linewidth]{optic_axis_2.jpg}
+    \end{flushleft}
+\end{minipage}
+
+\bigskip
+\textbf{(3).利用一透光方向已知的偏振片。判断寻常光与非寻常光电矢量的振动方向，记录并解释之。}
+
+转动偏振片$360^\circ$中，寻常光消失两次，非寻常光消失两次，且偏振片的角度位置相差约$90^\circ$。若适当选取坐标系，可以归纳为如下表格：
+
+\vspace{0.5em}
+\begin{table}[ht!]\linespread{1.2}\selectfont
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c| }
+        \hline
+        $\theta$ & $0^\circ$ & $90^\circ$ & $180^\circ$ & $360^\circ$ \\
+        \hline
+        寻常光光强 & 极大 & 极小（消光） & 极大 & 极小（消光） \\
+        \hline
+        非寻常光光强 & 极小（消光） & 极大 & 极小（消光）& 极大 \\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}\vspace{-0.5em}
+
+说明寻常光和非寻常光都是线偏振光，且振动方向相互正交。
+
+\vspace{1em}
+\begin{minipage}{0.48\linewidth}
+    \begin{flushright}
+        \includegraphics[width = 0.8\linewidth]{disappear_o.jpg}
+        \hspace{1em}
+    \end{flushright}
+\end{minipage}
+\begin{minipage}{0.48\linewidth}
+    \begin{flushleft}
+        \hspace{1em}
+        \includegraphics[width = 0.8\linewidth]{disappear_e.jpg}
+    \end{flushleft}
+\end{minipage}
+
+\newpage
+{
+\linespread{1.8}\selectfont
+\subsection*{1.3\ \ 观察线偏振光通过$\boldsymbol{\dfrac{\lambda}{2}}$片后的现象}
+
+\textbf{(1).了解偏振片P、A的作用。在观察者与光源S之间，放入偏振片P，旋转P，看透射光的强度有无变化。再放上检偏器A，转A，观察光透过A的强度怎样变化。}
+\vspace{1em}
+
+\begin{minipage}{0.6\linewidth}
+    旋转偏振片P时，透射光的强度没有明显变化。再放上检偏器A，将A转$360^\circ$时，透射光光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，相互之间约隔$90^\circ$。光强达到极小值时可以认为发生消光（如右图），对应的角度为$\theta_P = 201^\circ$、$\theta_A = 281^\circ$或$101^\circ$。这个装置中偏振片P是起偏器，将入射的自然光变为线偏振光。由于自然光没有优势振动方向，旋转P不改变线偏振光的强度。偏振片A是检偏器，当偏振片P产生的线偏振光振动方向与偏振片A的透振方向相互垂直时，线偏振光被强烈吸收，产生消光现象。
+\end{minipage}
+\begin{minipage}{0.36\linewidth}
+    \begin{center}
+        \includegraphics[width = 0.85\linewidth]{extinction.jpg}
+    \end{center}
+\end{minipage}
+
+\bigskip
+\textbf{(2).固定P的透光方向\footnote{原文为：“使P的透光方向竖直”，而这个要求并不必要，下同。}，转A达到消光。在P、A间插入$\boldsymbol{\dfrac{\lambda}{2}}$片，将$\boldsymbol{\dfrac{\lambda}{2}}$片转动$\boldsymbol{360^\circ}$，能看到几次消光，试加以解释。}
+
+能看到4次消光。固定$\theta_P = 201^\circ$、$\theta_A = 101^\circ$时可以测出消光时$\dfrac{\lambda}{2}$片C的角度为$\theta_C = 36^\circ$、$126^\circ$、$216^\circ$、$306^\circ$。这是因为如果入射光的偏振方向与$\dfrac{\lambda}{2}$光轴成$\theta$角，则出射光的偏振方向与$\dfrac{\lambda}{2}$光轴成$-\theta$角，线偏振光经过$\dfrac{\lambda}{2}$片偏振方向转过了$2\theta$角，原来发生消光的位置不再发生消光。只有当线偏振光的电矢量$\boldsymbol{E}$平行于o轴或e轴时，出射光振动方向不变，仍为原来的线偏振光。这个实验也可以说明$\dfrac{\lambda}{2}$片中o轴和e轴相互垂直。
+
+\bigskip
+\textbf{(3).把$\boldsymbol{\dfrac{\lambda}{2}}$片任意转动一角度，破坏消光现象，再将A转动$\boldsymbol{360^\circ}$，又能看到几次消光？}
+
+能看到2次消光。固定$\theta_P = 201^\circ$、$\theta_C = 166^\circ$时可以测出消光时偏振片A的角度为$\theta_A = 2^\circ$、$182^\circ$。这是因为如果入射光的偏振方向与$\dfrac{\lambda}{2}$光轴成$\theta$角，则出射光的偏振方向与$\dfrac{\lambda}{2}$光轴成$-\theta$角，线偏振光经过$\dfrac{\lambda}{2}$片偏振方向转过了$2\theta$角，变为另一束线偏振光，自然应看到两次消光，但是对应的$\theta_A$应转过了$2\theta$。本实验中$\theta = 166^\circ - 126^\circ = 40^\circ$，$\Delta\theta_A = 182^\circ - 101^\circ = 81^\circ \approx 2\theta$。
+
+\bigskip
+\textbf{(4).仍固定P的透光方向，P、A正交，插入$\boldsymbol{\dfrac{\lambda}{2}}$片，转之使消光（此时$\boldsymbol{\dfrac{\lambda}{2}}$片的e轴或o轴以及P的透光方向都沿着竖直方向）。以此时P和$\boldsymbol{\dfrac{\lambda}{2}}$片位置对应角度$\boldsymbol{\theta = 0^\circ}$，保持$\boldsymbol{\dfrac{\lambda}{2}}$片不动，将P转$\boldsymbol{15^\circ}$，破坏消光。再沿与转P相反的方向转A至消光位置，记录A所转过的角度$\boldsymbol{\theta'}$。}
+
+初始时：
+
+\vspace{0.5em}
+\begin{table}[ht!]\linespread{1.2}\selectfont
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c| }
+        \hline
+        $\theta = \theta_P/^\circ$ & $\theta_C/^\circ$ & $\theta_A/^\circ$ & $\theta'/^\circ$ \\
+        \hline
+        0 & 196 & 80 & 0 \\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}\vspace{-0.5em}
+
+转A至消光位置后：
+
+\vspace{0.5em}
+\begin{table}[ht!]\linespread{1.2}\selectfont
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c| }
+            \hline
+            $\theta = \theta_P/^\circ$ & $\theta_C/^\circ$ & $\theta_A/^\circ$ & $\theta'/^\circ$ \\
+            \hline
+            15 & 196 & 64 & 16 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}\vspace{-0.5em}
+
+可以发现大概有$\theta' = \theta$。即如果入射光的偏振方向与$\dfrac{\lambda}{2}$光轴成$\theta$角，则出射光的偏振方向与$\dfrac{\lambda}{2}$光轴成$-\theta$角，线偏振光经过$\dfrac{\lambda}{2}$片偏振方向转过了$2\theta$角。
+
+\bigskip
+\textbf{(5).继续(4)的实验，依次使$\boldsymbol{\theta = 30^\circ}$、$\boldsymbol{45^\circ}$、$\boldsymbol{60^\circ}$、$\boldsymbol{75^\circ}$、$\boldsymbol{90^\circ}$（$\boldsymbol{\theta}$值是相对P的起始位置而言），转A到消光位置，记录相应的角度$\boldsymbol{\theta'}$。}
+
+下表记录了每一次转A到消光位置后三块偏振片的方向和A转过的角度$\theta'$。
+
+\vspace{0.5em}
+\begin{table}[ht!]\linespread{1.2}\selectfont
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c| }
+            \hline
+            $\theta = \theta_P/^\circ$ & $\theta_C/^\circ$ & $\theta_A/^\circ$ & $\theta'/^\circ$ \\
+            \hline
+            0 & 196 & 80 & 0 \\
+            \hline
+            15 & 196 & 64 & 16 \\
+            \hline
+            30 & 196 & 52 & 28 \\
+            \hline
+            45 & 196 & 38 & 42 \\
+            \hline
+            60 & 196 & 22 & 58 \\
+            \hline
+            75 & 196 & 6 & 74 \\
+            \hline
+            90 & 196 & $-8$ & 88 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}\vspace{-0.5em}
+
+作$\theta'-\theta$图如下，可以发现$\theta'$与$\theta$大致成正比，且比例系数近似为1。线性拟合可以得到：
+
+\vspace{-3em}
+\[\theta'=a\theta+b\]
+
+\vspace{-0.5em}
+\begin{table}[ht!]\linespread{1.2}\selectfont
+    \begin{center}
+        \begin{tabular}{ |c|c|c| }
+            \hline
+            $a$ & $b$ & $r$ \\
+            \hline
+            $0.976\pm0.017$ & $-0.2\pm0.4$ & 0.9993 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{center}
+    \includegraphics[width = 0.85\linewidth]{Figure.png}
+\end{center}
+
+误差分析如下：
+
+斜率$a$、截距$b$和不确定度$r$的计算值为：
+\[
+a = 0.976190,\qquad b = 0.214286,\qquad r = 0.999346
+\]
+斜率$a$的A类不确定度为：（$n=7$）
+\[
+\sigma_{a,A} = a\frac{\sqrt{1/r^2}-1}{\sqrt{n-2}} = 0.01579
+\]
+B类不确定度为：（$\theta'$的极限误差$e$估计为$1^\circ$）
+\[
+\sigma = \frac{e}{\sqrt{3}} = 0.57735^\circ,\qquad \sigma_{a,B} = \frac{\sigma}{\sqrt{\sum\limits_{i=1}^{n}\left(x_i-\bar{x}\right)^2}} = 0.007274
+\]
+得到斜率$a$的不确定度：
+\[
+\sigma_a = \sqrt{\sigma_{a,A}^2+\sigma_{a,B}^2} = 0.01739
+\]
+截距$b$的不确定度为：
+\[
+\sigma_b = \sigma\sqrt{\frac{\overline{x^2}}{\sum\limits_{i=1}^{n}\left(x_i-\bar{x}\right)^2}} = 0.3934
+\]
+
+\newpage
+\subsection*{1.4\ \ 用$\boldsymbol{\dfrac{\lambda}{4}}$片产生椭圆偏振光}
+
+\textbf{(1).取下$\boldsymbol{\dfrac{\lambda}{2}}$片，仍使P的透光方向竖直，P$\boldsymbol{\perp}$A正交。插入$\boldsymbol{\dfrac{\lambda}{4}}$片，转之使消光。}
+
+可以发现转动$\dfrac{\lambda}{4}$片$360^\circ$的过程中能看到4次消光。固定$\theta_P = 0^\circ$、$\theta_A = 80^\circ$时可以测出消光时$\dfrac{\lambda}{4}$片C的角度位置为$\theta_C = 12^\circ$、$102^\circ$、$192^\circ$、$282^\circ$。这是因为只有当线偏振光的电矢量$\boldsymbol{E}$平行于o轴或e轴时，出射光振动方向不变，仍为原来的线偏振光，能够发生消光。其余角度时出射光变为椭圆偏振光或圆偏振光，不发生消光现象。这个实验也可以说明$\dfrac{\lambda}{4}$片中o轴和e轴相互垂直。
+
+\bigskip
+\textbf{(2).保持$\boldsymbol{\dfrac{\lambda}{4}}$片不动，将P转$\boldsymbol{\theta = 15^\circ}$，然后将A转$\boldsymbol{360^\circ}$，观察光强变化。}
+
+可以观察到将A转$360^\circ$时，出射光光强经历“极大$\to$极小$\to$极大$\to$极小”的过程。光强达到极小值时没有达到消光，对应的角度约为$\theta_A = 75^\circ$或$255^\circ$。说明此时线偏振光透过$\dfrac{\lambda}{4}$片后变为一椭圆偏振光。
+
+\bigskip
+\textbf{(3).继续(2)，依次使$\boldsymbol{\theta = 30^\circ}$、$\boldsymbol{45^\circ}$、$\boldsymbol{60^\circ}$、$\boldsymbol{75^\circ}$、$\boldsymbol{90^\circ}$，每次将A转$\boldsymbol{360^\circ}$，观察光强的变化，根据观察结果画图或用文字说明透过$\boldsymbol{\dfrac{\lambda}{4}}$片的出射光的偏振状态。}
+
+\vspace{0.5em}
+\begin{table}[ht!]\linespread{1.2}\selectfont
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c| }
+            \hline
+            $\theta/^\circ$ & $\theta_C/^\circ$ & 现象 & 出射光的偏振状态 \\
+            \hline
+            0 & 102 & \makecell[c]{光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，\\ 相互之间约隔$90^\circ$，在$\theta_A = 80^\circ$或$260^\circ$处消光。} & 线偏振光 \\
+            \hline
+            15 & 102 & \makecell[c]{光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，\\ 光强达到极小值时没有达到消光，\\ 对应的角度约为$\theta_A = 75^\circ$或$255^\circ$。} & 椭圆偏振光 \\
+            \hline
+            30 & 102 & \makecell[c]{光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，\\ 光强达到极小值时没有达到消光，\\ 且对应的角度难以测量，约有$\pm10^\circ$的不确定度。} & 椭圆偏振光 \\
+            \hline
+            45 & 102 & 光强基本没有变化 & 圆偏振光 \\
+            \hline
+            60 & 102 & \makecell[c]{光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，\\ 光强达到极小值时没有达到消光，\\ 且对应的角度难以测量，约有$\pm10^\circ$的不确定度。} & 椭圆偏振光 \\
+            \hline
+            75 & 102 & \makecell[c]{光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，\\ 光强达到极小值时没有达到消光，\\ 对应的角度约为$\theta_A = 165^\circ$或$345^\circ$。} & 椭圆偏振光 \\
+            \hline
+            90 & 102 & \makecell[c]{光强经历“极大$\to$极小$\to$极大$\to$极小”的过程，\\ 相互之间约隔$90^\circ$，在$\theta_A = 170^\circ$或$350^\circ$处消光。} & 线偏振光 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}\vspace{-0.5em}
+
+\newpage
+\subsection*{1.5\ \ 检验椭圆偏振光和部分偏振光}
+
+\textbf{实验器材：光源（钠光灯），三块偏振片（$\mathbf{P_1}$、$\mathbf{P_2}$、A），两块$\boldsymbol{\dfrac{\lambda}{4}}$片（$\mathbf{C_1}$、$\mathbf{C_2}$），一玻璃片堆。}
+
+(1).\textbf{产生椭圆偏振光：}
+
+使光源的入射光先透过偏振片$\mathrm{P_1}$和$\mathrm{P_2}$，转动$\mathrm{P_1}$达到消光，这表明此时两个偏振片的透振方向正交。在两者之间插入$\dfrac{\lambda}{4}$片$\mathrm{C_1}$，转之使消光。保持$\dfrac{\lambda}{4}$片不动，将P转一个小角$\theta$（这个角以小于$15^\circ$为宜），使线偏振光透过$\dfrac{\lambda}{4}$片后变为一椭圆偏振光。
+
+(2).\textbf{检验椭圆偏振光：}
+
+旋转$\mathrm{P_2}$，使出射光光强达到极小值，在$\mathrm{P_2}$后面放置偏振片A，转动A达到消光，这表明$\mathrm{P_2}$与A的透振方向正交，且与椭圆偏振光的短轴、长轴方向分别重合。
+
+在$\mathrm{P_2}$和A之间插入$\dfrac{\lambda}{4}$片$\mathrm{C_2}$，转之使消光，此时$\mathrm{C_2}$的光轴一定与入射的线偏振光平行或垂直，即与椭圆偏振光的短轴或长轴重合。
+
+撤去偏振片$\mathrm{P_2}$，则椭圆偏振光入射于$\dfrac{\lambda}{4}$片$\mathrm{C_2}$，变为一线偏振光，再入射于A，转动A应能看到消光，（可以与直接用$\mathrm{P_1}$和A制造的线偏振光消光现象对比验证），说明入射光为椭圆偏振光。
+
+(3).\textbf{产生部分偏振光：}
+
+使光源的入射光（自然光）以布儒斯特角$\theta_B$透过玻璃片堆，则透射光一般是部分偏振光。
+
+(4).\textbf{检验部分偏振光：}
+
+在玻璃片堆后面放置偏振片$\mathrm{P_2}$，旋转$\mathrm{P_2}$使出射光光强达到极小值。在$\mathrm{P_2}$后面放置偏振片A，转之使消光，这表明$\mathrm{P_2}$与A的透振方向正交，且与部分偏振光的短轴、长轴方向分别重合。
+
+在$\mathrm{P_2}$和A之间插入$\dfrac{\lambda}{4}$片$\mathrm{C_2}$，转之使消光，此时$\mathrm{C_2}$的光轴一定与入射的线偏振光平行或垂直，即与部分偏振光的短轴或长轴重合。
+
+撤去偏振片$\mathrm{P_2}$，则部分偏振光入射于$\dfrac{\lambda}{4}$片$\mathrm{C_2}$，仍为一部分偏振光，再入射于A，转动A无法看到消光，说明该入射光为部分偏振光。
+
+\section*{2\ \  分析与讨论}
+
+1.本实验以人眼为探测器件，而人眼对于光强是对数相应的，虽然有能适应从极强到极弱的大范围光强的好处，但无法分辨微弱的光强变化，这对于本实验是一大阻碍。
+
+2.实验\textbf{1.1}中没有观测到完全消光主要是因为没有严格调整到入射角$i = \theta_B$。
+
+3.实验\textbf{1.3}中\textbf{(4)}、\textbf{(5)}两个实验测得的$\theta$不严格等于$\theta$，除测量误差（主要是人眼的读数误差）外，可能是因为$\dfrac{\lambda}{2}$片制作时的误差，以及波晶片表面杂质、污渍产生的厚度不均匀性（见第五页图）。它们会使得附加相位差不严格等于$\pi$，则$\theta$不严格等于$\theta$。
+
+4.实验\textbf{1.5}中，如果椭圆偏振光和部分偏振光的偏振度$p$较小，即接近于圆偏振光和自然光，则“旋转$\mathrm{P_2}$使出射光光强达到极小值”一步将会很难做到（参考实验\textbf{1.4}中\textbf{(3)}实验在$\theta=30^\circ$或$60^\circ$的情况），这会使得波晶片的光轴极难对准入射偏振光的短轴或长轴，出射光不产生消光，阻碍人眼对两种偏振光的分辨。
+
+}
+\end{document}

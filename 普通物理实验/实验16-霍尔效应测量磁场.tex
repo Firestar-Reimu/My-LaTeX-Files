@@ -1,0 +1,424 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.25cm,right=2.25cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\Large
+
+    \title{\huge\textbf{实验十六\ \ 霍尔效应测量磁场}}
+    \author{\LARGE 1900011604 张植竣}
+    \date{\LARGE 2020年11月19日}
+
+    \maketitle
+
+    \section*{\zihao{-2}1\ \  实验数据与数据处理}
+    \bigskip
+
+    \subsection*{\zihao{3}1.1\ \ 验证霍尔电压$U_\mathrm{H}$和霍尔电流$I_\mathrm{H}$的线性关系}
+
+    以下表格中，规定霍尔片左侧两接线柱为1、2端，右侧两接线柱为3、4端；双刀双掷开关向前拨为正，向后拨为负。
+
+    \vspace{0.5em}
+    \begin{table}[ht!]\large
+        \begin{center}
+        \caption*{\large 接法a：$I_\mathrm{H}$从1、2端输入}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                \multirow{2}{*}{$I_\mathrm{H}/\,\mathrm{mA}$} & $U_1$ & $U_2$ & $U_3$ & $U_4$ & \multirow{2}{*}{$U_\mathrm{H}/\,\mathrm{mV}$} \\
+                & $(I_\mathrm{H}+\ B+)$ & $(I_\mathrm{H}-\ B+)$ & $(I_\mathrm{H}-\ B-)$ & $(I_\mathrm{H}+\ B-)$ & \\
+                \hline
+                2.000 & 13.27 & -13.40 & 13.28 & -13.30 & 13.3375 \\
+                \hline
+                4.000 & 26.75 & -26.84 & 26.55 & -26.63 & 26.6925 \\
+                \hline
+                6.000 & 40.05 & -40.28 & 39.78 & -40.11 & 40.0550 \\
+                \hline
+                8.000 & 53.29 & -53.80 & 53.07 & -53.62 & 53.4450 \\
+                \hline
+                10.000 & 66.52 & -67.35 & 66.38 & -67.21 & 66.8650 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    最小二乘法拟合得到：
+    \[
+    U_\mathrm{H} = aI_\mathrm{H} + b
+    \]
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c| }
+                \hline
+                $a/\Omega$ & $b/\mathrm{mV}$ & $r$ \\
+                \hline
+                $6.690 \pm 0.005$ & $-0.063 \pm 0.020$ & 0.9999994898 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    \begin{center}
+        \includegraphics[width = 0.8\linewidth]{Figure_1.png}
+    \end{center}
+
+    \textbf{误差分析}
+    \bigskip
+
+    由于：
+    \[
+    U_\mathrm{H} = \frac{1}{4}(U_1 + U_2 + U_3 + U_4)
+    \]
+    且：
+    \[
+    e_{U_i} = \sqrt{3}\,\sigma_{U_i} = \left(0.05\%\,U_i + 0.03\right)\,\mathrm{mV}
+    \]
+    近似认为$U_1 = U_2 = U_3 = U_4$，则有：
+    \[
+    e_{U_1} = e_{U_2} = e_{U_3} = e_{U_4}
+    \]
+    \[
+    \sigma_{U_\mathrm{H}} = \frac{1}{4}\sqrt{\sigma_{U_1}^2 + \sigma_{U_2}^2 + \sigma_{U_3}^2 + \sigma_{U_4}^2} = \frac{e_{U_i}}{2\sqrt{3}}
+    \]
+    用$\overline{U_\mathrm{H}} = 40.079\,\mathrm{mV}$估计$\sigma_{U_\mathrm{H}}$，得到：
+    \[
+    \sigma_{U_\mathrm{H}} = 0.0144451594\,\mathrm{mV}
+    \]
+    对于斜率$a$，其A类不确定度为：
+    \[
+        \sigma_{a,A} = a\sqrt{\frac{1/r^2-1}{n-2}} = 3.901891821\,\mathrm{m}\Omega
+    \]
+    其B类不确定度为：
+    \[
+        \sigma_{a,B} = \frac{\sigma_{U_\mathrm{H}}}{\sqrt{\sum\limits_{i=1}^{5}\left({I_\mathrm{H}}_i-\overline{I_\mathrm{H}}\right)^2}} = 2.948605815\,\mathrm{m}\Omega
+    \]
+    则斜率$a$的不确定度为：
+    \[
+    \sigma_a = \sqrt{\sigma_{a,A}^2 + \sigma_{a,B}^2} = 4.890709155\,\mathrm{m}\Omega
+    \]
+    对于截距$b$，其不确定度为：
+    \[
+    \sigma_b = \sigma_{U_\mathrm{H}}\sqrt{\frac{\overline{I_\mathrm{H}^2}}{\sum\limits_{i=1}^{5}\left({I_\mathrm{H}}_i-\overline{I_\mathrm{H}}\right)^2}} = 0.01955883828\,\mathrm{mV}
+    \]
+
+    \newpage
+    \vspace{0.5em}
+    \begin{table}[ht!]\large
+        \begin{center}
+            \caption*{\large 接法b：$I_\mathrm{H}$从3、4端输入}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                \multirow{2}{*}{$I_\mathrm{H}/\,\mathrm{A}$} & $U_1$ & $U_2$ & $U_3$ & $U_4$ & \multirow{2}{*}{$U_\mathrm{H}/\,\mathrm{mV}$} \\
+                & $(I_\mathrm{H}+\ B+)$ & $(I_\mathrm{H}-\ B+)$ & $(I_\mathrm{H}-\ B-)$ & $(I_\mathrm{H}+\ B-)$ & \\
+                \hline
+                2.000 & 13.31 & -13.30 & 13.38 & -13.39 & 13.3450 \\
+                \hline
+                4.000 & 26.63 & -26.60 & 26.76 & -26.80 & 26.6975 \\
+                \hline
+                6.000 & 40.02 & -39.91 & 40.14 & -40.22 & 40.0725 \\
+                \hline
+                8.000 & 53.45 & -53.31 & 53.59 & -53.68 & 53.5075 \\
+                \hline
+                10.000 & 67.08 & -66.66 & 67.00 & -67.10 & 66.9600 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    最小二乘法拟合得到：
+    \[
+    U_\mathrm{H} = aI_\mathrm{H} + b
+    \]
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c| }
+                \hline
+                $a/\Omega$ & $b/\mathrm{mV}$ & $r$ \\
+                \hline
+                $6.702 \pm 0.007$ & $-0.096 \pm 0.020$ & 0.9999986301 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    \begin{center}
+        \includegraphics[width = 0.8\linewidth]{Figure_2.png}
+    \end{center}
+
+    \textbf{误差分析步骤与上一实验相同}
+
+    \newpage
+    \subsection*{\zihao{3}1.2\ \ 验证霍尔电压$U_\mathrm{H}$和磁感应强度大小$B$的线性关系，并测量霍尔元件灵敏度$K_\mathrm{H}$}
+
+    \vspace{0.5em}
+    \begin{table}[ht!]
+        \begin{center}
+            \caption*{$I_\mathrm{H}$从3、4端输入，固定$I_\mathrm{H} = 10.000\,\mathrm{mA}$}
+            \begin{tabular}{ |c|c|c|c|c|c|c|c| }
+                \hline
+                \multirow{2}{*}{$I_M/\,\mathrm{A}$} & $U_1$ & $U_2$ & $U_3$ & $U_4$ & \multirow{2}{*}{$U_\mathrm{H}/\,\mathrm{mV}$} & \multirow{2}{*}{$B_+/\,\mathrm{mT}$} & \multirow{2}{*}{$B_-/\,\mathrm{mT}$} \\
+                & $(I_\mathrm{H}+\ B+)$ & $(I_\mathrm{H}-\ B+)$ & $(I_\mathrm{H}-\ B-)$ & $(I_\mathrm{H}+\ B-)$ & & & \\
+                \hline
+                0.000 & 0.17 & -0.33 & -0.35 & 0.29 & 0.2850 & 0.4 & 0.4 \\
+                \hline
+                0.100 & 11.06 & -11.16 & 10.94 & -11.12 & 11.0700 & 36.1 & 35.8 \\
+                \hline
+                0.200 & 22.49 & -22.55 & 22.29 & -22.48 & 22.4525 & 72.6 & 72.6 \\
+                \hline
+                0.300 & 33.71 & -33.74 & 33.45 & -33.64 & 33.6350 & 108.5 & 108.7 \\
+                \hline
+                0.400 & 44.80 & -44.76 & 44.65 & -44.99 & 44.8000 & 145.0 & 145.0 \\
+                \hline
+                0.500 & 55.80 & -55.73 & 55.67 & -55.85 & 55.7625 & 180.3 & 180.2 \\
+                \hline
+                0.600 & 66.90 & -66.76 & 66.73 & -67.08 & 66.8675 & 216.5 & 216.7 \\
+                \hline
+                0.700 & 77.75 & -77.55 & 77.60 & -78.00 & 77.7250 & 251.3 & 251.5 \\
+                \hline
+                0.800 & 88.64 & -88.44 & 88.29 & -88.71 & 88.5200 & 286.4 & 286.7 \\
+                \hline
+                0.900 & 98.78 & -98.52 & 98.67 & -99.27 & 98.8100 & 320.2 & 320.3 \\
+                \hline
+                1.000 & 109.21 & -108.89 & 108.82 & -109.39 & 109.0775 & 352.8 & 353.1 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    数据处理及作图中用
+    \[
+    \overline{B} = \frac{1}{2}(B_+ + B_-)
+    \]
+    估计磁感应强度的大小$B$，并将其单位化为T。 \\
+    最小二乘法拟合得到：
+    \[
+    U_\mathrm{H} = a(I_\mathrm{H} B) + b = K_\mathrm{H} I_\mathrm{H} B + b
+    \]
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c| }
+                \hline
+                $K_\mathrm{H}/\mathrm{mV \cdot mA^{-1} \cdot T^{-1}}$ & $b/\mathrm{mV}$ & $r$ \\
+                \hline
+                $30.86 \pm 0.02$ & $0.075 \pm 0.023$ & 0.99999822 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    \begin{center}
+        \includegraphics[width = 0.8\linewidth]{Figure_3.png}
+    \end{center}
+
+    \textbf{误差分析}
+    \bigskip
+
+    记$x = I_\mathrm{H} B$。
+
+    对于斜率$a$，其A类不确定度为：
+    \[
+        \sigma_{a,A} = a\sqrt{\frac{1/r^2-1}{n-2}} = 0.01941104299\,\mathrm{mV \cdot mA^{-1} \cdot T^{-1}}
+    \]
+    其B类不确定度为：
+    \[
+        \sigma_{a,B} = \frac{\sigma_{U_\mathrm{H}}}{\sqrt{\sum\limits_{i=1}^{11}\left(x_i - \bar{x}\right)^2}}= 0.01104729217\,\mathrm{mV \cdot mA^{-1} \cdot T^{-1}}
+    \]
+    则斜率$a$，即灵敏度$K_\mathrm{H}$的不确定度为：
+    \[
+    \sigma_a = \sqrt{\sigma_{a,A}^2 + \sigma_{a,B}^2} = 0.02233453054\,\mathrm{mV \cdot mA^{-1} \cdot T^{-1}}
+    \]
+    对于截距$b$，其不确定度为：
+    \[
+    \sigma_b = \sigma_{U_\mathrm{H}}\sqrt{\frac{\overline{x^2}}{\sum\limits_{i=1}^{11}\left(x_i-\bar{x}\right)^2}} = 0.02334554095\,\mathrm{mV}
+    \]
+
+    \newpage
+    \subsection*{\zihao{3}1.3\ \ 作$B-I_M$磁化曲线图}
+
+    \vspace{0.5em}
+    \begin{table}[ht!]
+        \begin{center}
+            \caption*{$I_\mathrm{H}$从3、4端输入，固定$I_\mathrm{H} = 10.000\,\mathrm{mA}$}
+            \begin{tabular}{ |c|c|c|c|c|c|c|c| }
+                \hline
+                \multirow{2}{*}{$I_M/\,\mathrm{A}$} & $U_1$ & $U_2$ & $U_3$ & $U_4$ & \multirow{2}{*}{$U_\mathrm{H}/\,\mathrm{mV}$} & \multirow{2}{*}{$B_+/\,\mathrm{mT}$} & \multirow{2}{*}{$B_-/\,\mathrm{mT}$} \\
+                & $(I_\mathrm{H}+\ B+)$ & $(I_\mathrm{H}-\ B+)$ & $(I_\mathrm{H}-\ B-)$ & $(I_\mathrm{H}+\ B-)$ & & & \\
+                \hline
+                0.000 & 0.17 & -0.33 & -0.35 & 0.29 & 0.2850 & 0.4 & 0.4 \\
+                \hline
+                0.100 & 11.06 & -11.16 & 10.94 & -11.12 & 11.0700 & 36.1 & 35.8 \\
+                \hline
+                0.200 & 22.49 & -22.55 & 22.29 & -22.48 & 22.4525 & 72.6 & 72.6 \\
+                \hline
+                0.300 & 33.71 & -33.74 & 33.45 & -33.64 & 33.6350 & 108.5 & 108.7 \\
+                \hline
+                0.400 & 44.80 & -44.76 & 44.65 & -44.99 & 44.8000 & 145.0 & 145.0 \\
+                \hline
+                0.500 & 55.80 & -55.73 & 55.67 & -55.85 & 55.7625 & 180.3 & 180.2 \\
+                \hline
+                0.600 & 66.90 & -66.76 & 66.73 & -67.08 & 66.8675 & 216.5 & 216.7 \\
+                \hline
+                0.700 & 77.75 & -77.55 & 77.60 & -78.00 & 77.7250 & 251.3 & 251.5 \\
+                \hline
+                0.800 & 88.64 & -88.44 & 88.29 & -88.71 & 88.5200 & 286.4 & 286.7 \\
+                \hline
+                0.900 & 98.78 & -98.52 & 98.67 & -99.27 & 98.8100 & 320.2 & 320.3 \\
+                \hline
+                1.000 & 109.21 & -108.89 & 108.82 & -109.39 & 109.0775 & 352.8 & 353.1 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    \begin{center}
+        \includegraphics[width = 0.8\linewidth]{Figure_4.png}
+    \end{center}
+
+    \newpage
+    \subsection*{\zihao{3}1.4\ \ 作待测电磁铁的$B-x$曲线图}
+
+    \vspace{0.5em}
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \caption*{\Large $I_\mathrm{H}$从3、4端输入，固定$I_\mathrm{H} = 10.000\,\mathrm{mA}$，$I_M = 0.600\,\mathrm{A}$，且$I_\mathrm{H}+\ B+$}
+            \begin{tabular}{ |c|c|c|c|c|c|c| }
+                \hline
+                $x/\,\mathrm{mm}$ & 98.0 & 93.0 & 88.0 & 83.0 & 78.0 & 77.0 \\
+                \hline
+                $U_\mathrm{H}/\,\mathrm{mV}$ & 5.72 & 7.54 & 10.68 & 17.57 & 45.69 & 58.77 \\
+                \hline
+                $x/\,\mathrm{mm}$ & 76.0 & 75.0 & 74.0 & 73.0 & 72.0 & 71.0 \\
+                \hline
+                $U_\mathrm{H}/\,\mathrm{mV}$ & 67.33 & 69.14 & 68.60 & 67.78 & 67.29 & 67.13 \\
+                \hline
+                $x/\,\mathrm{mm}$ & 70.0 & 68.0 & 66.0 & 64.0 & 60.0 & 56.0 \\
+                \hline
+                $U_\mathrm{H}/\,\mathrm{mV}$ & 67.02 & 66.97 & 66.98 & 67.01 & 67.13 & 67.18 \\
+                \hline
+                $x/\,\mathrm{mm}$ & 52.0 & 48.0 & 46.0 & 44.0 & 42.0 & 40.0 \\
+                \hline
+                $U_\mathrm{H}/\,\mathrm{mV}$ & 67.22 & 67.26 & 67.22 & 67.12 & 66.83 & 66.23 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    \begin{center}
+        \includegraphics[width = 0.8\linewidth]{Figure_5.png}
+    \end{center}
+
+    \newpage
+    \section*{\zihao{2}2\ \ 思考题}
+
+    \textbf{在测量$\boldsymbol{B-I_M}$曲线中，$\boldsymbol{I_M = 0}$时$\boldsymbol{U_\mathrm{H}}$测量端仍有较小的电压，这是为什么？}
+
+    这是因为电磁铁内部有剩磁，且霍尔片两端有不等位电压。通过：
+    \[
+    U_\mathrm{H} = \frac{1}{4}(U_1 + U_2 + U_3 + U_4)
+    \]
+    可以消除不等位电压的影响，剩余的电压$U_\mathrm{H}$即为电磁铁剩磁产生的霍尔电压。
+
+    \newpage
+    \section*{\zihao{2}3\ \ 分析与讨论}
+
+    \subsection*{\zihao{3}3.1\ \ 比较实验1.1“验证霍尔电压$U_\mathrm{H}$和霍尔电流$I_\mathrm{H}$的线性关系”中a、b接法的结果，并解释}
+
+    两种接法算出的斜率$a$和截距$b$在误差范围内相同，可见霍尔电压与霍尔电流的关系与霍尔片的长、宽无关。
+
+    副效应和不等位电势差的大小会有所区别，使用下列公式计算副效应：
+    \[
+    U_\mathrm{N} + U_\mathrm{R} = \frac{1}{4}(U_1 + U_2 - U_3 - U_4)
+    \]
+    使用下列公式计算不等位电势差：
+    \[
+    U_0 = \frac{1}{4}(U_1 - U_2 - U_3 + U_4)
+    \]
+    得下表：
+
+    \vspace{0.5em}
+        \begin{table}[ht!]\large
+            \begin{center}
+            \caption*{\large 接法a：$I_\mathrm{H}$从1、2端输入}
+                \begin{tabular}{ |c|c|c|c|c|c|c| }
+                    \hline
+                    \multirow{2}{*}{$I_\mathrm{H}/\,\mathrm{mA}$} & $U_1$ & $U_2$ & $U_3$ & $U_4$ & \multirow{2}{*}{$U_\mathrm{N} + U_\mathrm{R}/\,\mathrm{mV}$} & \multirow{2}{*}{$U_0/\,\mathrm{mV}$} \\
+                    & $(I_\mathrm{H}+\ B+)$ & $(I_\mathrm{H}-\ B+)$ & $(I_\mathrm{H}-\ B-)$ & $(I_\mathrm{H}+\ B-)$ & & \\
+                    \hline
+                    2.000 & 13.27 & -13.40 & 13.28 & -13.30 & -0.0275 & 0.0225 \\
+                    \hline
+                    4.000 & 26.75 & -26.84 & 26.55 & -26.63 & -0.0025 & 0.1025 \\
+                    \hline
+                    6.000 & 40.05 & -40.28 & 39.78 & -40.11 & 0.0250 & 0.1100 \\
+                    \hline
+                    8.000 & 53.29 & -53.80 & 53.07 & -53.62 & 0.0100 & 0.1000 \\
+                    \hline
+                    10.000 & 66.52 & -67.35 & 66.38 & -67.21 & 0.0000 & 0.0700 \\
+                    \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+    \vspace{-0.5em}
+
+    \vspace{0.5em}
+        \begin{table}[ht!]\large
+            \begin{center}
+                \caption*{\large 接法b：$I_\mathrm{H}$从3、4端输入}
+                \begin{tabular}{ |c|c|c|c|c|c|c| }
+                    \hline
+                    \multirow{2}{*}{$I_\mathrm{H}/\,\mathrm{mA}$} & $U_1$ & $U_2$ & $U_3$ & $U_4$ & \multirow{2}{*}{$U_\mathrm{N} + U_\mathrm{R}/\,\mathrm{mV}$} & \multirow{2}{*}{$U_0/\,\mathrm{mV}$} \\
+                    & $(I_\mathrm{H}+\ B+)$ & $(I_\mathrm{H}-\ B+)$ & $(I_\mathrm{H}-\ B-)$ & $(I_\mathrm{H}+\ B-)$ & & \\
+                    \hline
+                    2.000 & 13.31 & -13.30 & 13.38 & -13.39 & 0.0050 & -0.0400\\
+                    \hline
+                    4.000 & 26.63 & -26.60 & 26.76 & -26.80 & 0.0175 & -0.0825\\
+                    \hline
+                    6.000 & 40.02 & -39.91 & 40.14 & -40.22 & 0.0475 & -0.1075\\
+                    \hline
+                    8.000 & 53.45 & -53.31 & 53.59 & -53.68 & 0.0575 & -0.1275\\
+                    \hline
+                    10.000 & 67.08 & -66.66 & 67.00 & -67.10 & 0.1300 & -0.0900\\
+                    \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+    \vspace{-0.5em}
+
+    \newpage
+    \subsection*{\zihao{3}3.2\ \ 为什么用计算的$B$作磁化曲线比用直接测量的$B$更好？}
+
+    因为用毫特斯拉计测量磁场时需要用手控制探头垂直于磁场，这个过程误差较大，容易使测量出的磁感应强度偏小。而霍尔片焊接在导轨上，能保证与磁场方向垂直。
+
+    \subsection*{\zihao{3}3.3\ \ 实验中测得的各种曲线有什么主要特征？如何理解？}
+
+    1.\ $U_\mathrm{H}-I_\mathrm{H}$图像近似为过原点的直线，说明磁感应强度大小$B$不变时，$U_\mathrm{H}$与$I_\mathrm{H}$成正比，比例系数为$K_\mathrm{H} B$。
+
+    \bigskip
+    2.\ $U_\mathrm{H}-B$图像近似为过原点的直线，说明霍尔电流大小$I_\mathrm{H}$不变时，$U_\mathrm{H}$与$B$成正比，比例系数为$K_\mathrm{H} I_\mathrm{H}$。
+
+    \bigskip
+    3.\ 磁化曲线图$B-I_M$近似为过原点的直线，说明励磁电流较小，还远远未达到电磁铁的饱和电流，磁感应强度的大小与励磁电流近似成正比。
+
+    \bigskip
+    4.\ 待测电磁铁的$B-x$曲线图中，靠近中心的位置磁感应强度的大小$B$几乎不变，靠近边缘的位置在出现一个$B$的极大值之后迅速衰减到趋近于0。说明电磁铁在其中心区域产生了一个匀强磁场，电磁铁以外几乎没有磁场分布，边缘处出现极大值的原因可能与尖端放电类似，即切割铁芯时磁感线在边缘变密集。
+
+\end{document}

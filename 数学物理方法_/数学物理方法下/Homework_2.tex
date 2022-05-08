@@ -1,0 +1,255 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm,wasysym}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+    \title{\textbf{数学物理方法作业}}
+    \author{1900011604\ \ 张植竣\ \ 北京大学}
+    \date{2020年10月13日}
+    \maketitle
+
+    \section*{第十四章}
+    \bigskip
+
+    \begin{itemize}
+
+    \item[6.]
+    因为方程非齐次项$bx(l-x)$只是$x$的函数，设方程有只关于$x$的特解$v(x)$。
+
+    即设：
+    \[
+    u(x,t) = v(x) + w(x,t)
+    \]
+    则特解$v(x)$满足：
+    \[
+    \frac{\partial^2 v}{\partial t^2} - a^2\frac{\partial^2 v}{\partial x^2} = -a^2\frac{\partial^2 v}{\partial x^2} = bx(l-x)
+    \]
+    \[
+    v(0) = v(l) = 0
+    \]
+    积分得一个解：
+    \[
+    v(x) = \frac{b}{12a}x^4 - \frac{bl}{6a^2}x^3
+    \]
+    通解$w(x,t)$满足：
+    \[
+    \frac{\partial^2 v}{\partial t^2} - a^2\frac{\partial^2 v}{\partial x^2} = 0
+    \]
+    \[
+    w(0,t) = w(l,t) = 0
+    \]
+    \[
+    w(x,0) = -v(x),\qquad \left.\frac{\partial w}{\partial t}\right|_{t=0} = 0
+    \]
+    设解的形式为$w(x,t) = X(x)T(t)$，代入方程整理得：
+    \[
+    X(x)T''(t) = a^2 X''(x)T(t)
+    \]
+    因为$X(x)T(t) \not\equiv 0$，上式两边同时除以$a^2 X(x)T(t)$得：
+    \[
+    \frac{T''(t)}{a^2 T(t)} = \frac{X''(x)}{X(x)}
+    \]
+    设它们都等于同一个非零常数$-\lambda$，即：
+    \[
+    \frac{T''(t)}{a^2 T(t)} = \frac{X''(x)}{X(x)} = -\lambda
+    \]
+    得到两个方程：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad T''(t) + a^2\lambda T(t) = 0
+    \]
+    关于$x$的本征值问题为：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad X(0) = 0,\qquad X'(l) = 0
+    \]
+    其通解为：
+    \[
+    X(x) = A\sin\sqrt{\lambda} x + B\cos\sqrt{\lambda} x
+    \]
+    代入边界条件得：
+    \[
+    B = 0,\qquad \sqrt{\lambda} l = n\pi
+    \]
+    本征值和本征函数为：
+    \[
+    \lambda_n = \left(\frac{n\pi}{l}\right)^2,\qquad X_n = \sin\frac{n\pi}{l}x
+    \]
+    代入关于$t$的方程，解得：
+    \[
+    T_n = C_n\sin\frac{n\pi}{l}at + D_n\cos\frac{n\pi}{l}at
+    \]
+    一般解为：
+    \[
+    w(x,t) = \sum_{n=0}^{\infty}\left[C_n\sin\frac{n\pi}{l}at + D_n\cos\frac{n\pi}{l}at\right]\sin\frac{2n+1}{2l}\pi x
+    \]
+    代入初始条件$w(x,0) = -v(x)$得：
+    \[
+    \sum_{n=0}^{\infty}D_n\sin\frac{n\pi}{2l}x = -\frac{b}{12a}x^4 + \frac{bl}{6a^2}x^3
+    \]
+    注意到$D_n$为Fourier展开的系数，解得：
+    \[
+    D_n = \frac{2}{l}\int_0^l\left(-\frac{b}{12a}x^4 + \frac{bl}{6a^2}x^3\right)\sin\frac{n\pi}{2l}x \,\mathrm{d}x = \left\{
+    \begin{aligned}
+        0\qquad &,\qquad n = 2k \\
+        -\frac{8bl^4}{a^2 \pi^5 n^5}&,\qquad n = 2k + 1
+    \end{aligned}
+    \right.
+    \]
+    代入$\left.\dfrac{\partial w}{\partial t}\right|_{t=0} = 0$得$C_n = 0$。
+    则通解$w(x,t)$为：
+    \[
+    w(x,t) = -\frac{8bl^4}{a^2\pi^5}\sum_{k=0}^{\infty}\frac{1}{(2k+1)^5}\cos\frac{2k+1}{l}\pi at\sin\frac{2k+1}{l}\pi x
+    \]
+    故原方程的解为：
+    \[
+    u(x,t) = \frac{b}{12a}x^4 - \frac{bl}{6a^2}x^3 - \frac{8bl^4}{a^2\pi^5}\sum_{k=0}^{\infty}\frac{1}{(2k+1)^5}\cos\frac{2k+1}{l}\pi at\sin\frac{2k+1}{l}\pi x
+    \]
+    \bigskip
+
+    \item[7.(1)]
+    用单本征函数展开法，相应的齐次方程为：
+    \[
+    \nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0
+    \]
+    设解的形式为$u(x,t) = X(x)Y(y)$，代入方程整理得：
+    \[
+    X(x)Y''(y) = X''(x)Y(y)
+    \]
+    因为$X(x)Y(y) \not\equiv 0$，上式两边同时除以$X(x)Y(y)$得：
+    \[
+    \frac{Y''(y)}{Y(y)} = \frac{X''(x)}{X(x)}
+    \]
+    设它们都等于同一个非零常数$-\lambda$，即：
+    \[
+    \frac{Y''(y)}{Y(y)} = \frac{X''(x)}{X(x)} = -\lambda
+    \]
+    得到两个方程：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad T''(t) + a^2\lambda Y(y) = 0
+    \]
+    关于$x$的本征值问题为：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad X(0) = 0,\qquad X'(l) = 0
+    \]
+    其通解为：
+    \[
+    X(x) = A\sin\sqrt{\lambda} x + B\cos\sqrt{\lambda} x
+    \]
+    代入边界条件得：
+    \[
+    B = 0,\qquad \sqrt{\lambda} a = n\pi
+    \]
+    本征值和本征函数为：
+    \[
+    \lambda_n = \left(\frac{n\pi}{a}\right)^2,\qquad X_n = \sin\frac{n\pi}{a}x
+    \]
+    设解为：
+    \[
+    u(x,y) = \sum_{n=0}^{\infty}Y_n(y)\sin\frac{n\pi}{a}x
+    \]
+    将非齐次项$-2$用本征函数展开：
+    \[
+    -2 = \sum_{n=0}^{\infty}C_n\sin\frac{n\pi}{a}x
+    \]
+    解得：
+    \[
+    C_n = \frac{2}{a}\int_0^a \left(-2\sin\frac{n\pi}{a}x\right)\mathrm{d}x = \frac{4}{n\pi}\left[(-1)^n - 1\right]
+    \]
+    则关于$y$的方程和边界条件为：
+    \[
+    Y''_n(y) - \left(\frac{n\pi}{a}\right)^2 Y_n(y) = \frac{4}{n\pi}\left[(-1)^n - 1\right]
+    \]
+    \[
+    Y_n(\frac{b}{2}) = Y_n(-\frac{b}{2}) = 0
+    \]
+    解得：
+    \[
+    Y_n(y) = \left\{
+    \begin{aligned}
+        0\qquad\qquad\quad &,\qquad n = 2k \\
+        \frac{8a^2}{\pi^3 n^3}\left(1 - \frac{\cosh\dfrac{n\pi y}{a}}{\cosh\dfrac{n\pi b}{2a}}\right) &,\qquad n = 2k + 1
+    \end{aligned}
+    \right.
+    \]
+    则原方程的解为：
+    \begin{align*}
+    u(x,t)
+    &= \sum_{n=0}^\infty X_n(x)Y_n(y) \\
+    &= \frac{8a^2}{\pi^3}\sum_{k=0}^\infty \frac{1}{(2k+1)^3}\left(1 - \frac{\cosh\dfrac{2k+1}{a}\pi y}{\cosh\dfrac{2k+1}{2a}\pi b}\right)\sin\frac{2k+1}{a}\pi x
+    \end{align*}
+    \bigskip
+
+    \item[8.]
+    由题意，杆的纵振动$u(x,t)$所满足的方程、边界条件和初始条件为：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} = A\sin\omega t
+    \]
+    \[
+    u(0,t) = 0,\qquad \left.\frac{\partial u}{\partial x}\right|_{x=l} = \frac{A}{ES}\sin\omega t
+    \]
+    \[
+    u(x,0) = 0,\qquad \left.\frac{\partial u}{\partial t}\right|_{t=0} = 0
+    \]
+    设方程有如下形式的特解：
+    \[
+    v(x,t) = f(x)\sin\omega t
+    \]
+    即设：
+    \[
+    u(x,t) = v(x,t) + w(x,t) = f(x)\sin\omega t + w(x,t)
+    \]
+    则特解$v(x,t)$满足：
+    \[
+    \frac{\partial^2 v}{\partial t^2} - a^2\frac{\partial^2 v}{\partial x^2} = A\sin\omega t
+    \]
+    化简得：
+    \[
+    a^2 f''(x) + \omega^2 f(x) + A = 0
+    \]
+    代入
+    \[
+    v(0,t) = 0,\qquad \left.\frac{\partial v}{\partial x}\right|_{x=l} = \frac{A}{ES}\sin\omega t
+    \]
+    解得：
+    \[
+    v(x,t) = \frac{Aa\sin\left(\dfrac{\omega x}{a}\right)}{ES\omega\cos\left(\dfrac{\omega l}{a}\right)}\sin\omega t
+    \]
+    通解$w(x,t)$满足：
+    \[
+    \frac{\partial^2 w}{\partial t^2} - a^2\frac{\partial^2 w}{\partial x^2} = 0
+    \]
+    \[
+    w(0,t) = 0,\qquad \left.\frac{\partial u}{\partial x}\right|_{x=l} = 0
+    \]
+    \[
+    w(x,0) = 0,\qquad \left.\frac{\partial w}{\partial t}\right|_{t=0} = -\left.\frac{\partial v}{\partial t}\right|_{t=0} = -\frac{Aa\sin\left(\dfrac{\omega x}{a}\right)}{ES\cos\left(\dfrac{\omega l}{a}\right)}
+    \]
+    解得：
+    \[
+    w(x,t) = \frac{4a\omega}{ES\pi a}\sum_{k=0}^{\infty}\frac{(-1)^k}{2k+1} \cdot \frac{\sin\dfrac{2k+1}{2l}\pi x}{\left(\dfrac{\omega}{a}\right)^2 - \left(\dfrac{2k+1}{2l}\pi\right)^2}\sin\frac{2n+1}{2l}\pi at
+    \]
+    则原方程的解为：
+    \[
+    u(x,t) = \frac{Aa\sin\left(\dfrac{\omega x}{a}\right)}{ES\omega\cos\left(\dfrac{\omega l}{a}\right)}\sin\omega t + \frac{4a\omega}{ES\pi a}\sum_{k=0}^{\infty}\frac{(-1)^k}{2k+1} \cdot \frac{\sin\dfrac{2k+1}{2l}\pi x}{\left(\dfrac{\omega}{a}\right)^2 - \left(\dfrac{2k+1}{2l}\pi\right)^2}\sin\frac{2n+1}{2l}\pi at
+    \]
+    若发生共振，设此时$\omega$为：
+    \[
+    \omega_0 = \dfrac{2m+1}{2l}\pi a
+    \]
+    则将$w(x,t)$中$k = m$项与$v(x,t)$合并，再取$\omega \to \omega_0$的极限，由L'Hospital法则得：
+    \begin{align*}
+    u(x,t)
+    &= \frac{6Al(-1)^m}{ES(2m+1)^2\pi^2}\sin\frac{2m+1}{2l}\pi x\sin\frac{2m+1}{2l}\pi at \\
+    &\quad + \frac{2A(-1)^{m+1}}{ES(2m+1)\pi}\left(x\cos\frac{2m+1}{2l}\pi x\sin\frac{2m+1}{2l}\pi at + at\sin\frac{2m+1}{2l}\pi x\cos\frac{2m+1}{2l}\pi at\right) \\
+    &\quad + \frac{8Al(2m+1)}{ES\pi^2}\sum_{k=0,\: k \neq m}^{\infty}\frac{(-1)^k}{(2k+1)\left[(2m+1)^2-(2k+1)^2\right]}\sin\frac{2k+1}{2l}\pi x\sin\frac{2k+1}{2l}\pi at
+    \end{align*}
+
+    \end{itemize}
+
+\end{document}

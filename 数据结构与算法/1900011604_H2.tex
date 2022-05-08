@@ -1,0 +1,245 @@
+\documentclass[a4 paper,fontset=windows]{ctexart}
+\usepackage{fontspec}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\definecolor{dkgreen}{rgb}{0,0.5,0}
+\definecolor{dkred}{rgb}{0.5,0,0}
+\setmonofont{Consolas}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=3cm,right=3cm}
+
+\lstset{frame=tb,
+	language=Python,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=fixed,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkred},
+	stringstyle=\color{dkgreen},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4}
+
+
+\begin{document}
+	\title{\textbf{数据结构与算法H2\ \ \ \ 实验报告}}
+	\author{1900011604\ \ \ \ 张植竣\ \ \ \ 指导老师：陈斌\\北京大学物理学院天文学系}
+	\date{2020年3月4日}
+	\maketitle
+	
+	\section{H2.1\ 验证\texttt{list}按索引取值的时间复杂度为O(1)}
+
+	\paragraph{\textbf{代码}}
+	\lstinputlisting{H2.1.py}
+
+	\paragraph{数据说明}
+	问题的规模$n$，即列表l的长度，范围从$1\times10^5$到$2.50\times10^7$，间隔为$1\times10^5$，每一条按索引取值的程序指令复执行$10^6$次，共得到250个数据点。
+
+	\paragraph{运行结果说明}
+	\begin{itemize}
+		\item 斜率: $k=-0.0002197207315316944$
+		\item 截距: $b=0.37907678111807197$
+		\item 相关系数:\ $r=-0.021488761847494306$
+		\item 时间$t(\mathrm{s})$与问题规模$n(\times10^6)$的关系:\ $t=0.00n+0.38$
+	\end{itemize}
+
+	\paragraph{实验结果分析}
+	可以看到，运行\texttt{list}按索引取值函数$10^6$次时，数据点集中分布在水平线$t=0.38\,\mathrm{s}$附近，拟合出的斜率$k$几乎为0（考虑到复运行了$10^6$次，实际上$k\approx-2.2\times10^{-10}$），说明\texttt{list}取值所需时间与问题的规模（即列表长度$n$）关，时间复杂度为O(1)。
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\linewidth]{Figure_1}
+	\end{figure}
+	
+	\newpage
+	\section{H2.2\ 验证\texttt{dict}中\texttt{get item}和\texttt{set item}的时间复杂度为O(1)}
+
+	\subsection{H2.2.1\ 验证\texttt{dict}中\texttt{get item}的时间复杂度为O(1)}
+
+	\paragraph{\textbf{代码}}
+	\lstinputlisting{H2.2.1.py}
+
+	\paragraph{数据说明}
+	问题的规模$n$，即字典\texttt{d}的长度
+	（ 键值对数量），范围从$1\times10^4$到$2.50\times10^6$，间隔为$1\times10^4$，每一条\texttt{get item}参数重复执$10^6$次，共得到250个数据点。
+
+	\paragraph{运行结果说明}
+	\begin{itemize}
+		\item 斜率:\ $k=0.0021657445437530416$
+		\item 截距:\ $b=0.3838213509975898$
+		\item 相关系数:\ $r=0.19171137995698143$
+		\item 时间$t(\mathrm{s})$与问题规模$n(\times10^6)$的关系:\ $t=0.00n+0.38$
+	\end{itemize}
+
+	\paragraph{实验结果分析}
+	可以看到，运行\texttt{dict}的\texttt{get item}函数$10^6$次时，数据点集中分布在水平线$t=0.38\,\mathrm{s}$附近，拟合出的斜率$k$几乎为0（考虑到重复运行了$10^6$次，实际上$k\approx2.2\times10^{-9}$），说明\texttt{dict}的\texttt{get item}函数运行所时间与问题的规模（ 即字典长度$n$）无关，时间复杂度为O(1)，这是由字典本身的性质决定的。
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\linewidth]{Figure_2_1}
+	\end{figure}
+	
+	\subsection{H2.2.2\ 验证\texttt{dict}中\texttt{set item}的时间复杂度为O(1)}
+
+	\paragraph{\textbf{代码}}
+	\lstinputlisting{H2.2.2.py}
+
+	\paragraph{数据说明}
+	问题的规模$n$，即字典d的长度（键值对数量），范围从$1\times10^4$到$2.50\times10^6$，间隔为$1\times10^4$，每一条\texttt{set item}参数重复执行$10^6$次，共得到250个数据点。
+
+	\paragraph{运行结果说明}
+	\begin{itemize}
+		\item 斜率:\ $k=0.00024256535304588268$
+		\item 截距:\ $b=0.42553140448192694$
+		\item 相关系数:\ $r=0.026154043941845978$
+		\item 时间$t(\mathrm{s})$与问题规模$n(\times10^6)$的关系:\ $t=0.00n+0.43$
+	\end{itemize}
+
+	\paragraph{实验结果分析}
+	可以看到，运行\texttt{dict}的\texttt{set item}函数$10^6$次时，数据点集中分布在水平线$t=0.43\,\mathrm{s}$附近，拟合出的斜率$k$几乎为0（考虑到重复运行了$10^6$次，实际上$k\approx2.4\times10^{-10}$），说明\texttt{dict}的\texttt{set item}函数运行需时间与问题的规模（ 即字典长度$n$）无关，时间复杂度为O(1)，这是由字典本身的性质决定的。
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\linewidth]{Figure_2_2}
+	\end{figure}
+	
+	\newpage
+	\section{H2.3\ 比较\texttt{list}和\texttt{dict}中\texttt{del}操作符的性能}
+
+	\subsection{H2.3.1\ \texttt{list}中\texttt{del}操作符的性能}
+
+	\paragraph{\textbf{代码}}
+	\lstinputlisting{H2.3.1.py}
+
+	\paragraph{数据说明}
+	问题的规模$n$，即列表的长度，范围从$4\times10^4$到$1\times10^7$，间隔为$4\times10^4$，每一条\texttt{del}操作符执行次，共得到250个数据点。设计5个函数，分别删除位于列表开头、$1/4$长度处、$1/2$长度处、$3/4$长度处、末尾的10个元素。列表足够（元素总个数至少比被删除元素个数高3个数量级，最多达到6个数量级），保证删除少量元素对问题规模产生影响可以忽略。
+
+	\paragraph{运行结果说明}
+	\begin{itemize}
+		\item 斜率:\ $k_1=7.030557596121503$
+		\item 截距:\ $b_1=-0.7999599325301242$
+		\item 相关系数:\ $r_1=0.9949504017385908$
+		\item 时间$t_1(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_1=7.03n-0.80$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_2=5.147107835645316$
+		\item 截距:\ $b_2=-1.3846753349393766$
+		\item 相关系数:\ $r_2=0.9933776455681103$
+		\item 时间$t_2(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_2=5.15n-1.38$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_3=3.439469756636106$
+		\item 截距:\ $b_3=-1.5408877783134176$
+		\item 相关系数:\ $r_3=0.9914362156961903$
+		\item 时间$t_3(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_3=3.44n-1.54$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_4=1.7673895809531137$
+		\item 截距:\ $b_4=-1.785833696385037$
+		\item 相关系数:\ $r_4=0.9834177637155441$
+		\item 时间$t_4(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_4=7.03n-0.80$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_5=-3.028560459672879\times10^{-5}$
+		\item 截距:\ $b_5=0.0038852337346928765$
+		\item 相关系数:\ $r_5=-0.04185167352039433$
+		\item 时间$t_5(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_5=0.00n+0.00$
+	\end{itemize}
+
+	\paragraph{实验结果分析}
+	可以看到，运行\texttt{list}的\texttt{del}操作符时，数据点集中分布在$t_i=k_{i}n$附近，说明删除第一个或中间某个元素的时间杂度为O(n)，在本次实验中，$t_1:t_2:t_3:t_4\approx4:3:2:1$，与删除点在列表中的位置对应，而删除最后一个元素时，数据点集中布在水平线$t_5=0.004\,\mathrm{ms}$附近，拟合出的斜率$k_5$几乎为0，说明删除最后一个元素的时间复杂度为O(1)。\\
+	\ \ 推测：这是因为删除列表的第$i$个元素时，需要将后面$n-i$个元素向前移动一位，更改元素指标的时间占大多数。导致删除第一个或中某个元素的时间复杂度为O(n)，而删除最后一个元素不需要移动其它元素的指标，故时间复杂度为O(1)。
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\linewidth]{Figure_3_1}
+	\end{figure}
+	
+	\subsection{H2.3.2\ \texttt{dict}中\texttt{del}操作符的性能}
+
+	\paragraph{\textbf{代码}}
+	\lstinputlisting{H2.3.2.py}
+
+	\paragraph{数据说明}
+	问题的规模$n$，即字典的长度，范围从$1\times10^4$到$2.50\times10^6$，间隔为$1\times10^4$，每一条\texttt{del}操作符和加元素操作符执行$10^6$次，共得到250个数据点。设计5个函数，分别删除位于字典开头、$1/4$长度处、$1/2$长度处、$3/4$长度处、末的1个元素。最后扣除添加$10^6$次元素的时间。
+
+	\paragraph{运行结果说明}
+	\begin{itemize}
+		\item 斜率:\ $k_1=0.0007541827139639373$
+		\item 截距:\ 截距:\ $b_1=0.006889754293975569$
+		\item 关系数:\ $r_1=0.05679696192126313$
+		\item 时间$t_1(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_1=0.00n+0.01$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_2=0.00027525989343816105$
+		\item 截距:\ $b_2=0.006621449233735119$
+		\item 相关系数:\ $r_2=0.027747031541544447$
+		\item 时间$t_2(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_2=0.00n+0.01$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_3=0.00461939408438505$
+		\item 截距:\ $b_3=0.0027960100240966073$
+		\item 相关系数:\ $r_3=0.2509789046503387$
+		\item 时间$t_3(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_3=0.00n+0.00$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_4=0.0043355342811883454$
+		\item 截距:\ $b_4=0.00318401527710871$
+		\item 相关系数:\ $r_4=0.23814047808804087$
+		\item 时间$t_4(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_4=0.00n+0.00$
+	\end{itemize}
+	\bigskip
+	\begin{itemize}
+		\item 斜率:\ $k_5=0.0036820635338167445$
+		\item 截距:\ $b_5=0.005051691865060345$
+		\item 相关系数:\ $r_5=0.20667718652716396$
+		\item 时间$t_5(\mathrm{ms})$与问题规模$n(\times10^6)$的关系:\ $t_5=0.00n+0.01$
+	\end{itemize}
+	
+	\paragraph{实验结果分析}
+	可以看到，运行\texttt{dict}的\texttt{del}操作符时，数据点集中分布在水平线$t_{avg}=0.005\,\mathrm{ms}$附近，拟合出的斜率$k_i\ (i=1,2,3,4,5)$几乎为0，说明删除字典中一个元素的时间复杂度为O(1)。\\
+	\ \ 推测：这是因为字典中元素不考虑顺序，删除一个元素不需要移动其它元素的指标，故时间复杂度为O(1)。
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\linewidth]{Figure_3_2}
+	\end{figure}
+	
+	\newpage
+	\section{H2.4\ 验证\texttt{list.sort()}的时间复杂度为$\mathrm{O}(n\log{n})$}
+
+	\paragraph{\textbf{代码}}
+	\lstinputlisting{H2.4.py}
+
+	\paragraph{数据说明}
+	问题的规模$n$，即列表l的长度，范围从$1\times10^5$到$1\times10^6$，间隔为$4\times10^3$，每一条按索引取值的程序指令重复行1次，共得到250个数据点。
+
+	\paragraph{运行结果说明}
+	\begin{itemize}
+		\item 斜率:\ $k=2.6344297060965576$
+		\item 截距:\ $b=-0.02142297511362065$
+		\item 相关系数:\ $r=0.9992198897036473$
+		\item 时间$t(\mathrm{s})$与问题规模的对数$log_2(n)(\times10^8)$的关系:\ $t=2.63\,n\,log_2(n)-0.02$
+	\end{itemize}
+
+	\paragraph{实验结果分析} 
+	可以看到，运行\texttt{list.sort()}函数1次时，所用时间$t$与问题规模（即列表长度$n$）的对数线性$n\log{n}$之间呈线性关系，性相关系数$r$高达0.999（线性相关性非常高，线性回归方程有意义），说明\texttt{list.sort()}函数的时间复杂度为$\mathrm{O}(n\log{n})$
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\linewidth]{Figure_4}
+	\end{figure}
+	
+\end{document}

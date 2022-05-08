@@ -1,0 +1,227 @@
+\documentclass[fontset=windows]{ctexbook}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\Large
+
+\title{\textbf{实验十九\ \ 分光计的调节和掠入射法测量折射率}}
+\author{\Large 1900011604 张植竣}
+\date{\Large 2020年10月21日}
+
+\maketitle
+
+\newpage
+\section*{\zihao{3} 1\ \ 测量步骤与数据处理}
+\bigskip
+
+\subsection*{\zihao{-3} 1.1\ \ 测定玻璃三棱镜顶角}
+
+1. 转动望远镜，使其光轴与棱镜$AB$面垂直，记下此时左右游标的读数$\theta'_1$、$\theta''_1$。
+
+\medskip2. 再转动望远镜，使其光轴与棱镜$AC$面垂直，记下此时左右游标的读数$\theta'_1$、$\theta''_1$。
+
+\medskip3. 计算玻璃三棱镜的顶角:
+\[
+    A = 180^{\circ} - \frac{1}{2}[(\theta'_1 - \theta'_2) + (\theta''_1 - \theta''_2)]
+\]
+
+测量数据\footnote{\zihao{-4}原数据以度和角分为单位，这里统一以度为单位，采用十进制表示。分光计测量的不确定度为$1'\approx0.017^{\circ}$（首位是1时保留多一位有效数字），故结果保留三位小数。}如下：
+
+\begin{table}[ht!]\Large
+    \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                测量编号 & $\theta'_1/^{\circ}$ & $\theta''_1/^{\circ}$ & $\theta'_2/^{\circ}$ & $\theta''_2/^{\circ}$ & $\psi/^{\circ}$ & $A/^{\circ}$ \\
+                \hline
+                1 & 303.550& 123.700 & 183.633 & 3.617   & 120.000  & 60.000\\
+                \hline
+                2 & 239.000& 59.000  & 298.933 & 119.067 & 120.000  & 60.000\\
+                \hline
+                3 & 252.050& 72.050  & 311.983 & 132.117 & 120.000  & 60.000\\
+                \hline
+            \end{tabular}
+    \end{center}
+\end{table}
+\vspace{-0.5em}
+\textbf{玻璃三棱镜顶角平均值为：}$\boldsymbol{\bar{A} = (60.000\pm0.010)^{\circ}}$
+
+\bigskip
+\subsection*{\zihao{-3} 1.2\ \ 用掠入射法测定三棱镜折射率}
+
+1. 将望远镜$PP'$线对准某一条谱线，记下此时左右游标的读数$\theta'_3$、$\theta''_3$。
+
+\medskip2. 转动望远镜至$AC$面的法线位置，记下此时左右游标的读数$\theta'_4$、$\theta''_4$。则掠入射的极限角为：
+\[
+    \phi = \frac{1}{2}[(\theta'_3 - \theta'_4) + (\theta''_3 - \theta''_4)]
+\]
+
+\medskip3. 计算玻璃三棱镜的折射率：
+\[
+    n = \sqrt{1 + \left(\frac{\cos A + \sin\bar{\phi}}{\sin A}\right)^2}
+\]
+\begin{table}[ht!]\Large
+    \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            测量编号 & $\theta'_3/^{\circ}$ & $\theta''_3/^{\circ}$ & $\theta'_4/^{\circ}$ & $\theta''_4/^{\circ}$ & $\phi/^{\circ}$ & $\bar{\phi}/^{\circ}$ \\
+            \hline
+            1 & 177.733 & 357.650 & 136.350 & 316.267 & 41.383 & \multirow{3}{*}{41.383} \\
+            \cline{1-6}
+            2 & 247.583 & 67.600  & 206.183 & 26.200  & 41.400 & \\
+            \cline{1-6}
+            3 & 232.550 & 52.550 & 191.200 & 11.167  & 41.367 & \\
+            \hline
+            \end{tabular}
+    \end{center}
+\end{table}
+
+\textbf{玻璃三棱镜折射率为：$\boldsymbol{n = 1.673\pm0.013}$}
+
+\bigskip
+\subsection*{\zihao{-3} 1.3\ \ 用最小偏向角法测定三棱镜折射率}
+
+1. 用水银灯照亮平行光管狭缝，转动游标盘，使平行光管和望远镜处于棱镜两个光学面的两侧。先用眼睛沿棱镜出射光方向寻找棱镜折射后的狭缝像，找到后再将望远镜移到水银光谱线所在方位（即狭缝的单色像）。
+
+\medskip2. 稍稍转动游标盘，以改变入射角$i$，使谱线朝偏向叫减小的方向移动。并转动望远镜跟踪谱线，直到棱镜继续沿着同方向转动时该谱线不再向前移动却往相反方向移动为止。这个绿谱线反方向移动的转折位置就是棱镜对绿谱线的最小偏向角位置。拧紧螺钉，将游标盘止动。
+
+\medskip3. 将望远镜$PP'$线与谱线重合，微调游标盘，准确找出绿谱线反方向移动的确切位置，轻轻移动望远镜，使望远镜$PP'$线对准谱线中心，记下此时左右游标的读数$\theta'_5$、$\theta''_5$。
+
+\medskip4. 拧紧螺钉将望远镜与刻度盘固定，转动望远镜对着入射光，使$PP'$线对准白色狭缝像，记下此时左右游标的读数$\theta'_6$、$\theta''_6$，则最小偏向角为：
+\[
+    \delta_m = \frac{1}{2}[(\theta'_5 - \theta'_6) + (\theta''_5 - \theta''_6)]
+\]
+
+5. 计算玻璃三棱镜折射率：
+\[
+    n = \dfrac{\sin\dfrac{A+\delta_m}{2}}{\sin\dfrac{A}{2}}
+\]
+
+\begin{table}[ht!]\Large
+    \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            $\lambda$/nm & $\theta'_5/^{\circ}$ & $\theta''_5/^{\circ}$ & $\theta'_6/^{\circ}$ & $\theta''_6/^{\circ}$ & $\delta_m/^{\circ}$ & $n$ \\
+            \hline
+            589.30 & 296.800 & 116.917 & 243.283 & 63.383 & 53.525 & $1.673\pm0.015$ \\
+            \hline
+            579.07 & 297.067 & 117.167 & 243.433 & 63.533 & 53.633 & $1.674\pm0.015$ \\
+            \hline
+            576.96 & 297.067 & 117.167 & 243.400 & 63.500 & 53.667 & $1.674\pm0.015$ \\
+            \hline
+            546.07 & 296.767 & 116.883 & 242.750 & 62.833 & 54.033 & $1.678\pm0.015$ \\
+            \hline
+            491.60 & 297.267 & 117.383 & 242.317 & 62.417 & 54.958 & $1.686\pm0.015$ \\
+            \hline
+            435.84 & 297.767 & 117.883 & 241.383 & 61.467 & 56.400 & $1.700\pm0.015$ \\
+            \hline
+            407.78 & 298.667 & 118.800 & 241.250 & 61.333 & 57.442 & $1.709\pm0.015$ \\
+            \hline
+            404.66 & 298.583 & 118.700 & 241.000 & 61.100 & 57.592 & $1.711\pm0.015$ \\
+            \hline
+            \end{tabular}
+    \end{center}
+\end{table}
+
+\textbf{玻璃三棱镜折射率与波长的关系为：}
+
+\[
+    n = 1.648+0.007404\times\frac{1}{\lambda^2}+0.0004787\times\frac{1}{\lambda^4}
+\]
+
+\newpage
+\begin{center}
+    \includegraphics[width = 1\linewidth]{Figure_1.pdf}
+\end{center}
+
+\newpage
+\section*{\zihao{3} 2\ \ 分析与讨论}
+\bigskip
+
+\subsection*{\zihao{-3} 2.1\ \ 实验中测量误差的来源分析}
+
+1. 分光计自身的允差，为$1'$。
+
+\medskip2. 读数时判断游标上哪一根刻度线与圆刻度盘对齐时有约$1'$的判断误差，但由于实际使用的是角度差，这一项误差可以归到随机误差中，通过多次测量处理后可以减小。
+
+\medskip3. 操作上的随机误差，即对准绿色十字像、明暗分界线、谱线时没有完全对准导致的误差。
+
+\bigskip
+\subsection*{\zihao{-3} 2.2\ \ 不确定度的估计与计算}
+
+1.本实验中，玻璃三棱镜的顶角$A$和掠入射的极限角$\phi$都测了三次取平均值，而最小偏向角$\delta_m$只测了一次。故对于$A$与$\phi$，平均值的不确定度估计为：
+\[
+\sigma = \sqrt{\sigma_{\bar{N}}^2+\left(\frac{e}{\sqrt{3}}\right)^2}
+\]
+其中:
+\[
+\sigma_{\bar{N}} = \sqrt{\frac{\sum\limits_{i=1}^{n}(N_i-\bar{N})^2}{n(n-1)}},
+\qquad e = 1'
+\]
+得到：
+\[
+\sigma_A = 0.010\,\mathrm{rad}
+,\qquad \sigma_\phi = 0.014\,\mathrm{rad}
+\]
+
+\medskip2. 最小偏向角$\delta_m$只测了一次，其误差估计为：
+\[
+\sigma_{\delta_m} = \frac{1}{2}\sqrt{\sigma_{\theta'_5}^2+\sigma_{\theta'_6}^2+\sigma_{\theta''_5}^2+\sigma_{\theta''_6}^2}
+\]
+并假定系统误差和随机误差都是均匀分布，且极限误差均为$e = 1'$，则有：
+\[
+\sigma_{\theta'_5}=\sigma_{\theta'_6}^2=\sigma_{\theta''_5}^2=\sigma_{\theta''_6}^2=\sqrt{\left(\frac{e}{\sqrt{3}}\right)^2+\left(\frac{e}{\sqrt{3}}\right)^2} = 0.014\,\mathrm{rad}
+\]
+故：
+\[
+\sigma_{\delta_m} = 0.014\,\mathrm{rad}
+\]
+
+\medskip3. 用掠入射法测定三棱镜折射率时，不确定度的合成公式为：
+\[
+n = \sqrt{\left(\frac{\partial n}{\partial A}\sigma_A\right)^2+\left(\frac{\partial n}{\partial\phi}\sigma_\phi\right)^2}
+\]
+其中：
+\[
+\frac{\partial n}{\partial A} = \frac{\cos A + \sin\phi}{n\sin^3 A}(\sin^2 A - \cos^2 A - \cos A\sin\phi)
+\]
+
+\[
+\frac{\partial n}{\partial\phi} = \frac{\cos\phi}{n\sin^2 A}(\cos A + \sin\phi)
+\]
+
+\medskip
+用最小偏向角法测定三棱镜折射率时，不确定度的合成公式为：
+\[
+n = \sqrt{\left(\frac{\partial n}{\partial A}\sigma_A\right)^2+\left(\frac{\partial n}{\partial\delta_m}\sigma_{\delta_m}\right)^2}
+\]
+其中：
+\[
+\frac{\partial n}{\partial A} = -\dfrac{\sin\dfrac{\delta_m}{2}}{2\sin^2 \dfrac{A}{2}}
+\]
+
+\[
+\frac{\partial n}{\partial\delta_m} = \dfrac{\cos\dfrac{A+\delta_m}{2}}{2\sin \dfrac{A}{2}}
+\]
+
+\newpage
+\section*{\zihao{3} 3\ \ 收获与感想}
+\bigskip
+
+1. 虽然是用分光计做实验，但是肉眼的辅助也很重要。望远镜视场非常小，不容易找到明暗分界线或者谱线的位置，故需要先用眼睛找到它们，再用望远镜对准进行测量。
+
+\medskip2. 三棱镜高度要合适，需要与平行光管和望远镜等高。调节三棱镜$AB$与$AC$面与望远镜垂直时，转到$AB$面时调节离自己近的螺钉$b_1$，转到$AC$面时调节离自己远的螺钉$b_3$，而$b_2$螺钉同时影响两个光学面的调节，在第一次调节后便不能再动。三棱镜$AB$与$AC$面调好与望远镜垂直后，在以后的操作过程中，三棱镜不能拿下来再放上去，否则会因为底座与三棱镜光学面不垂直以及灰尘的影响使得再次放上去之后$AB$与$AC$面与望远镜不再垂直，需要重新调整。
+
+\medskip3. 调节望远镜光轴与仪器转轴垂直时，为了更快找到绿色十字的反射像，可以先记下第一次找到绿色十字像时其中一个游标的读数，转动游标盘时只需要将另一个游标转动到这个读数即可。
+
+\end{document}

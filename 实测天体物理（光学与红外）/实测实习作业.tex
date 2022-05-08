@@ -1,0 +1,197 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\usepackage{graphicx,subfigure}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{fontspec}
+\setmonofont{JetBrains Mono NL}
+
+\begin{document}\Large
+
+    \title{\LARGE\textbf{实测天体物理\uppercase\expandafter{\romannumeral1}（光学与红外）实习作业}}
+    \author{\Large 1900011604\ \ 张植竣\ \ 北京大学}
+    \date{\Large 2020年12月31日}
+
+    \maketitle
+
+    \begin{kaishu}
+    \paragraph{\Large 摘要}
+
+    本次观测使用北京大学理科二号楼的$40\,\mathrm{cm}$天文望远镜拍摄了脉动变星XZ\ Cyg和食变双星U\ Cep的B波段、V波段照片，并通过AstroImageJ软件对XZ\ Cyg和U\ Cep在B、V波段进行孔径测光，处理数据并进行误差分析，做出光变曲线。
+    \end{kaishu}
+
+    \section*{\LARGE 数据处理过程}
+
+    \subsection*{\Large 时间的处理}
+
+    由\texttt{\large \large header}文件中可以看出，10月29日的拍摄时间需要修正为：
+    \[
+    t = \mathrm{JD'_{UTC} = JD_{UTC} - C}
+    \]
+    其中：（注意曝光时间是$30\,\mathrm{s}$，计算曝光中间时刻应该再减去$15\,\mathrm{s}$）
+    \[
+    \mathrm{C = JD_{UTC}^\mathit{i} - JD_{SOBS}^\mathit{i} - \frac{15}{86400}}
+    \]
+    上标$i$表示可以用任何一张照片为改正常数C定标。
+
+    而11月13日及12月9日的时间实际上为北京时间（$\mathrm{UTC+8}$），即：
+    \[
+    t = \mathrm{JD'_{UTC} = JD_{UTC} - \frac{8}{24}}
+    \]
+    对于XZ\ Cyg，其光变周期$T = 0.4666\,\mathrm{d}$，取时间零点为$t_0 = \mathrm{JD\,2459144.7606}$，此时相位$\phi = 0$。用下式将时间转换为相位：
+    \[
+    \phi = 2\pi \times \left(\frac{t-t_0}{T} - \left[\frac{t-t_0}{T}\right]\right)
+    \]
+
+    \subsection*{\Large 星等值的定标}
+
+    对于XZ\ Cyg，B波段选择的定标星为：
+
+    10月29日的照片：（HD\ 184959成像已达饱和，故不选做定标星）
+    \[
+    \mathrm{TYC\ 3929-1811-1},\quad m_\mathrm{B} = 11^{m}.14
+    \]
+    \[
+    \mathrm{TYC\ 3929-1703-1},\quad m_\mathrm{B} = 11^{m}.26
+    \]
+    \[
+    \mathrm{TYC\ 3929-1625-1},\quad m_\mathrm{B} = 11^{m}.50
+    \]
+    11月12日的照片：
+    \[
+    \mathrm{TYC\ 3929-1811-1},\quad m_\mathrm{B} = 11^{m}.14
+    \]
+    \[
+    \mathrm{TYC\ 3929-1703-1},\quad m_\mathrm{B} = 11^{m}.26
+    \]
+    \[
+    \mathrm{HD\ 184959},\quad m_\mathrm{B} = 7^{m}.84
+    \]
+    12月9日的照片：（HD\ 184959不在视场内，故不选做定标星）
+    \[
+    \mathrm{TYC\ 3929-1811-1},\quad m_\mathrm{B} = 11^{m}.14
+    \]
+    \[
+    \mathrm{TYC\ 3929-1703-1},\quad m_\mathrm{B} = 11^{m}.26
+    \]
+    \[
+    \mathrm{HD\ 184397},\quad m_\mathrm{B} = 8^{m}.75
+    \]
+    其中12月9日的照片因为无法定位坐标，9张照片逐张定点测光。
+
+    \medskip
+    V波段选择的定标星为：
+
+    10月29日的照片：（HD\ 184959成像已达饱和，故不选做定标星）
+    \[
+    \mathrm{TYC\ 3929-1811-1},\quad m_\mathrm{B} = 11^{m}.03
+    \]
+    \[
+    \mathrm{TYC\ 3929-1703-1},\quad m_\mathrm{B} = 9^{m}.96
+    \]
+    \[
+    \mathrm{TYC\ 3929-1625-1},\quad m_\mathrm{B} = 10^{m}.50
+    \]
+    11月12日的照片：（HD\ 184959成像已达饱和，故不选做定标星）
+    \[
+    \mathrm{TYC\ 3929-1811-1},\quad m_\mathrm{B} = 11^{m}.03
+    \]
+    \[
+    \mathrm{TYC\ 3929-1703-1},\quad m_\mathrm{B} = 9^{m}.96
+    \]
+    \[
+    \mathrm{TYC\ 3929-1625-1},\quad m_\mathrm{B} = 10^{m}.50
+    \]
+    12月9日的照片：（HD\ 184959不在视场内，故不选做定标星）
+    \[
+    \mathrm{TYC\ 3929-1811-1},\quad m_\mathrm{B} = 11^{m}.03
+    \]
+    \[
+    \mathrm{TYC\ 3929-1703-1},\quad m_\mathrm{B} = 9^{m}.96
+    \]
+    \[
+    \mathrm{HD\ 184397},\quad m_\mathrm{B} = 8^{m}.20
+    \]
+
+    \bigskip
+    对于U\ Cep，选择的定标星为：（部分照片中HD\ 6006不在视场内，故不选做定标星）
+    \[
+    \mathrm{TYC 4505-216-1},\quad m_\mathrm{B} = 10^{m}.81,\quad m_\mathrm{V} = 10^{m}.56
+    \]
+    \[
+    \mathrm{BD+80\ 27},\quad m_\mathrm{B} = 10^{m}.67,\quad m_\mathrm{V} = 10^{m}.47
+    \]
+    \[
+    \mathrm{BD+80\ 25},\quad m_\mathrm{B} = 10^{m}.63,\quad m_\mathrm{V} = 10^{m}.15
+    \]
+
+    \newpage
+    \subsection*{\Large 误差分析}
+    星等的定标公式为：
+    \[
+    C_i = m_i + 2.5\log F_i,\quad \overline{C} = \frac{1}{3}\sum_{i=2}^{4}C_i
+    \]
+    \[
+    m = -2.5\log F + \overline{C}
+    \]
+    目标流量$F$与定标星流量$F_i$分别由\texttt{\large Source-Sky\_T1}与\texttt{\large Source-Sky\_Ci}给出。（$i=2,3,4$）
+
+    则定标常数的误差：（$\sigma_{F_i}=\ $\texttt{\large Source\_Error\_T1}为定标星流量噪声）
+    \[
+    \left.
+    \begin{aligned}
+    & \sigma_{C_i} = \sqrt{\left(\frac{e}{\sqrt{3}}\right)^2 + \left(\frac{2.5}{F_i}\sigma_{F_i}\right)^2},\quad \overline{\sigma_C} = \frac{1}{3}\sum_{i=2}^{4}\sigma_{C_i} \\
+    & \sigma_{\overline{C}} = \sqrt{\frac{1}{6}\sum\limits_{i=2}^{4}\left(C_i-\overline{C}\right)^2}
+    \end{aligned}
+    \ \right\}
+    \ \sigma_1 = \sqrt{\overline{\sigma_C}^2 + \sigma_{\overline{C}}^2}
+    \]
+    由于源流量噪声$\sigma_F=\ $\texttt{\large Source\_Error\_T1}造成的误差。
+    \[
+    \sigma_2 = \frac{2.5}{F}\sigma_F
+    \]
+    最终合成误差为：
+    \[
+    \sigma_m = \sqrt{\sigma_1^2 + \sigma_2^2}
+    \]
+
+    \newpage
+    \section*{\LARGE 作图结果}
+
+    \subsection*{\Large XZ Cyg}
+
+    与V波段星等标测值$m_V = 8^{m}.90 \sim 10^{m}.16$符合较好。
+
+    \begin{figure}[h!]\centering
+        \includegraphics[width=0.8\linewidth]{./XZ_Cyg/XZ_Cyg_B.png}
+        \caption{XZ\ Cyg（B波段测光结果）}
+    \end{figure}
+
+    \begin{figure}[h!]\centering
+        \includegraphics[width=0.8\linewidth]{./XZ_Cyg/XZ_Cyg_B.png}
+        \caption{XZ\ Cyg（V波段测光结果）}
+    \end{figure}
+
+    \newpage
+    \subsection*{\Large U Cep}
+
+    与掩食中心时标测值$t_{\mathrm{min}} = \mathrm{JD}\,2459166.052$，此时V波段星等（最小值）$m_V = 9^{m}.24$符合较好。
+
+    \begin{figure}[h!]\centering
+        \includegraphics[width=0.8\linewidth]{./U_Cep/U_Cep_B.png}
+        \caption{U\ Cep（B波段测光结果）}
+    \end{figure}
+
+    \begin{figure}[h!]\centering
+        \includegraphics[width=0.8\linewidth]{./U_Cep/U_Cep_V.png}
+        \caption{U\ Cep（V波段测光结果）}
+    \end{figure}
+
+\end{document}

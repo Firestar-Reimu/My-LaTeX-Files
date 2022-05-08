@@ -1,0 +1,111 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+\title{\textbf{物理宇宙学基础作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2021年4月7日}
+\maketitle
+
+\begin{itemize}
+
+    \item[1.(a)]
+    波长为：
+    \[
+    \lambda_0 = \frac{\lambda}{1+z} = 150\,\mathrm{mm}
+    \]
+    观测者与类星体之间的共动距离为：
+    \[
+    r = \int_0^z\frac{c\mathrm{d}z'}{H_0\sqrt{\Omega_\mathrm{m}(1+z')^3+\Omega_\Lambda}} = 6554.228\,\mathrm{Mpc}
+    \]
+    由于宇宙膨胀，接收到的频率$\nu$变为发射时的$\dfrac{1}{1+z}$倍：
+    \[
+    F_\nu\mathrm{d}\nu = \frac{L_{(1+z)\nu}}{4\pi d_\mathrm{L}^2}\mathrm{d}(1+z)\nu,\quad
+        d_\mathrm{L} = r(1+z)
+    \]
+    则类星体光度为：
+    \[
+    L = 4\pi r^2(1+z)F_\mathrm{obs} = 2.056\times10^{23}\,\mathrm{W/Hz}
+    \]
+
+    \item[1.(b)]
+    星系直径：
+    \[
+    D = \frac{r\delta\theta}{1+z} = 39.7\,\mathrm{kpc}
+    \]
+
+    \item[1.(c)]
+    气体云与类星体间的距离为：
+    \[
+    r_\mathrm{gas} = \frac{r\delta\theta_\mathrm{gas}}{1+z} = 79.4\,\mathrm{kpc}
+    \]
+    由于气体云与类星体之间为引力束缚系统，不考虑宇宙学红移，则观测到的波长为：
+    \[
+    \lambda_\mathrm{gas} = \lambda_0 = 150\,\mathrm{nm}
+    \]
+    亮度为：
+    \[
+    F_\mathrm{gas} = \frac{L}{4\pi r_\mathrm{gas}^2} = 2.7\times10^{-21}\,\mathrm{W/(m^2\cdot Hz)}
+    \]
+
+    \item[1.(d)]
+    类星体发出的光传播到气体云所需的时间为：
+    \[
+    \Delta t_\mathrm{gas} = \frac{r_\mathrm{gas}}{c} = 2.591\times10^{5}\,\mathrm{yr}
+    \]
+    在地球上观测，时间膨胀：
+    \[
+    \Delta t = \Delta t_\mathrm{gas}(1+z) = 1.04\times10^{6}\,\mathrm{yr}
+    \]
+    即在约104万年后能观测到气体云的亮度变化。
+
+    \item[1.(e)]
+    设Doppler效应对红移的贡献为$z_v$，则：
+    \[
+    \lambda = (1+z)(1+z_v)\lambda_0 = (1+z+\sigma_z)\lambda_0
+    \]
+    于是$\sigma_z=(1+z)z_v$，即：
+    \[
+    z_v = \frac{\sigma_z}{1+z} = 2.5\times10^{-4}
+    \]
+    速度弥散为：
+    \[
+    \sigma_v = cz_v = 75\,\mathrm{km/s}
+    \]
+
+    \item[1.(f)]
+    由题意$\Delta r=100\,\mathrm{Mpc}$，考虑：
+    \[
+    r+\Delta r = \int_0^{z+\Delta z}\frac{c\mathrm{d}z'}{H_0\sqrt{\Omega_\mathrm{m}(1+z')^3+\Omega_\Lambda}} = 6654.228\,\mathrm{Mpc}
+    \]
+    数值计算可以得到：$\Delta z=0.1$
+    
+    而角距离：
+    \[
+    \Delta \theta = \frac{(1+z)\Delta r}{r} = 0.061\,\mathrm{rad} = 3.5^\circ
+    \]
+
+\end{itemize}
+
+\end{document}

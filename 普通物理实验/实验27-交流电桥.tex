@@ -1,0 +1,333 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,mathrsfs,wasysym}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{supertabular}
+\captionsetup{font=small}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+
+    \title{\textbf{实验二十七\ \ 交流电桥}}
+    \author{1900011604 张植竣}
+    \date{2021年4月18日}
+
+    \maketitle
+
+    \section*{1\ \ 实验数据和现象}
+
+    \subsection*{1.1\ \ 测量电容的性质}
+
+    \textbf{纸质电容}
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $R_1/\Omega$ & $R_2/\Omega$ & $R_0/\Omega$ & $C_0/\mu\mathrm{F}$ & $\Delta U/\mathrm{mV}$ & $C_x/\mu\mathrm{F}$ & $R_C/\Omega$ & $\tan\delta$ \\
+        \hline
+        200.0 & 200.0 & 2.8 & 0.2216 & 0.0 & 0.2216 & 2.8 & 0.0038986 \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    计算不确定度：
+    \[
+    \sigma_{C_x} = C_x\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{C_0}}{C_0}\right)^2} = 0.000707755\,\mu\mathrm{F}
+    \]
+    \[
+    \sigma_{R_C} = R_C\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{R_0}}{R_0}\right)^2} = 0.022072744\,\Omega
+    \]
+    \[
+    \sigma_{\tan\delta} = \tan\delta\sqrt{\left(\frac{\sigma_{R_0}}{R_0}\right)^2 + \left(\frac{\sigma_{C_0}}{C_0}\right)^2} = 0.000032815
+    \]
+    测量结果为：
+    \[
+    C_x = (0.2216\pm0.0007)\,\mu\mathrm{F},\qquad
+    R_C = (2.800\pm0.022)\,\Omega,\qquad
+    \tan\delta = 0.00390\pm0.00003
+    \]
+
+    \textbf{电解电容}
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $R_1/\Omega$ & $R_2/\Omega$ & $R_0/\Omega$ & $C_0/\mu\mathrm{F}$ & $\Delta U/\mathrm{mV}$ & $C_x/\mu\mathrm{F}$ & $R_C/\Omega$ & $\tan\delta$ \\
+        \hline
+        200.0 & 200.0 & 34.7 & 0.6672 & 0.00 & 6.672 & 3.47 & 0.1454673 \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    计算不确定度：
+    \[
+    \sigma_{C_x} = C_x\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{C_0}}{C_0}\right)^2} = 0.002123829\,\mu\mathrm{F}
+    \]
+    \[
+    \sigma_{R_C} = R_C\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{R_0}}{R_0}\right)^2} = 0.003861430\,\Omega
+    \]
+    \[
+    \sigma_{\tan\delta} = \tan\delta\sqrt{\left(\frac{\sigma_{R_0}}{R_0}\right)^2 + \left(\frac{\sigma_{C_0}}{C_0}\right)^2} = 0.000457076
+    \]
+    测量结果为：
+    \[
+    C_x = (0.6672\pm0.0021)\,\mu\mathrm{F},\qquad
+    R_C = (3.470\pm0.004)\,\Omega,\qquad
+    \tan\delta = 0.1455\pm0.0005
+    \]
+
+    \subsection*{1.2\ \ 测量电感的性质}
+
+    \textbf{Maxwell-Wien桥}
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $R_1/\Omega$ & $R_2/\Omega$ & $R_0/\Omega$ & $C_0/\mu\mathrm{F}$ & $\Delta U/\mathrm{mV}$ & $L_x/\mathrm{mH}$ & $R_L/\Omega$ & $Q$ \\
+        \hline
+        100.0 & 100.0 & 493.5 & 0.5860 & 0.01 & 5.860 & 20.2634245 & 1.81704064 \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    计算不确定度：
+    \[
+    \sigma_{L_x} = L_x\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{C_0}}{C_0}\right)^2} = 0.018904243\,\mathrm{mH}
+    \]
+    \[
+    \sigma_{R_L} = R_L\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{R_0}}{R_0}\right)^2} = 0.022190781\,\Omega
+    \]
+    \[
+    \sigma_{Q} = Q\sqrt{\left(\frac{\sigma_{R_0}}{R_0}\right)^2 + \left(\frac{\sigma_{C_0}}{C_0}\right)^2} = 0.005726905
+    \]
+    测量结果为：
+    \[
+    L_x = (5.860\pm0.019)\,\mathrm{mH},\qquad
+    R_L = (20.263\pm0.022)\,\Omega,\qquad
+    Q = 1.817\pm0.006
+    \]
+
+    \textbf{Maxwell桥}
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        $R_1/\Omega$ & $R_2/\Omega$ & $R_0/\Omega$ & $L_0/\mathrm{mH}$ & $R_{L_0}/\Omega$ & $\Delta U/\mathrm{mV}$ & $L_x/\mathrm{mH}$ & $R_L/\Omega$ & $Q$ \\
+        \hline
+        100.0 & 102.4 & 16.2 & 6 & 4.48 & 0.25 & 5.859 & 20.1953125 & 1.8229745 \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    计算不确定度：（其中$R = R_0 + R_{L_0}$）
+    \[
+    \sigma_{L_x} = L_x\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{L_0}}{L_0}\right)^2} = 0.067895851\,\mathrm{mH}
+    \]
+    \[
+    \sigma_{R_L} = R_L\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{R}}{R}\right)^2} = 0.033043462\,\Omega
+    \]
+    \[
+    \sigma_{Q} = Q\sqrt{\left(\frac{\sigma_{R}}{R}\right)^2 + \left(\frac{\sigma_{L_0}}{L_0}\right)^2} = 0.021185371
+    \]
+    测量结果为：
+    \[
+    L_x = (5.86\pm0.07)\,\mathrm{mH},\qquad
+    R_L = (20.20\pm0.03)\,\Omega,\qquad
+    Q = 1.82\pm0.02
+    \]
+
+    \textbf{比较Maxwell-Wien桥和Maxwell桥的收敛性}
+
+    对于Maxwell-Wien桥，从$R_0 = 500.0\,\Omega$和$C_0 = 0.600\,\mu\mathrm{F}$开始，只需调节一次$R_0$和一次$C_0$即可使$\Delta U$达到最小；对于Maxwell桥，固定$L_0 = 6\,\mathrm{mH}$，从$R_0 = 15.5\,\Omega$，$R_1 = R_2 = 100.0\,\Omega$开始，调节三次$R_0$和三次$R_2$，可使$\Delta U$达到最小。且Maxwell桥能调整到的$\Delta U$最小值只能到$0.25\,\mathrm{mV}$，远大于Maxwell-Wien桥能调整到的$\Delta U$最小值$0.01\,\mathrm{mV}$。
+
+    \subsection*{1.3\ \ 测量互感器的性质}
+
+    使用Heydweiller电桥，平衡条件为：
+    \[
+    M = (R_a + R_2)R_cC_b,\qquad L_2 = (R_a+R_2)(R_b+R_c)C_b > M
+    \]
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $R_a/\Omega$ & $R_b/\Omega$ & $C_b/\mu\mathrm{F}$ & $R_c/\Omega$ & $\Delta U/\mathrm{mV}$ & $R_2/\Omega$ & $L_2/\mathrm{mH}$ & $M/\mathrm{mH}$ \\
+        \hline
+        943.1 & 53.5 & 0.5000 & 100.0 & 0.01 & 55.7 & 0.0766579 & 0.04994 \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+
+    计算不确定度：（其中$R = R_a+R_2$，$R' = R_b+R_c$）
+    \[
+    \sigma_{M} = M\sqrt{\left(\frac{\sigma_{R}}{R}\right)^2 + \left(\frac{\sigma_{R_c}}{R_c}\right)^2 + \left(\frac{\sigma_{C_b}}{C_b}\right)^2} = 0.000150362\,\mathrm{mH}
+    \]
+    \[
+    \sigma_{L_2} = L_2\sqrt{\left(\frac{\sigma_{R}}{R}\right)^2 + \left(\frac{\sigma_{R'}}{R'}\right)^2 + \left(\frac{\sigma_{C_b}}{C_b}\right)^2} = 0.000233694\,\mathrm{mH}
+    \]
+    测量结果为：
+    \[
+    M = (0.49940\pm0.00015)\,\mathrm{mH},\qquad
+    L_2 = (0.07666\pm0.00023)\,\mathrm{mH}
+    \]
+    理论上交换$L_1$和$L_2$的位置也能测得$L_1$的电感值。
+
+    \subsection*{1.4\ \ 测量磁环的性质}
+
+    用Maxwell-Wien电桥测量磁环的电感$L_x$和损耗电阻$R_x$，计算相对磁导率$\mu$和$Q$值，并作$L_x-f$，$R_x-f$，$\mu_r-f$，$Q_f$关系图。部分固定的参量如下：（$R_c$为磁环的铜阻，$f$和$U$为通过磁环电流的频率以及磁环两端的电势差，$D$为磁环的平均直径，$S$为磁环的截面积，$N$为磁环匝数）
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $R_1/\Omega$ & $R_2/\Omega$ & $R_c/\Omega$ & $D/\mathrm{cm}$ & $S/\mathrm{cm^2}$ & $N$ \\
+        \hline
+        50.0 & 50.0 & 1.013 & 11.2 & 2.00 & 300 \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    磁环相对磁导率的计算公式为：
+    \[
+    \mu_r = \frac{\pi DL_x}{\mu_0 N^2 S}
+    \]
+    相对磁导率的不确定度为：
+    \[
+    \sigma_{\mu_r} = \frac{\pi D\sigma_{L_x}}{\mu_0 N^2 S} = \frac{\pi DL_x}{\mu_0 N^2 S}\sqrt{\left(\frac{\sigma_{R_1}}{R_1}\right)^2 + \left(\frac{\sigma_{R_2}}{R_2}\right)^2 + \left(\frac{\sigma_{C_0}}{C_0}\right)^2}
+    \]
+
+    测量和计算的数据如下：（根据\textbf{1.2}中Maxwell-Wien桥的经验，$\mu$保留到个位，其余计算结果保留三位小数）
+
+    \begin{center}
+        \tablefirsthead{
+        \hline
+        $f/\mathrm{kHz}$ & $U/\mathrm{mV}$ & $R_0/\Omega$ & $C_0/\mu\mathrm{F}$ & $\Delta U/\mathrm{mV}$ & $L_x/\mathrm{mH}$ & $R_L/\Omega$ & $\mu_r$ & $Q$ \\
+        \hline}
+        \tablehead{
+        \hline
+        $f/\mathrm{kHz}$ & $U/\mathrm{mV}$ & $R_0/\Omega$ & $C_0/\mu\mathrm{F}$ & $\Delta U/\mathrm{mV}$ & $L_x/\mathrm{mH}$ & $R_L/\Omega$ & $\mu_r$ & $Q$ \\
+        \hline}
+        \tabletail{\hline}
+        \tablelasttail{\hline}
+    \begin{supertabular}{|c|c|c|c|c|c|c|c|c|}
+        0.1 & 7.66 & 0.02 & 1270.0 & 0.7400 & 1.860 & 1.969 & 28933 & 0.594 \\
+        \hline
+        0.4 & 16.15 & 0.03 & 798.0 & 0.3660 & 0.915 & 3.133 & 14233 & 0.734 \\
+        \hline
+        0.7 & 18.84 & 0.01 & 644.0 & 0.2780 & 0.695 & 3.882 & 10811 & 0.787 \\
+        \hline
+        1.0 & 30.94 & 0.02 & 555.0 & 0.2353 & 0.588 & 4.505 & 9151 & 0.821 \\
+        \hline
+        2.0 & 32.75 & 0.01 & 420.0 & 0.1653 & 0.413 & 5.952 & 6428 & 0.872 \\
+        \hline
+        3.0 & 30.73 & 0.00 & 355.0 & 0.1353 & 0.338 & 7.042 & 5262 & 0.905 \\
+        \hline
+        5.0 & 36.55 & 0.01 & 280.0 & 0.1060 & 0.265 & 8.929 & 4122 & 0.932 \\
+        \hline
+        7.0 & 37.59 & 0.00 & 241.0 & 0.0900 & 0.225 & 10.373 & 3500 & 0.954 \\
+        \hline
+        9.0 & 41.14 & 0.00 & 217.0 & 0.0800 & 0.200 & 11.521 & 3111 & 0.982 \\
+        \hline
+        10.0 & 38.60 & 0.00 & 205.0 & 0.0760 & 0.190 & 12.195 & 2956 & 0.979 \\
+        \hline
+    \end{supertabular}
+    \end{center}
+
+    作图如下：
+    \begin{center}
+        \includegraphics[width = 1.0\textwidth]{1.png}
+        \captionof{figure}{$L_x-f$关系图}
+        \includegraphics[width = 1.0\textwidth]{2.png}
+        \captionof{figure}{$R_L-f$关系图}
+        \includegraphics[width = 1.0\textwidth]{3.png}
+        \captionof{figure}{$\mu_r-f$关系图}
+        \includegraphics[width = 1.0\textwidth]{4.png}
+        \captionof{figure}{$Q-f$关系图}
+    \end{center}
+
+    \section*{2\ \ 思考题}
+
+    \subsection*{试画出Maxwell-Wien电桥测电感$L_x$时，电桥达到平衡的过程图}
+
+    四根桥臂的复阻抗分别为：
+    \[
+    Z_1 = R_1,\quad Z_2 = \frac{R_0}{1 + j\omega C_0 R_0},\quad Z_3 = R_L + j\omega L_x,\quad Z_4 = R_2
+    \]
+    设$\bm{A} = Z_2 Z_3$，$\bm{B} = Z_1 Z_4$，$\bm{N} = \bm{A} - \bm{B}$，则电桥平衡时：
+    \[
+    \bm{N} = \frac{R_0(R_L + j\omega L_x) - R_1 R_2(1 + j\omega C_0 R_0)}{1 + j\omega C_0 R_0} = \bm{0}
+    \]
+    令：
+    \[
+    \bm{X} = (R_L + j\omega L_x),\qquad
+    \bm{Y} = \frac{R_1 R_2}{R_0}(1 + j\omega C_0 R_0) = \frac{R_1 R_2}{R_0} + j\omega R_1 R_2 C_0,\quad
+    \]
+    并只考虑$\bm{N}$的分子部分：
+    \[
+    \bm{M} = R_0(R_L + j\omega L_x) - R_1 R_2(1 + j\omega C_0 R_0)
+    \]
+    这样就能使得$R_0$和$C_0$相互独立。
+    
+    电桥平衡条件为：
+    \[
+    \bm{M} = R_1 R_2(\bm{X}-\bm{Y}) = \bm{0}
+    \]
+    调节$R_0$和$C_0$分别分别只改变$\bm{Y}$的实部和虚部，使$\bm{Y}$的终点平行于实轴、虚轴运动，只需要两次即可使$\bm{Y}$的终点与$\bm{X}$的终点重合。
+    
+    Maxwell-Wien电桥达到平衡的过程图如下：
+    
+    \begin{center}
+        \begin{tikzpicture}[>=Stealth]
+            \draw[->] (0,0) -- (10,0);
+            \draw[->] (0,0) -- (0,10);
+            \draw (-0.4,10) node {Im};
+            \draw (10,-0.4) node {Re};
+            \draw (-0.4,-0.4) node {O};
+            \draw[->] (0,0) -- (4,8);
+            \draw[->] (0,0) -- (8,4);
+            \draw (3.6,8) node {$\bm{X}$};
+            \draw (8,3.6) node {$\bm{Y}$};
+            \draw[->,dashed] (8,4) -- (8,8);
+            \draw[->,dashed] (8,8) -- (4,8);
+            \draw[->,dashed] (8,4) -- (4,4);
+            \draw[->,dashed] (4,4) -- (4,8);
+            \draw (6,8.4) node {调节$R_0$};
+            \draw (6,4.4) node {调节$R_0$};
+            \draw (8.8,6) node {调节$C_0$};
+            \draw (4.8,6) node {调节$C_0$};
+        \end{tikzpicture}
+    \end{center}
+
+    \section*{3\ \ 分析与讨论}
+    \textbf{实验中元件参数的选择对测量结果的精度有什么影响？}
+
+    以测量电容的实验为例，实验中发现：
+    \[
+    \left(\frac{\sigma_{R_1}}{R_1}\right)^2 \sim 10^{-7},\quad
+    \left(\frac{\sigma_{R_2}}{R_2}\right)^2 \sim 10^{-6},\quad
+    \left(\frac{\sigma_{C_0}}{C_0}\right)^2 \sim 10^{-5}
+    \]
+    可见电容箱的误差占测量误差的主要部分。电阻箱因阻值较大，相对误差较小，但是测量电感时不能把电阻调得过大，否则电阻丝的电感会干扰测量。
+
+    \textbf{测量电感的实验中两种电桥测量电感的收敛性差别是否很大，与什么因素有关？}
+
+    差别不是很大，与$R_0$、$R_2$和$L_0$的初始值有关。
+
+    \textbf{磁环的损耗电阻和磁导率随频率怎样变化？为什么？}
+
+    损耗电阻随频率增大而增大，磁导率随频率增大而减小。损耗电阻随频率增大而增大是因为频率增大时发热增大，磁环温度升高，损耗电阻增大。磁导率随频率增大而减小是因为高频下较难激发介质磁化。
+
+\end{document}

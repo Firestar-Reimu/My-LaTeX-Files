@@ -1,0 +1,263 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{bm}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}
+
+    \title{\textbf{实验二十二\ \ 迈克耳孙干涉仪}}
+    \author{1900011604 张植竣}
+    \date{2021年3月27日}
+
+    \maketitle
+
+    \section*{1\ \  实验现象描述与解释}
+
+    \subsection*{1.1\ \ 迈克耳孙干涉仪的调节方法}
+
+    \begin{minipage}{0.64\textwidth}
+        如图1设置光路。首先把$\mathrm{He-Ne}$激光束调成水平（不论与光阑P之间的距离多少都能射入P上的小孔），并令水平的激光束垂直于导轨且射到$\mathrm{M}_2$的中央部位，然后在光源前面放一小孔光阑P，使光束通过小孔射到$\mathrm{M}_2$上。调节$\mathrm{M}_2$后面的两个螺丝，使反射像和小孔重合（此时，能看到两排光点，调节$\mathrm{M}_2$时，应使移动着的一排光点中的最亮点与P的小孔重合），用同样的方法调节$\mathrm{M}_1$，使反射像中最亮的光点和小孔P重合。这时$\mathrm{M}_1$和$\mathrm{M}'_2$基本互相平行。
+    \end{minipage}
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width = 0.9\textwidth]{Figure_1.jpg}
+        \captionof{figure}{准直光路}
+    \end{minipage}
+
+    \subsection*{1.2\ \ 非定域干涉圆条纹和椭圆条纹的调节方法，圆条纹的变化规律及解释}
+
+    \textbf{圆条纹和椭圆条纹的调节方法}
+
+    如图1，在光阑P与分束板$\mathrm{G}_1$间加一短焦距的小透镜L，使光束汇聚为一点光源，且均匀照亮$\mathrm{M}_2$。用观察屏E接收干涉条纹。此时再仔细调节$\mathrm{M}_2$的两个微动螺丝$\mathrm{U}'_2$，使$\mathrm{M}_1$和$\mathrm{M}'_2$平行，在屏上就可以看到非定域的圆条纹。调节观察屏E与出射光之间的夹角，出射光垂直于观察屏时为圆条纹，倾斜时为椭圆条纹。
+
+    \textbf{圆条纹的变化规律}
+
+    如图2：以入射光方向为$x$轴，竖直向上为$z$轴，$\mathrm{M}_2$镜面为$Oyz$平面建立直角坐标系。注意对于两个微动螺丝$\mathrm{U}'_2$，水平方向的螺丝使$\mathrm{M}_2$绕$z$轴旋转，竖直方向的螺丝使$\mathrm{M}_2$绕$y$轴旋转。
+    \begin{itemize}
+        \item 调节$\mathrm{V}_1$、$\mathrm{V}_2$使$\mathrm{M}_1$镜前后移动，可以观察到圆条纹的吞吐，且中心处明暗交替；
+        \item 调节$\mathrm{M}_2$的角度（用镜子背面的两个螺丝$\mathrm{U}_2$和两个微动螺丝$\mathrm{U}'_2$），可以实现圆心的移动（严格来讲此时的干涉条纹已经是偏心率极小的椭圆）。具体来说，$\mathrm{M}_2$绕$y$轴旋转时圆心上下移动，绕$z$轴旋转时圆心左右移动。
+        \item 调节观察屏E与出射光之间的夹角改变干涉条纹的偏心率，出射光垂直于观察屏时为圆条纹，倾斜时为椭圆条纹。
+    \end{itemize}
+    \begin{center}
+        \includegraphics[width = 0.5\textwidth]{Figure_2.jpg}
+        \captionof{figure}{迈克耳孙干涉仪}
+    \end{center}
+
+    \textbf{圆条纹变化规律的解释}
+
+    若两个相干光源位于$(-d,0,0)$和$(d,0,0)$，发出相干球面波，则非定域干涉的等相位面为：
+    \[
+    \frac{x^2}{b^2} + \frac{y^2 + z^2}{b^2 - d^2} = 1,\qquad b = \pm \frac{n\lambda}{2}, b \leqslant d
+    \]
+    屏幕在两相干光源的连线上时观测到圆条纹。设屏幕位于$(a,0,0)$，则亮条纹半径：
+    \[
+    r = \sqrt{(d^2 - b^2)(\frac{a^2}{b^2} - 1)}
+    \]
+    对于第$m$级条纹，$b = d - m\dfrac{\lambda}{2}$，代入小量近似$d \ll a$和$m\dfrac{\lambda}{2} \ll d$得：
+    \[
+    r_m \approx a\sqrt{\frac{m\lambda}{d}}
+    \]
+    故前后移动$\mathrm{M}_1$镜时，相当于改变了$d$（$a$也有改变但不显著），对同一个固定的$r$，其条纹级数$m$正比于$d$，故$d$减小时条纹“吞”，相同半径处条纹级数降低，可见条纹减少；$d$增大时条纹“吐”，相同半径处条纹级数升高，可见条纹增加。
+
+    \subsection*{1.3\ \ 非定域干涉直条纹和双曲线条纹的调节方法}
+
+    转动粗调手轮$\mathrm{V}_1$使$\mathrm{M}_1$镜前后移动，使条纹“吞”，直到圆形条纹粗而疏，转动细调手轮$\mathrm{V}_2$以至于只能看到最低的零级条纹。再调节螺丝$\mathrm{U}_2$和微动螺丝$\mathrm{U}'_2$，可以看到条纹变为直线、双曲线。具体来说，$\mathrm{M}_2$绕$y$轴旋转时条纹由直线变为双曲线的一支，再变为双曲线的另一支，再回到直线；绕$z$轴旋转时条纹方向旋转，由水平到竖直再到水平。
+
+    \subsection*{1.4\ \ 定域干涉等倾条纹的调节方法，等倾条纹的变化规律及解释}
+
+    \textbf{定域干涉等倾条纹的调节方法}
+
+    调节螺丝$\mathrm{U}_2$和微动螺丝$\mathrm{U}'_2$，将$\mathrm{M}_2$复原到非定域干涉圆条纹，并转动粗调手轮$\mathrm{V}_1$使$\mathrm{M}_1$镜前后移动，使条纹“吞”，直到圆形条纹粗而疏，转动细调手轮$\mathrm{V}_2$以至于只能看到最低的零级条纹。把毛玻璃散射屏放在扩束透镜L与$\mathrm{G}_1$，使光束散射成为扩展光源。用聚焦到无穷远的眼睛代替屏幕作接收器，这时可看到圆条纹。进一步调节$\mathrm{M}_2$的微动螺丝$\mathrm{U}'_2$，使眼睛上下左右移动时，各圆的大小不变，圆心处条纹不“吞”也不“吐”，而仅仅是圆心随眼睛的移动而移动，这时看到的就是严格的等倾条纹了。
+
+    \textbf{等倾干涉条纹的变化规律}
+
+    转动粗调手轮$\mathrm{V}_1$使$\mathrm{M}_1$镜前后移动，可以观察到圆条纹的吞吐，且中心处明暗交替。
+
+    \textbf{等倾干涉条纹变化规律的解释}
+
+    等倾干涉的表观光程差公式为$\Delta L = 2nh\cos\gamma + \dfrac{\lambda}{2}$，条纹间距公式为：
+    \[
+    \Delta r = f(1-\tan^2 i)\frac{\lambda\cos\gamma}{2h\cos i\sin\gamma} \propto \frac{1}{h}
+    \]
+    其中$i$为入射角，$\gamma$为薄膜内的折射角，$\sin i = n\sin\gamma$。前后移动$\mathrm{M}_1$镜时，相当于改变了$h$的大小。膜的厚度$h$增大时，条纹“吐”出更多，则条纹变密，条纹间距减小。膜的厚度$h$减小时，条纹“吞”入更多，则条纹变疏，间距增大。中心处明暗交替是因为膜的厚度一定时，越靠近中心处，$i$越小，$\gamma$越小，光程差越大，干涉条纹级次越高，中心处交替的是级次最高的干涉条纹：
+    \[
+    m_{\mathrm{max}} = \left[\frac{2nh}{\lambda} - \frac{1}{2}\right]
+    \]
+
+    \subsection*{1.5\ \ 定域干涉等厚条纹的调节方法，等厚条纹的变化规律及解释}
+
+    \textbf{定域干涉等厚条纹的调节方法}
+
+    用扩展光源照明干涉仪，调至定域干涉等倾条纹的状态。在$\mathrm{M}_1$与$\mathrm{M}'_2$大致重合的位置（圆条纹粗而疏时），调节$\mathrm{U}'_2$使$\mathrm{M}_1$与$\mathrm{M}'_2$有一很小夹角，转动粗调手柄，使弯曲条纹往圆心方向移动，在视场中将出现直线干涉条纹。干涉条纹之间的距离与$\mathrm{M}_1$与$\mathrm{M}'_2$之间的夹角成反比，当夹角太大时，干涉条纹很密，不利于观察干涉条纹。为了观察清楚，干涉条纹间距以$2\sim3\,\mathrm{mm}$为宜。
+
+    \textbf{等厚干涉条纹的变化规律}
+
+    转动粗调手轮$\mathrm{V}_1$使$\mathrm{M}_1$镜前后移动，可以观察到干涉条纹从弯曲变直再变弯曲的现象。用镜子背面的两个螺丝$\mathrm{U}_2$和两个微动螺丝$\mathrm{U}'_2$调节$\mathrm{M}_2$的角度，可以调节条纹的疏密和方向。
+
+    \textbf{等厚干涉条纹变化规律的解释}
+
+    等厚干涉的表观光程差公式为$\Delta L = 2nh\cos\gamma$，在$\gamma$很小时，近似有$\Delta L = m\lambda = 2nh$。设楔形薄膜的劈角为$\alpha$，则等厚干涉的条纹间距公式为：
+    \[
+        \Delta x = \frac{\lambda}{2\alpha}
+    \]
+    调节$\mathrm{M}_2$的角度时，改变了劈角$\alpha$的大小和薄膜上下表面交线的方向。$\alpha$减小时，条纹间距增大；$\alpha$增大时，条纹间距减小。而等厚干涉条纹平行于交线，改变交线方向（即倾斜薄膜的倾斜方向）时条纹方向也相应改变。等厚干涉条纹偏离平行直线主要原因是薄膜厚度过大及入射光不平行。照射光束孔径角越大，或膜层越厚，则干涉条纹偏离平行直线越严重。
+
+
+    \subsection*{1.6\ \ 白光等厚干涉条纹的调节方法及干涉条纹的现象描述}
+
+    \textbf{白光等厚干涉条纹的调节方法}
+
+    在干涉条纹变直的附近，再加上白光光源（激光仍存在，以利于调节过程中观察条纹曲率变化情况），使$\mathrm{M}_1$镜继续沿原方向很缓慢地移动，直到视场中出现彩色条纹（白光干涉条纹）为止。彩色条纹的对称中心就是$\mathrm{M}_1$与$\mathrm{M}'_2$的交线。记下此时$\mathrm{M}_1$镜的位置$d_0$值，它就是$\mathrm{M}_1$与$\mathrm{M}'_2$重合的等光程处。
+
+    \textbf{干涉条纹的现象描述}
+
+    彩色干涉条纹对称分布，边缘部分的条纹较浅，衬比度低；中间部分的条纹较深，衬比度高；对称中心处近乎为黑白条纹，读数为$d_0 = 50.13700\,\mathrm{mm}$。
+
+    \section*{2\ \  空气折射率的测量}
+
+    \textbf{记录原始数据，利用公式算出空气折射率$n$}
+
+    原始数据如下：
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $p_1/\mathrm{kPa}$ & 0 & 40.0 & 57.5 & 98.0 \\
+                \hline
+                $p_2/\mathrm{kPa}$ & 0 & 1.8 & 0.4 & 1.2 \\
+                \hline
+                $\Delta p/\mathrm{kPa}$ & 0 & 38.2 & 57.1 & 96.8 \\
+                \hline
+                $N$ & 0 & 12 & 18 & 30 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    对线性关系$N = k\Delta p + b$作最小二乘法拟合得：
+    \[
+    k=0.3101584764\,\mathrm{kPa}^{-1},\qquad b=0.1046391686\,\mathrm{kPa},\qquad r=0.9999317214
+    \]
+
+    实验室已知：$\lambda = 632.8\,\mathrm{nm}$，$D = 4.00\,\mathrm{cm}$，$p = 101.325\,\mathrm{kPa}$。计算得出空气折射率为：
+    \[
+    n = 1 + \frac{\lambda pk}{2D} = 1.000248586
+    \]
+
+    则斜率$k$的A类不确定度为：
+    \[
+    \sigma_{k,\, A} = \frac{\sqrt{\dfrac{1}{r^2}-1}}{4-2} = 0.0058431838\,\mathrm{kPa}^{-1}
+    \]
+    斜率$k$的B类不确定度为：
+    \[
+    \sigma_{k,\, B} = \frac{\sigma_{N}}{\sqrt{\sum\limits_{i=1}^{4}(N_i - \overline{N})^2}} = 0.00924500327\,\mathrm{kPa}^{-1}
+    \]
+    其中$\sigma_{N}$为$N$计数的不确定度，这主要受人眼判断和反应速度的影响，估计为0.2环，$\overline{N}$为总环数的平均值$\dfrac{1}{4}\sum\limits_{i=1}^{4}N_i = 15$。
+
+    则斜率的合成不确定度为：
+    \[
+    \sigma_k = \sqrt{\sigma_{k,\, A}^2 + \sigma_{k,\, B}^2} = 0.01093676745\,\mathrm{kPa}^{-1}
+    \]
+    其余数值均为精确值（常数），则折射率$n$的不确定度为：
+    \[
+    \sigma_n = \frac{\lambda p}{2D}\sigma_k = 8.7656085787\times10^{-6}
+    \]
+    综上，测得空气折射率为：
+    \[
+    n = 1.000248 \pm 0.000008
+    \]
+
+    \section*{3\ \ 收获与感想}
+
+    \subsection*{1.3\ \ 非定域干涉直条纹和双曲线条纹的调节方法}
+
+    不能直接从圆条纹调至直条纹，需要先调$\mathrm{M}_1$镜使条纹粗而疏以至于没有条纹，再调$\mathrm{M}_2$镜将$\mathrm{M}_1$和$\mathrm{M}'_2$分开。
+
+    \subsection*{3.2\ \ 白光等厚干涉条纹的调节方法}
+
+    书上建议调节白光干涉条纹时保留激光，以利于调节过程中观察条纹曲率变化情况。但是实际上在条纹较直时，可以关闭激光，调节粗调手轮（可以不用细调手轮，但是必须很缓慢地转动粗调手轮）观察时，彩色条纹在灰白色背景下一闪而过对比更明显，更容易找到。
+
+    \subsection*{3.3\ \ 空气折射率的测量}
+
+    气室放气时比打气时更容易控制和条纹计数。计数条纹时需要找到一个“标志点”，比如条纹刚冒出来恰好还未形成圆环的时候为计数起点。
+
+    \newpage
+    \section*{附录\ \ 观测结果照片}
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_3.jpg}
+            \subcaption{圆形干涉条纹}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_4.jpg}
+            \subcaption{椭圆干涉条纹}
+        \end{subfigure}
+        \caption{非定域干涉圆条纹和椭圆条纹}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_5.jpg}
+            \subcaption{直线条纹（水平）}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_6.jpg}
+            \subcaption{直线条纹（倾斜）}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_7.jpg}
+            \subcaption{双曲线条纹（右支）}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_8.jpg}
+            \subcaption{双曲线条纹（左支）}
+        \end{subfigure}
+        \caption{非定域干涉直条纹和双曲线条纹}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_9.jpg}
+            \subcaption{定域等倾干涉条纹}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_10.jpg}
+            \subcaption{定域等厚干涉条纹}
+        \end{subfigure}
+        \quad
+        \begin{subfigure}[t]{0.2\textwidth}
+            \centering
+            \includegraphics[width=1\textwidth]{Figure_11.jpg}
+            \subcaption{白光等厚干涉条纹}
+        \end{subfigure}
+        \caption{非定域干涉直条纹和双曲线条纹}
+    \end{figure}
+
+\end{document}

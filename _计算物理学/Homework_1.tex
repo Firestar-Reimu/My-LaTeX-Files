@@ -1,0 +1,343 @@
+\documentclass[a4paper]{article}
+
+% 数学宏包
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+
+% Garamond 风格
+\usepackage{fontspec}
+\setmainfont{EB Garamond}
+
+% 数学字体
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage[math-style=ISO, bold-style=ISO]{unicode-math}
+\usepackage{bm}
+\setmathfont{Garamond-Math.otf}[StylisticSet={6,7,9,10}]
+
+% 数学命令
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon{\varepsilon}
+}
+\AtBeginDocument{
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf{\symsf}
+}
+\renewcommand{\bm}{\symbf}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+% 中文
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold]
+
+% 代码
+\setmonofont{JetBrains Mono NL}
+\usepackage{color}
+\usepackage{listings}
+\lstset{
+    language=Python,
+    basicstyle=\small\ttfamily,
+    aboveskip={1.0\baselineskip},
+    belowskip={1.0\baselineskip},
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=4,
+    frame=lines,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    keywordstyle=\color[rgb]{0,0.5,0},
+    commentstyle=\color[rgb]{0.5,0,0},
+    stringstyle=\color[rgb]{1,0,0},
+    numbers=left,
+    numberstyle=\small\ttfamily ,
+    stepnumber=1,
+    numbersep=12pt,
+    captionpos=t,
+    escapeinside={\%*}{*)}
+}
+
+\begin{document}
+
+\title{\textbf{计算物理学作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2021年10月16日}
+\maketitle
+
+\begin{enumerate}
+
+\item[1.(a)]
+
+由题意，估计最大可能上限，则假设每一项的舍入误差均为$\dfrac{\epsilon_M}{2}$。
+
+总和的精确值为$\sum\limits_{i=1}^N x_i=N\overline{x}$，相比于$\overline{x}$，其位数高了$\log_{2}N$，这会导致$N\cdot\dfrac{N\epsilon_M}{2}=\dfrac{N^2\epsilon_M}{2}$的舍入误差，而最后除以$N$再取平均值又会引起$\dfrac{\epsilon_M}{2}$的舍入误差，故最大的误差值估计为$\dfrac{(N+1)\epsilon_M}{2}$。
+
+\item[1.(b)]
+
+第二个公式更为稳定和准确，因为第二个公式是较小的数相减再平方相加，而第一个公式是计算平方后再让两个大数相减，在平方项求和及大数相减过程中会丢失很多高位信息。
+
+\item[1.(c)]
+
+证明如下：
+\[
+    I_0 = \int_0^1 \frac{1}{x+5}\,\mathrm{d}x = \left.\ln(x+5)\right|_0^1 = \ln\frac{6}{5}
+\]
+而且：
+\begin{align*}
+    I_k + 5I_{k-1}
+    &= \int_0^1 \frac{1}{x+5}\,\mathrm{d}x + \int_0^1 \frac{1}{x+5}\,\mathrm{d}x \\
+    &= \int_0^1 \frac{x^k + 5x^{k-1}}{x+5}\,\mathrm{d}x \\
+    &= \int_0^1 \frac{(x+5)x^{k-1}}{x+5}\,\mathrm{d}x \\
+    &= \int_0^1 x^{k-1}\,\mathrm{d}x \\
+    &= \left.\frac{x^k}{k}\right|_0^1 \\
+    &= \frac{1}{k}
+\end{align*}
+如果在计算$I_0$时有一个微小的误差$\epsilon$，利用上面的递推公式时：
+\[
+    I_n = \frac{1}{n} - 5I_{n-1} = \frac{1}{n} - 5\left(\frac{1}{n}-5I_{n-2}\right) = \cdots
+\]
+可见最终误差应为$\epsilon_n=5^n\epsilon$，以指数形式增长，说明利用该递推公式计算$I_n$是不稳定的。
+
+\item[2.(a)]
+
+上三角矩阵的行列式是对角线元素的乘积：$\det\mathsf{A}=1$
+
+\item[2.(b)]
+
+用初等行变换法可以发现：为了将$\mathsf{A}$化为单位矩阵，需要先将第$n-1$行与第$n$行相加，再将第$n-2$行与更改后的第$n-1$行相加……体现在单位矩阵$\mathsf{I}$的变化上就是：
+\[
+    \mathsf{A}^{-1}_{ij} = \sum_{x=i+1}^n A^{-1}_{xj} = 1 + \sum_{x=1}^{j-i-2} 2^{x-1} = 2^{j-i-1} \quad (i>j)
+\]
+
+故$\mathsf{A}^{-1}$的形式为：
+\[
+    \mathsf{A}^{-1}_{ij} = \left\{
+        \begin{aligned}
+            &0,\quad i<j \\
+            &1,\quad i=j \\
+            &2^{j-i-1},\quad i>j \\
+        \end{aligned}
+    \right.
+\]
+
+\item[2.(c)]
+
+首先证明：$\dfrac{\|\mathsf{A}\bm{x}\|_\infty}{\|\bm{x}\|_\infty}$在$\bm{x}$的各分量相等时取最大值。
+
+设$\bm{x}=(x_1,x_2,\cdots,x_n)^\mathrm{T}$，则它也可以被看作是一个$n\times1$的矩阵$\mathsf{x}$，且$x_i=\mathsf{x}_{i1}$：
+\[
+    \frac{\|\mathsf{A}\bm{x}\|_\infty}{\|\bm{x}\|_\infty} = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
+\]
+假如$\bm{x}$中除$x_k$外，其余所有元素均相等且等于$x_0$，则分两种情况：
+
+(1) $|x_k|>|x_0|$，则$\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|\leqslant\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_k\right|$，即：
+\[
+    \frac{\|\mathsf{A}\bm{x}\|_\infty}{\|\bm{x}\|_\infty}
+    = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
+    = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{|x_k|}
+    \leqslant \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_k\right|}{|x_k|}
+\]
+(2) $|x_k|<|x_0|$，则$\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|\leqslant\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_0\right|$，即：
+\[
+    \frac{\|\mathsf{A}\bm{x}\|_\infty}{\|\bm{x}\|_\infty}
+    = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
+    = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{|x_0|}
+    \leqslant \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_0\right|}{|x_0|}
+\]
+故$\dfrac{\|\mathsf{A}\bm{x}\|_\infty}{\|\bm{x}\|_\infty}$在$\bm{x}$的各分量相等时取最大值。设$\bm{x}$的各分量均为$x_0$，则：
+\[
+    \frac{\|\mathsf{A}\bm{x}\|_\infty}{\|\bm{x}\|_\infty}
+    = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
+    = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_0\right|}{|x_0|}
+    = \frac{\max\limits_i\sum\limits_{j=1}^n |\mathsf{A}_{ij}||\mathsf{x}_0|}{|x_0|} 
+    = \max\limits_i\sum\limits_{j=1}^n |\mathsf{A}_{ij}|
+\]
+则$\infty$模为：
+\[
+    \|\mathsf{A}\|_\infty
+    = \sup\limits_{\bm{x}\neq\bm{0}}\frac{\|\mathsf{A}\bm{x}\|_\infty}{\|\bm{x}\|_\infty}
+    = \max\limits_i\sum\limits_{j=1}^n |\mathsf{A}_{ij}|
+\]
+即提取出矩阵$\mathsf{A}$各元素和的绝对值最大的一行。
+
+\item[2.(d)]
+
+依次证明如下：
+
+(1) 证明对于一个幺正矩阵$\mathsf{U}\in\symbb{C}^{n\times n}$，$\|\mathsf{U}\|_2=\|\mathsf{U}^\dagger\|_2=1$：
+
+幺正矩阵的性质为$\mathsf{U}^\dagger\mathsf{U}=\mathsf{U}\mathsf{U}^\dagger=\mathsf{I}$，而单位矩阵$\mathsf{I}$的特征值均为1，则其谱半径$\rho(\mathsf{I})=\max\lambda(\mathsf{I})=1$。
+
+又因为对于任意方阵$\mathsf{B}$，其Euclid模$\|\mathsf{B}\|_2=\sqrt{\rho(\mathsf{B}^\dagger\mathsf{B})}$，则$\|U\|_2=\sqrt{\rho(\mathsf{U}^\dagger\mathsf{U})}=\sqrt{\rho(\mathsf{I})}=1$。
+
+(2) 证明对于任意一个复方阵$\mathsf{A}\in\symbb{C}^{n\times n}$，$\|\mathsf{UA}\|_2=\|\mathsf{A}\|_2$：
+
+由于$\mathsf{U}^\dagger\mathsf{U}=\mathsf{I}$，$(\mathsf{UA})^\dagger=\mathsf{A}^\dagger\mathsf{U}^\dagger$，则$\|\mathsf{UA}\|_2=\sqrt{\rho(\mathsf{A}^\dagger\mathsf{U}^\dagger\mathsf{U}\mathsf{A})}=\sqrt{\rho(\mathsf{A}^\dagger\mathsf{A})}=\|\mathsf{A}\|_2$；
+
+同理，对于$(\mathsf{UA})^{-1}=\mathsf{A}^{-1}\mathsf{U}^{-1}$，有$(\mathsf{A}^{-1}\mathsf{U}^{-1})^\dagger=(\mathsf{A}^{-1}\mathsf{U}^\dagger)^\dagger=(\mathsf{A}^{-1})^\dagger\mathsf{U}$，易得$\|(\mathsf{UA})^{-1}\|_2=\|\mathsf{A}^{-1}\|_2$；
+
+故$K_2(A)=\|\mathsf{A}\|_2\|\mathsf{A}^{-1}\|_2=\|\mathsf{UA}\|_2\|(\mathsf{UA})^{-1}\|_2=K_2(UA)$。
+
+\item[2.(e)]
+
+对于一个所有对角元都为1，而所有的上三角部分矩阵元都是−1的矩阵$\mathsf{A}$，其$\infty$模为：
+\[
+    \|\mathsf{A}\|_\infty = \max\limits_i\sum\limits_{j=1}^n |\mathsf{A}_{ij}| = 1
+\]
+其逆矩阵$\mathsf{A}^{-1}$满足：
+\[
+    \mathsf{A}^{-1}_{ij} = \left\{
+        \begin{aligned}
+            &0,\quad i<j \\
+            &1,\quad i=j \\
+            &2^{j-i-1},\quad i>j \\
+        \end{aligned}
+    \right.
+\]
+显然$\mathsf{A}^{-1}$各元素和的绝对值最大的一行就是第一行，则其$\infty$模为：
+\[
+    \|\mathsf{A}^{-1}\|_\infty = \max\limits_i\sum\limits_{j=1}^n |\mathsf{A}_{ij}| = 1 + \sum_{x=2}^{n} 2^{x-2} = 2^{n-1}
+\]
+故$\mathsf{A}$的条件数为：
+\[
+    K_\infty(\mathsf{A}) = \|\mathsf{A}\|_\infty\|\mathsf{A}^{-1}\|_\infty = 2^{n-1}
+\]
+
+\item[3.(a)]
+
+将积分$D$对$c_i$求偏导，令其为0：
+\begin{align*}
+    \frac{\partial D}{\partial c_i}
+    &= \frac{\partial}{\partial c_i}\int_0^1 \left(\sum_{i=1}^n c_i x^{i-1} -f(x)\right)^2\,\mathrm{d}x \\
+    &= \int_0^1 \frac{\partial}{\partial c_i}\left(\sum_{j=1}^n c_j x^{j-1} -f(x)\right)^2\,\mathrm{d}x \\
+    &= \int_0^1 2\left(\sum_{j=1}^n c_j x^{j-1} -f(x)\right)x^{i-1}\,\mathrm{d}x \\
+    &= 0
+\end{align*}
+显然这等价于：
+\[
+    \int_0^1 x^{i-1} \sum_{j=1}^n c_j x^{j-1}\,\mathrm{d}x = \int_0^1 x^{i-1}f(x)\,\mathrm{d}x
+\]
+由于积分与求和可交换，有：
+\begin{align*}
+    \sum_{j=1}^n \int_0^1 x^{i-1} c_j x^{j-1}\,\mathrm{d}x
+    &= \sum_{j=1}^n c_j \int_0^1 x^{i+j-2}\,\mathrm{d}x \\
+    &= \sum_{j=1}^n c_j\cdot\left(\frac{1}{i+j-1}\right)\,\mathrm{d}x \\
+    &= \int_0^1 x^{i-1}f(x)\,\mathrm{d}x
+\end{align*}
+故Hilbert矩阵$\mathsf{H}=\mathsf{H}_n$的矩阵元为：
+\[
+    \mathsf{H}_{ij} = \frac{1}{i+j-1}
+\]
+矢量$\bm{b}$的各分量为：
+\[
+    b_i = \int_0^1 x^{i-1}f(x)\,\mathrm{d}x
+\]
+
+\item[3.(b)]
+
+首先，因为$\mathsf{H}_{ij}=\mathsf{H}_{ji}=\dfrac{1}{i+j-1}$，所以$\mathsf{H}$为对称矩阵。
+
+又因为$\bm{c}^\mathrm{T}\symbf{H}\bm{c}=\bm{c}^\mathrm{T}\bm{b}$，且有：
+\begin{align*}
+    2\bm{c}^\mathrm{T}\bm{b}
+    &= 2\sum_{i=1}^n c_i \int_0^1 f(x)x^{i-1}\,\mathrm{d}x \\
+    &= 2\int_0^1 f(x) \sum_{i=1}^n c_i x^{i-1}\,\mathrm{d}x \\
+    &= \int_0^1 \left[\left(\sum_{i=1}^n c_i x^{i-1}\right)^2 + f^2(x)\right]\,\mathrm{d}x - \int_0^1 \left[\sum_{i=1}^n c_i x^{i-1} - f(x)\right]^2\,\mathrm{d}x
+\end{align*}
+取$f(x)=\sum\limits_{i=1}^n c_i x^{i-1}$，代入得：
+\[
+    \bm{c}^\mathrm{T}\bm{b} = \int_0^1 \left(\sum_{i=1}^n c_i x^{i-1}\right)^2\,\mathrm{d}x \geqslant 0
+\]
+等号只有在$c_i$都等于0时才取得，故$\mathsf{H}$是正定的。
+
+而正定矩阵的行列式大于0，则$\det\mathsf{H}>0$，故$\mathsf{H}$也是非奇异的。
+
+\item[3.(c)]
+
+对$\det\mathsf{H}_n$取自然对数：
+\[
+    \ln\det\mathsf{H}_n = \ln\frac{c_n^4}{c_{2n}} = \ln c_n^4 - \ln c_{2n}
+\]
+又因为$c_n=\prod\limits_{i=1}^{n-1} i!$，则$\ln c_n = \sum_{i=1}^{n-1} \ln i!$。
+
+代入Sterling公式$\ln n!\approx n\ln n-n+\dfrac{1}{2}\ln(2\pi n)$，并用积分近似求和，得到：
+\begin{align*}
+    \ln c_n
+    &\approx \sum_{i=1}^{n-1} \left[i\ln i - i + \frac{1}{2}\ln(2\pi i)\right] \\
+    &= \sum_{i=1}^{n-1} i\ln i - \frac{n(n-1)}{2} + \frac{n-1}{2}\ln(2\pi) + \frac{1}{2}\sum_{i=1}^{n-1}\ln i \\
+    &\approx \int_1^{n-1} x\ln x\,\mathrm{d}x - \frac{n(n-1)}{2} + \frac{n-1}{2}\ln(2\pi) + \frac{1}{2}\int_{i=1}^{n-1}\ln x\,\mathrm{d}x \\
+    &= \left.\frac{1}{4}x^2(2\ln x - 1)\right|_1^{n-1} - \frac{n(n-1)}{2} + \frac{n-1}{2}\ln(2\pi) + \frac{1}{2}\left(\left.x\ln x - x\right|_1^{n-1}\right) \\
+    &= \left[\frac{(n-1)^2}{2}\ln(n-1)-\frac{(n-1)^2}{4}+\frac{1}{4}\right] - \frac{n(n-1)}{2} + \frac{n-1}{2}\ln(2\pi) + \frac{1}{2}\left[(n-1)\ln(n-1)-n\right] \\
+    &= \frac{n^2-n}{2}\ln(n-1) - \frac{3n^2-2n}{4} + \frac{n-1}{2}\ln(2\pi)
+\end{align*}
+则有：
+\[
+    \ln c_n^4 = 4\ln c_n = (2n^2-2n)\ln(n-1) - (3n^2-2n) + (2n-2)\ln(2\pi)
+\]
+\[
+    \ln c_{2n} = (2n^2-n)\ln(2n-1) - (3n^2-n) + \frac{2n-1}{2}\ln(2\pi)
+\]
+于是得到：
+\[
+    \ln\det\mathsf{H}_n = \ln c_n^4 - \ln c_{2n} \sim -2n^2\ln2 + n\ln(2\pi)
+\]
+故$\det\mathsf{H}_n$近似为：
+\[
+    \det\mathsf{H}_n \sim 4^{-n^2}(2\pi)^n
+\]
+
+\item[3.(d)]
+
+高斯消元法求解任意线性方程组的代码如下：
+
+\lstinputlisting{Gauss.py}
+
+$n=1$到$n=10$的各输出结果如下：
+
+\begin{lstlisting}
+    [1.0]
+    [-2.000000000000001, 6.000000000000002]
+    [3.0000000000000195, -24.000000000000092, 30.00000000000008]
+    [-3.9999999999993143, 59.99999999999208, -179.9999999999808, 139.99999999998747]
+    [4.999999999999574, -120.00000000002163, 630.0000000001703, -1120.000000000335, 630.0000000001911]
+    [-6.000000001276931, 210.00000003757168, -1680.000000258774, 5040.000000681161, -6300.0000007583185, 2772.000000300736]
+    [7.000000040402028, -336.00000160737403, 3780.000015434454, -16800.000059826783, 34650.00010939741, -33264.00009431933, 12012.000030908977]
+    [-7.9999995398738974, 503.9999724640256, -7559.999612741079, 46199.99778858559, -138599.99379808275, 216215.99093752247, -168167.99338049823, 51479.99809169218]
+    [8.999921460705082, -719.9944911930725, 13859.905611358774, -110879.31972240417, 450447.48562329676, -1009002.8337807284, 1261254.03568819, -823676.3814356452, 218789.10252371323]
+    [-9.99704968383594, 989.7445331886411, -23754.54997029394, 240190.39320730607, -1261023.1592328737, 3783128.4319968503, -6725650.321446537, 7000245.761976883, -3937676.808608159, 923660.5025033345]
+\end{lstlisting}
+
+因为Hilbert矩阵是实对称矩阵，则它一定是Hermite矩阵,可以做Cholesky分解，代码如下：
+
+\lstinputlisting{Cholesky.py}
+
+$n=1$到$n=10$的各输出结果如下：
+
+\begin{lstlisting}
+    [1.0]
+    [-2.0000000000000004, 6.000000000000001]
+    [3.000000000000014, -24.00000000000008, 30.00000000000008]
+    [-3.999999999999389, 59.99999999999265, -179.99999999998172, 139.99999999998786]
+    [4.999999999972516, -119.99999999949219, 629.9999999978285, -1119.9999999967413, 629.9999999984136]
+    [-5.9999999999134275, 209.99999999822688, -1679.9999999909319, 5039.999999981689, -6299.999999984089, 2771.9999999950373]
+    [7.00000000946784, -336.0000003682885, 3780.0000034802224, -16800.000013330107, 34650.00002415114, -33264.00002066973, 12012.000006732993]
+    [-7.9999993519750205, 503.999963082772, -7559.999497360088, 46199.997195063115, -138599.9922680939, 216215.9888524956, -168167.99194461384, 51479.99769811924]
+    [8.99992463171293, -719.9946986977008, 13859.90897332794, -110879.34285049817, 450447.5677911754, -1009002.9969426501, 1261254.2185227366, -823676.4894828607, 218789.12870207898]
+    [-9.99647238489706, 989.6931664461617, -23753.43150321029, 240180.04960350535, -1260973.1431035323, 3782989.395580647, -6725420.0812932905, 7000021.515574697, -3937558.2923019733, 923634.2881650471]
+\end{lstlisting}
+
+两种方法给出的解有差别，且我认为在$n$较大时，Gauss消元法更为精确。因为解的第一项应为$(-1)^{n-1}n$，而$n$较大时，Gauss消元法比Cholesky分解算法得到的解更接近该值。
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,103 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{anyfontsize,graphicx}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+\title{\textbf{物理宇宙学基础作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2021年4月7日}
+\maketitle
+
+\begin{itemize}
+    \item[1.(a)]
+    该宇宙模型中的临界密度为：
+    \[
+    \rho_\mathrm{crit} = \frac{3H_0^2}{8\pi G} = 9.2045\times10^{-27}\,\mathrm{kg/m^3}
+    \]
+    由题意，重子物质中$75\%$为$^1\mathrm{H}$，$25\%$为$^4\mathrm{He}$，则当前时刻的电子数密度为：
+    \begin{align*}
+    n_0
+    &= n_\mathrm{H} + 2n_\mathrm{He} \\
+    &= 75\%\times\frac{\Omega_\mathrm{b}\rho_\mathrm{crit}}{m_\mathrm{H}} + 25\%\times\frac{\Omega_\mathrm{b}\rho_\mathrm{crit}}{m_\mathrm{He}} \\
+    &= 0.1927\,\mathrm{m^{-3}}
+    \end{align*}
+
+    \item[1.(b)]
+    只考虑电子对光子的Thomson散射，散射截面为：
+    \[
+    \sigma = \frac{1}{6\pi\varepsilon_0^2}\left(\frac{e^2}{m_\mathrm{e}c^2}\right)^2 = 6.6525\times10^{-29}\,\mathrm{m^2}
+    \]
+    光深：
+    \begin{align*}
+    \tau
+    &= n\sigma l \\
+    &= n_0(1+z)^3 \cdot \sigma \cdot \frac{r}{1+z} \\
+    &= n_0\sigma r(1+z)^2
+    \end{align*}
+    考虑到：
+    \[
+    r = \frac{c}{H_0}\int_{0}^{z}\frac{\mathrm{d}z}{\sqrt{E(z)}} = \frac{c}{H_0}\int_{0}^{z}\frac{\mathrm{d}z}{\sqrt{\Omega_\mathrm{m}(1+z)^3 + \Omega_\Lambda}}
+    \]
+    则得光深关于红移的关系：
+    \[
+    \tau(z) = \frac{n_0\sigma c}{H_0}\int_{0}^{z}\frac{(1+z)^2\mathrm{d}z}{\sqrt{\Omega_\mathrm{m}(1+z)^3 + \Omega_\Lambda}}
+    \]
+    由$\tau_\mathrm{CMB}=0.09$及$\Omega_\mathrm{m}+\Omega_\Lambda=1$得：
+    \begin{align*}
+        \tau_\mathrm{CMB}
+        &= \frac{n_0\sigma c}{H_0}\int_{0}^{z_\mathrm{reion}}\frac{(1+z)^2\mathrm{d}z}{\sqrt{\Omega_\mathrm{m}(1+z)^3 + \Omega_\Lambda}} \\
+        &= \frac{n_0\sigma c}{H_0}\int_{1}^{x_\mathrm{reion}}\frac{\mathrm{d}x}{\sqrt{\Omega_\mathrm{m}x + \Omega_\Lambda}},\quad x = (1+z)^3 \\
+        &= \frac{2n_0\sigma c}{3H_0\Omega_\mathrm{m}}(\sqrt{\Omega_\mathrm{m}x_\mathrm{reion}^3 + \Omega_\Lambda} - 1) \\
+        &= \frac{2n_0\sigma c}{3H_0\Omega_\mathrm{m}}(\sqrt{\Omega_\mathrm{m}(1+z_\mathrm{reion})^3 + \Omega_\Lambda} - 1) \\
+        &= 0.09
+    \end{align*}
+    计算得$z_\mathrm{reion}=11.33$，即宇宙再电离发生于约$z=11$处。
+    
+    \item[1.(c)]
+    由光深的定义，观测者接收到红移为$z$处的辐射为：
+    \[
+    I = I_0\mathrm{e}^{-\tau}
+    \]
+    则光被星际介质散射的几率为：
+    \[
+    P = \frac{I-I_0}{I_0} = 1-\mathrm{e}^{-\tau}
+    \]
+    由$\tau=n_0\sigma r(1+z)^2$得：
+    \[
+    \frac{\mathrm{d}P}{R_0\mathrm{d}\omega} = \frac{\mathrm{d}P}{\mathrm{d}r} = \frac{\mathrm{d}P}{\mathrm{d}\tau}\cdot \frac{\mathrm{d}\tau}{\mathrm{d}r} = = n_0\sigma(1+z)^2\mathrm{e}^{-\tau(z)}
+    \]
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.75\linewidth]{Homework_3_3.png}
+        \caption{$\mathrm{d}P/(R_0\,\mathrm{d}\omega) - z$关系图}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.75\linewidth]{Homework_3_4.png}
+        \caption{$\mathrm{d}P/(R_0\,\mathrm{d}\omega) - D(z)$关系图，注意此处$D(z)=r$即为共动距离}
+    \end{figure}
+\end{itemize}
+
+\end{document}

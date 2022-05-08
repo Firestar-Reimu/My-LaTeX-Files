@@ -1,0 +1,238 @@
+\documentclass[a4paper]{ctexbook}
+
+\usepackage{anyfontsize,fontspec}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=1.5cm,right=1.5cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\large
+
+    \title{\textbf{实验十四\ \ 直流电桥测量电阻}}
+    \author{\Large 1900011604 张植竣}
+    \date{\Large 2020年10月15日}
+
+    \maketitle
+
+
+    \section*{\zihao{-3} 一\ \ 测量数据处理}
+    \bigskip
+
+    \subsection*{\zihao{4} 1.1\ \ 用自组电桥测量未知电阻及相应的电桥灵敏度}
+
+    \begin{center}
+    \begin{threeparttable}
+    \resizebox{1\hsize}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        待测电阻 & $R_1/\Omega$ & $R_2/\Omega$ & $R_0/\Omega$ & $R'_0/\Omega$ & $n'/\text{格}$ & $\Delta R_0/\Omega$ & $\Delta n/\text{格}$ & $S/\text{格}$ & $\sigma_{R_x}/\Omega$ & $R_x/\Omega$ \\
+        \hline
+        \multirow{2}{*}{$R_{x_1}$} & \multirow{2}{*}{500.0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{47.62\tnote{*}} & 47.6 & $+0.7$\tnote{$\dagger$} & \multirow{2}{*}{0.1} & \multirow{2}{*}{3.1} & \multirow{2}{*}{$1.5\times10^3$} & \multirow{2}{*}{0.0700} & \multirow{2}{*}{$47.62\pm0.07$} \\
+        \cline{5-6}
+         & & & & 47.7 & $-2.4$ & & & & & \\
+        \hline
+        \multirow{6}{*}{$R_{x_2}$} & \multirow{2}{*}{50.0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{3694} & 3674 & $+2.6$ & \multirow{2}{*}{40} & \multirow{2}{*}{5.3} & \multirow{2}{*}{$4.9\times10^2$} & \multirow{2}{*}{0.4315} & \multirow{2}{*}{$369.4\pm0.4$} \\
+        \cline{5-6}
+         & & & & 3714 & $-2.7$ & & & & & \\
+        \cline{2-11}
+         & \multirow{2}{*}{500.0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{369.9} & 369.2 & $+2.0$ & \multirow{2}{*}{1.3} & \multirow{2}{*}{4.2} & \multirow{2}{*}{$1.2\times10^3$} & \multirow{4}{*}{$0.1826$} & \multirow{4}{*}{$369.9\pm0.18$} \\
+        \cline{5-6}
+         & & & & 370.5 & $-2.2$ & & & & & \\
+        \cline{2-9}
+         & \multirow{2}{*}{500.0\tnote{$\ddagger$}} & \multirow{2}{*}{500.0} & \multirow{2}{*}{369.9} & 369.2 & $+2.3$ & \multirow{2}{*}{1.3} & \multirow{2}{*}{4.5} & \multirow{2}{*}{$1.2\times10^3$} & & \\
+        \cline{5-6}
+         & & & & 370.5 & $-2.2$ & & & & & \\
+        \hline
+        \multirow{2}{*}{$R_{x_3}$} & \multirow{2}{*}{500.0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{$4.65\times10^3$} & $4.60\times10^3$ & $+2.4$ & \multirow{2}{*}{100} & \multirow{2}{*}{5.3} & \multirow{2}{*}{$2.3\times10^2$} & \multirow{2}{*}{6.2501} & \multirow{2}{*}{$(4.650\pm0.006)\times10^3$} \\
+        \cline{5-6}
+         & & & & $4.70\times10^3$ & $-2.5$ & & & & & \\
+        \hline
+    \end{tabular}}
+    \begin{tablenotes}
+        \footnotesize
+        \item[*] 用内插法得到。
+        \item[$\dagger$] $+$号表示指针向右偏转，$-$号表示向左偏转，下同。
+        \item[$\ddagger$] 交换桥臂$R_1$和$R_2$再次测量。
+    \end{tablenotes}
+    \end{threeparttable}
+    \end{center}
+
+    \subsection*{\zihao{4} 1.2\ \ 了解影响直流电桥灵敏度的因素}
+
+    \begin{center}
+    \resizebox{1\hsize}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        待测电阻 & $E/\mathrm{V}$ & $R_h/\mathrm{k}\Omega$ & $R_1/\Omega$ & $R_2/\Omega$ & $R_0/\Omega$ & $R'_0/\Omega$ & $n'/\text{格}$ & $\Delta R_0/\Omega$ & $\Delta n/\text{格}$ & $S/\text{格}$ & $\sigma_{R_x}/\Omega$ & $R_x/\Omega$ \\
+        \hline
+        \multirow{8}{*}{$R_{x_2}$} & \multirow{2}{*}{4.0} & \multirow{2}{*}{0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{369.8} & 369.2 & $+2.2$ & \multirow{2}{*}{1.2} & \multirow{2}{*}{4.2} & \multirow{2}{*}{$1.3\times10^3$} & \multirow{2}{*}{0.4013} & \multirow{2}{*}{$369.8\pm0.4$} \\
+        \cline{7-8}
+         & & & & & & 370.4 & $-2.0$ & & & & & \\
+        \cline{2-13}
+         & \multirow{2}{*}{2.0} & \multirow{2}{*}{0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{369.9} & 369.0 & $+1.7$ & \multirow{2}{*}{1.9} & \multirow{2}{*}{3.7} & \multirow{2}{*}{$7.2\times10^2$} & \multirow{2}{*}{0.4114} & \multirow{2}{*}{$369.9\pm0.4$} \\
+        \cline{7-8}
+         & & & & & & 370.9 & $-2.0$ & & & & & \\
+        \cline{2-13}
+         & \multirow{2}{*}{4.0} & \multirow{2}{*}{0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{5000.0} & \multirow{2}{*}{$3.70\times10^3$} & $3.67\times10^3$ & $+2.0$ & \multirow{2}{*}{$6\times10^1$} & \multirow{2}{*}{4.2} & \multirow{2}{*}{$2.6\times10^2$} & \multirow{2}{*}{0.4722} & \multirow{2}{*}{$370.0\pm0.5$} \\
+        \cline{7-8}
+         & & & & & & $3.73\times10^3$ & $-2.2$ & & & & & \\
+        \cline{2-13}
+         & \multirow{2}{*}{4.0} & \multirow{2}{*}{3} & \multirow{2}{*}{500.0} & \multirow{2}{*}{500.0} & \multirow{2}{*}{370} & 366 & $+2.0$ & \multirow{2}{*}{1.2} & \multirow{2}{*}{4.2} & \multirow{2}{*}{$1.8\times10^2$} & \multirow{2}{*}{0.5490} & \multirow{2}{*}{$370.0\pm0.5$} \\
+        \cline{7-8}
+         & & & & & & 374 & $-2.0$ & & & & & \\
+        \hline
+    \end{tabular}}
+    \end{center}
+
+    \bigskip
+    \section*{\zihao{-3} 二\ \ 思考题}
+
+    \subsection*{\zihao{4} 下列因素是否会加大测量误差？}
+
+    \noindent \textbf{(1) 电源电压大幅度下降；}
+
+    \noindent 会，由公式
+    \[
+    S = \frac{S_i\cdot E}{R_1+R_2+R_0+R_x+R_g\left(2+\frac{R_1}{R_x}+\frac{R_0}{R_2}\right)}
+    \]
+    \[
+    \delta R_x = \frac{0.2\Delta R_x}{\Delta n} = \frac{0.2R_x}{S}
+    \]
+    及
+    \begin{align*}
+    & \sigma_{R_x} = \sqrt{(\delta R_x)^2+\left(\frac{R_0}{R_2}\right)^2\sigma_{R_1}^2+\left(\frac{R_0R_1}{R_2^2}\right)^2\sigma_{R_2}^2+\left(\frac{R_1}{R_2}\right)^2\sigma_{R_0}^2} \\
+    & \left(\text{或交换桥臂法中：}\ \sigma_{R_x} = \sqrt{(\delta R_x)^2+\frac{1}{4}\frac{R_{01}}{R_{02}}\sigma_{R_{01}}^2+\frac{1}{4}\frac{R_{02}}{R_{01}}\sigma_{R_{02}}^2}\ \right)
+    \end{align*}
+    得：电源电压$E$大幅度下降时，电桥灵敏度$S$下降，导致$\delta_{R_x}$减小，使得$R_x$的不确定度$\sigma_{R_x}$增加，测量误差增大。
+
+    \medskip
+    \noindent \textbf{(2) 电源电压稍有波动；}
+
+    \noindent 不会，由公式：
+    \[
+    R_x = R_0\left(\frac{R_1}{R_2}\right)\ \text{或}\ R_x = \sqrt{R_{01}\cdot R_{02}}
+    \]
+    可知，$R_x$的测量值与电源电压$E$无关，不影响测量结果。由(1)得，电源电压稍有波动会引起测量误差的波动，但不会明显加大测量误差。
+
+    \medskip
+    \noindent \textbf{(3) 在测量较低电阻时，导线电阻不可忽略；}
+
+    \noindent 会，显然此时电阻测量值等于电阻真值与导线电阻之和，计算出的$R_x$偏大。
+
+    \medskip
+    \noindent \textbf{(4) 检流计零点没有校准；}
+
+    \noindent 会，显然此时在判断检流计指针指零时实际上电桥未平衡，计算出的$R_x$误差较大。
+
+    \medskip
+    \noindent \textbf{(5) 检流计灵敏度不够高。}
+
+    \noindent 会，由公式
+    \[
+    S = \frac{S_i\cdot E}{R_1+R_2+R_0+R_x+(R_g+R_h)\left(2+\frac{R_1}{R_x}+\frac{R_0}{R_2}\right)}
+    \]
+    \[
+    \delta R_x = \frac{0.2\Delta R_x}{\Delta n} = \frac{0.2R_x}{S}
+    \]
+    及
+    \begin{align*}
+        & \sigma_{R_x} = \sqrt{(\delta R_x)^2+\left(\frac{R_0}{R_2}\right)^2\sigma_{R_1}^2+\left(\frac{R_0R_1}{R_2^2}\right)^2\sigma_{R_2}^2+\left(\frac{R_1}{R_2}\right)^2\sigma_{R_0}^2} \\
+        & \left(\text{或交换桥臂法中：}\ \sigma_{R_x} = \sqrt{(\delta R_x)^2+\frac{1}{4}\frac{R_{01}}{R_{02}}\sigma_{R_{01}}^2+\frac{1}{4}\frac{R_{02}}{R_{01}}\sigma_{R_{02}}^2}\ \right)
+    \end{align*}
+    得：检流计灵敏度$S_i$降低时，电桥灵敏度$S$下降，导致$\delta_{R_x}$减小，使得$R_x$的不确定度$\sigma_{R_x}$增加，测量误差增大。
+
+    \newpage
+    \section*{\zihao{-3} 三\ \ 分析与讨论}
+
+\begin{itemize}
+    \item[1.] 对比“用自组电桥测量未知电阻及相应的电桥灵敏度”中第一、第二和第四组测量结果；
+
+    由公式：
+    \[\sigma_{R_x} = \sqrt{(\delta R_x)^2+\left(\frac{R_0}{R_2}\right)^2\sigma_{R_1}^2+\left(\frac{R_0R_1}{R_2^2}\right)^2\sigma_{R_2}^2+\left(\frac{R_1}{R_2}\right)^2\sigma_{R_0}^2}\]
+    可知：
+
+    若电阻$R_x$相比于$R_1$和$R_2$很小或可以比拟时，不确定度中贡献最大的是最后一项，即$R_0$的不确定度$\sigma_{R_0}$会对测量值的不确定度起决定性作用。
+
+    若电阻$R_x$相比于$R_1$和$R_2$很大时，不确定度中贡献最大的是前三项，是因为两个系数$\frac{R_0}{R_2}$和$\frac{R_0R_1}{R_2^2}$较大，放大了$\sigma_{R_1}$和$\sigma_{R_2}$的作用。
+
+    \medskip
+    \item[2.] 各桥臂精度和电桥灵敏度对不确定度的影响：
+
+    由公式：
+    \[
+    \sigma_{R_x} = \sqrt{(\delta R_x)^2+\left(\frac{R_0}{R_2}\right)^2\sigma_{R_1}^2+\left(\frac{R_0R_1}{R_2^2}\right)^2\sigma_{R_2}^2+\left(\frac{R_1}{R_2}\right)^2\sigma_{R_0}^2}
+    \]
+    显然，桥臂精度和电桥灵敏度越高，不确定度越低。
+
+    对比“了解影响直流电桥灵敏度的因素”中的四组测量结果可以发现：电桥灵敏度对不确定度的影响并不显著。
+
+    另一方面，桥臂$R_1$与$R_2$精度对不确定度的影响也较小，而与待测电阻直接相对的桥臂$R_0$的精度对不确定度的影响较大，一般比其它三项大1$\sim$2个数量级。
+
+    \medskip
+    \item[3.] 在仪器额定功率允许的情况下提高电源电压，调整使得四个电阻大致相等或适当使$R_1>R_2$以减小$R_0$，减小检流计的内阻等。
+
+    \medskip
+    \item[4.] 电表分度值为$1.5\times10^{-6}\,\text{A/格}$，内阻为$4.3\Omega$。由实验“了解影响直流电桥灵敏度的因素”的数据，电桥灵敏度的测量值与理论值比较如下：
+
+    \begin{table}[ht!]
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            $S$（测量值）/格 & $S$（理论值）/格 \\
+            \hline
+            $1.3\times10^3$ & $1.5\times10^3$ \\
+            \hline
+            $7.2\times10^2$ & $7.6\times10^2$ \\
+            \hline
+            $2.6\times10^2$ & $2.8\times10^2$ \\
+            \hline
+            $1.8\times10^2$ & $1.9\times10^2$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \end{table}
+
+    可以发现电桥灵敏度的测量值一般小于理论值，推测可能是因为与电流表串联的保护电阻$R_h$的零电阻较大，使得$R_g$偏大。
+
+    由公式：
+    \[S = \frac{S_i\cdot E}{R_1+R_2+R_0+R_x+(R_g+R_h)\left(2+\frac{R_1}{R_x}+\frac{R_0}{R_2}\right)}\]
+    得：检流计灵敏度越高，电源电压越大，电流表内阻越小，电桥灵敏度越高；适当减小$R_1$和$R_2$的阻值并取$R_1=R_2$也可以提高电桥灵敏度。
+
+    \medskip
+    \item[5.] 交换桥臂法测量未知电阻的阻值可以有效提高测量精度。
+
+    \noindent 对比单次电桥法测量电阻精度中未知电阻$R_x$不确定度的公式：
+    \[
+    \sigma_{R_x} = \sqrt{(\delta R_x)^2+\left(\frac{R_0}{R_2}\right)^2\sigma_{R_1}^2+\left(\frac{R_0R_1}{R_2^2}\right)^2\sigma_{R_2}^2+\left(\frac{R_1}{R_2}\right)^2\sigma_{R_0}^2}
+    \]
+    和交换桥臂法中$R_x$不确定度的公式：
+    \[
+    \delta R_x = \sqrt{\frac{R_{x,2}}{4R_{x,1}}\delta R_{x,1}^2+\frac{R_{x,1}}{4R_{x,2}}\delta R_{x,2}^2}
+    \]
+    \[
+    \sigma_{R_x} = \sqrt{(\delta R_x)^2+\frac{R_{01}}{4R_{02}}\sigma_{R_{01}}^2+\frac{R_{02}}{4R_{01}}\sigma_{R_{02}}^2}
+    \]
+    可以发现：使用交换桥臂法测量时避免了$\sigma_{R_1}$和$\sigma_{R_2}$的影响，并且减小了$\delta R_x$与$\sigma{R_0}$的影响（取$R_1=R_2$可以算出这两个会减小到原来的$\frac{\sqrt{2}}{2}$倍）
+
+\end{itemize}
+
+    \bigskip
+    \section*{\zihao{-3} 四\ \ 收获与感想}
+
+\begin{itemize}
+    \item[1.] 测量时有效数字的处理：以电阻箱最小能分辨指针偏转的一档为有效数字位。如果电阻箱某一档旋转一格引起的检流计偏转角是如此的小，以至于人眼不能辨别，则认为这一位不是有效数字位。灵敏度$S$的有效数字位一般取两位，与$\Delta n$取齐。
+
+    \medskip
+    \item[2.] 如果不管怎样调节始终不能使检流计指针示零，则取指针最接近零点的左右两侧时的两个电阻箱示数，通过内插法求得指针示零时的$R_0$，再计算出$R_x$。
+
+    \medskip
+    \item[3.] 本实验中使用的电桥，即惠斯通电桥，在物理实验与工程控制中有广泛应用。例如气体的流量计、测试飞机机翼所受应力的测力计等。用非平衡电桥测量输出电压是精密测量物理量的常见方法。
+\end{itemize}
+
+\end{document}

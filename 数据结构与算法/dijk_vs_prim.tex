@@ -1,0 +1,122 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3.5cm,bottom=3.5cm,left=2.5cm,right=2.5cm}
+\usepackage[fontset=none]{ctex}
+\usepackage{fontspec}
+\setmonofont{JetBrains Mono NL}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{listings}
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	aboveskip={1.0\baselineskip},
+	belowskip={1.0\baselineskip},
+	columns=fixed,
+	extendedchars=true,
+	breaklines=true,
+	tabsize=4,
+	prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	frame=lines,
+	showtabs=false,
+	showspaces=false,
+	showstringspaces=false,
+	keywordstyle=\color[RGB]{144,0,144},
+	commentstyle=\color[RGB]{221,0,0},
+	stringstyle=\color[RGB]{0,128,0},
+	numbers=left,
+	numberstyle=\small,
+	stepnumber=1,
+	numbersep=12pt,
+	captionpos=t,
+	escapeinside={\%*}{*)}
+}
+
+\begin{document}
+	
+	\title{\textbf{最短距离Dijkstra算法和最小生成树prim算法对比}}
+	\author{陈斌\ 北京大学}
+	\date{}
+	
+	\maketitle
+	
+	最短距离Dijkstra算法和最小生成树prim算法的区别非常相似，稍不留意就会造成混淆。
+	
+	首先，两个算法都是利用优先队列实现，都是典型的贪心策略算法。
+	
+	其次，都是以一个无向图G，起始定点start，作为参数。
+	
+	其算法程序框架几乎一样，不同点如下：
+	
+	1. Dijkstra算法利用节点的dist属性来记录节点到起始节点的最短权重距离，而prim算法则利用节点的dist属性来记录节点到已建树节点集合的最小权重代价；
+	
+	2. Dijkstra算法每次从优先队列提取的是到起始节点最短权重距离的节点作为当前节点，而prim算法每次从优先队列提取的是到已建树节点集合最小权重代价的节点作为当前节点；
+	
+	3. Dijkstra算法遍历当前节点的每一个邻接节点，如果当前节点最短权重距离加上邻接边权重，比邻接节点已有的最短权重距离还短，那就更新邻接节点的最短权重距离和前驱；
+	
+	prim算法遍历当前节点的每一个安全邻接节点（不在已建树节点集合里），如果当前节点到安全邻接节点的权重，比安全邻接节点已有的最小权重代价还小，那就更新安全邻接节点的最小权重代价和前驱；
+	
+	4. Dijkstra算法执行完毕后，每个节点的dist记录了到起始节点的最短距离，pred记录了最短距离路径的前驱节点；
+	
+	prim算法执行完毕后，每个节点的dist记录了到前驱节点的边权重，pred记录了最小生成树路径的前驱节点，把所有dist求和，就是最小生成树的权重代价。
+	
+	\newpage
+	
+	\section{Dijkstra算法加详细注释的代码和测试结果}
+	
+	\lstinputlisting{pq.py}
+	
+	\lstinputlisting{gdijk.py}
+	
+	测试用图是：
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.25\linewidth]{dijkstraf.png}
+	\end{figure}
+
+	执行结果是：
+	\begin{lstlisting}
+		[u,0,None] [v,2,u] [w,3,y] [x,1,u] [y,2,x] [z,3,y]
+	\end{lstlisting}
+
+
+	\newpage
+	
+	\section{prim算法加详细注释的代码和测试结果}
+	\lstinputlisting{gprim.py}
+
+	测试用图是：
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.25\linewidth]{mst1.png}
+	\end{figure}	
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.25\linewidth]{mst2.jpeg}
+	\end{figure}
+
+	执行结果是：
+	\begin{lstlisting}
+		[A,0,None] [B,2,A] [C,1,B] [D,1,B] [E,1,D] [F,1,E] [G,1,F] 
+		[v1,0,None] [v2,5,v3] [v3,1,v1] [v4,2,v6] [v5,3,v2] [v6,4,v3]
+	\end{lstlisting}
+	
+\end{document}

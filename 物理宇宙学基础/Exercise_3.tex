@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+
+\begin{document}
+
+\title{\textbf{Exercise 3}}
+\author{}
+\date{}
+
+\maketitle
+
+\subsection*{Problem 1: Reionization}
+
+The early universe before recombination was basically a plasma. During recombination the electrons combined with the nucleons to form neutral Hydrogen and Helium. However, we know that in the intergalactic medium of the present-day universe is very little neutral gas, so there must have been an epoch when the universe became reionized. This process is called "reionization". The source for reionization was the ultraviolet radiation of the first stars and possibly the first quasars. In this exercise, we perform a quantitative analysis of the optial depth in the universe and roughly estimate the redshift when reionization must have taken place.
+ 
+Assume a realistic, flat model for the Universe with a matter density $\Omega_\mathrm{m}=0.27$, cosmological constant  density $\Omega_\Lambda=0.73$, density of baryons $\Omega_\mathrm{b}=0.04$, and Hubble constant $H=70\,\mathrm{km/(s\cdot Mpc)}$. Note that the baryons are included in $\Omega_\mathrm{m}$. Further assume that $25\%$ of the baryons are in the form of $^4\mathrm{He}$ and are uniformly distributed in space. Then we adopt the (simplistic) model of reionization that the integalactic medium was abruptly ionized at the redshift $z_\mathrm{reion}$, so that it was neutral for $z>z_\mathrm{reion}$ and fully ionized for $z<z_\mathrm{reion}$.
+
+\begin{itemize}
+    \item[(a)] Calculate the present-day number density of electrons assuming a uniform distribution.
+    
+    \item[(b)] Calculate the optical depth $\tau(z)$ as a function of redshift $z$ by assuming that the universe is fully ionized. WMAP data indicate that the optical depth $\tau$ to the cosmic microwave background is 0.09. What does this imply for the redshift $z_\mathrm{reion}$ when the universe became reionized?
+
+    \textit{Hint:} The integrals that appear in this analysis can be solved analytically. You can also use a computer program such as MATLAB to solve them numerically.
+
+    \item[(c)] Compute the probability per comoving Mpc, i.e. $\mathrm{d}P/(R_0\,\mathrm{d}\omega)$, that a photon is scattered by the intergalactic medium as a function of redshift $z$. Make two plots of $\mathrm{d}P/(R_0\,\mathrm{d}\omega)$, first as a function of $z$ and second as a function of comoving distance $D(z)$.
+\end{itemize}
+
+\end{document}

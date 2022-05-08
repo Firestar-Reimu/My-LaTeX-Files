@@ -1,0 +1,268 @@
+\documentclass[a4paper,fontset=none]{ctexbook}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,mathrsfs,wasysym}
+\usepackage{graphicx,caption,subcaption}
+\captionsetup{font=small}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+    \title{\textbf{实验三十八\ \ 微波的布拉格衍射}}
+    \author{1900011604 张植竣}
+    \date{2021年4月24日}
+
+    \maketitle
+
+    \section*{1\ \ 实验数据和现象}
+    
+    \subsection*{1.1\ \ 微波的布拉格衍射}
+    
+    \textbf{[100]晶面}
+    
+    实验数据如下：
+    
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+                \hline
+                $\beta/^\circ$ & 20 & 25 & 30 & 32 & 33 & 34 & 35 & 36 & 37 \\
+                $I/\mu\mathrm{A}$ & 0 & 1 & 4 & 3 & 6 & 10 & 18 & 24 & 24 \\
+                \hline
+                $\beta/^\circ$ & 38 & 39 & 40 & 42 & 45 & 50 & 55 & 60 & 62 \\
+                $I/\mu\mathrm{A}$ & 24 & 26 & 21 & 16 & 0 & 0 & 0 & 3 & 6 \\
+                \hline
+                $\beta/^\circ$ & 64 & 65 & 66 & 66.5 & 67 & 67.5 & 68 & 68.5 & 69 \\
+                $I/\mu\mathrm{A}$ & 18 & 12 & 18 & 20 & 45 & 52 & 63 & 57 & 52 \\
+                \hline
+                $\beta/^\circ$ & 69.5 & 70 & 70.5 & 71 & 71.5 & 72 & 72.5 & 73 & 73.5 \\
+                $I/\mu\mathrm{A}$ & 33 & 29 & 24 & 30 & 46 & 64 & 67 & 61 & 38 \\
+                \hline
+                $\beta/^\circ$ & 74 & 75 & 78 & 80 & 81 & 82 & 83 & 84 & 85 \\
+                $I/\mu\mathrm{A}$ & 14 & 4 & 30 & 22 & 32 & 20 & 14 & 34 & 70 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \caption{[100]晶面的实验数据}
+    \end{table}
+    
+    绘制模拟晶体[100]晶面的布拉格衍射曲线如下：
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.75\textwidth]{1.png}
+        \caption{[100]晶面的布拉格衍射曲线}
+    \end{figure}
+    
+    由上图修正后的蓝色曲线测量得到衍射极大处入射角为$\beta_1 = 70.26^\circ$，$\beta_2 = 38.44^\circ$。
+    
+    取$f = 9370\,\mathrm{MHz}$（对应$\lambda = 3.199492615\,\mathrm{cm}$），晶格常数$a = 4.0\,\mathrm{cm}$，由公式$2d\cos\beta = k\lambda$计算出衍射极大处入射角的理论值为：
+    \[
+    \beta_1^* = \arccos\left(\frac{\lambda}{2d}\right) = 66.4258^\circ,\qquad \beta_2^* = \arccos\left(\frac{\lambda}{2d}\right) = 36.8820^\circ
+    \]
+    实验值与理论值的差异为：
+    \[
+    \Delta\beta_1 = \beta_1 - \beta_1^* = 3.83^\circ,\qquad \Delta\beta_2 = \beta_2 - \beta_2^* = 1.56^\circ
+    \]
+    
+    \bigskip
+    \textbf{[110]晶面}
+    
+    实验数据如下：
+    
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+                \hline
+                $\beta/^\circ$ & 20 & 25 & 30 & 35 & 40 & 45 & 47 & 49 & 49.5 & 50 \\
+                $I/\mu\mathrm{A}$ & 4 & 4 & 0 & 1 & 3 & 6 & 3 & 7 & 9 & 15 \\
+                \hline
+                $\beta/^\circ$ & 50.5 & 51 & 51.5 & 52 & 52.5 & 53 & 53.5 & 54 & 54.5 & 55 \\
+                $I/\mu\mathrm{A}$ & 21 & 32 & 20 & 36 & 32 & 34 & 28 & 26 & 18 & 10 \\
+                \hline
+                $\beta/^\circ$ & 55.5 & 56 & 57 & 58 & 59 & 60 & 65 & 70 & 75 & 78 \\
+                $I/\mu\mathrm{A}$ & 3 & 1 & 1 & 1 & 2 & 4 & 16 & 34 & 33 & 57 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \caption{[110]晶面的实验数据}
+    \end{table}
+    
+    绘制模拟晶体[110]晶面的布拉格衍射曲线如下：
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.75\textwidth]{2.png}
+        \caption{[110]晶面的布拉格衍射曲线}
+    \end{figure}
+    
+    由上图修正后的蓝色曲线测量得到衍射极大处入射角为$\beta_1 = 51.97^\circ$。
+    
+    取$f = 9370\,\mathrm{MHz}$（对应$\lambda = 3.199492615\,\mathrm{cm}$），晶格常数$a = 4.0\,\mathrm{cm}$，由公式$2d\cos\beta = k\lambda$计算出衍射极大处入射角的理论值为：
+    \[
+    \beta_1^* = \arccos\left(\frac{\lambda}{2d}\right) = 55.5563^\circ
+    \]
+    实验值与理论值的差异为：
+    \[
+    \Delta\beta_1 = \beta_1 - \beta_1^* = -3.59^\circ
+    \]
+
+    \subsection*{1.2\ \ 微波的单缝衍射}
+    
+    实验数据如下：（其中$\theta = 0^\circ$时$I = 96\,\mu\mathrm{A}$）
+    
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                $\theta/^\circ$ & 5 & 10 & 15 & 20 & 25 & 26 \\
+                $I/\mu\mathrm{A}$ & 92 & 80 & 44 & 13 & 1 & 0.5 \\
+                \hline
+                $\theta/^\circ$ & 27 & 28 & 29 & 30 & 35 & 40 \\
+                $I/\mu\mathrm{A}$ & 0 & 0 & 0 & 0 & 1 & 1.5 \\
+                \hline
+                $\theta/^\circ$ & 45 & 50 & 55 & -55 & -50 & -45 \\
+                $I/\mu\mathrm{A}$ & 2 & 1.5 & 1 & 0 & 1 & 0.5 \\
+                \hline
+                $\theta/^\circ$ & -40 & -35 & -30 & -29 & -28 & -27 \\
+                $I/\mu\mathrm{A}$ & 0.5 & 1 & 0 & 0 & 0.5 & 0.5 \\
+                \hline
+                $\theta/^\circ$ & -26 & -25 & -20 & -15 & -10 & -5 \\
+                $I/\mu\mathrm{A}$ & 1 & 1.5 & 18 & 48 & 73 & 94 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \caption{微波的单缝衍射}
+    \end{table}
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.75\textwidth]{3.png}
+        \caption{微波的单缝衍射}
+    \end{figure}
+    
+    根据拟合曲线测得左侧谷值对应角度$\theta_1 = -29.43^\circ$，右侧谷值对应角度$\theta_2 = 27.37^\circ$，测量得到$a = 7.0\,\mathrm{cm}$，计算波长：
+    \[
+    \lambda = a\sin{\overline\theta} = a\sin\left(\frac{\theta_2-\theta_1}{2}\right) = 3.329369463\,\mathrm{cm}
+    \]
+    根据贝塞尔公式估计角度的测量不确定度为$\sigma_\theta = 1.456639969^\circ$，又估计单缝宽度的不确定度为$\sigma_a = 0.1\,\mathrm{cm}$，则测量得到的波长$\lambda$的不确定度为：
+    \[
+    \sigma_\lambda = \sqrt{\left(\sigma_a\sin{\overline\theta}\right)^2 + 2\times\left(\frac{1}{2}a\sigma_\theta\cos{\overline\theta}\right)^2} = 0.120479124
+    \]
+    即测得波长为：
+    \[
+    \lambda = (3.33\pm0.12)\,\mathrm{cm}
+    \]
+    与理论值$\lambda^*=3.20\,\mathrm{cm}$较为符合。
+
+    \subsection*{1.3\ \ 微波的迈克耳孙干涉}
+    
+    观察电表记录接收信号的变化并按顺序记录出现干涉极小值时B板的位置$x_{\mathrm{min}}$和干涉极大值时B板的位置$x_{\mathrm{max}}$，分别对$x_{\mathrm{min}}$和$x_{\mathrm{max}}$做最小二乘法拟合，并由$x_i - i$的斜率求出微波的波长$\lambda$。
+    
+    \textbf{干涉极小值}
+    
+    出现干涉极小值时B板的位置：
+    
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $i$ & 1 & 2 & 3 & 4 \\
+                \hline
+                $x_{\mathrm{min}}/\mathrm{mm}$ & 11.0 & 27.5 & 45.3 & 59.8 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \caption{出现干涉极小值时B板的位置}
+    \end{table}
+    
+    最小二乘法拟合得到：
+    
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $k$ & $r$ & $\sigma_{k,A}$ & $\sigma_{k,B}$ & $\sigma_k$ \\
+                \hline
+                16.42 & 0.999237566 & 0.453651849 & 0.025819889 & 0.454386033 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    其中：（$n = 4$，估计$e_x = 0.1\,\mathrm{mm}$，下同）
+    \[
+    \sigma_{k,A} = k\sqrt{\frac{1/r^2 - 1}{n - 2}},\qquad
+    \sigma_{k,B} = \frac{e_x/\sqrt{3}}{\sqrt{\sum\limits_i^n(i - \overline{i})^2}},\qquad
+    \sigma_k = \sqrt{\sigma_{k,A}^2 + \sigma_{k,B}^2}
+    \]
+    又因为
+    \[
+    \lambda = \dfrac{k}{5},\qquad \sigma_\lambda = \dfrac{\sigma_k}{5}
+    \]
+    测得微波的波长为：
+    \[
+    \lambda = (3.28\pm0.09)\,\mathrm{cm}
+    \]
+    
+    \bigskip
+    \textbf{干涉极大值}
+    
+    出现干涉极大值时B板的位置：
+    
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $i$ & 1 & 2 & 3 & 4 \\
+                \hline
+                $x_{\mathrm{max}}/\mathrm{mm}$ & 11.0 & 27.5 & 45.3 & 59.8 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \caption{出现干涉极大值时B板的位置}
+    \end{table}
+    
+    最小二乘法拟合得到：
+    
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $k$ & $r$ & $\sigma_{k,A}$ & $\sigma_{k,B}$ & $\sigma_k$ \\
+                \hline
+                15.96 & 0.999936407 & 0.127279220 & 0.025819889 & 0.129871732 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    测得微波的波长为：
+    \[
+    \lambda' = (3.192\pm0.026)\,\mathrm{cm}
+    \]
+    
+    \bigskip
+    \textbf{与理论值对比}
+    
+    理论值为$\lambda^* = \dfrac{c}{f} = 3.199492615\,\mathrm{cm}$，与$\lambda'$更接近，可见用干涉极大值测量微波波长误差更小。
+
+    \section*{2\ \ 分析与讨论}
+    
+    1. 本实验中使用螺旋测微器调节频率，导致波长的理论值存在误差，但是相对误差在$10^{-3}$量级，远小于测量误差，仍然可以认为$\lambda^* = 3.20\,\mathrm{cm}$。
+        
+    2. 在测量微波的布拉格衍射时，会发现衍射峰分裂为多个峰，这里采用的是去除异常下降的值之后拟合光滑曲线寻找原本衍射峰的位置，会带来一定误差。
+    
+    3. 微波波长较长，传播方向、强度受外界干扰较大，使得测量精度相比可见光明显降低，误差可以达到几度。
+\end{document}

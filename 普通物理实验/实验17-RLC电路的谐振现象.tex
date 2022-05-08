@@ -1,0 +1,220 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\Large
+
+    \title{\textbf{实验十七\ \ $\boldsymbol{RLC}$电路的谐振现象}}
+    \author{\Large 1900011604 张植竣}
+    \date{\Large 2020年10月27日}
+
+    \maketitle
+
+
+    \section*{\zihao{3} 1\ \ 测量步骤与数据处理}
+    \bigskip
+
+    \subsection*{\zihao{-3} 1.1\ \ 谐振状态下的测量结果}
+
+    用示波器调出总电压$u$和电阻两端电压$u_R$信号叠加出的Lissajous图形，调节信号源频率，使相位差$\varphi = 0^\circ$，用数字万用表测出此时的总电压$u$，电容两端电压$u_C$和电阻两端电压$u_R$。
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline
+                $f$/kHz & $u$/V & $u_C$/V & $u_R$/V \\
+                \hline
+                2.2468 & 1.1895 & 11.729 & 0.8400 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-0.5em}
+
+    第一种$Q$值：
+    \[
+    Q_1 = \frac{u_R}{2\pi fuRC} = 10.01 \pm 0.04 
+    \]
+
+    第二种$Q$值：
+    \[
+    Q_2 = \frac{u_C}{u} = 9.86 \pm 0.02
+    \]
+
+    \newpage
+    \subsection*{\zihao{-3} 1.2\ \ 测相频特性曲线}
+
+    调节信号源频率，测出不同频率$f$下对应的相位差$\varphi$。
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                $f$/kHz & 1.744 & 1.960 & 2.076 & 2.144 & 2.189 & 2.220 \\
+                \hline
+                $\varphi/^\circ$ & -81.0 & -73.0 & -60.2 & -45.2 & -29.9 & -14.8 \\
+                \hline
+                \hline
+                $f$/kHz & 2.280 & 2.314 & 2.356 & 2.447 & 2.590 & 2.910 \\
+                \hline
+                $\varphi/^\circ$ & 15.9 & 30.7 & 43.9 & 59.7 & 71.2 & 79.2 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_1.png}
+    \end{center}
+
+    \newpage
+    \subsection*{\zihao{-3} 1.3\ \ 测幅频特性曲线}
+
+    通过调节信号源的$V_{p-p}$值，保持总电压$u = (1.0000 \pm 0.0001)\mathrm{V}$，用数字万用表测出此时电阻两端电压$u_R$。
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $f$/kHz & 1.744 & 1.960 & 2.076 & 2.1365 & 2.13655 \\
+                \hline
+                $u_R$/V & 0.13551 & 0.24267 & 0.3785 & 0.4993 & 0.4995 \\
+                \hline
+                \hline
+                $f$/kHz & 2.1366 & 2.137 & 2.139 & 2.140 & 2.144 \\
+                \hline
+                $u_R$/V & 0.4997 & 0.5006 & 0.5053 & 0.5076 & 0.5174 \\
+                \hline
+                \hline
+                $f$/kHz & 2.189 & 2.220 & 2.2468 & 2.280 & 2.314 \\
+                \hline
+                $u_R$/V & 0.6280 & 0.6880 & 0.7064 & 0.6766 & 0.6069 \\
+                \hline
+                \hline
+                $f$/kHz & 2.356 & 2.359 & 2.360 & 2.361 & 2.3612 \\
+                \hline
+                $u_R$/V & 0.5107 & 0.5042 & 0.5021 & 0.4999 & 0.4995 \\
+                \hline
+                \hline
+                $f$/kHz & 2.362 & 2.370 & 2.407 & 2.590 & 2.910 \\
+                \hline
+                $u_R$/V & 0.4977 & 0.4813 & 0.3559 & 0.23309 & 0.13239 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    谐振时电阻两端电压$u_R$达到峰值$u_{max} = 0.7064\,\mathrm{V}$。
+    
+    则$\dfrac{u_{max}}{\sqrt{2}} = 0.4995\,\mathrm{V}$，其对应频率为：$f_1 = 2.13655\,\mathrm{kHz}$，$f_2 = 2.3612\,\mathrm{kHz}$。
+    
+    故带宽$\Delta f = |f_2 - f_1| = 0.22465\,\mathrm{kHz}$。
+
+    第三种$Q$值：
+    \[
+    Q_3 = \frac{f}{\Delta f} = 10.0010 \pm 0.0015
+    \]
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_2.png}
+    \end{center}
+
+    \newpage
+    \subsection*{\zihao{-3} 1.4\ \ 将黑盒子元件(由 $R$、$L$、$C$ 中的其中两个串联组成)的相频、幅频特性测量结果列表、作图,判断出黑盒子中的元件类型,给出元件参数值的测量结果。}
+
+    选择的黑盒子是9号。
+
+    测相频、幅频特性曲线如下：
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|}
+                \hline
+                $f$/kHz & 1.000 & 2.000 & 3.000 & 7.000 & 8.000 & 9.000 & 10.000 \\
+                \hline
+                $\varphi/^\circ$ & 60.8 & 41.0 & 30.0 & 13.9 & 12.4 & 10.7 & 9.72 \\
+                \hline
+                $u/V$ & 1.6140 & 1.4953 & 1.4365 & 1.3529 & 1.3390 & 1.3247 & 1.3096 \\
+                \hline
+                $u_X$/V & 1.4446 & 1.1174 & 0.9408 & 0.7307 & 0.7114 & 0.6960 & 0.6821 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_3.png}
+    \end{center}
+
+    \begin{center}
+        \includegraphics[width = 1\linewidth]{Figure_4.png}
+    \end{center}
+
+    由于始终有$\varphi < 0$且$\dfrac{u_X}{u}$随$f$增加而减小，黑盒子中应为一个电容和一个电阻串联。
+
+    由公式
+    \[
+    -\frac{1}{\tan\varphi} = 2\pi fCR
+    \]
+    做$f-\dfrac{1}{2\pi\tan\varphi}$的线性拟合得到：$r = 0.9975$。
+
+    测得电容值与电阻值的乘积（直线的斜率除以$-2\pi$）：
+    \[
+    CR = (9.31 \pm 0.01)\times10^{-5}\,\mathrm{F}\cdot\Omega
+    \]
+    进一步的测量可以通过串联电阻箱或可变电容器，改变电阻箱的阻值$\Delta R$或可变电容器的电容$\Delta C$，并测出相频曲线确定$CR$的值。通过计算$CR-\Delta R$直线的斜率测定$C$，计算$CR-\Delta C$直线的斜率测定$R$。（也可以通过计算截距的方式分别测定$C$和$R$。）
+
+    \newpage
+    \section*{\zihao{3} 2\ \ 分析与讨论}
+
+    1.(1)实验中测得的相频特性曲线主要特征有：存在一个特殊的频率$f_0$，即谐振频率，此时$\varphi = 0$。$f < f_0$时$\varphi < 0$，电流的相位超前于电压，且随$f$降低，$f$趋近于$-90^\circ$，而$f > f_0$时$\varphi > 0$，电流的相位超前于电压，且随$f$升高，$f$趋近于$90^\circ$。这个现象可以由公式
+    \[
+    \varphi = \arctan\dfrac{2\pi fL - \dfrac{1}{2\pi fC}}{R}
+    \]
+    解释。当
+    \[
+    f = \frac{1}{2\pi\sqrt{LC}}
+    \]
+    时，$\varphi = 0$，且$\varphi(f)$单调递增，$f \to +\infty$时$\varphi \to 90^\circ$，$f \to 0$时$\varphi \to -90^\circ$。
+
+    \medskip
+    1.(2)实验中测得的幅频特性曲线主要特征有：存在一个特殊的频率$f_0$，即谐振频率，此时电阻两端电压$u_R$达到最大，且$f < f_0$或$f > f_0$时$u_R$都减小，曲线近似关于$f = f_0$对称。这个现象可以由公式
+    \[
+    u_R = \dfrac{uR}{\sqrt{R^2 + \left(2\pi fL - \dfrac{1}{2\pi fC}\right)^2}}
+    \]
+    解释。当
+    \[
+    f = \frac{1}{2\pi\sqrt{LC}}
+    \]
+    时，$u_R$达到最大值$u$，且$f < f_0$或$f > f_0$时$u_R$都减小，且图像近似关于$f = f_0$对称。
+
+    实际测量时$u_R$的最大值$u_{max} < u$，是因为测量电阻两端电压时没有考虑电感内阻的分压。本实验电感内阻为$R_L = 35.8\,\Omega$，修正后：
+    \[
+    u'_{max} = u_{max}\frac{R + R_L}{R} = 0.9593\,\mathrm{V}
+    \]
+    与$u = 1.0000\,\mathrm{V}$较为接近。
+
+    \bigskip
+    2.比较三种方法测得的$Q$值：
+
+    第一种和第三种方法测得的$Q$值比较接近，而第二种方法测得的$Q$值明显偏小，可能是因为没有考虑接触电容的影响，实际的电容分压大于测量值。三种方法的精确度都极大地依赖于电压表的精确度。
+
+    \section*{\zihao{3} 3\ \ 收获与感想}
+
+    1. 为减小示波器屏幕上荧光线展宽带来的误差，可以通过调节$\boxed{\mathrm{INTEN}}$旋钮及$\boxed{\mathrm{READOUT}}$旋钮使线条更暗、更细，并在一个更暗的环境下测量。
+
+    \bigskip
+    2. 用双踪显示测量相位差时，为提高测量精度，需要调节$\boxed{\mathrm{VOLTS/DIV}}$旋钮，将电压的偏转因数尽可能调大。这样使得显示出的谐振峰更窄，荧光线与横轴的交点处展宽也更小，提高测量的精确度。
+
+\end{document}

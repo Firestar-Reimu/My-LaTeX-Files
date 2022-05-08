@@ -1,0 +1,545 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.25cm,right=2.25cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+\begin{document}\Large
+
+    \title{\huge\textbf{实验十二\ \ 测定介质中的声速}}
+    \author{\LARGE 1900011604 张植竣}
+    \date{\LARGE 2020年12月3日}
+
+    \maketitle
+
+    \section*{\zihao{-2} 1\ \ 实验数据与数据处理}
+    \bigskip
+
+    \subsection*{\zihao{3} 1.1\ \ 极值法测量空气中声速}
+
+    \textbf{固定信号发生器频率为：}$\boldsymbol{f = 38.0000\,\mathrm{kHz}}$
+
+    \textbf{正向移动（逐渐增大换能器的间距）的测量结果：}
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                $x_i/\mathrm{mm}$ & 46.290 & 50.900 & 55.470 & 60.000 & 64.630 \\
+                \hline
+                $U_\mathrm{p-p}/\mathrm{mV}$ & 804 & 764 & 736 & 684 & 636 \\
+                \hline
+                $x_i/\mathrm{mm}$ & 69.190 & 73.760 & 78.310 & 82.870 & 87.420 \\
+                \hline
+                $U_\mathrm{p-p}/\mathrm{mV}$ & 580 & 544 & 500 & 460 & 432 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-0.5em}
+
+    逐差法处理数据：
+    \[
+    \lambda = \frac{2}{25}\left(\sum\limits_{i=6}^{10}x_i - \sum\limits_{i=1}^{5}x_i\right) = 9.1408\,\mathrm{mm}
+    \]
+    \[
+    v = f\lambda = 347.3504\,\mathrm{m/s}
+    \]
+
+    估计$x_i$的不确定度为：
+    \[
+    \sigma_{x_i} = \sqrt{\sigma^2 + \left(\frac{e}{\sqrt{3}}\right)^2} = 0.02061552813\,\mathrm{mm}
+    \]
+
+    其中读数误差$\sigma = \pm\,0.020\,\mathrm{mm}$，螺旋测微器允差$e = \pm\,0.005\,\mathrm{mm}$。
+
+    则每隔六个振幅极值的距离$\Delta x_i = x_{i+5}-x_i$的不确定度：
+    \[
+    \sigma_{\Delta x_i} = \sqrt{\sigma_{x_{i+5}}^2 + \sigma_{x_i}^2} = \sqrt{2}\,\sigma_{x_i} = 0.02915475947\,\mathrm{mm}
+    \]
+
+    由
+    \[
+    \lambda = \frac{2}{25}\sum_{i=1}^{5}\Delta x_i
+    \]
+    得：
+    \[
+    \sigma_{\lambda} = \frac{2}{25}\sqrt{\sum_{i=1}^{5}\sigma_{\Delta x_i}^2} = \frac{2}{25}\cdot\sqrt{5}\,\sigma_{\Delta x_i} = 0.005215361924\,\mathrm{mm}
+    \]
+
+    信号源频率的极限误差为$e_f = 0.05\,\mathrm{kHz}$，则频率的不确定度为：
+    \[
+    \sigma_f = \frac{e_f}{\sqrt{3}} = 0.02886751346\,\mathrm{kHz}
+    \]
+
+    测得声速的不确定度为：
+    \[
+    \sigma_v = v\sqrt{\left(\frac{\sigma_{\lambda}}{\lambda}\right)^2 + \left(\frac{\sigma_f}{f}\right)^2} = 0.3300080613\,\mathrm{m/s}
+    \]
+
+    \textbf{则最终测得声速的结果为：}
+    \[
+    \boldsymbol{v = 347.3\pm0.3\,\mathrm{m/s}}
+    \]
+
+    \newpage
+    \textbf{反向移动（逐渐减小换能器的间距）的测量结果：}
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                $x'_i/\mathrm{mm}$ & 46.090 & 50.690 & 55.230 & 59.770 & 64.390 \\
+                \hline
+                $U'_\mathrm{p-p}/\mathrm{mV}$ & 804 & 764 & 740 & 688 & 636 \\
+                \hline
+                $x'_i/\mathrm{mm}$ & 68.920 & 73.510 & 78.060 & 82.630 & 87.300 \\
+                \hline
+                $U'_\mathrm{p-p}/\mathrm{mV}$ & 584 & 544 & 500 & 460 & 440 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-0.5em}
+
+    逐差法处理数据：
+    \[
+    \lambda = \frac{2}{25}\left(\sum\limits_{i=6}^{10}x_i - \sum\limits_{i=1}^{5}x_i\right) = 9.1448\,\mathrm{mm}
+    \]
+    \[
+    v = f\lambda = 347.5024\,\mathrm{m/s}
+    \]
+
+    波长与频率的不确定度仍为：
+    \[
+    \sigma_{\lambda} = 0.005215361924\,\mathrm{mm},\qquad \sigma_f = 0.02886751346\,\mathrm{kHz}
+    \]
+
+    测得声速的不确定度为：
+    \[
+    \sigma_v = v \,\sqrt{\left(\frac{\sigma_{\lambda}}{\lambda}\right)^2 + \left(\frac{\sigma_f}{f}\right)^2} = 0.3301003977\,\mathrm{m/s}
+    \]
+
+    \textbf{则最终测得声速的结果为：}
+    \[
+    \boldsymbol{v = 347.5\pm0.3\,\mathrm{m/s}}
+    \]
+
+    \newpage
+    \subsection*{\zihao{3} 1.2\ \ 相位法测量空气中声速}
+
+    \textbf{固定信号发生器频率为：}$\boldsymbol{f = 38.0000\,\mathrm{kHz}}$
+
+    \textbf{正向移动（逐渐增大换能器的间距）的测量结果：}
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                $i$ & 1 & 2 & 3 & 4 & 5 \\
+                \hline
+                $x_i/\mathrm{mm}$ & 45.890 & 55.060 & 64.220 & 73.310 & 82.410 \\
+                \hline
+                $i$ & 6 & 7 & 8 & 9 & 10 \\
+                \hline
+                $x_i/\mathrm{mm}$ & 91.470 & 100.590 & 109.730 & 118.740 & 127.860 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-0.5em}
+
+    最小二乘法处理数据：
+    \[
+    x = \lambda i+b
+    \]
+
+    \begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c| }
+                \hline
+                $\lambda/\mathrm{mm}$ & $b/\mathrm{mm}$ & $r$ \\
+                \hline
+                9.102666667 & 36.86333333 & 0.9999988316 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-2em}
+    \[
+    v = \lambda f = 345.9013333\,\mathrm{m/s}
+    \]
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                $i$ & 1 & 2 & 3 & 4 & 5 \\
+                \hline
+                $\varepsilon_i/\mathrm{mm}$ & $-0.076000$ & $-0.008667$ & $0.048667$ & $0.036000$ & $0.033333$ \\
+                \hline
+                $i$ & 6 & 7 & 8 & 9 & 10 \\
+                \hline
+                $\varepsilon_i/\mathrm{mm}$ & $-0.009333$ & $0.008000$ & $0.045333$ & $-0.0473333$ & $-0.030000$ \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    计算单个测量值$x_i$的剩余方差：
+    \[
+    \sigma_\varepsilon = \frac{1}{8}\sum_{i=1}^{10}\varepsilon_i^2 = 0.04468407621\,\mathrm{mm}
+    \]
+
+    考虑螺旋测微器允差和读数误差导致的不确定度：
+    \[
+    \sigma_{x_i} = \sqrt{\sigma^2 + \left(\frac{e}{\sqrt{3}}\right)^2} = 0.02061552813\,\mathrm{mm}
+    \]
+
+    合成的$x_i$的不确定度为：
+    \[
+    \sigma'_{x_i} = \sqrt{\sigma_\varepsilon^2 + \sigma_{x_i}^2} = 0.0492104325\,\mathrm{mm}
+    \]
+
+    则斜率（波长）$\lambda$的不确定度为：
+    \[
+    \sigma_{\lambda} = \frac{\sigma'_{x_i}}{\sqrt{\sum\limits_{i=1}^{10}(i-\bar{i})^2}} = 0.005417890305\,\mathrm{mm}
+    \]
+
+    频率的不确定度仍为：
+    \[
+    \sigma_f = 0.02886751346\,\mathrm{kHz}
+    \]
+
+    测得声速的不确定度为：
+    \[
+    \sigma_v = v \,\sqrt{\left(\frac{\sigma_{\lambda}}{\lambda}\right)^2 + \left(\frac{\sigma_f}{f}\right)^2} = 0.3338192456\,\mathrm{m/s}
+    \]
+
+    \textbf{则最终测得声速的结果为：}
+    \[
+    \boldsymbol{v = 345.9\pm0.3\,\mathrm{m/s}}
+    \]
+
+    \newpage
+    \textbf{反向移动（逐渐减小换能器的间距）的测量结果：}
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                $i$ & 1 & 2 & 3 & 4 & 5 \\
+                \hline
+                $x'_i/\mathrm{mm}$ & 45.670 & 54.910 & 64.040 & 73.180 & 82.290 \\
+                \hline
+                $i$ & 6 & 7 & 8 & 9 & 10 \\
+                \hline
+                $x'_i/\mathrm{mm}$ & 91.320 & 100.400 & 109.490 & 118.590 & 127.690 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-0.5em}
+
+    最小二乘法处理数据：
+    \[
+    x = \lambda i+b
+    \]
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c| }
+                \hline
+                $\lambda/\mathrm{mm}$ & $b/\mathrm{mm}$ & $r$ \\
+                \hline
+                9.10230303 & 36.69533333 & 0.9999976064 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-2em}
+
+    \[
+    v = \lambda f = 345.8875151\,\mathrm{m/s}
+    \]
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c|c| }
+                \hline
+                $i$ & 1 & 2 & 3 & 4 & 5 \\
+                \hline
+                $\varepsilon_i/\mathrm{mm}$ & $-0.127636$ & $0.010061$ & $0.037758$ & $0.075455$ & $0.083152$ \\
+                \hline
+                $i$ & 6 & 7 & 8 & 9 & 10 \\
+                \hline
+                $\varepsilon_i/\mathrm{mm}$ & $0.010848$ & $-0.011455$ & $-0.023758$ & $-0.026061$ & $-0.028364$ \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    计算单个测量值$x_i$的剩余方差：
+    \[
+    \sigma_\varepsilon = \frac{1}{8}\sum_{i=1}^{10}\varepsilon_i^2 = 0.06395547694
+    \]
+
+    考虑螺旋测微器允差和读数误差导致的不确定度：
+    \[
+    \sigma_{x_i} = \sqrt{\sigma^2 + \left(\frac{e}{\sqrt{3}}\right)^2} = 0.02061552813\,\mathrm{mm}
+    \]
+
+    合成的$x_i$的不确定度为：
+    \[
+    \sigma'_{x_i} = \sqrt{\sigma_\varepsilon^2 + \sigma_{x_i}^2} = 0.06719600457\,\mathrm{mm}
+    \]
+
+    则斜率（波长）$\lambda$的不确定度为：
+    \[
+    \sigma_{\lambda} = \frac{\sigma'_{x_i}}{\sqrt{\sum\limits_{i=1}^{10}(i-\bar{i})^2}} = 0.00739803602\,\mathrm{mm}
+    \]
+
+    频率的不确定度仍为：
+    \[
+    \sigma_f = 0.02886751346\,\mathrm{kHz}
+    \]
+
+    测得声速的不确定度为：
+    \[
+    \sigma_v = v \,\sqrt{\left(\frac{\sigma_{\lambda}}{\lambda}\right)^2 + \left(\frac{\sigma_f}{f}\right)^2} = 0.3848048076\,\mathrm{m/s}
+    \]
+
+    \textbf{则最终测得声速的结果为：}
+    \[
+    \boldsymbol{v = 345.9\pm0.4\,\mathrm{m/s}}
+    \]
+
+    \newpage
+    \subsection*{\zihao{3} 1.3\ \ 气体状态参量法测量空气中声速}
+
+    \textbf{不锈钢标尺的线膨胀系数为：}$\boldsymbol{\beta = 1.00 \times 10^{-5}\,\text{\textbf{\textcelsius}}^{-1}}$
+
+    \vspace{0.5em}\begin{table}[ht!]
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c| }
+                \hline
+                气体状态参量 & 室温$\theta/$\textcelsius & 饱和水蒸汽压$p_{\mathrm{s}}/\mathrm{Pa}$ & 湿度$H/\%$ & 大气压强$p/\mathrm{mmHg}$ \\
+                \hline
+                测量值 & 18.1 & 2076.93 & 40 & 774.40 \\
+                \hline
+                仪器的最小分度 & 0.5 & 0.1 & 2 & 0.05 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-2em}
+
+    \[
+    p_0 = p-(1.82\times10^{-4}-\beta)p\theta = 771.9891379\,\mathrm{mmHg} =
+    \]
+    \[
+    v = 331.45\,\sqrt{\left(1+\frac{\theta}{T_0}\right)\left(1+\frac{0.3192\, p_{\mathrm{s}}H}{p_0}\right)} = 343.1411285\,\mathrm{m/s}
+    \]
+
+    误差分析如下：
+
+    室温$\theta$的不确定度估计为$\sigma_{\theta}=0.\,1\text{\textcelsius}$，饱和水蒸汽压$p_{\mathrm{s}}$的不确定度估计为$\sigma_{p_\mathrm{s}}=0.1\,\mathrm{Pa}$，湿度$H$的不确定度估计为$\sigma_{H}=2\,\%$，大气压强$p$的不确定度估计为$\sigma_{p}=0.05\,\mathrm{mmHg}$。
+    \[
+    \sigma_v = v \,\sqrt{\left(\frac{\partial\ln{v}}{\partial\theta}\sigma_{\theta}\right)^2 + \left(\frac{\partial\ln{v}}{\partial p_\mathrm{s}}\sigma_{p_\mathrm{s}}\right)^2 + \left(\frac{\partial\ln{v}}{\partial H}\sigma_{H}\right)^2 + \left(\frac{\partial\ln{v}}{\partial p}\sigma_{p}\right)^2}
+    \]
+    代入：（以下各式中$C_1 = 0.3192$，$C_2 = 1.82\times10^{-4}$）
+    \begin{align*}
+    \frac{\partial\ln{v}}{\partial\theta}
+    &= \frac{1}{2(T_0+\theta)} + \frac{(C_1 p_s H)(C_2-\beta)p}{2\left[\,p-(C_2-\beta)p\theta\,\right]\left[\,p-(C_2-\beta)p\theta+C_1 p_s H \,\right]} \\
+    &= \frac{1}{2(T_0+\theta)} + \frac{(C_1 p_s H)(C_2-\beta)p}{2p_0(\, p_0+C_1 p_s H \,)} \\
+    &= 1.716959897\times10^{-3}
+    \end{align*}
+    \begin{align*}
+    \frac{\partial\ln{v}}{\partial p_{\mathrm{s}}}
+    &= \frac{C_1 H}{2(\, p_0+C_1 p_s H \,)} \\
+    &= 6.186728307\times10^{-7}
+    \end{align*}
+    \begin{align*}
+    \frac{\partial\ln{v}}{\partial p_{\mathrm{s}}}
+    &= \frac{C_1 p_s}{2(\, p_0+C_1 p_s H \,)} \\
+    &= 3.212350406\times10^{-3}
+    \end{align*}
+    \begin{align*}
+    \frac{\partial\ln{v}}{\partial p}
+    &= \frac{(C_1 p_s H)\left[(C_2-\beta)\theta-1\right]}{2\left[\,p-(C_2-\beta)p\theta\,\right]\left[\,p-(C_2-\beta)p\theta+C_1 p_s H \,\right]} \\
+    &= \frac{(C_1 p_s H)\left[(C_2-\beta)\theta-1\right]}{2p_0(\, p_0+C_1 p_s H \,)} \\
+    &= -1.244555982\times10^{-8}
+    \end{align*}
+    得到声速的不确定度：
+    \[
+    \sigma_v = 0.06290554816\,\mathrm{m/s}
+    \]
+    \textbf{则最终测得声速的结果为：}
+    \[
+    \boldsymbol{v = 343.14\pm0.06\,\mathrm{m/s}}
+    \]
+
+    \vspace{3em}
+    \subsection*{\zihao{3} 1.4\ \ 声光效应法测量水中声速}
+
+    \textbf{固定信号发生器频率为：}$\boldsymbol{f = 9.884\,\mathrm{MHz}}$
+
+    \textbf{光栅平面到光屏的距离为：}$\boldsymbol{L = 461.00\,\mathrm{cm}}$
+
+    \textbf{激光器发出的光波长为：}$\boldsymbol{\lambda_0 = 632.816\,\mathrm{mm}}$
+
+    \textbf{水的温度为：}$\boldsymbol{T = 18.5\,\text{\textbf{\textcelsius}}}$
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c|c|c| }
+                \hline
+                $i$ & 1 & 2 & 3 & 4 \\
+                \hline
+                $x_i/\mathrm{cm}$ & 1.92 & 3.86 & 5.77 & 7.73 \\
+                \hline
+                $i$ & 5 & 6 & 7 & 8 \\
+                \hline
+                $x_i/\mathrm{cm}$ & 9.68 & 11.62 & 13.57 & 15.54 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-0.5em}
+
+    逐差法处理数据：
+    \[
+    x = \frac{1}{16}\left(\sum\limits_{i=5}^{8}x_i - \sum\limits_{i=1}^{4}x_i\right) = 1.945625\,\mathrm{cm}
+    \]
+    \[
+    v = \lambda f = \frac{\lambda_0 L}{x}\cdot f = 1482.012871\,\mathrm{m/s}
+    \]
+
+    估计$x_i$的不确定度为：
+    \[
+    \sigma_{x_i} = \sqrt{\sigma^2 + \left(\frac{e}{\sqrt{3}}\right)^2} = 0.1154700538\,\mathrm{cm}
+    \]
+
+    其中读数误差$\sigma = \pm\,0.1\,\mathrm{cm}$，直尺允差$e = \pm\,0.1\,\mathrm{cm}$。
+
+    则每隔六个振幅极值的距离$\Delta x_i = x_{i+5}-x_i$的不确定度：
+    \[
+    \sigma_{\Delta x_i} = \sqrt{\sigma_{x_{i+5}}^2 + \sigma_{x_i}^2} = \sqrt{2}\,\sigma_{x_i} = 0.1632993162\,\mathrm{mm}
+    \]
+
+    由
+    \[
+    x = \frac{1}{16}\sum_{i=1}^{4}\Delta x_i
+    \]
+    得：
+    \[
+    \sigma_{x} = \frac{1}{16}\sqrt{\sum_{i=1}^{4}\sigma_{\Delta x_i}^2} = \frac{1}{16}\cdot2\sigma_{\Delta x_i} = 0.02041241452\,\mathrm{mm}
+    \]
+
+    信号源频率的极限误差为$e_f = 0.001\,\mathrm{MHz}$，则频率的不确定度为：
+    \[
+    \sigma_f = \frac{e_f}{\sqrt{3}} = 0.00577352692\,\mathrm{MHz}
+    \]
+
+    测量光栅平面到光屏的距离的不确定度估计为：
+    \[
+    \sigma_L=0.5\,\mathrm{cm}
+    \]
+
+    测得声速的不确定度为：
+    \[
+    \sigma_v = v \,\sqrt{\left(\frac{\sigma_{L}}{L}\right)^2 + \left(\frac{\sigma_{x}}{x}\right)^2 + \left(\frac{\sigma_f}{f}\right)^2} = 15.63203787\,\mathrm{m/s}
+    \]
+
+    \textbf{则最终测得声速的结果为：}
+    \[
+    \boldsymbol{v = 1482\pm16\,\mathrm{m/s}}
+    \]
+
+    \newpage
+    \section*{\zihao{-2} 2\ \ 思考题与讨论}
+
+    1.(1) 测量多个可以减小随机误差带来的影响，主要是读数误差。多次测量时随机误差可以正负相抵，相比于测量单个的$\lambda/2$或$\lambda$，随机误差的影响显著减小。
+
+    \bigskip
+    1.(2) 逐差法较好，它可以充分利用每一个测量值，减小随机误差。
+
+    \bigskip
+    2.(1) 减小读数误差。人眼或机器能分辨的最小振幅变化量是有限的，而电路的噪声也会使图像产生漂移，设这两个因素造成的误差为$\Delta A$，则正弦波振幅为极大时，$\Delta A/A$最小，判断振幅最大位置就最准确。
+
+    \bigskip
+    2.(2) 减小读数误差。李萨如图形一般是一椭圆，呈直线时其离心率$e$随换能器间距$x$的变化率最大，判断振幅最大位置就最准确；而李萨如图形呈一正椭圆时，$e$值最大，当$x$改变一小段距离图像变化不大，难以判断确切的位置。
+
+    \bigskip
+    3.(1) 误差来源中：由仪器最小分度值或允差带来的误差属于未定系统误差，电路、仪器的噪声和人眼估读造成的误差是随机误差。
+
+    \bigskip
+    3.(2) 比较极值法和相位法可知：极值法测量出的声速值相比于相位法会偏大，而声速的不确定度相差不大。逐差法和最小二乘法处理数据的不确定度相差也不大。
+
+    \bigskip
+    4.(1) 实验方法的改进：单纯通过判断峰值来确定极值点，读数误差约在$\pm0.1\mathrm{mm}$，但是结合数字示波器的历史记录功能，寻找波形的最高点（对称位置），可以将读数误差减小到约$\pm0.02\mathrm{mm}$。
+
+    \bigskip
+    4.(2) 实验设备的改进：换用更灵敏、分辨率更高的数字示波器，换能器更接近理想刚性平面（本实验的两个换能器最外层有金属网，远不是一个刚性平面）。
+
+    \newpage
+    \section*{\zihao{-2} 3\ \ 收获与感想}
+
+    \bigskip
+    1. 由于电路的噪声，示波器上的正弦波形在$x$、$y$两个方向都会不停地抖动，影响对极值和李萨如图形变化到同一直线位置的判断。
+
+    \bigskip
+    2. 研究极值法测量声速时的振幅变化可以发现：随着换能器的间距$x$增大，振幅的极值$A$减小，且大致遵循指数衰减关系：
+    \medskip
+
+    \textbf{正向移动（逐渐增大换能器的间距）的测量结果：}
+    \[
+    A = A_0\,\mathrm{e}^{\beta x}
+    \]
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c| }
+                \hline
+                $A_0/\mathrm{mV}$ & $\beta$ & $r$ \\
+                \hline
+                1725.542793 & -0.01575677 & -0.9961555389 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-2em}
+
+    \begin{center}
+        \includegraphics[width=1\linewidth]{Figure_1.pdf}
+    \end{center}
+
+    \newpage
+    \textbf{反向移动（逐渐减小换能器的间距）的测量结果：}
+    \[
+    A = A_0\,\mathrm{e}^{\beta x}
+    \]
+
+    \vspace{0.5em}\begin{table}[ht!]\Large
+        \begin{center}
+            \begin{tabular}{ |c|c|c| }
+                \hline
+                $A_0/\mathrm{mV}$ & $\beta$ & $r$ \\
+                \hline
+                1700.611326 & -0.015545037 & -0.995839575 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\vspace{-2em}
+
+    \begin{center}
+        \includegraphics[width=1\linewidth]{Figure_2.pdf}
+    \end{center}
+
+    \bigskip
+    3. 声光效应法测量水中声速时，应调节激光的倾角和方向，使激光正入射于光栅平面中心，直至光屏上的光点数目最多且最对称。
+
+    \bigskip
+    4. 声光效应法测量水中声速时，测量光栅平面到光屏的距离$L$应尽量放在桌子上测量，悬空的部分可以分段测量，这样可以最大限度地减少卷尺不水平导致的弯曲。另一种方法是将卷尺用力拉直。
+
+\end{document}

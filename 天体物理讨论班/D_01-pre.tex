@@ -1,0 +1,149 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{fontspec}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Code}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+\setmathfont{Fira Math}
+\setmathfont{XITS Math}[range={\mathscr,\mathbfscr}]
+\setmathfont{XITS Math}[range={\mathcal,\mathbfcal},StylisticSet=1]
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref,bookmark,highlightlatex}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=cyan,
+}
+\usepackage{geometry}
+\geometry{hmargin=1.5cm}
+
+\title{PULSAR TRIPLE SYSTEM}
+\author{Zhijun Zhang}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{Abstract}
+    \begin{columns}[T] 
+        \begin{column}{.72\textwidth}
+            Here, we present a self-consistent, semi-analytical solution to the formation of PSR J0337+1715. Our model constrains {\color{red}the peculiar velocity} of the system to be less than $160\,\mathrm{km/s}$ and brings novel insight to, for example, {\color{red}common envelope evolution} in a triple system, for which we find evidence for {\color{red}in-spiral} of both outer stars.
+        \end{column}
+        \hfill
+        \begin{column}{.25\textwidth}
+            \includegraphics[width = 1\textwidth]{Figure_1.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Abstract}
+    \begin{center}
+        \includegraphics[width = 1\textwidth]{Table_1.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{LMXB and Case BB RLO}
+    \begin{itemize}
+        \item A \colorbox{yellow}{low-mass X-ray binary (LMXB)} is a binary star system where one of the components is either a black hole or neutron star. The other component, a donor, usually {\color{red}fills its Roche lobe and therefore transfers mass to the compact star}. In LMXB systems the donor is {\color{red}less massive} than the compact object.
+        
+        \item A \colorbox{yellow}{Case BB RLO} is a type of {\color{red}Roche-lobe overflow (RLO)} initiated by the helium star expansion after core helium exhaustion.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Common Envelope (CE)}
+    \begin{columns}[T] 
+        \begin{column}{.72\textwidth}
+            A \colorbox{yellow}{common envelope} is formed in a binary star system when the orbital separation decreases rapidly or one of the stars expands rapidly. The donor star will start mass transfer when it overfills its Roche lobe and as a consequence the orbit will shrink further causing it to overflow the Roche lobe even more, which accelerates the mass transfer. This phase of the shrinking of the orbit inside the common envelope is known as a {\color{red}spiral-in}.
+        \end{column}
+        \hfill
+        \begin{column}{.25\textwidth}
+            \includegraphics[width = 1\textwidth]{Common_envelope_evolution.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Support to the $M_{\mathrm{WD}} – P_{\mathrm{orb}}$ Relation}
+    \begin{center}
+        \includegraphics[width = 1\textwidth]{Figure_2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Eccentricities larger than expected}
+    \begin{itemize}
+        \item How to observe the eccentricities:
+        \[
+        \delta t = \Delta t - \Delta t_{\mathrm{circ}} = \frac{ea\sin{i}}{2c}\left[\sin\omega + \sin\left(\frac{2\pi t}{P} - \omega\right)\right]
+        \]
+        
+        \item[?] What determines the eccentricities and why are the eccentricities larger?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Evolution of the Two LMXB Phases}
+    \begin{itemize}
+        \item Both LMXB phases evolved highly nonconservatively.
+        
+        \item The changes of the orbital separations: in the most extreme case (a pure fast, or Jeans mode wind mass loss from the inner binary ) $P_{\mathrm{orb},\,3}$ could be as short as 175 days.
+        
+        \item Major uncertainties:
+        \begin{itemize}
+            \item spin–orbit couplings mediated by tidal torques.
+            
+            \item accretion onto the inner binary system during mass transfer from the tertiary star
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The Dynamical Effects of the SN Explosion}
+    \begin{center}
+        \includegraphics[width = 1\textwidth]{Figure_3.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Common Envelope Evolution}
+    \begin{itemize}
+        \item CE evolution (stage 2) not only leads to efficient orbital angular momentum loss of the inner binary orbit, also the tertiary star is subject to efficient in-spiral.
+        \begin{itemize}
+            \item the post-SN $P_{\mathrm{orb},\,3}$ (after recircularization) must match the expected orbital period at the onset of the outer LMXB phase.
+            
+            \item to avoid a very small survival probability
+            as a consequence of the SN.
+        \end{itemize}
+        \item The lower limit of $P_{\mathrm{orb},\,3}$ is set at about 4000 days on the ZAMS.
+        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Alternative Models}
+    \begin{itemize}
+        \item The outer WD may form last.
+        
+        \item It was formed in a quadruple system where the SN kick caused interactions with an outer binary and ejection of the fourth member.
+        
+        \item It evolved in a globular cluster and subsequently ejected into the Galactic field.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion}
+    \begin{itemize}
+        \item[?] How to calculate the {\color{red}critical stability limit}?
+        
+        \item[?] How is a "inner binary kick"?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+        \Huge Thank you for listening!
+    \end{center}
+\end{frame}
+
+\end{document}

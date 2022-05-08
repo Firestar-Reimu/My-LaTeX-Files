@@ -1,0 +1,252 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,bm,wasysym}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\begin{document}
+
+\title{\textbf{数学物理方法作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2020年10月2日}
+\maketitle
+
+\section*{第十二章}
+\bigskip
+
+\begin{itemize}
+
+    \item[1.]
+    假设在垂直杆长方向的任意截面上各点的位移完全相同。
+
+    以向右方向为正向，记平衡位置坐标为$x \in [0,l]$处的截面位移为$u(x,t)$，受应力为$P(x,t)$。
+
+    设杆密度为$\rho$，杨氏模量为$E$，则振动在杆中传播的相速度为$a = \sqrt{\dfrac{E}{\rho}}$。
+
+    对于$[x,x+\mathrm{d}x]$的一小段，由Newton第二定律：
+    \[
+    \rho S\mathrm{d}x\frac{\partial^2 u}{\partial t^2} = P(x+\mathrm{d}x,t)S - P(x,t)S
+    \]
+    两边同时除以$S\mathrm{d}x$，可化简为：
+    \[
+    \rho\frac{\partial^2 u}{\partial t^2} = \frac{\partial P}{\partial x}
+    \]
+    如果略去垂直杆长方向的形变，根据Hooke定律：$P = E\dfrac{\partial u}{\partial x}$，代入得：
+    \[
+    \rho\frac{\partial^2 u}{\partial t^2} = \frac{\partial}{\partial x}\left(E\frac{\partial u}{\partial x}\right) = E\frac{\partial^2 u}{\partial x^2}
+    \]
+    代入$a = \sqrt{\dfrac{E}{\rho}}$，即得杆的纵振动满足的方程：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} = 0
+    \]
+    边界条件推导如下：
+
+    由于杆在$x = 0$处固定，有：$u(0,t) = 0$。
+
+    由于杆在$x = l$处自由，有：$\left.\dfrac{\partial u}{\partial x}\right|_{x=l} = 0$。
+
+    初始条件推导如下：
+
+    $t = 0$时，杆在$x=l$处受外力$F$而达到平衡。
+
+    对杆端$[l-\delta,l]$的一段，应该有$P(l-\delta,0)S = F$。
+
+    由于$\delta$的任意性，对杆上的任意一处$x \in [0,l]$，都有$P(x,0)S = F$。
+
+    代入$P = E\dfrac{\partial u}{\partial x}$得：$ES\dfrac{\partial u}{\partial x} = F$。
+
+    积分得到$u(x,t)$满足的其中一个初始条件：$u(x,0) = \dfrac{F}{ES}x$
+
+    又因为$t = 0$时受力平衡，初始速度为0，有初始条件：$\left.\dfrac{\partial u}{\partial t}\right|_{t=0} = 0$
+
+    综上，杆的纵振动所满足的方程、边界条件和初始条件为：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} = 0
+    \]
+    \[
+    u(0,t) = 0,\qquad \left.\frac{\partial u}{\partial x}\right|_{x=l} = 0
+    \]
+    \[
+    u(x,0) = \frac{F}{ES}x,\qquad \left.\frac{\partial u}{\partial t}\right|_{t=0} = 0
+    \]
+    \bigskip
+
+    \item[3.]
+    假设在垂直杆长方向的任意截面上各点的温度完全相同。
+
+    以向右方向为正向，记位置坐标为$x \in [0,l]$处的温度为$u(x,t)$。
+
+    记单位长度杆的质量为$\lambda$，杆的质量比热容为$c$，热导率为$k$。
+
+    对于杆端的一个薄层$(0,\delta)$以及$(l-\delta,l)$，根据能量守恒，应有：
+    \[
+    q_1\mathrm{d}t + \left.k\frac{\partial u}{\partial x}\right|_{x=\delta}\mathrm{d}t = c\lambda\delta\mathrm{d}u
+    \]
+    \[
+    q_2\mathrm{d}t - \left.k\frac{\partial u}{\partial x}\right|_{x=l-\delta}\mathrm{d}t = c\lambda\delta\mathrm{d}u
+    \]
+    两边同时除以$\mathrm{d}t$，可得：
+    \[
+    q_1 + \left.k\frac{\partial u}{\partial x}\right|_{x=\delta} = c\lambda\delta\frac{\partial u}{\partial t}
+    \]
+    \[
+    q_2 - \left.k\frac{\partial u}{\partial x}\right|_{x=l-\delta} = c\lambda\delta\frac{\partial u}{\partial t}
+    \]
+    取$\delta \to 0$的极限，可得：
+    \[
+    q_1 + \left.k\frac{\partial u}{\partial x}\right|_{x=\delta} = 0
+    \]
+    \[
+    q_2 - \left.k\frac{\partial u}{\partial x}\right|_{x=l-\delta} = 0
+    \]
+    则相应的边界条件为：
+    \[
+    \left.\frac{\partial u}{\partial x}\right|_{x=\delta} = -\frac{q_1}{k},\qquad \left.\frac{\partial u}{\partial x}\right|_{x=l-\delta} = \frac{q_2}{k}
+    \]
+
+\end{itemize}
+
+\newpage
+\section*{第十四章}
+\bigskip
+
+\begin{itemize}
+
+    \item[1.]
+    由题意，杆的纵振动$u(x,t)$所满足的方程、边界条件和初始条件为：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} = 0
+    \]
+    \[
+    u(0,t) = 0,\qquad \left.\frac{\partial u}{\partial x}\right|_{x=l} = 0
+    \]
+    \[
+    u(x,0) = \frac{F}{ES}x,\qquad \left.\frac{\partial u}{\partial t}\right|_{t=0} = 0
+    \]
+    设解的形式为$u(x,t) = X(x)T(t)$，代入方程整理得：
+    \[
+    X(x)T''(t) = a^2 X''(x)T(t)
+    \]
+    因为$X(x)T(t) \not\equiv 0$，上式两边同时除以$a^2 X(x)T(t)$得：
+    \[
+    \frac{T''(t)}{a^2 T(t)} = \frac{X''(x)}{X(x)}
+    \]
+    设它们都等于同一个非零常数$-\lambda$，即：
+    \[
+    \frac{T''(t)}{a^2 T(t)} = \frac{X''(x)}{X(x)} = -\lambda
+    \]
+    得到两个方程：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad T''(t) + a^2\lambda T(t) = 0
+    \]
+    关于$x$的本征值问题为：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad X(0) = 0,\qquad X'(l) = 0
+    \]
+    其通解为：
+    \[
+    X(x) = A\sin\sqrt{\lambda} x + B\cos\sqrt{\lambda} x
+    \]
+    代入边界条件得：
+    \[
+    B = 0,\qquad \sqrt{\lambda} l = \frac{2n+1}{2}\pi
+    \]
+    本征值和本征函数为：
+    \[
+    \lambda_n = \left(\frac{2n+1}{2l}\pi\right)^2,\qquad X_n = \sin\frac{2n+1}{2l}\pi x
+    \]
+    代入关于$t$的方程，解得：
+    \[
+    T_n = A_n\sin\frac{2n+1}{2l}\pi at + B_n\cos\frac{2n+1}{2l}\pi at
+    \]
+    一般解为：
+    \[
+    u(x,t) = \sum_{n=0}^{\infty}\left[A_n\sin\frac{2n+1}{2l}\pi at + B_n\cos\frac{2n+1}{2l}\pi at\right]\sin\frac{2n+1}{2l}\pi x
+    \]
+    代入初始条件$u(x,0) = \dfrac{F}{ES}x$及$\left.\dfrac{\partial u}{\partial t}\right|_{t=0} = 0$得：
+    \[
+    A_n = 0,\qquad \sum_{n=0}^{\infty}B_n\sin\frac{2n+1}{2l}\pi x = \frac{F}{ES}x
+    \]
+    注意到$B_n$为Fourier展开的系数，解得：
+    \[
+    B_n = \frac{2}{l}\int_0^l\frac{F}{ES}x\sin\frac{2n+1}{2l}\pi x \,\mathrm{d}x = \frac{8Fl(-1)^n}{ES\pi^2(2n+1)^2}
+    \]
+    故原问题的解为：
+    \[
+    u(x,t) = \frac{8Fl}{ES\pi^2}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)^2}\cos\frac{2n+1}{2l}\pi at\sin\frac{2n+1}{2l}\pi x
+    \]
+    \bigskip
+
+    \item[3.]
+    由题意，温度分布$u(x,t)$所满足的方程、边界条件和初始条件为：
+    \[
+    \frac{\partial^2 u}{\partial t^2} - \kappa\frac{\partial^2 u}{\partial x^2} = 0
+    \]
+    \[
+    u(0,t) = u(l,t) = 0
+    \]
+    \[
+    u(x,0) = \frac{bx(l-x)}{l^2}
+    \]
+    设解的形式为$u(x,t) = X(x)T(t)$，代入方程整理得：
+    \[
+    X(x)T'(t) = \kappa X''(x)T(t)
+    \]
+    因为$X(x)T(t) \not\equiv 0$，上式两边同时除以$\kappa X(x)T(t)$得：
+    \[
+    \frac{T'(t)}{\kappa T(t)} = \frac{X''(x)}{X(x)}
+    \]
+    设它们都等于同一个非零常数$-\lambda$，即：
+    \[
+    \frac{T''(t)}{\kappa T(t)} = \frac{X''(x)}{X(x)} = -\lambda
+    \]
+    得到两个方程：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad T''(t) + \kappa\lambda T(t) = 0
+    \]
+    关于$x$的本征值问题为：
+    \[
+    X''(x) + \lambda X(x) = 0,\qquad X(0) = 0,\qquad X(l) = 0
+    \]
+    其通解为：
+    \[
+    X(x) = A\sin\sqrt{\lambda} x + B\cos\sqrt{\lambda} x
+    \]
+    代入边界条件得：
+    \[
+    B = 0,\qquad \sqrt{\lambda} l = n\pi
+    \]
+    本征值和本征函数为：
+    \[
+    \lambda_n = \left(\frac{n\pi}{2l}\right)^2,\qquad X_n = \sin\frac{n\pi}{l}x
+    \]
+    代入关于$t$的方程，解得：
+    \[
+    T_n = C_n\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^2\kappa t}
+    \]
+    一般解为：
+    \[
+    u(x,t) = \sum_{n=0}^{\infty}C_n\mathrm{e}^{-\left(\tfrac{n\pi}{l}\right)^2\kappa t}\sin\frac{n\pi}{l}x
+    \]
+    代入初始条件$u(x,0) = \dfrac{bx(l-x)}{l^2}$得：
+    \[
+    \sum_{n=0}^{\infty}C_n\sin\frac{n\pi}{2l}x = \frac{bx(l-x)}{l^2}
+    \]
+    注意到$C_n$为Fourier展开的系数，解得：
+    \[
+    C_n = \frac{2}{l}\int_0^l\frac{bx(l-x)}{l^2}\sin\frac{n\pi}{2l}x \,\mathrm{d}x = \frac{4b(1-\cos n\pi)}{\pi^3 n^3} = \frac{8b}{\pi^3 (2k+1)^3}
+    \]
+    其中$n$只取奇数项$n = 2k+1$。
+
+    故原问题的解为：
+    \[
+    u(x,t) = \sum_{k=0}^{\infty}\frac{8b}{\pi^3 (2k+1)^3}\mathrm{e}^{-\left(\tfrac{2k+1}{l}\right)^2\pi^2 \kappa t}\sin\frac{(2k+1)\pi}{l}x
+    \]
+
+\end{itemize}
+
+\end{document}

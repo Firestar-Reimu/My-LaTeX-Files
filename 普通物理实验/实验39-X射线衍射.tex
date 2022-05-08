@@ -1,0 +1,189 @@
+\documentclass[a4paper,fontset=none]{ctexbook}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,mathrsfs,wasysym}
+\usepackage{graphicx,caption,subcaption}
+\captionsetup{font=small}
+\usepackage{geometry,parskip}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+    \title{\textbf{实验三十九\ \ X射线衍射}}
+    \author{1900011604 张植竣}
+    \date{2021年5月1日}
+    
+    \maketitle
+
+    \section*{1\ \ 实验数据和现象}
+
+    \subsection*{1.1\ \ 晶体的X射线衍射}
+    
+    \textbf{NaCl晶体的衍射}
+    
+    绘制NaCl晶体的衍射曲线如下：
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=1\linewidth]{1.png}
+        \caption{NaCl晶体的衍射曲线}
+    \end{figure}
+    
+    取$\mathrm{K}_\alpha$谱线波长$\lambda_\alpha = 71.1\,\mathrm{pm}$，$\mathrm{K}_\beta$谱线波长$\lambda_\beta = 63.1\,\mathrm{pm}$，$d = 282\,\mathrm{pm}$，由布拉格条件$2d\sin\beta_k = k\lambda$可以计算出衍射极大处衍射角的理论值：
+    \[
+    \beta_k^* = \arcsin\left(\frac{k\lambda}{2d}\right),\qquad k\in\mathbb{N}^+
+    \]
+    
+    下表中列出了测量得到的衍射极大处入射角和理论值的对比：（其中$\Delta\beta_k = \beta_k - \beta_k^*$）
+    
+    \begin{table}[!ht]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|}
+                \hline
+                \multicolumn{4}{|c|}{$\mathrm{K}_\alpha$} & \multicolumn{4}{|c|}{$\mathrm{K}_\beta$} \\
+                \hline
+                $k$ & 1 & 2 & 3 & $k$ & 1 & 2 & 3 \\
+                \hline
+                $\beta_k/^\circ$ & 7.31 & 14.68 & 22.26 & $\beta_k/^\circ$ & 6.52 & 13.09 & 19.73 \\
+                \hline
+                $\beta_k^*/^\circ$ & 7.2422 & 14.6035 & 22.2217 & $\beta_k^*/^\circ$ & 6.4237 & 12.9299 & 19.6114 \\
+                \hline
+                $\Delta\beta_k/^\circ$ & 0.0678 & 0.0765 & 0.0383 & $\Delta\beta_k/^\circ$ & 0.0963 & 0.1601 & 0.1186 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    可以发现测量出的角度普遍偏大，测量值与理论值之间的偏差分布为：
+    \[
+    \overline{\Delta\beta_k} = 0.0929^\circ,\qquad \sigma_{\Delta\beta_k} = 0.0426^\circ
+    \]
+    
+    \bigskip
+    \textbf{LiF晶体的衍射}
+    
+    绘制LiF晶体的衍射曲线如下：
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=1\linewidth]{2.png}
+        \caption{LiF晶体的衍射曲线}
+    \end{figure}
+    
+    取$\mathrm{K}_\alpha$谱线波长$\lambda_\alpha = 71.1\,\mathrm{pm}$，$\mathrm{K}_\beta$谱线波长$\lambda_\beta = 63.1\,\mathrm{pm}$，由布拉格条件$2d\sin\beta_k = k\lambda$可以计算出LiF晶体的晶面间距：
+    \[
+    d = \frac{k\lambda}{2\sin\beta_k}
+    \]
+    估计$\sigma_{\beta_k} = 0.1^\circ$，则晶面间距的不确定度为：
+    \[
+    \sigma = \frac{k\lambda}{2\sin^2\beta_k}\sigma_{\beta_k}\cos\beta_k
+    \]
+    另一方面，从LiF晶体的密度$\rho = 2.64\,\mathrm{g/cm^3}$及摩尔质量$M = 25.9392\,\mathrm{g/mol}$可以计算出晶面间距：
+    \[
+    d^* = \frac{1}{2}\sqrt[3]{\frac{4M}{\rho N_{\mathrm{A}}}} = (201.31\pm0.25)\,\mathrm{pm}
+    \]
+    下表中列出了测量得到的衍射极大处入射角、对应的晶面间距及其不确定度：
+    
+    \begin{table}[!ht]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|}
+                \hline
+                \multicolumn{4}{|c|}{$\mathrm{K}_\alpha$} & \multicolumn{4}{|c|}{$\mathrm{K}_\beta$} \\
+                \hline
+                $k$ & 1 & 2 & 3 & $k$ & 1 & 2 & 3 \\
+                \hline
+                $\beta_k/^\circ$ & 10.25 & 20.77 & $\ -\ $ & $\beta_k/^\circ$ & 9.11 & 18.38 & 28.10 \\
+                \hline
+                $d/\mathrm{pm}$ & 199.78246 & 200.49775 & $\ -\ $ & $d/\mathrm{pm}$ & 199.26685 & 200.11557 & 200.95034 \\
+                \hline
+                $\sigma/\mathrm{pm}$ & 1.92826 & 0.92266 & $\ -\ $ & $\sigma/\mathrm{pm}$ & 2.16888 & 1.06116 & 0.65685 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    测量得到的晶面间距平均值及其不确定度为：
+    \[
+    \overline{d} = 200.122594\,\mathrm{pm},\qquad \sigma_{\overline{d}} = 0.289305\,\mathrm{pm}
+    \]
+    估计晶面间距的不确定度为：
+    \[
+    \sigma_d = \sqrt{\overline{\sigma}^2 + \sigma_{\overline{d}}^2} = 1.378267\,\mathrm{pm}
+    \]
+    则测量得到的晶面间距表示为：
+    \[
+    d = 200.1\pm1.2\,\mathrm{pm} = (2.001\pm0.012)\times10^2\,\mathrm{pm}
+    \]
+    与通过密度和摩尔质量计算出的晶面间距$d^* = 201.31\,\mathrm{pm}$相比偏小，但仍在误差允许范围内。
+
+    %\newpage
+    \subsection*{1.2\ \ Mo管的X射线谱分析}
+    
+    \textbf{绘制衍射曲线}
+    
+    安装NaCl单晶，设置发射电流为$1.0\,\mathrm{mA}$，阳极电压为$35\,\mathrm{kV}$，分别仅改变发射电流（$0.5\,\mathrm{mA}$）和阳极电压（$25\,\mathrm{kV}$），绘制三种条件下的衍射曲线如下：
+    
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=1\linewidth]{3.png}
+        \caption{三种条件下NaCl的衍射曲线}
+    \end{figure}
+    
+    \textbf{对比衍射曲线}
+    
+    三条曲线（下文均按照计数率最大值从高到低的顺序）衍射主极强分别出现在$7.31^\circ$、$7.42^\circ$和$7.41^\circ$处，计数率分别为1445.12、633.91和211.59，说明减小发射电流或者减小阳极电压基本不改变衍射极大的位置，但都会使计数率减小。
+    
+    \textbf{根据截止波长计算普朗克常量}
+    
+    截止波长分别出现在$\theta_1 = 3.63^\circ$、$\theta_2 = 3.85^\circ$和$\theta_3 = 5.32^\circ$处，估计误差为$\sigma_\theta = 0.02^\circ$。$\theta_1 \approx \theta_2$与理论上截止波长与发射电流无关基本相符。
+    
+    由公式$\lambda_{\mathrm{min}} = \dfrac{ch}{eU}$及$2d\sin\theta = \lambda$得:
+    \[
+    h = \frac{2deU}{c}\sin\theta,\qquad \sigma_h = \frac{2deU\sigma_\theta}{c}\cos\theta
+    \]
+    代入$d = 282\,\mathrm{pm}$，$U_1 = 35\,\mathrm{kV}$，$\theta_1 = 3.63^\circ$得：
+    \[
+    h = 6.679289\times10^{-34}\,\mathrm{J \cdot s},\qquad \sigma_h = 3.675124\times10^{-36}\,\mathrm{J \cdot s}
+    \]
+    即计算得到普朗克常数为：
+    \[
+    h = (6.68\pm0.04)\times10^{-34}\,\mathrm{J \cdot s}
+    \]
+
+    \section*{2\ \ 思考题}
+    
+    1. 确定测角器零点的原理是布拉格衍射条件：$2d\sin\beta_k = k\lambda$。已知晶面间距$d$和X射线波长$\lambda$即可算出最强的衍射峰位置对应$k=1$时的角度：
+    \[
+    \beta = \arcsin\left(\frac{\lambda}{2d}\right)
+    \]
+    将测角仪从计数率最高的位置逆向转动$\beta$角即能找到零点。
+
+    \section*{3\ \ 分析与讨论}
+    
+    1. 估计$\sigma_{\beta_k}$的方法：
+    
+    这里用的是测角仪的最小分度（步长）$0.1^\circ$作为估计，这样过于简略并且会导致级数$k$更低（更尖锐）的峰计算出来晶面间距的不确定度$\sigma$更大。考虑到越尖锐明显的峰值其角度不确定度应当更小，$\beta_k$的不确定度估计为计数率峰的半高全宽（FWHM）应更为合理。但是测量得到峰值的半高全宽明显大于$0.1^\circ$，建议选择一个倍率因子$p<1$，使得$\sigma_{\beta_k} = p \times \mathrm{FWHM}$。
+    
+    2. 计算普朗克常数$h$的方法：
+    
+    由$d = 282\,\mathrm{pm}$，$U_2 = 25\,\mathrm{kV}$，$\theta_1 = 5.32^\circ$得
+    \[
+    h = (6.99\pm0.03)\times10^{-34}\,\mathrm{J \cdot s}
+    \]
+    最小二乘法拟合$\sin\theta - \dfrac{1}{U}$得到的直线斜率为$k$，则：
+    \[
+    h = \frac{2dek}{c} = 7.7755\times10^{-34}\,\mathrm{J \cdot s}
+    \]
+    均没有用发射电流最大、阳极电压最高的条件下获得的数据算出的$h$精确。
+
+\end{document}
