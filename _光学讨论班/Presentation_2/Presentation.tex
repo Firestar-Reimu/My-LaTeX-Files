@@ -1,0 +1,139 @@
+\documentclass{beamer}
+\usetheme{default}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{footline}[frame number]
+\renewcommand{\arraystretch}{1.25}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKsansfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold]
+\newCJKfontfamily{\kaishu}{KaiTi}
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\usepackage{anyfontsize}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+\setmathfont{Latin Modern Math}
+\usepackage{fontspec}
+\setsansfont{Latin Modern Roman}
+
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+\AtBeginDocument{
+    \let\uglymathsf\mathsf
+    \renewcommand\mathsf{\symsf}
+}
+\renewcommand{\bm}{\symbf}
+
+\usepackage{color}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+
+\usepackage{envmath}
+\let\<\relax
+\newcommand{\<}{\left<}
+\let\>\relax
+\newcommand{\>}{\right>}
+
+\usepackage{ragged2e}
+\let\raggedright\justifying
+\raggedright
+
+\newcommand{\titlestyle}{\sf}
+\let\titleonly\title
+\renewcommand{\title}[1]{\titleonly{\titlestyle #1}}
+
+\let\partonly\part
+\renewcommand{\part}[1]{
+    \partonly{#1}
+    \title{#1}
+    \addtocounter{framenumber}{-1}
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame}
+    \begin{frame}[plain]{#1}
+        \addtocounter{framenumber}{-1}
+        \tableofcontents
+    \end{frame}
+    \setcounter{section}{0}
+    \let\sectiontitle\relax
+    \newcommand{\sectiontitle}{#1}
+}
+
+\let\sectiononly\section
+\renewcommand{\section}[1]{
+    \sectiononly{#1}
+    \let\sectiontitle\relax
+    \newcommand{\sectiontitle}{#1}
+}
+
+\newenvironment{slide}{
+    \begin{frame}{\sectiontitle}
+}{
+    \end{frame}
+}
+
+\AtBeginDocument{
+  \setbeamerfont{rm}{family=\rm}
+  \usebeamerfont{rm}
+}
+
+\usepackage{multicol}
+
+\title{蓝色发光二极管}
+\date{
+    \kaishu
+    \vspace{-1em} \\
+    张植竣\quad 高乐耘\quad 付大为 \\~\\
+    2022年4月29日\quad 北京大学物理学院 \\
+}
+
+\begin{document}
+
+\captionsetup{font={small}}
+\addtocounter{framenumber}{-1}
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\date{}
+
+{\include{sep_1}}
+{\include{sep_2}}
+{\include{sep_3}}
+
+\addtocounter{framenumber}{-1}
+\begin{frame}[plain]{参考文献}
+\begin{thebibliography}{99}\setlength{\itemsep}{0pt}\small
+    \bibitem{bib:LED} \url{https://en.wikipedia.org/wiki/Light-emitting_diode}
+    \bibitem{bib:Nobel}
+    \url{https://www.nobelprize.org/uploads/2018/06/press-25.pdf}
+    \bibitem{bib:OLED}
+    \url{https://en.wikipedia.org/wiki/OLED}
+    \bibitem{bib:SSD}
+    \url{https://en.wikipedia.org/wiki/Seven-segment_display}
+    \bibitem{bib:Why} Ucl, S. A. . Shedding light on why blue LEDS are so tricky to make. Post on Jan 09, 2015 at \url{http://www.chemeurope.com/en/news/151134/}.
+    \bibitem{bib:Why2} Chilton, Alexander. (2019, May 07). Nobel Prize in Physics 2014: Why Were Blue LEDs so Hard to Make?. AZoM. Retrieved on April 27, 2022 from \url{https://www.azom.com/article.aspx?ArticleID=11451}.
+\end{thebibliography}
+\end{frame}
+
+\addtocounter{framenumber}{-1}
+\begin{frame}[plain]
+    \begin{center}
+      \Huge\textbf{谢谢大家}
+    \end{center}
+\end{frame}
+
+\end{document}
