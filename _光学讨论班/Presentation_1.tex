@@ -1,0 +1,734 @@
+\documentclass{beamer}
+
+\usepackage{framed}
+\usepackage{color}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+
+\usetheme{default}
+\usecolortheme{seahorse}
+\usefonttheme{serif}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{section in toc}{series=\bfseries}
+\setbeamertemplate{part page}{
+        \begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}
+            \bfseries\Large\insertpart\par
+        \end{beamercolorbox}
+}
+
+\usepackage{unicode-math}
+\unimathsetup{bold-style=ISO}
+\setmathfont{XITS Math}
+\usepackage{anyfontsize}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+\usepackage{amsmath,envmath}
+\usepackage{bm}
+\renewcommand{\bm}{\symbf}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,RawFeature=+fwid]
+\setCJKsansfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,RawFeature=+fwid]
+\setCJKmonofont{Noto Sans Mono CJK SC}[RawFeature=+fwid]
+\newCJKfontfamily{\kaishu}{KaiTi}
+\setbeamerfont{author}{family=\kaishu}
+\setbeamerfont{date}{family=\kaishu}
+
+\let\titleonly\title
+\renewcommand{\title}[1]{\titleonly{\bfseries{#1}}}
+\newcommand{\bib}[1]{\bibitem{bib:#1}}
+
+\newenvironment{slide}{
+    \begin{frame}{\bfseries{\sectiontitle}}
+}{
+    \end{frame}
+}
+
+\newenvironment{itemlist}{
+  \begin{itemize}
+    \let\itemonly\item
+    \renewcommand{\item}[1]{\itemonly \textbf{##1} \\}
+    \setlength{\itemsep}{1em}
+}{
+  \end{itemize}
+}
+
+\let\sectiononly\section
+\renewcommand{\section}[1]{
+    \sectiononly{#1}
+    \let\sectiontitle\relax
+    \newcommand{\sectiontitle}{#1}
+}
+
+\title{光衍射的相关讨论}
+\author{
+    张植竣\texorpdfstring{\quad}{    }高乐耘\texorpdfstring{\quad}{    }付大为
+}
+\date{2022年3月18日}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\begin{frame}{\textbf{分工}}
+    \begin{itemize}\kaishu
+        \item 付大为：衍射原理相关内容
+        \item 高乐耘：光学仪器中的衍射现象
+        \item 张植竣：作课堂报告，一部分光学仪器中的衍射现象（天文望远镜部分），润色beamer
+    \end{itemize}
+\end{frame}
+
+\part{衍射原理及其相关}
+
+\begin{frame}
+    \partpage
+\end{frame}
+
+\section{什么是衍射}
+
+\begin{slide}
+    \begin{figure}[t]
+        \centering
+        \caption{红色激光的圆孔衍射图样}
+        \includegraphics[height=4cm, width=4cm]{pictures/Laser_Interference.pdf}
+    \end{figure}
+    \textbf{波在穿过狭缝、小孔或圆盘之类的障碍物后会发生不同程度的弯散传播}，假设将一个障碍物置放在光源和观察屏之间，则会有光亮区域与阴暗区域出现于观察屏，且这些区域的边界并不锐利，是一种明暗相间的复杂图样，这种现象称为衍射
+\end{slide}
+
+\section{衍射和干涉的区别}
+
+\begin{slide}
+    \definecolor{shadecolor}{RGB}{240,248,255}
+    \begin{shaded}
+        \kaishu “没有人能够令人满意地定义干涉和衍射的区别。这只是术语用途的问题，其实二者在物理上并没有什么特别的、重要的区别。”\\
+        \rightline{——Richard Feynman}
+    \end{shaded}
+    \begin{itemize}
+        \item 只有少数的波源(例如两个的时候)，我们称这现象为“干涉（Interference）”，例如杨氏双缝实验
+        \item 当大量波源存在时，对应的过程被称作是“衍射（Diffraction）”，特指波遇到障碍物时偏离原来直线传播的物理现象
+        \item 在实际情况中，衍射和干涉往往是同时出现的
+        \item 干涉是有限多个波束“相加”的结果，而衍射则是无限多个波束“积分”的结果
+    \end{itemize}
+\end{slide}
+
+\section{衍射的研究历史}
+
+\begin{slide}
+    \definecolor{shadecolor}{RGB}{240,248,255}
+    \begin{shaded}
+        {\kaishu “光不仅会沿直线传播、折射和反射，还能够以第四种方式传播，即通过衍射的形式传播。”\\
+            \rightline{——Francesco Grimaldi}
+        }
+    \end{shaded}
+    \begin{itemize}
+        \item 光的衍射效应最早由Francesco Grimaldi发现并加以描述（发表于1665年），他也是“衍射”一词的创始人
+        \item Newton对这些现象进行了研究，他认为光线发生了弯曲，解释为光粒子移动于以太所产生的局部波造成
+        \item Thomas Young进行了一项非常著名的实验这项实验展示了两条紧密相邻的狭缝造成的干涉现象，并进一步推测光一定具有波动的性质
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    \textbf{Thomas Young的双缝实验}
+    \begin{figure}[t]
+        \centering
+        \caption{双狭缝成像示意图}
+        \includegraphics[height=4cm, width=5cm]{pictures/Double-slit.pdf}
+    \end{figure}
+    如图所示，将激光、钠黄光一类的相干光束照射到一块刻有两条狭缝的不透明板，通过狭缝的光束会抵达照相胶片或某种探测屏，从记录于照相胶片或某种探测屏的辐照度数据，可以分析得到光的波动性质
+\end{slide}
+
+\begin{slide}
+    \textbf{Thomas Young的双缝实验}
+    \begin{figure}[t]
+        \centering
+        \caption{单狭缝与双狭缝干涉实验}
+        \includegraphics[height=3cm, width=4.5cm]{pictures/Single_slit_and_double_slit.pdf}
+    \end{figure}
+    在做单缝实验时，只有一条狭缝是开放的。单缝衍射图样（上）有一个主光带和两旁较暗淡的边光带，也可以在双缝的干涉图样看到。但是，双缝衍射图样（下）显示出两倍的光强度，而且还出现了许多小干涉条纹。
+
+    这种图样只能用光波动说的相长干涉和相消干涉来解释，而不是用光微粒说的简单数量相加法。
+\end{slide}
+
+\begin{slide}
+    \definecolor{shadecolor}{RGB}{240,248,255}
+    \begin{shaded}
+        {\kaishu “这样，我就展示了人们能够通过何种方式来构想光以球面波连续不断地传播出去……”\\
+            \rightline{——Augustin Fresnel}
+        }
+    \end{shaded}
+    \begin{itemize}
+        \item Fresnel则对Thomas Young的实验做了更多详细的计算研究，支持了光的波动说
+        \item 作为反对光波动说的代表，Poisson提出，如果Fresnel声称的结论是正确的，那么当光射向一个球的时候，将会在球后面阴影区域的中心找到亮斑。
+        \item 法国科学院的评审委员会安排了上述实验，并发现了位于阴影区域中心的亮斑，进一步证明了波动说的正确性
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    \textbf{Poisson亮斑}
+    \begin{itemize}
+        \item 观看Poisson亮斑实验视频
+        \item \url{https://www.bilibili.com/video/BV1M4411t7HK}
+    \end{itemize}
+\end{slide}
+
+\section{衍射的物理原理}
+
+\begin{slide}
+    \begin{itemize}
+        \item 惠更斯（Huygens）于17世纪提出: 可以把波前的每一点考虑为次波（球面波）的点波源，这些次波互相干涉，叠加形成新的波前
+        \item 1818年左右，菲涅耳在巴黎科学院关于解释衍射现象的有奖竞赛中，吸收了惠更斯“次波”的思想，并加入了他对于干涉现象的理解，使上述理论得以发展和完善
+        \item \textbf{惠更斯\symbol{"2E3A}菲涅耳原理}:波前上的每个面元可以看为次波源，它们向四周发射次波；波场中任一场点的扰动，是所有次波源所贡献的次级扰动的相干叠加
+        \item 相干叠加并非简单的代数求和，而必须虑及这些波各自的相对相位以及振动方向
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    一般化的波动方程为：
+    \begin{equation}
+        \nabla^2 \Psi - \frac{1}{c^2}\left(\frac{\partial^2 \Psi}{\partial t^2}\right) = -F(\bm{r},t)
+    \end{equation}
+    这里$\Psi$为标量波，$F(\bm{r},t)$为波前上所有（次）波源分布（因为考虑成标量波所以略掉了倾斜因子$f(\theta,\theta_0)=\dfrac{\theta+\theta_0}{2}$的影响）\\~\\
+    假设所有波源只含频率为$\omega$的本征模式，即$F(\bm{r},t)=f(\bm{r})\mathrm{e}^{-i\omega t}$，则(1)可化为不含时波动方程
+    \begin{equation}
+        \nabla^2 \psi + k^2 \psi = -f(\bm{r})
+    \end{equation}
+    这里$k=\omega/c$是波矢大小，$\psi(\bm{r})$是波的不含时空间分布：
+    $\Psi(\bm{r},t)=\psi(\bm{r})\mathrm{e}^{-i\omega t}$
+\end{slide}
+
+\begin{slide}
+    (2)是典型的非齐次亥姆霍兹方程，求出对应的格林函数方程
+    \begin{equation}
+        \nabla^2 G(\bm{r},\bm{r}') + k^2 G(\bm{r},\bm{r}')
+        = -\delta(\bm{r}-\bm{r}')
+    \end{equation}
+
+    解出对应的格林函数后，应用格林公式可以算得
+    \begin{equation}
+        \psi(\bm{r}) = \int\limits_{V}f(\bm{r}')G(\bm{r},\bm{r}')\,\mathrm{d}^3\bm{r}'
+    \end{equation}
+    所以现在关键在于解决(2)
+    \begin{equation*}
+        \nabla^2 G(\bm{r},\bm{r}') + k^2 G(\bm{r},\bm{r}')
+        = -\delta(\bm{r}-\bm{r}')
+    \end{equation*}
+\end{slide}
+
+\begin{slide}
+    一般采用球坐标求解格林函数，如下
+    \begin{equation}
+        \frac{1}{R} \frac{\mathrm{d}^2}{\mathrm{d} R^2} (GR) +k^2 G
+        = -\delta(\bm{R})
+    \end{equation}
+    可以试探出球面波解
+    \begin{equation}
+        G(\bm{R},\bm{O}) = \frac{e^{ikR}}{4\pi R}
+    \end{equation}
+    换回一般性的坐标有
+    \begin{equation}
+        G(\bm{r},\bm{r}') = \frac{e^{ik |\bm{r}-\bm{r}' | }}{4\pi |\bm{r}-\bm{r}' |}
+    \end{equation}
+    则对于整个面波前的积分有
+    \begin{equation}
+        \psi= \int\limits_{\mathbb{V}} f(\bm{r}')G(\bm{r},\bm{r}')d^3\bm{r}' =\int\limits_{\mathbb{S}} f_s(\bm{r}')\frac{e^{i k |\bm{r}- \bm{r}'|}}{4\pi |\bm{r}-\bm{r}'|}d\sigma'
+    \end{equation}
+\end{slide}
+
+\section{推广到基尔霍夫衍射公式}
+
+\begin{slide}
+    \begin{itemize}
+        \item 实验中没有出现次波源贡献叠加后逆初始方向传播的波，引入倾斜因子$\dfrac{1+\cos{\chi}}{2}$
+    \end{itemize}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[height=4.5cm, width=8cm]{pictures/Fresnel-Kirchhoff_Diffraction_Formula_spherical_wavefront.pdf}
+        \caption{倾斜因子示意图}
+    \end{figure}
+\end{slide}
+
+\begin{slide}
+    基尔霍夫（Kirchoff）通过求解格林第二公式给出了解的严格推导
+    \begin{equation}
+        \psi(\bm{r})=\frac{1}{4\pi}\oint\limits_{S}\left[\psi(\bm{r}')\nabla'\left( \frac{e^{ikR}}{R} \right)-\left( \frac{e^{ikR}}{R} \right)\nabla'\psi(\bm{r}')\right]\cdot\mathrm{d}\bm{S}'
+    \end{equation}
+    在$k\gg 1/R$、$k\gg 1/r^{\prime}$条件下，推导出了$-\dfrac{i}{\lambda}$因子
+    \begin{equation}
+        \psi(\bm{r}) =-\ \frac{i}{\lambda}\oint\limits_{S}\left(\frac{e^{ikR}}{R}\right)\frac{\cos{\theta_0+\cos{\theta}}}{2}\psi(\bm{r}')\mathrm{d}S'
+    \end{equation}
+    这里满足$a^2\geq L\lambda$，$a$为圆孔半径，$\lambda$为入射波的波长，$L$为观察屏距离圆孔、狭缝等衍射物体的距离，也被称为\textbf{菲涅耳衍射}，它是衍射的近场近似
+\end{slide}
+
+\section{夫琅和费衍射}
+
+\begin{slide}
+    \begin{itemize}
+        \item 当$a^2\ll L\lambda$时，被称为\textbf{夫琅和费衍射}，它是衍射的远场近似
+        \item 最典型的夫琅和费衍射就是单缝衍射
+    \end{itemize}
+    \begin{figure}[b]
+        \centering
+        \caption{单缝衍射}
+        \includegraphics[height=4.8cm, width=6.4cm]{pictures/Single_Slit_Diffraction_First_Minimum.pdf}
+    \end{figure}
+\end{slide}
+
+\begin{slide}
+    \textbf{夫琅和费衍射光栅}
+    \small
+    \begin{itemize}
+        \item 衍射光栅是狭缝按照一定规律分布的光学装置，它能够调整入射光的相位、振幅等属性，使透过它的光发生衍射、干涉
+        \item 所有衍射光栅的$m$级极大衍射角$\theta_m$满足下列光栅方程
+              \begin{equation}
+                  d\left( \sin{\theta_m} + \sin{\theta_i} \right) = m \lambda
+              \end{equation}
+        \item 衍射光栅的强度分布$P$是衍射因子和干涉因子的乘积，即$P = D(\theta)\cdot I(\theta)$,其中衍射因子
+              \begin{equation}
+                  D= \frac{ \sin(\pi\cdot d\cdot\sin(\theta)/\lambda)^2\cdot\lambda^2}{(\pi^2\cdot d^2\cdot\sin(\theta)^2)}
+              \end{equation}
+              干涉因子
+              \begin{equation}
+                  I= \frac{\sin(\pi\cdot a\cdot\sin(\theta)\cdot N/\lambda)^2}{(N^2\cdot\sin(\pi\cdot a\cdot\sin(\theta)/\lambda)^2)}
+              \end{equation}
+    \end{itemize}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[height=1.2cm, width=4.8cm]{pictures/Density_plot_of_diffraction_grating.pdf}
+    \end{figure}
+\end{slide}
+
+\section{布拉格衍射}
+
+\begin{slide}
+    \small
+    \begin{itemize}
+        \item 晶体具有周期性的物质结构。由于在这种周期性结构中，原子间距为$10^{-10}$米数量级，因此它可以作为波的衍射光栅
+        \item 同相位的入射波经过不同晶面，在晶格原子处发生衍射后，从而产生干涉相长或干涉相消，这就形成了布拉格衍射
+        \item 根据布拉格定律，干涉加强位置所满足的条件为
+              \begin{equation}
+                  m\lambda=2d\sin{\theta}
+              \end{equation}
+              这里$\lambda$为波长，$d$为晶面距离，$\theta$为衍射角，$m$为衍射级数
+    \end{itemize}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[height=3cm, width=6cm]{pictures/BraggPlaneDiffraction.pdf}
+    \end{figure}
+\end{slide}
+
+\section{单缝衍射中的不确定性}
+
+\begin{slide}
+    \begin{itemize}
+        \item 根据单狭缝衍射公式，从中央极大值位置（最大波强度之点）到第一个零点（零波强度之点）的夹角$\theta$ 为$\sin\theta= \lambda/w$
+        \item 给定平面波的波长，狭缝越窄，衍射现象越宽阔，$\theta$ 越大；狭缝越宽，衍射现象越窄缩，$\theta$ 越小
+        \item 当粒子穿过狭缝之前，在粒子前进的方向（$x$方向）的动量为$p$，在$y$方向的动量$p_{y}$是零。穿过狭缝时，粒子的动量经衍射发生变化，不确定性$\Delta p_{y}$大约是$p\sin\theta\approx p\lambda/w$
+    \end{itemize}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[height=4cm, width=6cm]{pictures/SingleSlitDiffraction.pdf}
+    \end{figure}
+\end{slide}
+
+\begin{slide}
+    \small
+    \begin{itemize}
+        \item 当粒子穿过狭缝时，其位置不确定性$\Delta y$是狭缝宽度:$\Delta y\approx w$
+        \item 所以，位置不确定性与动量不确定性的乘积大约为
+              \begin{equation}
+                  \Delta y\Delta p_y\approx\lambda p
+              \end{equation}
+        \item 从德布罗意假说有$\lambda=h/p$
+        \item 所以，位置不确定性与动量不确定性遵守近似式
+              \begin{equation}
+                  \Delta y\Delta p_y\approx h
+              \end{equation}
+    \end{itemize}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[height=3.2cm, width=4.8cm]{pictures/SingleSlitDiffraction.pdf}
+    \end{figure}
+\end{slide}
+
+\section{衍射必要条件：相干性}
+
+\begin{slide}
+    \begin{itemize}
+        \item 一束光波的相位在某段长度上是相关的，这段长度被称作是纵向相干长度，简称为“相干长度”
+        \item 为了使干涉或衍射能够发生，光程差必须小于相干长度
+        \item 如果采用不相干入射光，那么其中的不同波传播到给定点时的相位差将会极快地、无规则地变化，这样在观察屏上就无法形成稳定的干涉相长或干涉相消的图样，而是在这两种情况之间不断变化，以至于无法观察到明暗条纹
+        \item 如果光波由扩展光源发射，则可能会出现横向的不相干
+        \item 在杨氏双缝实验中，这意味着如果横向相干长度比两条狭缝的间距小，那么在观察屏上形成的图样看起来就像是两个独立单缝形成的衍射图样
+        \item 在电子、中子和原子等离子的情况中，相干长度与描述粒子的波函数的空间范围有关
+    \end{itemize}
+\end{slide}
+
+\part{光学仪器中的衍射现象}
+
+\begin{frame}
+    \partpage
+\end{frame}
+
+\section{光学仪器的分辨本领（光学衍射极限）}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{定义（理想分辨本领，光学衍射极限）}
+      两个亮度相同、波长相等的独立光源经过理想光学系统所能达到的最佳分辨本领，也称为光学仪器分辨本领的\textbf{衍射极限}
+    \item{物理图像（不确定性原理）}
+      物（物点集合）$\Longrightarrow$像（像斑集合）
+    \item{瑞利（Rayleigh）判据}
+      设两个物点成像得到的两个艾里斑角距为$\delta\theta$，每个艾里斑的半角宽度为$\Delta\theta$；当$\delta\theta > \Delta\theta$时，可以分辨；当$\delta\theta < \Delta\theta$时，不可分辨；$\delta\theta_{\mathrm m} = \Delta\theta$称为\textbf{可分辨角极限}
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  利用圆孔夫琅禾费衍射公式估计$\Delta\theta$
+  \begin{itemlist}
+    \item{圆孔夫琅禾费衍射光强计算公式}
+      $$
+        I(\theta) = I_0\(\frac{2J_1(x)}{x}\)^2,\
+        x(\theta) = \frac{\pi D\sin\theta}{\lambda}
+      $$
+    \item{零级斑（艾里斑）边界}
+      $$
+        x(\delta\theta_{\mathrm m}) = 1.22\pi\
+        \Rightarrow\ \sin\delta\theta_{\mathrm m} = \frac{1.22\lambda}{D}
+      $$
+    \item{小角近似得到光学衍射极限}
+      $$
+        \delta\theta_{\mathrm m} \ll 1\
+        \Rightarrow\ \boxed{\delta\theta_{\mathrm m} \approx \frac{1.22\lambda}{D}}
+      $$
+  \end{itemlist}
+\end{slide}
+
+\section{光学仪器的有效放大率}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{人眼的最小分辨角}
+      白昼时瞳孔直径：$D_{\mathrm e} \sim 2\,\mathrm{mm}$ \\
+      白昼时敏感波长：$\lambda \sim 550\,\mathrm{nm}$（折射率的增加使得艾里斑直径和间距等比缩小了，故没有贡献） \\
+      白昼时最小分辨角：$$\boxed{\delta\theta_{\mathrm e} \approx 1.22\lambda / D_{\mathrm e} \sim 3.3 \times 10^{-4} \,\mathrm{rad} \sim 1'}$$
+    \item{仪器的有效放大率}
+      定义：$$\boxed{M_{\mathrm{eff}} = \delta\theta_{\mathrm e} / \delta\theta_{\mathrm m}}$$
+      物理意义：仪器的角分辨率相比人眼提高（即可分辨角极限$\delta\theta_{\mathrm m}$降低）的倍数；仪器的最小分辨角$\delta\theta_{\mathrm m}$经仪器放大$M_{\mathrm{eff}}$倍后人眼恰好可以分辨
+  \end{itemlist}
+\end{slide}
+
+\section{天文望远镜的分辨本领}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{目视望远镜的最小分辨角}
+      目视望远镜相当于将瞳孔直径$D_{\mathrm e}$提高到望远镜物镜的大小$D_{\mathrm o}$，其最小分辨角为$\delta\theta_{\mathrm e} \approx 1.22\lambda / D_{\mathrm o}$，同时其角放大率（即物镜与目镜焦距之比）也受到仪器有效放大率$M_{\mathrm{eff}}$的限制
+      \item{大型望远镜的分辨本领}
+      大型望远镜的分辨本领理论上取决于其观测的波段$\lambda$和主镜的口径$D$。实际上更多取决于大气视宁度（seeing）。对于光学波段，一个口径为$10\,\mathrm{m}$的望远镜，其理论分辨角为$0.014''$，远小于最理想的大气视宁度$\theta_s \sim 1'$，此时就需要使用自适应光学等技术抵消大气扰动。对于波长更长的无线电波段，即使是FAST这样的超大型望远镜最多也只有$1'$（在$3\,\mathrm{GHz}$下），于是人们建造望远镜阵列，通过单个望远镜之间的干涉可以将有效孔径（基线）延伸至地球大小
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[height=4.5cm, width=8cm]{pictures/EHT.pdf}
+        \caption{事件视界望远镜（EHT），运用甚长基线干涉技术（VLBI）使得基线长度等效于地球直径（$12742\,\mathrm{km}$），工作在$0.87\sim1.33\,\mathrm{mm}$，分辨率达到了$2\times10^{-5}\,\mathrm{arcsec}$}
+       \end{figure}
+  \end{slide}
+
+\section{显微镜物镜的数值孔径}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{阿贝正弦条件}
+      即无球差前提下傍轴物点以大孔径光束成像的充分必要条件
+      $$
+        \boxed{ny\sin u = n^\prime y^\prime \sin u^\prime}
+      $$
+      $n$：物方折射率\quad $y$：物方横向距离（远小于光线传播距离） \\
+      $u$：物方孔径角（成像光束与光轴的夹角，可以很大）
+    \item{数值孔径（$\mathrm{N.A.}$）的引入}
+      考虑恰好可以分辨的情况，即$\Delta\theta = \delta\theta_{\mathrm m} \approx 1.22\lambda / D$ \\
+      像方横向距离为$y^\prime = s^\prime\Delta\theta \approx 1.22\lambda / (D / s^\prime) \approx 0.61\lambda / \sin u^\prime$ \\
+      注意到$\lambda = \lambda_0 / n^\prime$，
+      所以$y^\prime \approx 0.61\lambda_0 / (n^\prime\sin u^\prime)$ \\
+      结合阿贝正弦条件知
+      $$
+        \boxed{
+          \delta y_{\mathrm m} = y \approx \frac{0.61\lambda_0}{\mathrm{N.A.}},\
+          \mathrm{N.A.} := n\sin u
+        }
+      $$
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{显微镜的有效放大倍数}
+      明视距离：$d_{\mathrm e} = 250\,\mathrm{mm}$ \\
+      人眼通过显微镜在明视距离处看到物体的像 \\
+      由光学仪器有效放大倍数的定义$M_{\mathrm{eff}} = \delta\theta_{\mathrm e} / \delta\theta_{\mathrm m}$推知
+      $$
+      \boxed{
+        M_{\mathrm{eff}} = \frac{\delta y_{\mathrm e} / d_{\mathrm e}}{\delta y_{\mathrm m} / d_{\mathrm e}}
+        % = \frac{\delta y_{\mathrm e}}{\delta y_{\mathrm m}}
+        = \frac{\delta y_{\mathrm e}}{0.61\lambda_0 / \mathrm{N.A.}}
+      }
+      $$
+      其中$\delta y_{\mathrm e} = \delta\theta_{\mathrm e}d_{\mathrm e} \sim 0.1\,\mathrm{mm}$表示人眼的线分辨本领 \\
+      代表性地，取$\mathrm{N.A.} = 1.5,\ \lambda_0 = 550\,\mathrm{nm}$，得
+      $$\boxed{M_{\mathrm{eff}} \sim 400}$$
+      有效放大倍数从根本上限制了显微镜的分辨本领，增加放大倍数并不能突破有效放大倍数的局限
+  \end{itemlist}
+\end{slide}
+
+\section{阿贝衍射极限}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{数值孔径的上限}
+      由于$\delta y_{\mathrm m} = 0.61\lambda_0 / \mathrm{N.A.}$，大数值孔径显微镜分辨本领高 \\
+      由于$\mathrm{N.A.} = n\sin u$，一般而言$\mathrm{N.A.} \leq 1.5$
+    \item{阿贝衍射极限}
+      结合$\delta y_{\mathrm m}$和$\mathrm{N.A.}$的表达式知，对于圆孔光学仪器，一般
+      $$\boxed{\delta y_{\mathrm m} \lessapprox \lambda_0 / 2}$$
+      现刻于 Ernst Abbe（1840 —— 1905）墓碑上的公式为（$d$为显微镜分辨极限，$n\sin\alpha$即为数值孔径）
+      $$\boxed{d = \frac{\lambda}{2n\sin\alpha}}$$
+  \end{itemlist}
+\end{slide}
+
+\section{电子显微镜}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{电子的波粒二象性}
+      1924年德布罗意由光的波粒二象性类比猜想，实物粒子也有对应的物质波
+      $$
+      \begin{cases}
+        \bm p = m\bm v = \hbar\bm k \\
+        E = mc^2 = \hbar\omega
+      \end{cases}
+      $$
+      1926年波恩的量子力学统计诠释统一了概率幅与物质波 \\
+      1927年实现电子衍射验证了电子的波动性
+    \item{电子的德布罗意波波长}
+      近代物理实验中使用的 KYKY-3200 型扫描电子显微镜加速电压最高为$U = 30\,\mathrm{kV}$，加速后电子动能$T \sim 30\,\mathrm{keV}$，静能$m_{\mathrm e}c^2 \approx 511\,\mathrm{keV} \gg T$，电子的运动是非相对论性的
+      $$
+      \boxed{
+        \lambda \approx \frac{h}{\sqrt{2m_e T}} \approx 7\,\mathrm{pm}
+      }
+      $$
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{电子光学折射率}
+      光线传播的费马原理：给定起点和终点，光传播的路径$L$满足光程平稳值条件
+      $$
+        \delta\int_{L}n\,\mathrm{d}l = 0
+      $$
+      电子在电磁场中运动的最小作用量原理：给定起点和终点，电子运动的路径满足
+      $$
+      \delta\int_{L} \bm{p} \cdot \mathrm{d}\bm{l} = \delta\int_{L} p_l\,\mathrm{d}l = 0
+      $$
+      类比可知电子光学中具有折射率地位的物理量为$p_l = \bm{p} \cdot \hat{\bm{e}}_l$ \\
+      以$\mu$记之，$\mu = \sqrt{2m_e e\varphi\left(\dfrac{e\varphi}{2m_e c^2} - 1\right)} + eA_l$，故
+      $$
+        \boxed{\mu \propto \varphi^{1 / 2},\ \text{if}\ v \ll c\ \text{and}\ A_l = 0}
+      $$
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{电子光学折射率}
+      由$\mu \propto \varphi^{1 / 2}$知，折射率与电势的二分之一次方成正比 \\
+      $\mu$的变化范围比$n$大得多 \\
+      限制条件：
+      $$
+        \nabla^2\varphi = -\rho / \epsilon,\
+        \varphi_2\big|_S - \varphi_1\big|_S = 0,\
+        \epsilon_2\frac{\partial\varphi_2}{\partial n}\bigg|_S - \epsilon_1\frac{\partial\varphi_1}{\partial n}\bigg|_S = 0
+      $$
+      问题：$\varphi$参考零点选择的不唯一性？
+    \item{高斯轨迹方程}
+      旋转对称和傍轴条件下，$V$和$B$为对称轴上的场分布，此时电子在电磁场中的运动轨迹可以用高斯轨迹方程描述：
+      $$
+        \newcommand{\p}{^\prime}
+        \newcommand{\pp}{^{\prime\prime}}
+        u\pp + \frac{V\p}{2V}u\p + \frac{V\pp + \eta^2B^2}{4V}u = 0,\
+        u \in \{x, y\},\
+        \eta = \(\frac{-e}{2m_{\mathrm e}}\)^{1/2}
+      $$
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{扫描电子显微镜}
+      热电子经万伏特高压加速和电磁聚焦后形成电子探针 \\
+      电子探针的直径在纳米量级 \\
+      电子探针在样品表面进行按行光栅状扫描 \\
+      二次电子信号经聚焦和探测后转化为像素灰度 \\
+      背散射电子信号作为补充
+      \vspace{1em}\\\centering
+      \includegraphics[width=.8\textwidth]{pictures/sem.pdf}
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{扫描电子显微镜下的$\mathrm{MgB_2}$薄膜}
+      ~\\\centering
+      \includegraphics[width=.8\textwidth]{pictures/sem_sam.pdf}
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{扫描电子显微镜的分辨率}
+      扫描电子显微镜的主要信号来源是\textbf{二次电子}（样品表面被入射电子照射后，逸出的价电子或弱束缚的导带电子） \\
+      二次电子不可能以“大孔径”成像 \\
+      其束流的发散角很小，$\sin u \approx u \sim 0.16\,\mathrm{rad}$ \\
+      真空中$n = 1$，则
+      $$
+      \boxed{
+        \delta y_{\mathrm m} \sim \frac{0.61\lambda}{0.16} \approx 4\lambda
+      }
+      $$
+      代入$\lambda = 7\,\mathrm{pm}$有
+      $$
+      \boxed{
+        \delta y_{\mathrm m} \sim 28\,\mathrm{pm}
+      }
+      $$
+      实际观测发现效果不尽人意，衍射极限不是瓶颈 \\
+      噪声干扰大，高放大倍数对焦困难，等等
+  \end{itemlist}
+\end{slide}
+
+\section{全内反射荧光显微镜（TIRF）}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{TIRF (Total Internal Reflection Fluorescence)}
+      隐失波穿透深度
+      $$
+        d_p = \frac{\lambda_0}{4\pi\sqrt{n_1^2\sin^2\theta - n_2^2}}
+      $$
+      典型参数$n_1 = 1.479,\ n_2 = 1.334,\ \lambda_0 = 488\,\mathrm{nm},\ \theta = 70^\circ$
+      $$
+      \boxed{
+        d_p = 100\,\mathrm{nm}
+      }
+      $$
+      较小的“照亮”范围提供了单分子荧光蛋白成像的可能 \\
+      并非突破衍射极限，而是提高了信噪比！
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \centering
+  \includegraphics[width=\textwidth]{pictures/tirf.pdf}
+\end{slide}
+
+\section{光敏定位显微镜（PALM）和随机光学重建显微法（STORM）}
+\renewcommand{\sectiontitle}{\large 光敏定位显微镜（PALM）和随机光学重建显微法（STORM）}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{PALM (Photoactivated Localization Microscopy)}
+      分辨率：$\sim 20\,\mathrm{nm}$ \\
+      使用$405\,\mathrm{nm}$ UV 调控 GFP（绿色荧光蛋白） \\
+      GFP受激发后发出$488\,\mathrm{nm}$的可见光 \\
+      数秒钟后即退激发 \\
+      每次施加极小的激发信号 \\
+      仅有少量GFP受到激发并维持数秒的暂态辐射 \\
+      重复上万次（称为扫描），得到积分图像 \\
+      能够尽可能地实现单分子成像，大大减少了荧光的重叠 \\
+      耗时费力
+    \item{\small STORM (STochastic Optical Reconstruction Microscopy)}
+      类似，但扫描方式有所不同
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \centering
+  \includegraphics[width=.6\textwidth]{pictures/storm.pdf}
+\end{slide}
+
+\section{结构光照明显微镜（SIM）}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{SIM (Structured Illumination Microscopy)}
+      分辨率：$\sim 100\,\mathrm{nm}$ \\
+      相比PALM/STORM更加节能 \\
+      对样品损伤小，可用于活体 \\
+      高频信号混合，通过成像系统低频通带 \\
+      多方向多相位成像合成重建高频信息
+      \vspace{0.5em}\\\centering
+      \includegraphics[width=.5\textwidth]{pictures/sim_sam.pdf}
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \centering
+  \includegraphics[width=.75\textwidth]{pictures/sim}
+\end{slide}
+
+\section{受激发射损耗荧光显微术（STED）}
+
+\begin{slide}
+  \begin{itemlist}
+    \item{STED (Stimulated Emission Depletion Microscopy)}
+      分辨率：$\sim 20\,\mathrm{nm}$ \\
+      使用强激光使得成像荧光光斑的外围消失 \\
+      高耗能
+      \vspace{1em}\\\centering
+      \includegraphics[width=.4\textwidth]{pictures/sted_1.pdf}
+      \includegraphics[width=.4\textwidth]{pictures/sted_2.pdf}
+  \end{itemlist}
+\end{slide}
+
+\begin{slide}
+  \centering
+  \includegraphics[width=.8\textwidth]{pictures/sted_sam.pdf}
+\end{slide}
+
+\begin{frame}{\textbf{参考文献}}
+  \small
+  \begin{thebibliography}{99}
+    \bib{MPL} 吴思诚, 荀坤. 近代物理实验.第4版[M]. 高等教育出版社, 2015.
+    \bib{OPT} 李焱. 光学. 北京大学物理学院课程, 2020秋.
+    \bib{QMB} 齐志. 定量分子生物学. 北京大学元培学院课程, 2019秋.
+    \bib{MBC} Alberts B . Molecular Biology of the Cell, 6th Ed. PB[J]. 2014.
+    \bib{SIM} \url{http://phoenix.tsinghua.edu.cn/index.php?c=show&id=340}
+  \end{thebibliography}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \Huge\textbf{谢谢大家}
+    \end{center}
+\end{frame}
+
+\end{document}
