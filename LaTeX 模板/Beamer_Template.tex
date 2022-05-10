@@ -1,13 +1,12 @@
 \documentclass{beamer}
 \usetheme{default}
-
+\usecolortheme{seahorse}
 \usepackage{amsmath,amssymb,mathrsfs,bm}
 \usepackage{anyfontsize}
 \usepackage{unicode-math}
 \unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
 \setmathfont{XITS Math}
 \usepackage{fontspec}
-\setsansfont{Linux Biolinum O}
 \setmonofont{JetBrains Mono NL}
 \AtBeginDocument{
   \let\uglyepsilon\epsilon
@@ -20,16 +19,13 @@
 \renewcommand{\bm}{\symbf}
 
 \usepackage[fontset=none]{ctex}
-\setCJKmainfont{宋体}[BoldFont=Noto Serif CJK SC Bold]
-\setCJKsansfont{Noto Sans CJK SC}[RawFeature=+fwid]
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Bold,ItalicFont=Adobe Kaiti Std]
+\setCJKsansfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Bold,ItalicFont=Adobe Kaiti Std]
 \setCJKmonofont{Noto Sans Mono CJK SC}[RawFeature=+fwid]
-\newCJKfontfamily\songti{宋体}[BoldFont=Noto Serif CJK SC Bold]
+\newCJKfontfamily\songti{Adobe Song Std}[BoldFont=Noto Sans CJK SC Bold]
 \newCJKfontfamily\heiti{Noto Sans CJK SC}[RawFeature=+fwid]
-\newCJKfontfamily\kaishu{楷体}
-\newCJKfontfamily\fangsong{仿宋}
-\newCJKfontfamily\lishu{方正隶书简体}
-\newCJKfontfamily\yahei{Noto Sans CJK SC}[RawFeature=+fwid]
-\newCJKfontfamily\youyuan{方正兰亭圆简体}
+\newCJKfontfamily\kaishu{Adobe Kaiti Std}
+\newCJKfontfamily\fangsong{Adobe Fangsong Std}
 
 \usepackage{color}
 \usepackage{graphicx,caption,subcaption}
@@ -48,6 +44,7 @@
     basicstyle=\ttfamily\tiny,
     aboveskip={1.0\baselineskip},
     belowskip={1.0\baselineskip},
+    xleftmargin=25pt,
     columns=fixed,
     extendedchars=true,
     breaklines=true,
@@ -68,15 +65,37 @@
     escapeinside={\%*}{*)}
 }
 
+\setbeamerfont{author}{family=\kaishu}
+\setbeamerfont{date}{family=\kaishu}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{section in toc}{series=\bfseries}
+\setbeamertemplate{part page}{
+        \begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}
+            \bfseries\Large\insertpart\par
+        \end{beamercolorbox}
+}
+
 \title{我的Beamer模板}
-\author{北京大学\ \ 张植竣}
+\author{作者}
 \date{\today}
 
 \begin{document}
 
-\begin{frame}[plain]
-    \maketitle
+\begin{frame}
+    \titlepage
 \end{frame}
+
+\part{第一部分}
+
+\begin{frame}
+    \partpage
+    \tableofcontents
+\end{frame}
+
+\section{第一节}
 
 \begin{frame}{Frame Title 1}
     \begin{center}
@@ -97,6 +116,8 @@
         }
     \end{center}
 \end{frame}
+
+\section{第二节}
 
 \begin{frame}{Frame Title 2}
     \[
@@ -126,24 +147,31 @@
     \end{equation}
 \end{frame}
 
+\part{第二部分}
+
+\begin{frame}
+    \partpage
+    \tableofcontents
+\end{frame}
+
+\section{第三节}
+
 \begin{frame}{Frame Title 4}
     \begin{itemize}
-        \item[\bullet] 我能吞下玻璃而不伤身体
+        \item 我能吞下玻璃而不伤身体
         \begin{itemize}
-            \item[\bullet][1.] \songti{我能吞下玻璃而不伤身体。，、——：；‘“恭喜发财”’！？}
+            \item[1.] \songti{我能吞下玻璃而不伤身体。，、——：；‘“恭喜发财”’！？}
 
-            \item[\bullet][2.] \kaishu{我能吞下玻璃而不伤身体。，、——：；‘“恭喜发财”’！？}
+            \item[2.] \kaishu{我能吞下玻璃而不伤身体。，、——：；‘“恭喜发财”’！？}
 
-            \item[\bullet][3.] \fangsong{我能吞下玻璃而不伤身体。，、——：；‘“恭喜发财”’！？}
+            \item[3.] \fangsong{我能吞下玻璃而不伤身体。，、——：；‘“恭喜发财”’！？}
 
-            \item[\bullet][4.] \heiti{我能吞下玻璃而不伤身体。，、\symbol{"2E3A}：；‘“恭喜发财”’！？}
-
-            \item[\bullet][5.] \lishu{我能吞下玻璃而不伤身体。，、——：；‘“恭喜发财”’！？}
+            \item[4.] \heiti{我能吞下玻璃而不伤身体。，、\symbol{"2E3A}：；‘“恭喜发财”’！？}
         \end{itemize}
 
-        \item[\bullet] \href{https://www.php.net/}{PHP}是世界上最好的语言
+        \item \href{https://www.php.net/}{PHP}是世界上最好的语言
 
-        \item[\bullet] \songti{欢迎来到\textbf{\textcolor[RGB]{139,0,18}{北京大学}}物理学院！}
+        \item \songti{欢迎来到\textbf{\textcolor[RGB]{139,0,18}{北京大学}}物理学院！}
     \end{itemize}
 \end{frame}
 
@@ -155,21 +183,23 @@
     \end{figure}
 \end{frame}
 
+\section{第四节}
+
 \begin{frame}{Frame Title 6}
     模板代码：
     \lstinputlisting{Template_Code.py}
 \end{frame}
 
-\begin{frame}{Frame Title 8}
+\begin{frame}{Frame Title 7}
     Itemize example: \pause
     \begin{itemize}
-        \item[\bullet] Ceasar said: “Veni, Vidi, Vici.” \pause
-        \item[\bullet] Karl Marx said: “The history of all hitherto existing society is the history of class struggles.” \pause
+        \item Ceasar said: “Veni, Vidi, Vici.” \pause
+        \item Karl Marx said: “The history of all hitherto existing society is the history of class struggles.” \pause
     \end{itemize}
     Enumerate example: \pause
     \begin{enumerate}
-        \item[\bullet] \LaTeX{} beamer is powerful. \pause
-        \item[\bullet] \LaTeX{} beamer is beautiful. \pause
+        \item \LaTeX{} beamer is powerful. \pause
+        \item \LaTeX{} beamer is beautiful. \pause
     \end{enumerate}
 \end{frame}
 
@@ -192,7 +222,7 @@
 
 \begin{frame}
     \begin{center}
-        \Huge 谢谢大家！
+        \Huge\textbf{谢谢大家！}
     \end{center}
 \end{frame}
 

@@ -8,7 +8,11 @@
 \setbeamerfont{section in toc}{series=\bfseries}
 
 \usepackage[fontset=none]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
 \setCJKsansfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\newCJKfontfamily{\kaishu}{KaiTi}
+\setbeamerfont{author}{family=\kaishu}
+\setbeamerfont{date}{family=\kaishu}
 \usepackage{amsmath,amssymb,mathrsfs,bm}
 \usepackage{tikz}
 \usepackage{anyfontsize}
@@ -17,8 +21,6 @@
 \renewcommand{\bm}{\symbf}
 \renewcommand{\mathsf}{\symsf}
 \setmathfont{Latin Modern Math}
-\usepackage{fontspec}
-\usefonttheme[onlymath]{serif}
 \usepackage{color}
 \usepackage{graphicx,caption,subcaption}
 \usepackage{hyperref}
@@ -879,11 +881,34 @@
 
             由$E=h\nu$得Rydberg公式：
             \[
-                \frac{1}{\lambda} = R\left(\frac{1}{n_f^2}-\frac{1}{n_i^2}\right),\quad R = \frac{\mu}{4\pi c\hbar^3}\left(\frac{e^2}{4\pi\epsilon_0}\right)^{\!2} = \frac{E_1}{hc}
+                \frac{1}{\lambda} = R_{\mathrm{H}} \left(\frac{1}{n_f^2}-\frac{1}{n_i^2}\right),\quad R_{\mathrm{H}} = \frac{\mu}{4\pi c\hbar^3}\left(\frac{e^2}{4\pi\epsilon_0}\right)^{\!2} = \frac{E_1}{hc}
             \]
-            $R$称为Rydberg常数，对于氢原子，$R_{\mathrm{H}}\approx1.097\times10^{7}\,\mathrm{m}^{-1}$
+            $R_{\mathrm{H}}\approx1.097\times10^{7}\,\mathrm{m}^{-1}$称为氢原子的\textbf{Rydberg常数}
+        \end{itemize}
+    \end{itemize}
+\end{slide}
 
-            还可以解出Bohr半径$a = \dfrac{4\pi\epsilon_0\hbar^2}{\mu e^2} \approx 0.529\,\symbol{"212B}$
+\begin{slide}
+    \begin{itemize}
+        \item \textbf{能量与角动量}
+        
+        \begin{itemize}
+            \item \textbf{能量}：当原子核质量远大于电子质量时：
+            \[
+                R_\infty = \frac{m_e}{4\pi c\hbar^3}\left(\frac{e^2}{4\pi\epsilon_0}\right)^{\!2} = 10973731.57\,\mathrm{m}^{-1}
+            \]
+            可见换算关系：$R_{\mathrm{H}} = \dfrac{\mu}{m_e}R_\infty = \dfrac{M}{M + m_e}R_\infty \approx R_\infty$
+
+            由轨道总能量：
+            \[
+                E_n = -\frac{ke^2}{2r_n},\quad k = \frac{1}{4\pi\epsilon_0}
+            \]
+            可以解出基态氢原子的轨道半径$r_n=\dfrac{4\pi\epsilon_0\hbar^2n^2}{\mu e^2}$
+
+            $n=1$时的轨道半径又称为\textbf{Bohr半径}$a_{\mathrm{B}}\approx0.529\,\symbol{"212B}$
+            %可以解出\textbf{Bohr半径}$a_{\mathrm{B}}=r_1=\dfrac{4\pi\epsilon_0\hbar^2}{\mu e^2} \approx 0.529\,\symbol{"212B}$
+            
+            %这是基态氢原子的最小轨道半径，其余轨道半径$r_n=n^2 a$
         \end{itemize}
     \end{itemize}
 \end{slide}
@@ -899,8 +924,9 @@
                 m &= -l,\ -l+1,\ \cdots,\ l
             \end{align*}
             $l=0$为概率球对称分布的量子态，可见$L_z$的最大值$l\hbar$小于$L=\sqrt{l(l+1)}\hbar$，这是\textbf{空间量子化}的结果
+            \bigskip
 
-            对于一般的角动量平方算符，$l$可以取\textbf{整数}或\textbf{半整数}，但轨道角动量必须满足$\phi$方向旋转$2\pi$后返回原状，故$l$只能取整数，自旋角动量量子数$s$就可以取半整数
+            \textbf{注意：}对于一般的角动量平方算符，$l$可以取\textbf{整数}或\textbf{半整数}，但轨道角动量必须满足$\phi$方向旋转$2\pi$后返回原状，故$l$只能取整数，自旋角动量量子数$s$就可以取半整数
         \end{itemize}
     \end{itemize}
 \end{slide}
@@ -933,7 +959,7 @@
     \begin{itemize}
         \item \textbf{量子数}
         \begin{itemize}
-            \item $s$：\textbf{自旋角量子数}，电子自旋角动量的本征值为$\hbar\sqrt{s(s+1)}$，注意$l$与$s$皆大于$0$，对于单电子系统（如氢原子）：
+            \item $s$：\textbf{自旋角量子数}，电子自旋角动量的本征值为$\hbar\sqrt{s(s+1)}$，注意$l$与$s$皆大于$0$，对于氢原子等单电子系统：
             \[
                 s=\dfrac{1}{2},\quad L_{\mathrm{spin}} = \hbar\sqrt{s(s+1)} = \frac{\sqrt{3}}{2}\hbar
             \]
@@ -951,7 +977,7 @@
     \begin{itemize}
         \item \textbf{类氢原子}
 
-        对于类氢原子（即只含一个电子的原子体系），只需将方程和结果中的$e^2$替换为$Ze^2$即可，$Z$为原子的核电荷数（原子序数），如质心系下的定态Schrödinger方程为：
+        对于\textbf{类氢原子}（即只含一个电子的原子体系），只需将方程和结果中的$e^2$替换为$Ze^2$即可，$Z$为原子的\textbf{原子序数（核电荷数）}，如质心系下的定态Schrödinger方程为：
         \[
             \left(-\frac{\hbar}{2\mu}\nabla^2-\frac{Ze^2}{4\pi\epsilon_0r}\right)\psi(\bm{r}) = E\psi(\bm{r}),\quad \mu = \frac{Mm_e}{M+m_e}
         \]
@@ -959,6 +985,27 @@
         \[
             E_n = -\left[\frac{\mu}{2\hbar^2}\left(\frac{Ze^2}{4\pi\epsilon_0}\right)^{\!2}\right]\frac{1}{n^2} = \frac{E_1}{n^2},\quad n = 1,\ 2,\ 3,\ \cdots
         \]
+        可见类氢原子的基态能量$E_1=Z^2E_{1\mathrm{H}}$
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    \begin{itemize}
+        \item \textbf{类氢原子}
+
+        类氢原子的Rydberg常数为：
+        \[
+            R = Z^2 R_{\mathrm{H}} = Z^2\frac{\mu}{m_e}R_\infty
+        \]
+        由轨道总能量：
+            \[
+                E_n = -\frac{kZe^2}{2r_n},\quad k = \frac{1}{4\pi\epsilon_0}
+            \]
+        得轨道半径为：
+        \[
+            r_1 = \frac{4\pi\epsilon_0\hbar^2}{Z\mu e^2} = \frac{a_{\mathrm{B}}}{Z},\quad r_n = \frac{n^2 a_{\mathrm{B}}}{Z}
+        \]
+
     \end{itemize}
 \end{slide}
 
