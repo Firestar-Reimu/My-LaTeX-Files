@@ -1,6 +1,7 @@
 \documentclass{beamer}
 \usetheme{default}
 \usecolortheme{seahorse}
+
 \usepackage{amsmath,amssymb,mathrsfs,bm}
 \usepackage{anyfontsize}
 \usepackage{unicode-math}
@@ -27,6 +28,23 @@
 \newCJKfontfamily\kaishu{Adobe Kaiti Std}
 \newCJKfontfamily\fangsong{Adobe Fangsong Std}
 
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{author}{family=\kaishu}
+\setbeamerfont{date}{family=\kaishu}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{section in toc}{series=\bfseries}
+\setbeamertemplate{part page}{
+        \begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}
+            \bfseries\Large\insertpart\par
+        \end{beamercolorbox}
+}
+
+\renewcommand\baselinestretch{1.25}
+\usepackage{multicol}
+\setlength{\columnsep}{25pt}
 \usepackage{color}
 \usepackage{graphicx,caption,subcaption}
 \usepackage{hyperref}
@@ -63,19 +81,6 @@
     numbersep=12pt,
     captionpos=t,
     escapeinside={\%*}{*)}
-}
-
-\setbeamerfont{author}{family=\kaishu}
-\setbeamerfont{date}{family=\kaishu}
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{items}[ball]
-\setbeamertemplate{section in toc}[ball unnumbered]
-\setbeamertemplate{footline}[frame number]
-\setbeamerfont{section in toc}{series=\bfseries}
-\setbeamertemplate{part page}{
-        \begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}
-            \bfseries\Large\insertpart\par
-        \end{beamercolorbox}
 }
 
 \title{我的Beamer模板}
@@ -120,9 +125,6 @@
 \section{第二节}
 
 \begin{frame}{Frame Title 2}
-    \[
-    \iiint \nabla\cdot\symbf{A}\,\symrm{d}V = \oiint \symbf{A}\,\symrm{d}\symbf{S}
-    \]
     \begin{align*}
         [q,p]_{Q,P}
         &= \frac{\partial q}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial p}{\partial Q} \\
@@ -144,6 +146,9 @@
     \end{equation}
     \begin{equation}
     w(x,0) = 0,\qquad \left.\frac{\partial w}{\partial t}\right|_{t=0} = -\left.\frac{\partial v}{\partial t}\right|_{t=0} = -\frac{Aa\sin\left(\dfrac{\omega x}{a}\right)}{ES\cos\left(\dfrac{\omega l}{a}\right)}
+    \end{equation}
+    \begin{equation}
+    \iiint \nabla\cdot\symbf{A}\,\symrm{d}V = \oiint \symbf{A}\,\symrm{d}\symbf{S}
     \end{equation}
 \end{frame}
 
@@ -176,18 +181,27 @@
 \end{frame}
 
 \begin{frame}{Frame Title 5}
-    \begin{figure}[ht]
-        \centering
-        \includegraphics[width=0.6\textwidth]{Template_Picture.png}
-        \caption*{Template Picture}
-    \end{figure}
+    \begin{multicols}{2}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    \end{multicols}
 \end{frame}
 
 \section{第四节}
 
-\begin{frame}{Frame Title 6}
+\begin{frame}[fragile]{Frame Title 6}
     模板代码：
-    \lstinputlisting{Template_Code.py}
+    \begin{lstlisting}
+    def permutations(a, arr, pos, end):  # 获取列表的全排列
+        if pos == end:  # 递归结束
+            arr = arr[:]
+            a.append(arr)
+        else:
+            for index in range(pos, end):
+                arr[index], arr[pos] = arr[pos], arr[index]  # 交换相邻两个元素
+                permutations(a, arr, pos+1, end)  # 列表长度-1
+                arr[index], arr[pos] = arr[pos], arr[index]  # 交换相邻两个元素
+        return a
+    \end{lstlisting}
 \end{frame}
 
 \begin{frame}{Frame Title 7}
