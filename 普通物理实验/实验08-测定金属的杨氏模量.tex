@@ -1,0 +1,168 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{setspace}
+
+\begin{document}
+
+    \title{\textbf{实验八\ \ 测定金属的杨氏模量}}
+    \author{1900011604 张植竣}
+    \date{2021年3月20日}
+    \maketitle
+
+    \section*{1\ \  实验数据与数据处理}
+
+    \subsection*{1.1\ \ CCD成像系统测定杨氏模量}
+
+    \paragraph*{金属丝伸长量测量} 测量数据如下：
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                $m_i/\mathrm{g}$ & 300.82 & 400.64 & 500.55 & 600.54 & 700.45 & 800.13 \\
+                \hline
+                $\delta L_i/\mathrm{mm}$ & 0.18 & 0.22 & 0.29 & 0.34 & 0.41 & 0.46 \\
+                \hline
+                $m_i/\mathrm{g}$ & 900.04 & 1000.36 & 1100.27 & 1200.80 & 1300.71 & 1400.78 \\
+                \hline
+                $\delta L_i/\mathrm{mm}$ & 0.51 & 0.57 & 0.63 & 0.67 & 0.72 & 0.79 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-1.5em}
+
+    \textbf{逐差法处理数据}
+    \[
+    \overline{\Delta m} = \frac{1}{6}\sum_{i=1}^{6}\Delta m = \frac{1}{6}\sum_{i=1}^{6}(m_{i+6} - m_i) = 599.9716667\,\mathrm{g}
+    \]
+    \[
+    \overline{\Delta L} = \frac{1}{6}\sum_{i=1}^{6}\Delta L = \frac{1}{6}\sum_{i=1}^{6}(\delta L_{i+6} - \delta L_i) = 0.3316666667\,\mathrm{mm}
+    \]
+    实验所用天平最小分度值为$0.01\,\mathrm{g}$，线性误差为$\pm0.015\,\mathrm{g}$，则估计质量测量的不确定度为：
+    \[
+    \sigma_m = \sqrt{\left(\frac{0.01}{\sqrt{3}}\right)^2 + \left(\frac{0.015}{\sqrt{3}}\right)^2} = 0.01040833\,\mathrm{g}
+    \]
+    $\Delta m = m_{i+6} - m_i$的不确定度为：
+    \[
+    \sigma_{\Delta m} = \sqrt{\sigma_m^2 + \sigma_m^2} = \sqrt{2}\sigma_m = 0.01471960144\,\mathrm{g}
+    \]
+    这个不确定度来源于未定系统误差。
+
+    则$\overline{\Delta m}$的合成不确定度为：
+    \[
+    \sigma_{\overline{\Delta m}} = \sqrt{\frac{\sum\limits_{i=1}^{6}(\Delta m_i - \overline{\Delta m})^2}{6(6-1)} + \sigma_{\Delta m}^2} = 0.2101256238\,\mathrm{g}
+    \]
+
+    实验所用标尺最小分度值为$0.05\,\mathrm{mm}$，考虑估读的误差和圆柱上横标不平行于刻度线导致的误差，估计$\delta L$测量的不确定度$\sigma_{\delta L} = 0.01\,\mathrm{mm}$。
+
+    同理，$\overline{\Delta L}$的合成不确定度为：
+    \[
+    \sigma_{\overline{\Delta L}} = \sqrt{\frac{\sum\limits_{i=1}^{6}(\Delta L_i - \overline{\Delta L})^2}{6(6-1)} + \left(\sqrt{2}\sigma_{\delta L}\right)^2} = 0.01514742369\,\mathrm{mm}
+    \]
+
+    \textbf{最小二乘法处理数据}
+
+    由数据可见伸长量$\delta L$与所加砝码的总质量$m$之间有线性关系$\delta L = km+b$，作最小二乘法拟合如下：
+    \[
+    k=0.55418413\,\mathrm{mm/kg},\qquad b=0.0111622405\,\mathrm{mm},\qquad r=0.9992766895
+    \]
+    则斜率$k$的A类不确定度为：
+    \[
+    \sigma_{k,\, A} = \frac{\sqrt{\dfrac{1}{r^2}-1}}{12-2} = 0.01203408516\,\mathrm{mm/kg}
+    \]
+    斜率$k$的B类不确定度为：
+    \[
+    \sigma_{k,\, B} = \frac{\sigma_{\delta L}}{\sqrt{\sum\limits_{i=1}^{12}(m_i - \overline{m})^2}} = 0.0083623506\,\mathrm{mm/kg}
+    \]
+    其中$\sigma_{\delta L}$为$\delta L$测量的不确定度$0.01\,\mathrm{mm}$，$\overline{m}$为总质量的平均值$\dfrac{1}{12}\sum\limits_{i=1}^{12}m_i = 850.5075\,\mathrm{g}$。
+
+    则斜率的合成不确定度为：
+    \[
+    \sigma_k = \sqrt{\sigma_{k,\, A}^2 + \sigma_{k,\, B}^2} = 0.01465428653\,\mathrm{mm/kg}
+    \]
+
+    \paragraph*{金属丝长度测量} 测量结果：$L = 775.0\,\mathrm{mm}$
+
+    仪器允差$e_L = 2.5\,\mathrm{mm}$，人眼读数、直尺与金属丝不平行也会引入误差，估计为$\sigma = 2\,\mathrm{mm}$。
+
+    则$L$的不确定度为：
+    \[
+    \sigma_L = \sqrt{\left(\frac{e_L}{\sqrt{3}}\right)^2 + \sigma^2} = 2.466441431\,\mathrm{mm}
+    \]
+
+    \paragraph*{金属丝直径测量} 测量数据如下：
+
+    \begin{table}[ht!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $d_i/\mu\mathrm{m}$ & 325 & 324 & 325 & 325 & 325 \\
+                \hline
+                $d_i/\mu\mathrm{m}$ & 325 & 324 & 325 & 325 & 324 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \vspace{-1.5em}
+
+    金属丝平均直径$\overline{d}$为：
+    \[
+    \overline{d} = \frac{\sum\limits_{i=1}^{10}d_i}{10} = 324.7\,\mu\mathrm{m}
+    \]
+    测量所用螺旋测微器的允差$e_d = \pm 4\,\mu\mathrm{m}$，则$\overline{d}$的不确定度为：
+    \[
+    \sigma_{\overline{d}} = \sqrt{\frac{\sum\limits_{i=1}^{10}(d_i - \overline{d})^2}{10(10-1)} + \left(\frac{e_d}{\sqrt{3}}\right)^2} = 2.314447378\,\mu\mathrm{m}
+    \]
+
+    \paragraph*{杨氏模量及其不确定度} 取重力加速度$g = 9.8015\,\mathrm{m/s^2}$计算：
+
+    \textbf{逐差法处理数据}
+    \[
+    E = \frac{4\overline{\Delta m}gL}{\pi d^2\overline{\Delta L}} = 1.659467318\times10^{11}\,\mathrm{Pa}
+    \]
+    \[
+    \sigma_E = E\sqrt{\left(\frac{\sigma_{\overline{\Delta m}}}{\overline{\Delta m}}\right)^2 + \left(\frac{\sigma_{\overline{\Delta L}}}{\overline{\Delta L}}\right)^2 + \left(\frac{\sigma_L}{L}\right)^2 + \left(\frac{2\sigma_{\overline{d}}}{\overline{d}}\right)^2} = 0.0795729365\times10^{11}\,\mathrm{Pa}
+    \]
+    杨氏模量的测量结果为：
+    \[
+    E \pm \sigma_E = 1.66 \pm 0.08\times10^{11}\,\mathrm{Pa}
+    \]
+
+    \textbf{最小二乘法处理数据}
+    \[
+    E' = \frac{4gL}{\pi d^2 k} = 1.655334259\times10^{11}\,\mathrm{Pa}
+    \]
+    \[
+    \sigma_{E'} = E\sqrt{\left(\frac{\sigma_k}{k}\right)^2 + \left(\frac{\sigma_L}{L}\right)^2 + \left(\frac{2\sigma_{\overline{d}}}{\overline{d}}\right)^2} = 0.05000619875\times10^{11}\,\mathrm{Pa}
+    \]
+    杨氏模量的测量结果为：
+    \[
+    E' \pm \sigma_{E'} = 1.66 \pm 0.05\times10^{11}\,\mathrm{Pa}
+    \]
+
+    \section*{2\ \  分析与讨论}
+
+    \paragraph*{当$m$较小时$\delta L$偏差较大} 伸长量$\delta L$较平均值偏大是因为初始时金属丝没有完全拉直（一般是在用螺旋测微器测量其直径时扭折），砝码的其中一部分作用是将金属丝伸直，使得$\delta L$偏大；伸长量$\delta L$较平均值偏小是因为金属丝下端圆柱与支架和限位螺丝之间有摩擦，砝码总质量$m$不大时摩擦力不能忽略，阻碍金属丝伸长，使得$\delta L$偏小。
+
+    \paragraph*{对不确定度影响最大的物理量} 通过比较相对误差的大小，可以找出误差对不确定度影响最大的物理量。
+
+    \begin{spacing}{2.0}
+    在逐差法中比较$\dfrac{\sigma_{\overline{\Delta m}}}{\overline{\Delta m}} = 3.502\times10^{-4}$、$\dfrac{\sigma_{\overline{\Delta L}}}{\overline{\Delta L}} = 0.04567$、$\dfrac{\sigma_L}{L} = 3.1825\times10^{-3}$、$\dfrac{2\sigma_{\overline{d}}}{\overline{d}} = 0.014256$，可以发现$\Delta L$的测量误差对最终结果$E$的不确定度影响最大。
+
+    在最小二乘法中比较$\dfrac{\sigma_k}{k} = 0.02644$、$\dfrac{\sigma_L}{L} = 3.1825\times10^{-3}$、$\dfrac{2\sigma_{\overline{d}}}{\overline{d}} = 0.014256$，可以发现$k$的测量误差对最终结果$E$的不确定度影响最大。
+    \end{spacing}
+    综上，精确测量金属丝在重物悬挂下的伸长量是本实验控制误差的主要途径，其次是减小测量金属丝直径的误差。分析本实验的数据可知，通过多次测量，引起这两个物理量测量误差的主要来源是仪器最小分度和仪器允差带来的未定系统误差。
+
+    \paragraph*{比较逐差法和最小二乘法} 最小二乘法得出的不确定度小于逐差法的不确定度，在本次实验中优于逐差法。因为它综合考虑了质量$m$和伸长量$\delta L$的误差，且极端值对测量结果的影响较小。
+
+
+\end{document}

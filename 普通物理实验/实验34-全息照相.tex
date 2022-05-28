@@ -1,0 +1,130 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{setspace}
+\usepackage{bm}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{tikz}
+\usetikzlibrary{3d,arrows.meta}
+
+\begin{document}
+
+\title{\textbf{实验三十四\ \ 全息照相}}
+\author{1900011604 张植竣}
+\date{2021年5月16日}
+
+\maketitle
+
+\section*{1\ \  实验现象描述与解释}
+
+\subsection*{1.1\ \ 实验光路}
+
+\begin{figure}[!htbp]
+    \centering
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{1.pdf}
+        \subcaption{全息图记录光路}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{2.pdf}
+        \subcaption{参考光重现全息图}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{3.pdf}
+        \subcaption{共轭光重现全息图}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{4.pdf}
+        \subcaption{激光直射重现全息图}
+    \end{subfigure}
+    \caption{实验光路图示}
+\end{figure}
+
+\subsection*{1.2\ \ 实验现象}
+
+\textbf{参考光重现全息图}
+
+\begin{itemize}
+    \item 1级衍射像：
+
+    \begin{figure}[!htbp]
+        \centering
+        \includegraphics[width = 0.5\textwidth]{butterfly.jpg}
+        \caption{1级衍射像}
+    \end{figure}
+
+    \begin{itemize}
+        \item 成虚像在物原来的位置上（左侧），正立、与物等大。
+        
+        \item 从底片不同位置观察，像的位置不变，但能看到像的立体结构，与从不同的方向观察物效果相同。
+        
+        \item 旋转底片：如下图，设底片所在平面为$Ozx$平面，分三种情况：
+        
+        \begin{center}
+            \begin{tikzpicture}[>=Stealth]
+                \draw [->] (0,0,0) -- (3,0,0);
+                \draw [->] (0,0,0) -- (0,3,0);
+                \draw [->] (0,0,0) -- (0,0,5);
+                \draw (-0.1,0.25,0.4) node {$O$};
+                \draw (3.3,0,0) node {$y$};
+                \draw (0,3.3,0) node {$z$};
+                \draw (0,0,5.5) node {$x$};
+                \draw (0,-1,0) node {底片};
+                \draw (0,2,-4) -- (0,2,4);
+                \draw (0,2,4) -- (0,-2,4);
+                \draw (0,-2,4) -- (0,-2,-4);
+                \draw (0,-2,-4) -- (0,2,-4);
+            \end{tikzpicture}
+        \end{center}
+        
+        \begin{itemize}
+            \item[(1)] 绕$y$轴旋转底片，则像也随之绕$y$轴旋转；
+            
+            \item[(2)] 绕$x$轴旋转底片，则像在$z$方向伸缩；
+            
+            \item[(3)] 绕$z$轴旋转底片，则像在$x$方向伸缩；
+        \end{itemize}
+        
+        \item 改变底片与透镜距离：距离越近像越小，距离越远像越大。
+    \end{itemize}
+    
+    \item 相对于参考光在物对侧（右侧）能观察到$-1$级衍射像，为一个放大、倒立的实像。
+\end{itemize}
+
+\textbf{共轭光重现全息图}
+
+\begin{itemize}
+    \item 实像：在左侧（物的同侧）能看到一个放大、倒立的实像，可以在右侧被接收到。
+    
+    \item 虚像：在右侧（物的对侧）能看到一个放大、正立的虚像。
+\end{itemize}
+
+\textbf{激光直射重现全息图}
+
+\begin{itemize}
+    \item 实像：在左侧能看到一个放大、正立的实像，可以在右侧被接收到。
+    
+    \item 虚像：在右侧能看到一个放大、倒立的虚像。因为激光的光束细、景深小，仍可以在左侧的屏上接收到（如下图，左侧为实像，右侧为虚像）；若用透镜将激光扩束成光束更粗的平行光，则无法接收到虚像，只能接收到实像。
+    
+    \begin{figure}[!htbp]
+        \centering
+        \includegraphics[width = 0.5\textwidth]{butterfly_reproduce.jpg}
+        \caption{激光直射重现全息图在光屏上接收到的像}
+    \end{figure}
+\end{itemize}
+
+\end{document}

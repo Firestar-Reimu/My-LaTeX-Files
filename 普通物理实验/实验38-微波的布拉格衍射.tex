@@ -1,21 +1,17 @@
-\documentclass[a4paper,fontset=none]{ctexbook}
+\documentclass[a4paper,fontset=windows]{ctexart}
 
 \usepackage{anyfontsize}
-\usepackage{amsmath,mathrsfs,wasysym}
-\usepackage{graphicx,caption,subcaption}
-\captionsetup{font=small}
-\usepackage{geometry,parskip}
-\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{autobreak}
+\allowdisplaybreaks
 \usepackage{indentfirst}
 \setlength{\parindent}{0em}
-\usepackage[T1]{fontenc}
-\usepackage[libertine,vvarbb]{newtxmath}
-\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{setspace}
 \usepackage{bm}
-\usepackage{fontspec}
-\setmainfont{Linux Libertine O}
-\setsansfont{Linux Biolinum O}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\usepackage{graphicx,caption,subcaption}
+\renewcommand{\arraystretch}{1.2}
 
 \begin{document}
 
@@ -29,11 +25,11 @@
     
     \subsection*{1.1\ \ 微波的布拉格衍射}
     
-    \textbf{[100]晶面}
+    {\large\textbf{[100]晶面}}
     
     实验数据如下：
     
-    \begin{table}[h!]
+    \begin{table}[!htbp]
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
                 \hline
@@ -59,7 +55,7 @@
     
     绘制模拟晶体[100]晶面的布拉格衍射曲线如下：
     
-    \begin{figure}[!ht]
+    \begin{figure}[!htbp]
         \centering
         \includegraphics[width=0.75\textwidth]{1.png}
         \caption{[100]晶面的布拉格衍射曲线}
@@ -77,11 +73,11 @@
     \]
     
     \bigskip
-    \textbf{[110]晶面}
+    {\large\textbf{[110]晶面}}
     
     实验数据如下：
     
-    \begin{table}[h!]
+    \begin{table}[!htbp]
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
                 \hline
@@ -101,7 +97,7 @@
     
     绘制模拟晶体[110]晶面的布拉格衍射曲线如下：
     
-    \begin{figure}[!ht]
+    \begin{figure}[!htbp]
         \centering
         \includegraphics[width=0.75\textwidth]{2.png}
         \caption{[110]晶面的布拉格衍射曲线}
@@ -122,7 +118,7 @@
     
     实验数据如下：（其中$\theta = 0^\circ$时$I = 96\,\mu\mathrm{A}$）
     
-    \begin{table}[h!]
+    \begin{table}[!htbp]
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|c|}
                 \hline
@@ -146,7 +142,7 @@
         \caption{微波的单缝衍射}
     \end{table}
     
-    \begin{figure}[!ht]
+    \begin{figure}[!htbp]
         \centering
         \includegraphics[width=0.75\textwidth]{3.png}
         \caption{微波的单缝衍射}
@@ -170,11 +166,12 @@
     
     观察电表记录接收信号的变化并按顺序记录出现干涉极小值时B板的位置$x_{\mathrm{min}}$和干涉极大值时B板的位置$x_{\mathrm{max}}$，分别对$x_{\mathrm{min}}$和$x_{\mathrm{max}}$做最小二乘法拟合，并由$x_i - i$的斜率求出微波的波长$\lambda$。
     
-    \textbf{干涉极小值}
+    \bigskip
+    {\large\textbf{干涉极小值}}
     
     出现干涉极小值时B板的位置：
     
-    \begin{table}[h!]
+    \begin{table}[!htbp]
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|}
                 \hline
@@ -189,7 +186,7 @@
     
     最小二乘法拟合得到：
     
-    \begin{table}[h!]
+    \begin{table}[!htbp]
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|}
                 \hline
@@ -217,11 +214,11 @@
     \]
     
     \bigskip
-    \textbf{干涉极大值}
+    {\large\textbf{干涉极大值}}
     
     出现干涉极大值时B板的位置：
     
-    \begin{table}[h!]
+    \begin{table}[!htbp]
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|}
                 \hline
@@ -236,7 +233,7 @@
     
     最小二乘法拟合得到：
     
-    \begin{table}[h!]
+    \begin{table}[!htbp]
         \begin{center}
             \begin{tabular}{|c|c|c|c|c|c|}
                 \hline
@@ -254,7 +251,7 @@
     \]
     
     \bigskip
-    \textbf{与理论值对比}
+    {\large\textbf{与理论值对比}}
     
     理论值为$\lambda^* = \dfrac{c}{f} = 3.199492615\,\mathrm{cm}$，与$\lambda'$更接近，可见用干涉极大值测量微波波长误差更小。
 
@@ -264,5 +261,5 @@
         
     2. 在测量微波的布拉格衍射时，会发现衍射峰分裂为多个峰，这里采用的是去除异常下降的值之后拟合光滑曲线寻找原本衍射峰的位置，会带来一定误差。
     
-    3. 微波波长较长，传播方向、强度受外界干扰较大，使得测量精度相比可见光明显降低，误差可以达到几度。
+    3. 微波波长较长，传播方向、强度受外界干扰较大，使得测量精度相比可见光明显降低，误差可达几度。
 \end{document}

@@ -1,0 +1,155 @@
+\documentclass{ctexbook}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{graphicx,subfigure}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{caption}
+\captionsetup{font=Large}
+
+\begin{document}\Large
+
+\title{\textbf{实验六\ \ 显微镜}}
+\author{\Large 1900011604 张植竣}
+\date{\Large 2020年10月1日}
+
+\maketitle
+
+\newpage
+\section*{\zihao{3} 1\ \ 测量数据处理}
+\bigskip
+
+\subsection*{\zihao{-3} 1.1\ \ 显微镜物镜放大倍数的测定}
+
+\noindent \textbf{标准测微尺的1小格间距为$\textbf{0.100}\,$mm}
+\medskip
+
+\noindent 测量5小格（长度为$\bm{x_0}\textbf{ = 0.500\,mm}$）经物镜放大后的中间像长度：记录测微目镜的起始示数$x_1$和终止示数$x_2$，中间像长度$\Delta x = |x_2 - x_1|$，从而算出物镜的放大倍数：
+
+\[\beta_o = \frac{\Delta x}{x_0}\]
+
+\noindent \textbf{测量数据如下：}
+\begin{table}[ht!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $x_1$/mm & $x_2$/mm & $\Delta x$/mm & $\beta_o$ \\
+            \hline
+            0.888 & 6.674 & 5.786 & 11.57 \\
+            \hline
+            1.381 & 7.163 & 5.782 & 11.56 \\
+            \hline
+            1.510 & 7.311 & 5.801 & 11.60 \\
+            \hline
+            1.680 & 7.500 & 5.820 & 11.64 \\
+            \hline
+            1.937 & 7.830 & 5.893 & 11.79 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\noindent \textbf{测量得到物镜放大倍数平均值为：}$\bm{\overline{\beta_o} =} \textbf{11.63}$
+
+\bigskip
+\subsection*{\zihao{-3} 1.2\ \ 利用改装测微目镜的生物显微镜测量待测光栅的空间频率}
+
+\noindent 测量10个条纹间距经物镜放大后的中间像长度$\Delta x$：记录测微目镜的起始示数$x_1$和终止示数$x_2$，中间像长度$\Delta x = |x_2 - x_1|$。
+\medskip
+
+\noindent 取物镜的放大倍数为上一实验测得的平均值$\bm{\beta_o =} \textbf{11.63}$，从而算出待测光栅的空间频率：
+\[f = \frac{\beta_o}{\Delta x} \times 10\]
+
+\noindent \textbf{测量数据如下：}
+\begin{table}[ht!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $x_1$/mm & $x_2$/mm & $\Delta x$/mm & $f$/$\mathrm{mm^{-1}}$ \\
+            \hline
+            1.143 & 7.042 & 5.899 & 19.72 \\
+            \hline
+            1.325 & 7.227 & 5.902 & 19.71 \\
+            \hline
+            1.701 & 7.612 & 5.911 & 19.68 \\
+            \hline
+            1.927 & 7.831 & 5.904 & 19.70 \\
+            \hline
+            2.325 & 8.249 & 5.924 & 19.63 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\noindent \textbf{测量得到空间频率平均值为：}$\bm{\bar{f} = 19.69}\,\mathbf{mm^{-1}}$
+
+\bigskip
+\subsection*{\zihao{-3} 1.3\ \ 利用读数显微镜测量待测光栅的空间频率}
+
+\noindent 测量20个条纹间距的长度$\Delta x$：记录标尺的起始示数$x_1$和终止示数$x_2$，长度$\Delta x = |x_2 - x_1|$，从而算出待测光栅的空间频率：
+\[f = \frac{1}{\Delta x} \times 20\]
+
+\noindent \textbf{测量数据如下：}
+\begin{table}[ht!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $x_1$/mm & $x_2$/mm & $\Delta x$/mm & $f$/$\mathrm{mm^{-1}}$ \\
+            \hline
+            14.547 & 16.219 & 1.672 & 11.96 \\
+            \hline
+            19.469 & 21.137 & 1.668 & 11.99 \\
+            \hline
+            26.220 & 27.888 & 1.668 & 11.99 \\
+            \hline
+            29.216 & 30.904 & 1.688 & 11.85 \\
+            \hline
+            33.320 & 34.964 & 1.664 & 12.02 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\noindent \textbf{测量得到空间频率平均值为：}$\bm{\bar{f} = 11.96}\,\mathbf{mm^{-1}}$
+
+\newpage
+\section*{\zihao{3} 2\ \ 分析与讨论}
+\bigskip
+
+\subsection*{\zihao{-3} 2.1\ \ 两种显微镜测量的异同}
+
+\noindent 1. 改装测微目镜的生物显微镜：成像系统与测量系统合并，需要事先标定物镜放大倍率，测量时用测微目镜测量待测物体经物镜放大后的中间像长度。
+\medskip
+
+\noindent 2. 读数显微镜：成像系统与测量系统分开，不需要标定物镜放大倍率，测量时直接测量待测物体长度。
+
+\bigskip
+\subsection*{\zihao{-3} 2.2\ \ 实验中测量误差的来源分析}
+
+\noindent 1. 因为光栅条纹与测微目镜或读数显微镜的移动方向不严格垂直，所测条纹间距偏大，得到的空间频率会偏小。
+\medskip
+
+\noindent 2. 在测量标准测微尺或待测光栅的条纹间距时，若用暗条纹的左/右边缘作为读数标准，会由于暗条纹宽度不一或边缘不平整产生测量误差。
+\medskip
+
+\noindent 3. 用手转动测微目镜或读数显微镜的手轮时没有完全在叉丝指向条纹中央或边缘时停止，造成测量误差。
+\medskip
+
+\noindent 4. 用改装测微目镜的生物显微镜标定物镜放大倍数或测量待测光栅的空间频率时，待测物体经物镜放大后所成的中间像不在测微目镜的叉丝双线平面上，即两者之间有视差，而对于实验中所用测微目镜暂时没有找到消除视差的方法，这会导致测量的对象不是中间像本身，所测出的长度有误差。
+
+\newpage
+\section*{\zihao{3} 3\ \ 收获与感想}
+\bigskip
+
+\noindent 1. 如果放置标准测微尺或待测光栅时条纹平面与置物平面间有一夹角，会导致不管如何转动粗准焦螺旋和细准焦螺旋都无法精确对焦，难以测量条纹间距。此时用条纹中心线作为读数基准较好。
+\medskip
+
+\noindent 2. 测量读数时注意手轮转动方向和刻度增大的方向。螺纹一般来讲是遵循右手螺旋定则的，但要注意刻度线向一个方向运动时看到的图样会向反方向运动。为防止中途转动方向错误，手尽量不离开手轮。读数时注意手轮上刻度的增大方向，有可能测微目镜和读数显微镜上手轮刻度方向相反，导致读数错误。
+\medskip
+
+\noindent 3. 物理实验仪器中齿轮结构或螺纹中存在一定的间隙，导致位移传递过程中，只有沿着一个方向移动时是稳定的。如果先向一侧传递位移，再向另一侧传递位移，则在中间方向改变时，由于齿隙的存在，动力齿会出现一段空转距离。由于动力齿往往与我们读数机构的标尺相连，空转时会导致读数变化，但实际仪器测量状态并未改变，这样的误差被称为空程差。测量时如果手轮移动多出一点，不能倒着转回来以弥补多余的距离，因为这样会引入空程差。此时应该重新测量或继续测更多的条纹间距。
+
+\end{document}

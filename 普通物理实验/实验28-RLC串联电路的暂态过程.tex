@@ -1,0 +1,296 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
+\usepackage{setspace}
+\usepackage{bm}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{indentfirst}
+\renewcommand{\arraystretch}{1.25}
+
+
+\begin{document}
+
+\title{\textbf{实验二十八\ \ RLC串联电路的暂态过程}}
+\author{1900011604 张植竣}
+\date{2021年6月18日}
+
+\maketitle
+
+\section*{1\ \ 数据处理}
+
+\subsection*{1.1\ \ $RC$电路的暂态过程}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        电阻$R/\Omega$ & 200 & 2000 & 20000 \\
+        \hline
+        半衰期的实测值$\tau\cdot\ln2/\mathrm{ms}$ & 0.029 & 0.294 & 2.500 \\
+        \hline
+        时间常量的实测值$\tau/\mathrm{ms}$ & 0.0418 & 0.424 & 3.606 \\
+        \hline
+        时间常量的理论值$\tau/\mathrm{ms}$ & 0.040 & 0.400 & 4.000 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_C-R=200.pdf}
+        \subcaption{$R=200\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_C-R=2000.pdf}
+        \subcaption{$R=2000\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_C-R=20000.pdf}
+        \subcaption{$R=20000\Omega$}
+    \end{subfigure}
+    \caption{$RC$电路的暂态过程：$u_C$波形}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_R-R=200.pdf}
+        \subcaption{$R=200\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_R-R=2000.pdf}
+        \subcaption{$R=2000\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_R-R=20000.pdf}
+        \subcaption{$R=20000\Omega$}
+    \end{subfigure}
+    \caption{$RC$电路的暂态过程：$u_R$波形}
+\end{figure}
+
+\newpage
+\subsection*{1.2\ \ $RL$电路的暂态过程}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        电阻$R/\Omega$ & 0 & 20 & 200 \\
+        \hline
+        半衰期的实测值$\tau\cdot\ln2/\mathrm{ms}$ & 0.270 & 0.133 & 0.030 \\
+        \hline
+        时间常量的实测值$\tau/\mathrm{ms}$ & 0.390 & 0.192 & 0.043 \\
+        \hline
+        时间常量的理论值$\tau/\mathrm{ms}$ & 0.043 & 0.231 & 0.045 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+注：此处时间常量的理论值以万用电表测得的$R_L=23.3\,\Omega$为准。直接从$R=0\,\Omega$对应的$\tau$计算得到的电感电阻为$R'_L=25.7\,\Omega$。
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_C-R=200.pdf}
+        \subcaption{$R=200\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_C-R=2000.pdf}
+        \subcaption{$R=2000\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_C-R=20000.pdf}
+        \subcaption{$R=20000\Omega$}
+    \end{subfigure}
+    \caption{$RL$电路的暂态过程：$u_L$波形}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_R-R=200.pdf}
+        \subcaption{$R=200\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_R-R=2000.pdf}
+        \subcaption{$R=2000\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RC-U_R-R=20000.pdf}
+        \subcaption{$R=20000\Omega$}
+    \end{subfigure}
+    \caption{$RL$电路的暂态过程：$u_R$波形}
+\end{figure}
+
+\subsection*{1.3\ \ $RLC$串联电路的暂态过程}
+
+\paragraph{低阻尼下测量时间常数和周期}
+
+测量峰值处时间$t$和电容两端电压$u_C$（已取绝对值）如下：
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        $k$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+        \hline
+        $t/\mathrm{ms}$ & 2.144 & 2.280 & 2.420 & 2.560 & 2.696 & 2.836 & 2.972 & 3.108 \\
+        \hline
+        $u_C/\mathrm{V}$ & 1.660 & 1.340 & 1.160 & 0.860 & 0.760 & 0.600 & 0.520 & 0.400 \\
+        \hline
+    \end{tabular}
+    \caption*{$R=0\,\Omega$时的测量结果}
+\end{table}
+
+理论计算如下：
+
+先从低阻尼情况下$u_C$的通解开始：
+\[
+u_C = \sqrt{\frac{4L}{4L-R^2 C}}E\mathrm{e}^{-\tfrac{t}{\tau}}\cos(\omega t+\phi)
+\]
+不失一般性，上式可以化简为：
+\[
+u_C = A\mathrm{e}^{-\tfrac{t}{\tau}}\cos\omega t
+\]
+各个峰值对应$\dfrac{\mathrm{d}u_C}{\mathrm{d}t}=0$的位置，即：
+\[
+\frac{\mathrm{d}u_C}{\mathrm{d}t} = -\frac{A}{\tau}\mathrm{e}^{-\tfrac{t}{\tau}}(\cos\omega t+\omega\tau\sin\omega t) = 0
+\]
+解得：
+\[
+t = \frac{k\pi - \theta}{\omega},\quad \theta = \arctan{\frac{1}{\omega\tau}},\quad k \in \mathbb{N}^+
+\]
+这给出峰值的大小：
+\[
+u_C = A\cos\theta\mathrm{e}^{-\tfrac{k\pi - \theta}{\omega\tau}}
+\]
+则$\ln{u_C}$与$k$有线性关系：
+\[
+ln{u_C} = ln(A\cos\theta) - \frac{k\pi - \theta}{\omega\tau} = -\frac{\pi}{\omega\tau}k + \ln(A\cos\theta) + \frac{\theta}{\omega\tau}
+\]
+同时也给出$t$与$k$之间的线性关系：（截距与时间零点$t_0$选取有关）
+\[
+t = \frac{k\pi - \theta}{\omega} + t_0 = \frac{1}{2}Tk + b
+\]
+作$t-k$关系图及$\ln{u_C}-k$关系图如下：
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{1.png}
+        \subcaption{$t-k$关系图}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{2.png}
+        \subcaption{$\ln{u_C}-k$关系图}
+    \end{subfigure}
+    \caption{低阻尼下测量时间常数和周期}
+\end{figure}
+
+对峰值处时间$t$（不确定度估计为$\dfrac{0.002\,\mathrm{s}}{\sqrt{3}}$）做线性拟合$t=ak+b$：
+\[
+a = 0.138,\quad b = 2.006,\quad r = 0.999989998,\quad \sigma_a = 0.00025198
+\]
+对峰值处电压的对数$\ln{u_C}$（不确定度$\sigma=\dfrac{\sigma_{u_C}}{u_C}\sim\sigma_{u_C}$，估计为$\dfrac{0.02\,\mathrm{V}}{\sqrt{3}}$）做线性拟合$\ln{u_C}=ak+b$：
+\[
+a' = -0.19995345,\quad b' = 0.70499110,\quad r' = -0.99763527,\quad \sigma'_a = 0.00563585
+\]
+可得：
+\[
+T = 2a = (0.2760\pm0.0005)\,\mathrm{ms}
+\]
+\[
+\tau = -\frac{\pi}{a'\omega} = -\frac{a}{a'} = (0.690\pm0.028)\,\mathrm{ms}
+\]
+
+\newpage
+\paragraph{临界阻尼下测量电阻}
+
+测得临界阻尼为$390\,\Omega$，理论值为：
+
+\[
+\sqrt{\frac{4L}{C}} - R_L = 423.9\,\Omega
+\]
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.2\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RLC-U_C-R=0.pdf}
+        \subcaption{$R=0\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.2\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RLC-U_C-R=390.pdf}
+        \subcaption{$R=390\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.2\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RLC-U_C-R=2000.pdf}
+        \subcaption{$R=2000\Omega$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[t]{0.2\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{RLC-U_C-R=20000.pdf}
+        \subcaption{$R=20000\Omega$}
+    \end{subfigure}
+    \caption{$RLC$串联电路的暂态过程：$u_C$波形}
+\end{figure}
+
+\section*{2\ \ 思考题}
+
+1. 电路中除了电感的电阻$R_L$外，各处还有导线电阻、接触电阻、电阻箱零电阻等，而且交流电的趋肤效应会减小导体的有效横截面积，增大电路各处的电阻，故实际电阻值（本次实验中测得为$R=29.0\,\Omega$）大于理论值$R_L$，时间常数$\tau=\dfrac{2L}{R}$自然会小于理论值。
+
+2. 按下开关后，$u_C$并不立刻变为触发电平$u_0$，而是经过一个缓慢的上升过程达到$u_0$，延时的效果由时间常数$\tau$表征，$\tau$越大延时越长。
+
+\section*{3\ \ 分析与讨论}
+
+1. 时间常数的测量值和理论值差别来源主要有：
+\begin{itemize}
+    \item 电阻误差：导线电阻、接触电阻、电阻箱零电阻，以及交流电的趋肤效应带来的电阻增大；
+    \item 电感误差：电感值$L$与理论值$10\,\mathrm{mH}$之间有误差；
+    \item 示波器的误差：示波器上线有一定宽度、模数转换误差、测量值不连续等。
+\end{itemize}
+
+
+2. 实验测得的临界阻尼处电阻比理论值小，理论值应为：
+\[
+\sqrt{\frac{4L}{C}} - R_L = 423.9\,\Omega
+\]
+主要原因有：电路各处有剩余电阻，振幅过小时被电流噪声掩盖人眼无法分辨。
+
+\end{document}

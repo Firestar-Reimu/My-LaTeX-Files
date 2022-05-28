@@ -1,0 +1,96 @@
+\documentclass[a4paper,fontset=windows]{ctexart}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{setspace}
+\usepackage{bm}
+\renewcommand{\arraystretch}{1.25}
+
+
+\begin{document}
+
+\title{\textbf{实验三十六\ \ 光源的时间相干性}}
+\author{1900011604 张植竣}
+\date{2021年6月4日}
+
+\maketitle
+
+\section*{1\ \ 实验数据和现象}
+
+\subsection*{1.1\ \ 测量光源的相干长度和相干时间}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        光源 & $k$ & $\Delta L/\mathrm{nm}$ & $t/\mathrm{ps}$ \\
+        \hline
+        白光 & 1 & 550 & 1.83460 \\
+        \hline
+        白光+橙色玻璃 & 16 & 10000 & 33.35621 \\
+        \hline
+        白光+黄色滤光片 & 63 & 36414 & 121.46403 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+汞黄光相干长度的测量数据如下：
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $d_0/\mathrm{nm}$ & $d_{\mathrm{max}}/\mathrm{nm}$ & $\Delta L/\mathrm{nm}$ & $t/\mathrm{ns}$ \\
+        \hline
+        50.05304 & 72.15490 & 44.20372 & 0.14745 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection*{1.2\ \ 测量汞黄双线的波长差}
+
+用等倾干涉测量汞黄双线的波长差的测量数据如下：
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $i$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+        \hline
+        $d_i/\mathrm{mm}$ & 52.07355 & 52.15191 & 52.23333 & 52.31250 & 52.39085 & 52.47008 & 52.55000 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+做最小二乘法拟合：$d_i = i\Delta d+b$，并估计$d_i$的不确定度为$0.01\,\mathrm{mm}$，得：
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $\Delta d/\mathrm{mm}$ & $r$ & $\sigma_k$ & $\Delta\lambda/\mathrm{mm}$\\
+        \hline
+        0.0794003571 & 0.9999917356 & 0.0003852171 & $2.10\pm0.01$ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+用等厚干涉测量汞黄双线的波长差的测量数据如下：
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $\Delta k$ & $\Delta\lambda/\mathrm{mm}$ \\
+        \hline
+        272 & 2.1289338235 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\end{document}
