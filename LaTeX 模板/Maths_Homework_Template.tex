@@ -20,23 +20,16 @@
 % 且对 \mathscr 和 \mathcal 的粗体直接使用 \mathbfscr 和 \mathbfcal
 
 % 默认风格设置（Computer Modern/Latin Modern）
+\usepackage{unicode-math}
+\unimathsetup{bold-style=ISO,sans-style=italic}
 \usepackage{mathrsfs}
 \usepackage{esint}
-\usepackage{bm}
-\renewcommand\mathbf\bm
-
-% XCharter 风格设置
-% \usepackage[no-math]{fontspec}
-% \setmainfont{XCharter}
-% \usepackage{unicode-math}
-% \unimathsetup{bold-style=ISO,sans-style=italic}
-% \setmathfont{XCharter-Math.otf}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
+\AtBeginDocument{
+  \let\uglymathbf\mathbf
+  \renewcommand\mathbf\symbf
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf\symsf
+}
 
 % Times New Roman 风格设置
 % 不需要 fontspec 和 unicode-math
@@ -50,6 +43,25 @@
 % \usepackage{unicode-math}
 % \unimathsetup{bold-style=ISO,sans-style=italic}
 % \setmathfont{XITS Math}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% Linux Libertine 风格设置
+% 不需要 fontspec 和 unicode-math
+% \usepackage[libertine]{newtx}
+% \usepackage{bm}
+% \renewcommand\mathbf\bm
+
+% 第二种 Linux Libertine 风格设置
+% \usepackage[no-math]{fontspec}
+% \setmainfont{Libertinus Serif}
+% \setsansfont{Libertinus Sans}
+% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \setmathfont{Libertinus Math}
 % \AtBeginDocument{
 %   \let\uglymathbf\mathbf
 %   \renewcommand\mathbf\symbf
@@ -89,7 +101,32 @@
 %   \renewcommand\mathsf\symsf
 % }
 
-% Century Schoolbook 风格
+% Garamond 风格设置
+% \usepackage[no-math]{fontspec}
+% \setmainfont{EB Garamond}
+% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \setmathfont[StylisticSet={6,9,10}]{Garamond-Math}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% XCharter 风格设置
+% \usepackage[no-math]{fontspec}
+% \setmainfont{XCharter}
+% \usepackage{unicode-math}
+% \unimathsetup{bold-style=ISO,sans-style=italic}
+% \setmathfont{XCharter-Math.otf}
+% \AtBeginDocument{
+%   \let\uglymathbf\mathbf
+%   \renewcommand\mathbf\symbf
+%   \let\uglymathsf\mathsf
+%   \renewcommand\mathsf\symsf
+% }
+
+% Century Schoolbook 风格设置
 % \usepackage[no-math]{fontspec}
 % \setmainfont{TeX Gyre Schola}
 % \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
@@ -100,24 +137,6 @@
 %   \let\uglymathsf\mathsf
 %   \renewcommand\mathsf\symsf
 % }
-
-% Garamond 风格
-% \usepackage[no-math]{fontspec}
-% \setmainfont{EB Garamond}
-% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
-% \setmathfont[StylisticSet={6,9,10}]{Garamond-Math.otf}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
-
-% Linux Libertine 风格
-% 不需要 fontspec 和 unicode-math
-% \usepackage[libertine]{newtx}
-% \usepackage{bm}
-% \renewcommand\mathbf\bm
 
 % 数学特殊字体
 % 可以自行配置 \mathcal \mathscr \mathfrak \mathbb 等字体样式
@@ -134,7 +153,7 @@
 % \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
 % \setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold]
 
-\title{Maths Homework Template}
+\title{\textbf{Maths Homework Template}}
 \author{Author}
 \date{\today}
 
@@ -147,11 +166,9 @@
     \begin{enumerate}
 
         \item
-        Answer to question 1:
-
-        Use inline equations for simple math $1+1=2$, and centered equations for more involved or important equations:
+        Use inline equations for simple math such as $1+1=2$, and centered equations for more involved or important equations:
         \begin{equation}
-            a^2 + b^2 = c^2.
+            \frac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{f(x)} = f'(x)\mathrm{e}^{f(x)}
         \end{equation}
 
         % 如果想要公式编号重新从 1 开始，可以在该公式前使用命令：
@@ -160,7 +177,7 @@
             \frac{\mathrm{d}y}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
         \end{equation}
 
-        It is recommended to write scalars without boldface like $E=\hbar\omega$, vectors in boldface, and matrices in sans-serif:
+        It is recommended to write scalars without boldface like $\epsilon=\hbar\omega$, vectors in boldface, and matrices in sans-serif fonts:
         \begin{equation}
             \mathbf{p} = \hbar\mathbf{k}
         \end{equation}
@@ -172,14 +189,14 @@
         \begin{equation}
             \mathsf{M} =
             \begin{bmatrix}
-                \dfrac{1+\sqrt{3}}{2} & \mathrm{e}^{-i\omega t} \\
-                -\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{3}}{2}
+                \dfrac{1+\sqrt{3}i}{2} & \mathrm{e}^{-i\omega t} \\
+                i\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{3}i}{2}
             \end{bmatrix}
         \end{equation}
 
         \textparagraph\ An example of intergals:
         \begin{equation}
-        \iiint \nabla \cdot \mathbf{\varPhi} \,\mathrm{d}V = \oiint \mathbf{\varPhi}\,\mathrm{d}\mathbf{S}
+        \iiint \nabla \cdot \mathbf{\Phi} \,\mathrm{d}V = \oiint \mathbf{\Phi}\,\mathrm{d}\mathbf{S}
         \end{equation}
 
         \textparagraph\ An example of roots:
@@ -188,7 +205,6 @@
         \end{equation}
 
         \item
-        Answer to question 2:
         \begin{align*}
             I(x)
             &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\mathrm{d}I(x) \\
@@ -197,7 +213,6 @@
         \end{align*}
 
         \item
-        Answer to question 3:
         \[
         Y_n(y) = \left\{
         \begin{aligned}
@@ -208,7 +223,6 @@
         \]
 
         \item
-        Answer to question 4:
         \begin{align*}
             u(x,t)
             &= \frac{6Al(-1)^m}{ES(2m+1)^2\pi^2}\sin\frac{2m+1}{2l}\pi x\sin\frac{2m+1}{2l}\pi at \\
@@ -217,7 +231,6 @@
         \end{align*}
 
         \item
-        Answer to question 5:
         \begin{align*}
             u(x,t)
             &= \sum_{n=0}^\infty X_n(x)Y_n(y) \\
@@ -225,7 +238,6 @@
         \end{align*}
 
         \item
-        Answer to question 6:
         \begin{align*}
             \mathscr{L}\left\lbrace\frac{1-\cos\omega t}{t}\right\rbrace
             &=\int_{p}^{\infty}\left(\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}\right)\mathrm{d}t\\
@@ -235,7 +247,6 @@
         \end{align*}
 
         \item
-        Answer to question 7:
         \begin{align*}
             [q,p]_{Q,P}
             &= \frac{\partial q}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial p}{\partial Q} \\
@@ -245,7 +256,6 @@
         \end{align*}
 
         \item
-        Answer to question 8:
         \[
         \frac{4\pi R_{\odot}^2 \cdot \sigma T_{\odot}^4}{4\pi d^2} = 1352.83\,\mathrm{W/m^2}
         \]
