@@ -10,6 +10,7 @@
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
 \usepackage{anyfontsize}
 \usepackage{hyperref}
+\renewcommand\baselinestretch{1.25}
 
 % 数学宏包
 \usepackage{amsmath}
@@ -19,7 +20,7 @@
 % 如果使用 unicode-math 包，需要将 \mathbf 命令换成 \symbf 命令
 % 且对 \mathscr 和 \mathcal 的粗体直接使用 \mathbfscr 和 \mathbfcal
 
-% 默认风格设置（Computer Modern/Latin Modern）
+% Latin Modern 风格设置（默认）
 \usepackage{unicode-math}
 \unimathsetup{bold-style=ISO,sans-style=italic}
 \usepackage{mathrsfs}
@@ -57,11 +58,17 @@
 % \renewcommand\mathbf\bm
 
 % 第二种 Linux Libertine 风格设置
+% 不需要 fontspec 和 unicode-math
+% \usepackage[math=+ss08]{libertinus}
+% \usepackage{bm}
+% \renewcommand\mathbf\bm
+
+% 第三种 Linux Libertine 风格设置
 % \usepackage[no-math]{fontspec}
 % \setmainfont{Libertinus Serif}
 % \setsansfont{Libertinus Sans}
 % \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
-% \setmathfont{Libertinus Math}
+% \setmathfont{Libertinus Math}[RawFeature={+ss08}]
 % \AtBeginDocument{
 %   \let\uglymathbf\mathbf
 %   \renewcommand\mathbf\symbf
@@ -118,7 +125,7 @@
 % \setmainfont{XCharter}
 % \usepackage{unicode-math}
 % \unimathsetup{bold-style=ISO,sans-style=italic}
-% \setmathfont{XCharter-Math.otf}
+% \setmathfont{XCharter Math}
 % \AtBeginDocument{
 %   \let\uglymathbf\mathbf
 %   \renewcommand\mathbf\symbf
@@ -168,7 +175,7 @@
         \item
         Use inline equations for simple math such as $1+1=2$, and centered equations for more involved or important equations:
         \begin{equation}
-            \frac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{f(x)} = f'(x)\mathrm{e}^{f(x)}
+            \frac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{a(x)} = a'(x)\mathrm{e}^{a(x)}
         \end{equation}
 
         % 如果想要公式编号重新从 1 开始，可以在该公式前使用命令：
@@ -215,10 +222,10 @@
         \item
         \[
         Y_n(y) = \left\{
-        \begin{aligned}
-            0\qquad\qquad &,\qquad n = 2k \\
-            \frac{8a^2}{\pi^3 n^3}\left(1 - \frac{\cosh\dfrac{n\pi y}{a}}{\cosh\dfrac{n\pi b}{2a}}\right) &,\qquad n = 2k + 1
-        \end{aligned}
+        \begin{matrix}
+            &0, &n = 2k \\
+            &\dfrac{8a^2}{\pi^3 n^3}\left(1 - \dfrac{\cosh\dfrac{n\pi y}{a}}{\cosh\dfrac{n\pi b}{2a}}\right), &n = 2k + 1
+        \end{matrix}
         \right.
         \]
 
