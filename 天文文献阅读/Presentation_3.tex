@@ -1,0 +1,124 @@
+\documentclass{beamer}
+\usetheme{default}
+\usecolortheme{seahorse}
+
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\usepackage{anyfontsize}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+\setmathfont{XITS Math}
+\usepackage{fontspec}
+\setsansfont{Libertinus Sans}
+
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon{\varepsilon}
+}
+\AtBeginDocument{
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf{\symsf}
+}
+\renewcommand{\bm}{\symbf}
+
+\usepackage{color}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+
+\title{\large A natural boundary of dark matter haloes revealed around the minimum bias and maximum infall locations}
+\author{Matthew Fong, Jiaxin Han \texorpdfstring{\\ \vspace{2em}}{} Speaker: Zhijun Zhang}
+\date{2021.12.23}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item[\bullet] Dark matter haloes are the basic structure in the Universe
+        \item[\bullet] The evolution of dark matter haloes determines galaxy evolutions and properties
+        \item[\bullet] The understanding of what is the size of a halo is essential for studying dark matter halo evolution
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Dark Matter Halo Radius}
+    \begin{itemize}
+        \item[\bullet] Virial Radius $r_{\mathrm{vir}}$ (spherical and static)
+        \item[\bullet] Splashback Radius $r_{\mathrm{sp}}$ (density profile reaches its deepest slope)
+        \item[\bullet] Turnaround Radius $r_{\mathrm{ta}}$ (Hubble flow velocity overcomes peculiar radial velocity)
+        \item[\bullet] $r_{\mathrm{vir}}\lesssim r_{\mathrm{sp}}<r_{\mathrm{ta}}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Characteristic Depletion Radius}
+    \begin{itemize}
+        \item[\bullet] CosmicGrowth Simulations (high resolution N body simulation with $3072^3$ dark-matter particles)
+        \item[\bullet] Bias profile (overdensity profile around a halo particle relative to average)
+        \item[\bullet] Characteristic Depletion Radius $r_{\mathrm{cd}}$ (trough of the bias profile)
+        \item[\bullet] Correlation between matter and haloes is the weakest
+        \item[\bullet] Depends strongly on mass, environment and time, deeper trough = older
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Characteristic Depletion Radius}
+    \begin{figure}
+        \includegraphics[width=1\linewidth]{Figure_1.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Characteristic Depletion Radius}
+    \begin{itemize}
+        \item[\bullet] 2-3 times the splashback radius
+        \item[\bullet] 2.5 times the virial radius (mass independent)
+        \item[\bullet] approximately the turnaround radius
+        \item[\bullet] average density in $r_{\mathrm{cd}}$ is about 40 times the background
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Characteristic Depletion Radius}
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth]{Figure_2.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Inner Depletion Radius}
+    \begin{itemize}
+        \item[\bullet] Inner Depletion Radius $r_{\mathrm{id}}$ (maximum mass inflow rate)
+        \item[\bullet] Smaller than $r_{\mathrm{cd}}$ by $10\sim20\%$
+        \item[\bullet] Matter drained from outside $r_{\mathrm{id}}$ leading the trough at $r_{\mathrm{cd}}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Characteristic Depletion Radius}
+    \begin{itemize}
+        \item[\bullet] Natural boundary of splashback particles
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.5\linewidth]{Figure_3.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Characteristic Depletion Radius}
+    \begin{itemize}
+        \item[\bullet] Perfect radius of exclusion radius
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.5\linewidth]{Figure_4.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \Huge Thank you for listening!
+    \end{center}
+\end{frame}
+
+\end{document}

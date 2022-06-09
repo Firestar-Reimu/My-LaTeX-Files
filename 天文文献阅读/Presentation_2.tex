@@ -1,0 +1,210 @@
+\documentclass{beamer}
+\usetheme{default}
+\usecolortheme{seahorse}
+
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\usepackage{anyfontsize}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+\setmathfont{XITS Math}
+\usepackage{fontspec}
+\setsansfont{Libertinus Sans}
+
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon{\varepsilon}
+}
+\AtBeginDocument{
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf{\symsf}
+}
+\renewcommand{\bm}{\symbf}
+
+\usepackage{color}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+
+\title{\large Radio and Far-IR Emission Associated with a Massive Star-forming Galaxy Candidate at \texorpdfstring{$z\simeq6.8$}{}: A Radio-Loud AGN in the Reionization Era?}
+\author{Ryan Endsley, Daniel P.Stark, Xiaohui Fan, Renske Smit, Feige Wang, Jinyi Yang, Kevin Hainline, Jianwei Lyu, Rychard Bouwens, Sander Schouws \texorpdfstring{\\ \vspace{2em}}{} Speaker: Zhijun Zhang}
+\date{2021.12.2}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item[\bullet] Some of the early massive, UV-luminous galaxies may have carved out large ionised regions in neutral IGM during the universe reionization
+        \item[\bullet] Large samples of UV-luminous reionization-era systems have now been identified by wide-area, ground-based fields
+        \item[\bullet] An essential next step is to better understand the characteristics of the most massive reionization-era galaxies, including those which are substantially reddened by dust
+        \item[\bullet] Additionally deliver important clues into the properties of early supermassive black holes
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Observations of COS-87259}
+    \begin{columns}
+        \begin{column}{0.4\linewidth}
+            \begin{figure}
+                \includegraphics[width=1\linewidth]{Figure_2.png}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.6\linewidth}
+            \begin{itemize}
+                \item[\bullet] \hyperlink{https://ui.adsabs.harvard.edu/abs/2021MNRAS.500.5229E}{Endsley et al. 2021a (hereafter E21)} selection: 41 $z \simeq 6.6-6.9$ \textbf{UV-bright, star-forming galaxies} from COSMOS. \textcolor{red}{COS-87259} is one of them.
+                \item[\bullet] Only source in the \textcolor{blue}{E21} sample which has radio, sub-mm, infrared, optical observations.
+                \item[\bullet] One of the most massive and oldest sources in the sample.
+                \item[\bullet] Significant UV-optical reddening from dust.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Observations of COS-87259}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \begin{itemize}
+                \item[\bullet] Reionization at $z\simeq7$: \textcolor{blue}{Ly$\alpha$ break} lies at $0.9\sim1\,\mu\mathrm{m}$
+                \item[\bullet]Deep imaging with HSC nb921, ib945 and nb973 acts as a low-resolution spectra
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+            \begin{figure}
+                \includegraphics[width=1\linewidth]{Figure_1.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Observations of COS-87259}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \textcolor{blue}{Optical to Near-Infrared}
+            \begin{itemize}
+                \item[\bullet] Undetected in all bands blueward of nb973 (9730 \AA)
+                \item[\bullet] Significantly higher flux on $3.6\,\mu\mathrm{m}$ and $4.5\,\mu\mathrm{m}$ \textcolor{red}{(Balmer break at $z\simeq6.8$)}
+                \item[\bullet] F160W emission slightly extended along the N-S axis.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+            \begin{figure}
+                \includegraphics[width=1\linewidth]{Table_1.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Observations of COS-87259}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \textcolor{blue}{Radio at 1.4 and 3 GHz}
+            \begin{itemize}
+                \item[\bullet] FWHM = $1.5''$(1.4 GHz) and $0.75''$(3 GHz)
+                \item[\bullet] $\alpha^{1400}_{3000}=-2.06$ where $S_\nu\propto\nu^\alpha$ between 1.4 and 3 GHz, ultra steep (<-1.3)
+                \item[\bullet] Not detected on 325 and 610 MHz, limiting $\alpha^{325}_{1400}>-1.11$ and $\alpha^{610}_{1400}>-0.85$ \textcolor{red}{(high redshift $z>4$ radio-loud galaxies)}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+            \begin{figure}
+                \includegraphics[width=1\linewidth]{Figure_4.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Observations of COS-87259}
+    \begin{itemize}
+        \item[\bullet] Mid-Infrared, Far-Infrared, Sub-mm Observations
+        \item[\bullet] X-ray: Not detected \textcolor{red}{(a $z\simeq7$ AGN)}
+        \item[\bullet] Spectroscopy between 7490 - 10010 \AA : Not detected \textcolor{red}{(an extremely dusty UV-bright $z\simeq7$ galaxy)}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Physical Properties of COS-87259}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \textcolor{blue}{Fitting the optical to near-IR photometry with Bayesian Analysis (BEAGLE)}
+            \begin{itemize}
+                \item[\bullet] Ly$\alpha$ break at $0.95\sim1\,\mu\mathrm{m}$: \textcolor{red}{$z=6.83\pm0.06$}
+                \item[\bullet] \textbf{Red} rest-UV slope $\beta=-0.59$ where $F_\lambda\propto\lambda^\beta$ at 1500 \AA: \textcolor{red}{strong dust attenuation}
+                \item[\bullet] Flux excess on $3.6\,\mu\mathrm{m}$ and $4.5\,\mu\mathrm{m}$: \textcolor{red}{relatively old ($\sim300\,\mathrm{Myr}$) stellar population producing a strong Balmer break}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+            \begin{figure}
+                \includegraphics[width=1\linewidth]{Figure_5.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Physical Properties of COS-87259}
+    \begin{figure}
+        \includegraphics[width=0.6\linewidth]{Figure_6.png}
+    \end{figure}
+    \textcolor{blue}{Possibility of Low-redshift Interpretation}
+    \begin{itemize}
+        \item[\bullet] Dusty young galaxy with strong emission lines (star-forming)
+        \item[\bullet] Old stellar population yielding a prominent Balmer break
+        \item[\bullet] Low-redshift, star-forming galaxy but its $\mathrm{H}\beta$ or $\mathrm{OIII}$ emission lines are likely to be detected in spectrum
+        \item[\bullet] FeLoBAL (iron low-ionization broad absorption line) AGN at $z\approx2.4$, cannot easily explain extended morphology and non-detection of blue optical bands.
+        \item[\bullet] $z\simeq7$ galaxy gravitationaly lensed by a dusty starburst galaxy: no evidence of lensing in HST images.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Physical Properties of COS-87259}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \textcolor{blue}{Fitting the photometry with X-CIGALE assuming $z=6.83$}
+            \begin{itemize}
+                \item[\bullet] extremely red rest-UV slope and sub-mm flux density measurements are simultaneously reproduced by a \textbf{highly-obscured starburst}.
+                \item[\bullet] the $24-160\,\mu\mathrm{m}$ measurements can be explained by hot dust emission from \textbf{an edge-on torus surrounding an AGN}, $\tau=7.7\pm2.5$ at $9.7\,\mu\mathrm{m}$
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+            \begin{figure}
+                \includegraphics[width=1\linewidth]{Figure_7.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Physical Properties of COS-87259}
+    \begin{itemize}
+        \item[\bullet] The hyperluminous infrared emission and steep mid-infrared slope of COS-87259 suggests that this source may be a \textbf{higher-redshift analog of hot dust-obscured galaxies (hot DOGs)} which have very large stellar mass, heavily obscured AGN and recent, intense starbursts.
+        \item[\bullet] X-ray non detection is consistent with this highly obscured AGN interpretation as in hot DOGs compared to Type 1 AGN.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Overdensity Around COS-87259}
+    \begin{itemize}
+        \item[\bullet] \textcolor{blue}{Observations}: Identified 4 ${\mathrm{M_{UV}}}<-21$, $z\simeq6.6-6.9$ neighbouring galaxies in an 18 $\mathrm{arcsec}^2$ region, 11 times the average, \textcolor{red}{suggesting COS-87259 may trace a highly overdense region at $z\simeq6.8$, as is common for systems hosting radio-loud AGN at lower redshifts}
+
+        \item[\bullet] \textcolor{blue}{Simulations}: 66\% simulations by \textbf{MultiDark Planck 2} return the same result
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Outlook}
+    \begin{itemize}
+        \item[\bullet] At least $1/4$ very massive, UV-bright galaxies in COSMOS exhibit \textbf{both AGN and highly-obscured star formation activity}
+        \item[\bullet] \textbf{Very massive galaxies} contribute significantly to the cosmic \textbf{star formation} rate density at $z>6$
+        \item[\bullet] AGN are \textbf{fairly common} among the most massive, UV-luminous galaxies in the reionization-era
+        \item[\bullet] AGN make a non-negligible contribution to \textbf{ionizing photon} at early times
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \Huge Thank you for listening!
+    \end{center}
+\end{frame}
+
+\end{document}

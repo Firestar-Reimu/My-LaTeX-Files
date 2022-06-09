@@ -1,0 +1,218 @@
+\documentclass{beamer}
+\usetheme{default}
+\usecolortheme{seahorse}
+
+\usepackage{amsmath,amssymb,mathrsfs,bm}
+\usepackage{anyfontsize}
+\usepackage{unicode-math}
+\unimathsetup{math-style=ISO, bold-style=ISO, mathrm=sym}
+\setmathfont{XITS Math}
+\usepackage{fontspec}
+\setsansfont{Libertinus Sans}
+
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon{\varepsilon}
+}
+\AtBeginDocument{
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf{\symsf}
+}
+\renewcommand{\bm}{\symbf}
+
+\usepackage{color}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+
+\title{Kiloparsec-scale AGN Outflows and Feedback in Merger Free Galaxies}
+\author{Zhijun Zhang}
+\date{2021.10.28}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{Introduction}
+    \textbf{Recent observations and simulations have challenged the long-held paradigm that mergers are the dominant mechanism driving the growth of both galaxies and supermassive black holes.}
+    \begin{itemize}
+        \item[Old] Galaxy growth mainly occurs through mergers
+        \item[New] Galaxy growth mainly occurs through non-merger “secular processes” rather than by mergers
+    \end{itemize}
+    \begin{itemize}
+        \item[\bullet] Millenium simulations: the majority of bulge mass is built through disk instabilities, Parry et al. (2009)
+        \item[\bullet] Observations: only 27\% of star formation is triggered by mergers at $z\sim 2$, Kaviraj et al. (2013)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Observations}
+    A significant bulge component still forms even in a minor merger
+
+    Select 4 disk-dominated galaxies with luminous, unobscured Type 1 AGN at $z<0.1$
+    \begin{figure}
+    \includegraphics[width=0.6\linewidth]{Figure_1.jpg}
+    \includegraphics[width=0.6\linewidth]{Figure_2.jpg}
+    \end{figure}
+    All four galaxies have little or no bulge component.
+
+    Harry and Theodore show a strong bar feature, Neville a weak bar feature, and Padma a barlens feature.
+\end{frame}
+
+\begin{frame}{Observations}
+    \begin{itemize}
+        \item[\bullet] \textcolor{blue}{narrow H$\mathrm{\beta}$} shows the galaxy structure
+        \item[\bullet] \textcolor{blue}{narrow $\mathrm{O_{III}}$} ionized by the central AGN
+        \item[\bullet] \textcolor{blue}{broad $\mathrm{O_{III}}$} ionized by the AGN outflow
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Observations}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \begin{figure}
+                \includegraphics[width=1\linewidth]{Figure_3.png}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+            \textbf{Flux Density - Wavelength}
+
+            \begin{itemize}
+                \item[\textcolor{black}{black}] \textcolor{black}{Spectrum}
+                \item[\textcolor{red}{red}] \textcolor{red}{Fittings}
+                \item[\textcolor{gray}{cross}] \textcolor{gray}{Residuals}
+            \end{itemize}
+
+            \begin{itemize}
+                \item[$\mathrm{O_{III}}$]
+                \begin{itemize}
+                    \item[\bullet] \textcolor{blue}{narrow}
+                    \item[\bullet] \textcolor{green}{broad}
+                \end{itemize}
+                \item[H$\mathrm{\beta}$]
+                \begin{itemize}
+                    \item[\bullet] \textcolor{blue}{narrow}
+                    \item[\bullet] \textcolor{green}{broad}
+                    \item[\bullet] \textcolor{magenta}{broad line region}
+                \end{itemize}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Observations}
+    \begin{figure}
+        \includegraphics[width=1\linewidth]{Figure_4.jpg}
+        \caption*{\textcolor{blue}{narrow H$\mathrm{\beta}$} integrated flux, velocity, velocity dispersion}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Observations}
+    \begin{figure}
+        \includegraphics[width=1\linewidth]{Figure_5.jpg}
+        \caption*{\textcolor{blue}{narrow $\mathrm{O_{III}}$} integrated flux, velocity, velocity dispersion}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Observations}
+    \begin{figure}
+        \includegraphics[width=1\linewidth]{Figure_6.jpg}
+        \caption*{\textcolor{blue}{broad $\mathrm{O_{III}}$} integrated flux, velocity, velocity dispersion}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Observations}
+    \begin{figure}
+        \includegraphics[width=1\linewidth]{Figure_7_1.jpg}
+        \caption*{\textcolor{blue}{narrow $\mathrm{O_{III}/H\beta}$ emission}}
+    \end{figure}
+    \begin{figure}
+        \includegraphics[width=1\linewidth]{Figure_7_2.jpg}
+        \caption*{\textcolor{blue}{broad $\mathrm{O_{III}/H\beta}$ emission}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Calculations}
+    \begin{itemize}
+        \item[\bullet] Outflow luminosity from broad $\mathrm{O_{III}}$ gives gas mass in the outflow:
+        \begin{small}
+        \[
+            M_{\mathrm{O_{III}}} = 8\times10^7M_{\astrosun}\left(\frac{\overline{n_e}^2/\overline{n_e^2}}{10^{\mathrm{[O/H]-[O/H]}_\astrosun}}\right)\left(\frac{L[\mathrm{O_{III}}]}{10^{44}\,\mathrm{erg/s}}\right)\left(\frac{n_e}{500\,\mathrm{cm^{-3}}}\right)^{-1}
+        \]
+        \end{small}
+        assuming that $n_e=500\,\mathrm{cm^{-3}}$ and $\mathrm{[O/H]=[O/H]}_\astrosun$
+        \item[\bullet] Maximum velocity of the outflow:
+        \[
+            v_{\mathrm{O_{III}}} = |\mathrm{\Delta}v_{max}| + 2\sigma_{broad,max}
+        \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Calculations}
+    \begin{itemize}
+        \item[\bullet] Physical extent of the outflow $r_{max}$ (deconvolved by seeing)
+        \item[\bullet] Timescale of the outflow $t_{\mathrm{out}} = \dfrac{r_{max}}{v_{\mathrm{O_{III}}}}$
+        \item[\bullet] Mass, kinetic energy and momentum outflow rate:
+        \[
+            \dot{M} = B\frac{M_{\mathrm{O_{III}}}}{t_{\mathrm{out}}},\quad
+            \dot{E} = \frac{1}{2}\dot{M}v_{\mathrm{O_{III}}}^2,\quad
+            \dot{P} = \dot{M}v_{\mathrm{O_{III}}}
+        \]
+        assuming geometry factor $B=1$
+        \item[\bullet] Black hole accretion rates $\dot{m}=\eta L_{\mathrm{bol}}c^2$ where the radiative efficiency $\eta=0.15$ and $L_{\mathrm{bol}}$ using the W3 $12\,\mathrm{\mu m}$ band
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+    \begin{figure}
+        \includegraphics[width=1\linewidth]{Table_2.png}
+    \end{figure}
+    \begin{itemize}
+        \item[\bullet] $\overline{M}_{\mathrm{O_{III}}}=5.5\pm0.2M_\astrosun$
+        \item[\bullet] $\overline{\dot{M}}=0.3\pm0.1\,\mathrm{M_\astrosun/yr}$
+        \item[\bullet] $\overline{r_{max}}=1.6\pm0.4\,\mathrm{kpc}$, $\sim25\%$ of the galaxy Petrosian radius
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion}
+    \begin{itemize}
+        \item[\bullet] Bars and spiral arms would be capable of driving inflows which could sustain both the SMBH growth ($0.02\sim0.07\,\mathrm{M_\astrosun/yr}$) and an outflow of AGN ($0.2\sim0.7\,\mathrm{M_\astrosun/yr}$) for an extended period of $0.6\sim1.9\,\mathrm{Myr}$
+
+        \item[\bullet] Secular processes are responsible for the majority of SBMH growth, whereas mergers are responsible for the majority of outflowing material and the subsequent feedback on the galaxy
+
+        \item[\bullet] The average ratio $\log_{10}(c\dot{P}/L_{\mathrm{bol}})=-0.91\pm0.08$ suggests that these outflows are momentum-conserving
+
+        \item[\bullet] The average $v_{\mathrm{O_{III}}}$ of the 4 targets is $\sim30.5$ times larger than escape velocity, which will cause AGN feedback
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion}
+    \begin{itemize}
+        \item[\bullet] The outflow rates in Bae et al. (2017) are $\sim51$ times larger than in this article, but SMBH accretion rates are $\sim3$ times lower, this may cause by a spin up of SMBHs due to a secular feeding mechanism
+
+        \item[\bullet] A higher spatial resolution IFU study and a larger sample of disk-dominated galaxies would allow for a more detailed study
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item[\bullet] Secularly powered outflows are typical of low-redshift Type 1 AGNs and they have momentum conserving outflows
+
+        \item[\bullet] Secular processes are responsible for the majority of SMBH growth over cosmic time
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \Huge Thank you for listening!
+    \end{center}
+\end{frame}
+
+\end{document}
