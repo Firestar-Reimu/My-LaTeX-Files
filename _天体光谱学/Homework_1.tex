@@ -4,10 +4,10 @@
 \usepackage{amsmath}
 
 \usepackage[no-math]{fontspec}
-\setmainfont{XCharter}
+\setmainfont{TeX Gyre Termes}
 \usepackage{unicode-math}
 \unimathsetup{bold-style=ISO,sans-style=italic}
-\setmathfont{XCharter-Math.otf}
+\setmathfont{XITS Math}
 \AtBeginDocument{
   \let\uglymathbf\mathbf
   \renewcommand\mathbf\symbf
@@ -27,6 +27,7 @@
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\linespread{1.5}
 
 \usepackage[fontset=none]{ctex}
 \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
@@ -35,7 +36,7 @@
 
 \title{\textbf{天体光谱学作业}}
 \author{1900011604\ \ 张植竣\ \ 北京大学}
-\date{2022年4月1日}
+\date{2022年4月15日}
 \maketitle
 
 \begin{enumerate}
@@ -69,7 +70,7 @@
     \[
         f_\beta = \frac{f_{\alpha 0}}{1 + z_\beta} = 98.8066\,\mathrm{GHz}
     \]
-    而$f_{\beta0}$的真实红移应该与$f_{\alpha0}$相同，即$z_\alpha=1.77\times10^{-7}$，于是有：
+    而$f_{\beta0}$的真实红移应与$f_{\alpha0}$相同，即$z_\alpha=1.77\times10^{-7}$，于是有：
     \[
         f_{\beta0} = f_\beta(1 + z_\alpha) = f_{\alpha0}\frac{c + v_\alpha}{c + v_\beta} = 98.824\,\mathrm{GHz}
     \]

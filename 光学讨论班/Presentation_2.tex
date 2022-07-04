@@ -20,23 +20,23 @@
 \setbeamertemplate{footline}[frame number]
 \setbeamerfont{section in toc}{series=\bfseries}
 \setbeamertemplate{part page}{
-        \begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}
-            \bfseries\Large\insertpart\par
-        \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}
+    \bfseries\Large\insertpart\par
+    \end{beamercolorbox}
 }
 
 \usepackage{unicode-math}
-\unimathsetup{bold-style=ISO}
+\unimathsetup{mathrm=sym,bold-style=ISO}
 \setmathfont{XITS Math}
 \usepackage{anyfontsize}
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
+\setsansfont{Times New Roman}
 
 \AtBeginDocument{
     \let\uglyepsilon\epsilon
     \renewcommand\epsilon{\varepsilon}
 }
-\usepackage{amsmath,envmath}
+\usepackage{amsmath}
 \usepackage{bm}
 \renewcommand{\bm}{\symbf}
 
@@ -58,15 +58,6 @@
     \end{frame}
 }
 
-\newenvironment{itemlist}{
-    \begin{enumerate}
-    \let\itemonly\item
-    \renewcommand{\item}[1]{\itemonly \textbf{##1} \\}
-    \setlength{\itemsep}{1em}
-}{
-    \end{enumerate}
-}
-
 \let\sectiononly\section
 \renewcommand{\section}[1]{
     \sectiononly{#1}
@@ -82,8 +73,6 @@
 
 \begin{document}
 
-\captionsetup{font={small}}
-\addtocounter{framenumber}{-1}
 \begin{frame}[plain]
     \titlepage
 \end{frame}
@@ -120,7 +109,8 @@
         \end{column}
     \end{columns}
     \bigskip
-    \url{https://en.wikipedia.org/wiki/Light-emitting_diode} \\
+    \url{https://en.wikipedia.org/wiki/Light-emitting_diode}
+
     Leadframe（引线框架），die（芯片），Reflective cavity（反射腔），Wire bond（焊线），Epoxy case（环氧树脂外壳）
 \end{slide}
 
@@ -172,8 +162,10 @@
     \end{figure}
     \bigskip
 
-    The Royal Swedish Academy of Sciences（瑞典皇家科学院），\\
-    Isamu Akasaki（赤崎勇，2021年4月1日逝世，享年92岁），\\
+    The Royal Swedish Academy of Sciences（瑞典皇家科学院），
+
+    Isamu Akasaki（赤崎勇，2021年4月1日逝世，享年92岁），
+
     Hiroshi Amano（天野浩），Shuji Nakamura（中村修二）
     \bigskip
 
@@ -296,7 +288,7 @@
 \begin{slide}{\url{https://www.azom.com/article.aspx?ArticleID=11451}}
     On 7th October 2014, Isamu Akasaki, Hiroshi Amano and Shuji Nakamura were awarded the Nobel Prize in Physics for the invention of efficient blue light-emitting diodes (LEDs).
     \medskip
-    
+
     Red and green LEDs were created in a number of laboratories during the 1950s and 1960s but it took \textbf{another three decades to finally produce efficient blue LEDs} -- why were they so hard to make?
     \bigskip
 
@@ -314,7 +306,7 @@
 \end{slide}
 
 \begin{slide}{\url{https://www.azom.com/article.aspx?ArticleID=11451}}
-    LEDs are typically made from \textbf{aluminum-gallium-arsenide (AlGaAs)} which in its pure form does not contain any free electrons to conduct electrical current. As a result, AlGaAs is \textbf{doped with either free electrons or ‘electron holes’ in order to change the materials balance and make it more conductive}.
+    LEDs are typically made from \textbf{aluminum-gallium-arsenide (AlGaAs)} which in its pure form does not contain any free electrons to conduct electrical current. As a result, AlGaAs is \textbf{doped with either free electrons or ``electron holes'' in order to change the materials balance and make it more conductive}.
     \medskip
 
     What is an \textbf{Electron Hole}? The absence of an electron from an \textbf{otherwise full valence band}.
@@ -369,7 +361,7 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
     \textbf{Infrared LEDs were created in 1962 using p-n junctions made from GaAs}. This semiconductor material has a direct bandgap of \textbf{1.4 eV}, which directly corresponds to the wavelength of infrared light. By the end of the 1960s, \textbf{red and green LEDs were being manufactured in different countries using p-n junctions made from GaP}. The development of a blue LED however proved far more difficult to scientists.
     \bigskip
 
-    另一种半导体材料砷化镓被用于制造红外LED，其直接带隙为1.4 eV，落在红外区。还有一种半导体材料磷化镓，适当掺杂做成二极管可以使其发出红光和绿光。而对蓝光而言，就没有那么容易了。
+    另一种半导体材料砷化镓在1962年被用于制造红外LED，其直接带隙为$1.4\,\mathrm{eV}$，落在红外区。还有一种半导体材料磷化镓，适当掺杂做成二极管可以使其发出红光和绿光。而对蓝光而言，就没有那么容易了。
 \end{slide}
 
 \begin{slide}{\url{https://www.azom.com/article.aspx?ArticleID=11451}}
@@ -377,16 +369,16 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
     \scriptsize
     \begin{figure}
         \centering
-        \includegraphics[width=0.6\columnwidth]{pictures/Wurtzite-unit-cell-3D-balls.pdf}
+        \includegraphics[width=0.6\columnwidth]{pictures/GaN.pdf}
     \end{figure}
     \bigskip
-    
+
     The first attempts at \textbf{the emission of blue light from a diode used ZnSe and SiC}, which are semiconductors with \textbf{high indirect bandgaps, but did not produce efficient light emission}. The material which enabled the development of blue LEDs was \textbf{gallium nitride (GaN)}. GaN is a semiconductor with a Wurtzite（纤锌矿） crystal structure and a \textbf{direct bandgap of 3.4 eV}, which directly corresponds to the wavelength of light in the \textbf{ultraviolet} range.
     \bigskip
 
     为了使二极管发蓝光，我们需要寻找高带隙半导体。最先应用的硒化锌和碳化硅制造出的LED发光效率太低。高效的蓝光LED始于氮化镓，这是一种纤锌矿型半导体，其直接带隙3.4 eV，在紫外区。
     \end{multicols}
-    {\tiny 图片来源：\url{https://en.wikipedia.org/wiki/File:Wurtzite-unit-cell-3D-balls.png}
+    {\tiny 图片来源：\url{https://en.wikipedia.org/wiki/File:GaN_Wurtzite_polyhedra.png}
 }
 \end{slide}
 
@@ -431,7 +423,7 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
 
     下面通过一篇PRL文献的工作介绍，展示生产掺杂氮化镓晶体材料的困难。
     \medskip
-    
+
     该文献利用复杂的计算机模拟方法，描绘了向氮化镓晶体中掺入镁原子时晶体发生的复杂变化，揭示了掺杂技术的难点所在。
 \end{slide}
 
@@ -451,17 +443,22 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
 
 \begin{slide}
     \begin{multicols}{2}
-    \parbox{\columnwidth}{
-        \includegraphics[width=\columnwidth]{pictures/cat.pdf} \\
-        \tiny 图片来源: \url{https://pkuhelper.pku.edu.cn/hole}
-    }
+    \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth]{pictures/cat.pdf}
+    \end{figure}
+
     \kaishu
-    \raggedright\qquad 我可以有把握地说，没人懂得量子力学。 \\
-    \raggedleft ——理查德·费曼 \\
-    ~\\
-    \raggedright\qquad 量子力学绝对是上个世纪最伟大的发现，没有之一。没人能弄懂量子力学，但所有这些半导体元件都是量子力学创造出来的。看看，我们的手机，我们的电脑，里面有多少三极管。 \\
-    \raggedleft ——赵建业（学生回忆版） \\
+    \raggedright 我可以有把握地说，没人懂得量子力学。
+
+    \raggedleft ——理查德·费曼
+    \bigskip
+
+    \raggedright 量子力学绝对是上个世纪最伟大的发现，没有之一。没人能弄懂量子力学，但所有这些半导体元件都是量子力学创造出来的。看看，我们的手机，我们的电脑，里面有多少三极管。
+
+    \raggedleft ——赵建业（学生回忆版）
     \end{multicols}
+    \scriptsize{图片来源: \url{https://pkuhelper.pku.edu.cn/hole}}
 \end{slide}
 
 \begin{slide}{\url{https://www.chemeurope.com/en/news/151134/}}
@@ -500,18 +497,18 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
 \end{slide}
 
 \begin{slide}{技术难点小结}
-    \begin{enumerate}
+    \begin{itemize}
     \item 难题之零为找到合适的半导体材料——氮化镓等
     \item 难题之一为特定理化性质的氮化镓等晶体层的制备
     \item 难题之二为氮化镓等半导体材料n型重掺杂的工业实现
-    \end{enumerate}
+    \end{itemize}
     \bigskip
 
-    \begin{enumerate}
+    \begin{itemize}
     \item 难题之零随时代发展和技术进步迎刃而解，当今氮化镓等材料的广泛应用是难题一二求解的必然结果
     \item 难题之一困扰人类三十年之久，经过几代科学家和技术人员的努力，最终由中村修二等人解决
     \item 难题之二与难题之一相伴而生，在三人掺锌和使用双异质结等新思路下，n型掺杂效率问题得以解决
-    \end{enumerate}
+    \end{itemize}
 \end{slide}
 
 \part{从蓝光二极管到OLED的现代化进程}
@@ -524,26 +521,30 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
 \section{从蓝光LED到白光LED}
 
 \begin{slide}
-\begin{enumerate}[1.]
+\begin{itemize}
     \item 1961年美国公司德州仪器的Robert Biard与Gary Pittman首次发现了砷化镓及其他半导体合金的红外放射作用,也就是红光LED,标志着LED的诞生
     \item 过了30多年, 到1993年蓝光LED的发明, 才标志着LED的全彩时代拉开帷幕
     \item 蓝光二极管的重要性不仅在于它本身,更在于推动了白光二极管的诞生,也就是目前广泛用于生产生活的灯源
-\end{enumerate}
+\end{itemize}
 \end{slide}
 
 \section{白光LED的制造}
 
 \begin{slide}
 有了能发出蓝光的发光二极管就可以制造白光LED，主要有以下两种制造方式:
-\begin{enumerate}[1]
-    \item 这种方法涉及用不同颜色的荧光粉涂覆一种颜色的LED（主要是由InGaN制成的蓝色LED）以形成白光；由此产生的LED称为基于荧光粉或荧光粉转换的白光LED（pcLED）。一小部分蓝光经历Stokes位移，将其从较短的波长转变为更长的波长。使用几个不同颜色的荧光粉层可以扩大发射光谱，有效地提高显色指数（CRI）。\\
-    \textit{优点：制造简单，亮度高}\\
+\begin{itemize}
+    \item 这种方法涉及用不同颜色的荧光粉涂覆一种颜色的LED（主要是由InGaN制成的蓝色LED）以形成白光；由此产生的LED称为基于荧光粉或荧光粉转换的白光LED（pcLED）。一小部分蓝光经历Stokes位移，将其从较短的波长转变为更长的波长。使用几个不同颜色的荧光粉层可以扩大发射光谱，有效地提高显色指数（CRI）。
+
+    \textit{优点：制造简单，亮度高}
+
     \textit{缺点：LED发出的光能有一部分被转化成热能，效率较低}
-    
-    \item 结合蓝光发光二极管、红光发光二极管和绿光发光二极管便可做出白光发光二极管\\
-    \textit{优点:有较广的色域,并且发光效率较高}\\
+
+    \item 结合蓝光发光二极管、红光发光二极管和绿光发光二极管便可做出白光发光二极管
+
+    \textit{优点:有较广的色域,并且发光效率较高}
+
     \textit{缺点:具有较高的制作成本}
-\end{enumerate}
+\end{itemize}
 \end{slide}
 
 \begin{slide}{荧光粉基发光二极管}
@@ -567,7 +568,8 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
     还有一种荧光粉基发光二极管类似于日光灯，发光单元是近紫外发光二极管，外面包着两种磷光剂混合物，一种是发红光和蓝光的铕，另一种磷光剂是发绿光的铜和铝掺杂了硫化锌。内里的紫外光发光二极管发出的紫外光被外层的磷光剂转换成红、蓝、绿三色光，混合后就成了白光。
     \bigskip
 
-    \textit{优点:光谱的特性较佳，产生的光比较好看}\\
+    \textit{优点:光谱的特性较佳，产生的光比较好看}
+
     \textit{缺点:紫外线会使黏合剂中的环氧树脂劣化变质，所以生产难度较高，而寿命亦较短,光波在转化过程中有较多被化成热能，因此效率较低}
 \end{slide}
 
@@ -601,14 +603,15 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
     多色LED还提供了一种形成不同颜色的光的新方法。大多数可感知的颜色可以通过混合不同量的三原色来形成。这允许精确的动态色彩控制。然而，这种类型的LED的发射功率随着温度的升高而呈指数级衰减，导致颜色稳定性发生巨大变化，这抑制了它的工业用途。
     \bigskip
 
-    没有荧光粉的多色LED无法提供良好的显色性，因为每个LED都是窄带光源。没有荧光粉的LED虽然是一种较差的普通照明解决方案，但对于基于LED直接像素的显示器来说，这是最佳解决方案。
+    没有荧光粉的多色LED无法提供良好的显色性，因为每个LED都是窄带光源。这虽然是一种较差的普通照明方案，但对于基于LED直接像素的显示器来说，这是最佳的解决方案。
 \end{slide}
 
 \section{发光二极管(LED)的应用}
 
 \begin{slide}
-\textbf{状态显示灯}
-    \textit{发光二极管所需推动电压及功率低，方便由运作电压低的微处理器控制及在以电池作电源的设备上使用，所以常被用在各种电子产品、设备的状态指示灯。在消费性电子产品，手提嵌入式电子设备，家庭电器、玩具、各种仪器……等用途上作为工作状态显示灯。}
+    \textbf{状态显示灯}
+
+    \textit{发光二极管所需推动电压及功率低，方便由运作电压低的微处理器控制及在以电池作电源的设备上使用，所以常被用在各种电子产品、设备的状态指示灯。在消费性电子产品如家庭电器、儿童玩具、电路开关等上作为工作状态显示灯。}
     \begin{figure}[h]
         \centering
         \includegraphics[height=3cm, width=4.5cm]{pictures/Seven_segment_02_Pengo.pdf}
@@ -618,48 +621,53 @@ Electroluminescence was widely studied in detail during the 1950s by scientists,
 
 \begin{slide}
 \textbf{交通道路指示灯}
-\begin{enumerate}
-    \item 在车辆上的应用：\\
-    \textit{当LED的光度发展达至要求后，便有汽车用LED作转向与刹车灯，主要好处是LED极高的开关速度，其亮起时间比白炽灯快$\mathrm{0.5s}$之多，且LED灯在白天时与白炽灯炮相比亮度较高、使用寿命长、点亮速度快，更可增加$\mathrm{6m}$的刹车辨识距离，也可降低事故发生，这对行车安全非常重要。而车辆行驶环境中震荡、温差变化下，LED仍然有稳定的光度及可靠性。}
-\end{enumerate}
+\begin{itemize}
+    \item 在车辆上的应用：
+
+    \textit{当LED的光度发展达到要求后，便有汽车用LED作转向与刹车灯，主要好处是LED极高的开关速度，其亮起时间比白炽灯快$0.5\,\mathrm{s}$之多，且LED灯在白天时与白炽灯相比亮度较高、使用寿命长、点亮速度快，更可增加$6\,\mathrm{m}$的刹车辨识距离，降低事故发生的概率，这对行车安全非常重要。而在车辆行驶环境中震荡、温差变化下，LED仍然有稳定的光度及可靠性，可见LED灯是车灯的理想选择。}
+\end{itemize}
 \end{slide}
 
 \begin{slide}
     \textbf{交通道路指示灯}
-    \begin{enumerate}
-        \item 在道路上的应用：\\
+    \begin{itemize}
+        \item 在道路上的应用：
+
         \textit{同样工作在户外环境的交通灯使用开关快速的LED也很适合，LED寿命较长也减少坏灯及影响交通的机会。}
-        \item 公共场所的平板显示器：\\
+
+        \item 公共场所的平板显示器：
+
         \textit{在机场、机舱、火车站、巴士站、码头等…各种公共交通工具上等地方，LED被普遍地采用作为平板显示器以显示如班次、目的地、时间等相关讯息。而LED的可靠性与低耗电，使其也适合用作紧急出口指示灯。}
-    \end{enumerate}
+    \end{itemize}
     \end{slide}
 
 \begin{slide}
-\textbf{LED照明}\\
-由于发光二极管灯被称为固态照明。传统照明灯俱如萤光灯、白炽灯及卤素灯都有装载气体的脆弱玻璃管，因而都不及全固态的LED坚固耐用。由于发光二极管在增加光度时，效率会下降，所以有些LED灯使用多个白光LED组合成一簇构成一个光源，以增加效率；同样的原因，在照明方面只用在对光度要求低的地方，以保持其较佳效率（省电）的特性，这些用途包括：
-\begin{enumerate}
-    \item 手电筒
-    \item 紧急照明
-    \item 手机闪光灯
-    \item 道路及室内照明
-\end{enumerate}
+    \textbf{LED照明}
+
+    由于发光二极管灯被称为固态照明。传统照明灯俱如萤光灯、白炽灯及卤素灯都有装载气体的脆弱玻璃管，因而都不及全固态的LED坚固耐用。由于发光二极管在增加光度时，效率会下降，所以有些LED灯使用多个白光LED组合成一簇构成一个光源，以增加效率；同样的原因，在照明方面只用在对光度要求低的地方，以保持其较佳效率（省电）的特性，这些用途包括：
+    \begin{itemize}
+        \item 手电筒
+        \item 紧急照明
+        \item 手机闪光灯
+        \item 道路及室内照明
+    \end{itemize}
 \end{slide}
 
 \begin{slide}
 \textbf{显示器}
-\begin{enumerate}
-    \item \textit{市面上现存普及的LED背光液晶显示电视的LED只用作背光光源，严格上并不是LED显示器，细小高解像度的视讯LED显示器现都采用OLED，OLED具有自发光性、广视角、高对比、低耗电、高反应速率等优点，OLED显示器因为不需背光源，所以可以比LCD显示器造得更薄}
-    \item \textit{大型的LED显示器已普及于户外户内，户外LED显示器对解析度要求较低，但需要较高的亮度，多采用分立单色的LED组成。}
-\end{enumerate}
+\begin{itemize}
+    \item \textit{市面上现存普及的LED背光液晶显示电视的LED只用作背光光源，严格上并不是LED显示器，细小高解像度的视讯LED显示器现都采用OLED，OLED具有自发光性、广视角、高对比、低耗电、高反应速率等优点，OLED显示器因为不需背光源，所以可以比LCD显示器造得更薄。}
+    \item \textit{大型的LED显示器已普及于户内、户外。户外LED显示器对解析度要求较低，但需要较高的亮度，多采用分立单色的LED组成。}
+\end{itemize}
 \end{slide}
 
 \section{有机发光二极管(OLED)}
 \begin{slide}
 有机发光二极体OLED。其发光原理跟发光二极管一样，不同之处是其发光物半导体是有机化合物（有机半导体），例如有机聚合物等。OLED制造流程简单，成本较低，可以用印刷等廉价生产方法制造，其优点包括：
-\begin{enumerate}
+\begin{itemize}
     \item \textit{可以制造出大面积的面光源}
     \item \textit{元件本身可以是柔软、透明的}
-\end{enumerate}
+\end{itemize}
 这些特性都是一般二极管所不及的。因此OLED可以造出大面积的照明灯具，软身、透明的显示器。
 \end{slide}
 
@@ -718,14 +726,12 @@ OLED可应用于制造平价可弯曲显示器、照明设备、发光衣或装�
 
 \begin{slide}
 此外，OLED还在光医学领域有广泛前景:
-\begin{enumerate}
+\begin{itemize}
     \item 治疗创伤（PBM光疗法）：相比传统光医疗，OLED 贴片凭借二维弯曲（柔性）、轻薄、可穿戴等特点，可以更贴合皮肤，舒适感和体验性会更佳。
     \item 可穿戴OLED发光器件在个人移动医疗监测领域来测量人体信号，例如监测心跳和血氧水平。这是因为在心血管监测方法中，光体积描记法（PPG）信号和血氧饱和度（SpO2）水平是通过使用发光器件和光检测器，进行无创光测量的。
-\end{enumerate}
+\end{itemize}
 \end{slide}
 
-
-\addtocounter{framenumber}{-1}
 \begin{frame}[plain]{参考文献}
 \begin{thebibliography}{99}\setlength{\itemsep}{0pt}\small
     \bibitem{bib:LED} \url{https://en.wikipedia.org/wiki/Light-emitting_diode}
@@ -740,7 +746,6 @@ OLED可应用于制造平价可弯曲显示器、照明设备、发光衣或装�
 \end{thebibliography}
 \end{frame}
 
-\addtocounter{framenumber}{-1}
 \begin{frame}[plain]
     \begin{center}
         \Huge\textbf{谢谢大家}

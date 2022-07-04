@@ -1,0 +1,74 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage[no-math]{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{unicode-math}
+\unimathsetup{bold-style=ISO,sans-style=italic}
+\setmathfont{XITS Math}
+\AtBeginDocument{
+  \let\uglymathbf\mathbf
+  \renewcommand\mathbf\symbf
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf\symsf
+}
+
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+\title{\textbf{实测天体物理作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2022年2月21日}
+\maketitle
+
+\begin{enumerate}
+
+    \item[1.]
+    使用Rayleigh-Jeans近似：
+    \[
+        B_\nu = \frac{2\nu^2kT}{c^2} = 4.0094\times10^{-18}\,\mathrm{W/Hz}
+    \]
+    太阳对观测者所张的立体角为：
+    \[
+        \Omega = \frac{\pi R^2}{r^2} = 6.7919\times10^{-5}\,\mathrm{sr}
+    \]
+    则接收到的流量密度为：
+    \[
+        S_\nu = B_\nu\Omega = 2.723\times10^{-22}\,\mathrm{W/(m^2\cdot Hz)} = 2.723\times10^4\,\mathrm{Jy}
+    \]
+
+    \item[2.]
+    使用Rayleigh-Jeans近似：
+    \[
+        B_\nu = \frac{2\nu^2kT}{c^2} = 4.0094\times10^{-18}\,\mathrm{W/Hz}
+    \]
+    太阳对观测者所张的立体角为：
+    \[
+        \Omega = \frac{\pi R^2}{r^2} = 1.5965\times10^{-15}\,\mathrm{sr}
+    \]
+    则接收到的流量密度为：
+    \[
+        S_\nu = B_\nu\Omega = 6.4\times10^{-33}\,\mathrm{W/(m^2\cdot Hz)} = 0.64\,\mu\mathrm{Jy}
+    \]
+    因为$0.64\,\mu\mathrm{Jy}<10\,\mu\mathrm{Jy}$，无法探测。
+
+\end{enumerate}
+
+\end{document}

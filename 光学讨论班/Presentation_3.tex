@@ -1,0 +1,706 @@
+\documentclass{beamer}
+
+\usepackage{framed,booktabs}
+\usepackage{color}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+
+\usetheme{default}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{section in toc}{series=\bfseries}
+\setbeamertemplate{part page}{
+    \begin{beamercolorbox}[sep=8pt,center,wd=\textwidth]{part title}
+    \bfseries\Large\insertpart\par
+    \end{beamercolorbox}
+}
+\renewcommand\arraystretch{1.25}
+
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,bold-style=ISO}
+\setmathfont{XITS Math}
+\usepackage{anyfontsize}
+\usepackage{fontspec}
+\setsansfont{Times New Roman}
+
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+\usepackage{amsmath}
+\usepackage{extarrows}
+\usepackage{bm}
+\renewcommand{\bm}{\symbf}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,RawFeature=+fwid,ItalicFont=KaiTi]
+\setCJKsansfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,RawFeature=+fwid,ItalicFont=KaiTi]
+\setCJKmonofont{Noto Sans Mono CJK SC}[RawFeature=+fwid]
+\newCJKfontfamily{\kaishu}{KaiTi}
+\setbeamerfont{author}{family=\kaishu}
+\setbeamerfont{date}{family=\kaishu}
+
+\let\titleonly\title
+\renewcommand{\title}[1]{\titleonly{\bfseries{#1}}}
+\newcommand{\bib}[1]{\bibitem{bib:#1}}
+
+\newenvironment{slide}{
+    \begin{frame}{\bfseries{\sectiontitle}}
+}{
+    \end{frame}
+}
+
+\let\sectiononly\section
+\renewcommand{\section}[1]{
+    \sectiononly{#1}
+    \let\sectiontitle\relax
+    \newcommand{\sectiontitle}{#1}
+}
+
+\title{蓝色发光二极管}
+\author{
+    张植竣\texorpdfstring{\quad}{    }高乐耘\texorpdfstring{\quad}{    }付大为
+}
+\date{2022年6月10日}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\part{非线性光学简介}
+
+\begin{frame}
+    \partpage
+    \tableofcontents
+\end{frame}
+
+\section{非线性光学现象}
+
+\begin{slide}
+    \begin{itemize}
+        \item 一束红光穿过普通透明介质，还是红光。如果换成一种特殊的透明材料，再把光加亮至太阳光的几千倍甚至几万倍，红光居然奇迹般地变成了蓝紫色！
+
+        \item 这种我们日常生活中看不到的神奇现象，就是非线性光学的效应之一——倍频效应。
+
+        \item 在线性光学中，光经过介质后频率不会改变，所以红光还是红光。在非线性光学中，光经过光学介质后，光的频率、空间等某些光学参量会依赖于光强变化而变化。此处蓝色光子的频率是两个红色光子频率之和，红光之所以会变成蓝光，是因为强光下两个红色光子在非线性材料中“合成”了一个蓝色光子，这就是和频效应。
+
+        \item 当然，非线性光学的神奇不止于此，它还有双光子吸收、光学参量放大、自聚焦、光克尔效应等应用性极强的效应。
+    \end{itemize}
+\end{slide}
+
+\section{什么是非线性光学}
+
+\begin{slide}
+    \begin{itemize}
+        \item 20世纪下半叶建立起来的非线性物理学，是现代物理学的重要基石。
+
+        \item 非线性物理学是研究物质间宏观强相互作用下普遍存在着的非线性现象，也就是作用和响应之间的系统是非线性的现象。非线性物理包含：非线性力学、非线性声学、非线性热学、非线性电子学以及非线性光学。
+
+        \item 非线性光学是研究各种激光与各类物质相互作用所产生的各种非线性效应的学科。
+
+        \item 非线性光学描述强光与物质发生相互作用的规律，非线性光学在激光发明之后迅速发展起来，它所揭示的大量新现象极大地丰富了非线性物理学的内容。
+    \end{itemize}
+\end{slide}
+
+\section{线性光学与非线性光学的区别}
+
+\begin{slide}
+    \begin{itemize}
+        \item \textbf{线性光学：}光在介质中传播，通过干涉、衍射、折射可以改变光的空间能量分布和传播方向，但与介质不发生能量交换，不改变光的频率。
+
+        \textbf{非线性光学：}一定频率的入射光，可以通过与介质的相互作用而转换成其他频率 的光（倍频等），还可以产生一系列在光谱上周期分布的不同频率和光强的光（受激拉曼辐射等）。
+
+        \item \textbf{线性光学：}多束光在介质中交叉传播，不发生能量相互交换，不改变各自频率。
+
+        \textbf{非线性光学：}多数光在介质中交叉传播，可能发生能量相互转移，改变各自频率或产生新的频率（三波与四波混频）。
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    \begin{itemize}
+        \item \textbf{线性光学：}光与介质相互作用，不改变介质的物理参量，这些物理参量只是光频的函数，与光场强度变化无关。
+
+        \textbf{非线性光学：}光与介质相互作用，介质的物理参量如极化率、吸收系数、折射率等是光场强度的函数（非线性吸收和色散、光克尔效应、自聚焦）。
+
+        \item \textbf{线性光学：}光束通过光学系统，入射光强与透射光强之间一般成线性关系。
+
+        \textbf{非线性光学：}光束通过光学系统，入射光强与透射光器之间呈非线性关系，从而实现光开关（光限制、光学双稳、各自干涉仪开关）。
+
+        \item \textbf{线性光学：}多束光在介质中交叉传播，各光束的相位信息彼此不能相互传递。
+
+        \textbf{非线性光学：}光束之间可以相互传递相位信息，而且两束光的相位可以互相共轭（光学相位共轭）。
+    \end{itemize}
+\end{slide}
+
+\section{非线性光学效应简介}
+
+\begin{slide}
+按照激光与介质的相互作用是否有能量交换，可将非线性光学效应分为以下两类：
+\bigskip
+
+    \begin{itemize}
+        \item[1.] \textbf{被动非线性光学效应：}
+
+        被动非线性光学效应的特点是：光与介质间无能量交换，而不同频率的光波间能够发生能量交换。例如：倍频、四波混频、参量过程、相位共轭……
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{./pictures/frequency-mixing.pdf}
+        \caption{被动非线性光学效应的例子}
+    \end{figure}
+\end{slide}
+
+\begin{slide}
+    \begin{itemize}
+        \item[2.] \textbf{主动非线性光学效应：}
+
+        主动非线性光学效应的特点是：光与介质间会发生能量交换，介质的物理参量与光场强度有关。例如：非线性吸收（饱和吸收、反饱和吸收、双光子吸收等）、非线性折射（光克尔效应、自聚焦与自散焦、折射率饱和与反饱和等）、非线性散射（受激拉曼散射、受激布里渊散射等）、光学双稳性、光限制……
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{./pictures/fig2.pdf}
+        \caption{主动非线性光学效应的例子}
+    \end{figure}
+\end{slide}
+
+\section{非线性光学原理}
+
+\begin{slide}
+    当光入射介质，在光电场$\bm{E(r,t)}$作用下，组成介质的极性分子、原子、电子发生位移，感生出极化电场，称之为电极化强度$\bm{P(r,t)}$。在一般情况下，$\bm{P(r,t)}$和$\bm{E(r,t)}$的关系是正比线性关系
+    \begin{equation}
+        \bm{P} = \epsilon_0\bm\chi E
+    \end{equation}
+    式中$\epsilon_0$是真空介电常数；$\bm{\chi}$为线性极化率，对于各向异性介质，它是复数张量。
+
+    若入射光是激光，光强比普通光高几个数量级，极化强度展开为光场的幂级数，考虑高次项的作用为
+    \begin{equation}
+        \bm{P} = \epsilon_0\chi^{(1)}\bm{\cdot E} + \epsilon_0\chi^{(2)}\bm{EE} + \epsilon_0\chi^{(3)}\bm{EEE} + \cdots
+    \end{equation}
+    式中$\chi^{(1)}$为线性极化率；而$\chi^{(2)}$和$\chi^{(3)}$是二阶和三阶非线性极化率（都是复数张量）。
+
+    \textbf{非线性光学现象是与高阶极化有关的现象。}
+\end{slide}
+
+\begin{slide}
+    对于各向同性介质，可将式(2)改写为标量形式
+    \begin{equation}
+    \begin{aligned}
+        P
+        &= \epsilon_0\chi^{(1)}E + \epsilon_0\chi^{(2)}EE + \epsilon_0\chi^{(3)}EEE+\cdots \\
+        &= \epsilon_0\left(\chi^{(1)} + \chi^{(2)}E+\chi^{(3)}E^2+\cdots\right)E \\
+        &= \epsilon_0\chi(E)E
+    \end{aligned}
+    \end{equation}
+    式中
+    \begin{equation}
+    \begin{aligned}
+        \chi(E)
+        &= \chi^{(1)} + \chi^{(2)}E + \chi^{(3)}E^2 + \cdots \\
+        &= \chi^{(1)} + \chi^{(2)}\left(E\right) + \chi^{(3)}\left(E^2\right) + \cdots
+    \end{aligned}
+    \end{equation}
+    二阶极化率为光电场强度的函数，三阶极化率为光强的函数，它们皆为复数。
+
+    如果把三阶极化率分成实部虚部两部分，可以证明实部与折射率成正比，虚部与吸收系数成正比。则对于三阶效应，极化率、折射率和吸收系数都是光强的函数。
+\end{slide}
+
+\section{非线性光学材料及其非线性机制}
+
+\begin{slide}
+    \begin{table}[ht!]
+        \centering
+        \begin{tabular}{cc}
+            \toprule
+            非线性光学材料 & 非线性机制 \\
+            \midrule
+            半导体材料 & 电子机制、激子机制 \\
+            有机高分子材料 & 电子、分子极化与分子取向 \\
+            电光晶体 & 外电光效应 \\
+            光折变材料 & 内电光效应 \\
+            液晶材料 & 分子取向 \\
+            团簇材料（$\mathrm{C}_{60}$等） & 分子极化 \\
+            纳米复合材料 & 表面等离子体激元 \\
+            手性分子材料 & 分子电磁极矩 \\
+            等离子体 & 电子、离子 \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{slide}
+
+\section{非线性光学现象的产生}
+
+\begin{slide}
+    \begin{itemize}
+        \item \textbf{为什么生活中看不到非线性光学效应呢？}
+
+        最主要的原因是非线性光学效应的产生需要较强的光，若光达到一定强度，空气中也可以看到非线性光学效应。
+
+        \item 不同非线性材料下产生的光学效应也不同。即便在光强足够的情况下，也必须选择合适的材料，才能把红光变成蓝紫光。
+
+        \item 线性光学，其最大的特点就是不改变光的频率、不与介质发生能量交换。会与介质发生能量交换、会改变频率的就是非线性光学。
+
+        \item 直到激光器的发明，强激光作用才让我们真正观察到了非线性光学现象！
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    \textbf{只要强激光作用下就能观察到非线性的光学效应？}
+    \medskip
+
+    \begin{itemize}
+        \item 不是。入射光必须满足一定条件才能产生这种现象，也就是\textbf{相位匹配}。
+
+        \item 在三波非线性耦合过程中，使得相位失配因子$Δk=k_3-k_2-k_1=0$，而相位匹配本质上就是要求光波满足能量守恒定律和动量守恒定律。
+
+        \item 相位匹配的三种方法
+        \begin{itemize}
+            \item 调节入射光的角度
+            \item 取基频光的不同偏振光
+            \item 用温度的方法来实现相位匹配（不同温度条件下，材料的折射率不一样，o光和e光的折射率变化程度也是不同的）
+        \end{itemize}
+    \end{itemize}
+\end{slide}
+
+\section{常见的非线性光学现象}
+\begin{slide}
+\begin{itemize}
+    \item \textbf{倍频}:
+    我们常说的倍频，其实用高次谐波表示更恰当。就是用频率为$\omega$的激光，入射到非线性晶体上，产生$2\omega$、$3\omega$、$4\omega$等高频激光。
+
+    \item \textbf{自聚焦}：
+    通常我们都说光是沿直线传播的，而光通过透镜会发生折射和色散。但是当非线性材料在强激光的作用下，材料的折射率就会发生变化，就会改变光的传播路线，形成自聚焦效应。如果把自聚焦效应和材料的色散作用相抵消，那么例如在光纤中传输的信号就不会失真。
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{./pictures/self-focusing.pdf}
+    \caption{自聚焦效应}
+    \label{fig:fig3}
+\end{figure}
+\end{slide}
+
+\begin{slide}
+\begin{itemize}
+    \item \textbf{光学混频}:
+    混频就是用频率为$\omega_1$和频率为$\omega_2$的激光，经过非线性材料后产生$\omega_2-\omega_1$的差频及$\omega_2+\omega_1$的和频，所以有时候也叫做四波混频。用这种方式就可以拓展产生电磁波的光谱范围。当然，还有一种反着来的方式，就是用参量放大的形式，把频率为$\omega$的激光分解为一束$\omega_1$的信号光和一束$\omega_2$的闲频光。
+
+    \item \textbf{光致透明}：
+    某种材料的吸收系数与光的强度有关，当光强度很低的时候，材料几乎就是不透明的，也就是能够吸收所有的光，但是当光强度达到一定的程度，吸收系数就变零了，也就等同于透明一样，这样高强度的激光就可以透过去了。通常也把这种物质叫做可饱和吸收体。这个方法可以用来提高激光的信噪比，让强度不高的噪声被吸收滤除，而相对高强度的信号光透过。
+\end{itemize}
+\end{slide}
+
+\section{非线性光学发展简史}
+
+\begin{slide}
+    \textbf{1. 非线性光学初期创立阶段}
+    \footnotesize{
+    \begin{itemize}
+        \item 1961年，Franken实验发现红宝石激光的倍频；
+
+        \item 1962-1964年，发现受激拉曼散射、受激布里渊散射；
+
+        \item 1962-1965年，发现和频、差频、参量振荡、四波混频；
+
+        \item 1963-1965年，发现饱和吸收、反饱和吸收、双光子吸收；
+
+        \item 1965年，实验发现光学相位共轭现象；
+
+        \item 1965年，N.Bloembergen出版\textit{Nonlinear Optical Phenomena}一书
+
+        \item 1964～1966年，发现自聚焦和自相位调制；
+    \end{itemize}
+    }
+\end{slide}
+
+\begin{slide}
+    \textbf{2. 非线性光学发展成熟阶段}
+    \footnotesize{
+    \begin{itemize}
+        \item 1970-1985年，实现半导体量子阱、超晶格，发展半导体非线性光学；
+
+        \item 1975-1984年，实验发现光学双稳态和光学混沌，推动光计算研究；
+
+        \item 1984年，Y.R.Shen出版\textit{The Principles of Nonlinear Optics}一书；
+
+        \item 1984-1987年，研究光纤中的非线性光学，实现光孤子激光器；
+
+        \item 1985年，实验获得光学压缩态，促进量子光学的发展；
+    \end{itemize}
+    }
+\end{slide}
+
+\begin{slide}
+    \textbf{3. 非线性光学初步应用阶段}
+    \footnotesize{
+    \begin{itemize}
+        \item 1985～1987年，发现新型非线性光学晶体BBO（硼酸钡）和LBO（三硼酸锂），推动皮秒和飞秒瞬态光学；
+
+        \item 1987年，开始研究有机材料激发态非线性光学，推动光限制器研究；
+
+        \item 1987年，光子晶体的提出，推动了非线性光子晶体理论与器件的研究；
+
+        \item 1989年，掺铒光纤放大器的发明，推动了光纤通信的发展；
+
+        \item 90年代初，光孤子通信实验成功，推动孤子通信发展；
+
+        \item 90年代中，DWDM光通信技术的发展，对波长转换器、光开关、拉曼放大器等非线性光学器件提出需求；
+
+        \item 1995年，研究手性分子材料非线性光学，推动生物光学的发展；
+
+        \item 90年代末，完成远程量子信息传输实验，促进量子通信技术发展。
+    \end{itemize}
+    }
+\end{slide}
+
+\part{二阶和三阶非线性光学效应}
+
+\begin{frame}
+    \partpage
+    \tableofcontents
+\end{frame}
+
+\section{二阶非线性光学效应}
+
+\begin{slide}
+
+    二阶（稳态）非线性光学效应主要包括：
+    \begin{itemize}
+    \item 线性电光效应
+    \item 光整流效应
+    \item 和频和差频产生
+    \item 二次谐波产生
+    \item 参量变换，参量放大与振荡
+    \end{itemize}
+
+    \vspace{1em}
+
+    模型基本设定：
+    \begin{itemize}
+    \item 介质没有（空间）反演对称性
+    \item 远离共振区，$\chi^{(1)}$和$\chi^{(2)}$都是实数，具有完全对易对称性和时间反演对称性
+    \end{itemize}
+
+\end{slide}
+
+\section{线性电光效应}
+
+\begin{slide}{简介}
+    线性电光效应（Pockler效应），指没有反演中心的晶体受到直流或（与光频相比的）低频电场作用时，折射率随外加电场线性变化的现象。
+    \bigskip
+
+    描述线性电光效应最直观的方法是\textbf{折射率椭球法}。
+\end{slide}
+
+\begin{slide}{折射率椭球法}
+    在（折射率椭球的）主轴坐标系中，折射率椭球的方程为：
+    \[
+        \frac{x^2}{n_x^2} + \frac{y^2}{n_y^2} + \frac{z^2}{n_z^2} = 1
+    \]
+    设想外加直流电场$\bm{E}_0$，此时折射率发生改变，该坐标系不一定还是椭球的主轴坐标系，但我们可以写出其一般形式：
+    \[
+        \frac{x^2}{n_1^2} + \frac{y^2}{n_2^2} + \frac{z^2}{n_3^2} + \frac{2yz}{n_4^2} + \frac{2zx}{n_5^2} + \frac{2xy}{n_6^2} = 1
+    \]
+    并给出$E_0=0$时的退化情形：
+    \begin{align*}
+        &n_1\big|_{E_0 = 0} = n_x,\
+        n_2\big|_{E_0 = 0} = n_y,\
+        n_3\big|_{E_0 = 0} = n_z,\\
+        &n_4\big|_{E_0 = 0} =
+        n_5\big|_{E_0 = 0} =
+        n_6\big|_{E_0 = 0} = 0
+    \end{align*}
+\end{slide}
+
+\begin{slide}{折射率椭球法}
+    考虑到极化率张量的完全对易对称性和时间反演对称性，引入线性电光张量矩阵$[\gamma_{ij}]$，可以导出：
+    \[
+        \delta(1 / n_i^2) = \sum_{j = 1}^3\gamma_{ij}E_j,\quad
+    i = 1, 2, \cdots, 6
+    \]
+    即：
+    \[
+        \begin{bmatrix}
+            \delta(1 / n_1^2) \\
+            \delta(1 / n_2^2) \\
+            \delta(1 / n_3^2) \\
+            \delta(1 / n_4^2) \\
+            \delta(1 / n_5^2) \\
+            \delta(1 / n_6^2) \\
+          \end{bmatrix} =
+          \begin{bmatrix}
+            \gamma_{11} & \gamma_{12} & \gamma_{13} \\
+            \gamma_{21} & \gamma_{22} & \gamma_{23} \\
+            \gamma_{31} & \gamma_{32} & \gamma_{33} \\
+            \gamma_{41} & \gamma_{42} & \gamma_{43} \\
+            \gamma_{51} & \gamma_{52} & \gamma_{53} \\
+            \gamma_{61} & \gamma_{62} & \gamma_{63} \\
+          \end{bmatrix}
+          \begin{bmatrix}
+            E_1 \\
+            E_2 \\
+            E_3 \\
+          \end{bmatrix}
+    \]
+\end{slide}
+
+\begin{slide}{折射率椭球法：KDP晶体}
+    KDP（$\mathrm{KH_2PO_4}$）晶体为四方晶系，由其对称性知，取其光轴为$z$轴时，除$\gamma_{41} = \gamma_{52}$和$\gamma_{63}$非零外，其余$\gamma$元均为零，且$E_0 = 0$时，由于旋转对称性，$n_x = n_y = n_{\mathrm{o}}$，$n_z = n_{\mathrm{e}}$，即：
+    \[
+        \frac{x^2}{n_{\mathrm{o}}^2} + \frac{y^2}{n_{\mathrm{o}}^2} + \frac{z^2}{n_{\mathrm{e}}^2} = 1
+    \]
+    而$E_0 \neq 0$时，
+    \[
+        \begin{bmatrix}
+            \updelta(1 / n_1^2) \\
+            \updelta(1 / n_2^2) \\
+            \updelta(1 / n_3^2) \\
+            \updelta(1 / n_4^2) \\
+            \updelta(1 / n_5^2) \\
+            \updelta(1 / n_6^2) \\
+          \end{bmatrix} =
+          \begin{bmatrix}
+            0           & 0           & 0           \\
+            0           & 0           & 0           \\
+            0           & 0           & 0           \\
+            \gamma_{41} & 0           & 0           \\
+            0           & \gamma_{41} & 0           \\
+            0           & 0           & \gamma_{63} \\
+          \end{bmatrix}
+          \begin{bmatrix}
+            E_{0x} \\
+            E_{0y} \\
+            E_{0z} \\
+          \end{bmatrix} =
+          \begin{bmatrix}
+            0 \\
+            0 \\
+            0 \\
+            \gamma_{41}E_{0x} \\
+            \gamma_{41}E_{0y} \\
+            \gamma_{63}E_{0z} \\
+          \end{bmatrix}
+    \]
+\end{slide}
+
+\begin{slide}{折射率椭球法：KDP晶体}
+    得到其折射率椭球方程：
+    \[
+    \frac{x^2}{n_{\mathrm{o}}^2} + \frac{y^2}{n_{\mathrm{o}}^2} + \frac{z^2}{n_{\mathrm{e}}^2} + 2\gamma_{41}E_{0x}yz + 2\gamma_{41}E_{0y}zx + 2\gamma_{63}E_{0z}xy = 1
+    \]
+    当$E_0\neq0$时，第二光轴出现！
+\end{slide}
+
+\begin{slide}{折射率椭球法：KDP晶体}
+    特别地，选取$\bm{E}_0=\hat{x}E_{0z}$，折射率椭球方程变为：
+    \[
+    \frac{x^2}{n_{\mathrm{o}}^2} + \frac{y^2}{n_{\mathrm{o}}^2} + \frac{z^2}{n_{\mathrm{e}}^2} + 2\gamma_{63}E_{0z}xy = 1
+    \]
+    考虑向当前折射率椭球的主轴坐标系进行坐标变换，沿$z$轴逆向旋转坐标系$45^\circ$，得坐标变换关系：
+    \[
+        x = \frac{1}{\sqrt{2}}(x' + y'),\quad
+        y = \frac{1}{\sqrt{2}}(-x' + y'),\quad
+        z = z'
+    \]
+    和当前主轴坐标系下的椭球方程：
+    \[
+        \left(\frac{1}{n_{\mathrm{o}}^2} - \gamma_{63}E_{0z}\right)x'^2 + \left(\frac{1}{n_{\mathrm{o}}^2} + \gamma_{63}E_{0z}\right)y'^2 + \frac{1}{n_{\mathrm{e}}^2}z'^2 = 1
+    \]
+\end{slide}
+
+\begin{slide}{折射率椭球法：KDP晶体}
+    由当前主轴坐标系下的椭球方程：
+    \[
+        \left(\frac{1}{n_{\mathrm{o}}^2} - \gamma_{63}E_{0z}\right)x'^2 + \left(\frac{1}{n_{\mathrm{o}}^2} + \gamma_{63}E_{0z}\right)y'^2 + \frac{1}{n_{\mathrm{e}}^2}z'^2 = 1
+    \]
+    容易看出当前主轴坐标系下的轴向折射率：
+    \[
+        \left\{
+        \begin{aligned}
+            &\frac{1}{n_{x'}^2} = \frac{1}{n_{\mathrm{o}}^2} - \gamma_{63}E_{0z} \\
+            &\frac{1}{n_{y'}^2} = \frac{1}{n_{\mathrm{o}}^2} + \gamma_{63}E_{0z} \\
+            &\frac{1}{n_{z'}^2} = \frac{1}{n_{\mathrm{e}}^2} \\
+        \end{aligned}
+        \right.
+        \;\xLongrightarrow{\gamma_{63}E_{0z} \ll 1/n_{\mathrm{o}}^2}\;
+        \left\{
+        \begin{aligned}
+            &n_{x'} \approx n_{\mathrm{o}} + \frac{1}{2}n_{\mathrm{o}}^3\gamma_{63}E_{0z} \\
+            &n_{y'} \approx n_{\mathrm{o}} - \frac{1}{2}n_{\mathrm{o}}^3\gamma_{63}E_{0z} \\
+            &n_{z'} = n_{\mathrm{e}}
+        \end{aligned}
+        \right.
+    \]
+\end{slide}
+
+\begin{slide}{折射率椭球法：KDP晶体}
+    当$E_{0z}=10^6\,\mathrm{V/m}$时，波长为$\lambda=1\,\mu\mathrm{m}$，沿$x'$方向偏振的光通过$L=5\,\mathrm{cm}$长，$\gamma_{63}=10.6\times10^{-12}\,\mathrm{m/V}$的KDP晶体后相比未加电场时的相位差为：
+    \[
+    \Delta\varphi_x = \left(\frac{1}{2}n_{\mathrm{o}}^3\gamma_{63}E_{0z}\right)\frac{2\pi}{\lambda}L \approx 2\pi
+    \]
+    而沿$y'$方向偏振的光通过$L=5\,\mathrm{cm}$长的KDP晶体后相比未加电场时的相位差为：
+    \[
+    \Delta\varphi_y = -\Delta\varphi_x \approx -2\pi
+    \]
+    该过程称为（外加电场沿光传播方向的）纵向电光效应。
+
+\end{slide}
+
+\section{三阶非线性光学效应}
+
+\begin{slide}
+    只有无对称中心的介质才存在二阶非线性光学效应。在之前对二阶非线性光学效应的讨论中，我们尚未涉及到介质与光场之间的能量交换问题。
+    \bigskip
+
+    对于三阶非线性效应，不管介质具有什么对称性总存在非零的三阶极化率张量元，原则上可以在任何介质中找到。三阶非线性光学效应有类似三波混频的参量过程，例如三次谐波的产生、四波混频过程；也有涉及介质与光场发生能量交换的非参量过程，例如双光子吸收效应、受激拉曼效应和受激布里渊效应等。
+\end{slide}
+
+\section{克尔效应}
+
+\begin{slide}
+    克尔（Kerr）在1875年发现：线偏振光通过外加电场作用的玻璃时，会变成椭圆偏振光。这种现象表明，玻璃在外加恒定电场的作用下，由原来的各向同性变成了光学各向异性；外加电场感应引起了双折射，其折射率的变化与外加电场的平方成正比，这就是著名的克尔效应。
+    \begin{figure}
+        \centering
+        \includegraphics[width=.8\textwidth]{./pictures/kerr.pdf}
+    \end{figure}
+\end{slide}
+
+\begin{slide}{非线性光学解释}
+    在非线性光学的观点下，克尔效应是外加恒定电场和光电场在介质中通过三阶非线性极化率产生的三阶非线性极化效应。设介质受到恒定电场$\bm{E}_0$和光电场$\bm{E}\mathrm{e}^{-i\omega t}$的作用，则极化率分量$P_\mu$为：
+    \begin{align*}
+        P_\mu(\omega, t)
+        &= P_\mu^{(1)}(\omega, t) + P_\mu^{(3)}(\omega, t) \\
+        &= \epsilon_0\left(\chi^{(1)}_{\mu\alpha}(\omega) + 3\chi^{(3)}_{\mu\alpha\beta\gamma}(\omega, 0, 0) E_{0\beta} E_{0\gamma}\right)E_\alpha \mathrm{e}^{-i\omega t}
+    \end{align*}
+    从中不难看出，因$\bm{E}_0$的存在，介电张量元素$\epsilon_{\mu\alpha}$改变了：
+    \[
+        \delta\epsilon_{\mu\alpha} = 3\epsilon_0\chi^{(3)}_{\mu\alpha\beta\gamma}(\omega, 0, 0)E_{0\beta}E_{0\gamma}
+    \]
+    从而引起了感应双折射。
+\end{slide}
+
+\part{弱光非线性光学}
+
+\begin{frame}
+    \partpage
+    \tableofcontents
+\end{frame}
+
+\section{弱光非线性光学历史}
+
+\begin{slide}
+    \footnotesize{
+    \begin{itemize}
+        \item 最早研究的非线性光学要求入射光场具有与原子内的束缚内电场可以相比较的数量级，通常称之为强光非线性光学效应。
+
+        \item 1966年，Bell实验室的Ashkin等人在用$\mathrm{LiNbO_3}$和$\mathrm{LiTaO_3}$晶体进行倍频实验时，意外发现了一种特殊的光损伤现象：由于光辐照区折射率的变化破坏了产生倍频的相位匹配条件，从而降低了倍频转换的效率。
+
+        \item 1968年，Chen等人首先认识到，利用这种“光损伤”可以进行光信息的实时存储，并深入研究了其物理机制。这种现象之后被称为“光折变效应（photorefractive effect）”。它说明了，对于弱光，只要照射时间足够长，也能得到足够大的折射率改变。
+
+        \item Segev等人由实验和理论证明了部分非相干光和完全非相干白光的空间光孤子的存在，表明非相干光也存在非线性光学效应。
+
+        \item 近年来，科学家在光场和其他物质形成的量子相干系综中观察到了相干布居囚禁的量子态或暗态、电磁感应透明与吸收、光速变慢与调控等新型量子相干现象，在非线性光学、全光开关、量子信息处理等方面有巨大应用及前景。
+    \end{itemize}
+    }
+\end{slide}
+
+\section{光折变效应}
+
+\begin{slide}
+    \begin{itemize}
+        \item 光折变效应（photorefractive effect）是光致折射率改变效应（light induced refractive index change effect）的简称。它是电光材料在光辐照下由光强的空间分布引起材料折射率相应变化的一种非线性光学现象。
+
+        \item 使用毫瓦级气体激光照射$\mathrm{LiNbO_3}$、$\mathrm{LiTaO_3}$等晶体即可产生。如果用聚焦的e光在X方向或Y方向照射（下图最右侧光点），则在z方向上会产生强烈的散射，如下图中间所示；随着各向异性的扩散，散射作用减弱，如下图左侧所示。
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.25\linewidth]{./pictures/LiNbO3.pdf}
+    \end{figure}
+\end{slide}
+
+\begin{slide}
+    光折变过程及物理机制可以概括为以下5个步骤：
+    \begin{itemize}
+        \item 电光晶体内的杂质 、缺陷和空位作为电荷的施主或受主。在不均匀光辐照下，施主杂质被电离产生光激发载流子。
+
+        \item 光激发载流子（在导带中的电子或价带中的空穴）通过浓度扩散或在外加电场或光生伏打效应作用下的漂移而运动。
+
+        \item 迁移的载流子又可以被陷阱重新俘获，它们经过激发、迁移、俘获、再激发……直至到达暗区被处于深能级的陷阱重新俘获。形成了正、负电荷的空间分离，这种空间电荷的分离与光强的空间分布相对应。
+
+        \item 这些光致分离的空间电荷在晶体内建立了相应的电场。
+
+        \item 空间电荷产生的电场又通过电光效应在晶体内形成了与光强的空间分布相对应的折射率变化。
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.75\linewidth]{./pictures/photorefractive.pdf}
+        \caption{光折变效应模型}
+    \end{figure}
+\end{slide}
+
+\begin{slide}
+    在光折变过程中自由载流子迁移主要有以下3种机制：
+    \begin{itemize}
+        \item 扩散。在非均匀光强辐照下，亮区自由载流子浓度最高，暗区自由载流子浓度最低，在浓度梯度作用下形成扩散电流。
+
+        \item 漂移。载流子在电场作用下的迁移，电场包括外加电场和空间电荷产生的电场。
+
+        \item 光伏效应。不同偏振的光会在不同方向引起光生伏打电流。
+    \end{itemize}
+\end{slide}
+
+\section{光速调控}
+
+\begin{slide}
+    \begin{itemize}
+        \item 1999年，L.V.Hau、S.E.Harris等人首先在超冷钠原子气体中利用电磁感应透明效应（EIT）将光的群速度减慢到大约$17\,\mathrm{m/s}$，并观测到近百万倍的克尔非线性增强。
+
+        \item 光的传播群速度实质上是由不同频率的光经过相同距离后光波相位改变量的频率响应特性决定的，即由单位传播距离的相位改变量的色散特性决定的。利用某种物理过程使得单位距离有极高的相位色散率即可减慢光速。
+    \end{itemize}
+\end{slide}
+
+\begin{slide}
+    考虑多光波慢相应非线性过程，其群速度为：
+    \[
+    v_g = \frac{c}{n+\omega_s\dfrac{\mathrm{d}n}{\mathrm{d}\omega_s}+c\omega_s\dfrac{\mathrm{d}\Gamma_{ph}}{\mathrm{d}\omega_s}}
+    \]
+    在信号光频率$\omega_s$、抽运光频率$\omega_p$、位相耦合系数$\Gamma_{ph}$下，$v_g$与$\Omega/2\pi=(\omega_s-\omega_p)/2\pi$的关系如图，可以达到$v_g=0.08\,\mathrm{m/s}$：
+    \begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{./pictures/v_g-omega.pdf}
+    \end{figure}
+\end{slide}
+
+\begin{frame}[plain]{\textbf{参考文献}}
+\begin{thebibliography}{99}\setlength{\itemsep}{0pt}\small
+    \bibitem{bib:NLO}
+    石顺祥. 非线性光学[M]. 西安电子科技大学出版社, 2012.
+    \bibitem{bib:sep1_1}{Bloembergen, N. (2002). Nonlinear optics. World Scientific.}
+    \bibitem{bib:sep1_2}{Wikimedia Foundation. Nonlinear optics. Wikipedia. 2022}
+    \bibitem{bib:sep3_1}{若干弱光非线性光学效应及其应用；唐伯权，许京军等；激光技术；2006年12月}
+    \bibitem{bib:sep3_2}{光折变非线性光学及其应用；刘思敏，郭儒，许京军编著；科学出版社；2004年}
+    \bibitem{bib:sep3_3}{Appl. Phys. Lett. 9, 72 (1966)}
+    \bibitem{bib:sep3_4}{L. V. Hau, S. E. Harris, Z. Dutton, and C. H. Behroozi, Nature (London) 397, 594 (1999)}
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \Huge\textbf{谢谢大家}
+    \end{center}
+\end{frame}
+
+\end{document}

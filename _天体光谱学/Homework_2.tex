@@ -4,10 +4,10 @@
 \usepackage{amsmath}
 
 \usepackage[no-math]{fontspec}
-\setmainfont{XCharter}
+\setmainfont{TeX Gyre Termes}
 \usepackage{unicode-math}
 \unimathsetup{bold-style=ISO,sans-style=italic}
-\setmathfont{XCharter-Math.otf}
+\setmathfont{XITS Math}
 \AtBeginDocument{
   \let\uglymathbf\mathbf
   \renewcommand\mathbf\symbf
@@ -27,9 +27,11 @@
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\renewcommand\baselinestretch{2}\selectfont
 
 \usepackage[fontset=none]{ctex}
 \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\linespread{1.5}
 
 \begin{document}
 
@@ -43,15 +45,15 @@
     \item[1.]
 
     (a) 漫线系：
-    $4\,^2D_{5/2} \rightarrow 3\,^2P_{3/2}$，$4\,^2D_{3/2} \rightarrow 3\,^2P_{3/2}$，$4\,^2D_{3/2} \rightarrow 3\,^2P_{1/2}$。
+    $4\,^2\mathrm{D}_{5/2} \rightarrow 3\,^2\mathrm{P}_{3/2}$，$4\,^2\mathrm{D}_{3/2} \rightarrow 3\,^2\mathrm{P}_{3/2}$，$4\,^2\mathrm{D}_{3/2} \rightarrow 3\,^2\mathrm{P}_{1/2}$。
 
     (b) 基线系：
-    $5\,^2F_{7/2} \rightarrow 3\,^2D_{5/2}$，$5\,^2F_{5/2} \rightarrow 3\,^2D_{5/2}$，$5\,^2F_{5/2} \rightarrow 3\,^2D_{3/2}$。
+    $5\,^2\mathrm{F}_{7/2} \rightarrow 3\,^2\mathrm{D}_{5/2}$，$5\,^2\mathrm{F}_{5/2} \rightarrow 3\,^2\mathrm{D}_{5/2}$，$5\,^2\mathrm{F}_{5/2} \rightarrow 3\,^2\mathrm{D}_{3/2}$。
 
     (c) $\Delta L=2$不符合选择定则$\Delta L=0,\pm 1$
 
     (d) 主线系：
-    $4\,^2P_{3/2} \rightarrow 4\,^2S_{1/2}$，$4\,^2P_{1/2} \rightarrow 4\,^2S_{1/2}$。
+    $4\,^2\mathrm{P}_{3/2} \rightarrow 4\,^2\mathrm{S}_{1/2}$，$4\,^2\mathrm{P}_{1/2} \rightarrow 4\,^2\mathrm{S}_{1/2}$。
 
     \bigskip
     \item[2.]
@@ -76,17 +78,17 @@
 
     \bigskip
     \item[3.]
-    $^1D_1$：
+    $^1\mathrm{D}_1$：
     $L=2,\quad J=1,\quad S=0$
 
     此处$L+S=2$，$|L_S|=2$，即$J$只能取2一个值，这里标记$J=1$是错误的。
 
-    $^0D_{5/2}$：
+    $^0\mathrm{D}_{5/2}$：
     $L=2,\quad J=\dfrac{5}{2},\quad S=-\dfrac{1}{2}$
     
     而$S$必须是大于等于0的，此处$S<0$错误。
 
-    $^3P_{3/2}$：
+    $^3\mathrm{P}_{3/2}$：
     $L=1,\quad J=\dfrac{3}{2},\quad S=1$
 
     此处$L+S=2$，$|L_S|=0$，即$J$只能取0、1、2三个值，这里标记$J=\dfrac{3}{2}$是错误的。
@@ -107,7 +109,7 @@
 
     \bigskip
     \item[5.]
-    只需要考虑$\mathrm{3d5p}$轨道上的孤电子，它们有$l_1=2$，$l_2=1$，$s_1=s_2=\dfrac{1}{2}$，相互组合就能产生$L=1,2,3$，$S=0,1$，则可以产生的光谱项有：$\mathrm{^1P}$，$\mathrm{^1D}$，$\mathrm{^1F}$，$\mathrm{^3P}$，$\mathrm{^3D}$，$\mathrm{^3F}$，其中能量最低的光谱项为$\mathrm{3^F}$，能级为$\mathrm{^3F_2}$，$\mathrm{^3F_3}$，$\mathrm{^3F_4}$
+    只需要考虑$\mathrm{3d5p}$轨道上的孤电子，它们有$l_1=2$，$l_2=1$，$s_1=s_2=\dfrac{1}{2}$，相互组合就能产生$L=1,2,3$，$S=0,1$，则可以产生的光谱项有：$\mathrm{^1P}$，$\mathrm{^1D}$，$\mathrm{^1F}$，$\mathrm{^3P}$，$\mathrm{^3D}$，$\mathrm{^3F}$，其中能量最低的光谱项为$\mathrm{^3F}$，能级为$\mathrm{^3\mathrm{F}_2}$，$\mathrm{^3\mathrm{F}_3}$，$\mathrm{^3\mathrm{F}_4}$
 
     \bigskip
     \item[6.]

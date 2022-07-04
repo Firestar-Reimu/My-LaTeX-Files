@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage[no-math]{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{unicode-math}
+\unimathsetup{bold-style=ISO,sans-style=italic}
+\setmathfont{XITS Math}
+\AtBeginDocument{
+  \let\uglymathbf\mathbf
+  \renewcommand\mathbf\symbf
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf\symsf
+}
+
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\usepackage{bm}
+\renewcommand\bm\symbf
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{tikz}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+
+\begin{document}
+
+\title{\textbf{实测天体物理作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2022年3月21日}
+\maketitle
+
+\begin{enumerate}
+
+    \item[1.]
+    对于圆形孔径：
+    \[
+        \mathrm{FWHP} = 58.4^\circ \times \frac{\lambda}{D} = 58.4^\circ \times \frac{c}{fD} = 1.75^\circ
+    \]
+
+    \item[2.]
+    由源张角$\theta_S = 30'$，主瓣张角$\theta_B = 1.75^\circ = 105'$得主瓣温度：
+    \[
+        T_B = T\left(\frac{\theta_S^2}{\theta_S^2 + \theta_B^2}\right) = 5800\,\mathrm{K} \times \left(\frac{30^2}{30^2 + 105^2}\right) = 437.7\,\mathrm{K}
+    \]
+    天线温度：
+    \[
+        T_A = \eta_B T_B = 0.7 \times 437.7\,\mathrm{K} = 306.4\,\mathrm{K}
+    \]
+
+    \item[3.]
+    条纹间距
+    \[
+        \delta = \frac{\lambda}{b} = \frac{c}{fb} = 61.9''
+    \]
+    而复可见度函数：
+    \[
+        V(u) = \int_{-\tfrac{\theta_S}{2}}^{\tfrac{\theta_S}{2}} A I_0 \mathrm{e}^{2\pi iu\theta}\,\mathrm{d}\theta,\quad u = \frac{b}{\lambda}
+    \]
+    由于$A$、$I_0$均为常量，代入积分得：
+    \[
+        V(u) = AI_0\frac{\sin(\pi u\theta_S)}{\pi u} = -3.2\times10^{5}AI_0
+    \]
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage[no-math]{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{unicode-math}
+\unimathsetup{bold-style=ISO,sans-style=italic}
+\setmathfont{XITS Math}
+\AtBeginDocument{
+  \let\uglymathbf\mathbf
+  \renewcommand\mathbf\symbf
+  \let\uglymathsf\mathsf
+  \renewcommand\mathsf\symsf
+}
+
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\renewcommand\baselinestretch{2}\selectfont
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\linespread{1.5}
+
+\begin{document}
+
+\title{\textbf{天体光谱学作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2022年5月15日}
+\maketitle
+
+\begin{enumerate}
+
+    \item[1.]
+
+\end{enumerate}
+
+
+\end{document}
