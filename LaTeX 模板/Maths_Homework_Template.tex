@@ -13,42 +13,47 @@
 
 % 数学宏包
 \usepackage{amsmath}
+\usepackage{esint}
 
-%% 设置数学字体
+% 设置数学字体
 
 % 如果使用 unicode-math 包，需要将 \mathbf 命令换成 \symbf 命令
 % 且对 \mathscr 和 \mathcal 的粗体直接使用 \mathbfscr 和 \mathbfcal
 
 % Latin Modern 风格设置（默认）
+% 需要 mathrsfs 提供 \mathscr
 \usepackage{unicode-math}
-\unimathsetup{bold-style=ISO,sans-style=italic}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
 \usepackage{mathrsfs}
-\usepackage{esint}
-\AtBeginDocument{
-  \let\uglymathbf\mathbf
-  \renewcommand\mathbf\symbf
-  \let\uglymathsf\mathsf
-  \renewcommand\mathsf\symsf
-}
 
 % Times New Roman 风格设置
 % 不需要 fontspec 和 unicode-math
-% \usepackage{newtx}
+% \usepackage{newtxtext}
+% \usepackage{newtxmath}
+% \defaultfontfeatures{}
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
 % 第二种 Times New Roman 风格设置
-% \usepackage[no-math]{fontspec}
+% \usepackage{fontspec}
 % \setmainfont{XITS}
 % \usepackage{unicode-math}
-% \unimathsetup{bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
 % \setmathfont{XITS Math}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
+
+% 第三种 Times New Roman 风格设置
+% \usepackage{fontspec}
+% \setmainfont{STIX Two Text}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \setmathfont{STIX Two Math}
+
+% 第四种 Times New Roman 风格设置
+% \usepackage{fontspec}
+% \setmainfont{TeX Gyre Termes}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \setmathfont{TeX Gyre Termes Math}
 
 % Linux Libertine 风格设置
 % 不需要 fontspec 和 unicode-math
@@ -57,107 +62,76 @@
 % \renewcommand\mathbf\bm
 
 % 第二种 Linux Libertine 风格设置
-% 不需要 fontspec 和 unicode-math
-% \usepackage[math=+ss08]{libertinus}
-% \usepackage{bm}
-% \renewcommand\mathbf\bm
-
-% 第三种 Linux Libertine 风格设置
-% \usepackage[no-math]{fontspec}
-% \setmainfont{Libertinus Serif}
-% \setsansfont{Libertinus Sans}
-% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
-% \setmathfont{Libertinus Math}[RawFeature={+ss08}]
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
-
-% Palatino 风格设置
 % 不需要 fontspec
 % \usepackage{unicode-math}
-% \unimathsetup{bold-style=ISO,sans-style=italic}
-% \usepackage{kpfonts-otf}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \usepackage[math=+ss08]{libertinus-otf}
 
-% 第二种 Palatino 风格设置
+% 第三种 Linux Libertine 风格设置
+% \usepackage{fontspec}
+% \setmainfont{Libertinus Serif}
+% \setsansfont{Libertinus Sans}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \setmathfont[RawFeature={+ss08}]{Libertinus Math}
+
+% Palatino 风格设置
 % 不需要 unicode-math
 % \usepackage{fontspec}
 % \usepackage{newpxtext}
 % \usepackage{newpxmath}
+% \defaultfontfeatures{}
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
+% 第二种 Palatino 风格设置
+% 不需要 fontspec
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \usepackage{kpfonts-otf}
+
 % 第三种 Palatino 风格设置
-% \usepackage[no-math]{fontspec}
+% \usepackage{fontspec}
 % \setmainfont{TeX Gyre Pagella}
-% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
 % \setmathfont{TeX Gyre Pagella Math}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
 
 % Garamond 风格设置
-% \usepackage[no-math]{fontspec}
+% \usepackage{fontspec}
 % \setmainfont{EB Garamond}
-% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
 % \setmathfont[StylisticSet={6,9,10}]{Garamond-Math}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
 
 % XCharter 风格设置
-% \usepackage[no-math]{fontspec}
+% \usepackage{fontspec}
 % \setmainfont{XCharter}
 % \usepackage{unicode-math}
-% \unimathsetup{bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
 % \setmathfont{XCharter Math}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
 
 % Century Schoolbook 风格设置
-% \usepackage[no-math]{fontspec}
+% \usepackage{fontspec}
 % \setmainfont{TeX Gyre Schola}
-% \usepackage[bold-style=ISO,sans-style=italic]{unicode-math}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
 % \setmathfont{TeX Gyre Schola Math}
-% \AtBeginDocument{
-%   \let\uglymathbf\mathbf
-%   \renewcommand\mathbf\symbf
-%   \let\uglymathsf\mathsf
-%   \renewcommand\mathsf\symsf
-% }
 
 % 数学特殊字体
 % 可以自行配置 \mathcal \mathscr \mathfrak \mathbb 等字体样式
 \usepackage[scr=rsfso]{mathalpha}
+
+% 中文
+% \usepackage[fontset=none]{ctex}
+% \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+% \setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold]
 
 % \epsilon 符号重定义
 \AtBeginDocument{
   \let\uglyepsilon\epsilon
   \renewcommand\epsilon\varepsilon
 }
-
-% 中文
-% \usepackage[fontset=none]{ctex}
-% \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
-% \setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold]
 
 \title{\textbf{Maths Homework Template}}
 \author{Author}
@@ -172,25 +146,20 @@
     \begin{enumerate}
 
         \item
-        Use inline equations for simple math such as $1+1=2$, and centered equations for more involved or important equations:
+        \textparagraph\ Inline equations for simple math: $1+1=2$.
+        
+        \textparagraph\ Centered equations for more involved or important equations:
         \begin{equation}
             \frac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{a(x)} = a'(x)\mathrm{e}^{a(x)}
         \end{equation}
-
         % 如果想要公式编号重新从 1 开始，可以在该公式前使用命令：
         % \setcounter{equation}{0}
-        \begin{equation}
-            \frac{\mathrm{d}y}{\mathrm{d}x} = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
-        \end{equation}
-
-        It is recommended to write scalars without boldface like $\epsilon=\hbar\omega$, vectors in boldface, and matrices in sans-serif fonts:
         \begin{equation}
             \mathbf{p} = \hbar\mathbf{k}
         \end{equation}
         \begin{equation}
         \frac{\|\mathsf{A}\mathbf{x}\|_\infty}{\|\mathbf{x}\|_\infty} = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
         \end{equation}
-
         \textparagraph\ An example of a matrix:
         \begin{equation}
             \mathsf{M} =
@@ -199,12 +168,10 @@
                 i\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{3}i}{2}
             \end{bmatrix}
         \end{equation}
-
         \textparagraph\ An example of intergals:
         \begin{equation}
-        \iiint \nabla \cdot \mathbf{\Phi} \,\mathrm{d}V = \oiint \mathbf{\Phi}\,\mathrm{d}\mathbf{S}
+        \iiint \nabla \cdot \mathbf{A} \,\mathrm{d}V = \oiint \mathbf{A}\,\mathrm{d}\mathbf{S}
         \end{equation}
-
         \textparagraph\ An example of roots:
         \begin{equation}
         r = \sqrt[3]{\frac{3}{4\pi N}}
