@@ -3,23 +3,8 @@
 \usepackage{anyfontsize}
 \usepackage{amsmath}
 
-\usepackage[no-math]{fontspec}
-\setmainfont{TeX Gyre Termes}
-\usepackage{unicode-math}
-\unimathsetup{bold-style=ISO,sans-style=italic}
-\setmathfont{XITS Math}
-\AtBeginDocument{
-  \let\uglymathbf\mathbf
-  \renewcommand\mathbf\symbf
-  \let\uglymathsf\mathsf
-  \renewcommand\mathsf\symsf
-}
-
-\AtBeginDocument{
-  \let\uglyepsilon\epsilon
-  \renewcommand\epsilon\varepsilon
-}
-
+\usepackage{diagbox}
+\usepackage{multirow}
 \usepackage{indentfirst}
 \setlength{\parindent}{0em}
 \usepackage{autobreak}
@@ -27,11 +12,20 @@
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
-\renewcommand\baselinestretch{2}\selectfont
+\linespread{1.5}
 
 \usepackage[fontset=none]{ctex}
 \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
-\linespread{1.5}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
 
 \begin{document}
 
@@ -43,6 +37,158 @@
 \begin{enumerate}
 
     \item[1.]
+    \begin{enumerate}
+        \item[(a)]
+        对于$\mathrm{Ca\,I\ 4s^2}$，满壳层状态$L=S=J=0$，宇称为$(-1)^{l_1+l_2}=1$，则可以产生的光谱项有$\mathrm{^1S_0}$。
+
+        对于$\mathrm{Ca\,I\ 4s 4p}$，$l_1=0$，$s_1=\dfrac{1}{2}$，$l_2=1$，$s_2=\dfrac{1}{2}$，宇称为$(-1)^{l_1+l_2}=-1$，则可以产生的光谱项有$\mathrm{^1P_1^o}$、$\mathrm{^3P_0^o}$、$\mathrm{^3P_1^o}$、$\mathrm{^3P_2^o}$。
+    
+        由电偶极跃迁的选择定则，$\mathrm{Ca\,I\ 4s 4p - 4s^2}$的跃迁可以产生的谱线有：$\mathrm{^1P_1^o}\to\mathrm{^1S_0}$
+
+        \item[(b)]
+        对于$\mathrm{Ca\,I\ 4s 4f}$，$l_1=0$，$s_1=\dfrac{1}{2}$，$l_2=3$，$s_2=\dfrac{1}{2}$，宇称为$(-1)^{l_1+l_2}=-1$，则可以产生的光谱项有$\mathrm{^1F_3^o}$、$\mathrm{^3F_2^o}$、$\mathrm{^3F_3^o}$、$\mathrm{^3F_4^o}$。
+
+        对于$\mathrm{Ca\,I\ 4s 5d}$，$l_1=0$，$s_1=\dfrac{1}{2}$，$l_2=4$，$s_2=\dfrac{1}{2}$，宇称为$(-1)^{l_1+l_2}=1$，则可以产生的光谱项有$\mathrm{^1D_2}$、$\mathrm{^3D_1}$、$\mathrm{^3D_2}$、$\mathrm{^3D_3}$。
+    
+        由电偶极跃迁的选择定则，$\mathrm{Ca\,I\ 4s 5d - 4s 4f}$的跃迁可以产生的谱线有：
+        \begin{align*}
+            &\mathrm{^1F_3^o} \to \mathrm{^1D_2} \\
+            &\mathrm{^3F_2^o} \to \mathrm{^3D_1},\ \mathrm{^3F_2^o} \to \mathrm{^3D_2},\ \mathrm{^3F_2^o} \to \mathrm{^3D_3} \\
+            &\mathrm{^3F_3^o} \to \mathrm{^3D_2},\ \mathrm{^3F_3^o} \to \mathrm{^3D_3} \\
+            &\mathrm{^3F_4^o} \to \mathrm{^3D_3}
+        \end{align*}
+    \end{enumerate}
+
+    \bigskip
+    \item[2.]
+    \begin{enumerate}
+        \item[(a)]
+        $\mathrm{N}^+$离子基态的电子组态为$\mathrm{1s^2 2s^2 2p^2}$，则$l_1=1$，$s_1=\dfrac{1}{2}$，$l_2=1$，$s_2=\dfrac{1}{2}$，。
+        
+        因为有Pauli规则的限制，只能产生三个光谱项：$\mathrm{^3P}$、$\mathrm{^1D}$、$\mathrm{^1S}$。
+
+        由Hund规则，自旋多重度$2S+1$最大的$\mathrm{^3P}$光谱项能量最低。
+        
+        \item[(b)]
+        此处需要考虑$\mathrm{1s^2 2s^2 2p^2 (^3P)}$的$\mathrm{N}^+$离子和额外电子的耦合。
+
+        上能级$\mathrm{1s^2 2s^2 2p^2 (^3P) 5d}$：$\mathrm{^3P}$离子提供了$L=1$，$S=1$；$\mathrm{5f}$电子提供了$l=3$，$s=\dfrac{1}{2}$。则宇称为$(-1)^l=-1$，量子数为：
+        \[
+            L' = 2,3,4\quad S' = \frac{1}{2},\frac{3}{2}
+        \]
+        可以产生的光谱项有：$\mathrm{^2D^o}$、$\mathrm{^4D^o}$、$\mathrm{^2F^o}$、$\mathrm{^4F^o}$、$\mathrm{^2G^o}$、$\mathrm{^4G^o}$。
+
+        下能级$\mathrm{1s^2 2s^2 2p^2 (^3P) 4d}$：$\mathrm{^3P}$离子提供了$L=1$，$S=1$；$\mathrm{4d}$电子提供了$l=2$，$s=\dfrac{1}{2}$。则宇称为$(-1)^l=1$，量子数为：
+        \[
+            L' = 1,2,3\quad S' = \frac{1}{2},\frac{3}{2}
+        \]
+        可以产生的光谱项有：$\mathrm{^2P}$、$\mathrm{^4P}$、$\mathrm{^2D}$、$\mathrm{^4D}$、$\mathrm{^2F}$、$\mathrm{^4F}$。
+
+        \item[(c)]
+        由电偶极跃迁的选择定则，忽略精细结构的影响，可以产生的谱线有：
+        \begin{align*}
+            &\mathrm{^2D^o} \to \mathrm{^2P},\ \mathrm{^2D^o} \to \mathrm{^2D},\ \mathrm{^2D^o} \to \mathrm{^2F} \\
+            &\mathrm{^2F^o} \to \mathrm{^2D},\ \mathrm{^2F^o} \to \mathrm{^2F} \\
+            &\mathrm{^2G^o} \to \mathrm{^2F} \\
+            &\mathrm{^4D^o} \to \mathrm{^4P},\ \mathrm{^4D^o} \to \mathrm{^4D},\ \mathrm{^4D^o} \to \mathrm{^4F} \\
+            &\mathrm{^4F^o} \to \mathrm{^4D},\ \mathrm{^4F^o} \to \mathrm{^4F} \\
+            &\mathrm{^4G^o} \to \mathrm{^4F}
+        \end{align*}
+        其中$\mathrm{^4G^o}\to\mathrm{^4F}$可能是最强的。因为根据Hund规则，$\mathrm{^4G^o}$的能量最低，处于这个光谱项的分子数最多；而且$\mathrm{^4G^o}$只跃迁到$\mathrm{^4F}$，$\mathrm{D^o}$和$\mathrm{F^o}$有多个跃迁路径，产生竞争。
+    \end{enumerate}
+
+    \bigskip
+    \item[3.]
+    \begin{enumerate}
+        \item[(a)]
+        在强磁场下，附加能量为$\Delta E=(l_z+2s_z)\mu_{\mathrm{B}}$
+
+        $3\,\mathrm{^2D}$光谱项的氢原子，$l=2$，$s=\dfrac{1}{2}$，则可以产生的能级有：
+        \begin{table}[!ht]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                \multicolumn{6}{|c|}{$l_z+2s_z$} \\
+                \hline
+                \diagbox{$s_z$}{$l_z$} & $-2$ & $-1$ & 0 & 1 & 2 \\
+                \hline
+                $-1/2$ & $-3$ & $-2$ & $-1$ & 0 & 1 \\
+                \hline
+                $1/2$ & $-1$ & 0 & 1 & 2 & 3 \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        即$l_z+2s_z$可以取值$-3$、$-2$、$-1$、0、1、2、3，共7个能级。
+
+        \item[(b)]
+        弱磁场下，对于$3\,^2\mathrm{D}_{3/2}$的氢原子，$L=l=2$，$S=s=\dfrac{1}{2}$，$J=j=\dfrac{3}{2}$。
+
+        则Lande因子：
+        \[
+            g = 1 + \frac{J(J+1)-L(L+1)+S(S+1)}{2J(J+1)} = \frac{4}{5}
+        \]
+
+        附加能量为$\Delta E=g \mu_{\mathrm{B}}J_z B$，其中$J_z$为$J$在$z$轴上的投影，可取值为：
+        \[
+            J_z = -\frac{3}{2}, -\frac{1}{2}, \frac{1}{2}, \frac{3}{2}
+        \]
+        则能级发生了四重分裂。
+
+        对于$3\,^2\mathrm{D}_{5/2}$的氢原子，$L=l=2$，$S=s=\dfrac{1}{2}$，$J=j=\dfrac{5}{2}$。
+
+        则Lande因子：
+        \[
+            g = 1 + \frac{J(J+1)-L(L+1)+S(S+1)}{2J(J+1)} = \frac{6}{5}
+        \]
+
+        附加能量为$\Delta E=g \mu_{\mathrm{B}}J_z B$，其中$J_z$为$J$在$z$轴上的投影，可取值为：
+        \[
+            J_z = -\frac{5}{2}, -\frac{3}{2}, -\frac{1}{2}, \frac{1}{2}, \frac{3}{2}, \frac{5}{2}
+        \]
+        则能级发生了六重分裂。
+    \end{enumerate}
+
+    \bigskip
+    \item[4.]
+    对于$\mathrm{4s4p\,^1P^o}$的钙原子，由光谱项得$L=1$，$S=0$，$J=L+S=1$。
+
+    则Lande因子：
+    \[
+        g = 1 + \frac{J(J+1)-L(L+1)+S(S+1)}{2J(J+1)} = 1
+    \]
+    
+    而对于$\mathrm{4s^2\,^1S}$的钙原子，其电子排布已经达到满壳层状态，由光谱项得$L=0$，$S=0$，$J=L+S=0$。因为$J=0$，$J_z=0$，则在磁场中能级不分裂。
+
+    故附加能量为$\Delta E=g \mu_{\mathrm{B}}J_z B=9.274\times10^{-24}\,\mathrm{J}$。波数间距为：
+    \[
+        \Delta\tilde{\nu}=\dfrac{\Delta E}{hc} = 0.467\,\mathrm{cm^{-1}}
+    \]
+    各能级对应的波数为：
+    \begin{align*}
+        &\tilde{\nu}_1 = \tilde{\nu} - \Delta\tilde{\nu} = 23651.837\,\mathrm{cm^{-1}} \\
+        &\tilde{\nu}_2 = \tilde{\nu} = 23652.304\,\mathrm{cm^{-1}} \\
+        &\tilde{\nu}_3 = \tilde{\nu} + \Delta\tilde{\nu} = 23652.771\,\mathrm{cm^{-1}}
+    \end{align*}
+    对于$\tilde{\nu}_1$和$\tilde{\nu}_3$，能级分裂，$\Delta J_z=\pm1$，为$\sigma$线；对于$\tilde{\nu}_2$，能级不分裂，$\Delta J_z=0$，为$\pi$线。
+    
+    因为$\tilde{\nu}=\dfrac{1}{\lambda}$，则$\dfrac{\mathrm{d}\tilde{\nu}}{\tilde{\nu}}=-\dfrac{\mathrm{d}\lambda}{\lambda}$。若想分辨这些谱线，光谱分辨率至少为：
+    \[
+        R = \frac{\lambda}{\Delta\lambda} = \frac{\tilde{\nu}}{\Delta\tilde{\nu}} = \frac{23652.304}{0.467} = 5.066\times10^4
+    \]
+
+    \bigskip
+    \item[5.]
+    \begin{enumerate}
+        \item[(a)]
+        $\mathrm{Hg}^+$的$\mathrm{5d^9 6s^2\,^2D_{5/2}}$的完整电子组态为$\mathrm{1s^2 2s^2 2p^6 3s^2 3p^6 3d^{10} 4s^2 4p^6 4d^{10} 4f^{14} 5s^2 5p^6 5d^9 6s^2}$。
+
+        \item[(b)]
+        对于$\mathrm{5d^{10} 6s}$，$\mathrm{5d^{10}}$壳层已满，只需要考虑$\mathrm{6s}$壳层的单电子：$l=0$，$s=\dfrac{1}{2}$，$j=\dfrac{1}{2}$，宇称为$(-1)^l=-1$，则光谱项为$\mathrm{^2S^o}$，能级有$\mathrm{^2S_{1/2}^o}$。
+
+        \item[(c)]
+        因为$\mathrm{5d^9 6s^2\,^2D_{5/2}}$无法电偶极跃迁到更低的能级（$\mathrm{5d^{10} 6s\,^2S_{1/2}}$），这违反了$\Delta L$和$\Delta J$的规则。
+    \end{enumerate}
 
 \end{enumerate}
 

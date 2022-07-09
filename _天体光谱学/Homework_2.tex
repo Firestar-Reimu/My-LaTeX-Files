@@ -3,23 +3,6 @@
 \usepackage{anyfontsize}
 \usepackage{amsmath}
 
-\usepackage[no-math]{fontspec}
-\setmainfont{TeX Gyre Termes}
-\usepackage{unicode-math}
-\unimathsetup{bold-style=ISO,sans-style=italic}
-\setmathfont{XITS Math}
-\AtBeginDocument{
-  \let\uglymathbf\mathbf
-  \renewcommand\mathbf\symbf
-  \let\uglymathsf\mathsf
-  \renewcommand\mathsf\symsf
-}
-
-\AtBeginDocument{
-  \let\uglyepsilon\epsilon
-  \renewcommand\epsilon\varepsilon
-}
-
 \usepackage{indentfirst}
 \setlength{\parindent}{0em}
 \usepackage{autobreak}
@@ -27,11 +10,20 @@
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
-\renewcommand\baselinestretch{2}\selectfont
+\linespread{1.5}
 
 \usepackage[fontset=none]{ctex}
 \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
-\linespread{1.5}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
 
 \begin{document}
 
@@ -43,38 +35,44 @@
 \begin{enumerate}
 
     \item[1.]
+    \begin{enumerate}
+        \item[(a)] 漫线系：
+        $4\,^2\mathrm{D}_{5/2} \rightarrow 3\,^2\mathrm{P}_{3/2}$，$4\,^2\mathrm{D}_{3/2} \rightarrow 3\,^2\mathrm{P}_{3/2}$，$4\,^2\mathrm{D}_{3/2} \rightarrow 3\,^2\mathrm{P}_{1/2}$。
 
-    (a) 漫线系：
-    $4\,^2\mathrm{D}_{5/2} \rightarrow 3\,^2\mathrm{P}_{3/2}$，$4\,^2\mathrm{D}_{3/2} \rightarrow 3\,^2\mathrm{P}_{3/2}$，$4\,^2\mathrm{D}_{3/2} \rightarrow 3\,^2\mathrm{P}_{1/2}$。
+        \item[(b)] 基线系：
+        $5\,^2\mathrm{F}_{7/2} \rightarrow 3\,^2\mathrm{D}_{5/2}$，$5\,^2\mathrm{F}_{5/2} \rightarrow 3\,^2\mathrm{D}_{5/2}$，$5\,^2\mathrm{F}_{5/2} \rightarrow 3\,^2\mathrm{D}_{3/2}$。
 
-    (b) 基线系：
-    $5\,^2\mathrm{F}_{7/2} \rightarrow 3\,^2\mathrm{D}_{5/2}$，$5\,^2\mathrm{F}_{5/2} \rightarrow 3\,^2\mathrm{D}_{5/2}$，$5\,^2\mathrm{F}_{5/2} \rightarrow 3\,^2\mathrm{D}_{3/2}$。
+        \item[(c)] $\Delta L=2$不符合选择定则$\Delta L=-1,0,1$
 
-    (c) $\Delta L=2$不符合选择定则$\Delta L=0,\pm 1$
-
-    (d) 主线系：
-    $4\,^2\mathrm{P}_{3/2} \rightarrow 4\,^2\mathrm{S}_{1/2}$，$4\,^2\mathrm{P}_{1/2} \rightarrow 4\,^2\mathrm{S}_{1/2}$。
+        \item[(d)] 主线系：
+        $4\,^2\mathrm{P}_{3/2} \rightarrow 4\,^2\mathrm{S}_{1/2}$，$4\,^2\mathrm{P}_{1/2} \rightarrow 4\,^2\mathrm{S}_{1/2}$。
+    \end{enumerate}
 
     \bigskip
     \item[2.]
-    $\mathrm{C}^{3+}$的能级表达式为：
-    \[
-    E_{nl} = -R_\infty \frac{\mu Z_{\mathrm{eff}}^2}{m_e(n-\mu_{nl})^2}
-    \]
-    其中$Z_{\mathrm{eff}}=6-3+1=4$，$\mu$为约化质量
+    \begin{enumerate}
+        \item[(a)]
+        量子亏损的重要性：直观解释了穿透效应，解释了碱金属外层电子的能级偏离氢原子的情况。
 
-    量子亏损的重要性：直观解释了穿透效应，解释了为何碱金属外层电子的能级偏离氢原子的情况
+        量子亏损与量子数$n$和$l$的关系：$\mu_{nl}$随$l$增大而减小，对于同一个$l$，$\mu_{nl}$与$n$之间关系不大。
 
-    量子亏损与量子数$n$和$l$的关系：$\mu_{nl}$随$l$增大而减小，对于同一个$l$，$\mu_{nl}$与$n$之间关系不大
+        \item[(b)]
+        $\mathrm{C}^{3+}$的能级表达式为：
+        \[
+            E_{nl} = -R_\infty \frac{\mu Z_{\mathrm{eff}}^2}{m_e(n-\mu_{nl})^2}
+        \]
+        其中$Z_{\mathrm{eff}}=6-3+1=4$，$\mu$为电子约化质量。
 
-    由$E_{nl} \propto \dfrac{1}{(n-\mu_{nl})^2}$得：
-    \[
-        E_{\mathrm{2s}} = 521078\,\mathrm{cm^{-1}},\quad n=2,\quad \mu_{\mathrm{2s}} = 0.163
-    \]
-    \[
-        E_{\mathrm{3s}} = 217329\,\mathrm{cm^{-1}},\quad n=3,\quad \mu_{\mathrm{3s}} = 0.158
-    \]
-    则估计$\mu_{\mathrm{4s}} = 0.1575$，得到$E_{\mathrm{4s}} = 118857\,\mathrm{cm^{-1}}$
+        \item[(c)]
+        由$E_{nl} \propto \dfrac{1}{(n-\mu_{nl})^2}$得：
+        \[
+            E_{\mathrm{2s}} = 521078\,\mathrm{cm^{-1}},\quad n=2,\quad \mu_{\mathrm{2s}} = 0.163
+        \]
+        \[
+            E_{\mathrm{3s}} = 217329\,\mathrm{cm^{-1}},\quad n=3,\quad \mu_{\mathrm{3s}} = 0.158
+        \]
+        则估计$\mu_{\mathrm{4s}} = 0.1575$，得到$E_{\mathrm{4s}} = 118857\,\mathrm{cm^{-1}}$
+    \end{enumerate}
 
     \bigskip
     \item[3.]

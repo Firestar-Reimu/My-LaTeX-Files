@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage{titling}
+\setlength{\droptitle}{-6em}
+\preauthor{}
+\postauthor{}
+\predate{}
+\postdate{}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\linespread{1.5}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\begin{document}
+
+\title{\textbf{天体光谱学作业2}}
+\author{}
+\date{}
+\maketitle
+
+\begin{enumerate}
+    \item[1.] 考虑如下电子态的能级以及电偶极跃迁规则，列出以下各跃迁能产生什么谱线？
+    \begin{enumerate}
+        \item[(a)] $\mathrm{Na\,I\ 3p - 4d}$
+
+        \item[(b)] $\mathrm{Na\,I\ 3d - 5f}$
+
+        \item[(c)] $\mathrm{Na\,I\ 4s - 4d}$
+        
+        \item[(d)] $\mathrm{K\,I\ 4s - 4p}$
+    \end{enumerate}
+
+    \item[2.]
+    \begin{enumerate}
+        \item[(a)] 简要解释量子亏损$\mu_{nl}$的重要性，以及它如何依赖于量子数$n$和$l$。
+
+        \item[(b)] 三次电离碳$\mathrm{C^{3+}}$的电子组态可以写为$\mathrm{1s^2} nl$。利用Rydberg常数$R_\infty$和量子亏损$\mu_{nl}$，给出这个系统的能级表达式。
+
+        \item[(c)] 已知$\mathrm{C^{3+}}$在基态$\mathrm{1s^2 2s}$的电离能是$520178\,\mathrm{cm^{-1}}$，在$\mathrm{1s^2 3s}$态的电离能是$217329\,\mathrm{cm^{-1}}$。请估计一下$\mathrm{C^{3+}}$在$\mathrm{1s^2 4s}$态的电离能。
+    \end{enumerate}
+
+    \item[3.] 三个不同原子的一些特定能级标记为$^1\mathrm{D}_1$，$^0\mathrm{D}_{5/2}$和$^3\mathrm{P}_{3/2}$。请解释为什么这些标记是错误的。
+
+    \item[4.] 锂原子有三个电子。以下三种电子组态分别会产生什么光谱项$\mathrm{1s^2 2p}$，$\mathrm{1s 2s 3s}$，$\mathrm{1s 2p 3p}$。发生在这三种电子组态之间的跃迁，哪些是电偶极允许的，哪些是电偶极禁戒的？
+
+    \item[5.] 一个钙原子形成了$\mathrm{1s^2 2s^2 2p^6 3s^2 3p^6 3d 5p}$的电子组态。这个电子组态会形成什么光谱项？并解释哪一个光谱项能量最低。能量最低的光谱项能产生什么能级？
+
+    \item[6.] 类氢的氦离子$^4\mathrm{He}^+$的某一个跃迁产生的谱线波长很接近氢原子的$\mathrm{H}\alpha$线。请指出这是发生在氦离子什么能级之间的跃迁？请估计这个跃迁的波数，并陈述计算过程中所做的假设。
+
+\end{enumerate}
+
+\end{document}

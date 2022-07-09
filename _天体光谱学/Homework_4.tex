@@ -3,23 +3,6 @@
 \usepackage{anyfontsize}
 \usepackage{amsmath}
 
-\usepackage[no-math]{fontspec}
-\setmainfont{TeX Gyre Termes}
-\usepackage{unicode-math}
-\unimathsetup{bold-style=ISO,sans-style=italic}
-\setmathfont{XITS Math}
-\AtBeginDocument{
-  \let\uglymathbf\mathbf
-  \renewcommand\mathbf\symbf
-  \let\uglymathsf\mathsf
-  \renewcommand\mathsf\symsf
-}
-
-\AtBeginDocument{
-  \let\uglyepsilon\epsilon
-  \renewcommand\epsilon\varepsilon
-}
-
 \usepackage{indentfirst}
 \setlength{\parindent}{0em}
 \usepackage{autobreak}
@@ -27,10 +10,20 @@
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\linespread{1.5}
 
 \usepackage[fontset=none]{ctex}
 \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
-\linespread{1.5}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
 
 \begin{document}
 
@@ -39,99 +32,92 @@
 \date{2022年6月1日}
 \maketitle
 
-\paragraph*{注意} 此处能量$\epsilon$和角频率$\omega$都用波数$\tilde{\nu}=\dfrac{1}{\lambda}$表示，如果定义$k=\dfrac{k_\mathrm{B}}{hc}=0.69503476\,\mathrm{cm}^{-1}$，对于能量：
-\[
-    \frac{\epsilon}{k_\mathrm{B}T} = \frac{hc}{\lambda k_\mathrm{B}T} = \frac{\tilde{\nu}}{kT}
-\]
-对于角频率$\omega$：
-\[
-    \frac{\hbar\omega}{k_\mathrm{B}T} = \frac{hc}{\lambda k_\mathrm{B}T} = \frac{\tilde{\nu}}{kT}
-\]
-
 \begin{enumerate}
 
     \item[1.]
-
     根据Boltzmann方程$\dfrac{N_i}{N_j} = \dfrac{g_i}{g_j} \mathrm{e}^{-\tfrac{\epsilon_i - \epsilon_j}{kT}}$，处在转动能级$J$（简并度$g_J=2J+1$）与转动能级$0$（简并度$g_0=1$）的分子数之比：
     \[
-        \frac{N_J}{N_0} = (2J+1)\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}}
+        \frac{N_J}{N_0} = (2J+1)\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}}
     \]
     由$\dfrac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{a(x)} = a'(x)\mathrm{e}^{a(x)}$，对$J$求偏导得：
     \begin{align*}
         \frac{\partial}{\partial J}\left(\frac{N_J}{N_0}\right)
-        &= 2\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}} + (2J+1) \cdot \left[-\frac{B(2J+1)}{kT}\right]\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}} \\
-        &= \left[-\frac{B(2J+1)^2}{kT} + 2\right]\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}}
+        &= 2\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}} + (2J+1) \cdot \left[-\frac{B_0(2J+1)}{kT}\right]\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}} \\
+        &= \left[-\frac{B_0(2J+1)^2}{kT} + 2\right]\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}}
     \end{align*}
     \begin{align*}
         \frac{\partial^2}{\partial J^2}\left(\frac{N_J}{N_0}\right)
-        &= -\frac{4B(2J+1)}{kT}\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}} + \left[-\frac{B(2J+1)^2}{kT} + 2\right] \cdot \left[-\frac{B(2J+1)}{kT}\right]\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}} \\
-        &= \left[\frac{B^2 (2J+1)^3}{k^2 T^2} - \frac{6B(2J+1)}{kT}\right]\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}}
+        &= -\frac{4B_0(2J+1)}{kT}\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}} + \left[-\frac{B_0(2J+1)^2}{kT} + 2\right] \cdot \left[-\frac{B_0(2J+1)}{kT}\right]\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}} \\
+        &= \left[\frac{B_0 ^2 (2J+1)^3}{k^2 T^2} - \frac{6B_0(2J+1)}{kT}\right]\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}}
     \end{align*}
-    当$\dfrac{\partial}{\partial J}\left(\dfrac{N_J}{N_0}\right) = 0$时，有$\dfrac{2kT}{B} = (2J+1)^2$，即：
+    当$\dfrac{\partial}{\partial J}\left(\dfrac{N_J}{N_0}\right) = 0$时，有$-\dfrac{B_0(2J+1)^2}{kT} + 2 = 0$，即：
     \[
-        J = \sqrt{\frac{kT}{2B}} -\frac{1}{2}
+        J = \sqrt{\frac{kT}{2B_0}} - \frac{1}{2}
     \]
-    此时$\dfrac{\partial^2}{\partial J^2}\left(\dfrac{N_J}{N_0}\right) = -\dfrac{4B(2J+1)}{kT}\mathrm{e}^{-\tfrac{BJ(J+1)}{kT}} < 0$，说明$\dfrac{N_J}{N_0}$达到最大值。
+    此时$\dfrac{\partial^2}{\partial J^2}\left(\dfrac{N_J}{N_0}\right) = -\dfrac{4B_0(2J+1)}{kT}\mathrm{e}^{-\tfrac{B_0 J(J+1)}{kT}} < 0$，说明$\dfrac{N_J}{N_0}$达到最大值。
 
-    \item[2.(a)]
-    $T=20\,\mathrm{K}$时：
-    \[
-        J_{max} = \sqrt{\frac{kT}{2B}} -\frac{1}{2} = 1.40
-    \]
-    且$\dfrac{N_2}{N_1} = \dfrac{5}{3}\mathrm{e}^{-\tfrac{4B}{kT}}=0.9564$，则处于转动能级$J = 1$的分子最多。
+    \bigskip
+    \item[2.]
+    \begin{enumerate}
+        \item[(a)]
+        $T=20\,\mathrm{K}$时：$J_{\mathrm{max}} = \sqrt{\dfrac{kT}{2B_0}} -\dfrac{1}{2} = 1.40$
+
+        且$\dfrac{N_2}{N_1} = \dfrac{5}{3}\mathrm{e}^{-\tfrac{4B_0}{kT}}=0.9564$，则处于转动能级$J = 1$的分子最多。
+        
+        对于振动能级，$\dfrac{N_v}{N_0} = \mathrm{e}^{-\tfrac{\hbar\omega v}{kT}} = 1.5976 \times 10^{-68} \approx 0$
+
+        \item[(b)]
+        $T=300\,\mathrm{K}$时：$J_{\mathrm{max}} = \sqrt{\dfrac{kT}{2B_0}} -\dfrac{1}{2} = 6.85$
+
+        且$\dfrac{N_7}{N_6} = \dfrac{15}{13}\mathrm{e}^{-\tfrac{14B_0}{kT}}=1.0136$，则处于转动能级$J = 7$的分子最多。
+        
+        对于振动能级，$\dfrac{N_v}{N_0} = \mathrm{e}^{-\tfrac{\hbar\omega v}{kT}} = 3.0216\times10^{-5}$
+
+        \item[(c)]
+        $T=3000\,\mathrm{K}$时：$J_{\mathrm{max}} = \sqrt{\dfrac{kT}{2B_0}} -\dfrac{1}{2} = 22.74$
+
+        且$\dfrac{N_23}{N_22} = \dfrac{47}{45}\mathrm{e}^{-\tfrac{46B_0}{kT}}=1.0009$，则处于转动能级$J = 23$的分子最多。
+        
+        对于振动能级，$\dfrac{N_v}{N_0} = \mathrm{e}^{-\tfrac{\hbar\omega v}{kT}} = 0.3532$
+    \end{enumerate}
+
+    \bigskip
+    \item[3.]
+    \begin{enumerate}
+        \item[(a)]
+        $^{12}\mathrm{CH}^+$的振动零点能量为
+        \[
+            \epsilon_{12} = \frac{1}{2}\hbar\omega_{12} = 1037.75\,\mathrm{cm}^{-1}
+        \]
+        对于$^{13}\mathrm{CH}^+$，考虑$\omega = \sqrt{\dfrac{k}{\mu}} \propto \mu^{-\tfrac{1}{2}}$，其中$\mu$为氢原子在$\mathrm{CH}^+$中的约化质量。
     
-    对于振动能级，$\dfrac{N_v}{N_0} = \mathrm{e}^{-\tfrac{\hbar\omega v}{kT}} = 1.5976 \times 10^{-68} \approx 0$
-
-    \item[2.(b)]
-    $T=300\,\mathrm{K}$时：
-    \[
-        J_{max} = \sqrt{\frac{kT}{2B}} -\frac{1}{2} = 6.85
-    \]
-    且$\dfrac{N_7}{N_6} = \dfrac{15}{13}\mathrm{e}^{-\tfrac{14B}{kT}}=1.0136$，则处于转动能级$J = 7$的分子最多。
+        假设两种离子具有相同的等效劲度系数$k$，而$^{12}\mathrm{C}$的质量数为12，$^{13}\mathrm{C}$的质量数为13，氢原子$\mathrm{H}$的质量数为1，则有：
+        \[
+            \mu_{12} = \frac{m_\mathrm{H} m_{12}}{m_\mathrm{H} + m_{12}} \approx \frac{12}{13}\,\mathrm{u},\quad
+            \mu_{13} = \frac{m_\mathrm{H} m_{13}}{m_\mathrm{H} + m_{13}} \approx \frac{13}{14}\,\mathrm{u}
+        \]
+        其中$\mathrm{u}$为原子质量单位。
     
-    对于振动能级，$\dfrac{N_v}{N_0} = \mathrm{e}^{-\tfrac{\hbar\omega v}{kT}} = 3.0216\times10^{-5}$
+        $^{13}\mathrm{CH}^+$的基本振动频率为
+        \[
+            \omega_{13} = \omega_{12}\sqrt{\frac{\mu_{12}}{\mu_{13}}} = 2075.5 \times \sqrt{\frac{12/13}{13/14}} = 2069.35\,\mathrm{cm^{-1}}
+        \]
+        其零点能为：
+        \[
+            \epsilon_{13} = \frac{1}{2}\hbar\omega_{13} = 1034.68\,\mathrm{cm}^{-1}
+        \]
+        
+        对于振动能级，$\dfrac{N_v}{N_0} = \mathrm{e}^{-\tfrac{\hbar\omega v}{kT}} = 3.0216\times10^{-5}$
 
-    \item[2.(c)]
-    $T=3000\,\mathrm{K}$时：
-    \[
-        J_{max} = \sqrt{\frac{kT}{2B}} -\frac{1}{2} = 22.74
-    \]
-    且$\dfrac{N_23}{N_22} = \dfrac{47}{45}\mathrm{e}^{-\tfrac{46B}{kT}}=1.0009$，则处于转动能级$J = 23$的分子最多。
-    
-    对于振动能级，$\dfrac{N_v}{N_0} = \mathrm{e}^{-\tfrac{\hbar\omega v}{kT}} = 0.3532$
+        \item[(b)]
+        因为$^{13}\mathrm{CH}^+$的丰度远小于$^{12}\mathrm{CH}^+$，消光程度的更弱，当$^{12}\mathrm{CH}^+$的谱线是光学厚的时候，$^{13}\mathrm{CH}^+$的谱线很可能是光学薄的。
 
-    \item[3.(a)]
-    $^{12}\mathrm{CH}^+$的振动零点能量为
-    \[
-        \epsilon_{12} = \frac{1}{2}\hbar\omega_{12} = 1037.75\,\mathrm{cm}^{-1}
-    \]
+        \item[(c)]
+        低温下同位素分馏效应更显著，$^{13}\mathrm{CH}^+$的零点能更低，有利于它的形成，故$n(^{13}\mathrm{CH}^+):n(^{12}\mathrm{CH}^+)$会比$n(^{13}\mathrm{C}):n(^{12}\mathrm{C})$更高。
+    \end{enumerate}
 
-    \item[3.(b)]
-    对于$^{13}\mathrm{CH}^+$，考虑$\omega = \sqrt{\dfrac{k}{\mu}} \propto \mu^{-\tfrac{1}{2}}$，其中$\mu$为氢原子在$\mathrm{CH}^+$中的约化质量。
-    
-    假设两种离子具有相同的等效劲度系数$k$，而$^{12}\mathrm{C}$的质量数为12，$^{13}\mathrm{C}$的质量数为13，氢原子$\mathrm{H}$的质量数为1，则有：
-    \[
-        \mu_{12} = \frac{m_\mathrm{H} m_{12}}{m_\mathrm{H} + m_{12}} \approx \frac{12}{13}\,\mathrm{u},\quad
-        \mu_{13} = \frac{m_\mathrm{H} m_{13}}{m_\mathrm{H} + m_{13}} \approx \frac{13}{14}\,\mathrm{u}
-    \]
-    其中$\mathrm{u}$为原子质量单位。
-
-    $^{13}\mathrm{CH}^+$的基本振动频率为
-    \[
-        \omega_{13} = \omega_{12}\sqrt{\frac{\mu_{12}}{\mu_{13}}} = 2075.5 \times \sqrt{\frac{12/13}{13/14}} = 2069.35\,\mathrm{cm^{-1}}
-    \]
-    其零点能为：
-    \[
-        \epsilon_{13} = \frac{1}{2}\hbar\omega_{13} = 1034.68\,\mathrm{cm}^{-1}
-    \]
-
-    \item[3.(c)]
-    因为$^{13}\mathrm{CH}^+$的丰度远小于$^{12}\mathrm{CH}^+$，消光程度的更弱，当$^{12}\mathrm{CH}^+$的谱线是光学厚的时候，$^{13}\mathrm{CH}^+$的谱线很可能是光学薄的。
-
-    \item[3.(d)]
-    低温下同位素分馏效应更显著，$^{13}\mathrm{CH}^+$的零点能更低，有利于它的形成，故$n(^{13}\mathrm{CH}^+):n(^{12}\mathrm{CH}^+)$会比$n(^{13}\mathrm{C}):n(^{12}\mathrm{C})$更高。
-
-    \item[4.(a)]
+    \bigskip
+    \item[4.]
     相邻两个转动能级的能量差：
     \[
         \Delta E_{i \to i-1} = B_0J_i(J_i + 1) - B_0J_{i-1}(J_{i-1} + 1) = B_0J_i(J_i + 1) - B_0(J_i - 1)J_i = 2B_0 J_i
@@ -141,44 +127,47 @@
         \Delta E_{5 \to 4} = 10B_0 = 19.3\,\mathrm{cm}^{-1},\quad
         \Delta E_{20 \to 19} = 40B_0 = 77.2\,\mathrm{cm}^{-1}
     \]
+    此处对$\Delta E_{5 \to 4}$的估计更准确，因为随着$J_i$增大，离心力的影响更加显著，能量差逐渐减小。
 
-    \item[4.(b)]
-    对$\Delta E_{5 \to 4}$的估计更准确，因为随着$J_i$增大，离心力的影响更加显著，能量差逐渐减小。
-
+    \bigskip
     \item[5.]
     $\mathrm{CH}^+$的$J=1$到$J=0$的跃迁发射线频率为$\nu_1=835.07\,\mathrm{GHz}$
 
-    又因为$\Delta E_{i \to i-1} = 2B_0 J_i$：
+    又因为$\Delta E_{i \to i-1} = 2B_0 J_i$，则有：
     \[
         \Delta E_{1 \to 0} = 2B_0,\quad
         \Delta E_{2 \to 1} = 4B_0 = 2\Delta E_{1 \to 0}
     \]
     而$\Delta E = h\nu$，则$\mathrm{CH}^+$的$J=2$到$J=1$的跃迁发射线频率为$\nu_2=2\nu_1=1670.14\,\mathrm{GHz}$
 
-    \item[6.(a)]
-    转动跃迁频率$f^\mathrm{rot} = 2B_0 J_1 = 2B_0$，而$B_0 = \dfrac{\hbar^2}{2\mu r^2} \approx \mu^{-1}$，故$f^\mathrm{rot} \approx \mu^{-1}$
+    \bigskip
+    \item[6.]
+    \begin{enumerate}
+        \item[(a)]
+        转动跃迁频率$f^\mathrm{rot} = 2B_0 J_1 = 2B_0$，而$B_0 = \dfrac{\hbar^2}{2\mu r^2} \approx \mu^{-1}$，故$f^\mathrm{rot} \approx \mu^{-1}$
 
-    振动跃迁频率$f^\mathrm{vib} = \hbar\omega(v_1 - v_0) = \hbar\omega$，假设两种分子具有相同的等效劲度系数$k$，则$\omega = \sqrt{\dfrac{k}{\mu}} \approx \mu^{-\tfrac{1}{2}}$，故$f^\mathrm{vib} \approx \mu^{-\tfrac{1}{2}}$
+        振动跃迁频率$f^\mathrm{vib} = \hbar\omega(v_1 - v_0) = \hbar\omega$，假设两种分子等效劲度系数$k$相同，则$\omega = \sqrt{\dfrac{k}{\mu}} \approx \mu^{-\tfrac{1}{2}}$，故$f^\mathrm{vib} \approx \mu^{-\tfrac{1}{2}}$
 
-    \item[6.(b)]
-    $^{12}\mathrm{C}$的质量数为12，$^{13}\mathrm{C}$的质量数为13，$^{16}\mathrm{O}$的质量数为16，则有：
-    \[
-        \mu_{12} = \frac{m_\mathrm{O} m_{12}}{m_\mathrm{O} + m_{12}} \approx \frac{48}{7}\,\mathrm{u},\quad
-        \mu_{13} = \frac{m_\mathrm{O} m_{13}}{m_\mathrm{O} + m_{13}} \approx \frac{208}{29}\,\mathrm{u}
-    \]
-    其中$\mathrm{u}$为原子质量单位。
+        \item[(b)]
+        $^{12}\mathrm{C}$的质量数为12，$^{13}\mathrm{C}$的质量数为13，$^{16}\mathrm{O}$的质量数为16，则有：
+        \[
+            \mu_{12} = \frac{m_\mathrm{O} m_{12}}{m_\mathrm{O} + m_{12}} \approx \frac{48}{7}\,\mathrm{u},\quad
+            \mu_{13} = \frac{m_\mathrm{O} m_{13}}{m_\mathrm{O} + m_{13}} \approx \frac{208}{29}\,\mathrm{u}
+        \]
+        其中$\mathrm{u}$为原子质量单位。
 
-    估计$^{13}\mathrm{C}^{16}\mathrm{O}$的$J=1$到$J=0$的转动跃迁频率为：
-    \[
-        f_{13}^\mathrm{rot} = f_{12}^\mathrm{rot} \frac{\mu_{12}}{\mu_{13}} = 3.69\,\mathrm{cm}^{-1}
-    \]
-    $v=1$到$v=0$的振动跃迁频率为：
-    \[
-        f_{13}^\mathrm{vib} = f_{12}^\mathrm{vib} \sqrt{\frac{\mu_{12}}{\mu_{13}}} = 2122\,\mathrm{cm}^{-1}
-    \]
+        估计$^{13}\mathrm{C}^{16}\mathrm{O}$的$J=1$到$J=0$的转动跃迁频率为：
+        \[
+            f_{13}^\mathrm{rot} = f_{12}^\mathrm{rot} \frac{\mu_{12}}{\mu_{13}} = 3.69\,\mathrm{cm}^{-1}
+        \]
+        $v=1$到$v=0$的振动跃迁频率为：
+        \[
+            f_{13}^\mathrm{vib} = f_{12}^\mathrm{vib} \sqrt{\frac{\mu_{12}}{\mu_{13}}} = 2122\,\mathrm{cm}^{-1}
+        \]
 
-    \item[6.(c)]
-    因为$^{13}\mathrm{C}^{16}\mathrm{O}$的丰度远小于$^{12}\mathrm{C}^{16}\mathrm{O}$，消光程度更弱，当$^{13}\mathrm{C}^{16}\mathrm{O}$的谱线是光学薄的时候，$^{12}\mathrm{C}^{16}\mathrm{O}$的谱线很可能是光学厚的，需要观测更多的谱线。
+        \item[(c)]
+        因为$^{13}\mathrm{C}^{16}\mathrm{O}$的丰度远小于$^{12}\mathrm{C}^{16}\mathrm{O}$，消光程度更弱，当$^{13}\mathrm{C}^{16}\mathrm{O}$的谱线是光学薄的时候，$^{12}\mathrm{C}^{16}\mathrm{O}$的谱线很可能是光学厚的，需要观测更多的谱线。
+    \end{enumerate}
 \end{enumerate}
 
 

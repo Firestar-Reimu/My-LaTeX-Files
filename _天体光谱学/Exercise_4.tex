@@ -1,0 +1,105 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage{titling}
+\preauthor{}
+\postauthor{}
+\predate{}
+\postdate{}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=2.5cm,bottom=2.5cm,left=2cm,right=2cm}
+\linespread{1.5}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\begin{document}
+
+\title{\textbf{天体光谱学作业4}}
+\author{}
+\date{}
+\maketitle
+
+\section*{注意}
+
+此处能量$\epsilon$（如转动常数$B_0$）和角频率$\omega$都用波数$\tilde{\nu}=\dfrac{1}{\lambda}$表示，以下定义$k=\dfrac{k_\mathrm{B}}{hc}=0.69503476\,\mathrm{cm^{-1}\cdot K^{-1}}$，则对于能量：
+\[
+    \frac{\epsilon}{k_\mathrm{B}T} = \frac{hc}{\lambda k_\mathrm{B}T} = \frac{\tilde{\nu}}{kT}
+\]
+对于角频率：
+\[
+    \frac{\hbar\omega}{k_\mathrm{B}T} = \frac{hc}{\lambda k_\mathrm{B}T} = \frac{\tilde{\nu}}{kT}
+\]
+\bigskip
+
+\begin{enumerate}
+    \item[1.]
+    一个转动常数为$B_0$的双原子分子，处于温度为$T$的热动平衡环境中。证明：处在转动能级$J$与转动能级0的分子数之比最大时，有：
+    \[
+        J = \sqrt{\dfrac{kT}{2B_0}}-\dfrac{1}{2}
+    \]
+
+    \bigskip
+    \item[2.]
+    对于$\mathrm{CO}$分子，转动常数$B_0=1.93\,\mathrm{cm}^{-1}$，基本振动频率$\omega=2170\,\mathrm{cm}^{-1}$，求在以下三种环境中，$\mathrm{CO}$分子处于哪一个转动能级的分子数最多？处在振动能级$v=1$与处在$v=0$的分子数之比是多少？
+    \begin{enumerate}
+        \item[(a)] $T=20\,\mathrm{K}$的星际介质
+
+        \item[(b)] $T=300\,\mathrm{K}$的室温
+
+        \item[(c)] $T=3000\,\mathrm{K}$的典型M型矮星表面大气
+    \end{enumerate}
+
+    \bigskip
+    \item[3.]
+    \begin{enumerate}
+        \item[(a)] $^{12}\mathrm{CH}^+$分子离子的基本振动频率$\omega=2075.5\,\mathrm{cm}^{-1}$。试估计 $^{12}\mathrm{CH}^+$的振动零点能量。假设原子质量是整数值，试估计丰度更低的$^{13}\mathrm{CH}^+$的振动零点能量（以$\mathrm{cm}^{-1}$为单位）。
+
+        \item[(b)] 为什么人们会去观测丰度更低的$^{13}\mathrm{CH}^+$的谱线而不是$^{12}\mathrm{CH}^+$？
+
+        \item[(c)] 假设观测到来自于一巨分子云的$\mathrm{CH}^+$辐射，相对于$n(^{13}\mathrm{C}):n(^{13}\mathrm{C})$，$n(^{13}\mathrm{CH}^+):n(^{12}\mathrm{CH}^+))$更大还是更小？其中$n(\mathrm{X})$表示$\mathrm{X}$的数密度。
+    \end{enumerate}
+
+    \bigskip
+    \item[4.]
+    欲观测CO纯转动能级$J=5$到$J=4$的跃迁以及$J=20$到$J=19$的跃迁的发射线，假设CO是刚性转子，转动常数$B_0=1.93\,\mathrm{cm}^{-1}$，试估计这两种跃迁的波数，并解释哪个估计可能更加准确。
+
+    \bigskip
+    \item[5.]
+    $\mathrm{CH}^+$从$J=1$到$J=0$的跃迁发射线的频率为$\nu_1=835.07\,\mathrm{GHz}$。试估计$\mathrm{CH}^+$的$J=2$到$J=1$的跃迁对应的频率$\nu_2$（以$\mathrm{GHz}$为单位）。
+
+    参考文献：\url{https://www.aanda.org/articles/aa/pdf/2010/10/aa14589-10.pdf}
+
+    \bigskip
+    \item[6.]
+    \begin{enumerate}
+        \item[(a)] $\mathrm{CO}$分子的$J=1$到$J=0$的转动跃迁频率和$v=1$到$v=0$的基本振动跃迁频率是如何取决于约化质量的？这里的约化质量为：
+        \[
+            \mu = \frac{m_{\mathrm{C}}m_{\mathrm{O}}}{m_{\mathrm{C}}+m_{\mathrm{O}}}
+        \]
+
+        \item[(b)] 对于$\mathrm{^{12}C^{16}O}$，$J=1$到$J=0$的跃迁在$3.86\,\mathrm{cm}^{−1}$，而基本振动跃迁在$2170\,\mathrm{cm}^{−1}$。假设原子质量都是整数，估计$\mathrm{^{13}C^{16}O}$的这两个数值。
+        
+        \item[(c)] 为了估计$\mathrm{^{13}C^{16}O}$和$\mathrm{^{12}C^{16}O}$的丰度比，相比于$\mathrm{^{13}C^{16}O}$来说，我们应该观测更多条$\mathrm{^{12}C^{16}O}$不同跃迁谱线，为什么？
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

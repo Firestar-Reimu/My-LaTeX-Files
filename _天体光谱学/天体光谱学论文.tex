@@ -1,0 +1,94 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\linespread{1.5}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\begin{document}
+
+\title{\textbf{天体光谱学论文}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2022年6月15日}
+\maketitle
+
+\begin{center}
+    \large\textbf{对于两颗SDSS MARVELS预巡天中发现的极贫金属亮星的化学成分对比}
+\end{center}
+
+极贫金属（Extremely Metal-Poor，EMP）星，即$[\mathrm{Fe/H}]<3.0$的恒星，被认为是宇宙中第一批恒星的直接后代。这篇文章探究的是碳增强的极贫金属（Carbon-Enhanced Metal-Poor，CEMP）星，即$[\mathrm{Fe/H}]<3.0$且$[\mathrm{C/Fe}]>+0.7$的恒星。研究者通过观测光谱测量各种元素的相对丰度，进而了解其前身星的信息。
+
+CEMP恒星可以被分为4类：s-过程元素更多的CEMP-s恒星、r-过程元素更多的CEMP-r恒星、r-过程元素和s-过程元素都多都更多的CEMP-r/s恒星以及中子俘获元素不丰富的CEMP-no恒星。此处选择的两个源中，SDSS J0826+6125为普通EMP恒星，SDSS J1341+4741为CEMP-no恒星。作者使用了光谱分辨率$R\sim1800$的观测数据初步筛选源，并用$R\sim30000$的高分辨率光谱做数据处理。
+
+首先是对视向速度（Radial Velocity，RV）作改正：
+\[
+    z = \frac{\lambda - \lambda_0}{\lambda} = \frac{v}{c}
+\]
+观测得到SDSS J0826+6125的视向速度峰值约为$30\,\mathrm{km/s}$，轨道周期为180.4天，SDSS J1341+4741的视向速度峰值约为$55\,\mathrm{km/s}$，轨道周期为116.0天。这说明两颗恒星都处于双星系统中，可能会产生与伴星的物质交换从而影响其核反应的演化。
+
+然后是获取两颗恒星的基本参数：温度、表面重力加速度、微观湍速（microturbulent velocity）。温度使用了测光和光谱两种方法。其中光谱方法是用对温度微小变化敏感的$\mathrm{H}\alpha$线的两翼宽度和$\mathrm{Fe\,I}$线丰度。前一种方法精度更高，但对于SDSS J0826+6125的光谱，$\mathrm{H}\alpha$线左右不对称，无法用于测定温度。最后得到两颗恒星的有效温度分别是约$4400\,\mathrm{K}$和约$5450\,\mathrm{K}$。表面重力加速度是通过$\mathrm{Fe\,I}$、$\mathrm{Fe\,II}$和部分$\mathrm{Mg\,I}$的谱线拟合得出。值得注意的是这里用的$\mathrm{Fe\,I}$谱线数量远多于$\mathrm{Fe\,II}$谱线数量，这是因为该温度的恒星大气所含中性铁远多于电离铁，对$\mathrm{Fe\,I}$线的吸收更加强烈。微观湍速$\xi$的估计是迭代进行的。
+
+最重要的一步就是通过各种元素的光谱计算元素丰度。这里作者使用了局部热动平衡的恒星大气模型作拟合。碳、氮、氧的丰度是通过CH、CN的分子谱线和中性氧$\mathrm{O\,I}$的$630\,\mathrm{nm}$谱线计算的。继续核合成产生的元素镁、钙也是观测相应的中性原子谱线（而不是一次电离的类氢离子，因为温度太低），包括Fraunhofer记录的位于$5172\,\mathring{\mathrm{A}}$的镁三线和中性钙的共振跃迁（电偶极允许的从基态到低激发态的跃迁）：
+\begin{align*}
+    \mathrm{Mg\,I \quad 5167\,\mathring{\mathrm{A}} \quad 3s4s\,^3S_1-3s3p\,^3P_0^o} \\
+    \mathrm{Mg\,I \quad 5173\,\mathring{\mathrm{A}} \quad 3s4s\,^3S_1-3s3p\,^3P_1^o} \\
+    \mathrm{Mg\,I \quad 5184\,\mathring{\mathrm{A}} \quad 3s4s\,^3S_1-3s3p\,^3P_2^o}
+\end{align*}
+\[
+    \mathrm{Ca\,I \quad 4227\,\mathring{\mathrm{A}} \quad 4s^2\,^1S_0-4s4p\,^1P_1^o}
+\]
+钠的丰度显然使用的是最显著的$\mathrm{Na\,D}$双线（因为$j$简并解除而分裂）：
+\begin{align*}
+    \mathrm{Na\,I \quad 5890\,\mathring{\mathrm{A}} \quad 3p\,^2P_{3/2}-3s\,^2S_{1/2}} \\
+    \mathrm{Na\,I \quad 5896\,\mathring{\mathrm{A}} \quad 3p\,^2P_{1/2}-3s\,^2S_{1/2}}
+\end{align*}
+而铝的丰度使用的是$3961.5\,\mathring{\mathrm{A}}$的共振跃迁。铁的丰度是由$\mathrm{Fe\,I}$和$\mathrm{Fe\,II}$的谱线拟合得出。之后是中子俘获形成的元素，研究者选择了碱金属锶和钡，分别是第一段和第二段s-过程的峰值元素，均使用一次电离的类氢离子的共振跃迁：
+\begin{align*}
+    \mathrm{Sr\,II}\ 4077\,\mathring{\mathrm{A}} \quad \mathrm{Sr\,II}\ 4215\,\mathring{\mathrm{A}} \\
+    \mathrm{Ba\,II}\ 4554\,\mathring{\mathrm{A}} \quad \mathrm{Sr\,II}\ 4937\,\mathring{\mathrm{A}}
+\end{align*}
+至于锂元素，在SDSS J0826+6125中没有观测到，而在SDSS J1341+4741中观测到了$6707\,\mathring{\mathrm{A}}$的锂双线，为$\mathrm{2s-2p}$的锐线系跃迁（注意对于碱金属没有$\Delta n\neq0$的限制）：
+\begin{align*}
+    \mathrm{Li\,I \quad 6707.8\,\mathring{\mathrm{A}} \quad 2p\,^2P_{3/2}^o-2s\,^2S_{1/2}} \\
+    \mathrm{Li\,I \quad 6707.9\,\mathring{\mathrm{A}} \quad 2p\,^2P_{1/2}^o-2s\,^2S_{1/2}}
+\end{align*}
+于是研究者们得到了各种元素相对丰度的值。对于SDSS J0826+6125，他们发现其碳含量较低而氮含量很高，被认为是恒星内部发生了对流和混合：碳被转化成氮的深层被运输到了恒星表面；还有一个稳定的不对称的$\mathrm{H}\alpha$谱线形状，很可能没有伴星与主星之间的质量传输。对于SDSS J1341+4741，其锂含量同样不高，而铁峰元素的含量，尤其是镍，说明这颗恒星的前身星可能是由一颗20-30太阳质量的恒星爆炸形成的II型超新星。作者们还发现，在同等金属丰度下，CEMP-no恒星的铬丰度会比EMP恒星更高，这可能会为前身星碳的来源提供重要的线索。
+
+\section*{参考文献}
+
+\begin{itemize}
+    \item Avrajit Bandyopadhyay, et al. 2018, ApJ, 859, 114
+    \item 《恒星大气物理》；汪珍如，曲钦岳；高等教育出版社；1993
+    \item \textit{Astronomical Spectroscopy}, Jonathan Tennyson, ICP, 2005
+    \item \url{https://www.nist.gov/pml/basic-atomic-spectroscopic-data-handbook}
+\end{itemize}
+
+
+
+
+
+
+
+
+\end{document}

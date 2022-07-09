@@ -3,23 +3,6 @@
 \usepackage{anyfontsize}
 \usepackage{amsmath}
 
-\usepackage[no-math]{fontspec}
-\setmainfont{TeX Gyre Termes}
-\usepackage{unicode-math}
-\unimathsetup{bold-style=ISO,sans-style=italic}
-\setmathfont{XITS Math}
-\AtBeginDocument{
-  \let\uglymathbf\mathbf
-  \renewcommand\mathbf\symbf
-  \let\uglymathsf\mathsf
-  \renewcommand\mathsf\symsf
-}
-
-\AtBeginDocument{
-  \let\uglyepsilon\epsilon
-  \renewcommand\epsilon\varepsilon
-}
-
 \usepackage{indentfirst}
 \setlength{\parindent}{0em}
 \usepackage{autobreak}
@@ -31,6 +14,16 @@
 
 \usepackage[fontset=none]{ctex}
 \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
 
 \begin{document}
 
@@ -55,24 +48,19 @@
     \]
     这个星系与我们的视向速度为：
     \[
-        v = cz = 1 \times 10^6\,\mathrm{m/s}
+        v = cz = 100.056\,\mathrm{km/s}
     \]
     由于$z>0$，星系在远离我们。
 
     \bigskip
     \item[2.]
-    经过测量估计，$\mathrm{H}40\alpha$的视向速度为：$v_\alpha = 53.00\,\mathrm{km/s}$，$\mathrm{H}50\beta$的视向速度为：$v_\beta = 656.56\,\mathrm{km/s}$，则两条谱线的红移分别为：
-    \[
-        z_\alpha = \frac{v_\alpha}{c} = 1.77 \times 10^{-4},\quad
-        z_\beta = \frac{v_\beta}{c} = 2.19 \times 10^{-3}
-    \]
     对于频率，红移$z = \dfrac{f_0-f}{f}$，其中$f$为观测到的频率，$f_0$为静止频率，则观测到$\mathrm{H}50\beta$的波长为：
     \[
-        f_\beta = \frac{f_{\alpha 0}}{1 + z_\beta} = 98.8066\,\mathrm{GHz}
+        f_\beta = \frac{f_{\alpha 0}}{1 + z_\beta}
     \]
-    而$f_{\beta0}$的真实红移应与$f_{\alpha0}$相同，即$z_\alpha=1.77\times10^{-7}$，于是有：
+    而$f_{\beta0}$的真实红移应与$f_{\alpha0}$相同，即$z_\alpha=\dfrac{v_\alpha}{c}$，于是有：
     \[
-        f_{\beta0} = f_\beta(1 + z_\alpha) = f_{\alpha0}\frac{c + v_\alpha}{c + v_\beta} = 98.824\,\mathrm{GHz}
+        f_{\beta0} = f_\beta(1 + z_\alpha) = \frac{f_{\alpha 0}}{1 + z_\beta}(1 + z_\alpha) = f_{\alpha0}\frac{c + v_\alpha}{c + v_\beta} = 99.225\,\mathrm{GHz}
     \]
 
     \bigskip
@@ -124,34 +112,27 @@
 
     \bigskip
     \item[4.]
-    由电偶极跃迁的选择定则，$4\mathrm{p}$态可以跃迁的路径如下：
-    4p-3s, 4p-3d, 4p-2s, 4p-1s, 3s-2p, 3d-2p, 2p-1s
+    由电偶极跃迁的选择定则，$4\mathrm{p}$态可以跃迁的路径如下：4p-3s, 4p-3d, 4p-2s, 4p-1s, 3s-2p, 3d-2p, 2p-1s
 
-    则它可以有6种波长：$R=1.0967758\times10^{7}\,\mathrm{m}^{-1}$
-    \[
-        \lambda_{4 \to 3} = 1.87563\,\mu\mathrm{m},\quad
-        \lambda_{4 \to 2} = 0.48627\,\mu\mathrm{m},\quad
-        \lambda_{4 \to 1} = 97.25476\,\mathrm{nm}
-    \]
-    \[
-        \lambda_{3 \to 2} = 0.65647\,\mu\mathrm{m},\quad
-        \lambda_{3 \to 1} = 0.10257\,\mu\mathrm{m},\quad
-        \lambda_{2 \to 1} = 121.56845\,\mathrm{nm}
-    \]
+    则它可以有5种谱线：（注意3s-2p和3d-2p产生同一谱线）
+    \begin{align*}
+        &\mathrm{P}\alpha\quad \lambda_{4 \to 3} = 1875.63\,\mathrm{nm} \\
+        &\mathrm{H}\beta\quad \lambda_{4 \to 2} = 486.27\,\mathrm{nm} \\
+        &\mathrm{Ly}\gamma\quad \lambda_{4 \to 1} = 97.25\,\mathrm{nm} \\
+        &\mathrm{H}\alpha\quad \lambda_{3 \to 2} = 656.47\,\mathrm{nm} \\
+        &\mathrm{Ly}\alpha\quad \lambda_{2 \to 1} = 121.57\,\mathrm{nm}
+    \end{align*}
 
-    由电偶极跃迁的选择定则，$4\mathrm{s}$态可以跃迁的路径如下：
-    4s-3p, 4s-2p, 3p-2s, 3p-1s, 2p-1s
+    同理，$4\mathrm{s}$态可以跃迁的路径如下：4s-3p, 4s-2p, 3p-2s, 3p-1s, 2p-1s
 
-    则它可以有5种波长：
-    \[
-        \lambda_{4 \to 3} = 1.87563\,\mu\mathrm{m},\quad
-        \lambda_{4 \to 2} = 0.48627\,\mu\mathrm{m}
-    \]
-    \[
-        \lambda_{3 \to 2} = 0.65647\,\mu\mathrm{m},\quad
-        \lambda_{3 \to 1} = 0.10257\,\mu\mathrm{m},\quad
-        \lambda_{2 \to 1} = 121.56845\,\mathrm{nm}
-    \]
+    则它可以有5种谱线：
+    \begin{align*}
+        &\mathrm{P}\alpha\quad \lambda_{4 \to 3} = 1875.63\,\mathrm{nm} \\
+        &\mathrm{H}\beta\quad \lambda_{4 \to 2} = 486.27\,\mathrm{nm} \\
+        &\mathrm{Ly}\beta\quad \lambda_{3 \to 1} = 102.57\,\mathrm{nm} \\
+        &\mathrm{H}\alpha\quad \lambda_{3 \to 2} = 656.47\,\mathrm{nm} \\
+        &\mathrm{Ly}\alpha\quad \lambda_{2 \to 1} = 121.57\,\mathrm{nm}
+    \end{align*}
 
     \bigskip
     \item[5.]
@@ -199,7 +180,7 @@
 
     同理，对于$\mathrm{H\,II}$，最大半径为：
     \[
-        r' = \sqrt[3]{\frac{3}{4\pi N}} = 287.9412\,\mu\mathrm{m}
+        r' = \sqrt[3]{\frac{3}{4\pi N'}} = 287.9412\,\mu\mathrm{m}
     \]
     解不等式$r' \geqslant n^2 a$得$n$最大可以取的正整数值为$n=2332$，即氢原子最高能级为$2332$。
 

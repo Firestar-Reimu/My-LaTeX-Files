@@ -1,0 +1,100 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage{titling}
+\setlength{\droptitle}{-6em}
+\preauthor{}
+\postauthor{}
+\predate{}
+\postdate{}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\linespread{1.5}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\begin{document}
+
+\title{\textbf{天体光谱学作业3}}
+\author{}
+\date{}
+\maketitle
+
+\begin{enumerate}
+    \item[1.]
+    考虑电偶极跃迁选择定则：
+    \begin{align*}
+        &\Delta L = -1, 0, 1\quad (L \neq 0) \\
+        &\Delta L = 0, \quad (L = 0) \\
+        &\Delta J = -1, 0, 1\quad (J \neq 0) \\
+        &\Delta J = 0, \quad (J = 0) \\
+        &\Delta S = 0 \\
+        &\Delta M = -1, 0, 1
+    \end{align*}
+    以及Laporte定则（宇称改变）。给出这些跃迁会产生哪些谱线（考虑精细结构能级）。
+    \begin{enumerate}
+        \item[(a)] $\mathrm{Ca\,I\ 4s 4p - 4s^2}$
+
+        \item[(b)] $\mathrm{Ca\,I\ 4s 5d - 4s 4f}$
+    \end{enumerate}
+
+    \bigskip
+    \item[2.]
+    \begin{enumerate}
+        \item[(a)] 试给出$\mathrm{N}^+$离子基态的电子组态，并解释其产生的哪个光谱项能量最低。
+
+        \item[(b)] 基态$\mathrm{N}^+$离子（只考虑能量最低的光谱项）和一个电子复合产生一系列的$\mathrm{N\,I}$的复合跃迁谱线。例如，由$\mathrm{5f}-\mathrm{4d}$跃迁产生的大量谱线在光学波段。请给出$\mathrm{5f}-\mathrm{4d}$的上下能级的光谱项。
+        
+        \item[(c)] 如果忽略精细结构的影响，一共有多少电偶极允许的跃迁出现？这其中哪个跃迁可能是最强的？
+    \end{enumerate}
+
+    \bigskip
+    \item[3.]
+    考虑处于$\mathrm{3d}\,^2\mathrm{D}$光谱项的氢原子。
+    \begin{enumerate}
+        \item[(a)] 若处在强磁场下，能看到多少个能级？
+
+        \item[(b)] 在较弱的磁场下，$\mathrm{3d\,^2D}_{3/2}$和$\mathrm{3d\,^2D}_{5/2}$的能级需要单独考虑。分别计算$3\,^2\mathrm{D}_{3/2}$和$3\,^2\mathrm{D}_{5/2}$能级的Lande因子$g$并给出能级分裂情况。
+    \end{enumerate}
+
+    \bigskip
+    \item[4.]
+    Ca I 的共振线$\mathrm{4s4p\,^1P^o}-\mathrm{4s^2\,^1S}$的波数为$\tilde{\nu}=23652.304\,\mathrm{cm}^{−1}$。钙原子处于$B=1\,\mathrm{T}$的均匀磁场下会发生正常Zeeman分裂。计算分裂出的各能级对应的波数$\tilde{\nu}$以及他们之间的间距。标记它们是$\pi$还是$\sigma$线。若想分辨这些谱线，光谱分辨率至少为多少？（Bohr磁子$\mu_\mathrm{B}=\dfrac{e\hbar}{2m_e}=9.274\times10^{-24}\,\mathrm{J/T}$）
+
+    参考文献：\url{https://physics.nist.gov/PhysRefData/Handbook/Tables/calciumtable3.htm}
+
+    \bigskip
+    \item[5.]
+    汞原子Hg的原子序数$Z=80$。
+    \begin{enumerate}
+        \item[(a)]
+        给出$\mathrm{Hg}^+$的$\mathrm{5d^9 6s^2}$的完整电子组态。
+
+        \item[(b)]
+        $\mathrm{Hg}^+$的基态电子组态为$\mathrm{5d^{10} 6s}$，给出该组态的光谱项和能级。
+
+        \item[(c)]
+        解释为什么$\mathrm{5d^9 6s^2\,^2D_{5/2}}$是亚稳态？
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

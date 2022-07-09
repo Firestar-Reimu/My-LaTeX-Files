@@ -1,0 +1,85 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+
+\usepackage{titling}
+\setlength{\droptitle}{-6em}
+\preauthor{}
+\postauthor{}
+\predate{}
+\postdate{}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\linespread{1.5}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+\AtBeginDocument{
+  \let\uglyepsilon\epsilon
+  \renewcommand\epsilon\varepsilon
+}
+
+\begin{document}
+
+\title{\textbf{天体光谱学作业1}}
+\author{}
+\date{}
+\maketitle
+
+\begin{enumerate}
+    \item[1.] 我们在观测一个遥远的星系时，观测到了分立的氢发射线，观测波长$\lambda$和静止波长$\lambda_0$如下表所示。证明这些观测到的发射线发生了同样的Doppler位移。这个星系相对于地球的运动速度是多少？是在靠近我们还是远离我们？
+    \begin{table}[!ht]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            $\lambda/\mathrm{nm}$ & $\lambda_0/\mathrm{nm}$ \\
+            \hline
+            411.54 & 410.17 \\
+            \hline
+            435.50 & 434.05 \\
+            \hline
+            487.75 & 486.13 \\
+            \hline
+            658.47 & 656.28 \\
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \item[2.] P.Cox在1995年对η Carinae*的观测中，测量了氢原子的两根发射线$\mathrm{H}40\alpha$和$\mathrm{H}50\beta$的Doppler速度，如下表所示。这里的速度是相对于在静止坐标系下$\mathrm{H}40\alpha$的频率$99.023\,\mathrm{GHz}$计算的。请估计静止坐标系下$\mathrm{H}50\beta$的频率。
+    \begin{table}[!ht]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            $\mathrm{H}40\alpha$ & $\mathrm{H}50\beta$ \\
+            \hline
+            $-55.9\,\mathrm{km/s}$ & $-666.1\,\mathrm{km/s}$ \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+    参考文献：\url{https://adsabs.harvard.edu/pdf/1995A%26A...295L..39C}
+
+    \item[3.] 用氢原子Rydberg常数$R_{\mathrm{H}}$表达氢原子的能级。假设$R_{\mathrm{H}}=109677.58\,\mathrm{cm^{-1}}$，推导氢原子$\mathrm{Ly}\alpha$的波数。解释对于一个重元素类氢离子，用Rydberg常数$R_\infty=109737.31\,\mathrm{cm^{-1}}$比用氢原子Rydberg常数 $R_{\mathrm{H}}$更合适。并借此估计铁的类氢离子$\mathrm{Fe}^{25+}$的$\mathrm{Ly}\alpha$的波数。
+
+    \item[4.] 一个质子和一个电子结合形成一个氢原子，并且跃迁到了4p态，之后会在什么波长处观测到复合线？用标准的氢原子光谱线标记方式来标记这些辐射的名字。如果一开始电子跃迁到4s态，复合线的波长又是多少？
+
+    \item[5.] 氢原子$\mathrm{H}\alpha$静止波长为$6564.71\mathring{\mathrm{A}}$，那么氘原子的$\mathrm{H}\alpha$辐射波长是多少？需要多高的光谱分辨率才能分辨这两根谱线？计算说明，如果要分辨氢原子和氘原子的$\mathrm{Ly}\alpha$谱线，需要更大还是更小的分辨率？已知若电子质量为$m_e$，则氢原子质量$M_{\mathrm{H}}=1836.1m_e$,氘原子质量$M_{\mathrm{D}}=3670.4m_e$。
+
+    \item[6.] 一个典型恒星的氢原子数密度$N\sim10^{16}\,\mathrm{cm^{-3}}$，一个典型$\mathrm{H\,II}$区中氢原子的数密度约为$N'\sim10^{4}\,\mathrm{cm^{-3}}$。在这两种不同的情形下，氢原子最高能级大约是多少？
+
+\end{enumerate}
+
+\end{document}
