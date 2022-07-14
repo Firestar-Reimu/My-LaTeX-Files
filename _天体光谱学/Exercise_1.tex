@@ -4,7 +4,6 @@
 \usepackage{amsmath}
 
 \usepackage{titling}
-\setlength{\droptitle}{-6em}
 \preauthor{}
 \postauthor{}
 \predate{}
@@ -19,18 +18,19 @@
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
 \linespread{1.5}
 
-\usepackage[fontset=none]{ctex}
-\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
-\setCJKmonofont{Noto Sans Mono CJK SC}
-
 \usepackage{newtxtext}
 \usepackage{newtxmath}
+\defaultfontfeatures{}
 \usepackage{bm}
 \renewcommand\mathbf\bm
 \AtBeginDocument{
   \let\uglyepsilon\epsilon
   \renewcommand\epsilon\varepsilon
 }
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmonofont{Noto Sans Mono CJK SC}
 
 \begin{document}
 
