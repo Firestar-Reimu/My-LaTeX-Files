@@ -18,17 +18,18 @@
 \usepackage{indentfirst}
 \setlength{\parindent}{0em}
 \usepackage{parskip}
-\linespread{1.25}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\linespread{1.25}
+\raggedbottom
 
 \usepackage[fontset=none]{ctex}
 \usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 \setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
-\newCJKfontfamily\kaishu{KaiTi}
+\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
+\newCJKfontfamily\kaishu{Adobe Kaiti Std}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,bending}
@@ -44,7 +45,6 @@
 \date{\kaishu\Large\today}
 \maketitle
 
-\newpage
 \chapter*{理论力学导论}
 
 首先要介绍的是用\textbf{广义坐标}$q$和\textbf{广义速度}$\dot{q}$描述一个力学系统。广义坐标不一定具有长度的量纲，也可以是角度等其它物理量（这一点在Hamilton力学中体现更加明显），而广义速度是广义坐标对时间的导数。广义坐标的选取具有一定的任意性，如讨论弹簧振子时一般采用质点相对于平衡位置的位移作为广义坐标，而讨论圆周运动时则采用$(r,\theta)$作为两个广义坐标。
@@ -53,7 +53,7 @@
 \[
 f_m(x,t) = f_m(x_1,x_2,...,x_N,t) = 0,\quad m=1,2,...,k
 \]
-这样的方程被称为\textbf{完整约束}，其余形式的约束（例如含有广义速度$\dot{q}$或者形式为不等式）统称为\textbf{非完整约束}。对于一个有$k$个完整约束的力学体系，其自由度个数为$M = 3N-k$。广义坐标是一个完整约束力学系统所有独立的自由度的一个最小集合。此时可以用：
+这样的方程称为\textbf{完整约束}，其余形式的约束（例如含有广义速度$\dot{q}$或者形式为不等式）统称为\textbf{非完整约束}。对于一个有$k$个完整约束的力学体系，其自由度个数为$M = 3N-k$。广义坐标是一个完整约束力学系统所有独立的自由度的一个最小集合。此时可以用：
 \[
 x_i = x_i(q_1,q_2,...q_{3N-k},t),\quad i=1,2,...,N
 \]
@@ -103,7 +103,6 @@ Lagrange量对时间的积分被称为一个体系的\textbf{作用量}$\boxed{S
 \]
 其中$M$为自由度个数。这是作用量$S$取极值的\textbf{必要条件}，其地位相当于经典力学中的运动方程——Newton第二定律。最小作用量原理和变分法告诉我们，一旦给定了一个力学体系的Lagrange量（作用量），体系的运动就由Euler-Lagrange方程决定。
 
-\newpage
 \chapter*{对称性与守恒律}
 
 如果系统具有\textbf{空间平移不变性}，即在变换$\bm{x}_2 = \bm{x}_1 + \Delta\bm{x}$下，系统的Lagrange量不变。这就要求：
@@ -146,13 +145,7 @@ Lagrange量对时间的积分被称为一个体系的\textbf{作用量}$\boxed{S
 \[
 \boxed{E = H = p_i \dot{q}_i - L}
 \]
-则$\dfrac{\mathrm{d}E}{\mathrm{d}t} = 0$，即\textbf{能量对时间守恒}。对于保守体系，可以取$E = H = T+V$。
-
-这里还有一项推论是所谓\textbf{Hamilton正则方程}：
-\[
-\boxed{\dot{q}_i = \frac{\partial H}{\partial p_i},\quad \dot{p}_i = -\frac{\partial H}{\partial q_i}}
-\]
-推导如下：
+则$\dfrac{\mathrm{d}E}{\mathrm{d}t} = 0$，即\textbf{能量对时间守恒}。对于保守体系，能量为动能与势能之和，即$\boxed{H = T + V}$。
 
 由$H = p_i \dot{q}_i - L$得：
 \begin{align*}
@@ -166,9 +159,9 @@ Lagrange量对时间的积分被称为一个体系的\textbf{作用量}$\boxed{S
 \[
 \mathrm{d}H = \frac{\partial H}{\partial p_i}\mathrm{d}p_i + \frac{\partial H}{\partial q_i}\mathrm{d}q_i + \frac{\partial H}{\partial t}\mathrm{d}t
 \]
-比较即得：
+对比即得\textbf{Hamilton正则方程}：
 \[
-\dot{q}_i = \frac{\partial H}{\partial p_i},\quad \dot{p}_i = -\frac{\partial H}{\partial q_i}
+\boxed{\dot{q}_i = \frac{\partial H}{\partial p_i},\quad \dot{p}_i = -\frac{\partial H}{\partial q_i}}
 \]
 如果系统具有\textbf{转动不变性}，即在无穷小转动$\Delta\bm{\phi}$下，有改变：$\Delta\bm{x} = \Delta\bm{\phi} \times \bm{x}$，$\Delta\bm{\dot{x}} = \Delta\bm{\phi} \times \bm{\dot{x}}$，系统的Lagrange量不变要求：
 \[
@@ -180,18 +173,13 @@ Lagrange量对时间的积分被称为一个体系的\textbf{作用量}$\boxed{S
 \]
 则$\dfrac{\mathrm{d}\bm{J}}{\mathrm{d}t} = 0$，即\textbf{角动量对时间守恒}。
 
-\textbf{一个体系的角动量一般依赖于坐标原点的选取}，如果将坐标原点平移一个常矢量$\Delta\bm{x}$，即在变换$\bm{x}_2 = \bm{x}_1 + \Delta\bm{x}$下，体系的总角动量会变为：
-\[
-\boxed{\bm{J}_2 = \bm{J}_1 + \Delta\bm{x} \times \bm{p}}
-\]
+\textbf{一个体系的角动量一般依赖于坐标原点的选取}，如果将坐标原点平移一个常矢量$\Delta\bm{x}$，即在变换$\bm{x}_2 = \bm{x}_1 + \Delta\bm{x}$下，体系的总角动量会变为$\bm{J}_2 = \bm{J}_1 + \Delta\bm{x} \times \bm{p}$。
+
 如果系统具有\textbf{尺度变换不变性}，即对系统作变换：$\bm{x}_2 = \lambda \bm{x}_1$，$t_2 = \mu t_1$，这相当于用不同的尺子度量长度和时间，称为\textbf{尺度变换}，此时系统的运动方程不变。在尺度变换下，我们考虑一类特殊的函数——\textbf{齐次函数}。据定义，$k$次齐次函数应满足：
 \[
 \boxed{f(\lambda x_1, \lambda x_2,...,\lambda x_M) = \lambda^k f(x_1,x_2,...,x_M)}
 \]
 且有\textbf{Euler定理}（上式两边对$\lambda$求导并令$\lambda=1$）：
-\[
-\sum_i^M \frac{\partial f(\lambda x_1, \lambda x_2,...,\lambda x_M)}{\partial(\lambda x_i)} \cdot x_i = k\lambda^{k-1}f(x_1,x_2,...,x_M)
-\]
 \[
 \boxed{\sum_i^M x_i \cdot \frac{\partial f}{\partial x_i} = kf}
 \]
@@ -203,11 +191,11 @@ L = \left(\frac{\lambda}{\mu}\right)^2 T - \lambda^k V
 \[
 \left(\frac{t'}{t}\right)^2 = \left(\frac{l'}{l}\right)^{2-k}
 \]
-其中$t'$，$l'$和$t$，$l$分别是两个相似轨道上的特征时间和特征尺度。在太阳系的行星的周期运动中,势能$V(\bm{r}) = -\dfrac{GMm}{\bm{r}}$恰好是坐标的齐次函数（$k=-1$）。因此，上面的结论就是行星周期的平方之比等于其轨道尺寸（半长轴）的立方之比，这就是著名的\textbf{开普勒第三定律}：
+其中$t'$，$l'$和$t$，$l$分别是两个相似轨道上的特征时间和特征尺度。在太阳系的行星的周期运动中,势能$V(\bm{r}) = -\dfrac{GMm}{\bm{r}}$恰好是坐标的齐次函数（$k=-1$）。因此，上面的结论就是行星周期的平方之比等于其轨道尺寸（半长轴）的立方之比，这就是著名的\textbf{Kepler第三定律}：
 \[
 \boxed{\left(\frac{T'}{T}\right)^2 = \left(\frac{a'}{a}\right)^3}
 \]
-另外一个重要的例子是所谓\textbf{位力定理}。我们考虑一个多粒子的力学体系并且假定体系局限在有限的空间范围内运动（例如：太阳系中行星的运动，容器中空气分子的运动等）。由于体系的动能是速度的二次齐次函数，我们有：
+另外一个重要的例子是所谓\textbf{Virial定理}。我们考虑一个多粒子的力学体系并且假定体系局限在有限的空间范围内运动（例如太阳系中行星的运动、容器中空气分子的运动等）。由于体系的动能是速度的二次齐次函数，我们有：
 \[
 2T = \sum_i \dot{x}_i \cdot p_i = \frac{\mathrm{d}}{\mathrm{d}t}\left(\sum_i x_i \cdot p_i\right) - \sum_i x_i \cdot \dot{p}_i
 \]
@@ -219,13 +207,14 @@ L = \left(\frac{\lambda}{\mu}\right)^2 T - \lambda^k V
 \[
 2\langle T \rangle = \left\langle \sum_i x_i \cdot \frac{\partial V}{\partial x_i} \right\rangle
 \]
-其中我们用$\langle\cdot\rangle$来表示对力学量的长时间平均值。如果势能$V$是坐标的$k$次齐次函数，由Euler定理得：
+其中我们用$\langle\cdot\rangle$来表示对力学量的长时间平均值。
+
+如果势能$V$是坐标的$k$次齐次函数，由Euler定理得：
 \[
 2\langle T \rangle = k\langle V \rangle
 \]
-也就是说，系统的动能的平均与势能的平均有着简单的比例关系。这个关系的两个重要特例是有心力场中的开普勒问题（$k=-1$）和谐振子（$k=2$）。对于开普勒问题,动能平均是势能平均（小于零）的绝对值的一半，从而总能量是势能平均的一半；对于谐振子，动能平均与势能平均相等。
+也就是说，系统的动能的平均与势能的平均有着简单的比例关系。这个关系的两个重要特例是有心力场中的Kepler问题（$k=-1$）和谐振子（$k=2$）。对于Kepler问题,动能平均是势能平均（小于零）的绝对值的一半，从而总能量是势能平均的一半；对于谐振子，动能平均与势能平均相等。
 
-\newpage
 \chapter*{非惯性系的力学}
 
 在经典力学中，所有的物理都体现在体系的经典运动方程中。也就是说，即使系统的Lagrange量或作用量改变了，只要体系的经典运动方程仍然保持不变，经典的物理就没有改变（这一点在量子体系中并不一定正确）。这个事实意味着一个经典力学体系的Lagrange量本身的数值并没有什么绝对的意义，只是由它导出的经典运动方程，即Euler-Lagrange方程才有意义。例如，我们完全可以在Lagrange量上加上一个\textbf{给定函数对于时间的全微分}：
@@ -282,7 +271,7 @@ L_3 = \frac{1}{2}m\bm{v}_3^2 + m\bm{v}_3\cdot(\bm{\omega}\times\bm{x}_3) + \frac
 \[
 \boxed{m\frac{\mathrm{d}\bm{v}}{\mathrm{d}t} = -\frac{\partial V}{\partial\bm{x}} - m\frac{\mathrm{d}\Delta\bm{v}}{\mathrm{d}t} + m\bm{x}\times\bm{\dot{\omega}} + 2m\bm{v}\times\bm{\omega} + m\bm{\omega}\times(\bm{x}\times\bm{\omega})}
 \]
-与惯性系中的运动方程比较我们发现，这个运动方程中多出了四项惯性力。第一项$- m\dfrac{\mathrm{d}\Delta\bm{v}}{\mathrm{d}t}$是由于非匀速的平动造成的；第二项$m\bm{x}\times\bm{\dot{\omega}}$是由于非匀速的转动引起的惯性力；第三项$2m\bm{v}\times\bm{\omega}$是著名的Coriolis力；第四项$m\bm{\omega}\times(\bm{x}\times\bm{\omega})$是惯性离心力。
+与惯性系中的运动方程比较我们发现，这个运动方程中多出了四项惯性力。第一项$- m\dfrac{\mathrm{d}\Delta\bm{v}}{\mathrm{d}t}$是非匀速的平动造成的；第二项$m\bm{x}\times\bm{\dot{\omega}}$是非匀速的转动引起的惯性力；第三项$2m\bm{v}\times\bm{\omega}$是著名的Coriolis力；第四项$m\bm{\omega}\times(\bm{x}\times\bm{\omega})$是惯性离心力。
 
 \chapter*{中心力场}
 
@@ -310,7 +299,7 @@ Lagrange量的转动不变性决定了在这样的一个\textbf{中心力场中�
 \[
 J = \frac{\partial L}{\partial \dot{\phi}} = mr^2 \dot{\phi} = \mathrm{const.}
 \]
-这实际上就是著名的\textbf{开普勒第二定律}：行星与太阳之间的连线在单位时间内扫过的面积是常数：
+这实际上就是著名的\textbf{Kepler第二定律}：行星与太阳之间的连线在单位时间内扫过的面积是常数：
 \[
 \frac{\mathrm{d}S}{\mathrm{d}t} = \frac{1}{2}r^2 \dot{\phi} = \frac{J}{2m} = \mathrm{const.}
 \]
@@ -343,7 +332,6 @@ V_{\mathrm{eff}}(r) = V(r) + \frac{J^2}{2mr^2}
 \]
 其反函数即为粒子的轨道$r(\phi)$。
 
-\newpage
 \chapter*{Kepler问题}
 
 如果有心势的大小反比于距离：
@@ -395,13 +383,12 @@ v_\mathrm{peri} = \sqrt{\frac{\alpha}{ma}\cdot\frac{1+e}{1-e}},\quad v_\mathrm{a
 \[
 T = \frac{\pi ab}{v_S} = 2\pi a\sqrt{\frac{ma}{\alpha}}
 \]
-最后，我们简单讨论一下开普勒问题的特殊性。开普勒问题中轨道的闭合性实际上意味着距离反比有心势具有更高的对称性。这种对称性并不是由于时空基本对称性而是由于势能的特殊形式造成的，因此被称为\textbf{动力学对称}。动力学对称性的存在直接的后果就是有多余的守恒量，例如所谓\textbf{Laplace-Runge-Lenz矢量}，又称离心率矢量：
+最后，我们简单讨论一下Kepler问题的特殊性。Kepler问题中轨道的闭合性实际上意味着距离反比有心势具有更高的对称性。这种对称性并不是由于时空基本对称性而是由于势能的特殊形式造成的，因此被称为\textbf{动力学对称}。动力学对称性的存在直接的后果就是有多余的守恒量，例如所谓\textbf{Laplace-Runge-Lenz矢量}，又称\textbf{离心率矢量}：
 \[
 \bm{M} = \bm{p}\times\bm{J} + m\alpha\frac{\bm{x}}{r}
 \]
 这个矢量大小正比于离心率$e$，方向沿从焦点到近日点的方向。它是常矢量（欲验证之直接对时间求导即可）保证了轨道的闭合。
 
-\newpage
 \chapter*{潮汐现象}
 
 我们考虑两个球形的、靠万有引力束缚在一起的星体，例如地球与太阳，或者地球与月亮。首先取质心系，坐标原点为两星体的质心C。为了进一步简化讨论，我们假定两个星体的运动轨道是一个正圆（这一点对于地日系统、地月系统差不多都是成立的）。如果两个星体公转的角速度为$\omega$。现在我们取另外一个相对于质心系旋转的参照系，其旋转的角速度正好等于$\omega$。在这个非惯性参照系中，两个星体是相对静止的。此处公转的角速度：
@@ -463,7 +450,7 @@ V(\bm{x}) = -\frac{Gm_1}{r} - \frac{Gm_2}{\|\bm{X} - \bm{x}\|} - \frac{1}{2}\ome
 \[
 V(\bm{x}) = -\frac{Gm_1}{r} - \frac{Gm_2}{R} - \frac{1}{2}\omega^2 r^2 - \frac{1}{2}\omega^2\bm{x}_1^2 - \frac{3Gm_2}{2R}\left(\frac{\bm{X}\cdot\bm{x}}{R^2}\right)^2
 \]
-上式中的前四项都不依赖于点$\bm{x}$在星体A表面的位置（$\bm{x}$的方向）。如果星体A表面是球体，这些项都是恒定的。但是，最后一项却依赖于点$\bm{x}$在球面的位置。具体来说，当$\bm{x}$位于两个星体的连线与星体A表面的交点时（也就是说矢量$\bm{x}$与矢量$\bm{X}$平行或反平行时），这一项的贡献会取最小值（势能$V(\bm{x})$最低），相反，当$\bm{x}$与连线方向$\bm{X}$垂直时，$V(\bm{x})$的最后一项取最大值（为零）。由于最后一项与前几项相比是小的，因此如果不考虑最后一项的贡献，势能在星体A表面的分布是均匀和各向同性的。如果考虑到最后一项的修正，那么势能在沿着两个星体中心连线的方向会比其他方向更低一些。因此，如果星体A表面具有流动性的液体物质，比如地球表面的海洋，那么这些流动性的液体就会比较倾向于集中到沿着两个星体中心连线的方向上去，这就造成了潮汐。$V(\bm{x})$的展开式还告诉我们，对地球上一个固定的地点来说，由于地球的自转，该地的引潮力一天之内大约会有两次（而不是一次!）相隔约半天时间的极大值（$\bm{x}$与$\bm{X}$平行或反平行）。对于月球引起的潮汐，其相邻两次大潮的间隔是半个太阴日，即月球相邻两次上中天间隔的一半，约为$12^h 25^m$。
+上式中的前四项都不依赖于点$\bm{x}$在星体A表面的位置（$\bm{x}$的方向）。如果星体A表面是球体，这些项都是恒定的。但是，最后一项却依赖于点$\bm{x}$在球面的位置。具体来说，当$\bm{x}$位于两个星体的连线与星体A表面的交点时（也就是说矢量$\bm{x}$与矢量$\bm{X}$平行或反平行时），这一项的贡献会取最小值（势能$V(\bm{x})$最低），相反，当$\bm{x}$与连线方向$\bm{X}$垂直时，$V(\bm{x})$的最后一项取最大值（为零）。由于最后一项与前几项相比是小的，因此如果不考虑最后一项的贡献，势能在星体A表面的分布是均匀和各向同性的。如果考虑到最后一项的修正，那么势能在沿着两个星体中心连线的方向会比其他方向更低一些。因此，如果星体A表面具有流动性的液体物质，比如地球表面的海洋，那么这些流动性的液体就会比较倾向于集中到沿着两个星体中心连线的方向上去，这就造成了潮汐。$V(\bm{x})$的展开式还告诉我们，对地球上一个固定的地点来说，由于地球的自转，该地的引潮力一天之内大约会有两次（而不是一次！）相隔约半天时间的极大值（$\bm{x}$与$\bm{X}$平行或反平行）。对于月球引起的潮汐，其相邻两次大潮的间隔是半个太阴日，即月球相邻两次上中天间隔的一半，约为$12^h 25^m$。
 
 与这一项势能相对应的力被称为\textbf{引潮力}。采用球坐标$(r,\theta,\phi)$分析，设原点在星体1中心，$+\bm{\hat{z}}$方向与$\bm{X}$同向，可以得出引潮力的表达式：
 \begin{align*}
@@ -474,7 +461,6 @@ F(\bm{x})
 \end{align*}
 公式告诉我们，引潮力取决于星体B的质量$m_2$（与之成正比）以及它与星体A的距离$R$（与其三次方成反比）。具体的分析表明：太阳和月亮都会对地球上的潮汐造成影响，但是由于月亮比较近，因此月亮的影响反而更重要一些，尽管它的质量远小于太阳的质量。公式的第一项是径向分量，第二项是切向分量，其总的效果是将等势面从一个球面“拉扁”、“拉长”，产生高潮和低潮。
 
-\newpage
 \chapter*{受限三体问题与Lagrange点}
 
 在经典牛顿力学的框架中，所谓\textbf{三体问题}是指任意质量的三个质点，假定相互之间只有牛顿万有引力的相互作用，该三体系统在任意初始条件下运动轨迹的求解问题。这个问题实际上远比两体问题复杂得多。事实上，对于一般的三
@@ -482,7 +468,7 @@ F(\bm{x})
 \[
 m_1 \gg m,\quad m_2 \gg m
 \]
-在这种情形下，最轻的质量所产生的引力场对于另外两个大质量物体的运动之影响完全可以忽略。也就是说，这个问题其实可以化简为两个大质量物体$m_1$和$m_2$的两体问题，它们的轨道由前面讨论的开普勒问题的解给出；而最轻的质量$m$只是在$m_1$和$m_2$所形成的固定的引力场之中运动而已。这类问题的最典型的应用就是考虑地球、月球和人造卫星之间的三体问题，或者太阳、地球、卫星之间的三体问题。无论是哪一类，人造卫星的质量都比太阳、地球或月球要小很多，因此它的存在并不会对日地或者月地的正常轨道有任何可观测的影响。我们称这类问题为\textbf{受限三体问题}。
+在这种情形下，最轻的质量所产生的引力场对于另外两个大质量物体的运动之影响完全可以忽略。也就是说，这个问题其实可以化简为两个大质量物体$m_1$和$m_2$的两体问题，它们的轨道由前面讨论的Kepler问题的解给出；而最轻的质量$m$只是在$m_1$和$m_2$所形成的固定的引力场之中运动而已。这类问题的最典型的应用就是考虑地球、月球和人造卫星之间的三体问题，或者太阳、地球、卫星之间的三体问题。无论是哪一类，人造卫星的质量都比太阳、地球或月球要小很多，因此它的存在并不会对日地或者月地的正常轨道有任何可观测的影响。我们称这类问题为\textbf{受限三体问题}。
 
 尽管对于$m_1$和$m_2$构成的两体系统来说，其任意的圆锥曲线的轨道都是可能的，为了与实际更接近些，我们还是加上两者实际上按照圆轨道运行。这个假设不仅仅对于月地系统是正确的，而且对于太阳系的各个行星与太阳构成的系统基本上也都是对的。从上节的讨论我们知道，选取一个与两个星体一同转动的非惯性系是方便的。这个转动系的原点可以选择在两个星体的质心位置，并设$Oxy$平面即为它们的轨道平面，则转动的角速度沿$\bm{\hat{z}}$方向：
 \[
@@ -594,7 +580,7 @@ $\alpha$和$\beta$皆为大于0的待定参数（常数），于是我们给出�
 \end{align*}
 对于日地系统而言，$\varepsilon=3.003\times10^{-6}$，因此$L_1$和$L_2$位于距离地球大约$0.01\,\mathrm{AU}$的地方。另外一个共线的Lagrange点$L_3$基本上位于与地球隔着太阳相对的地方，它在地球轨道以外（$x_3>R$），但比地球更靠近太阳。这是因为在一级近似下：
 \[
-    r_1 = \frac{\epsilon}{1+\epsilon} \approx \epsilon,\quad r_2 = \frac{1}{1+\epsilon} \approx 1 - \epsilon,\quad x_3 = 1 + \frac{5}{12}\epsilon
+    r_1 = \frac{\varepsilon}{1+\varepsilon} \approx \varepsilon,\quad r_2 = \frac{1}{1+\varepsilon} \approx 1 - \varepsilon,\quad x_3 = 1 + \frac{5}{12}\varepsilon
 \]
 注意我们是在质心系中考虑，而太阳也绕着日地系统的质心旋转。地球到太阳的距离为：
 \[
@@ -602,11 +588,11 @@ $\alpha$和$\beta$皆为大于0的待定参数（常数），于是我们给出�
 \]
 $L_3$点到太阳的距离为：
 \[
-    x_3 - r_1 = 1 - \frac{7}{12}\epsilon
+    x_3 - r_1 = 1 - \frac{7}{12}\varepsilon
 \]
 这小于地球到太阳的距离（显然这对任意二体系统都适用）。
 
-$L_1$和$L_2$的一阶项：（如果恢复$R$的量纲）
+$L_1$和$L_2$的一阶项（如果恢复$R$的量纲）：
 \[
 r_H = \sqrt[3]{\frac{\varepsilon}{3}}R = \sqrt[3]{\frac{m_2}{3m_1}}R
 \]
