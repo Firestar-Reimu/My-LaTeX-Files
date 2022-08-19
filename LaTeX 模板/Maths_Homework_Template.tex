@@ -21,10 +21,8 @@
 % 且对 \mathscr 和 \mathcal 的粗体直接使用 \mathbfscr 和 \mathbfcal
 
 % Latin Modern 风格设置（默认）
-% 需要 mathrsfs 提供 \mathscr
 \usepackage{unicode-math}
 \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
-\usepackage{mathrsfs}
 
 % Times New Roman 风格设置
 % 不需要 fontspec 和 unicode-math
@@ -57,7 +55,7 @@
 
 % Linux Libertine 风格设置
 % 不需要 fontspec 和 unicode-math
-% \usepackage[libertinus]{newtx}
+% \usepackage[libertine]{newtx}
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
@@ -120,12 +118,12 @@
 
 % 数学特殊字体
 % 可以自行配置 \mathcal \mathscr \mathfrak \mathbb 等字体样式
-\usepackage[scr=rsfso]{mathalpha}
+\usepackage[scr=rsfs]{mathalpha}
 
 % 中文
 % \usepackage[fontset=none]{ctex}
-% \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium]
-% \setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold]
+% \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=Adobe KaiTi Std]
+% \setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold,ItalicFont=Adobe FangSong Std]
 
 % \epsilon 符号重定义
 \AtBeginDocument{
@@ -142,22 +140,23 @@
     \maketitle
 
     \textbf{Short Math Guide: \url{http://tug.ctan.org/info/short-math-guide}.}
-    
+
     \textbf{Short Math Guide (Chinese version): \url{https://github.com/hoganbin/short-math-guide}}.
 
+    \bigskip
     \begin{enumerate}
 
         \item
-        \textparagraph\ Inline equations for simple math: $1+1=2$.
-        
+        \textparagraph\ Inline equations for simple math: $\mathbf{p} = \hbar\mathbf{k}$, $E = \hbar\mathbf{\omega}$.
+
         \textparagraph\ Centered equations for more involved or important equations:
         \begin{equation}
-            \frac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{a(x)} = a'(x)\mathrm{e}^{a(x)}
+            \mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i
         \end{equation}
         % 如果想要公式编号重新从 1 开始，可以在该公式前使用命令：
         % \setcounter{equation}{0}
         \begin{equation}
-            \mathbf{p} = \hbar\mathbf{k}
+            \frac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{a(x)} = a'(x)\mathrm{e}^{a(x)}
         \end{equation}
         \begin{equation}
         \frac{\|\mathsf{A}\mathbf{x}\|_\infty}{\|\mathbf{x}\|_\infty} = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
@@ -206,18 +205,15 @@
         \end{align*}
 
         \item
-        \begin{align*}
-            u(x,t)
-            &= \sum_{n=0}^\infty X_n(x)Y_n(y) \\
-            &= \frac{8a^2}{\pi^3}\sum_{k=0}^\infty \frac{1}{(2k+1)^3}\left(1 - \frac{\cosh\dfrac{2k+1}{a}\pi y}{\cosh\dfrac{2k+1}{2a}\pi b}\right)\sin\frac{2k+1}{a}\pi x
-        \end{align*}
+        \[
+            u(x,t) = \sum_{n=0}^\infty X_n(x)Y_n(y) = \frac{8a^2}{\pi^3}\sum_{k=0}^\infty \frac{1}{(2k+1)^3}\left(1 - \frac{\cosh\dfrac{2k+1}{a}\pi y}{\cosh\dfrac{2k+1}{2a}\pi b}\right)\sin\frac{2k+1}{a}\pi x
+        \]
 
         \item
         \begin{align*}
             \mathscr{L}\left\lbrace\frac{1-\cos\omega t}{t}\right\rbrace
-            &=\int_{p}^{\infty}\left(\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}\right)\mathrm{d}t\\
-            &=\ln p-\frac{1}{2}\ln(p+\mathrm{i}\omega)-\frac{1}{2}\ln(p-\mathrm{i}\omega)\bigg|_{p}^{\infty}\\
-            &=\frac{1}{2}\ln\frac{p^2}{p^2+\omega^2}\bigg|_{p}^{\infty}\\
+            &=\int_{p}^{\infty}\left(\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}\right)\mathrm{d}t \\
+            &=\ln p-\frac{1}{2}\ln(p+\mathrm{i}\omega)-\frac{1}{2}\ln(p-\mathrm{i}\omega)\bigg|_{p}^{\infty} \\
             &=\frac{1}{2}\ln\frac{p^2+\omega^2}{p^2}
         \end{align*}
 
