@@ -22,36 +22,32 @@
 
 % Latin Modern 风格设置（默认）
 \usepackage{unicode-math}
-\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+\usepackage[scr=rsfs]{mathalpha}
 
 % Times New Roman 风格设置
-% 不需要 fontspec 和 unicode-math
-% \usepackage{newtxtext}
-% \usepackage{newtxmath}
-% \defaultfontfeatures{}
-% \usepackage{bm}
-% \renewcommand\mathbf\bm
-
-% 第二种 Times New Roman 风格设置
 % \usepackage{fontspec}
 % \setmainfont{XITS}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
 % \setmathfont{XITS Math}
+% \setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
 
-% 第三种 Times New Roman 风格设置
+% 第二种 Times New Roman 风格设置
 % \usepackage{fontspec}
 % \setmainfont{STIX Two Text}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
 % \setmathfont{STIX Two Math}
+% \setmathfont[range={\mathscr,\mathbfscr},StylisticSet=1]{STIX Two Math}
 
-% 第四种 Times New Roman 风格设置
-% \usepackage{fontspec}
-% \setmainfont{TeX Gyre Termes}
-% \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
-% \setmathfont{TeX Gyre Termes Math}
+% 第三种 Times New Roman 风格设置
+% 不需要 fontspec 和 unicode-math
+% \usepackage{newtxtext}
+% \usepackage[slantedGreek,vvarbb]{newtxmath}
+% \defaultfontfeatures{}
+% \usepackage{bm}
+% \renewcommand\mathbf\bm
 
 % Linux Libertine 风格设置
 % 不需要 fontspec 和 unicode-math
@@ -59,66 +55,68 @@
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
-% 第二种 Linux Libertine 风格设置
+% 第二种 Linux Libertine 风格设置（有一些小的 kerning 问题）
 % 不需要 fontspec
 % \usepackage{unicode-math}
 % \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
 % \usepackage[math=+ss08]{libertinus-otf}
-
-% 第三种 Linux Libertine 风格设置
-% \usepackage{fontspec}
-% \setmainfont{Libertinus Serif}
-% \setsansfont{Libertinus Sans}
-% \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
-% \setmathfont[RawFeature={+ss08}]{Libertinus Math}
+% \setmathfont[range={\mathcal,\mathbfcal}]{Latin Modern Math}
 
 % Palatino 风格设置
-% 不需要 fontspec
-% \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
-% \usepackage{kpfonts-otf}
-
-% 第二种 Palatino 风格设置
 % 不需要 unicode-math
 % \usepackage{fontspec}
 % \usepackage{newpxtext}
-% \usepackage{newpxmath}
+% \usepackage[slantedGreek,vvarbb]{newpxmath}
 % \defaultfontfeatures{}
+% \renewcommand\hbar\hslash
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
-% 第三种 Palatino 风格设置
-% \usepackage{fontspec}
-% \setmainfont{TeX Gyre Pagella}
+% 第二种 Palatino 风格设置
+% 不需要 fontspec 和 unicode-math
+% \usepackage[T1]{fontenc}
+% \usepackage[slantedGreek]{mathpazo}
+% \renewcommand\mathbf\mathbold
+% \usepackage[scr=kp,frak=pxtx]{mathalpha}
+
+% 第三种 Palatino 风格设置（不完全是 Palatino）
+% 不需要 fontspec
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
-% \setmathfont{TeX Gyre Pagella Math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \usepackage{kpfonts-otf}
+
+% Cambria 风格设置
+% \usepackage{fontspec}
+% \setmainfont{Cambria}[BoldFont=CambriaB,BoldItalicFont=CambriaZ]
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \setmathfont{Cambria Math}
+% \setmathfont[range={\mathscr,\mathbfscr},StylisticSet=1]{STIX Two Math}
+
+% Lucida 风格设置
+% \usepackage{fontspec}
+% \setmainfont{Lucida Bright OT}
+% \setmonofont{Lucida Console DK}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \setmathfont[StylisticSet=4]{Lucida Bright Math OT}
+% \setmathfont[range={\mathscr,\mathbfscr}]{Lucida Bright Math OT}
 
 % Garamond 风格设置
 % \usepackage{fontspec}
 % \setmainfont{EB Garamond}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
-% \setmathfont[StylisticSet={6,9,10}]{Garamond-Math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \setmathfont[StylisticSet={3,6,9,10}]{Garamond-Math}
+% \setmathfont[range={\mathscr,\mathbfscr}]{Garamond-Math}
 
 % XCharter 风格设置
 % \usepackage{fontspec}
 % \setmainfont{XCharter}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
 % \setmathfont{XCharter Math}
-
-% Century Schoolbook 风格设置
-% \usepackage{fontspec}
-% \setmainfont{TeX Gyre Schola}
-% \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
-% \setmathfont{TeX Gyre Schola Math}
-
-% 数学特殊字体
-% 可以自行配置 \mathcal \mathscr \mathfrak \mathbb 等字体样式
-\usepackage[scr=rsfs]{mathalpha}
+% \setmathfont[range={\mathcal,\mathbfcal}]{Latin Modern Math}
 
 % 中文
 % \usepackage[fontset=none]{ctex}
@@ -147,7 +145,7 @@
     \begin{enumerate}
 
         \item
-        \textparagraph\ Inline equations for simple math: $\mathbf{p} = \hbar\mathbf{k}$, $E = \hbar\mathbf{\omega}$.
+        \textparagraph\ Inline equations for simple math: $\mathbf{p} = \hbar\mathbf{k}$, $\epsilon = \hbar\mathbf{\omega}$.
 
         \textparagraph\ Centered equations for more involved or important equations:
         \begin{equation}
@@ -163,7 +161,7 @@
         \end{equation}
         \textparagraph\ An example of a matrix:
         \begin{equation}
-            \mathsf{M} =
+            \Psi =
             \begin{bmatrix}
                 \dfrac{1+\sqrt{3}i}{2} & \mathrm{e}^{-i\omega t} \\
                 i\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{3}i}{2}
@@ -197,12 +195,12 @@
         \]
 
         \item
-        \begin{align*}
-            u(x,t)
-            &= \frac{6Al(-1)^m}{ES(2m+1)^2\pi^2}\sin\frac{2m+1}{2l}\pi x\sin\frac{2m+1}{2l}\pi at \\
-            &\quad + \frac{2A(-1)^{m+1}}{ES(2m+1)\pi}\left(x\cos\frac{2m+1}{2l}\pi x\sin\frac{2m+1}{2l}\pi at + at\sin\frac{2m+1}{2l}\pi x\cos\frac{2m+1}{2l}\pi at\right) \\
-            &\quad + \frac{8Al(2m+1)}{ES\pi^2}\sum_{k=0,\: k \neq m}^{\infty}\frac{(-1)^k}{(2k+1)\left[(2m+1)^2-(2k+1)^2\right]}\sin\frac{2k+1}{2l}\pi x\sin\frac{2k+1}{2l}\pi at
-        \end{align*}
+        \[
+        \begin{matrix}
+            &\mathcal{ABCD} &\mathscr{ABCD} &\mathfrak{ABCD} &\mathbb{ABCD} \\
+            &\mathsf{ABCD} &\mathbf{ABCD} &\mathrm{ABCD} &\mathit{ABCD}
+        \end{matrix}
+        \]
 
         \item
         \[
@@ -221,7 +219,6 @@
         \begin{align*}
             [q,p]_{Q,P}
             &= \frac{\partial q}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial p}{\partial Q} \\
-            &= \left(-\frac{\sqrt{1-P^2\mathrm{e}^{2Q}}}{\mathrm{e}^Q} - \frac{P^2\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right)\cdot\left(\frac{-\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right) - \left(\frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right)\cdot\left(\frac{-P\mathrm{e}^Q}{\sqrt{1-P^2\mathrm{e}^{2Q}}}\right) \\
             &= 1 + \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} - \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} \\
             &= 1
         \end{align*}
