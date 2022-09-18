@@ -11,9 +11,13 @@
 \usepackage{anyfontsize}
 \usepackage{hyperref}
 
-% 数学宏包
+% 数学物理宏包
 \usepackage{amsmath}
 \usepackage{esint}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
 
 % 设置数学字体
 
@@ -25,15 +29,22 @@
 \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
 \usepackage[scr=rsfs]{mathalpha}
 
-% Times New Roman 风格设置
+% Times 风格设置
 % \usepackage{fontspec}
-% \setmainfont{XITS}
+% \setmainfont{Times LT Pro}
 % \usepackage{unicode-math}
 % \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
 % \setmathfont{XITS Math}
 % \setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
 
-% 第二种 Times New Roman 风格设置
+% 第二种 Times 风格设置
+% 不需要 unicode-math
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman}
+% \usepackage[slantedGreek,eucal,mtpfrak,mtpscr,mtpbb]{mtpro2}
+% \renewcommand\mathbf\mathbold
+
+% 第三种 Times 风格设置
 % \usepackage{fontspec}
 % \setmainfont{STIX Two Text}
 % \usepackage{unicode-math}
@@ -41,7 +52,7 @@
 % \setmathfont{STIX Two Math}
 % \setmathfont[range={\mathscr,\mathbfscr},StylisticSet=1]{STIX Two Math}
 
-% 第三种 Times New Roman 风格设置
+% 第四种 Times 风格设置
 % 不需要 fontspec 和 unicode-math
 % \usepackage{newtxtext}
 % \usepackage[slantedGreek,vvarbb]{newtxmath}
@@ -78,6 +89,8 @@
 % \usepackage[slantedGreek]{mathpazo}
 % \renewcommand\mathbf\mathbold
 % \usepackage[scr=kp,frak=pxtx]{mathalpha}
+% \usepackage{fontspec}
+% \setmainfont{Palatino Linotype}
 
 % 第三种 Palatino 风格设置（不完全是 Palatino）
 % 不需要 fontspec
@@ -154,52 +167,62 @@
         % 如果想要公式编号重新从 1 开始，可以在该公式前使用命令：
         % \setcounter{equation}{0}
         \begin{equation}
-            \frac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{a(x)} = a'(x)\mathrm{e}^{a(x)}
+            \dv{x} \mathrm{e}^{a(x)} = a'(x)\mathrm{e}^{a(x)}
         \end{equation}
         \begin{equation}
         \frac{\|\mathsf{A}\mathbf{x}\|_\infty}{\|\mathbf{x}\|_\infty} = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
         \end{equation}
+
         \textparagraph\ An example of a matrix:
         \begin{equation}
-            \Psi =
-            \begin{bmatrix}
-                \dfrac{1+\sqrt{3}i}{2} & \mathrm{e}^{-i\omega t} \\
-                i\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{3}i}{2}
-            \end{bmatrix}
+            \mathsf{M} =
+            \begin{+bmatrix}
+                \dfrac{1+\sqrt{5}i}{2} & \mathrm{e}^{-i\omega t} \\
+                i\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{5}i}{2}
+            \end{+bmatrix}
         \end{equation}
+        
         \textparagraph\ An example of intergals:
         \begin{equation}
         \iiint \nabla \cdot \mathbf{A} \,\mathrm{d}V = \oiint \mathbf{A}\,\mathrm{d}\mathbf{S}
         \end{equation}
+
         \textparagraph\ An example of roots:
         \begin{equation}
         r = \sqrt[3]{\frac{3}{4\pi N}}
         \end{equation}
 
+        \textparagraph\ An example of math fonts:
+        \begin{equation}
+            \begin{+matrix}
+                &\mathrm{ABCD} &\mathit{ABCD} &\mathbf{ABCD} &\mathsf{ABCD} \\
+                &\mathcal{ABCD} &\mathscr{ABCD} &\mathfrak{ABCD} &\mathbb{ABCD}
+            \end{+matrix}
+        \end{equation}
+
+        \textparagraph\ An example of Dirac brackets:
+        \begin{equation}
+            \begin{+matrix}
+                &\bra{\phi}\ket{\psi} &\bra{\dfrac{1}{2}\lambda}\ket{\psi} & \ket{\phi_{\hat{Q}=0}} \\
+                &\expval{A} &\expval{\dfrac{1}{2}\lambda} &\expval{A}{\Psi}
+            \end{+matrix}
+        \end{equation}
+
         \item
         \begin{align*}
             I(x)
-            &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\mathrm{d}I(x) \\
-            &= 4\alpha\frac{I_0}{b}\int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\cos^2\left(\frac{\pi d}{\lambda D}\left(x+\frac{D}{R}\xi\right)\right)\mathrm{d}\xi \\
+            &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}} \dd{I(x)} \\
+            &= 4\alpha\frac{I_0}{b}\int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\cos^2\left(\frac{\pi d}{\lambda D}\left(x+\frac{D}{R}\xi\right)\right) \dd{\xi} \\
             &= 4\alpha I_0\left(1+\frac{1}{u}\sin u\cos\left(\frac{2\pi d}{\lambda D}x\right)\right),\quad u = \dfrac{\pi db}{\lambda R}
         \end{align*}
 
         \item
         \[
-        Y_n(y) = \left\{
-        \begin{matrix}
-            &0, &n = 2k \\
-            &\dfrac{8a^2}{\pi^3 n^3}\left(1 - \dfrac{\cosh\dfrac{n\pi y}{a}}{\cosh\dfrac{n\pi b}{2a}}\right), &n = 2k + 1
-        \end{matrix}
-        \right.
-        \]
-
-        \item
-        \[
-        \begin{matrix}
-            &\mathcal{ABCD} &\mathscr{ABCD} &\mathfrak{ABCD} &\mathbb{ABCD} \\
-            &\mathsf{ABCD} &\mathbf{ABCD} &\mathrm{ABCD} &\mathit{ABCD}
-        \end{matrix}
+        F_n(z) =
+        \begin{+cases}
+            \dfrac{1}{\sqrt{1+in^2\mathrm{e}^{Az}}}, &z < 0 \\
+            \dfrac{1}{\sqrt{1+n^2\mathrm{e}^{Az}}}, &z \geqslant 0
+        \end{+cases}
         \]
 
         \item
@@ -210,15 +233,15 @@
         \item
         \begin{align*}
             \mathscr{L}\left\lbrace\frac{1-\cos\omega t}{t}\right\rbrace
-            &=\int_{p}^{\infty}\left(\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}\right)\mathrm{d}t \\
-            &=\ln p-\frac{1}{2}\ln(p+\mathrm{i}\omega)-\frac{1}{2}\ln(p-\mathrm{i}\omega)\bigg|_{p}^{\infty} \\
+            &=\int_{p}^{\infty} \left(\frac{1}{p}-\frac{1}{2(p+\mathrm{i}\omega)}-\frac{1}{2(p-\mathrm{i}\omega)}\right) \dd{t} \\
+            &=\eval{\ln p-\frac{1}{2}\ln(p+\mathrm{i}\omega)-\frac{1}{2}\ln(p-\mathrm{i}\omega)}_{p}^{\infty} \\
             &=\frac{1}{2}\ln\frac{p^2+\omega^2}{p^2}
         \end{align*}
 
         \item
         \begin{align*}
             [q,p]_{Q,P}
-            &= \frac{\partial q}{\partial Q}\cdot\frac{\partial p}{\partial P} - \frac{\partial q}{\partial P}\cdot\frac{\partial p}{\partial Q} \\
+            &= \pdv{q}{Q} \cdot \pdv{q}{P} - \pdv{q}{P} \cdot \pdv{q}{Q} \\
             &= 1 + \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} - \frac{P^2\mathrm{e}^{2Q}}{1-P^2\mathrm{e}^{2Q}} \\
             &= 1
         \end{align*}
