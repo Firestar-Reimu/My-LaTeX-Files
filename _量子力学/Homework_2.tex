@@ -1,0 +1,533 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{amsmath}
+\usepackage{fontspec}
+\usepackage{newpxtext}
+\usepackage[vvarbb]{newpxmath}
+\defaultfontfeatures{}
+\renewcommand\epsilon\varepsilon
+\renewcommand\hbar\hslash
+\renewcommand\leq\leqslant
+\renewcommand\geq\geqslant
+\usepackage{bm}
+\renewcommand\mathbf\bm
+
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
+\setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold,ItalicFont=FZFangSong-Z02]
+
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\title{\textbf{量子力学作业}}
+\author{1900011604\ \ 张植竣\ \ 北京大学}
+\date{2022年9月25日}
+
+\begin{document}
+
+\maketitle
+
+    \section*{第三章}
+
+    \begin{itemize}
+        \item[21.]
+        已知波函数：
+        \[
+            \Psi(x,t) = \sqrt[4]{\frac{2a}{\pi}} \frac{1}{\gamma} \exp[-\frac{a}{\gamma^2}\left(x - \frac{hlt}{m}\right)^2 + il\left(x - \frac{hlt}{2m}\right)],\quad \gamma = \sqrt{1 + \frac{2ai\hbar t}{m}}
+        \]
+        注意到$\left(\dfrac{z}{w}\right)^* = \dfrac{z^*}{w^*}$和$\left(\sqrt{a+ib}\right)^* = \sqrt{a-ib}$，记$\theta = \dfrac{2a\hbar t}{m}$，则$\gamma = \sqrt{1+i\theta}$，有：
+        \[
+            \abs{\gamma}^2 = \sqrt{(1+i\theta) (1-i\theta)} = \sqrt{1 + \theta^2},\quad
+            \left(\frac{1}{\gamma}\right)^* = \frac{1}{\gamma^*} = \frac{1}{\sqrt{1-i\theta}}
+        \]
+        可得：
+        \begin{align*}
+            \abs{\Psi(x,t)}^2
+            &= \sqrt{\frac{2a}{\pi}} \frac{1}{\abs{\gamma}^2} \exp[-2a\Re\left(\frac{1}{\gamma^2}\right)\left(x - \frac{hlt}{m}\right)^2] \\
+            &= \sqrt{\frac{2a}{\pi}} \frac{1}{\abs{\gamma}^2} \exp[-2a\left(\frac{1}{1 + \theta^2}\right) \left(x - \frac{hlt}{m}\right)^2] \\
+            &= \sqrt{\frac{2a}{\pi}} \frac{1}{\abs{\gamma}^2} \exp[-\frac{2a}{\abs{\gamma}^4} \left(x - \frac{hlt}{m}\right)^2]
+        \end{align*}
+        则$x$的平均值为：
+        \begin{align*}
+            \expval{x}
+            &= \int_{-\infty}^{+\infty} \expval{x}{\Psi} \dd{x} \\
+            &= \int_{-\infty}^{+\infty} x \abs{\Psi}^2 \dd{x} \\
+            &= \int_{-\infty}^{+\infty} \sqrt{\frac{2a}{\pi}} \frac{1}{\abs{\gamma}^2} x \exp[-\frac{2a}{\abs{\gamma}^4} \left(x - \frac{hlt}{m}\right)^2] \dd{x} \\
+            &= \int_{-\infty}^{+\infty} \sqrt{\frac{2a}{\pi}} \frac{1}{\abs{\gamma}^2} \left(u + \frac{hlt}{m}\right) \mathrm{e}^{-\tfrac{2a}{\abs{\gamma}^4} u^2} \dd{u},\quad u = x - \frac{hlt}{m}
+        \end{align*}
+        令$\lambda = \dfrac{\sqrt{2a}}{\abs{\gamma}^2}$，由：
+        \[
+            \int_{-\infty}^{+\infty} \mathrm{e}^{-u^2} \dd{u} = \sqrt{\pi},\quad
+            \int_{-\infty}^{+\infty} u \mathrm{e}^{-u^2} \dd{u} = 0
+        \]
+        得：
+        \begin{align*}
+            \expval{x}
+            &= \int_{-\infty}^{+\infty} \frac{\lambda}{\sqrt{\pi}} \left(u + \frac{hlt}{m}\right) \mathrm{e}^{-\lambda^2 u^2} \dd{u} \\
+            &= \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} \lambda u \mathrm{e}^{-\lambda^2 u^2} \dd{u}
+            + \frac{hlt}{m} \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} \lambda \mathrm{e}^{-\lambda^2 u^2} \dd{u} \\
+            &= \frac{1}{\lambda\sqrt{\pi}} \int_{-\infty}^{+\infty} \lambda u \mathrm{e}^{-\lambda^2 u^2} \dd{\lambda u}
+            + \frac{hlt}{m} \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} \mathrm{e}^{-\lambda^2 u^2} \dd{\lambda u} \\
+            &= 0 + \frac{hlt}{m} \frac{1}{\sqrt{\pi}} \cdot \sqrt{\pi} \\
+            &= \frac{hlt}{m}
+        \end{align*}
+        根据Ehrenfest定理有：
+        \[
+            \dv{\expval{x}}{t} = \frac{hl}{m},\quad
+            p = m\dv{\expval{x}}{t} = hl
+        \]
+        同理，由：
+        \[
+            \int_{-\infty}^{+\infty} u^2 \mathrm{e}^{-u^2} \dd{u} = \frac{\sqrt{\pi}}{2}
+        \]
+        得$x^2$的平均值：
+        \begin{align*}
+            \expval{x^2}
+            &= \int_{-\infty}^{+\infty} \expval{x^2}{\Psi} \dd{x} \\
+            &= \int_{-\infty}^{+\infty} \frac{\lambda}{\sqrt{\pi}} \left(u + \frac{hlt}{m}\right)^2 \mathrm{e}^{-\lambda^2 u^2} \dd{u} \\
+            &= \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} \lambda u^2 \mathrm{e}^{-\lambda^2 u^2} \dd{u}
+            + \left(\frac{hlt}{m}\right) \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} 2\lambda u \mathrm{e}^{-\lambda^2 u^2} \dd{u}
+            + \left(\frac{hlt}{m}\right)^2 \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} \lambda \mathrm{e}^{-\lambda^2 u^2} \dd{u} \\
+            &= \frac{1}{\lambda^2 \sqrt{\pi}} \cdot \frac{\sqrt{\pi}}{2} + 0 + \left(\frac{hlt}{m}\right)^2 \frac{1}{\sqrt{\pi}} \cdot \sqrt{\pi} \\
+            &= \frac{1}{2\lambda^2} + \left(\frac{hlt}{m}\right)^2
+        \end{align*}
+        于是有：
+        \[
+            \sigma_x^2 = \expval{x^2} - \expval{x}^2 = \frac{1}{2\lambda^2} = \frac{1}{4a} + \frac{a\hbar^2 t^2}{m^2}
+        \]
+        对于自由粒子，$H = \dfrac{p^2}{2m}$，所以：
+        \[
+            \expval{H}
+            = \int_{-\infty}^{+\infty} \expval{x^2}{\Psi} \dd{x}
+            = -\frac{\hbar^2}{2m} \int_{-\infty}^{+\infty} \Psi^* \pdv[2]{\Psi}{x} \dd{x}
+        \]
+        而$\Psi(x,t)$对$x$求偏导数得：
+        \begin{align*}
+            & \pdv{\Psi}{x}
+            = \left[-\frac{2a}{\gamma^2}\left(x - \frac{hlt}{m}\right) + il\right]\Psi \\
+            & \pdv[2]{\Psi}{x}
+            = -\frac{2a}{\gamma^2}\Psi + \left[-\frac{2a}{\gamma^2}\left(x - \frac{hlt}{m}\right) + il\right]^2\Psi
+            = \left(Ax^2 + Bx + C\right)\Psi
+        \end{align*}
+        其中：
+        \[
+            A = \frac{4a^2}{\gamma^4},\ B = -\frac{4ial}{\gamma^4},\ C = -\frac{2a\gamma^2 + l^2}{\gamma^4}
+        \]
+        则：
+        \begin{align*}
+            \expval{H}
+            &= -\frac{\hbar^2}{2m} \int_{-\infty}^{+\infty} \Psi^* \pdv[2]{\Psi}{x} \dd{x} \\
+            &= -\frac{\hbar^2}{2m} \int_{-\infty}^{+\infty} \left(Ax^2 + Bx + C\right)\abs{\Psi}^2 \dd{x} \\
+            &= -\frac{\hbar^2}{2m} \left(A\expval{x^2} + B\expval{x} + C\right) \\
+            &= \frac{\hbar^2}{2m} \left(a + l^2\right)
+        \end{align*}
+        为了求得$\expval{H^2}$，可以在动量表象下求得：
+        \[
+            \expval{H^2} = \frac{\expval{p^4}}{4m^2} = \frac{1}{4m^2} \int_{-\infty}^{+\infty} p^4 \abs{\Phi(p,t)}^2 \dd{p}
+        \]
+        其中：
+        \[
+            \Phi(p,t) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \mathrm{e}^{-\tfrac{ipx}{\hbar}} \Psi(x,t) \dd{x}
+        \]
+        因为自由粒子对于任意正整数$n$有$[p^n, H] = 0$，$\expval{p^n}$与时间无关，所以可以用$\Phi(p,0)$代替$\Phi(p,t)$：
+        \[
+            \expval{H^2} = \frac{1}{4m^2} \int_{-\infty}^{+\infty} p^4 \abs{\Phi(p,0)}^2 \dd{p},\quad
+            \Phi(p,0) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \mathrm{e}^{-\tfrac{ipx}{\hbar}} \Psi(x,0) \dd{x}
+        \]
+        注意$t = 0$时$\gamma = 1$，于是：
+        \begin{align*}
+            \Phi(p,0)
+            &= \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \mathrm{e}^{-\tfrac{ipx}{\hbar}} \Psi(x,0) \dd{x} \\
+            &= \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \sqrt[4]{\frac{2a}{\pi}} \exp[-ax^2 + ilx - \frac{ipx}{\hbar}] \dd{x} \\
+            &= K \int_{-\infty}^{+\infty} \exp[-ax^2 + ix \left(l - \frac{p}{\hbar}\right)] \dd{x},\quad K = \frac{1}{\sqrt{2\pi\hbar}} \sqrt[4]{\frac{2a}{\pi}}
+        \end{align*}
+        由：
+        \[
+            \int_{-\infty}^{+\infty} \exp(-D^2 x^2 + Ex) \dd{x}
+            = \int_{-\infty}^{+\infty} \exp[-D^2 \left(x - \frac{E}{2D^2}\right)^2 + \frac{E^2}{4D^2})] \dd{x}
+            = \frac{\sqrt{\pi}}{D} \exp(\frac{E^2}{4D^2})
+        \]
+        得：
+        \begin{align*}
+            \Phi(p,0)
+            &= K \int_{-\infty}^{+\infty} \exp[-ax^2 + ix \left(l - \frac{p}{\hbar}\right)] \dd{x} \\
+            &= K \sqrt{\frac{\pi}{a}} \exp[-\frac{1}{4a} \left(l - \frac{p}{\hbar}\right)^2] \\
+            &= \frac{1}{\sqrt{2a\hbar}} \sqrt[4]{\frac{2a}{\pi}} \exp[-\frac{1}{4a} \left(l - \frac{p}{\hbar}\right)^2]
+        \end{align*}
+        实际上同理也可以求出：
+        \[
+            \Phi(p,t) = \frac{1}{\sqrt{2a\hbar}} \sqrt[4]{\frac{2a}{\pi}} \exp[-\frac{\gamma^2}{4a} \left(l - \frac{p}{\hbar}\right)^2 - \frac{ihlt}{2m} \left(l - \frac{p}{\hbar}\right)]
+        \]
+        注意到$\gamma^2 = 1 + i\theta = 1 + i\theta(t)$，$t = 0$时$\gamma^2 = 1$，且$\gamma^2 + \left(\gamma^2\right)^* = 2\Re\left(\gamma^2\right) = 2$，于是有：
+        \[
+            \abs{\Phi(p,0)}^2 = \abs{\Phi(p,t)}^2 = \frac{1}{\hbar\sqrt{2a\pi}} \exp[-\frac{1}{2a}\left(l-\frac{p}{\hbar}\right)^2]
+        \]
+        故$H^2$的平均值为：
+        \begin{align*}
+            \expval{H^2}
+            &= \frac{1}{4m^2} \int_{-\infty}^{+\infty} p^4 \abs{\Phi(p,0)}^2 \dd{p} \\
+            &= \frac{1}{4m^2} \cdot \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} p^4 \exp[-\frac{1}{2a}\left(l-\frac{p}{\hbar}\right)^2] \dd{p} \\
+            &= \frac{1}{4m^2} \cdot \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} \hbar^5 (z+l)^4 \mathrm{e}^{-\tfrac{z^2}{2a}} \dd{z},\quad z = \frac{p}{\hbar} - l \\
+            &= \frac{1}{4m^2} \cdot \frac{\hbar^4}{\sqrt{2a\pi}} \int_{-\infty}^{+\infty} (z^4 + 4z^3 l + 6z^2 l^2 + 4z l^3 +l^4) \mathrm{e}^{-\tfrac{z^2}{2a}} \dd{z} \\
+            &= \frac{1}{4m^2} \cdot \frac{\hbar^4}{\sqrt{2a\pi}} \left[(2a)^{\tfrac{5}{2}} \cdot \frac{3\sqrt{\pi}}{4} + 6l^2 (2a)^{\tfrac{3}{2}} \cdot \frac{\sqrt{\pi}}{2} + l^4 \sqrt{2a} \cdot \sqrt{\pi}\right] \\
+            &= \frac{\hbar^4}{4m^2}\left(3a^2 + 6al^2 + l^4\right)
+        \end{align*}
+        其中使用了：
+        \[
+            \int_{-\infty}^{+\infty} u^3 \mathrm{e}^{-u^2} \dd{u} = 0,\quad
+            \int_{-\infty}^{+\infty} u^4 \mathrm{e}^{-u^2} \dd{u} = \frac{3\sqrt{\pi}}{4}
+        \]
+        于是有：
+        \[
+            \sigma_H^2 = \expval{H^2} - \expval{H}^2 = \frac{\hbar^4}{2m^2}\left(a^2 + 2al^2\right)
+        \]
+        则：
+        \[
+            \sigma_H^2 \sigma_x^2
+            = \frac{\hbar^4}{2m^2}\left(a^2 + 2al^2\right) \cdot \left(\frac{1}{4a} + \frac{a\hbar^2 t^2}{m^2}\right)
+            = \frac{\hbar^2}{4} \left(\frac{\hbar l}{m}\right)^2 \cdot \left(1 + \frac{a}{2l^2}\right) \left[1 + \left(\frac{2a\hbar t}{m}\right)^2\right]
+        \]
+        而：
+        \[
+            \sigma_H^2 \sigma_x^2
+            \geq \frac{\hbar^2}{4} \left(\frac{\hbar l}{m}\right)^2
+            = \frac{\hbar^2}{4} \dv{\expval{x}}{t}
+        \]
+        这符合能量——时间不确定度关系。
+
+        \bigskip
+        \item[33.(a)]
+        由于测量到了本征值$a_1$，这说明系统在测量后立即坍缩到本征值$a_1$对应的本征态$\psi_1$。
+
+        \item[33.(b)]
+        由题意：
+        \[
+        \begin{+cases}
+            \dfrac{1}{5}(3\phi_1 + 4\phi_2) = \psi_1 \\
+            \dfrac{1}{5}(4\phi_1 - 3\phi_2) = \psi_2
+        \end{+cases}
+        \]
+        解得：
+        \[
+            \begin{+cases}
+                \phi_1 = \dfrac{1}{5}(3\psi_1 + 4\psi_2) \\
+                \phi_2 = \dfrac{1}{5}(4\psi_1 - 3\psi_2)
+            \end{+cases}
+        \]
+        注意系统此时处于$\psi_1$态，所以测量到$b_1$的概率为：
+        \begin{align*}
+            P_{b_1}
+            &= \bra{\phi_1}\ket{\psi_1}^2 \\
+            &= \bra{\frac{1}{5}(3\psi_1 + 4\psi_2)}\ket{\psi_1}^2 \\
+            &= \left(\frac{3}{5} \bra{\psi_1}\ket{\psi_1} + \frac{4}{5} \bra{\psi_2}\ket{\psi_1}\right)^2 \\
+            &= \left(\frac{3}{5} \cdot 1 + \frac{4}{5} \cdot 0\right)^2 \\
+            &= \frac{9}{25}
+        \end{align*}
+        其中使用了本征函数的正交归一性：
+        \[
+            \bra{\psi_i}\ket{\psi_j} = \delta_{ij}
+        \]
+        同理，测量到$b_2$的概率为：
+        \begin{align*}
+            P_{b_2}
+            &= \bra{\phi_1}\ket{\psi_2}^2 \\
+            &= \bra{\frac{1}{5}(3\psi_1 + 4\psi_2)}\ket{\psi_2}^2 \\
+            &= \left(\frac{3}{5} \bra{\psi_1}\ket{\psi_2} + \frac{4}{5} \bra{\psi_2}\ket{\psi_2}\right)^2 \\
+            &= \left(\frac{3}{5} \cdot 0 + \frac{4}{5} \cdot 1\right)^2 \\
+            &= \frac{16}{25}
+        \end{align*}
+
+        \item[33.(c)]
+        测量到$b_1$的概率为$\dfrac{9}{25}$，则此时粒子的状态为$\phi_1$，测量到$a_1$的概率为：
+        \begin{align*}
+            P_{\phi_1 \Rightarrow a_1}
+            &= \bra{\psi_1}\ket{\phi_1}^2 \\
+            &= \bra{\frac{1}{5}(3\phi_1 + 4\phi_2)}\ket{\phi_1}^2 \\
+            &= \left(\frac{3}{5} \bra{\phi_1}\ket{\phi_1} + \frac{4}{5} \bra{\phi_2}\ket{\phi_1}\right)^2 \\
+            &= \left(\frac{3}{5} \cdot 1 + \frac{4}{5} \cdot 0\right)^2 \\
+            &= \frac{9}{25}
+        \end{align*}
+
+        测量到$b_1$的概率为$\dfrac{16}{25}$，则此时粒子的状态为$\phi_2$，测量到$a_1$的概率为：
+        \begin{align*}
+            P_{\phi_2 \Rightarrow a_1}
+            &= \bra{\psi_2}\ket{\phi_1}^2 \\
+            &= \bra{\frac{1}{5}(4\phi_1 - 3\phi_2)}\ket{\phi_1}^2 \\
+            &= \left(\frac{4}{5} \bra{\phi_1}\ket{\phi_1} - \frac{3}{5} \bra{\phi_2}\ket{\phi_1}\right)^2 \\
+            &= \left(\frac{4}{5} \cdot 1 - \frac{3}{5} \cdot 0\right)^2 \\
+            &= \frac{16}{25}
+        \end{align*}
+
+        所以测量到$a_1$的总概率为：
+        \[
+            \frac{9}{25} \cdot \frac{9}{25} + \frac{16}{25} \cdot \frac{16}{25} = \frac{337}{625} = 53.92\%
+        \]
+
+        \bigskip
+        \item[37.]
+        由
+        \[
+            \dv{t}\expval{Q} = \frac{i}{\hbar} \expval{\comm{H}{Q}} + \expval{\pdv{Q}{t}}
+        \]
+        得：
+        \[
+            \dv{t}\expval{xp} = \frac{i}{\hbar} \expval{\comm{H}{xp}} + \expval{\pdv{p}{t}}
+        \]
+        因为$p$不含时，$\displaystyle \pdv{p}{t} = 0$，又$\comm{H}{xp} = \comm{H}{x}p + x\comm{H}{p}$，故有：
+        \[
+            \dv{t}\expval{xp} = \frac{i}{\hbar} \expval{\comm{H}{x}p + x\comm{H}{p}}
+        \]
+        分别计算$\comm{H}{x}$与$\comm{H}{p}$如下：
+        \begin{align*}
+            \comm{H}{x} \Psi
+            &= \left(-\frac{\hbar^2}{2m}\pdv[2]{x} + V\right) x \Psi - x \left(-\frac{\hbar^2}{2m}\pdv[2]{x} + V\right) \Psi \\
+            &= -\frac{\hbar^2}{2m} \pdv[2]{x}(x\Psi) + x \frac{\hbar^2}{2m} \pdv[2]{x} \Psi \\
+            &= -\frac{\hbar^2}{2m} \pdv{x}\left[\pdv{x}(x\Psi)\right] + x \frac{\hbar^2}{2m} \pdv[2]{\Psi}{x} \\
+            &= -\frac{\hbar^2}{2m} \pdv{x}(x\pdv{\Psi}{x} + \Psi) + x \frac{\hbar^2}{2m} \pdv[2]{\Psi}{x} \\
+            &= -\frac{\hbar^2}{2m} \left(x\pdv[2]{\Psi}{x} + 2\pdv{\Psi}{x}\right) + x \frac{\hbar^2}{2m} \pdv[2]{\Psi}{x} \\
+            &= -\frac{\hbar^2}{m} \pdv{\Psi}{x}
+        \end{align*}
+        即：
+        \[
+            \comm{H}{x} = -\frac{\hbar^2}{m} \pdv{x} = -\frac{i\hbar p}{m}
+        \]
+        又：
+        \begin{align*}
+            \comm{H}{p} \Psi
+            &= \left(-\frac{\hbar^2}{2m}\pdv[2]{x} + V\right) \left(-i\hbar\pdv{x}\right) \Psi - \left(-i\hbar\pdv{x}\right) \left(-\frac{\hbar^2}{2m}\pdv[2]{x} + V\right) \Psi \\
+            &= \frac{i\hbar^3}{2m} \pdv[3]{\Psi}{x} - i\hbar V \pdv{\Psi}{x} - \frac{i\hbar^3}{2m} \pdv[3]{\Psi}{x} + i\hbar \pdv{(V\Psi)}{x} \\
+            &= i\hbar \pdv{(V\Psi)}{x} - i\hbar V \pdv{\Psi}{x} \\
+            &= i\hbar V \pdv{\Psi}{x} + i\hbar \Psi \pdv{V}{x} - i\hbar V \pdv{\Psi}{x} \\
+            &= i\hbar \pdv{V}{x} \Psi
+        \end{align*}
+        即：
+        \[
+            \comm{H}{p} = i\hbar \pdv{V}{x}
+        \]
+        代入得：
+        \begin{align*}
+            \dv{t}\expval{xp}
+            &= \frac{i}{\hbar} \expval{\comm{H}{x}p + x\comm{H}{p}} \\
+            &= \frac{i}{\hbar} \expval{-\frac{i\hbar p}{m} p + i\hbar \pdv{V}{x} x} \\
+            &= 2\expval{\frac{p^2}{2m}} - \expval{x\pdv{V}{x}} \\
+            &= 2\expval{T} - \expval{x\pdv{V}{x}}
+        \end{align*}
+        在定态下，一切不显含时间的力学量的平均值和概率分布都不随时间改变，因此$\displaystyle \dv{t}\expval{xp} = 0$，此时有位力定理：
+        \[
+            2\expval{T} = \expval{x\pdv{V}{x}}
+        \]
+        对于谐振子：
+        \[
+            V = \frac{1}{2}m\omega^2 x^2
+        \]
+        则有：
+        \[
+            x \dv{V}{x} = x \cdot m\omega^2 x = m\omega^2 x^2 = 2V
+        \]
+        由于$\displaystyle 2\expval{T} = \expval{x\pdv{V}{x}}$，得$2\expval{T} = \expval{2V}$，即：
+        \[
+            \expval{T} = \expval{V}
+        \]
+        对于谐振子的定态：
+        \[
+            \expval{T} = \expval{V} = \frac{1}{2} \left(n + \frac{1}{2}\right) \hbar\omega
+        \]
+
+        \bigskip
+        \item[49.(a)]
+        对于自由粒子，$V(x) = 0$，在坐标表象下，Schrödinger方程为：
+        \[
+            i\hbar \pdv{\Psi}{t} = -\frac{\hbar^2}{2m} \pdv[2]{\Psi}{x}
+        \]
+        在动量表象下，用$\Phi(p,t)$代替$\Psi(x,t)$，用$p$代替$\displaystyle -i\hbar\pdv{x}$，Schrödinger方程变为：
+        \[
+            i\hbar \pdv{\Psi}{t} = -\frac{p^2}{2m} \Psi
+        \]
+        解得：
+        \[
+            \Phi(p,t) = \Phi(p,0) \mathrm{e}^{-\tfrac{ip^2 t}{2m\hbar}}
+        \]
+
+        \item[49.(b)]
+        已知波函数：
+        \[
+            \Psi(x,t) = \sqrt[4]{\frac{2a}{\pi}} \frac{1}{\gamma} \exp[-\frac{a}{\gamma^2}\left(x - \frac{hlt}{m}\right)^2 + il\left(x - \frac{hlt}{2m}\right)],\quad \gamma = \sqrt{1 + \frac{2ai\hbar t}{m}}
+        \]
+        记$\theta = \dfrac{2a\hbar t}{m}$，则$\gamma = \sqrt{1+i\theta}$，注意$t = 0$时$\gamma = 1$，于是：
+        \begin{align*}
+            \Phi(p,0)
+            &= \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \mathrm{e}^{-\tfrac{ipx}{\hbar}} \Psi(x,0) \dd{x} \\
+            &= \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \sqrt[4]{\frac{2a}{\pi}} \exp[-ax^2 + ilx - \frac{ipx}{\hbar}] \dd{x} \\
+            &= K \int_{-\infty}^{+\infty} \exp[-ax^2 + ix \left(l - \frac{p}{\hbar}\right)] \dd{x},\quad K = \frac{1}{\sqrt{2\pi\hbar}} \sqrt[4]{\frac{2a}{\pi}}
+        \end{align*}
+        由：
+        \[
+            \int_{-\infty}^{+\infty} \exp(-D^2 x^2 + Ex) \dd{x}
+            = \int_{-\infty}^{+\infty} \exp[-D^2 \left(x - \frac{E}{2D^2}\right)^2 + \frac{E^2}{4D^2})] \dd{x}
+            = \frac{\sqrt{\pi}}{D} \exp(\frac{E^2}{4D^2})
+        \]
+        得：
+        \begin{align*}
+            \Phi(p,0)
+            &= K \int_{-\infty}^{+\infty} \exp[-ax^2 + ix \left(l - \frac{p}{\hbar}\right)] \dd{x} \\
+            &= K \sqrt{\frac{\pi}{a}} \exp[-\frac{1}{4a} \left(l - \frac{p}{\hbar}\right)^2] \\
+            &= \frac{1}{\sqrt{2a\hbar}} \sqrt[4]{\frac{2a}{\pi}} \exp[-\frac{1}{4a} \left(l - \frac{p}{\hbar}\right)^2]
+        \end{align*}
+        同理也可以求出：
+        \begin{align*}
+            \Phi(p,t)
+            &= \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \mathrm{e}^{-\tfrac{ipx}{\hbar}} \Psi(x,t) \dd{x} \\
+            &= K \int_{-\infty}^{+\infty} \exp[-\frac{a}{\gamma^2}\left(x - \frac{hlt}{m}\right)^2 + il\left(x - \frac{hlt}{2m}\right) - \frac{ipx}{\hbar}] \dd{x} \\
+            &= K \exp[-\frac{a}{\gamma^2} \left(\frac{hlt}{m}\right)^2 + il \frac{hlt}{2m}] \int_{-\infty}^{+\infty} \exp[-ax^2 + ix \left(l - \frac{p}{\hbar}\right)] \dd{x} \\
+            &= K \frac{\gamma\sqrt{\pi}}{\sqrt{a}} \exp[-\frac{a}{\gamma^2} \left(\frac{hlt}{m}\right)^2 + il \frac{hlt}{2m}] \exp{\frac{\gamma^2}{4a} \left[i\left(l - \frac{p}{\hbar}\right) - \frac{2a}{\gamma^2}\left(\frac{hlt}{m}\right)\right]^2} \\
+            &= \frac{1}{\sqrt{2a\hbar}} \sqrt[4]{\frac{2a}{\pi}} \exp[-\frac{\gamma^2}{4a} \left(l - \frac{p}{\hbar}\right)^2 - \frac{ihlt}{2m} \left(l - \frac{p}{\hbar}\right)]
+        \end{align*}
+        注意到$\gamma^2 = 1 + i\theta = 1 + i\theta(t)$，$t = 0$时$\gamma^2 = 1$，且$\gamma^2 + \left(\gamma^2\right)^* = 2\Re\left(\gamma^2\right) = 2$，于是有：
+        \[
+            \abs{\Phi(p,0)}^2 = \abs{\Phi(p,t)}^2 = \frac{1}{\hbar\sqrt{2a\pi}} \exp[-\frac{1}{2a}\left(l-\frac{p}{\hbar}\right)^2]
+        \]
+        可见$\abs{\Phi(p,t)}^2$与时间无关。
+
+        \item[49.(c)]
+        $p$的平均值为：
+        \begin{align*}
+            \expval{p}
+            &= \int_{-\infty}^{+\infty} \expval{p}{\Phi} \dd{p} \\
+            &= \int_{-\infty}^{+\infty} p \abs{\Phi(p,0)}^2 \dd{p} \\
+            &= \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} p \exp[-\frac{1}{2a}\left(l-\frac{p}{\hbar}\right)^2] \dd{p} \\
+            &= \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} p \exp[-\frac{1}{2a}\left(\frac{p}{\hbar}-l\right)^2] \dd{p} \\
+            &= \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} \hbar^2 (u + l) \mathrm{e}^{-\tfrac{1}{2a} u^2} \dd{u},\quad u = \frac{p}{\hbar} - l \\
+            &= 0 + \frac{\hbar l}{\sqrt{2a\pi}} \cdot \sqrt{2a\pi} \\
+            &= \hbar l
+        \end{align*}
+        同理，$p^2$的平均值为：
+        \begin{align*}
+            \expval{p}
+            &= \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} p^2 \exp[-\frac{1}{2a}\left(\frac{p}{\hbar}-l\right)^2] \dd{p} \\
+            &= \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} \hbar^3 (u + l)^2 \mathrm{e}^{-\tfrac{1}{2a} u^2} \dd{u},\quad u = \frac{p}{\hbar} - l \\
+            &= \frac{\hbar^2}{\sqrt{2a\pi}} \cdot \frac{a}{2}\sqrt{2a\pi} + 0 + \frac{\hbar^2}{\sqrt{2a\pi}} \cdot l^2\sqrt{2a\pi} \\
+            &= \hbar^2 (a + l^2)
+        \end{align*}
+
+        \item[49.(d)]
+        Hamilton量的平均值为：
+        \begin{align*}
+            \expval{H}
+            &= \frac{\expval{p^2}}{2m} \\
+            &= \frac{\hbar^2}{2m}(a + l^2) \\
+            &= \frac{\expval{p}^2}{2m} + \frac{a\hbar^2}{2m}
+        \end{align*}
+        而对于静态高斯波包的波函数：
+        \[
+            \Psi_0(x,t) = \sqrt[4]{\frac{2a}{\pi}} \frac{1}{\gamma} \mathrm{e}^{-\tfrac{a}{\gamma^2}x^2},\quad \gamma = \sqrt{1 + \frac{2ai\hbar t}{m}}
+        \]
+        Hamilton量的平均值为$\expval{H}_0 = \dfrac{a\hbar^2}{2m}$，故：
+        \[
+            \expval{H} = \frac{\expval{p}^2}{2m} + \expval{H}_0
+        \]
+    \end{itemize}
+
+    \newpage
+    \section*{第二章}
+
+    \begin{itemize}
+        \item[2.]
+        对于：
+        \[
+            \dv[2]{\psi}{x} = \frac{2m}{\hbar^2}[V(x) - E]\psi
+        \]
+        如果$E < \min{V(x)}$，则$\dfrac{2m}{\hbar^2}[V(x) - E] > 0$，$\psi$与$\displaystyle \psi''(x) = \dv[2]{\psi}{x}$同号。此时分两种情况：
+        \begin{itemize}
+            \item[\textcircled{1}] $\psi(x)$有零点$x_0$：
+
+            则存在实数$\delta > 0$，使得在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒大于零或恒小于零。
+
+            如果在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒大于零，由$\psi(x_0 + \delta) = \psi(x_0) + \delta \psi'(x_0) + o(\delta)$得$\psi'(x_0) > 0$。
+
+            注意到此时$\psi''(x)$也大于零，则$\psi(x)$在$(x_0, +\infty)$上单调递增且$\psi'(x)$越来越大。
+
+            这使得$\lim\limits_{x \to +\infty} \psi(x) = +\infty$，$\psi(x)$不可归一化。
+
+            同理，如果在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒小于零，则$\psi'(x) < 0$，$\psi''(x) < 0$，$\lim\limits_{x \to +\infty} \psi(x) = -\infty$，$\psi(x)$也不可归一化。
+
+            \item[\textcircled{2}] $\psi(x)$没有零点：
+
+            则$\psi(x)$在$(-\infty, +\infty)$上恒大于零或恒小于零，$\psi''(x)$在$(-\infty, +\infty)$上也恒大于零或恒小于零。
+
+            于是$\psi(x)$恒大于零且$\psi'(x)$单调递增，这使得$\lim\limits_{x \to +\infty} \psi(x) = +\infty$，$\psi(x)$不可归一化。
+
+            同理，$\psi(x)$恒小于零且$\psi'(x)$单调递减，这使得$\lim\limits_{x \to +\infty} \psi(x) = -\infty$，$\psi(x)$不可归一化。
+        \end{itemize}
+        综上，如果$E < \min{V(x)}$，则$\psi$与$\psi''(x)$同号，这样的$\psi(x)$不可归一化，故$E \geq \min{V(x)}$。
+
+        \bigskip
+        \item[4.]
+        由波函数：
+        \[
+            \Psi_n(x,t) = \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t},\quad n \in \mathbb{N}^*
+        \]
+        得：
+        \begin{align*}
+            \expval{x}
+            &= \int_0^a \expval{x}{\Psi_n} \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot x \cdot \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= \frac{2a}{(n\pi)^2} \int_0^{n\pi} u\sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= \frac{2a}{(n\pi)^2} \left(\eval{\frac{u^2}{4} - \frac{u}{4}\sin{2u} - \frac{1}{8}\cos{2u}}_0^{n\pi}\right) \\
+            &= \frac{2a}{(n\pi)^2} \cdot \frac{(n\pi)^2}{4} \\
+            &= \frac{a}{2}
+        \end{align*}
+        \begin{align*}
+            \expval{x^2}
+            &= \int_0^a \expval{x^2}{\Psi_n} \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot x^2 \cdot \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= \frac{2a^2}{(n\pi)^3} \int_0^{n\pi} u\sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= \frac{2a^2}{(n\pi)^3} \left(\eval{\frac{u^3}{6} - \frac{2u^2-1}{8}\sin{2u} - \frac{u}{4}\cos{2u}}_0^{n\pi}\right) \\
+            &= \frac{2a^2}{(n\pi)^3} \cdot \left[\frac{(n\pi)^3}{6} - \frac{n\pi}{4}\right] \\
+            &= \frac{a^2}{3} - \frac{1}{2n^2 \pi^2},\quad n \in \mathbb{N}^*
+        \end{align*}
+        \begin{align*}
+            \expval{p}
+            &= \int_0^a \expval{p}{\Psi_n} \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-i\hbar) \pdv{x}(\sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t}) \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-i\hbar) \sqrt{\frac{2}{a}} \left(\frac{n\pi}{a}\right) \cos(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= -\frac{2i\hbar}{a} \int_0^{n\pi} \sin{u} \cos{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= -\frac{2i\hbar}{a} \left(\eval{-\frac{1}{2}\cos^2{u}}_0^{n\pi}\right)\\
+            &= 0
+        \end{align*}
+        \begin{align*}
+            \expval{p^2}
+            &= \int_0^a \expval{p^2}{\Psi_n} \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-\hbar^2) \pdv[2]{x}(\sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t}) \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot \hbar^2 \sqrt{\frac{2}{a}} \left(\frac{n\pi}{a}\right)^2 \sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= \frac{2n\pi\hbar^2}{a^2} \int_0^{n\pi} \sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= \frac{2n\pi\hbar^2}{a^2} \left(\eval{\frac{u}{2} - \frac{1}{4}\sin{2u}}_0^{n\pi}\right)\\
+            &= \frac{n^2 \pi^2 \hbar^2}{a^2},\quad n \in \mathbb{N}^*
+        \end{align*}
+        于是有：
+        \[
+            \sigma_x = \expval{x^2} - \expval{x}^2 = \frac{a}{2}\sqrt{\frac{1}{3} - \frac{2}{n^2 \pi^2}},\quad n \in \mathbb{N}^*
+        \]
+        \[
+            \sigma_p = \expval{p^2} - \expval{p}^2 = \frac{n^2 \pi^2 \hbar^2}{a^2},\quad n \in \mathbb{N}^*
+        \]
+        则：
+        \[
+            \sigma_x \sigma_p = \frac{a}{2}\sqrt{\frac{1}{3} - \frac{2}{n^2 \pi^2}} \cdot \frac{n^2 \pi^2 \hbar^2}{a^2} = \frac{\hbar}{2}\sqrt{\frac{n^2 \pi^2}{3} - 2},\quad n \in \mathbb{N}^*
+        \]
+        $n=1$时$\sigma_x \sigma_p$最小：
+        \[
+            (\sigma_x \sigma_p)_{\mathrm{min}} = \dfrac{\hbar}{2}\sqrt{\dfrac{\pi^2}{3} - 2} = 1.136\dfrac{\hbar}{2} > \dfrac{\hbar}{2}
+        \]
+    \end{itemize}
+
+\end{document}

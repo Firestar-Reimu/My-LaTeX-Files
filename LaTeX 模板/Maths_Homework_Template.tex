@@ -26,14 +26,14 @@
 
 % Latin Modern 风格设置（默认）
 \usepackage{unicode-math}
-\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 \usepackage[scr=rsfs]{mathalpha}
 
 % Times 风格设置
 % \usepackage{fontspec}
 % \setmainfont{Times LT Pro}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \setmathfont{XITS Math}
 % \setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
 
@@ -41,35 +41,35 @@
 % 不需要 unicode-math
 % \usepackage{fontspec}
 % \setmainfont{Times New Roman}
-% \usepackage[slantedGreek,eucal,mtpfrak,mtpscr,mtpbb]{mtpro2}
+% \usepackage[eucal,mtpfrak,mtpscr,mtpbb]{mtpro2}
 % \renewcommand\mathbf\mathbold
 
 % 第三种 Times 风格设置
 % \usepackage{fontspec}
 % \setmainfont{STIX Two Text}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \setmathfont{STIX Two Math}
 % \setmathfont[range={\mathscr,\mathbfscr},StylisticSet=1]{STIX Two Math}
 
 % 第四种 Times 风格设置
 % 不需要 fontspec 和 unicode-math
 % \usepackage{newtxtext}
-% \usepackage[slantedGreek,vvarbb]{newtxmath}
+% \usepackage[vvarbb]{newtxmath}
 % \defaultfontfeatures{}
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
 % Linux Libertine 风格设置
 % 不需要 fontspec 和 unicode-math
-% \usepackage[libertine]{newtx}
+% \usepackage[libertine,vvarbb]{newtx}
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
 % 第二种 Linux Libertine 风格设置（有一些小的 kerning 问题）
 % 不需要 fontspec
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \usepackage[math=+ss08]{libertinus-otf}
 % \setmathfont[range={\mathcal,\mathbfcal}]{Latin Modern Math}
 
@@ -77,41 +77,31 @@
 % 不需要 unicode-math
 % \usepackage{fontspec}
 % \usepackage{newpxtext}
-% \usepackage[slantedGreek,vvarbb]{newpxmath}
+% \usepackage[vvarbb]{newpxmath}
 % \defaultfontfeatures{}
 % \renewcommand\hbar\hslash
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
 
-% 第二种 Palatino 风格设置
-% 不需要 fontspec 和 unicode-math
-% \usepackage[T1]{fontenc}
-% \usepackage[slantedGreek]{mathpazo}
-% \renewcommand\mathbf\mathbold
-% \usepackage[scr=kp,frak=pxtx]{mathalpha}
-% \usepackage{fontspec}
-% \setmainfont{Palatino Linotype}
-
-% 第三种 Palatino 风格设置（不完全是 Palatino）
+% 第二种 Palatino 风格设置（不完全是 Palatino）
 % 不需要 fontspec
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \usepackage{kpfonts-otf}
 
 % Cambria 风格设置
 % \usepackage{fontspec}
 % \setmainfont{Cambria}[BoldFont=CambriaB,BoldItalicFont=CambriaZ]
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \setmathfont{Cambria Math}
 % \setmathfont[range={\mathscr,\mathbfscr},StylisticSet=1]{STIX Two Math}
 
 % Lucida 风格设置
 % \usepackage{fontspec}
 % \setmainfont{Lucida Bright OT}
-% \setmonofont{Lucida Console DK}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \setmathfont[StylisticSet=4]{Lucida Bright Math OT}
 % \setmathfont[range={\mathscr,\mathbfscr}]{Lucida Bright Math OT}
 
@@ -119,7 +109,7 @@
 % \usepackage{fontspec}
 % \setmainfont{EB Garamond}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \setmathfont[StylisticSet={3,6,9,10}]{Garamond-Math}
 % \setmathfont[range={\mathscr,\mathbfscr}]{Garamond-Math}
 
@@ -127,7 +117,7 @@
 % \usepackage{fontspec}
 % \setmainfont{XCharter}
 % \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO,sans-style=italic}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \setmathfont{XCharter Math}
 % \setmathfont[range={\mathcal,\mathbfcal}]{Latin Modern Math}
 
@@ -136,12 +126,17 @@
 % \setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=Adobe KaiTi Std]
 % \setCJKmonofont{Noto Sans Mono CJK SC}[BoldFont=Noto Sans Mono CJK SC Bold,ItalicFont=Adobe FangSong Std]
 
-% \epsilon 符号重定义
+% 符号重定义
 \AtBeginDocument{
-  \let\uglyepsilon\epsilon
-  \renewcommand\epsilon\varepsilon
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
 }
 
+% 题目
 \title{\textbf{Maths Homework Template}}
 \author{Author}
 \date{\today}
@@ -158,7 +153,7 @@
     \begin{enumerate}
 
         \item
-        \textparagraph\ Inline equations for simple math: $\mathbf{p} = \hbar\mathbf{k}$, $\epsilon = \hbar\mathbf{\omega}$.
+        \textparagraph\ Inline equations for simple math: $\mathbf{p} = \hbar\mathbf{k}$, $\epsilon = \hbar\mathbf{\omega}$, $\phi = \dfrac{1 + \sqrt{5}}{2}$.
 
         \textparagraph\ Centered equations for more involved or important equations:
         \begin{equation}
@@ -173,23 +168,22 @@
         \frac{\|\mathsf{A}\mathbf{x}\|_\infty}{\|\mathbf{x}\|_\infty} = \frac{\max\limits_i\left|\sum\limits_{j=1}^n \mathsf{A}_{ij}\mathsf{x}_{j1}\right|}{\max\limits_i|\mathsf{x}_{i1}|}
         \end{equation}
 
+        \item
         \textparagraph\ An example of a matrix:
         \begin{equation}
             \mathsf{M} =
             \begin{+bmatrix}
-                \dfrac{1+\sqrt{5}i}{2} & \mathrm{e}^{-i\omega t} \\
-                i\mathrm{e}^{-i\omega t} & \dfrac{1-\sqrt{5}i}{2}
-            \end{+bmatrix}
+                1 & 1 & \cdots & 1 \\
+                a_1 & a_2 & \cdots & a_n \\
+                a_1^2 & a_2^2 & \cdots & a_n^2 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_1^{n-1} & a_2^{n-1} & \cdots & a_n^{n-1}
+            \end{+bmatrix},\quad \det(\mathsf{M}) = \prod_{1 \leq j \leq i \leq n} (a_i - a_j)
         \end{equation}
         
-        \textparagraph\ An example of intergals:
+        \textparagraph\ An example of accents:
         \begin{equation}
-        \iiint \nabla \cdot \mathbf{A} \,\mathrm{d}V = \oiint \mathbf{A}\,\mathrm{d}\mathbf{S}
-        \end{equation}
-
-        \textparagraph\ An example of roots:
-        \begin{equation}
-        r = \sqrt[3]{\frac{3}{4\pi N}}
+            \Hat{h}\quad\Check{c}\quad\Tilde{t}\quad\Acute{a}\quad\Grave{g}\quad\dot{d}\quad\ddot{d}\quad\dddot{d}\quad\ddddot{d}\quad\Breve{b}\quad\Bar{b}\quad\Vec{v}
         \end{equation}
 
         \textparagraph\ An example of math fonts:
@@ -200,7 +194,12 @@
             \end{+matrix}
         \end{equation}
 
-        \textparagraph\ An example of Dirac brackets:
+        \textparagraph\ An example of roots:
+        \begin{equation}
+        r = \sqrt[3]{\frac{3}{1+\sqrt{\frac{3}{1+\sqrt{3}}}}}
+        \end{equation}
+
+        \textparagraph\ An example of Dirac notation:
         \begin{equation}
             \begin{+matrix}
                 &\bra{\phi}\ket{\psi} &\bra{\dfrac{1}{2}\lambda}\ket{\psi} & \ket{\phi_{\hat{Q}=0}} \\
@@ -209,19 +208,16 @@
         \end{equation}
 
         \item
-        \begin{align*}
-            I(x)
-            &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}} \dd{I(x)} \\
-            &= 4\alpha\frac{I_0}{b}\int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\cos^2\left(\frac{\pi d}{\lambda D}\left(x+\frac{D}{R}\xi\right)\right) \dd{\xi} \\
-            &= 4\alpha I_0\left(1+\frac{1}{u}\sin u\cos\left(\frac{2\pi d}{\lambda D}x\right)\right),\quad u = \dfrac{\pi db}{\lambda R}
-        \end{align*}
+        \[
+            \iiint \nabla \cdot \mathbf{A} \,\mathrm{d}V = \oiint \mathbf{A}\,\mathrm{d}\mathbf{S}
+        \]
 
         \item
         \[
         F_n(z) =
         \begin{+cases}
             \dfrac{1}{\sqrt{1+in^2\mathrm{e}^{Az}}}, &z < 0 \\
-            \dfrac{1}{\sqrt{1+n^2\mathrm{e}^{Az}}}, &z \geqslant 0
+            \dfrac{1}{\sqrt{1+n^2\mathrm{e}^{Az}}}, &z \geq 0
         \end{+cases}
         \]
 
@@ -256,6 +252,14 @@
         \[
         \lambda_{\odot} = \frac{b}{T_{\odot}} = 5027.86\,\text{\AA}
         \]
+
+        \item
+        \begin{align*}
+            I(x)
+            &= \int_{-\tfrac{b}{2}}^{\tfrac{b}{2}} \dd{I(x)} \\
+            &= 4\alpha\frac{I_0}{b}\int_{-\tfrac{b}{2}}^{\tfrac{b}{2}}\cos^2\left(\frac{\pi d}{\lambda D}\left(x+\frac{D}{R}\xi\right)\right) \dd{\xi} \\
+            &= 4\alpha I_0\left(1+\frac{1}{u}\sin u\cos\left(\frac{2\pi d}{\lambda D}x\right)\right),\quad u = \dfrac{\pi db}{\lambda R}
+        \end{align*}
 
     \end{enumerate}
 
