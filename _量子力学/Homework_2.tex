@@ -37,6 +37,101 @@
 
 \maketitle
 
+    \section*{第二章}
+
+    \begin{itemize}
+        \item[2.]
+        对于：
+        \[
+            \dv[2]{\psi}{x} = \frac{2m}{\hbar^2}[V(x) - E]\psi
+        \]
+        如果$E < \min{V(x)}$，则$\dfrac{2m}{\hbar^2}[V(x) - E] > 0$，$\psi$与$\displaystyle \psi''(x) = \dv[2]{\psi}{x}$同号。
+        
+        此时分两种情况：
+        \begin{itemize}
+            \item[\textcircled{1}] $\psi(x)$有零点$x_0$：
+
+            则存在实数$\delta > 0$，使得在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒大于零或恒小于零。
+
+            如果在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒大于零，由$\psi(x_0 + \delta) = \psi(x_0) + \delta \psi'(x_0) + o(\delta)$得$\psi'(x_0) > 0$。
+
+            注意到此时$\psi''(x)$也大于零，则$\psi(x)$在$(x_0, +\infty)$上单调递增且$\psi'(x)$越来越大。
+
+            这使得$\lim\limits_{x \to +\infty} \psi(x) = +\infty$，$\psi(x)$不可归一化。
+
+            同理，如果在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒小于零，则$\psi'(x) < 0$，$\psi''(x) < 0$，$\lim\limits_{x \to +\infty} \psi(x) = -\infty$，$\psi(x)$也不可归一化。
+
+            \item[\textcircled{2}] $\psi(x)$没有零点：
+
+            则$\psi(x)$在$(-\infty, +\infty)$上恒大于零或恒小于零，$\psi''(x)$在$(-\infty, +\infty)$上也恒大于零或恒小于零。
+
+            于是$\psi(x)$恒大于零且$\psi'(x)$单调递增，这使得$\lim\limits_{x \to +\infty} \psi(x) = +\infty$，$\psi(x)$不可归一化。
+
+            同理，$\psi(x)$恒小于零且$\psi'(x)$单调递减，这使得$\lim\limits_{x \to +\infty} \psi(x) = -\infty$，$\psi(x)$不可归一化。
+        \end{itemize}
+        综上，如果$E < \min{V(x)}$，则$\psi$与$\psi''(x)$同号，这样的$\psi(x)$不可归一化，故$E \geq \min{V(x)}$。
+
+        \bigskip
+        \item[4.]
+        由波函数：
+        \[
+            \Psi_n(x,t) = \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t},\quad n \in \mathbb{N}^*
+        \]
+        得：
+        \begin{align*}
+            \expval{x}
+            &= \int_0^a \Psi_n^* x \Psi_n \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot x \cdot \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= \frac{2a}{(n\pi)^2} \int_0^{n\pi} u\sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= \frac{2a}{(n\pi)^2} \left(\eval{\frac{u^2}{4} - \frac{u}{4}\sin{2u} - \frac{1}{8}\cos{2u}}_0^{n\pi}\right) \\
+            &= \frac{2a}{(n\pi)^2} \cdot \frac{(n\pi)^2}{4} \\
+            &= \frac{a}{2}
+        \end{align*}
+        \begin{align*}
+            \expval{x^2}
+            &= \int_0^a \Psi_n^* x^2 \Psi_n \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot x^2 \cdot \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= \frac{2a^2}{(n\pi)^3} \int_0^{n\pi} u\sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= \frac{2a^2}{(n\pi)^3} \left(\eval{\frac{u^3}{6} - \frac{2u^2-1}{8}\sin{2u} - \frac{u}{4}\cos{2u}}_0^{n\pi}\right) \\
+            &= \frac{2a^2}{(n\pi)^3} \cdot \left[\frac{(n\pi)^3}{6} - \frac{n\pi}{4}\right] \\
+            &= \frac{a^2}{3} - \frac{1}{2n^2 \pi^2},\quad n \in \mathbb{N}^*
+        \end{align*}
+        \begin{align*}
+            \expval{p}
+            &= \int_0^a \Psi_n^* p \Psi_n \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-i\hbar) \pdv{x}(\sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t}) \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-i\hbar) \sqrt{\frac{2}{a}} \left(\frac{n\pi}{a}\right) \cos(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= -\frac{2i\hbar}{a} \int_0^{n\pi} \sin{u} \cos{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= -\frac{2i\hbar}{a} \left(\eval{-\frac{1}{2}\cos^2{u}}_0^{n\pi}\right)\\
+            &= 0
+        \end{align*}
+        \begin{align*}
+            \expval{p^2}
+            &= \int_0^a \Psi_n^* p^2 \Psi_n \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-\hbar^2) \pdv[2]{x}(\sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t}) \dd{x} \\
+            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot \hbar^2 \sqrt{\frac{2}{a}} \left(\frac{n\pi}{a}\right)^2 \sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
+            &= \frac{2n\pi\hbar^2}{a^2} \int_0^{n\pi} \sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
+            &= \frac{2n\pi\hbar^2}{a^2} \left(\eval{\frac{u}{2} - \frac{1}{4}\sin{2u}}_0^{n\pi}\right)\\
+            &= \frac{n^2 \pi^2 \hbar^2}{a^2},\quad n \in \mathbb{N}^*
+        \end{align*}
+        于是有：
+        \[
+            \sigma_x = \expval{x^2} - \expval{x}^2 = \frac{a}{2}\sqrt{\frac{1}{3} - \frac{2}{n^2 \pi^2}},\quad n \in \mathbb{N}^*
+        \]
+        \[
+            \sigma_p = \expval{p^2} - \expval{p}^2 = \frac{n^2 \pi^2 \hbar^2}{a^2},\quad n \in \mathbb{N}^*
+        \]
+        则：
+        \[
+            \sigma_x \sigma_p = \frac{a}{2}\sqrt{\frac{1}{3} - \frac{2}{n^2 \pi^2}} \cdot \frac{n^2 \pi^2 \hbar^2}{a^2} = \frac{\hbar}{2}\sqrt{\frac{n^2 \pi^2}{3} - 2},\quad n \in \mathbb{N}^*
+        \]
+        $n=1$时$\sigma_x \sigma_p$最小：
+        \[
+            (\sigma_x \sigma_p)_{\mathrm{min}} = \dfrac{\hbar}{2}\sqrt{\dfrac{\pi^2}{3} - 2} = 1.136\dfrac{\hbar}{2} > \dfrac{\hbar}{2}
+        \]
+    \end{itemize}
+
+    \newpage
     \section*{第三章}
 
     \begin{itemize}
@@ -60,8 +155,7 @@
         则$x$的平均值为：
         \begin{align*}
             \expval{x}
-            &= \int_{-\infty}^{+\infty} \expval{x}{\Psi} \dd{x} \\
-            &= \int_{-\infty}^{+\infty} x \abs{\Psi}^2 \dd{x} \\
+            &= \int_{-\infty}^{+\infty} \Psi^* x \Psi \dd{x} \\
             &= \int_{-\infty}^{+\infty} \sqrt{\frac{2a}{\pi}} \frac{1}{\abs{\gamma}^2} x \exp[-\frac{2a}{\abs{\gamma}^4} \left(x - \frac{hlt}{m}\right)^2] \dd{x} \\
             &= \int_{-\infty}^{+\infty} \sqrt{\frac{2a}{\pi}} \frac{1}{\abs{\gamma}^2} \left(u + \frac{hlt}{m}\right) \mathrm{e}^{-\tfrac{2a}{\abs{\gamma}^4} u^2} \dd{u},\quad u = x - \frac{hlt}{m}
         \end{align*}
@@ -93,7 +187,7 @@
         得$x^2$的平均值：
         \begin{align*}
             \expval{x^2}
-            &= \int_{-\infty}^{+\infty} \expval{x^2}{\Psi} \dd{x} \\
+            &= \int_{-\infty}^{+\infty} \Psi^* x^2 \Psi \dd{x} \\
             &= \int_{-\infty}^{+\infty} \frac{\lambda}{\sqrt{\pi}} \left(u + \frac{hlt}{m}\right)^2 \mathrm{e}^{-\lambda^2 u^2} \dd{u} \\
             &= \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} \lambda u^2 \mathrm{e}^{-\lambda^2 u^2} \dd{u}
             + \left(\frac{hlt}{m}\right) \frac{1}{\sqrt{\pi}} \int_{-\infty}^{+\infty} 2\lambda u \mathrm{e}^{-\lambda^2 u^2} \dd{u}
@@ -108,7 +202,7 @@
         对于自由粒子，$H = \dfrac{p^2}{2m}$，所以：
         \[
             \expval{H}
-            = \int_{-\infty}^{+\infty} \expval{x^2}{\Psi} \dd{x}
+            = \int_{-\infty}^{+\infty} \Psi^* x^2 \Psi \dd{x}
             = -\frac{\hbar^2}{2m} \int_{-\infty}^{+\infty} \Psi^* \pdv[2]{\Psi}{x} \dd{x}
         \]
         而$\Psi(x,t)$对$x$求偏导数得：
@@ -363,7 +457,7 @@
         \[
             \Psi(x,t) = \sqrt[4]{\frac{2a}{\pi}} \frac{1}{\gamma} \exp[-\frac{a}{\gamma^2}\left(x - \frac{hlt}{m}\right)^2 + il\left(x - \frac{hlt}{2m}\right)],\quad \gamma = \sqrt{1 + \frac{2ai\hbar t}{m}}
         \]
-        记$\theta = \dfrac{2a\hbar t}{m}$，则$\gamma = \sqrt{1+i\theta}$，注意$t = 0$时$\gamma = 1$，于是：
+        记$\theta = \dfrac{2a\hbar t}{m}$，则$\gamma = \sqrt{1+i\theta}$，$t = 0$时$\gamma = 1$，于是：
         \begin{align*}
             \Phi(p,0)
             &= \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{+\infty} \mathrm{e}^{-\tfrac{ipx}{\hbar}} \Psi(x,0) \dd{x} \\
@@ -373,7 +467,7 @@
         由：
         \[
             \int_{-\infty}^{+\infty} \exp(-D^2 x^2 + Ex) \dd{x}
-            = \int_{-\infty}^{+\infty} \exp[-D^2 \left(x - \frac{E}{2D^2}\right)^2 + \frac{E^2}{4D^2})] \dd{x}
+            = \int_{-\infty}^{+\infty} \exp[-D^2 \left(x - \frac{E}{2D^2}\right)^2 + \frac{E^2}{4D^2}] \dd{x}
             = \frac{\sqrt{\pi}}{D} \exp(\frac{E^2}{4D^2})
         \]
         得：
@@ -390,7 +484,8 @@
             &= K \int_{-\infty}^{+\infty} \exp[-\frac{a}{\gamma^2}\left(x - \frac{hlt}{m}\right)^2 + il\left(x - \frac{hlt}{2m}\right) - \frac{ipx}{\hbar}] \dd{x} \\
             &= K \exp[-\frac{a}{\gamma^2} \left(\frac{hlt}{m}\right)^2 + il \frac{hlt}{2m}] \int_{-\infty}^{+\infty} \exp[-ax^2 + ix \left(l - \frac{p}{\hbar}\right)] \dd{x} \\
             &= K \frac{\gamma\sqrt{\pi}}{\sqrt{a}} \exp[-\frac{a}{\gamma^2} \left(\frac{hlt}{m}\right)^2 + il \frac{hlt}{2m}] \exp{\frac{\gamma^2}{4a} \left[i\left(l - \frac{p}{\hbar}\right) - \frac{2a}{\gamma^2}\left(\frac{hlt}{m}\right)\right]^2} \\
-            &= \frac{1}{\sqrt{2a\hbar}} \sqrt[4]{\frac{2a}{\pi}} \exp[-\frac{\gamma^2}{4a} \left(l - \frac{p}{\hbar}\right)^2 - \frac{ihlt}{2m} \left(l - \frac{p}{\hbar}\right)]
+            &= K \frac{\gamma\sqrt{\pi}}{\sqrt{a}} \exp[-\frac{a}{\gamma^2} \left(\frac{hlt}{m}\right)^2 + il \frac{hlt}{2m}] \exp[-\frac{\gamma^2}{4a}\left(l - \frac{p}{\hbar}\right)^2 - i\left(l - \frac{p}{\hbar}\right)\left(\frac{hlt}{m}\right) + \frac{a}{\gamma^2}\left(\frac{hlt}{m}\right)^2] \\
+            &= \frac{1}{\sqrt{2a\hbar}} \sqrt[4]{\frac{2a}{\pi}} \exp[-\frac{\gamma^2}{4a} \left(l - \frac{p}{\hbar}\right)^2 - \frac{ihlt}{2m} \left(l - \frac{2p}{\hbar}\right)]
         \end{align*}
         注意到$\gamma^2 = 1 + i\theta = 1 + i\theta(t)$，$t = 0$时$\gamma^2 = 1$，且$\gamma^2 + \left(\gamma^2\right)^* = 2\Re\left(\gamma^2\right) = 2$，于是有：
         \[
@@ -402,7 +497,6 @@
         $p$的平均值为：
         \begin{align*}
             \expval{p}
-            &= \int_{-\infty}^{+\infty} \expval{p}{\Phi} \dd{p} \\
             &= \int_{-\infty}^{+\infty} p \abs{\Phi(p,0)}^2 \dd{p} \\
             &= \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} p \exp[-\frac{1}{2a}\left(l-\frac{p}{\hbar}\right)^2] \dd{p} \\
             &= \frac{1}{\hbar\sqrt{2a\pi}} \int_{-\infty}^{+\infty} p \exp[-\frac{1}{2a}\left(\frac{p}{\hbar}-l\right)^2] \dd{p} \\
@@ -429,104 +523,11 @@
         \end{align*}
         而对于静态高斯波包的波函数：
         \[
-            \Psi_0(x,t) = \sqrt[4]{\frac{2a}{\pi}} \frac{1}{\gamma} \mathrm{e}^{-\tfrac{a}{\gamma^2}x^2},\quad \gamma = \sqrt{1 + \frac{2ai\hbar t}{m}}
+            \Psi_0(x,t) = \sqrt[4]{\frac{2a}{\pi}} \frac{1}{\gamma} \exp(-\frac{a}{\gamma^2}x^2),\quad \gamma = \sqrt{1 + \frac{2ai\hbar t}{m}}
         \]
         Hamilton量的平均值为$\expval{H}_0 = \dfrac{a\hbar^2}{2m}$，故：
         \[
             \expval{H} = \frac{\expval{p}^2}{2m} + \expval{H}_0
-        \]
-    \end{itemize}
-
-    \newpage
-    \section*{第二章}
-
-    \begin{itemize}
-        \item[2.]
-        对于：
-        \[
-            \dv[2]{\psi}{x} = \frac{2m}{\hbar^2}[V(x) - E]\psi
-        \]
-        如果$E < \min{V(x)}$，则$\dfrac{2m}{\hbar^2}[V(x) - E] > 0$，$\psi$与$\displaystyle \psi''(x) = \dv[2]{\psi}{x}$同号。此时分两种情况：
-        \begin{itemize}
-            \item[\textcircled{1}] $\psi(x)$有零点$x_0$：
-
-            则存在实数$\delta > 0$，使得在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒大于零或恒小于零。
-
-            如果在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒大于零，由$\psi(x_0 + \delta) = \psi(x_0) + \delta \psi'(x_0) + o(\delta)$得$\psi'(x_0) > 0$。
-
-            注意到此时$\psi''(x)$也大于零，则$\psi(x)$在$(x_0, +\infty)$上单调递增且$\psi'(x)$越来越大。
-
-            这使得$\lim\limits_{x \to +\infty} \psi(x) = +\infty$，$\psi(x)$不可归一化。
-
-            同理，如果在$x \in (x_0, x_0+\delta)$处，$\psi(x)$恒小于零，则$\psi'(x) < 0$，$\psi''(x) < 0$，$\lim\limits_{x \to +\infty} \psi(x) = -\infty$，$\psi(x)$也不可归一化。
-
-            \item[\textcircled{2}] $\psi(x)$没有零点：
-
-            则$\psi(x)$在$(-\infty, +\infty)$上恒大于零或恒小于零，$\psi''(x)$在$(-\infty, +\infty)$上也恒大于零或恒小于零。
-
-            于是$\psi(x)$恒大于零且$\psi'(x)$单调递增，这使得$\lim\limits_{x \to +\infty} \psi(x) = +\infty$，$\psi(x)$不可归一化。
-
-            同理，$\psi(x)$恒小于零且$\psi'(x)$单调递减，这使得$\lim\limits_{x \to +\infty} \psi(x) = -\infty$，$\psi(x)$不可归一化。
-        \end{itemize}
-        综上，如果$E < \min{V(x)}$，则$\psi$与$\psi''(x)$同号，这样的$\psi(x)$不可归一化，故$E \geq \min{V(x)}$。
-
-        \bigskip
-        \item[4.]
-        由波函数：
-        \[
-            \Psi_n(x,t) = \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t},\quad n \in \mathbb{N}^*
-        \]
-        得：
-        \begin{align*}
-            \expval{x}
-            &= \int_0^a \expval{x}{\Psi_n} \dd{x} \\
-            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot x \cdot \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
-            &= \frac{2a}{(n\pi)^2} \int_0^{n\pi} u\sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
-            &= \frac{2a}{(n\pi)^2} \left(\eval{\frac{u^2}{4} - \frac{u}{4}\sin{2u} - \frac{1}{8}\cos{2u}}_0^{n\pi}\right) \\
-            &= \frac{2a}{(n\pi)^2} \cdot \frac{(n\pi)^2}{4} \\
-            &= \frac{a}{2}
-        \end{align*}
-        \begin{align*}
-            \expval{x^2}
-            &= \int_0^a \expval{x^2}{\Psi_n} \dd{x} \\
-            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot x^2 \cdot \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
-            &= \frac{2a^2}{(n\pi)^3} \int_0^{n\pi} u\sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
-            &= \frac{2a^2}{(n\pi)^3} \left(\eval{\frac{u^3}{6} - \frac{2u^2-1}{8}\sin{2u} - \frac{u}{4}\cos{2u}}_0^{n\pi}\right) \\
-            &= \frac{2a^2}{(n\pi)^3} \cdot \left[\frac{(n\pi)^3}{6} - \frac{n\pi}{4}\right] \\
-            &= \frac{a^2}{3} - \frac{1}{2n^2 \pi^2},\quad n \in \mathbb{N}^*
-        \end{align*}
-        \begin{align*}
-            \expval{p}
-            &= \int_0^a \expval{p}{\Psi_n} \dd{x} \\
-            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-i\hbar) \pdv{x}(\sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t}) \dd{x} \\
-            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-i\hbar) \sqrt{\frac{2}{a}} \left(\frac{n\pi}{a}\right) \cos(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
-            &= -\frac{2i\hbar}{a} \int_0^{n\pi} \sin{u} \cos{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
-            &= -\frac{2i\hbar}{a} \left(\eval{-\frac{1}{2}\cos^2{u}}_0^{n\pi}\right)\\
-            &= 0
-        \end{align*}
-        \begin{align*}
-            \expval{p^2}
-            &= \int_0^a \expval{p^2}{\Psi_n} \dd{x} \\
-            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot (-\hbar^2) \pdv[2]{x}(\sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t}) \dd{x} \\
-            &= \int_0^a \sqrt{\frac{2}{a}}\sin(\frac{n\pi x}{a})\mathrm{e}^{-i\omega t} \cdot \hbar^2 \sqrt{\frac{2}{a}} \left(\frac{n\pi}{a}\right)^2 \sin(\frac{n\pi x}{a})\mathrm{e}^{i\omega t} \dd{x} \\
-            &= \frac{2n\pi\hbar^2}{a^2} \int_0^{n\pi} \sin^2{u} \dd{u},\quad u = \frac{n\pi x}{a} \\
-            &= \frac{2n\pi\hbar^2}{a^2} \left(\eval{\frac{u}{2} - \frac{1}{4}\sin{2u}}_0^{n\pi}\right)\\
-            &= \frac{n^2 \pi^2 \hbar^2}{a^2},\quad n \in \mathbb{N}^*
-        \end{align*}
-        于是有：
-        \[
-            \sigma_x = \expval{x^2} - \expval{x}^2 = \frac{a}{2}\sqrt{\frac{1}{3} - \frac{2}{n^2 \pi^2}},\quad n \in \mathbb{N}^*
-        \]
-        \[
-            \sigma_p = \expval{p^2} - \expval{p}^2 = \frac{n^2 \pi^2 \hbar^2}{a^2},\quad n \in \mathbb{N}^*
-        \]
-        则：
-        \[
-            \sigma_x \sigma_p = \frac{a}{2}\sqrt{\frac{1}{3} - \frac{2}{n^2 \pi^2}} \cdot \frac{n^2 \pi^2 \hbar^2}{a^2} = \frac{\hbar}{2}\sqrt{\frac{n^2 \pi^2}{3} - 2},\quad n \in \mathbb{N}^*
-        \]
-        $n=1$时$\sigma_x \sigma_p$最小：
-        \[
-            (\sigma_x \sigma_p)_{\mathrm{min}} = \dfrac{\hbar}{2}\sqrt{\dfrac{\pi^2}{3} - 2} = 1.136\dfrac{\hbar}{2} > \dfrac{\hbar}{2}
         \]
     \end{itemize}
 

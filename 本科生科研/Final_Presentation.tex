@@ -1,0 +1,272 @@
+\documentclass[10pt]{beamer}
+\usetheme{default}
+\usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{section in toc}[ball]
+\setbeamertemplate{footline}[text line]{\parbox{\linewidth}{\vspace{-2em}\hfill\insertpagenumber}}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+\linespread{1.25}
+
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\usepackage{fontspec}
+\usepackage{anyfontsize}
+\usepackage{newpxtext}
+\usepackage[vvarbb]{newpxmath}
+\defaultfontfeatures{}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=Adobe KaiTi Std]
+\setCJKsansfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=Adobe KaiTi Std]
+\setCJKmonofont{FangSong}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=Adobe KaiTi Std]
+\newCJKfontfamily\kaishu{Adobe KaiTi Std}
+
+\usepackage{color}
+\usepackage{graphicx,caption,subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=green,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+
+\title{\textbf{宇宙射线成像系统模拟}}
+\date{\kaishu{
+\vspace{-1em} \\
+北京大学物理学院\quad 张植竣 \\~\\
+指导教师\quad 李奇特 \\~\\
+2022年10月28日}}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+
+\begin{frame}{\textbf{目录}}
+    \tableofcontents
+\end{frame}
+
+\section{基本原理}
+
+\begin{frame}{\textbf{基本原理}}
+    \begin{itemize}
+        \item 宇宙射线：来自外太空的高能粒子及其次级粒子。到达海平面的的宇宙射线中主要成分是μ子。
+        
+        \item 宇宙射线中的μ子，平均能量在$3 \sim 4\,\mathrm{GeV}$之间。μ子的流强约为每分钟每平方厘米一个，速度接近光速。
+
+        \item 通量稳定、天然易获取、易探测、对人体和被探测物质无副作用。
+        
+        \item 利用μ子对未知物体进行鉴别和成像是一个很有前景的研究领域，尤其是对于重核物质的探测，在核安全领域有重要利用。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{基本原理}}
+    μ子穿透性能强，在穿透物质的过程中会被原子散射，原子序数、密度不同的物质散射角也不同。一般原子序数$Z$越大，散射角$\sigma$也越大。
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\linewidth]{scatter-Z.png}
+        \caption{μ子穿透$10\,\mathrm{cm}$的水、铁、钨的散射角}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{基本原理}}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\linewidth]{muon.png}
+        \caption{μ子成像系统示意图}
+    \end{figure}
+    成像测量需要数据：入射矢量、出射矢量、能量（动量）
+\end{frame}
+
+\begin{frame}{\textbf{基本原理}}
+    考虑动量为$p$的μ子穿过厚度为$L$的单层均匀介质，$\sigma_\theta$为散射角的标准差。定义散射强度：
+    \[
+        \lambda = \left(\frac{E_0}{p_0\beta c}\right)^2 \frac{1}{L_{\mathrm{rad}}} = \left(\frac{p}{p_0}\right)^2 \frac{\sigma_\theta^2}{L},\quad p_0 = 3\,\mathrm{GeV}/c^2
+    \]
+    $\lambda$越大，物质原子序数$Z$越大。
+    \\~\\
+    成像算法目的：通过计算$\sigma_\theta$、$p$、$L$，还原成像区域散射强度$\lambda$的分布情况，进而得出被散射物质的位置和原子序数$Z$的高低。
+\end{frame}
+
+\begin{frame}{\textbf{成像算法研究}}
+    \begin{itemize}
+        \item 研究PoCA算法并改进PoCA算法在$z$方向的成像质量 \\~\\
+        \item 比较比例算法与PoCA算法在判断不同Z值物质时的成像质量
+    \end{itemize}
+\end{frame}
+
+\section{PoCA算法}
+
+\begin{frame}{\textbf{PoCA成像算法}}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\linewidth]{PoCA.png}
+    \end{figure}
+    \begin{itemize}
+        \item PoCA：Point of Closest Approach，最基础的算法
+        \item 思路：将多次散射等效为一次散射，入射、出射矢量距离的中点为散射点，夹角为散射角，进而判断位置和原子序数
+        \item 优点：算法稳定可靠，实现简单，时间复杂度低
+        \item 缺点：由于散射角较小的限制，散射点在$z$方向（竖直方向）判断不精确，边缘处容易出界
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{PoCA算法相关研究}}
+    \textbf{模拟实验}
+
+    这部分实验建立在使用Geant4模拟的虚拟实验平台上。如图所示，四块板是4个RPC探测器。探测器有效面积为$200\,\mathrm{mm} \times 200\,\mathrm{mm}$，四块玻璃板的间距均为$300\,\mathrm{mm}$。探测器中央有一个边长为$60\,\mathrm{mm}$的钨立方体，以立方体中心的位置为坐标原点，竖直方向为$z$方向。
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.2\linewidth]{RPC.png}
+        \caption{RPC探测器示意图}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{PoCA算法相关研究}}
+    \textbf{原来的PoCA算法}
+
+    假设入射点和出射点坐标分别为$\mathbf{P}_i$和$\mathbf{P}_o$，入射矢量和出射矢量分别为$\mathbf{v}_i$和$\mathbf{v}_o$，那么计算PoCA点的步骤为：
+    \begin{itemize}
+        \item[\bullet] 入射矢量和出射矢量归一化为单位矢量$\mathbf{n}_i$和$\mathbf{n}_o$。
+        \item[\bullet] 公垂线段的方向矢量为$\mathbf{n} = \dfrac{\mathbf{n}_i \times \mathbf{n}_o}{\abs{\mathbf{n}_i \times \mathbf{n}_o}}$，长度为$d = (\mathbf{P}_o - \mathbf{P}_i) \cdot \mathbf{n}$。
+
+        \item[\bullet] 将$\mathbf{P}_i$沿$\mathbf{n}$平移$d$长度，得到点$\mathbf{P}_1 = \mathbf{P}_i + d\mathbf{n}$。
+
+        \item[\bullet] 将$\mathbf{P}_1$沿入射方向$\mathbf{n}_i$平移$l_1 = (\mathbf{P}_o - \mathbf{P}_1) \cdot \mathbf{n}_i$长度，得到点$\mathbf{P}_2 = \mathbf{P}_1 + l_1\mathbf{n}_i$。
+
+        \item[\bullet] 将$\mathbf{P}_2$沿出射反方向$-\mathbf{n}_o$方向平移$l_2 = \dfrac{\abs{\mathbf{P}_o - \mathbf{P}_2}^2}{(\mathbf{P}_o - \mathbf{P}_2) \cdot \mathbf{n}_o}$长度，得到点$\mathbf{P}_3 = \mathbf{P}_o - l_2\mathbf{n}_o$。这个点就是公垂线段与出射轨迹的交点。
+
+        \item[\bullet] 将$\mathbf{P}_3$沿$-\mathbf{n}$平移$\dfrac{d}{2}$长度得到PoCA点$\mathbf{M} = \mathbf{P}_3 - \dfrac{d}{2}\mathbf{n}$。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{PoCA算法相关研究}}
+    \textbf{算法化简}
+
+    假设入射点和出射点坐标分别为$\mathbf{P}_i$和$\mathbf{P}_o$，入射矢量和出射矢量分别为$\mathbf{v}_i$和$\mathbf{v}_o$，那么计算PoCA点的步骤为：
+    \begin{itemize}
+        \item 公垂线段的方向矢量为$\mathbf{n} = \dfrac{\mathbf{v}_i \times \mathbf{v}_o}{\abs{\mathbf{v}_i \times \mathbf{v}_o}}$，长度为$d = (\mathbf{P}_o - \mathbf{P}_i) \cdot \mathbf{n}$。
+        \item 将$\mathbf{P}_i$沿向量$\mathbf{n}$方向平移$t_i \mathbf{v}_i$长度，得到点$\mathbf{P}'_1 = \mathbf{P}_i + t_i \mathbf{v}_i$。其中$t_i$由方程$\boxed{\mathbf{P}_i + t_i \mathbf{v}_i + d \mathbf{n} = \mathbf{P}_o - t_o \mathbf{v}_o}$决定：
+        \[
+            t_i = \frac{(P_{ox} - P_{ix} - dn_x)v_{oy} - (P_{oy} - P_{iy} - dn_y)v_{ox}}{v_{ix}v_{oy} - v_{iy}v_{ox}}
+        \]
+        \item 将$\mathbf{P}'_1$沿$\mathbf{n}$平移$\dfrac{d}{2}$长度得到PoCA点$\mathbf{M} = \mathbf{P}'_1 + \dfrac{d}{2}\mathbf{n}$。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{PoCA算法相关研究}}
+    这比原来的算法需要6步计算矢量的合成更加精简且清晰，计算PoCA点的时间减少到了原来的40\%，得到的结果如图4所示。
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\linewidth]{poca_x.png}
+        \includegraphics[width=0.4\linewidth]{poca_z.png}
+        \caption{PoCA算法对1000000次粒子入射事件做计算，中心点均为$0\,\mathrm{mm}$。左图为$\lambda-x$关系，右图为$\lambda-z$关系。}
+    \end{figure}
+
+    从图4可以看出，PoCA算法在$x$方向和$y$方向还原出的物体边缘较为清晰准确，但是$z$方向偏离较大，峰值大约在$22.5\,\mathrm{mm}$，相比正确值$0\,\mathrm{mm}$偏高，$z$方向的边缘也不够清晰。
+\end{frame}
+
+\begin{frame}{\textbf{PoCA算法相关研究}}
+    \textbf{算法改进}
+
+    注意到散射角越小，$z$方向的误差越大，考虑对散射角为$\theta$（以弧度为单位）的粒子事件进行如下操作：
+    \begin{itemize}
+        \item 设置标准差$\sigma = K\theta$，这里取$K=100$。
+    
+        \item 对于正态分布$N(0,\sigma)$，在$[-n,n]$以内的概率是$\erf\left(\dfrac{n}{\sigma\sqrt{2}}\right)$，则有：
+        \[
+            \delta_1 = \erf\left(\frac{1}{\sigma\sqrt{2}}\right),\quad
+            \delta_2 = \frac{1}{2}\left(\erf\left(\frac{2}{\sigma\sqrt{2}}\right) - \delta_1\right),\quad
+            \delta_3 = \frac{1}{2} - \frac{1}{2}\delta_1 - \delta_2
+        \]
+        
+        \item 在PoCA散射点$\mathbf{M}(x,y,z)$处，$\lambda_{ij} = \delta_1\Delta\lambda$，在$(x,y,z+1)$和$(x,y,z-1)$的位置，$\lambda_{ij} = \delta_2\Delta\lambda$，在$(x,y,z+2)$和$(x,y,z-2)$的位置，$\lambda_{ij} = \delta_3\Delta\lambda$。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{PoCA算法相关研究}}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\linewidth]{poca_z.png}
+        \includegraphics[width=0.4\linewidth]{poca_z_2.png}
+        \caption{改进前（左）与改进后（右）PoCA算法$z$方向的成像结果}
+    \end{figure}
+
+    可以看出$z$方向$\lambda$的峰值改进到$13.5\,\mathrm{mm}$处，更接近钨块中心，且图像更加平滑，峰值符合正确值更好，边缘更清晰。
+\end{frame}
+
+\section{比例算法}
+
+\begin{frame}{\textbf{比例算法}}
+    \begin{columns}
+        \begin{column}{0.6\linewidth}
+            文群刚等在2020年提出比例算法：
+            \begin{itemize}
+                \item 思路：散射角是一个类高斯分布，散射角的标准差$\sigma_\theta$随散射体的$Z$增大而增大。计算一定角度$\theta_0$内散射的事件占总事件数的比例$R$，比例越低，散射体的$Z$也就越大
+                \item 优点：几乎不利用散射角数据本身，提取有效数据，μ子动量对散射角标准差影响较小
+                \item 缺点：不能判断散射体的位置（仍然依赖PoCA算法）
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\linewidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.9\linewidth]{ratio.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{比例算法相关研究}}
+    \textbf{数据来源}
+    
+    在研究组2014年的测试中，我们使用有效边长为$203\,\mathrm{mm} \times 203\,\mathrm{mm}$的RPC探测器对边长为$30\,\mathrm{mm}$的正方体铁块和铅块做了成像实验。
+    \\~\\
+    这里运用比例算法对探测结果成像，并与PoCA算法的结果做对比。数据处理大约需要$40\,\mathrm{s}$，而PoCA算法只需要约$1\mathrm{s}$。
+\end{frame}
+
+\begin{frame}{\textbf{比例算法相关研究}}
+    以$4\times4\times4$的铁块包裹$2\times2\times2$的铅块为例：
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.5\linewidth]{PbinFe_PoCA.png}
+        \caption{PoCA算法的成像结果}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{比例算法相关研究}}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.75\linewidth]{P_R_2.png}
+        \caption{比例算法的成像结果}
+    \end{figure}
+\end{frame}
+
+\section{总结}
+
+\begin{frame}{\textbf{总结}}
+    \begin{itemize}
+        \item 化简了求PoCA点的步骤，加快了运行速度。
+        \item 考虑散射角的影响，在计算散射强度$\lambda$时引入$z$方向的不确定度，改进了PoCA算法，提高了其在$z$方向的成像质量。
+        \item 使用比例算法对实测数据进行成像，发现在识别物质的$Z$值分布时具有数据量较少时边缘清晰，对比度好的特点，缺点是运行速度慢，对PoCA点数据的利用率不高。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+        \Huge
+        \textbf{谢谢大家}
+    \end{center}
+\end{frame}
+
+\end{document}
+
