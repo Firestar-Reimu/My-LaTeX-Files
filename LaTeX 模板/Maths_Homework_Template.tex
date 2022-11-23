@@ -21,12 +21,10 @@
 
 % 设置数学字体
 
-% 如果使用 unicode-math 包，需要将 \mathbf 命令换成 \symbf 命令
-% 且对 \mathscr 和 \mathcal 的粗体直接使用 \mathbfscr 和 \mathbfcal
-
 % Latin Modern 风格设置（默认）
-\usepackage{unicode-math}
-\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\usepackage{amssymb}
+\usepackage{bm}
+\renewcommand\mathbf\bm
 \usepackage[scr=rsfs]{mathalpha}
 
 % Times 风格设置
@@ -45,20 +43,20 @@
 % \renewcommand\mathbf\mathbold
 
 % 第三种 Times 风格设置
-% \usepackage{fontspec}
-% \setmainfont{STIX Two Text}
-% \usepackage{unicode-math}
-% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
-% \setmathfont{STIX Two Math}
-% \setmathfont[range={\mathscr,\mathbfscr},StylisticSet=1]{STIX Two Math}
-
-% 第四种 Times 风格设置
 % 不需要 fontspec 和 unicode-math
 % \usepackage{newtxtext}
 % \usepackage[vvarbb]{newtxmath}
 % \defaultfontfeatures{}
 % \usepackage{bm}
 % \renewcommand\mathbf\bm
+
+% 第四种 Times 风格设置（不完全是 Times New Roman）
+% \usepackage{fontspec}
+% \setmainfont{STIX Two Text}
+% \usepackage{unicode-math}
+% \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+% \setmathfont{STIX Two Math}
+% \setmathfont[range={\mathscr,\mathbfscr},StylisticSet=1]{STIX Two Math}
 
 % Linux Libertine 风格设置
 % 不需要 fontspec 和 unicode-math
@@ -68,6 +66,7 @@
 
 % 第二种 Linux Libertine 风格设置（有一些小的 kerning 问题）
 % 不需要 fontspec
+% \mathitalicsmode=1
 % \usepackage{unicode-math}
 % \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \usepackage[math=+ss08]{libertinus-otf}
@@ -85,6 +84,7 @@
 
 % 第二种 Palatino 风格设置（不完全是 Palatino）
 % 不需要 fontspec
+% \mathitalicsmode=1
 % \usepackage{unicode-math}
 % \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
 % \usepackage{kpfonts-otf}
@@ -106,11 +106,12 @@
 % \setmathfont[range={\mathscr,\mathbfscr}]{Lucida Bright Math OT}
 
 % Garamond 风格设置
+% \mathitalicsmode=1
 % \usepackage{fontspec}
 % \setmainfont{EB Garamond}
 % \usepackage{unicode-math}
 % \unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
-% \setmathfont[StylisticSet={3,6,9,10}]{Garamond-Math}
+% \setmathfont[StylisticSet={8,10}]{Garamond-Math}
 % \setmathfont[range={\mathscr,\mathbfscr}]{Garamond-Math}
 
 % XCharter 风格设置
@@ -135,6 +136,7 @@
     \let\uglygeq\geq
     \renewcommand\geq\geqslant
 }
+
 
 % 题目
 \title{\textbf{Maths Homework Template}}
@@ -189,7 +191,7 @@
         \textparagraph\ An example of math fonts:
         \begin{equation}
             \begin{+matrix}
-                &\mathrm{ABCD} &\mathit{ABCD} &\mathbf{ABCD} &\mathsf{ABCD} \\
+                &ABCD &\mathrm{ABCD} &\mathbf{ABCD} &\mathsf{ABCD} \\
                 &\mathcal{ABCD} &\mathscr{ABCD} &\mathfrak{ABCD} &\mathbb{ABCD}
             \end{+matrix}
         \end{equation}
