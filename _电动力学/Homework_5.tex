@@ -18,8 +18,9 @@
 \usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 
 \begin{document}
 
@@ -32,7 +33,522 @@
 
     \begin{itemize}
 
+        \item[4.(1)]
+        因为真空中无电荷和电流分布，有：
+        \[
+            \nabla\times\bm{H} = \frac{\partial\bm{D}}{\partial t}+\bm{J} = \frac{\partial\bm{D}}{\partial t}
+        \]
+        又因为$\bm{D}=\varepsilon_0\bm{E}$，$\bm{B}=\mu_0\bm{H}$，故：
+        \[
+            \frac{1}{\mu_0}\nabla\times\bm{B} = \varepsilon_0\frac{\partial\bm{D}}{\partial t}
+        \]
+        代入电场的定义$\bm{E}=-\nabla\varphi-\dfrac{\partial\bm{A}}{\partial t}$和磁矢势的定义$\bm{B}=\nabla\times\bm{A}$得：（注意$\mu_0\varepsilon_0=\dfrac{1}{c^2}$）
+        \[
+            \frac{1}{\mu_0}\nabla\times(\nabla\times\bm{A}) = \varepsilon_0\frac{\partial}{\partial t}\left(-\nabla\varphi - \frac{\partial\bm{A}}{\partial t}\right)
+        \]
+        在Lorentz规范$\nabla\cdot\bm{A}+\dfrac{1}{c^2}\dfrac{\partial\varphi}{\partial t}=0$下：
+        \[
+            \frac{1}{\mu_0}\nabla\times(\nabla\times\bm{A}) = \frac{1}{\mu_0}\nabla(\nabla\cdot\bm{A}) - \varepsilon_0\frac{\partial^2\bm{A}}{\partial t^2}
+        \]
+        又用公式$\nabla^2\bm{A}=\nabla(\nabla\cdot\bm{A})-\nabla\times(\nabla\times\bm{A})$化简得：
+        \[
+            \nabla^2\bm{A} - \frac{1}{c^2}\frac{\partial^2\bm{A}}{\partial t^2} = 0
+        \]
+        这便是$\bm{A}$满足的波动方程。
+
+        注意到：
+        \begin{align*}
+            \nabla^2(\mathrm{e}^{i\bm{k}\cdot\bm{x}})
+            &= (\partial_x^2 + \partial_y^2 + \partial_z^2) \cdot \left(\mathrm{e}^{ik_x x + ik_y y + ik_z z}\right) \\
+            &= \left[(ik_x)^2 + (ik_y)^2 + (ik_z)^2\right]\mathrm{e}^{i\bm{k}\cdot\bm{x}} \\
+            &= -k^2\mathrm{e}^{i\bm{k}\cdot\bm{x}}
+        \end{align*}
+        同理有：
+        \[
+            \nabla^2(\mathrm{e}^{-i\bm{k}\cdot\bm{x}}) = -k^2\mathrm{e}^{-i\bm{k}\cdot\bm{x}}
+        \]
+        另一方面，$\bm{A}$对时间的二阶导数为：
+        \[
+            \frac{\partial^2\bm{A}}{\partial t^2} = \left(\frac{\mathrm{d}^2\bm{a}_k}{\mathrm{d}t^2}\mathrm{e}^{i\bm{k}\cdot\bm{x}} + \frac{\mathrm{d}^2\bm{a}_k^*}{\mathrm{d}t^2}\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right)
+        \]
+        代入$\bm{A}$的波动方程得：
+        \[
+            \sum_k \left(\bm{a}_k\mathrm{e}^{i\bm{k}\cdot\bm{x}} + \bm{a}_k^*\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right) + \frac{1}{c^2}\sum_k \left(\frac{\mathrm{d}^2\bm{a}_k}{\mathrm{d}t^2}\mathrm{e}^{i\bm{k}\cdot\bm{x}} + \frac{\mathrm{d}^2\bm{a}_k^*}{\mathrm{d}t^2}\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right) = 0
+        \]
+        对第$k$项的系数则有：
+        \[
+            \frac{\mathrm{d}^2\bm{a}_k}{\mathrm{d}t^2} + k^2c^2\bm{a}_k = 0,\quad \frac{\mathrm{d}^2\bm{a}_k^*}{\mathrm{d}t^2} + k^2c^2\bm{a}_k^* = 0
+        \]
+
+        \item[4.(2)]
+        如果选取Coulomb规范$\nabla\cdot\bm{A}=0$和$\varphi=0$，代入
+        \[
+            \bm{A} = \sum_k \left(\bm{a}_k\mathrm{e}^{i\bm{k}\cdot\bm{x}} + \bm{a}_k^*\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right)
+        \]
+        得：
+        \begin{align*}
+            \nabla \cdot \bm{A}
+            &= \partial_x A_x + \partial_y A_y + \partial_z A_z \\
+            &= \sum_{j=x,y,z} \left(ik_j\sum_k a_{kj}\mathrm{e}^{i\bm{k}\cdot\bm{x}} - ik_j\sum_k a_{kj}^*\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right) \\
+            &= i \sum_k \left(\bm{k}\cdot\bm{a}_k\mathrm{e}^{i\bm{k}\cdot\bm{x}} - \bm{k}\cdot\bm{a}_k^*\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right) \\
+            &= 0
+        \end{align*}
+        为使得上式恒成立，则有：
+        \[
+            \bm{k} \cdot \bm{a}_k = 0,\quad \bm{k} \cdot \bm{a}_k^* = 0
+        \]
+
+        \item[4.(3)]
+        在Coulomb规范$\nabla\cdot\bm{A}=0$和$\varphi=0$下，有：
+        \[
+            \bm{B} = \nabla \times \bm{A},\quad \bm{E} = -\frac{\partial\bm{A}}{\partial t}
+        \]
+        则有：
+        \[
+            \bm{B} = \nabla \times \bm{A} = i\bm{k} \times \bm{A} = \sum_k \left(i\bm{k}\times\bm{a}_k\mathrm{e}^{i\bm{k}\cdot\bm{x}} + i\bm{k}\times\bm{a}_k^*\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right)
+        \]
+        对于电场：
+        \[
+            \bm{E} = -\frac{\partial\bm{A}}{\partial\bm{t}} = -\sum_k \left(\frac{\mathrm{d}\bm{a}_k}{\mathrm{d}t}\mathrm{e}^{i\bm{k}\cdot\bm{x}} + \frac{\mathrm{d}\bm{a}_k^*}{\mathrm{d}t}\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right)
+        \]
+        可以用电磁波的横波性得到：（$\hat{k}$为波矢$\bm{k}$方向的单位矢量）
+        \begin{align*}
+            \bm{E}
+            &= c\bm{B} \times \hat{k} \\
+            &= ic(\bm{k} \times \bm{A}) \times \hat{k} \\
+            &= ick(\hat{k} \times \bm{A}) \times \hat{k} \\
+            &= ick\left[(\hat{k} \cdot \hat{k})\bm{A} - (\hat{k} \cdot \bm{A})\hat{k}\right] \\
+            &= ick\bm{A} \\
+            &= \sum_k ick\left(\bm{a}_k\mathrm{e}^{i\bm{k}\cdot\bm{x}} + \bm{a}_k^*\mathrm{e}^{-i\bm{k}\cdot\bm{x}}\right)
+        \end{align*}
+        注意这里的$\bm{A}$与$\bm{E}$在同一直线上，并与$\hat{k}$垂直。
+
+        \item[5.(1)]
+        由于$\varphi=-\nabla\cdot\bm{Z}$，在Lorentz规范$\nabla\cdot\bm{A}+\dfrac{1}{c^2}\dfrac{\partial\varphi}{\partial t}=0$下：
+        \[
+            \nabla\cdot\bm{A} - \frac{1}{c^2} \frac{\partial\varphi}{\partial t}(\nabla\cdot\bm{Z}) = \nabla \cdot \left(\bm{A} - \frac{1}{c^2}\frac{\partial\bm{Z}}{\partial t}\right) = 0
+        \]
+        则$\bm{A}-\dfrac{1}{c^2}\dfrac{\partial\bm{Z}}{\partial t}$为一个无旋场，可取为零，即：
+        \[
+            \bm{A} = \frac{1}{c^2}\frac{\partial\bm{Z}}{\partial t}
+        \]
+
+        \item[5.(2)]
+        令$\rho=-\nabla\cdot\bm{P}$，则在Lorentz规范下：
+        \[
+            \nabla^2\varphi - \frac{1}{c^2}\frac{\partial^2\varphi}{\partial t^2} = -\frac{\rho}{\varepsilon_0}
+        \]
+        则有：
+        \[
+            \nabla^2(-\nabla\cdot\bm{Z}) - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}(-\nabla\cdot\bm{Z}) = -\frac{1}{\varepsilon_0}(-\nabla\cdot\bm{P})
+        \]
+        即：
+        \[
+            \nabla \cdot \left(\nabla^2\bm{Z} - \frac{1}{c^2}\frac{\partial^2\bm{Z}}{\partial t^2} + \frac{\bm{P}}{\varepsilon_0}\right) = 0
+        \]
+        则$\nabla^2\bm{Z}-\dfrac{1}{c^2}\dfrac{\partial^2\bm{Z}}{\partial t^2}+\dfrac{\bm{P}}{\varepsilon_0}$为无旋场，可取为0，故：
+        \[
+            \nabla^2\bm{Z} - \frac{1}{c^2}\frac{\partial^2\bm{Z}}{\partial t^2} = -\frac{\bm{P}}{\varepsilon_0}
+        \]
+        这个方程与$\bm{A}$满足的d'Alembert方程有相同的形式，$Z$满足的推迟解为：
+        \[
+            \bm{Z}(\bm{x}, t) = \frac{1}{4\pi\varepsilon_0} \iiint \frac{1}{r}\bm{P}\left(\bm{x}', t-\frac{r}{c}\right)\,\mathrm{d}V'
+        \]
+
+        \item[5.(3)]
+        由$\varphi=-\nabla\cdot\bm{Z}$和$\bm{A}=\dfrac{1}{c^2}\dfrac{\partial\bm{Z}}{\partial t}$得：
+        \begin{align*}
+            \bm{E}
+            &= -\nabla\varphi - \frac{\partial\bm{A}}{\partial t} \\
+            &= \nabla(\nabla \cdot \bm{Z}) - \frac{1}{c^2}\frac{\partial^2\bm{Z}}{\partial t^2} \\
+            &= \nabla^2\bm{Z} + \nabla \times (\nabla \times \bm{Z}) - \frac{1}{c^2}\frac{\partial^2\bm{Z}}{\partial t^2}
+        \end{align*}
+        又因为：
+        \[
+            \nabla^2\bm{Z} = \frac{1}{c^2}\frac{\partial^2\bm{Z}}{\partial t^2} - \frac{\bm{P}}{\varepsilon_0}
+        \]
+        则有：
+        \[
+            \bm{E} = \nabla \times (\nabla \times \bm{Z}) - \frac{\bm{P}}{\varepsilon_0}
+        \]
+        磁场为：
+        \begin{align*}
+            \bm{B}
+            &= \nabla \times \bm{A} \\
+            &= \nabla \times \left(\frac{1}{c^2}\frac{\partial\bm{Z}}{\partial t}\right) \\
+            &= \frac{1}{c^2}\frac{\partial}{\partial t}(\nabla \times \bm{Z})
+        \end{align*}
+
+        \item[9.]
+        由题意，$\bm{A}$和$\varphi$的推迟势为：
+        \[
+            \bm{A}(\bm{x}, t) = \frac{\mu_0}{4\pi} \iiint \frac{1}{r}\bm{J}(\bm{x}', t')\,\mathrm{d}V'
+        \]
+        \[
+            \varphi(\bm{x}, t) = \frac{1}{4\pi\varepsilon_0} \iiint \frac{1}{r}\rho(\bm{x}', t')\,\mathrm{d}V'
+        \]
+        其中$t'=t-\dfrac{r}{c}$。
+
+        首先从$\nabla'\cdot\bm{J}$入手：
+        \[
+            \nabla' \cdot \bm{J}(\bm{x}', t') = \nabla' \cdot \bm{J}(x') + \frac{\partial \bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla' t'
+        \]
+        由$t'=t-\dfrac{r}{c}$得$\nabla t'=-\dfrac{\nabla r}{c}$，以及算符代换关系$\nabla'\to-\nabla$，有：
+        \begin{align*}
+            \nabla' \cdot \bm{J}(\bm{x}', t')
+            &= \nabla' \cdot \bm{J}(x') - \frac{\partial \bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla t' \\
+            &= \nabla' \cdot \bm{J}(x') + \frac{\partial \bm{J}(\bm{x}', t')}{\partial t'} \cdot \frac{\nabla r}{c} \\
+            &= \nabla' \cdot \bm{J}(\bm{x}') - \nabla \cdot \bm{J}(\bm{x}', t')
+        \end{align*}
+        于是有：
+        \begin{align*}
+            \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')
+            \right]
+            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}', t')\right] + \left(\nabla'\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') \\
+            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}', t')\right] - \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') \\
+            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right] - \frac{1}{r}\left[\nabla \cdot \bm{J}(\bm{x}', t')\right] - \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t')
+        \end{align*}
+        即：
+        \[
+            \frac{1}{r}\left[\nabla \cdot \bm{J}(\bm{x}', t')\right] + \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') = \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right] - \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]
+        \]
+        进一步得到：
+        \begin{align*}
+            \nabla \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')
+            \right]
+            &= \frac{1}{r}\left[\nabla \cdot \bm{J}(\bm{x}', t')\right] + \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') \\
+            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right] - \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]
+        \end{align*}
+        则：
+        \begin{align*}
+            \nabla \cdot \bm{A}(\bm{x}, t)
+            &= \frac{\mu_0}{4\pi} \iiint \nabla \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]\,\mathrm{d}V' \\
+            &= \frac{\mu_0}{4\pi} \iiint \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V' - \frac{\mu_0}{4\pi} \iiint \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]\,\mathrm{d}V' \\
+            &= \frac{\mu_0}{4\pi} \iiint \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V' - \frac{\mu_0}{4\pi} \oiint \frac{1}{r}\bm{J}(\bm{x}', t')\,\mathrm{d}S' \\
+        \end{align*}
+        最后一步中运用了Gauss散度定理将第二项的体积分化为面积分，而积分面总可以取为大于电流分布区域的界面，因此积分面上电流密度$\bm{J}=0$，该项为零，即：
+        \[
+            \nabla \cdot \bm{A}(\bm{x}, t) = \frac{\mu_0}{4\pi} \iiint \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V'
+        \]
+        另一方面，对于静电势$\varphi$：
+        \[
+            \frac{\partial\varphi(\bm{x}, t)}{\partial t} = \frac{1}{4\pi\varepsilon_0} \iiint \frac{1}{r}\frac{\partial\rho(\bm{x'}, t')}{\partial t'}\,\mathrm{d}V'
+        \]
+        故由电荷守恒定律：
+        \[
+            \nabla' \cdot \bm{J}(\bm{x}') + \frac{\partial\rho(\bm{x'}, t')}{\partial t'} = 0
+        \]
+        得：
+        \[
+            \nabla \cdot \bm{A}(\bm{x}, t) + \frac{1}{c^2}\frac{\partial\varphi(\bm{x}, t)}{\partial t} = 0
+        \]
+        即$\bm{A}$和$\varphi$满足Lorenz规范。
+
+        \item[10.]
+        磁体球的磁矩大小为：
+        \[
+            m_0 = \frac{4}{3}\pi R_0^3M_0
+        \]
+        则旋转磁体球的磁矩为：
+        \[
+            \bm{m} = m_0(\hat{x}\cos\omega t + \hat{y}\sin\omega t)
+        \]
+        在$\omega R_0\ll c$的近似下产生磁偶极辐射。
+
+        由于$\mathrm{Re}\left[(\hat{x} + i\hat{y})\mathrm{e}^{-i\omega t}\right]=\hat{x}\cos\omega t + \hat{y}\sin\omega t$，故$\bm{m}$也可以用复数表示为：
+        \[
+            \bm{m} = m_0(\hat{x} + i\hat{y})\mathrm{e}^{-i\omega t}
+        \]
+        又使用直角坐标和球坐标的转换矩阵得到：
+        \[
+            \bm{m} = m_0(\hat{r}\sin\theta + \theta\cos\theta + i\hat{\phi})\mathrm{e}^{i\phi-i\omega t}
+        \]
+        则有：
+        \[
+            \ddot{\bm{m}} = (-i\omega)^2\bm{m} = -\omega^2m_0(\hat{r}\sin\theta + \theta\cos\theta + i\hat{\phi})\mathrm{e}^{i\phi-i\omega t}
+        \]
+        故产生的辐射场为：
+        \[
+            \bm{B} = \frac{\mu_0}{4\pi c^2}(\ddot{\bm{m}} \times \hat{r}) \times \hat{r} \frac{\mathrm{e}^{ikr}}{r} = \frac{\mu_0\omega^2M_0R_0^3}{3c^2}(\hat{\theta}\cos\theta + i\hat{\phi})\frac{\mathrm{e}^{i\phi-i\omega t+ikr}}{r}
+        \]
+        \[
+            \bm{E} = -\frac{\mu_0}{4\pi c}(\ddot{\bm{m}} \times \hat{r}) \frac{\mathrm{e}^{ikr}}{r} = \frac{\mu_0\omega^2M_0R_0^3}{3c}(i\hat{\theta} - \hat{\phi}\cos\theta)\frac{\mathrm{e}^{i\phi-i\omega t+ikr}}{r}
+        \]
+        辐射场的能流密度为：
+        \[
+            \bm{S} = \frac{1}{2\mu_0}\bm{E} \times \bm{B}^* = \frac{\mu_0\omega^4M_0^2R_0^6}{18c^3}(1 + \cos^2\theta)\frac{\hat{r}}{r^2}
+        \]
+
+        \item[11.]
+        做圆周运动的粒子的电偶极矩为：
+        \[
+            \bm{p} = ea(\hat{x}\cos\omega t + \hat{y}\sin\omega t)
+        \]
+        辐射场为电偶极辐射。
+
+        由于$\mathrm{Re}\left[(\hat{x} + i\hat{y})\mathrm{e}^{-i\omega t}\right]=\hat{x}\cos\omega t + \hat{y}\sin\omega t$，故$\bm{p}$也可以用复数表示为：
+        \[
+            \bm{p} = ea(\hat{x} + i\hat{y})\mathrm{e}^{-i\omega t}
+        \]
+        又使用直角坐标和球坐标的转换矩阵得到：
+        \[
+            \bm{p} = ea(\hat{r}\sin\theta + \theta\cos\theta + i\hat{\phi})\mathrm{e}^{i\phi-i\omega t}
+        \]
+        则有：
+        \[
+            \ddot{\bm{p}} = (-i\omega)^2\bm{p} = -\omega^2ea(\hat{r}\sin\theta + \theta\cos\theta + i\hat{\phi})\mathrm{e}^{i\phi-i\omega t}
+        \]
+        故产生的辐射场为：
+        \[
+            \bm{E} = \frac{1}{4\pi\varepsilon_0c^2}(\ddot{\bm{p}} \times \hat{r}) \times \hat{r} \frac{\mathrm{e}^{ikr}}{r} = \frac{\mu_0\omega^2ea}{4\pi}(\hat{\theta}\cos\theta + i\hat{\phi})\frac{\mathrm{e}^{i\phi-i\omega t+ikr}}{r}
+        \]
+        \[
+            \bm{B} = \frac{1}{4\pi\varepsilon_0c^3}(\ddot{\bm{p}} \times \hat{r}) \frac{\mathrm{e}^{ikr}}{r} = \frac{\mu_0\omega^2ea}{4\pi}(\hat{\phi}\cos\theta - i\hat{\theta})\frac{\mathrm{e}^{i\phi-i\omega t+ikr}}{r}
+        \]
+        辐射场的能流密度为：
+        \[
+            \bm{S} = \frac{1}{2\mu_0}\bm{E} \times \bm{B}^* = \frac{\mu_0\omega^4e^2a^2}{32\pi^2c}(1 + \cos^2\theta)\frac{\hat{r}}{r^2}
+        \]
+
+        \item[12.]
+        如图，理想导体平面为$Oxy$平面，电偶极子$\bm{p}=p\mathrm{e}^{-i\omega t}\hat{x}$位于$\left(0,0,\dfrac{a}{2}\right)$。
+
+        使用电像法，理想导体平面可以等效为电像$\bm{p}'=-p\mathrm{e}^{-i\omega t}\hat{x}$位于$\left(0,0,-\dfrac{a}{2}\right)$，则远处一点$O'$的辐射场等于$\bm{p}$和$\bm{p}'$的辐射场叠加之和。
+
+        \begin{center}
+            \begin{tikzpicture}[>=Stealth]
+                \draw [->] (-1.5,0) -- (4.5,0) node [below] {$x$};
+                \draw [->] (0,-1.5) -- (0,4.5) node [left] {$z$};
+                \draw (0,0) node [midway,anchor=north east] {$O$};
+                \fill (3,4) circle [radius=2pt] node [anchor=south west] {$O'$};
+                \draw [dashed] (0,0) -- (3,4) node [midway,above] {$r$};
+                \draw (0,1) -- (3,4) node [midway,left] {$r_1$};
+                \draw (0,-1) -- (3,4) node [midway,right] {$r_2$};
+                \draw [->,thick] (-0.5,1) -- (0.5,1) node [pos=0,left] {$\bm{p}$};
+                \draw [<-,thick] (-0.5,-1) -- (0.5,-1) node [pos=0,left] {$\bm{p}'$};
+                \draw (0.3,0.4) arc [start angle=53.13010235,end angle=90,radius=0.5cm] node [midway,above] {$\theta$};
+            \end{tikzpicture}
+        \end{center}
+
+        在$r\gg a$时，如图有：
+        \[
+            r_1 = \sqrt{r^2 - ra\cos\theta+ \left(\frac{a}{2}\right)^2} \approx r - \frac{a}{2}\cos\theta
+        \]
+        \[
+            r_2 = \sqrt{r^2 + ra\cos\theta+ \left(\frac{a}{2}\right)^2} \approx r + \frac{a}{2}\cos\theta
+        \]
+        且$\hat{r}_1=\hat{r}_2=\hat{r}$，以及：
+        \[
+            \mathrm{e}^{\pm ik\tfrac{a}{2}\cos\theta} = 1 \pm ik\frac{a}{2}\cos\theta
+        \]
+        球坐标下$\hat{x}=\hat{r}\sin\theta\cos\phi+\hat{\theta}\cos\theta\cos\phi-\hat{\phi}\sin\phi$，则
+        \[
+            \hat{x} \times \hat{r} = -\hat{\theta}\sin\phi - \hat{\phi}\cos\theta\cos\phi,\quad
+            (\hat{x} \times \hat{r}) \times \hat{r} = -\hat{\theta}\cos\theta\cos\phi + \hat{\phi}\sin\phi
+        \]
+        故$\bm{p}$和$\bm{p}'$产生的磁场为：
+        \[
+            \bm{B} = \frac{\mu_0}{4\pi c} (\ddot{\bm{p}} \times \hat{r}) \frac{\mathrm{e}^{ik\left(r - \tfrac{a}{2}\cos\theta\right)}}{r} = \frac{\mu_0\omega^2p}{4\pi c} (\hat{\theta}\sin\phi + \hat{\phi}\cos\theta\cos\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r} \left(1 - \frac{ika}{2}\cos\theta\right)
+        \]
+        \[
+            \bm{B}' = \frac{\mu_0}{4\pi c} (\ddot{\bm{p}'} \times \hat{r}) \frac{\mathrm{e}^{ik\left(r + \tfrac{a}{2}\cos\theta\right)}}{r} = -\frac{\mu_0\omega^2p}{4\pi c} (\hat{\theta}\sin\phi + \hat{\phi}\cos\theta\cos\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r} \left(1 + \frac{ika}{2}\cos\theta\right)
+        \]
+        总磁场为：
+        \[
+            \bm{B}_0 = \bm{B} + \bm{B}' = -\frac{\mu_0\omega^2p}{4\pi c} ika(\hat{\theta}\cos\theta\sin\phi + \hat{\phi}\cos^2\theta\cos\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        同理，$\bm{p}$和$\bm{p}'$产生的电场为：
+        \[
+            \bm{E} = \frac{\mu_0}{4\pi} (\ddot{\bm{p}} \times \hat{r}) \times \hat{r} \frac{\mathrm{e}^{ik\left(r - \tfrac{a}{2}\cos\theta\right)}}{r} = \frac{\mu_0\omega^2p}{4\pi} (\hat{\theta}\cos\theta\cos\phi - \hat{\phi}\sin\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r} \left(1 - \frac{ika}{2}\cos\theta\right)
+        \]
+        \[
+            \bm{E}' = \frac{\mu_0}{4\pi} (\ddot{\bm{p}'} \times \hat{r}) \times \hat{r} \frac{\mathrm{e}^{ik\left(r + \tfrac{a}{2}\cos\theta\right)}}{r} = -\frac{\mu_0\omega^2p}{4\pi} (\hat{\theta}\cos\theta\cos\phi - \hat{\phi}\sin\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r} \left(1 + \frac{ika}{2}\cos\theta\right)
+        \]
+        总电场为：
+        \[
+            \bm{E}_0 = \bm{E} + \bm{E}' = -\frac{\mu_0\omega^2p}{4\pi} ika(\hat{\theta}\cos^2\theta\cos\phi - \hat{\phi}\cos\theta\sin\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        考虑到$k=\dfrac{\omega}{c}$，也可以写为：
+        \[
+            \bm{B}_0 = -\frac{i\mu_0\omega^3pa}{4\pi c^2} (\hat{\theta}\cos\theta\sin\phi + \hat{\phi}\cos^2\theta\cos\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        \[
+            \bm{E}_0 = -\frac{i\mu_0\omega^3pa}{4\pi c} ika(\hat{\theta}\cos^2\theta\cos\phi - \hat{\phi}\cos\theta\sin\phi) \frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        能流密度为：
+        \[
+            \bm{S}_0 = \frac{1}{2\mu_0}\bm{E}_0 \times \bm{B}_0 = \frac{\mu_0\omega^6p^2a^2}{32\pi^2c^3}(\cos^2\theta\sin^2\phi + \cos^4\theta\cos^2\phi)\frac{\hat{r}}{r^2}
+        \]
+
+        \item[13.]
+        介质球被周期性均匀极化，其电偶极矩为$\bm{p}=\bm{p}_0\mathrm{e}^{-i\omega t}$。其中$\bm{p}_0$为介质球在电场$\bm{E}_0$极化下的电偶极矩，计算如下：
+
+        由于空间各点都不存在自由电荷分布，静电势$\varphi$在全空间满足Laplace方程：
+        \[
+        \left\{
+            \begin{aligned}
+                &\nabla^2\varphi_1 = 0,\quad &r<R_0 \\
+                &\nabla^2\varphi_2 = 0,\quad &r>R_0
+            \end{aligned}
+        \right.
+        \]
+        边界条件为：
+        \[
+            \left|\left.\varphi_1\right|_{r=0}\right| < +\infty,\quad
+        \left.\varphi_2\right|_{r\to+\infty} = -E_0r\cos\theta
+        \]
+        \[
+        r = R_0:\quad \varphi_1 = \varphi_2,\quad \varepsilon\frac{\partial\varphi_1}{\partial r} = \varepsilon_0\frac{\partial\varphi_2}{\partial r}
+        \]
+        则电势的一般解为：
+        \[
+        \varphi_1 = \sum_{l=0}^{+\infty}A_l r^l\mathrm{P}_l(\cos\theta),\quad
+        \varphi_2 = \sum_{l=0}^{+\infty}(B_l r^l + C_l r^{-l-1})\mathrm{P}_l(\cos\theta)
+        \]
+        由无穷远处的边界条件：
+        \[
+            A_0 = B_0 = C_0 = 0,\quad B_1 = -E_0
+        \]
+        \[
+            B_l = 0,\quad (l\geqslant2)
+        \]
+        考虑到$r=R_0$处的边界条件，$l\geqslant2$时：
+        \[
+        A_lR_0^l = C_lR_0^{-l-1}
+        \]
+        \[
+        \varepsilon lA_lR_0^{l-1} = \varepsilon_0(-l-1)C_lR_0^{-l-2}
+        \]
+        即需要同时满足：
+        \[
+        A_l = C_lR_0^{-2l-1} = C_l\frac{\varepsilon_0(-l-1)}{\varepsilon l}R_0^{-2l-3}
+        \]
+        只可能是$A_l=C_l=0$。
+
+        而$l=1$时：
+        \[
+        A_1R_0 = -E_0R_0 + C_1R_0^{-2}
+        \]
+        \[
+        \varepsilon A_1 = -\varepsilon_0 (E_0 + 2C_1R_0^{-3})
+        \]
+        解得：
+        \[
+            A_1 = -\frac{3\varepsilon_0}{\varepsilon+2\varepsilon_0}E_0,\quad C_1 = \frac{\varepsilon-\varepsilon_0}{\varepsilon+2\varepsilon_0}E_0R_0^3
+        \]
+        于是得到静电势在全空间的解：
+        \[
+        \left\{
+            \begin{aligned}
+                &\varphi_1 = -\frac{3\varepsilon_0}{\varepsilon+2\varepsilon_0}E_0r\cos\theta,\quad &r<R_0 \\
+                &\varphi_2 = -E_0r\cos\theta + \frac{\varepsilon-\varepsilon_0}{\varepsilon+2\varepsilon_0}E_0R_0^3\frac{\cos\theta}{r^2},\quad &r>R_0
+            \end{aligned}
+        \right.
+        \]
+        介质球内：
+        \[
+            \bm{D}_1 = \varepsilon_0\bm{E}_1 + \bm{P} = \varepsilon\bm{E}_1
+        \]
+        则极化强度为：
+        \[
+            \bm{P} = (\varepsilon - \varepsilon_0)\bm{E}_1 = -(\varepsilon - \varepsilon_0)\nabla\phi_1 = \frac{3\varepsilon_0(\varepsilon-\varepsilon_0)}{\varepsilon+2\varepsilon_0}E_0\hat{z}
+        \]
+        电偶极矩为：
+        \[
+            \bm{p}_0 = \frac{4}{3}\pi R_0^3\bm{P}_0 = \frac{4\pi\varepsilon_0(\varepsilon-\varepsilon_0)}{\varepsilon+2\varepsilon_0}E_0R_0^3\hat{z}
+        \]
+        因此，被周期性均匀极化的介质球的电偶极矩为：
+        \[
+            \bm{p} = \bm{p}_0\mathrm{e}^{-i\omega t} = \frac{4\pi\varepsilon_0(\varepsilon-\varepsilon_0)}{\varepsilon+2\varepsilon_0}E_0R_0^3\mathrm{e}^{-i\omega t}\hat{z}
+        \]
+        则有：
+        \[
+            \ddot{\bm{p}} = (-i\omega)^2\bm{p} = -\omega^2\frac{4\pi\varepsilon_0(\varepsilon-\varepsilon_0)}{\varepsilon+2\varepsilon_0}E_0R_0^3\mathrm{e}^{-i\omega t}\hat{z}
+        \]
+        由$\hat{z}=\hat{r}\cos\theta-\hat{\theta}\sin\theta$得：
+        \[
+            \hat{z} \times \hat{r} = \hat{\phi}\sin\theta,\quad
+            (\hat{z} \times \hat{r}) \times \hat{r} = \hat{\theta}\sin\theta
+        \]
+        故产生的辐射场为：
+        \[
+            \bm{E} = \frac{1}{4\pi\varepsilon_0c^2}(\ddot{\bm{p}} \times \hat{r}) \times \hat{r} \frac{\mathrm{e}^{ikr}}{r} = -\frac{\omega^2E_0R_0^3}{c^2} \left(\frac{\varepsilon-\varepsilon_0}{\varepsilon+2\varepsilon_0}\right) \hat{\theta}\sin\theta \frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        \[
+            \bm{B} = \frac{1}{4\pi\varepsilon_0c^3}(\ddot{\bm{p}} \times \hat{r}) \frac{\mathrm{e}^{ikr}}{r} = -\frac{\omega^2E_0R_0^3}{c^3} \left(\frac{\varepsilon-\varepsilon_0}{\varepsilon+2\varepsilon_0}\right) \hat{\phi}\sin\theta \frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        辐射场的能流密度为：
+        \[
+            \bm{S} = \frac{1}{2\mu_0}\bm{E} \times \bm{B}^* = \frac{\varepsilon_0\omega^4E_0^2R_0^6}{2c^3} \left(\frac{\varepsilon-\varepsilon_0}{\varepsilon+2\varepsilon_0}\right)^2 \frac{\sin^2\theta}{r^2}\hat{r}
+        \]
+
+    \end{itemize}
+
+    \subsection*{补充题}
+
+    \begin{itemize}
+
         \item[1.]
+        以线圈所在平面法向为$\hat{x}$方向，旋转轴为$\hat{z}$方向，线圈的磁矩大小为：
+        \[
+            m_0 = \pi a^2I
+        \]
+        则旋转线圈的磁矩为：
+        \[
+            \bm{m} = m_0(\hat{x}\cos\omega t + \hat{y}\sin\omega t)
+        \]
+        在$\omega a\ll c$的近似下产生磁偶极辐射。
+
+        由于$\mathrm{Re}\left[(\hat{x} + i\hat{y})\mathrm{e}^{-i\omega t}\right]=\hat{x}\cos\omega t + \hat{y}\sin\omega t$，故$\bm{m}$也可以用复数表示为：
+        \[
+            \bm{m} = m_0(\hat{x} + i\hat{y})\mathrm{e}^{-i\omega t}
+        \]
+        又使用直角坐标和球坐标的转换矩阵得到：
+        \[
+            \bm{m} = m_0(\hat{r}\sin\theta + \theta\cos\theta + i\hat{\phi})\mathrm{e}^{i\phi-i\omega t}
+        \]
+        则有：
+        \[
+            \ddot{\bm{m}} = (-i\omega)^2\bm{m} = -\omega^2m_0(\hat{r}\sin\theta + \theta\cos\theta + i\hat{\phi})\mathrm{e}^{i\phi-i\omega t}
+        \]
+        故产生的辐射场为：
+        \[
+            \bm{B} = \frac{\mu_0}{4\pi c^2}(\ddot{\bm{m}} \times \hat{r}) \times \hat{r} \frac{\mathrm{e}^{ikr}}{r} = \frac{\mu_0\omega^2a^2I}{4c^2}(\hat{\theta}\cos\theta + i\hat{\phi})\frac{\mathrm{e}^{i\phi-i\omega t+ikr}}{r}
+        \]
+        \[
+            \bm{E} = -\frac{\mu_0}{4\pi c}(\ddot{\bm{m}} \times \hat{r}) \frac{\mathrm{e}^{ikr}}{r} = \frac{\mu_0\omega^2a^2I}{4c}(i\hat{\theta} - \hat{\phi}\cos\theta)\frac{\mathrm{e}^{i\phi-i\omega t+ikr}}{r}
+        \]
+
+        \item[2.]
+        以线圈所在平面法向为$\hat{z}$方向，圆形线圈的磁矩为：
+        \[
+            \bm{m} = \pi a^2I\mathrm{e}^{-i\omega t}\hat{z}
+        \]
+        在$ka\ll1$，即$\omega a\ll c$的近似下产生磁偶极辐射。
+
+        则有：
+        \[
+            \ddot{\bm{m}} = (-i\omega)^2\bm{m} = -\omega^2\pi a^2I\mathrm{e}^{-i\omega t}\hat{z}
+        \]
+        故产生的辐射场为：
+        \[
+            \bm{B} = \frac{\mu_0}{4\pi c^2}(\ddot{\bm{m}} \times \hat{r}) \times \hat{r} \frac{\mathrm{e}^{ikr}}{r} = -\frac{\mu_0\omega^2a^2I}{4c^2}\hat{\phi}\sin\theta\frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        \[
+            \bm{E} = -\frac{\mu_0}{4\pi c}(\ddot{\bm{m}} \times \hat{r}) \frac{\mathrm{e}^{ikr}}{r} = -\frac{\mu_0\omega^2a^2I}{4c}\hat{\theta}\sin\theta\frac{\mathrm{e}^{ikr-i\omega t}}{r}
+        \]
+        辐射场的能流密度为：
+        \[
+            \bm{S} = \frac{1}{2\mu_0}\bm{E} \times \bm{B}^* = \frac{\mu_0\omega^4a^4I^2}{32c^3}\frac{\sin^2\theta}{r^2}\hat{r}
+        \]
+        辐射功率的角分布为：
+        \[
+            \frac{\mathrm{d}P}{\mathrm{d}\varOmega} = \lim_{r\to+\infty} r^2(\bm{S} \cdot \hat{r}) = \frac{\mu_0\omega^4a^4I^2}{32c^3}\sin^2\theta
+        \]
+        总辐射功率为：
+        \[
+            P = \oiint \frac{\mathrm{d}P}{\mathrm{d}\varOmega}\,\mathrm{d}\varOmega = \int_0^{2\pi} \mathrm{d}\phi \int_0^\pi \frac{\mu_0\omega^4a^4I^2}{32c^3}\sin^2\theta \cdot \sin\theta\,\mathrm{d}\theta = \frac{\pi\mu_0\omega^4a^4I^2}{12c^3}
+        \]
 
     \end{itemize}
 

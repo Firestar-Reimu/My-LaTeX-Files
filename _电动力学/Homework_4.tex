@@ -18,8 +18,7 @@
 \usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
 
 \begin{document}
 
@@ -34,7 +33,7 @@
 
     \item[2.]
     已知$n=1$，$n'=\sqrt{2}$，入射角$i=45^\circ$，由Snell定律$n\sin i=n'\sin r$得折射角$r=30^\circ$。
-    
+
     由Fresnel公式：
     \[
         \frac{E'_\perp}{E_\perp} = \frac{2n\cos i}{n\cos i + n'\cos r} = \sqrt{3}-1
@@ -84,7 +83,7 @@
     \[
         \nabla\cdot\bm{B} = 0,\quad \nabla\times\bm{H} - \frac{\partial\bm{D}}{\partial\bm{t}} = 0
     \]
-    由题意：$\bm{D}\neq\epsilon\bm{E}$，$\bm{B}=\mu\bm{H}$。
+    由题意：$\bm{D}\neq\varepsilon\bm{E}$，$\bm{B}=\mu\bm{H}$。
 
     设：
     \[
@@ -125,22 +124,22 @@
         k_1 = \frac{\omega n}{c} = \frac{\omega}{c}
     \]
     \[
-        k_2 = \frac{\omega n'}{c} = \frac{\omega}{c}\sqrt{(\epsilon+i\frac{\sigma}{\omega})\mu c^2} = \omega\sqrt{\mu(\epsilon+i\frac{\sigma}{\omega})}
+        k_2 = \frac{\omega n'}{c} = \frac{\omega}{c}\sqrt{(\varepsilon+i\frac{\sigma}{\omega})\mu c^2} = \omega\sqrt{\mu(\varepsilon+i\frac{\sigma}{\omega})}
     \]
     注意到由于$\bm{k}_2=a_x\hat{x}+(a_z+ib_z)\hat{z}$，有：
     \[
         k_2^2 = a_x^2 + (a_z^2 + 2ia_z b_z - b_z^2) = (a_x^2 + a_z^2 - b_z^2) + 2ia_z b_z
     \]
-    与$k_2^2=\omega^2\mu\epsilon+i\omega\mu\sigma$联立得：
+    与$k_2^2=\omega^2\mu\varepsilon+i\omega\mu\sigma$联立得：
     \[
-        a_x^2 + a_z^2 - b_z^2 = \omega^2\mu\epsilon,\quad 2a_z b_z = \omega\mu\sigma
+        a_x^2 + a_z^2 - b_z^2 = \omega^2\mu\varepsilon,\quad 2a_z b_z = \omega\mu\sigma
     \]
     代入$a_x^2=(k_1\sin\theta_1)^2=\dfrac{\omega^2}{c^2}\sin^2\theta_1$，解得：
     \[
-        a_z^2 = \frac{1}{2}(\omega^2\mu\epsilon-\frac{\omega^2}{c^2}\sin^2\theta_1) + \frac{1}{2}\sqrt{(\omega^2\mu\epsilon-\frac{\omega^2}{c^2}\sin^2\theta_1)^2+(\omega\mu\sigma)^2}
+        a_z^2 = \frac{1}{2}(\omega^2\mu\varepsilon-\frac{\omega^2}{c^2}\sin^2\theta_1) + \frac{1}{2}\sqrt{(\omega^2\mu\varepsilon-\frac{\omega^2}{c^2}\sin^2\theta_1)^2+(\omega\mu\sigma)^2}
     \]
     \[
-        b_z^2 = -\frac{1}{2}(\omega^2\mu\epsilon-\frac{\omega^2}{c^2}\sin^2\theta_1) + \frac{1}{2}\sqrt{(\omega^2\mu\epsilon-\frac{\omega^2}{c^2}\sin^2\theta_1)^2+(\omega\mu\sigma)^2}
+        b_z^2 = -\frac{1}{2}(\omega^2\mu\varepsilon-\frac{\omega^2}{c^2}\sin^2\theta_1) + \frac{1}{2}\sqrt{(\omega^2\mu\varepsilon-\frac{\omega^2}{c^2}\sin^2\theta_1)^2+(\omega\mu\sigma)^2}
     \]
     介质中的透射波有如下形式：
     \[
@@ -148,9 +147,9 @@
     \]
     相速度：$v_p=\dfrac{\omega}{a}=\dfrac{\omega}{\sqrt{a_x^2+a_z^2}}$，透入深度：$\delta=\dfrac{1}{b_z}$
 
-    若导电介质为金属：$\dfrac{\sigma}{\omega\epsilon}\ll1$
+    若导电介质为金属：$\dfrac{\sigma}{\omega\varepsilon}\ll1$
 
-    注意到$a_x^2=\dfrac{\omega^2}{c^2}\sin^2\theta_1=\omega^2\mu_0\epsilon_0\sin^2\theta_1\sim\omega^2\mu\epsilon$，则$\omega\mu\sigma\gg\omega\mu\epsilon-\dfrac{\omega^2}{c^2}\sin^2\theta_1$。
+    注意到$a_x^2=\dfrac{\omega^2}{c^2}\sin^2\theta_1=\omega^2\mu_0\varepsilon_0\sin^2\theta_1\sim\omega^2\mu\varepsilon$，则$\omega\mu\sigma\gg\omega\mu\varepsilon-\dfrac{\omega^2}{c^2}\sin^2\theta_1$。
     此时有：
     \[
         a_x \ll a_z,\quad a_z \approx b_z \approx \sqrt{\frac{\omega\mu\sigma}{2}}
@@ -241,7 +240,7 @@
         A_y\frac{m\pi}{b} - iA_z\sqrt{\left(\frac{\omega}{c}\right)^2-\left(\frac{m\pi}{b}\right)^2} = 0
     \]
     而$\dfrac{\partial E_x}{\partial x}=0$，$A_x$是独立的。
-    
+
     可见$A_x$、$A_y$、$A_z$中只有两个是独立的，即对每一个$m$值，有两种独立的波模。
 
     截止频率为$\omega_c=k_y c=\dfrac{m\pi}{b}c$
@@ -266,7 +265,7 @@
     \]
     则电场能量密度的时间平均值为：
     \[
-        \frac{1}{2}\epsilon_0|\bm{E}|^2 = \frac{1}{4}\epsilon_0(A_x^2 + A_y^2 + A_z^2)
+        \frac{1}{2}\varepsilon_0|\bm{E}|^2 = \frac{1}{4}\varepsilon_0(A_x^2 + A_y^2 + A_z^2)
     \]
     将电场的$x$、$y$、$z$分量代入$\bm{B}=\dfrac{1}{i\omega}\nabla\times\bm{E}$得：
     \[
@@ -284,7 +283,7 @@
         &= \frac{1}{4\mu_0\omega^2}(k_y^2A_z^2+A_y^2k_z^2-2k_y A_z A_y k_z+k_z^2A_x^2+A_z^2k_x^2-2k_z A_x A_z k_x+k_y^2A_x^2+A_y^2k_x^2-2k_y A_x A_y k_x) \\
         &= \frac{1}{4\mu_0\omega^2}[(k_x^2+k_y^2+k_z^2)(A_x^2+A_y^2+A_z^2) + (A_x k_x+A_y k_y + A_z k_z)^2] \\
         &= \frac{1}{4\mu_0\omega^2} \cdot \frac{\omega^2}{c^2}(A_x^2+A_y^2+A_z^2) \\
-        &= \frac{1}{4}\epsilon_0(A_x^2+A_y^2+A_z^2)
+        &= \frac{1}{4}\varepsilon_0(A_x^2+A_y^2+A_z^2)
     \end{align*}
     故电场能量和磁场能量对时间的平均值总相等。
 
@@ -312,15 +311,15 @@
         \end{align*}
 
         \item[2.(1)]
-        设入射波的电场强度振幅为$\bm{E}$，折射波为$\bm{E}'$，反射波为$\bm{E}''$，且入射介质为$(\epsilon_1,\mu_0)$，折射介质为$(\epsilon_2,\mu_0)$，则能流密度为：
+        设入射波的电场强度振幅为$\bm{E}$，折射波为$\bm{E}'$，反射波为$\bm{E}''$，且入射介质为$(\varepsilon_1,\mu_0)$，折射介质为$(\varepsilon_2,\mu_0)$，则能流密度为：
         \[
-            \bm{S} = \sqrt{\frac{\epsilon_1}{\mu_0}}|\bm{E}|^2\hat{k}
+            \bm{S} = \sqrt{\frac{\varepsilon_1}{\mu_0}}|\bm{E}|^2\hat{k}
         \]
         \[
-            \bm{S}' = \sqrt{\frac{\epsilon_2}{\mu_0}}|\bm{E'}|^2\hat{k}'
+            \bm{S}' = \sqrt{\frac{\varepsilon_2}{\mu_0}}|\bm{E'}|^2\hat{k}'
         \]
         \[
-            \bm{S}'' = \sqrt{\frac{\epsilon_1}{\mu_0}}|\bm{E''}|^2\hat{k}''
+            \bm{S}'' = \sqrt{\frac{\varepsilon_1}{\mu_0}}|\bm{E''}|^2\hat{k}''
         \]
 
         \item[2.(2)]

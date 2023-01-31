@@ -424,13 +424,13 @@
                 \fill (-1.5,0) circle [radius=0.05cm];
                 \draw (1,0) ellipse [x radius=0.6cm, y radius=0.3cm, rotate=135];
                 \draw (1.75,-0.5) node {$\mathrm{d}S$};
-                \draw (1,0)--(1.7071068,0.7071068) [thick,->,>=latex];
+                \draw (1,0) -- (1.7071068,0.7071068) [thick,->,>=latex];
                 \draw (1.5,0) arc [start angle=0,end angle=45,radius=0.5];
                 \draw (1.7,0.275) node {$\theta$};
                 \draw (1.9,0.9) node {$\bm{n}$};
-                \draw (-2,0)--(2,0) [thick,->,>=latex] node[right] {$\bm{k}$};
-                \draw (-1.5,0)--(0.66109277,0.46884539) [dashed];
-                \draw (-1.5,0)--(1.22370723,-0.46884539) [dashed];
+                \draw (-2,0) -- (2,0) [thick,->,>=latex] node[right] {$\bm{k}$};
+                \draw (-1.5,0) -- (0.66109277,0.46884539) [dashed];
+                \draw (-1.5,0) -- (1.22370723,-0.46884539) [dashed];
                 \draw (-0.6130445,-0.1526761) arc [start angle=-9.76689471,end angle=12.24053431,radius=0.9];
                 \draw (-1,0.4) node {$\mathrm{d}\Omega$};
             \end{tikzpicture}
@@ -506,23 +506,23 @@
         辐射在真空中传播，即反射和吸收均为零时，辐射强度是一个恒量，与辐射源的距离无关，推导如下：
         \begin{center}
             \begin{tikzpicture}
-                \draw (-3,0)--(2.75,0) [thick,->,>=latex] node[right] {$\bm{k}$};
+                \draw (-3,0) -- (2.75,0) [thick,->,>=latex] node[right] {$\bm{k}$};
                 \draw (-2,0) ellipse [x radius=0.6cm, y radius=0.3cm, rotate=135];
                 \draw (-2.5,-0.5) node {$\mathrm{d}S$};
-                \draw (-2,0)--(-1.2928932,0.7071068) [thick,->,>=latex];
+                \draw (-2,0) -- (-1.2928932,0.7071068) [thick,->,>=latex];
                 \draw (-1.55,0) arc [start angle=0,end angle=45,radius=0.45];
                 \draw (-1.45,0.225) node {$\scriptstyle\theta$};
                 \draw (-1.1,0.9) node {$\bm{n}$};
-                \draw (-2,0)--(1.33074646,0.40800348) [dashed];
-                \draw (-2,0)--(1.62607657,-0.40800348) [dashed];
+                \draw (-2,0) -- (1.33074646,0.40800348) [dashed];
+                \draw (-2,0) -- (1.62607657,-0.40800348) [dashed];
                 \draw (1.5,0) ellipse [x radius=0.45cm, y radius=0.25cm, rotate=120];
                 \draw (2.15,-0.5) node {$\mathrm{d}S'$};
-                \draw (1.5,0)--(2.3660254,0.5) [thick,->,>=latex];
+                \draw (1.5,0) -- (2.3660254,0.5) [thick,->,>=latex];
                 \draw (2,0) arc [start angle=0,end angle=30,radius=0.5];
                 \draw (2.175,0.175) node {$\scriptstyle\theta'$};
                 \draw (2.7,0.65) node {$\bm{n}'$};
-                \draw (1.5,0)--(-2.24178441,0.47154544) [dashed];
-                \draw (1.5,0)--(-1.67592988,-0.47154544) [dashed];
+                \draw (1.5,0) -- (-2.24178441,0.47154544) [dashed];
+                \draw (1.5,0) -- (-1.67592988,-0.47154544) [dashed];
             \end{tikzpicture}
         \end{center}
         考虑真空中穿过相距为$d$的两个面元$\mathrm{d}S$和$\mathrm{d}S'$，沿方向$\bm{k}$传播的辐射：
@@ -541,17 +541,17 @@
 
         \begin{center}
             \begin{tikzpicture}
-                \draw (1.5,0)--(2.5,0) [thick,->,>=latex] node[right] {$\bm{k}$};
+                \draw (1.5,0) -- (2.5,0) [thick,->,>=latex] node[right] {$\bm{k}$};
                 \draw (-2,0) ellipse [x radius=0.6cm, y radius=0.3cm, rotate=135];
                 \draw (-2.5,-0.5) node {$\mathrm{d}S$};
-                \draw (-2,0)--(1.33074646,0.40800348) [dashed];
-                \draw (-2,0)--(1.62607657,-0.40800348) [dashed];
+                \draw (-2,0) -- (1.33074646,0.40800348) [dashed];
+                \draw (-2,0) -- (1.62607657,-0.40800348) [dashed];
                 \draw (-1.10564375,-0.10063248) arc [start angle=-6.41988742,end angle=6.98371779,radius=0.9];
                 \draw (-0.7,0.02) node {$\scriptstyle\mathrm{d}\Omega'$};
                 \draw (1.5,0) ellipse [x radius=0.45cm, y radius=0.25cm, rotate=120];
                 \draw (2.15,-0.5) node {$\mathrm{d}S'$};
-                \draw (1.5,0)--(-2.24178441,0.47154544) [dashed];
-                \draw (1.5,0)--(-1.67592988,-0.47154544) [dashed];
+                \draw (1.5,0) -- (-2.24178441,0.47154544) [dashed];
+                \draw (1.5,0) -- (-1.67592988,-0.47154544) [dashed];
                 \draw (0.60706263,0.11252934) arc [start angle=172.81736135,end angle=188.44527997,radius=0.9];
                 \draw (0.3,0) node {$\scriptstyle\mathrm{d}\Omega$};
             \end{tikzpicture}
@@ -733,7 +733,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{波函数}
-        
+
         考虑平面单色波：
         \[
             \Psi(\bm{r},t) = \Psi_0\mathrm{e}^{i(\bm{k}\cdot\bm{r}-\omega t)}
@@ -754,7 +754,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{Schrödinger方程}
-        
+
         对波函数作用空间Laplace算符得：$\nabla^2\Psi = -\dfrac{p^2}{\hbar}\Psi$
 
         将波函数对时间$t$求偏导得：$\dfrac{\partial\Psi}{\partial t} = -\dfrac{i}{\hbar}E\Psi$
@@ -774,7 +774,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{Schrödinger方程}
-        
+
         考虑势场与时间无关（定态）的情况：
         \[
             \left(-\frac{\hbar}{2m}\nabla^2 + V(\bm{r})\right)\Psi(\bm{r},t) = i\hbar\frac{\partial\Psi(\bm{r},t)}{\partial t}
@@ -795,7 +795,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{Schrödinger方程}
-        
+
         定义表示粒子的总能量的\textbf{Hamilton算符}：
         \[
             \boxed{
@@ -820,7 +820,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{氢原子}
-        
+
         质心系下，$V=-\dfrac{e^2}{4\pi\epsilon_0r}$，得定态Schrödinger方程：
         \[
             \left(-\frac{\hbar}{2\mu}\nabla^2-\frac{e^2}{4\pi\epsilon_0r}\right)\psi(\bm{r}) = E\psi(\bm{r}),\quad \mu = \frac{Mm_e}{M+m_e}
@@ -838,7 +838,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{氢原子}
-        
+
         分别求解得：
         \begin{itemize}
             \item $R(r)=R_{nl}(r)$为连带Laguerre函数，其阶数满足：
@@ -859,7 +859,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{电子分布概率}
-        
+
         电子在单位体积$\mathrm{d}V$内分布的概率为：
         \[
             |\psi|^2\,\mathrm{d}V = \left(R^2\Theta^2\Phi\Phi^*\right)r^2\sin\theta\,\mathrm{d}r\mathrm{d}\theta\mathrm{d}\phi
@@ -873,7 +873,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{能量与角动量}
-        
+
         \begin{itemize}
             \item \textbf{能量}：由径向方程得能量本征值：
             \[
@@ -893,7 +893,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{能量与角动量}
-        
+
         \begin{itemize}
             \item \textbf{能量}：当原子核质量远大于电子质量时：
             \[
@@ -915,7 +915,7 @@
 \begin{slide}
     \begin{itemize}
         \item \textbf{能量与角动量}
-        
+
         \begin{itemize}
             \item \textbf{角动量}：电子轨道角动量的本征值为$\sqrt{l(l+1)}\hbar$，更准确的说是\textbf{角动量平方算符}$\hat{\mathsf{L}}^2$的本征值为$l(l+1)\hbar^2$，而$z$方向角动量的本征值为$m\hbar$，取值分别为：
             \begin{align*}

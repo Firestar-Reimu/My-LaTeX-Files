@@ -18,8 +18,9 @@
 \usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 
 \begin{document}
 
@@ -33,7 +34,7 @@
     \begin{itemize}
 
         \item[1.]
-        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+        \textparagraph 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
 
         $\nabla(\bm{A}\cdot\bm{B})$的$\hat{i}$方向分量为：
         \begin{align*}
@@ -73,7 +74,7 @@
             \nabla(\bm{A}\cdot\bm{B}) = \bm{B}\times(\nabla\times\bm{A}) + (\bm{B}\cdot\nabla)\bm{A} + \bm{A}\times(\nabla\times\bm{B}) + (\bm{A}\cdot\nabla)\bm{B}
         \]
 
-        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+        \textparagraph 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
 
         $\bm{A}\times(\nabla\times\bm{A})$的$\hat{i}$方向分量为：
         \begin{align*}
@@ -103,7 +104,7 @@
         \]
 
         \item[3.(1)]
-        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+        \textparagraph 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
         \begin{align*}
             \partial_i r
             &= \partial_i \sqrt{(x-x')^2 + (y-y')^2 + (z-z')^2} \\
@@ -127,7 +128,7 @@
         \]
         故$\nabla r = -\nabla' r = \dfrac{\bm{r}}{r}$。
 
-        \textsection 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
+        \textparagraph 等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
         \begin{align*}
             \partial_i\left(\frac{1}{r}\right)
             &= \partial_i \left[(x-x')^2 + (y-y')^2 + (z-z')^2\right]^{-\frac{1}{2}} \\
@@ -151,7 +152,7 @@
         \]
         故$\nabla\dfrac{1}{r} = -\nabla'\dfrac{1}{r} = -\dfrac{\bm{r}}{r}$。
 
-        \textsection 根据公式$\nabla\times(f\bm{A}) = f(\nabla\times\bm{A}) + (\nabla f)\times\bm{A}$得：
+        \textparagraph 根据公式$\nabla\times(f\bm{A}) = f(\nabla\times\bm{A}) + (\nabla f)\times\bm{A}$得：
         \[
             \nabla\times(\frac{\bm{r}}{r^3}) = \frac{1}{r^3}(\nabla\times\bm{r}) + \left(\nabla\frac{1}{r^3}\right)\times\bm{r}
         \]
@@ -176,7 +177,7 @@
         \end{align*}
         其中最后一步用到了公式：“任何矢量与自身的外积为零矢量”，即$\bm{r}\times\bm{r} = \bm{0}$。
 
-        \textsection 根据公式$\nabla\cdot(f\bm{A}) = f(\nabla\cdot\bm{A}) + (\nabla f)\cdot\bm{A}$可得：
+        \textparagraph 根据公式$\nabla\cdot(f\bm{A}) = f(\nabla\cdot\bm{A}) + (\nabla f)\cdot\bm{A}$可得：
         \begin{align*}
             \nabla\cdot\left(\frac{\bm{r}}{r^3}\right)
             &= \frac{1}{r^3}\cdot(\nabla\cdot\bm{r}) + \left(\nabla\frac{1}{r^3}\right)\cdot\bm{r} \\
@@ -197,7 +198,7 @@
         故在$r \neq 0$时，$\nabla\cdot\left(\dfrac{\bm{r}}{r^3}\right) = -\nabla'\cdot\left(\dfrac{\bm{r}}{r^3}\right) = 0$。
 
         \item[3.(2)]
-        \textsection 根据定义：
+        \textparagraph 根据定义：
         \begin{align*}
         \nabla\cdot\bm{r}
         &= \partial_i (x-x') + \partial_i (y-y') + \partial_k (z-z') \\
@@ -205,7 +206,7 @@
         &= 3
         \end{align*}
 
-        \textsection 根据定义，由于$\bm{r}$的三个分量相互独立，应有：
+        \textparagraph 根据定义，由于$\bm{r}$的三个分量相互独立，应有：
         \begin{align*}
             \nabla\times\bm{r}
             &= (\partial_j r_k - \partial_k r_j)\hat{i} + (\partial_k r_i - \partial_i r_k)\hat{j} + (\partial_i r_j - \partial_j r_i)\hat{k} \\
@@ -213,7 +214,7 @@
             &= \bm{0}
         \end{align*}
 
-        \textsection 结果应是一个矢量，以$\hat{i}$方向分量为例：
+        \textparagraph 结果应是一个矢量，以$\hat{i}$方向分量为例：
         \begin{align*}
             (\bm{a}\cdot\nabla)\bm{r}
             &= (a_i\partial_i + a_j\partial_j + a_k\partial_k)(x-x') \\
@@ -229,7 +230,7 @@
         \]
         故$(\bm{a}\cdot\nabla)\bm{r} = a_i\hat{i} + a_j\hat{j} + a_k\hat{k} = \bm{a}$。
 
-        \textsection 根据定义：
+        \textparagraph 根据定义：
         \begin{align*}
             \nabla(\bm{a}\times\bm{r})
             &= \nabla\left[a_i(x-x') + a_j(y-y') + a_k(z-z')\right] \\
@@ -237,7 +238,7 @@
             &= \bm{a}
         \end{align*}
 
-        \textsection 根据定义：
+        \textparagraph 根据定义：
         \[
             \nabla\cdot[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] = \partial_i[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] + \partial_j[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] + \partial_k[\bm{E}_0\sin(\bm{k}\cdot\bm{r})]
         \]
@@ -256,7 +257,7 @@
             &= (\bm{E}_0\cdot\bm{k})\cos(\bm{k}\cdot\bm{r})
         \end{align*}
 
-        \textsection 注意到$\sin(\bm{k}\cdot\bm{r})]$是一个标量函数。根据公式$\nabla\times(f\bm{A}) = f(\nabla\times\bm{A}) + (\nabla f)\times\bm{A}$得：
+        \textparagraph 注意到$\sin(\bm{k}\cdot\bm{r})]$是一个标量函数。根据公式$\nabla\times(f\bm{A}) = f(\nabla\times\bm{A}) + (\nabla f)\times\bm{A}$得：
         \[
             \nabla\times[\bm{E}_0\sin(\bm{k}\cdot\bm{r})] = \sin(\bm{k}\cdot\bm{r})(\nabla\times\bm{E}_0) + [\nabla\sin(\bm{k}\cdot\bm{r})]\times\bm{E}_0
         \]
@@ -344,7 +345,7 @@
         \]
 
         \item[7.(2)]
-        \textsection 极化体电荷只分布在介质内部，设其体密度为$\rho_p$。
+        \textparagraph 极化体电荷只分布在介质内部，设其体密度为$\rho_p$。
 
         在介质中有以下方程组：
         \[
@@ -358,7 +359,7 @@
             \rho_p = \left(\frac{\varepsilon_0}{\varepsilon} - 1\right)\rho_f \quad r_1 < r < r_2
         \]
 
-        \textsection 极化面电荷只分布在界面$r = r_1$及$r = r_2$，设其面密度为$\sigma_p$。
+        \textparagraph 极化面电荷只分布在界面$r = r_1$及$r = r_2$，设其面密度为$\sigma_p$。
 
         在界面处有以下方程组：（这里法向量$\bm{n} = \bm{r}$）
         \[
@@ -414,7 +415,7 @@
         \]
 
         \item[8.(2)]
-        \textsection 磁化体电流只分布在介质内部，设其面密度为$J_m$。
+        \textparagraph 磁化体电流只分布在介质内部，设其面密度为$J_m$。
 
         在介质中有以下方程组：
         \[
@@ -428,7 +429,7 @@
             \bm{J}_m = \left(\frac{\mu}{\mu_0} - 1\right)\bm{J}_f \quad r_1 < r < r_2
         \]
 
-        \textsection 磁化面电流只分布在界面$r = r_1$及$r = r_2$，设其面密度为$\bm{\alpha}_m$。
+        \textparagraph 磁化面电流只分布在界面$r = r_1$及$r = r_2$，设其面密度为$\bm{\alpha}_m$。
 
         在界面处有以下方程组：（这里法向量$\bm{n} = \bm{r}$）
         \[
@@ -469,7 +470,7 @@
         即$\omega_{f1} = -\omega_{f2} = \mathscr{E}\dfrac{\varepsilon_1 \varepsilon_2}{\varepsilon_1 l_2 + \varepsilon_2 l_1}$。
 
         \item[11.(2)]
-        \textsection 在介质内部，由$\bm{D} = \varepsilon\bm{E}$得：
+        \textparagraph 在介质内部，由$\bm{D} = \varepsilon\bm{E}$得：
         \[
             D_1 = \varepsilon_1 E_1,\qquad D_2 = \varepsilon_2 E_2
         \]
@@ -482,7 +483,7 @@
             \omega_f = 0
         \]
 
-        \textsection 若介质漏电，则会产生沿$\hat{z}$方向的电流$\bm{J}$。导体极板内有电流，$\omega_{f1} + \omega_{f2} \neq 0$
+        \textparagraph 若介质漏电，则会产生沿$\hat{z}$方向的电流$\bm{J}$。导体极板内有电流，$\omega_{f1} + \omega_{f2} \neq 0$
 
         由电流连续性方程：
         \[
@@ -513,7 +514,7 @@
             \omega_{f1} = \mathscr{E}\frac{\varepsilon_1 \sigma_2}{\sigma_1 l_2 + \sigma_2 l_1},\qquad \omega_{f2} = -\mathscr{E}\frac{\varepsilon_2 \sigma_1}{\sigma_1 l_2 + \sigma_2 l_1}
         \]
 
-        \textsection 在介质内部，由$\bm{D} = \varepsilon\bm{E}$得：
+        \textparagraph 在介质内部，由$\bm{D} = \varepsilon\bm{E}$得：
         \[
             D_1 = \varepsilon_1 E_1,\qquad D_2 = \varepsilon_2 E_2
         \]
@@ -645,7 +646,7 @@
     \subsection*{补充题}
 
     \begin{itemize}
-    
+
         \item[3.]
         设电磁场的能量密度为$w$，能流密度矢量为$\bm{S}$，电磁力的功率密度为$W$，则能量守恒定理可以写为：
         \[
@@ -718,19 +719,36 @@
         \[
             \bm{E} = \frac{\rho\bm{r}}{3\varepsilon_0}
         \]
-        而该球中的空洞可以看作是原有的半径$r=R$，电荷密度为$\rho$的带电球与一个半径$r=\dfrac{R}{2}$，电荷密度为$-\rho$的带电球叠加，故空洞内部任意一点$\mathrm{P}$的电场强度为：
+        而该球中的空洞可以看作是原有的半径$r=R$，电荷密度为$\rho$的带电球与一个半径$r=\dfrac{R}{2}$，电荷密度为$-\rho$的带电球叠加。
+
+        \begin{center}
+            \begin{tikzpicture}[>=Stealth]
+                \draw (0,0) circle [radius=3cm];
+                \draw (1.5,0) circle [radius=1.5cm];
+                \draw [->] (0,0) -- (-2.5980762,-1.5) node [midway,above] {$R$};
+                \draw [->] (1.5,0) -- (2.7990381,0.75) node [midway,below] {$\frac{R}{2}$};
+                \draw [->] (0,0) -- (1.2,-0.8) node [midway,below] {$\bm{r}$};
+                \draw [->] (1.5,0) -- (1.2,-0.8) node [midway,right] {$\bm{r'}$};
+                \draw [->] (0,0) -- (1.5,0) node [midway,above] {$\bm{r}_0$};
+                \fill (0,0) circle [radius=2pt] node [anchor=south east] {$O$};
+                \fill (1.5,0) circle [radius=2pt] node [above] {$O'$};
+                \fill (1.2,-0.8) circle [radius=2pt] node [below] {$P$};
+            \end{tikzpicture}
+        \end{center}
+
+        如图，空洞内部任意一点$P$的电场强度为：
         \[
             \bm{E} = \frac{\rho\bm{r}}{3\varepsilon_0} - \frac{\rho\bm{r}'}{3\varepsilon_0} = \frac{\rho}{3\varepsilon_0}(\bm{r}-\bm{r}')
         \]
-        其中$\bm{r}$为$\mathrm{O}$指向$\mathrm{P}$的矢量，$\bm{r}'$为$\mathrm{O'}$指向$\mathrm{P}$的矢量
-        
-        则$\bm{r}-\bm{r}'=\overrightarrow{\mathrm{OP}}-\overrightarrow{\mathrm{O'P}}=\overrightarrow{\mathrm{OO'}}$，记作$\bm{r}_0$，为一大小为$\dfrac{R}{2}$的常矢量。
+        其中$\bm{r}$为$O$指向$P$的矢量，$\bm{r}'$为$O'$指向$P$的矢量。
+
+        则$\bm{r}-\bm{r}'=\overrightarrow{OP}-\overrightarrow{O'P}=\overrightarrow{OO'}$，记作$\bm{r}_0$，为一大小为$\dfrac{R}{2}$的常矢量。
 
         于是空洞内部的电场为一均匀电场，大小为：
         \[
             \bm{E} = \frac{\rho R}{6\varepsilon_0}
         \]
-        方向沿$\overrightarrow{\mathrm{OO'}}$。
+        方向沿$\overrightarrow{OO'}$。
 
     \end{itemize}
 

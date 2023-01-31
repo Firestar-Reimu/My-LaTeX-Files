@@ -53,7 +53,7 @@
 \begin{minipage}{0.6\linewidth}
 
     \begin{itemize}
-    
+
     \item[1.]
     如右图：
     \[
@@ -69,7 +69,7 @@
     \[
     v_{\mathrm{obs}} = \frac{y}{t_{\mathrm{obs}}} = \frac{v\sin\theta}{1-\beta\cos\theta} = c\frac{v\sin\theta}{c-v\cos\theta}
     \]
-    
+
     \end{itemize}
 
 \end{minipage}
@@ -81,7 +81,7 @@
             \draw [->] (0,0) -- (1,-4);
             \fill (0,0) circle [radius=3pt];
             \fill (1,-4) circle [radius=3pt];
-            \draw (0,0) ++(270:1) arc [start angle=270,radius=1,delta angle=14.5];
+            \draw (0,-1) arc [start angle=270,radius=1,delta angle=14.5];
             \draw (0.15,-1.25) node {$\theta$};
             \draw (-0.25,-2) node {$x$};
             \draw (0.5,-4.25) node {$y$};
@@ -106,7 +106,7 @@ x_1 = rR\sin\theta\cos\phi,\quad x_2 = rR\sin\theta\sin\phi,\quad x_3 = rR\cos\t
 & \mathrm{d}x_3 = -rR\sin\theta\mathrm{d}\theta + R\cos\theta\mathrm{d}r \\
 & \mathrm{d}x_4 = -\frac{rR\mathrm{d}r}{\sqrt{1-r^2}}
 \end{align*}
-先计算$\mathrm{d}x_1^2 + \mathrm{d}x_2^2 + \mathrm{d}x_3^2$：
+先计算$\mathrm{d}x_1^2 + \mathrm{d}x_2^2 + \mathrm{d}x_3^2$如下：
 \begin{align*}
     &\quad \mathrm{d}x_1^2 + \mathrm{d}x_2^2 + \mathrm{d}x_3^2 \\
     &= r^2 R^2\sin^2\theta(\sin^2\phi+\cos^2\phi)\mathrm{d}\phi^2 + r^2 R^2\cos^2\theta(\sin^2\phi+\cos^2\phi)\mathrm{d}\theta^2 +  R^2\sin^2\theta(\sin^2\phi+\cos^2\phi)\mathrm{d}r^2 \\

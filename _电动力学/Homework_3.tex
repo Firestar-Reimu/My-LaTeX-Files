@@ -18,8 +18,7 @@
 \usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
 
 \begin{document}
 
@@ -120,7 +119,7 @@
     求磁感应强度分布如下：
 
     根据对称性，$\bm{B}$的磁感应线应为$B$大小均匀的同心圆环，且$\bm{B}$在$x=0$的介质表面法向分量连续。
-    
+
     又因为$\bm{B}=\mu\bm{H}$，$\displaystyle{\oint_L \bm{H}\cdot\mathrm{d}\bm{l}=I}$，说明在$x=0$的介质表面，$\bm{H}$将发生跃变。
 
     于是有：
@@ -218,7 +217,7 @@
     \mu\frac{\mathrm{d}A_1}{\mathrm{d}r} = \mu_0\frac{\mathrm{d}A_2}{\mathrm{d}r}
     \]
     可得$C_3=-\dfrac{1}{2}\mu Ja^2$
-    
+
     由$r=a$时$\bm{A}=0$得：$C_2=\dfrac{1}{4}\mu_0 Ja^2$，$C_4=-\dfrac{1}{2}\mu Ja^2\ln a$。
 
     故$\bm{A}$的分布为：
@@ -333,7 +332,7 @@
     \right.
     \]
     磁化电流$\bm{\alpha}_M$只分布在球面$r=R$处，与$\bm{M}$的切向分量相关：$\bm{\alpha}_M=\bm{n}\times(\bm{M}_2-\bm{M}_1)$。
-    
+
     由于边界条件$\varphi_1=\varphi_2$蕴含了$r=R$处$\bm{n}\times(\bm{H}_2-\bm{H}_1)=0$，磁化电流为：
     \[
     \bm{\alpha}_M = \bm{n}\times(\bm{M}_2-\bm{M}_1) = \frac{1}{\mu_0}\bm{n}\times(\bm{B}_2-\bm{B}_1) = \frac{3\mu'\mu_0}{2\mu'+\mu}\bm{M}_0\sin\theta\hat{\phi},\quad r=R
@@ -342,9 +341,9 @@
 
     \item[14.(1)]
     设球内的电荷密度为$\rho$，则$\rho=\dfrac{3Q}{4\pi R_0^3}$。
-    
+
     考虑一个半径为$r$，高度为$r\mathrm{d}\theta$，沿球半径方向的厚度为$\mathrm{d}r$的环，其体积为$\mathrm{d}V=2\pi r^2\sin\theta\mathrm{d}r\mathrm{d}\theta$。
-    
+
     环内的电流为：
     \[
     I = \frac{\mathrm{d}q}{\mathrm{d}t} = \frac{\Delta q}{T} = \frac{\rho \cdot 2\pi r^2\sin\theta\mathrm{d}r\mathrm{d}\theta}{2\pi\omega^{-1}} = \rho\omega r^2\sin\theta\mathrm{d}r\mathrm{d}\theta
@@ -354,7 +353,7 @@
     \mathrm{d}\bm{m} = I\bm{S} = \rho\omega r^2\sin\theta\mathrm{d}r\mathrm{d}\theta \cdot \pi(r\sin\theta)^2\hat{z} = \pi\rho\bm{\omega}r^4\sin^2\theta\mathrm{d}r\mathrm{d}\theta
     \]
     其中$\bm{S}=\pi(r\sin\theta)^2\hat{z}$为电流环围成的圆面的有向面积。
-    
+
     则球的总磁矩为：
     \[
     \bm{m} = \iiint\limits_V \mathrm{d}\bm{m} = \pi\rho\bm{\omega}\int_0^{R_0} r^4\,\mathrm{d}r \int_0^\pi \sin^3\theta\,\mathrm{d}\theta = \frac{4}{15}\pi\rho\bm{\omega}R_0^5
@@ -363,7 +362,7 @@
 
     \item[14.(2)]
     设球的质量密度为$\rho_m$，则$\rho_m=\dfrac{3m_0}{4\pi R_0^3}$。
-    
+
     考虑与(1)中相同的一个圆环，其角动量为：
     \[
     \mathrm{d}\bm{L} = \rho_m\mathrm{d}V \cdot \bm{\omega}(r\sin\theta)^2 = 2\pi\rho_m\bm{\omega}r^4\sin^3\theta\mathrm{d}r\mathrm{d}\theta
@@ -378,7 +377,7 @@
     设介质表面为$z=0$平面，$\bm{m}$位于介质表面上方$z=a$处，与界面法向$\hat{z}$的夹角为$\theta$。
 
     由于高磁导率介质的表面为等磁标势面，考虑使用磁镜像法处理。
-    
+
     小永磁体$\bm{m}$的镜像$\bm{m}'$位于介质表面下方$z=-a$处，与界面法向$\hat{z}$的夹角为$-\theta$，与$\bm{m}$的夹角为$2\theta$。
 
     $\bm{m}'$在介质外部任意一点的磁标势与磁感应强度为：
@@ -406,7 +405,7 @@
 
     \item[2.]
     在柱坐标中处理，首先根据对称性：$\dfrac{\partial\bm{B}}{\partial z}=\dfrac{\partial\bm{B}}{\partial\theta}=0$。
-    
+
     又因为电流沿$\hat{\theta}$方向，磁场方向只能沿$\hat{z}$和$\hat{\rho}$方向。
 
     而磁场是无散场：
@@ -499,4 +498,4 @@
 
     \end{itemize}
 
-\end{document} 
+\end{document}
