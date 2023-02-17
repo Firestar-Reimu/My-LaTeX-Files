@@ -337,15 +337,11 @@
                 \draw (1.8,0) -- (3,0);
                 \draw (1.8,0) arc [start angle=0, end angle=180, radius=1.8cm];
                 \draw [dashed] (-1.8,0) -- (1.8,0);
-                \draw [dashed] (-1.8,0) arc [start angle=180, end angle=360, radius=1.8cm];
-                \fill (0,2.7) circle [radius=2pt];
-                \fill (0,1.2) circle [radius=2pt];
-                \fill (0,-1.2) circle [radius=2pt];
-                \fill (0,-2.7) circle [radius=2pt];
-                \draw (0.35,2.7) node {$q$};
-                \draw (0.35,1.2) node {$q_3$};
-                \draw (0.35,-1.2) node {$q_2$};
-                \draw (0.35,-2.7) node {$q_1$};
+                \draw [dashed] (-1.8,0) arc [start angle=180, end angle=360, radius=1.8];
+                \fill (0,2.7) circle [radius=2pt] node [right] {$q$};
+                \fill (0,1.2) circle [radius=2pt] node [right] {$q_3$};
+                \fill (0,-1.2) circle [radius=2pt] node [right] {$q_2$};
+                \fill (0,-2.7) circle [radius=2pt] node [right] {$q_1$};
             \end{tikzpicture}
         \end{center}
         其中像电荷的电荷量分别为：
@@ -368,19 +364,13 @@
         设两个导体平面分别为$x=0$和$y=0$，点电荷$q$位于$(a,b,0)$，为保证在$x=0$和$y=0$处电势为0，引入像电荷如图：
         \begin{center}
             \begin{tikzpicture}[>=Stealth]
-                \draw [->] (-3,0) -- (3,0);
-                \draw [->] (0,-3) -- (0,3);
-                \fill (2.5,1.5) circle [radius=2pt];
-                \fill (-2.5,1.5) circle [radius=2pt];
-                \fill (-2.5,-1.5) circle [radius=2pt];
-                \fill (2.5,-1.5) circle [radius=2pt];
-                \draw (2.75,1.75) node {$q$};
-                \draw (-2.75,1.75) node {$-q$};
-                \draw (-2.75,-1.75) node {$q$};
-                \draw (2.75,-1.75) node {$-q$};
-                \draw (2.75,-0.25) node {$x$};
-                \draw (0.25,2.75) node {$y$};
-                \draw (-0.25,-0.25) node {$O$};
+                \draw [->] (-3,0) -- (3,0) node [below] {$x$};
+                \draw [->] (0,-3) -- (0,3) node [left] {$y$};
+                \fill (2.5,1.5) circle [radius=2pt] node [anchor=south west] {$q$};
+                \fill (-2.5,1.5) circle [radius=2pt] node [anchor=south east] {$-q$};
+                \fill (-2.5,-1.5) circle [radius=2pt] node [anchor=north east] {$q$};
+                \fill (2.5,-1.5) circle [radius=2pt] node [anchor=north west] {$-q$};
+                \draw (0,0) node [anchor=north east] {$O$};
             \end{tikzpicture}
         \end{center}
         其中与原电荷等量的像电荷$q$位于$(-a,-b,0)$，与原电荷等量异号的两个像电荷$-q$分别位于$(a,-b,0)$和$(-a,b,0)$。

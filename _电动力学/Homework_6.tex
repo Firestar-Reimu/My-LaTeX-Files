@@ -18,8 +18,11 @@
 \usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
 
 \begin{document}
 
@@ -29,5 +32,479 @@
 \maketitle
 
 \section*{第六章}
+
+\begin{itemize}
+
+    \item[1.]
+    设惯性系$\varSigma'$以速度$\bm{v}$沿另一惯性系$\varSigma$的$x$轴运动，两参考系相应的坐标轴平行，由Galileo变换：
+    \[
+        x' = x - vt,\quad y' = y,\quad z' = z,\quad ct' = ct
+    \]
+    得速度变换：
+    \[
+        \bm{u}' = \frac{\mathrm{d}\bm{r}}{\mathrm{d}t} = \frac{\mathrm{d}\bm{r}'}{\mathrm{d}t'} + \bm{v} = \bm{u} + \bm{v}
+    \]
+    而物体的动量在$\varSigma$系和$\varSigma'$系中分别为：
+    \[
+        \bm{p} = m\bm{u},\quad \bm{p} = m'\bm{u}'
+    \]
+    由于质量在Galileo变换下不变：$m=m'$，Newton定律在$\varSigma$系和$\varSigma'$系中有相同的形式：
+    \[
+        \bm{F} = \frac{\mathrm{d}\bm{p}}{\mathrm{d}t},\quad \bm{F}' = \frac{\mathrm{d}\bm{p}'}{\mathrm{d}t}
+    \]
+    即Newton定律在Galileo变换下是协变的。
+
+    对于Maxwell方程组：
+    \[
+        \left\{
+        \begin{aligned}
+            &\nabla \cdot \bm{D} = \rho \\
+            &\nabla \times \bm{E} = -\frac{\partial\bm{B}}{\partial t} \\
+            &\nabla \cdot \bm{B} = 0 \\
+            &\nabla \times \bm{H} = \bm{J} + \frac{\partial\bm{D}}{\partial t} \\
+        \end{aligned}
+        \right.
+    \]
+    可以推出$\bm{A}$和$\varphi$的波动方程：
+    \[
+        \left\{
+        \begin{aligned}
+            &\nabla^2\bm{A} - \frac{1}{c^2}\frac{\partial^2\bm{A}}{\partial t^2} = -\mu_0\bm{J} \\
+            &\nabla^2\varphi - \frac{1}{c^2}\frac{\partial^2\varphi}{\partial t^2} = -\frac{\rho}{\varepsilon_0}
+        \end{aligned}
+        \right.
+    \]
+    在Galileo变换下：$\bm{A}$、$\varphi$、$\rho$、$\varepsilon_0$和$t$均为不变量，但光速$c'=c+v$不是不变量。说明波动方程在Galileo变换下不是协变的，由此推知Maxwell方程组也不是协变的。
+
+    \item[4.]
+    设地面参考系为$\varSigma$，列车参考系为$\varSigma'$，则$\varSigma$系和$\varSigma'$系之间的变换关系为：
+    \[
+        x' = \gamma(x-\beta ct),\quad y' = y,\quad z' = z,\quad ct' = \gamma(ct-\beta x)
+    \]
+    设建筑物与高塔的竖直高度差为$h$，则建筑物与高塔的水平距离为$s=\sqrt{l_0^2+h^2}$。
+
+    在$\varSigma$系下两座铁塔被照亮的事件用$(x,\ y,\ z,\ ct)$表示为：
+    \[
+        P_1(l_0,\ 0,\ h,\ s),\quad P_2(-l_0,\ 0,\ h,\ s)
+    \]
+    变换后在$\varSigma'$系下为：
+    \[
+        P'_1(\gamma l_0-\gamma \beta s,\ 0,\ h,\ \gamma s-\gamma \beta l_0),\quad P'_1(-\gamma l_0-\gamma \beta s,\ 0,\ h,\ \gamma s+\gamma \beta l_0)
+    \]
+    则时间差为：
+    \[
+        \Delta t = \frac{2\gamma\beta l_0}{c} = \frac{2vl_0}{c^2\sqrt{1 - v^2/c^2}}
+    \]
+
+    \item[5.(1)]
+    设$\mathrm{S-R}$装置参考系为$\varSigma$，介质参考系为$\varSigma'$，两参考系的$x$轴重合并沿着$\mathrm{S-R}$连线方向。
+
+    介质系内的光速大小恒为：
+    \[
+        u' = \frac{c}{n} = \sqrt{{u'_x}^2 + {u'_y}^2 + {u'_z}^2}
+    \]
+    则介质相对于$\mathrm{S-R}$装置静止时，$u=u'=\dfrac{c}{n}$，故讯号的传播时间为：
+    \[
+        \Delta t = \frac{l_0}{u} = \frac{nl_0}{c}
+    \]
+
+    \item[5.(2)]
+    由题意，$\varSigma'$系相对$\varSigma$系以速度$\bm{v}=v\hat{x}$流动，则有速度变换关系：
+    \[
+        u_x = \frac{u'_x+v}{1+vu'_x/c^2},\quad
+        u_y = \frac{u'_y}{\gamma(1+vu'_x/c^2)},\quad
+        u_z = \frac{u'_z}{\gamma(1+vu'_x/c^2)},\quad
+    \]
+    又因为：
+    \[
+        u'_x = \frac{c}{n},\quad u'_y = 0,\quad u'_z = 0
+    \]
+    则变换后：
+    \[
+        u_x = \frac{c+vn}{n+v/c},\quad u_y = 0,\quad u_z = 0
+    \]
+    故讯号的传播时间为：
+    \[
+        \Delta t = \frac{l_0}{u} = \frac{l_0(n+v/c)}{c+vn}
+    \]
+
+    \item[5.(3)]
+    由题意得：
+    \[
+        u'_x = -v,\quad u' = \sqrt{{u'_x}^2 + {u'_y}^2} = \frac{c}{n}
+    \]
+    解得：
+    \[
+        u'_y = \sqrt{\frac{c^2}{n^2} - v^2}
+    \]
+    于是有：
+    \[
+        u_x = \frac{u'_x+v}{1+vu'_x/c^2} = 0
+    \]
+    \[
+        u_y = \frac{u'_y}{\gamma(1+vu'_x/c^2)} = \sqrt{\frac{c^2/n^2 - v^2}{1 - v^2/c^2}}
+    \]
+    即$u=u_y$，故讯号的传播时间为：
+    \[
+        \Delta t = \frac{l_0}{u} = l_0\sqrt{\frac{1 - v^2/c^2}{c^2/n^2 - v^2}}
+    \]
+
+    \item[12.]
+    设地面参考系为$\varSigma$，电偶极子静止的参考系为$\varSigma'$，则$\varSigma'$以速度$\bm{v}$相对地面系$\varSigma$做匀速直线运动。
+
+    在$\varSigma'$系中，电偶极子只有电场$\bm{E}$和电势$\varphi$：
+    \[
+        \bm{E}' = \frac{1}{4\pi\epsilon_0} \left[\frac{3(\bm{p}_0 \cdot \bm{r}')\bm{r}'}{r'^5} - \frac{\bm{p}_0}{r'^3}\right],\quad \bm{B}' = 0
+    \]
+    \[
+        \varphi' = \frac{1}{4\pi\epsilon_0} \frac{\bm{p}_0 \cdot \bm{r}'}{r'^3},\quad \bm{A}' = 0
+    \]
+    参考系$\varSigma$与$\varSigma'$之间的电磁场变换为：
+    \[
+        \bm{E}_\varparallel = \bm{E}'_\varparallel,\quad
+        \bm{B}_\varparallel = \bm{B}'_\varparallel,\quad
+        \bm{E}_\perp = \gamma(\bm{E}' - \bm{v}\times\bm{B}')_\perp,\quad
+        \bm{B}_\perp = \gamma(\bm{B}' + \frac{1}{c^2}\bm{v}\times\bm{E}')_\perp
+    \]
+    则有$\varSigma$系的电磁场为：
+    \[
+        \bm{E}_\varparallel = \bm{E}'_\varparallel,\quad \bm{B}_\varparallel = 0,\quad \bm{E}_\perp = \gamma\bm{E}'_\perp,\quad \bm{B}_\perp = \frac{\gamma}{c^2}\bm{v} \times \bm{E}'_\perp
+    \]
+    参考系$\varSigma$与$\varSigma'$之间的坐标和电磁势变换为：
+    \[
+        x = \gamma(x'+\beta ct'),\quad y = y',\quad z = z',\quad ct = \gamma(ct'+\beta x')
+    \]
+    \[
+        A_x = \gamma\left(A'_x+\frac{v}{c^2}\varphi'\right),\quad A_y = A'_y,\quad A_z = A'_z,\quad \varphi = \gamma(\varphi'+vA'_x)
+    \]
+    由此可得$\varSigma$系的电磁势为：
+    \[
+        \varphi = \gamma\varphi' = \frac{\gamma}{4\pi\epsilon_0}\frac{\bm{p}_0 \cdot \bm{r}}{r^3},\quad
+        \bm{A} = A_x\frac{\bm{v}}{v} = \frac{\bm{v}}{c^2}\varphi
+    \]
+    其中$\bm{r}=(\gamma x,y,z)$。
+
+    \item[13.]
+    参考系$\varSigma'$与$\varSigma$之间的电磁场变换为：
+    \[
+        \bm{E}'_\varparallel = \bm{E}_\varparallel,\quad
+        \bm{B}'_\varparallel = \bm{B}_\varparallel,\quad
+        \bm{E}'_\perp = \gamma(\bm{E} + \bm{v}\times\bm{B})_\perp,\quad
+        \bm{B}'_\perp = \gamma(\bm{B} - \frac{1}{c^2}\bm{v}\times\bm{E})_\perp
+    \]
+    若使$\varSigma'$内只有电场，则$\bm{B}'=0$，即：
+    \[
+        \bm{B}' = \bm{B} = 0,\quad
+        \bm{B}'_\perp = \gamma(\bm{B} - \frac{1}{c^2}\bm{v}\times\bm{E})_\perp = 0
+    \]
+    则有：
+    \[
+        v = c^2\frac{B}{E}
+    \]
+    考虑到$\bm{v}$的方向以及$v<c$的条件，$\varSigma'$内只有电场时：
+    \[
+        \bm{v} = \frac{c^2}{E^2}\bm{E} \times \bm{B}\quad
+        (E > cB)
+    \]
+    若使$\varSigma'$内只有磁场，则$\bm{E}'=0$，即：
+    \[
+        \bm{E}'_\varparallel = \bm{E}_\varparallel = 0,\quad
+        \bm{E}'_\perp = \gamma(\bm{E} + \bm{v}\times\bm{B})_\perp = 0
+    \]
+    则有：
+    \[
+        v = \frac{E}{B}
+    \]
+    考虑到$\bm{v}$的方向以及$v<c$的条件，$\varSigma'$内只有磁场时：
+    \[
+        \bm{v} = \frac{1}{B^2}\bm{E} \times \bm{B}\quad
+        (E < cB)
+    \]
+
+    \item[16.(a)]
+    设地面参考系为$\varSigma$，带电直线和点电荷的静止参考系为$\varSigma'$，两个参考系的$x$轴重合，$y$轴沿带电直线到点电荷距离的方向，且$\varSigma'$相对$\varSigma$以速度$\bm{v}$沿$x$轴正方向运动。
+
+    在$\varSigma'$系中，由静电学中的Gauss定律，带电直线在电荷处产生的电磁场为：
+    \[
+        \bm{E}'_\varparallel = 0,\quad
+        \bm{E}'_\perp = \frac{\lambda}{2\pi\epsilon_0d}\hat{y},\quad
+        \bm{B}'_\varparallel = 0,\quad
+        \bm{B}'_\perp = 0
+    \]
+    带电直线上所带的电荷$\mathrm{d}q'$对点电荷$q$的作用力只有静电Coulomb力，即为：
+    \[
+        \bm{f}' = q\bm{E}_\perp = \frac{\lambda q}{2\pi\epsilon_0d}\hat{y}
+    \]
+    电荷$q$受到的四维力$F'_\mu$为：
+    \[
+        F'_\mu = \gamma'_u\left(f'_x,\ f'_y,\ f'_z,\ \frac{\bm{f}'\cdot\bm{u}'}{c}\right) = (0,\ \gamma'_u f',\ 0,\ 0),\quad \gamma'_u = \frac{1}{\sqrt{1-{u'}^2/c^2}}
+    \]
+    其中$\bm{u}'$是电荷在$\varSigma'$系中的速度。
+
+    由于$\bm{u}'=0$，$\gamma'_u=\dfrac{1}{\sqrt{1-{u'}^2/c^2}}=1$，故：
+    \[
+        F_\mu = (0,\ \gamma'_u f',\ 0,\ 0) = (0,\ f',\ 0,\ 0)
+    \]
+    在$\varSigma$系中，四维力$F_\mu$则为：
+    \[
+        F_\mu = \gamma_u\left(f_x,\ f_y,\ f_z,\ \frac{\bm{f}\cdot\bm{u}}{c}\right),\quad \gamma_u = \frac{1}{\sqrt{1-u^2/c^2}}
+    \]
+    参考系$\varSigma$与$\varSigma'$之间的四维力变换为：（其中$\beta=\dfrac{v}{c}$，$\gamma=\dfrac{1}{\sqrt{1-v^2/c^2}}$）
+    \[
+        \gamma_u f_x = \gamma\gamma'_u\left(f'_x + \beta\frac{\bm{f}'\cdot\bm{u}'}{c}\right),\quad
+        \gamma_u f_y = \gamma'_u f'_y,\quad
+        \gamma_u f_z = \gamma'_u f'_z,\quad
+        \frac{\gamma_u}{c}\bm{f}\cdot\bm{u} = \gamma\gamma'_u\left(\frac{\bm{f}'\cdot\bm{u}'}{c} + \beta f_x\right)
+    \]
+    则在$\varSigma$系中，四维力$F_\mu$为：
+    \[
+        F_\mu(0,\ \gamma_u f,\ 0,\ 0)
+    \]
+    但注意，在$\varSigma$系中$\bm{u}=\bm{v}$，$\gamma_u=\dfrac{1}{\sqrt{1-v^2/c^2}}\neq1$，则三维情况下$\varSigma$系中电荷受到电线的作用力大小为：
+    \[
+        f = \frac{f'}{\gamma_u} = \frac{\lambda q}{2\pi\epsilon_0d\gamma_u} = \frac{\lambda q}{2\pi\epsilon_0d}\sqrt{1 - \frac{v^2}{c^2}}
+    \]
+    方向沿$y$轴正方向，即：
+    \[
+        \bm{f} = \frac{\lambda q}{2\pi\epsilon_0d}\sqrt{1 - \frac{v^2}{c^2}}\hat{y}
+    \]
+
+    \item[16.(b)]
+    如果直接在$\varSigma$系观察，则有：
+    \[
+        \bm{E}_\varparallel = \bm{E}'_\varparallel = 0,\quad
+        \bm{B}_\varparallel = \bm{B}'_\varparallel = 0,\quad
+        \bm{E}_\perp = \gamma(\bm{E}' - \bm{v}\times\bm{B}')_\perp = \gamma\bm{E}'_\perp,\quad
+        \bm{B}_\perp = \gamma(\bm{B}' + \frac{1}{c^2}\bm{v}\times\bm{E}')_\perp = \gamma\frac{v}{c^2}\bm{E}'_\perp
+    \]
+    其中：
+    \[
+        \gamma = \frac{1}{\sqrt{1-v^2/c^2}}
+    \]
+    故电荷受到的作用力为：
+    \begin{align*}
+        \bm{f}
+        &= q\bm{E} + q\bm{v} \times \bm{B} \\
+        &= q\gamma\bm{E}'_\perp - q\gamma\frac{v^2}{c^2}\bm{E}'_\perp \\
+        &= q\gamma\left(1 - \frac{v^2}{c^2}\right)\bm{E}'_\perp \\
+        &= \frac{q}{\sqrt{1-v^2/c^2}}\left(1 - \frac{v^2}{c^2}\right)\frac{\lambda}{2\pi\epsilon_0d}\hat{y} \\
+        &= \frac{\lambda q}{2\pi\epsilon_0d}\sqrt{1 - \frac{v^2}{c^2}}\hat{y}
+    \end{align*}
+
+    \item[17.]
+    \setcounter{equation}{0}
+    设衰变后粒子$m_1$、$m_2$的动量分别为$p_1$、$p_2$（显然在同一直线上），能量分别为$E_1$、$E_2$，则有：
+    \begin{align}
+        &p_1 + p_2 = 0 \\
+        &E_1 + E_2 = mc^2
+    \end{align}
+    且能量与动量的关系为：
+    \begin{equation}
+        E_1^2 = p_1^2c^2 + m_1^2c^4,\quad E_2^2 = p_2^2c^2 + m_2^2c^4
+    \end{equation}
+    由$p_1+p_2=0$得$p_1^2=p_2^2$，于是有：
+    \[
+        E_1^2 - E_2^2 = p_1^2c^2 + m_1^2c^4 - (p_2^2c^2 + m_2^2c^4) = m_1^2c^4 - m_2^2c^4
+    \]
+    即：
+    \[
+        (E_1 + E_2)(E_1 - E_2) = mc^2(E_1 - E_2) = m_1^2c^4 - m_2^2c^4
+    \]
+    故有：
+    \[
+    \left\{
+        \begin{aligned}
+            &E_1 + E_2 = mc^2 \\
+            &E_1 - E_2 = \frac{m_1^2 - m_2^2}{m}c^2
+        \end{aligned}
+    \right.
+    \]
+    解得：
+    \[
+        \left\{
+        \begin{aligned}
+            &E_1 = \frac{c^2}{2m}(m^2 + m_1^2 - m_2^2) \\
+            &E_2 = \frac{c^2}{2m}(m^2 - m_1^2 + m_2^2)
+        \end{aligned}
+    \right.
+    \]
+    代入(3)式得：
+    \[
+        \left\{
+        \begin{aligned}
+            &p_1 = \frac{c}{2m}\sqrt{\left[m^2 - (m_1 + m_2)^2\right] \left[m^2 - (m_1 - m_2)^2\right]} \\
+            &p_2 = -\frac{c}{2m}\sqrt{\left[m^2 - (m_1 + m_2)^2\right] \left[m^2 - (m_1 - m_2)^2\right]}
+        \end{aligned}
+    \right.
+    \]
+
+    \item[26.]
+    如图，记$\bm{p}=\hbar\bm{k}$，$E=\hbar\omega$，电子的静止质量为$m_0$，散射后的能量和动量分别为$E_0$和$\bm{p}_0$，散射角为$\phi$。
+
+    \begin{center}
+        \begin{tikzpicture}[>=Stealth,decoration={snake,pre length=0.75cm,post length=0.75cm}]
+            \draw[->,decorate] (-3,0) -- (0,0) node [at start,left] {$\bm{p},E$};
+            \draw[->,decorate,segment length=0.5cm] (0,0) -- (2.5980762,1.5) node [right] {$\bm{p}',E'$};
+            \draw[->] (0,0) -- (1,-1.7320508);
+            \draw[dashed] (0,0) -- (3,0);
+            \fill (0,0) circle [radius=2pt] node [anchor=south east] {$m_0$};
+            \fill (1,-1.7320508) circle [radius=2pt] node [anchor=north west] {$\bm{p}_0,E_0$};
+            \draw (0.5,0) arc [start angle=0,end angle=30,radius=0.5];
+            \draw (0.7,0.2) node {$\theta$};
+            \draw (0.9,0) arc [start angle=0,end angle=-60,radius=0.9] node [midway,anchor=north west] {$\phi$};
+        \end{tikzpicture}
+    \end{center}
+
+    能量、动量守恒关系为：
+    \begin{align}
+        &p = p'\cos\theta + p_0\cos\phi \\
+        &p'\sin\theta + p_0\sin\phi = 0 \\
+        &pc + m_0c^2 = p'c + E_0 \\
+        &E_0^2 = p_0^2c^2 + m_0^2c^4
+    \end{align}
+    将(1)、(2)两式移项，使得等号一侧只含有$p_0$，再两边平方，得到：
+    \begin{align*}
+        &p^2 + p'^2\cos^2\theta - 2pp'\cos\theta = p_0^2\cos^2\phi \\
+        &{p'}^2\sin^2\theta = p_0^2\sin^2\phi = 0
+    \end{align*}
+    相加得到：
+    \begin{equation}
+        p^2 + {p'}^2 - 2pp'\cos\theta = p_0^2
+    \end{equation}
+    另一方面，(3)式移项并平方得：
+    \[
+        (p-p')^2c^2 + m_0^2c^4 + 2m_0(p-p')c^3 = E_0^2
+    \]
+    代入(4)式并化简得：
+    \[
+        p^2 + p'^2 - 2pp' + 2m_0(p-p')c = p_0^2
+    \]
+    代入(5)式并化简得：
+    \[
+        m_0(p-p')c = pp'(1-\cos\theta) = 2pp'\sin^2\frac{\theta}{2}
+    \]
+    即：
+    \[
+        p - p' = \frac{2}{m_0c}pp'\sin^2\frac{\theta}{2}
+    \]
+    又因为对于光子：
+    \[
+        E = \hbar\omega = pc,\quad E' = \hbar\omega' = p'c
+    \]
+    则：
+    \[
+        \omega - \omega' = \frac{2\hbar}{m_0c^2}\omega\omega'\sin^2\frac{\theta}{2}
+    \]
+    由$\lambda=\dfrac{2\pi c}{\omega}$得：
+    \[
+        \frac{\omega - \omega'}{\omega\omega'} = \frac{1}{\omega'} - \frac{1}{\omega} = \frac{1}{2\pi c}(\lambda' - \lambda) = \frac{2\hbar}{m_0c^2}\sin^2\frac{\theta}{2}
+    \]
+    故有：
+    \[
+        \lambda' = \lambda + \frac{4\pi\hbar}{m_0c}\sin^2\frac{\theta}{2}
+    \]
+
+\end{itemize}
+
+\subsection*{补充题}
+
+\begin{itemize}
+
+    \item[4.]
+    \setcounter{equation}{0}
+    设有两个参考系$\varSigma$与$\varSigma'$，它们的$x$轴重合，$y$轴和$z$轴分别平行，$\varSigma'$系相对$\varSigma$系以速度$\bm{v}$沿$x$轴正方向进行匀速直线运动。
+
+    一个质点在$\varSigma$系中的三维速度为$\bm{u}(u_x,\ u_y,\ u_z)$，对应在$\varSigma'$系中的三维速度为$\bm{u}'(u'_x,\ u'_y,\ u'_z)$，则该粒子在$\varSigma$系中的四维速度为：
+    \[
+        U_\mu = \gamma_u(u_x,\ u_y,\ u_z,\ c),\quad \gamma_u = \frac{1}{\sqrt{1-u^2/c^2}}
+    \]
+    在$\varSigma'$系中的四维速度为：
+    \[
+        U'_\mu = \gamma'_u(u_x',\ u'_y,\ u'_z,\ c),\quad \gamma'_u = \frac{1}{\sqrt{1-{u'}^2/c^2}}
+    \]
+    参考系$\varSigma'$与$\varSigma$之间的四维速度变换为：（其中$\beta=\dfrac{v}{c}$，$\gamma=\dfrac{1}{\sqrt{1-v^2/c^2}}$）
+    \begin{align}
+        &\gamma'_u u'_x = \gamma\gamma_u(u_x - \beta c) \\
+        &\gamma'_u u'_y = \gamma_u u_y \\
+        &\gamma'_u u'_z = \gamma_u u_z \\
+        &\gamma'_u c = \gamma \gamma_u(c - \beta u_x)
+    \end{align}
+    由(4)式得：
+    \begin{equation}
+        \frac{\gamma'_u}{\gamma\gamma_u} = 1 - \frac{u_x v}{c^2}
+    \end{equation}
+    将(1)、(2)、(3)式代入(5)式得：
+    \begin{align}
+        &u'_x = (u_x - \beta c)\frac{\gamma'_u}{\gamma\gamma_u} = \frac{u_x - v}{1 - u_x v/c^2} \\
+        &u'_y = u_y\frac{\gamma_u}{\gamma'_u} = \frac{u_y}{\gamma(1-u_x v/c^2)} \\
+        &u'_z = u_z\frac{\gamma_u}{\gamma'_u} = \frac{u_z}{\gamma(1-u_x v/c^2)}
+    \end{align}
+    则(6)、(7)、(8)式即为参考系$\varSigma'$与$\varSigma$之间的三维速度变换。
+
+    \item[7.]
+    如图，设地面系为$\varSigma$系，平面镜的静止参考系为$\varSigma'$系，入射波矢为$\bm{k}_1$，反射波矢为$\bm{k}_2$。
+
+    \begin{center}
+        \begin{tikzpicture}[decoration={border,segment length=3mm,angle=-45,amplitude=3mm},>=Stealth]
+            \draw [->] (-1.5,0) -- (3,0) node [below] {$x,\ x'$};
+            \draw [->] (-1.5,0) -- (-1.5,2.5) node [left] {$y$};
+            \draw [->] (0,0) -- (0,2.5) node [left] {$y'$};
+            \draw (-1.5,2) node [right] {$\varSigma'$};
+            \draw (0,2) node [right] {$\varSigma'$};
+            \draw [thick] (0,1.5) -- (0,-1.5);
+            \draw [decorate] (0,1.5) -- (0,-1.5);
+            \draw [->] (0.75,1.2990381) -- (0,0) node [at start, anchor=south west] {$\bm{k}_1$};
+            \draw [->] (0,0) -- (1.1129032,-1.0057069) node [anchor=north west] {$\bm{k}_2$};
+            \draw (0.75,0) arc [start angle=0,end angle=60,radius=0.75] node [midway,anchor=south west] {$\theta_1$};
+            \draw (0.5,0) arc [start angle=0,end angle=-42.1034489,radius=0.5] node [at start,anchor=north west] {$\theta_2$};
+        \end{tikzpicture}
+    \end{center}
+
+    在$\varSigma$系中，入射波的四维波矢为：
+    \[
+        k_{\mu1} = \left(k_{x1},\ k_{y1},\ k_{z1},\ \frac{\omega_1}{c}\right) = \left(-\frac{\omega_1}{c}\cos\theta_1,\ 0,\ -\frac{\omega_1}{c}\sin\theta_1,\ \frac{\omega_1}{c}\right)
+    \]
+    参考系$\varSigma'$与$\varSigma$之间的四维波矢变换为：
+    \[
+        k'_x = \gamma\left(k_x-\beta\frac{\omega}{c}\right),\quad k'_y = k_y,\quad k'_z = k_z,\quad \frac{\omega'}{c} = \gamma\left(\frac{\omega}{c}-\beta k_x\right)
+    \]
+    则在$\varSigma'$系中，入射波的四维波矢为：
+    \[
+        k'_{\mu1} = \left(k'_{x1},\ k'_{y1},\ k'_{z1},\ \frac{\omega'_1}{c}\right) = \left(-\gamma\frac{\omega_1}{c}(\beta+\cos\theta_1),\ 0,\ -\frac{\omega_1}{c}\sin\theta_1,\ \gamma\frac{\omega_1}{c}(1+\beta\cos\theta_1)\right)
+    \]
+    在$\varSigma'$系中，入射角等于反射角，入射波与反射波频率相等，则反射波的四维波矢为：
+    \[
+        k'_{\mu2} = \left(k'_{x2},\ k'_{y2},\ k'_{z2},\ \frac{\omega'_2}{c}\right) = \left(\gamma\frac{\omega_1}{c}(\beta+\cos\theta_1),\ 0,\ \ \gamma\frac{\omega_1}{c}(1+\beta\cos\theta_1)\right)
+    \]
+    参考系$\varSigma$与$\varSigma'$之间的四维波矢变换为：
+    \[
+        k_x = \gamma\left(k_x'+\beta\frac{\omega'}{c}\right),\quad k_y = k_y',\quad k_z = k_z',\quad \frac{\omega}{c} = \gamma\left(\frac{\omega'}{c}+\beta k'_x\right)
+    \]
+    则在$\varSigma$系中，反射波的四维波矢为：
+    \[
+        k_{\mu2} = \left(k_{x2},\ k_{y2},\ k_{z2},\ \frac{\omega_2}{c}\right) = \left(\gamma^2\frac{\omega_1}{c}(\cos\theta_1+2\beta+\beta^2\cos\theta_1),\ 0,\ -\frac{\omega_1}{c}\sin\theta_1,\ \gamma^2\frac{\omega_1}{c}(1+2\beta\cos\theta_1+\beta^2)\right)
+    \]
+    于是有：
+    \[
+        \omega_2 = \gamma^2\omega_1(1 + 2\beta\cos\theta_1 + \beta^2)
+    \]
+    由$\gamma=\dfrac{1}{\sqrt{1+\beta^2}}$得：
+    \[
+        \omega_2 = \omega_1\left(1 + \frac{2\beta\cos\theta_1}{1+\beta^2}\right) > \omega_1
+    \]
+    另一方面：
+    \[
+        \tan\theta_2 = \frac{\sin\theta_1}{\gamma^2(\cos\theta_1 + 2\beta + \beta^2\cos\theta_1)}
+    \]
+    或由$k_{x2}=\dfrac{\omega_2}{c}\cos\theta_2$得：
+    \[
+        \cos\theta_2 = \frac{\cos\theta_1 + 2\beta + \beta^2\cos\theta_1}{1 + 2\beta\cos\theta_1 + \beta^2} = \frac{2\beta + (1+\beta^2)\cos\theta_1}{2\beta\cos\theta_1 + (1+\beta^2)}
+    \]
+    故反射角为：
+    \[
+        \theta_2 = \arccos\frac{2\beta + (1+\beta^2)\cos\theta_1}{2\beta\cos\theta_1 + (1+\beta^2)}
+    \]
+
+\end{itemize}
 
 \end{document}
