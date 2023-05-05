@@ -135,7 +135,7 @@
         \draw (0,0) node[anchor=north east] {$O,O'$};
         \draw[->] (0,0) -- (4,0) node[anchor=west]{$x$};
         \draw[->] (0,0) -- (0,4) node[anchor=west]{$z$};
-        \draw[->,color=blue] (0,0) -- (3.464102,2) node[anchor=west,rotate=30]{$x'$};
+        \draw[->,color=blue] (1.125,0.649519) -- (3.464102,2) node[anchor=west,rotate=30]{$x'$};
         \draw[->,color=blue] (0,0) -- (-2,3.464102) node[anchor=west,rotate=30]{$z'$};
         \fill[radius=1pt,color=red] (1.5,3) circle node[anchor=south west] {$P$};
         \draw[dashed] (1.5,3) -- (1.5,0);
@@ -143,19 +143,19 @@
         \draw[dashed] (1.5,3) -- (0,3);
         \draw (0,3) node[anchor=south east] {$z$};
         \draw[dashed,color=blue] (1.5,3) -- (2.424038,1.399519);
-        \draw (2.424038,1.399519) node[anchor=west] {$x'$};
+        \draw[color=blue] (2.424038,1.399519) node[anchor=north west,rotate=30] {$x'$};
         \draw[dashed,color=blue] (1.5,3) -- (-0.924038,1.600481);
-        \draw (-0.924038,1.600481) node[anchor=east,rotate=30] {$z'$};
+        \draw[color=blue] (-0.924038,1.600481) node[anchor=east,rotate=30] {$z'$};
         \draw (0.5,0) arc [start angle=0,radius=0.5,delta angle=30];
         \draw (0.65,0.175) node {$\epsilon$};
         \draw (0,0.5) arc [start angle=90,radius=0.5,delta angle=30];
         \draw (-0.175,0.65) node {$\epsilon$};
         \draw[dashed] (1.5,0) -- (1.125,0.649519);
-        \draw[line width=0,color=blue] (0,0) -- (1.125,0.649519) node[midway,above,rotate=30] {$x\cos\epsilon$};
+        \draw[color=brown] (0,0) -- (1.125,0.649519) node[midway,above,rotate=30] {$x\cos\epsilon$};
         \draw[dashed] (2.424038,1.399519) -- (3.232051,0);
-        \draw[dashed] (1.5,0) -- (2.799038,0.75) node[midway,above,rotate=30] {$z\sin\epsilon$};
+        \draw[dashed,color=magenta] (2.799038,0.75) -- (1.5,0) node[midway,above,rotate=30] {$z\sin\epsilon$};
         \draw[dashed] (0,3) -- (-1.299038,2.25);
-        \draw[dashed] (0,3) -- (0.375,2.350481) node[midway,right,rotate=30] {$x\sin\epsilon$};
+        \draw[dashed,color=orange] (0,3) -- (0.375,2.350481) node[midway,right,rotate=30] {$x\sin\epsilon$};
         \draw[line width=0,color=blue] (0,0) -- (-1.299038,2.25) node[left,rotate=30] {$z\cos\epsilon$};
     \end{tikzpicture}
 \end{center}
