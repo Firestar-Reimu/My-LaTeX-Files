@@ -1,20 +1,25 @@
 \documentclass[a4paper,fontset=none]{ctexart}
 
 \usepackage{anyfontsize}
-\usepackage{amsmath,mathrsfs,wasysym}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
 \usepackage{graphicx,caption,subcaption}
-\usepackage{geometry,parskip}
-\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
-\usepackage{indentfirst}
-\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
 \usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
 \usepackage[libertine,vvarbb]{newtxmath}
 \usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
 \usepackage{bm}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
 \usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=SimSun,RawFeature=+fwid]
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
 
 \begin{document}
 \title{\textbf{中子在早期宇宙的演化}}
@@ -35,7 +40,7 @@
 
 \section*{中子的产生}
 
-在大爆炸后$\sim10^{-6}\,\mathrm{s}$，宇宙温度$T\sim1\,\mathrm{GeV}$时，夸克脱耦（夸克——强子转变），此时夸克无法自由存在，并通过胶子相互结合成强子（重子和介子），中子就是在这个过程中产生的。这时中子与质子的数目比仍接近$1:1$。
+在大爆炸后$\sim10^{-6}\,\mathrm{s}$，宇宙温度$T\sim1\,\mathrm{GeV}$时，发生了夸克——强子转变，即夸克脱耦。此时夸克无法自由存在，并通过胶子相互结合成强子（重子和介子），中子就是在这个过程中产生的。这时中子与质子的数目比仍接近$1:1$。
 
 \section*{中子的平衡与脱耦}
 
@@ -131,7 +136,7 @@ t(\mathrm{s}) = \left(\frac{T}{1.5\times10^{10}\,\mathrm{K}}\right)^{-2} = \left
 \[
 \kappa_\mathrm{D} = \kappa_\mathrm{D}\cdot\mathrm{e}^{-\tfrac{t_\mathrm{D}}{\tau}} = 0.19\cdot\mathrm{e}^{-\tfrac{300}{880.3}} \simeq 0.14
 \]
-即此时中子与质子的数量比约为$1:7$。由于几乎所有的中子经过原初核合成都转移到$^{4}\mathrm{He}$中，$^{4}\mathrm{He}$的相对丰度为：
+即此时中子与质子的数量比约为$1:7$。由于几乎所有的中子都经过原初核合成转移到$^{4}\mathrm{He}$中，$^{4}\mathrm{He}$的相对丰度升高到：
 \[
 Y_\mathrm{He} = \frac{2\kappa_\mathrm{D}}{1+\kappa_\mathrm{D}} = 0.245
 \]
@@ -142,6 +147,6 @@ Y_\mathrm{He} = \frac{2\kappa_\mathrm{D}}{1+\kappa_\mathrm{D}} = 0.245
 
 \section*{参考文献}
 
-Introduction to Cosmology, Max Pettini, Cambridge University.
+\textit{Introduction to Cosmology}, Max Pettini, Cambridge University.
 
 \end{document}

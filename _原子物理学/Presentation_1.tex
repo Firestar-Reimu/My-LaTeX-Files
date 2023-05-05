@@ -1,22 +1,27 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,fontset=none]{ctexart}
 
 \usepackage{anyfontsize}
-\usepackage{amsmath,amssymb,mathrsfs,wasysym,nicefrac}
-\usepackage{graphicx,caption}
-\usepackage{geometry,parskip}
-\geometry{top=3cm,bottom=3cm,left=2.75cm,right=2.75cm}
-\usepackage{footnote}
-\usepackage{indentfirst}
-\setlength{\parindent}{2em}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
+\usepackage{nicefrac}
+\usepackage{graphicx}
+\usepackage{autobreak}
+\allowdisplaybreaks
 \usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsthm}
 \usepackage[libertine,vvarbb]{newtxmath}
 \usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
 \usepackage{bm}
-\usepackage{fontspec,color}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{fontspec}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\usepackage[fontset=none]{ctex}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=SimSun,RawFeature=+fwid]
+\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium,ItalicFont=KaiTi]
+\setCJKmonofont{FangSong}
 
 \begin{document}
     \title{\textbf{原子核壳层模型与“幻数”}}
@@ -39,14 +44,14 @@
     \[
     2,8,20,28,50,82,126
     \]
-    实验表明，当中子数$N$或质子数$Z$取这些“幻数”（质子取前6项）时，原子核的中子分离能或质子分离能：
+    实验表明，当中子数$N$或质子数$Z$取这些“幻数”（质子取前6项）时，原子核的中子分离能或质子分离能会取极大值：
     \[
     E_\mathrm{n} = \left(m_\mathrm{Z,A-1} + m_\mathrm{n} - m_\mathrm{Z,A}\right)c^2
     \]
     \[
     E_\mathrm{p} = \left(m_\mathrm{Z-1,A-1} + m_\mathrm{p} - m_\mathrm{Z,A}\right)c^2
     \]
-    会取极大值。表明$N$或$Z$取“幻数”的“幻核”最稳定。而两者都取幻数的“双幻核”，如$\mathrm{^{4}He}$、$\mathrm{^{16}O}$、$\mathrm{^{208}Pb}$等，尤其稳定。量子力学告诉我们元素的化学稳定性与核外电子的壳层排布有关，电子充满各级壳层时元素化学性质最稳定（即稀有气体）。与元素周期律中电子壳层排布与化学性质的关系类比，不难联想到原子核的稳定性规律也可能与原子核的壳层结构有关。所以，核子“幻数”的存在最直接地表明，原子核中核子能级存在壳层结构。
+    这表明$N$或$Z$取“幻数”的“幻核”最稳定。而两者都取幻数的“双幻核”，如$\mathrm{^{4}He}$、$\mathrm{^{16}O}$、$\mathrm{^{208}Pb}$等，尤其稳定。量子力学告诉我们元素的化学稳定性与核外电子的壳层排布有关，电子充满各级壳层时元素化学性质最稳定（即稀有气体）。与元素周期律中电子壳层排布与化学性质的关系类比，不难联想到原子核的稳定性规律也可能与原子核的壳层结构有关。所以，核子“幻数”的存在最直接地表明，原子核中核子能级存在壳层结构。
 
     \section*{原子核壳层模型的理论推导}
 
@@ -69,9 +74,9 @@
     \Delta V_\mathrm{sym} = \pm27\left[\frac{N-Z}{A}\right]\,\mathrm{MeV}
     \]
     其中对质子取$+$号，对中子取$-$号。第二个是质子间库仑排斥的势，它只对质子有效，会提升势阱的高度。第三个是下一节将会讲到的“自旋——轨道耦合”修正，这个与自旋与轨道角动量之间方向为平行与反平行有关。加入三项修正之后就得到图1中所描述的核子感受到的势。
-    \begin{figure}[h!]
+    \begin{figure}[!ht]
         \centering
-        \includegraphics[width = 0.75\textwidth]{nucpot.png}
+        \includegraphics[width = 0.9\textwidth]{nucpot.png}
         \caption{核子感受到的势}
     \end{figure}
 
@@ -121,15 +126,15 @@
     \]
     这正是关于$(\alpha,\gamma,\xi)$的合流超几何方程（满足$\gamma$不能是整数），其解为：
     \[
-    u_l(\xi) = P\mathrm{F}(\alpha,\gamma,\xi) \xi^{1-\gamma} + Q\mathrm{F}(\alpha-\gamma+1,2-\gamma,\xi)
+    u_l(\xi) = P \cdot \mathrm{F}(\alpha,\gamma,\xi) \xi^{1-\gamma} + Q \cdot \mathrm{F}(\alpha-\gamma+1,2-\gamma,\xi)
     \]
     由于$r \to 0$时$u_l$有限，应有$Q = 0$，则：
     \[
     u_l(\xi) \propto \mathrm{F}(\alpha,\gamma,\xi) = \sum_{k=0}^{\infty}\frac{(\alpha-1+k)!(\gamma-1)!}{(\alpha-1)!(\gamma-1+k)!}\cdot\frac{\xi^k}{k!}
     \]
-    可以看出，$\mathrm{F}(\alpha,\gamma,\xi)$一般是无穷级数，在$\xi \to \infty$时发散行为与$\mathrm{e}^\xi$相同，欲满足$\xi \to \infty$时$u_l(\xi)$有限，必须使无穷级数断为一个多项式，这就要求$\alpha \leqslant 0$，即：
+    可以看出，$\mathrm{F}(\alpha,\gamma,\xi)$一般是无穷级数，在$\xi \to \infty$时发散行为与$\mathrm{e}^\xi$相同，欲满足$\xi \to \infty$时$u_l(\xi)$有限，必须使无穷级数截断为一个多项式，这就要求$\alpha \leqslant 0$，即：
     \[
-    \alpha = \frac{1}{2}\left(l + \frac{3}{2} - E\right) = -n_r,\qquad n_r \in \{0\}\cup\mathbb{N}^{+}
+    \alpha = \frac{1}{2}\left(l + \frac{3}{2} - E\right) = -n_r,\qquad n_r \in \mathbb{N}
     \]
     其中$n_r$为径向量子数。
 
@@ -140,7 +145,7 @@
 
     令$N = 2n_r + l$，则：
     \[
-    E = E_N = \left(N + \frac{3}{2}\right)\hbar\omega,\qquad N \in \{0\}\cup\mathbb{N}^{+}
+    E = E_N = \left(N + \frac{3}{2}\right)\hbar\omega,\qquad N \in \mathbb{N}
     \]
     这就是三维各向同性谐振子的能量本征值公式。可见能级$N$只依赖于径向量子数$n_l$和角量子数$l$的一种特殊的组合$N=2n_r+l$。因此，对于给定的能级$E_N$（即给定$N$），$n_l$和$l$可以有多种组合形式。考虑$m_l$可以有从$-l$到$l$的$2l+1$个取值，能级简并度为：
     \[
@@ -160,23 +165,23 @@
 
     设自旋量子数为$s$（为表述方便下面只取$s$为正值），我们用量子数$j=l \pm s$来描述原子核。1949年Mayer和Jensen等人提出，在核内平均场运动的核子，还感受到一项“自旋——轨道耦合”的作用：
     \[
-    \lambda(r)\bm{s}\cdot\bm{l},\qquad \lambda(r) = \frac{1}{2\mu^2 c^2 r}\cdot\frac{\mathrm{d}V}{\mathrm{d}r}
+    E(r) = \lambda(r)\bm{s}\cdot\bm{l},\qquad \lambda(r) = \frac{1}{2\mu^2 c^2 r}\cdot\frac{\mathrm{d}V}{\mathrm{d}r}
     \]
     考虑“自旋——轨道耦合”的影响：“自旋——轨道耦合”效应使得同一能级上量子数$j$不同的状态能量不同，产生分裂。如果$s$与$l$平行，即自旋与轨道平行，则$j=l+s$，耦合能量为正；如果$s$与$l$反平行，即自旋与轨道反平行，则$j=l-s$，耦合能量为负。则有：
     \begin{align*}
     \Delta E
     &= E_{j=l+s} - E_{j=l-s} \\
-    &= \langle\lambda(r)\rangle\{\langle\bm{s}\cdot\bm{l}\rangle_{j=l+s} - \langle\bm{s}\cdot\bm{l}\rangle_{j=l-s}\} \\
-    &= \frac{\hbar^2}{2}\langle\lambda(r)\rangle(2l+1)
+    &= \langle\lambda(r)\rangle \cdot \left\{\langle\bm{s}\cdot\bm{l}\rangle_{j=l+s} - \langle\bm{s}\cdot\bm{l}\rangle_{j=l-s}\right\} \\
+    &= \frac{\hbar^2(2l+1)}{2}\langle\lambda(r)\rangle
     \end{align*}
     “自旋——轨道耦合”效应的强度大致正比于$l$。
 
     \subsection*{计算“幻数”}
 
     考虑到势函数的修正和“自旋——轨道耦合”的影响，我们可以预见到：在每个能级$N$，能量分裂为两个子能级，其中$j$较大者能量较低，且$l$越大时分裂效应越显著，例如$1g_{\nicefrac{9}{2}}$能级的能量明显低于$1g_{\nicefrac{7}{2}}$能级（见图2）。这使得核子的能量壳层不完全取决于量子数$n$，而是相互有少许错开，这就导致了“幻数”与之前预测的$\sum\limits_{N=0}^a(N+1)(N+2)$有偏差。
-    \begin{figure}[h!]
+    \begin{figure}[!ht]
         \centering
-        \includegraphics[width=0.8\textwidth]{shellmod.png}
+        \includegraphics[width=0.9\textwidth]{shellmod.png}
         \caption{原子核壳层模型示意图}
     \end{figure}
 
@@ -204,9 +209,9 @@
     \section*{展望\symbol{"2E3A}寻找下一个“稳定岛”}
 
     下一个预测的“幻数”是$Z = 114$和$N = 184$，$Z = 120$及$Z = 126$也是可能的质子“幻数”。那么根据壳层模型的理论，这样的核素的半衰期相比于附近的核素会更长。这些同位素至今为止未能被合成。但114号元素$\mathrm{Fl}$的少于184个中子的同位素比元素周期表中邻近元素的同位素衰变要慢得多，大致在$10^0\sim10^2\,\mathrm{s}$量级。
-    
+
     目前合成的中子数最多的核素为$\mathrm{^{293}Lv}$和$\mathrm{^{294}Ts}$，都只有177个中子，远没有达到“幻数”$N = 184$，但中子数趋近“幻数”的趋势有所表现：112号元素$\mathrm{Cn}$的两种同位素中，$\mathrm{^{285}Cn}$比$\mathrm{^{277}Cn}$多出8个中子，而它的半衰期也高了5个数量级。\footnote{\textit{Zagrebaev, V.; Karpov, A.; Greiner, W. (2013). "Future of superheavy element research: Which nuclei could be synthesized within the next few years?". Journal of Physics.}}另一方面，也有研究指出：部分超铀元素的原子核可能不像“幻数”理论预言的一样呈球形，可能对“幻数”的预测值产生偏差。\footnote{\textit{\'{C}wiok, S.; Nazarewicz, W.; Heenen, P. H. (1999). "Structure of Odd-N Superheavy Elements". Physical Review Letters.}}
-    \begin{figure}[h!]
+    \begin{figure}[!ht]
         \centering
         \includegraphics[width=0.8\textwidth]{islsta.png}
         \caption{“稳定岛”示意图}
@@ -219,21 +224,21 @@
     \section*{参考文献}
     \begin{itemize}
 
-        \item[1.] Island of Stability -- Wikipedia, https://en.wikipedia.org/wiki/Island\_of\_stability
+        \item[1.] Island of Stability -- Wikipedia, \texttt{https://en.wikipedia.org/wiki/Island\_of\_stability}
 
-        \item[2.] Nuclear Shell Model -- Wikipedia, https://en.wikipedia.org/wiki/Nuclear\_shell\_model
+        \item[2.] Nuclear Shell Model -- Wikipedia, \texttt{https://en.wikipedia.org/wiki/Nuclear\_shell\_model}
 
-        \item[3.] Magic Number (Physics) -- Wikipedia, https://en.wikipedia.org/wiki/Magic\_number\_(physics)
+        \item[3.] Magic Number (Physics) -- Wikipedia, \texttt{https://en.wikipedia.org/wiki/Magic\_number\_(physics)}
 
-        \item[4.] \textit{Nave, C. R. Shell Model of Nucleus. HyperPhysics.}
+        \item[4.] Nave, C. R. \textit{Shell Model of Nucleus}. HyperPhysics.
 
-        \item[5.] \textit{Mayer, Maria G. (1948). On Closed Shells in Nuclei. Physical Review.}
+        \item[5.] Mayer, Maria G. (1948). \textit{On Closed Shells in Nuclei}. Physical Review.
 
-        \item[6.] \textit{Mayer, Maria G. (1949). On Closed Shells in Nuclei. II. Physical Review.}
+        \item[6.] Mayer, Maria G. (1949). \textit{On Closed Shells in Nuclei. II}. Physical Review.
 
-        \item[7.] \textit{Zagrebaev, V.; Karpov, A.; Greiner, W. (2013). "Future of superheavy element research: Which nuclei could be synthesized within the next few years?". Journal of Physics.}
+        \item[7.] Zagrebaev, V.; Karpov, A.; Greiner, W. (2013). \textit{Future of superheavy element research: Which nuclei could be synthesized within the next few years?} Journal of Physics.
 
-        \item[8.] \textit{\'{C}wiok, S.; Nazarewicz, W.; Heenen, P. H. (1999). "Structure of Odd-N Superheavy Elements". Physical Review Letters.}
+        \item[8.] \'{C}wiok, S.; Nazarewicz, W.; Heenen, P. H. (1999). \textit{Structure of Odd-N Superheavy Elements}. Physical Review Letters.
 
         \item[9.] 曾谨言；（2013）；《量子力学》；科学出版社。
 

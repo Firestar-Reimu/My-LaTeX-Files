@@ -449,7 +449,7 @@
             \draw [->] (-1.5,0) -- (3,0) node [below] {$x,\ x'$};
             \draw [->] (-1.5,0) -- (-1.5,2.5) node [left] {$y$};
             \draw [->] (0,0) -- (0,2.5) node [left] {$y'$};
-            \draw (-1.5,2) node [right] {$\varSigma'$};
+            \draw (-1.5,2) node [right] {$\varSigma$};
             \draw (0,2) node [right] {$\varSigma'$};
             \draw [thick] (0,1.5) -- (0,-1.5);
             \draw [decorate] (0,1.5) -- (0,-1.5);
@@ -474,7 +474,7 @@
     \]
     在$\varSigma'$系中，入射角等于反射角，入射波与反射波频率相等，则反射波的四维波矢为：
     \[
-        k'_{\mu2} = \left(k'_{x2},\ k'_{y2},\ k'_{z2},\ \frac{\omega'_2}{c}\right) = \left(\gamma\frac{\omega_1}{c}(\beta+\cos\theta_1),\ 0,\ \ \gamma\frac{\omega_1}{c}(1+\beta\cos\theta_1)\right)
+        k'_{\mu2} = \left(k'_{x2},\ k'_{y2},\ k'_{z2},\ \frac{\omega'_2}{c}\right) = \left(\gamma\frac{\omega_1}{c}(\beta+\cos\theta_1),\ 0,\ -\frac{\omega_1}{c}\sin\theta_1,\ \gamma\frac{\omega_1}{c}(1+\beta\cos\theta_1)\right)
     \]
     参考系$\varSigma$与$\varSigma'$之间的四维波矢变换为：
     \[
@@ -482,27 +482,27 @@
     \]
     则在$\varSigma$系中，反射波的四维波矢为：
     \[
-        k_{\mu2} = \left(k_{x2},\ k_{y2},\ k_{z2},\ \frac{\omega_2}{c}\right) = \left(\gamma^2\frac{\omega_1}{c}(\cos\theta_1+2\beta+\beta^2\cos\theta_1),\ 0,\ -\frac{\omega_1}{c}\sin\theta_1,\ \gamma^2\frac{\omega_1}{c}(1+2\beta\cos\theta_1+\beta^2)\right)
+        k_{\mu2} = \left(k_{x2},\ k_{y2},\ k_{z2},\ \frac{\omega_2}{c}\right) = \left(\gamma^2\frac{\omega_1}{c}\left(\cos\theta_1+2\beta+\beta^2\cos\theta_1\right),\ 0,\ -\frac{\omega_1}{c}\sin\theta_1,\ \gamma^2\frac{\omega_1}{c}\left(1+2\beta\cos\theta_1+\beta^2\right)\right)
     \]
     于是有：
     \[
-        \omega_2 = \gamma^2\omega_1(1 + 2\beta\cos\theta_1 + \beta^2)
+        \omega_2 = \gamma^2\omega_1\left(1+2\beta\cos\theta_1+\beta^2\right)
     \]
-    由$\gamma=\dfrac{1}{\sqrt{1+\beta^2}}$得：
+    由$\gamma=\dfrac{1}{\sqrt{1-\beta^2}}$得：
     \[
-        \omega_2 = \omega_1\left(1 + \frac{2\beta\cos\theta_1}{1+\beta^2}\right) > \omega_1
+        \omega_2 = \omega_1 \frac{1 + 2\beta\cos\theta_1 + \beta^2}{1-\beta^2} > \omega_1
     \]
     另一方面：
     \[
-        \tan\theta_2 = \frac{\sin\theta_1}{\gamma^2(\cos\theta_1 + 2\beta + \beta^2\cos\theta_1)}
+        \tan\theta_2 = \frac{\sin\theta_1}{\gamma^2\left(\cos\theta_1+2\beta+\beta^2\cos\theta_1\right)} = \frac{\left(1-\beta^2\right)\sin\theta_1}{\cos\theta_1 + 2\beta + \beta^2\cos\theta_1}
     \]
     或由$k_{x2}=\dfrac{\omega_2}{c}\cos\theta_2$得：
     \[
-        \cos\theta_2 = \frac{\cos\theta_1 + 2\beta + \beta^2\cos\theta_1}{1 + 2\beta\cos\theta_1 + \beta^2} = \frac{2\beta + (1+\beta^2)\cos\theta_1}{2\beta\cos\theta_1 + (1+\beta^2)}
+        \cos\theta_2 = \frac{\cos\theta_1 + 2\beta + \beta^2\cos\theta_1}{1 + 2\beta\cos\theta_1 + \beta^2} = \frac{2\beta + \left(1+\beta^2\right)\cos\theta_1}{2\beta\cos\theta_1 + \left(1+\beta^2\right)}
     \]
     故反射角为：
     \[
-        \theta_2 = \arccos\frac{2\beta + (1+\beta^2)\cos\theta_1}{2\beta\cos\theta_1 + (1+\beta^2)}
+        \theta_2 = \arccos\left[\frac{2\beta + \left(1+\beta^2\right)\cos\theta_1}{2\beta\cos\theta_1 + \left(1+\beta^2\right)}\right]
     \]
 
 \end{itemize}

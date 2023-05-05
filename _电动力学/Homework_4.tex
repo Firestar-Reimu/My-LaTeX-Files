@@ -54,10 +54,8 @@
 
     沿表面传播的折射波为：
     \[
-        \mathrm{e}^{i\bm{k}'\cdot\bm{x}} = \mathrm{e}^{-k'z|\cos r|} \cdot \mathrm{e}^{ik'x\tfrac{\sin i}{\sin i_0}}
+        \mathrm{e}^{i\bm{k}'\cdot\bm{x}} = \mathrm{e}^{-k'z|\cos r|} \cdot \mathrm{e}^{ik'x\tfrac{\sin i}{\sin i_0}},\quad \sin i_0=\frac{n'}{n}
     \]
-    其中$\sin i_0=\dfrac{n'}{n}$
-
     设波速为$v'_p$，则：
     \[
         \frac{\omega}{v'_p} = k'\left(\frac{\sin i}{\sin i_0}\right) = k'\sin i\left(\frac{n}{n'}\right) = k\sin i
@@ -73,7 +71,10 @@
     \[
         \kappa^{-1} = \frac{1}{k'|\cos r|} = k'^{-1}\left[\left(\frac{\sin i}{\sin i_0}\right)^2-1\right]^{-\tfrac{1}{2}} = \frac{\lambda'}{2\pi}\left[\left(\frac{\sin i}{\sin i_0}\right)^2-1\right]^{-\tfrac{1}{2}}
     \]
-    代入$\lambda'=6.28\times10^{-5}\,\mathrm{cm}$得：$\kappa^{-1}=1.75\times10^{-5}\,\mathrm{cm}$
+    代入$\lambda'=6.28\times10^{-5}\,\mathrm{cm}$得：
+    \[
+        \kappa^{-1}=1.75\times10^{-5}\,\mathrm{cm}
+    \]
 
     \item[4.]
     介质内的Maxwell方程为：
@@ -189,7 +190,7 @@
         \left\{
         \begin{aligned}
             & E_x = A_x\cos\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\sin(k_z z) \\
-            & E_y = A_y\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\sin(k_z z)\quad m,n\in\{0\}\cup\mathbb{N}^+ \\
+            & E_y = A_y\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\sin(k_z z),\quad m,n\in\mathbb{N} \\
             & E_z = A_z\sin\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\cos(k_z z) \\
         \end{aligned}
         \right.
@@ -226,7 +227,7 @@
         \left\{
         \begin{aligned}
             & E_x = A_x\sin\frac{m\pi y}{b} \\
-            & E_y = A_y\cos\frac{m\pi y}{b}\quad m\in\{0\}\cup\mathbb{N}^+ \\
+            & E_y = A_y\cos\frac{m\pi y}{b},\quad m\in\mathbb{N} \\
             & E_z = A_z\sin\frac{m\pi y}{b} \\
         \end{aligned}
         \right.
@@ -251,7 +252,7 @@
         \left\{
         \begin{aligned}
             & E_x = A_x\mathrm{e}^{-i\omega t}\cos\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\sin\frac{p\pi z}{c} \\
-            & E_y = A_y\mathrm{e}^{-i\omega t}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\sin\frac{p\pi z}{c}\quad m,n,p\in\{0\}\cup\mathbb{N}^+ \\
+            & E_y = A_y\mathrm{e}^{-i\omega t}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\sin\frac{p\pi z}{c},\quad m,n,p\in\mathbb{N} \\
             & E_z = A_z\mathrm{e}^{-i\omega t}\sin\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\cos\frac{p\pi z}{c} \\
         \end{aligned}
         \right.
@@ -272,7 +273,7 @@
         \left\{
         \begin{aligned}
             & B_x = \frac{1}{i\omega}(k_y A_z - k_z A_y)\mathrm{e}^{-i\omega t}\cos\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\sin\frac{p\pi z}{c} \\
-            & B_y = \frac{1}{i\omega}(k_z A_x - k_x A_z)\mathrm{e}^{-i\omega t}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\sin\frac{p\pi z}{c}\quad m,n,p\in\{0\}\cup\mathbb{N}^+ \\
+            & B_y = \frac{1}{i\omega}(k_z A_x - k_x A_z)\mathrm{e}^{-i\omega t}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\sin\frac{p\pi z}{c},\quad m,n,p\in\mathbb{N} \\
             & B_z = \frac{1}{i\omega}(k_y A_x - k_x A_y)\mathrm{e}^{-i\omega t}\sin\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\cos\frac{p\pi z}{c} \\
         \end{aligned}
         \right.

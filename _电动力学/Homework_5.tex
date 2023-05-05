@@ -189,46 +189,65 @@
         \]
         其中$t'=t-\dfrac{r}{c}$。
 
-        首先从$\nabla'\cdot\bm{J}$入手：
+        由$r=|\bm{x}-\bm{x'}|$及$t'=t-\dfrac{|\bm{x}-\bm{x}'|}{c}$得：
         \[
-            \nabla' \cdot \bm{J}(\bm{x}', t') = \nabla' \cdot \bm{J}(x') + \frac{\partial \bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla' t'
+            \nabla \frac{1}{r} = -\nabla' \frac{1}{r'},\quad \nabla t' = -\nabla' t'
         \]
-        由$t'=t-\dfrac{r}{c}$得$\nabla t'=-\dfrac{\nabla r}{c}$，以及算符代换关系$\nabla'\to-\nabla$，有：
+        又由多元函数求导的链式法则$\dfrac{\partial f(x,y)}{\partial t}=\dfrac{\partial f}{\partial x}\cdot\dfrac{\partial x}{\partial t}+\dfrac{\partial f}{\partial y}\cdot\dfrac{\partial x}{\partial t}$有：
         \begin{align*}
-            \nabla' \cdot \bm{J}(\bm{x}', t')
-            &= \nabla' \cdot \bm{J}(x') - \frac{\partial \bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla t' \\
-            &= \nabla' \cdot \bm{J}(x') + \frac{\partial \bm{J}(\bm{x}', t')}{\partial t'} \cdot \frac{\nabla r}{c} \\
-            &= \nabla' \cdot \bm{J}(\bm{x}') - \nabla \cdot \bm{J}(\bm{x}', t')
+            \left[\nabla' \cdot \bm{J}(\bm{x}', t')\right]_{x'}
+            &= \frac{\partial\bm{J}(\bm{x}', t')}{\partial x'} \\
+            &= \frac{\partial\bm{J}(\bm{x}', t')}{\partial x'} + \frac{\partial\bm{J}(\bm{x}', t')}{\partial x'} \\
+            &= \frac{\partial\bm{J}(\bm{x}', t')}{\partial x'} + \frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \frac{\partial t'}{\partial x'}
         \end{align*}
+        同理有：
+        \begin{align*}
+            \left[\nabla \cdot \bm{J}(\bm{x}', t')\right]_x
+            &= \frac{\partial\bm{J}(\bm{x}', t')}{\partial x} \\
+            &= \frac{\partial\bm{J}(\bm{x}', t')}{\partial x} + \frac{\partial\bm{J}(\bm{x}', t')}{\partial x} \\
+            &= \frac{\partial\bm{J}(\bm{x}', t')}{\partial x} + \frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \frac{\partial t'}{\partial x}
+        \end{align*}
+        注意$x$与$x'$是独立变量，则$\dfrac{\partial\bm{J}(\bm{x}', t')}{\partial x}=0$，于是有：
+        \[
+            \left[\nabla' \cdot \bm{J}(\bm{x}', t')\right]_{x'} = \frac{\partial\bm{J}(\bm{x}', t')}{\partial x'} + \frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \frac{\partial t'}{\partial x'}
+        \]
+        \[
+            \left[\nabla \cdot \bm{J}(\bm{x}', t')\right]_x = \frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \frac{\partial t'}{\partial x}
+        \]
+        扩展到三个坐标分量得到：
+        \[
+            \nabla' \cdot \bm{J}(\bm{x}', t') = \nabla' \cdot \bm{J}(\bm{x}') + \frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla't'
+        \]
+        \[
+            \nabla \cdot \bm{J}(\bm{x}', t') = \frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla t'
+        \]
+        其中$\bm{J}(\bm{x}')$表示$t'$不变时的$\bm{J}(\bm{x}', t')$。
+
         于是有：
         \begin{align*}
-            \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')
-            \right]
-            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}', t')\right] + \left(\nabla'\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') \\
-            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}', t')\right] - \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') \\
-            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right] - \frac{1}{r}\left[\nabla \cdot \bm{J}(\bm{x}', t')\right] - \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t')
-        \end{align*}
-        即：
-        \[
-            \frac{1}{r}\left[\nabla \cdot \bm{J}(\bm{x}', t')\right] + \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') = \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right] - \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]
-        \]
-        进一步得到：
-        \begin{align*}
-            \nabla \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')
-            \right]
-            &= \frac{1}{r}\left[\nabla \cdot \bm{J}(\bm{x}', t')\right] + \left(\nabla\frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') \\
-            &= \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right] - \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]
+            \nabla \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]
+            &= \left(\nabla \frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') + \frac{1}{r} \nabla \cdot \bm{J}(\bm{x}', t') \\
+            &= \left(\nabla \frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') + \frac{1}{r}\left[\frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla t'\right] \\
+            &= -\left(\nabla' \frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') - \frac{1}{r}\left[\frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla' t'\right] \\
+            &= -\left(\nabla' \frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') - \frac{1}{r}\left[\frac{\partial\bm{J}(\bm{x}', t')}{\partial t'} \cdot \nabla' t' + \nabla' \cdot \bm{J}(\bm{x}') - \nabla' \cdot \bm{J}(\bm{x}')\right] \\
+            &= -\left(\nabla' \frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') - \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}', t') - \nabla' \cdot \bm{J}(\bm{x}')\right] \\
+            &= -\left[\left(\nabla' \frac{1}{r}\right) \cdot \bm{J}(\bm{x}', t') + \frac{1}{r} \nabla' \cdot \bm{J}(\bm{x}', t')\right] + \frac{1}{r} \nabla' \cdot \bm{J}(\bm{x}') \\
+            &= -\nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right] + \frac{1}{r} \nabla' \cdot \bm{J}(\bm{x}')
         \end{align*}
         则：
         \begin{align*}
             \nabla \cdot \bm{A}(\bm{x}, t)
             &= \frac{\mu_0}{4\pi} \iiint \nabla \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]\,\mathrm{d}V' \\
-            &= \frac{\mu_0}{4\pi} \iiint \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V' - \frac{\mu_0}{4\pi} \iiint \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}', t')\right]\,\mathrm{d}V' \\
-            &= \frac{\mu_0}{4\pi} \iiint \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V' - \frac{\mu_0}{4\pi} \oiint \frac{1}{r}\bm{J}(\bm{x}', t')\,\mathrm{d}S' \\
+            &= \frac{\mu_0}{4\pi} \iiint \left[\frac{1}{r} \nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V' - \frac{\mu_0}{4\pi} \iiint \nabla' \cdot \left[\frac{1}{r}\bm{J}(\bm{x}')\right]\,\mathrm{d}V' \\
+            &= \frac{\mu_0}{4\pi} \iiint \left[\frac{1}{r} \nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V' - \frac{\mu_0}{4\pi} \oiint \frac{1}{r}\bm{J}(\bm{x}') \cdot \mathrm{d}\bm{S}'
         \end{align*}
-        最后一步中运用了Gauss散度定理将第二项的体积分化为面积分，而积分面总可以取为大于电流分布区域的界面，因此积分面上电流密度$\bm{J}=0$，该项为零，即：
+        最后一步中运用了Gauss散度定理：
         \[
-            \nabla \cdot \bm{A}(\bm{x}, t) = \frac{\mu_0}{4\pi} \iiint \frac{1}{r}\left[\nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V'
+            \iiint_V \nabla \cdot \bm{F}\,\mathrm{d}V = \oiint_{\partial V} \bm{F} \cdot \mathrm{d}\bm{S}
+        \]
+        将第二项的体积分化为面积分，而积分面总可以取为大于电流分布区域的界面，因此积分面上电流密度$\bm{J}=0$，该项为零，即：
+        \[
+            \nabla \cdot \bm{A}(\bm{x}, t) = \frac{\mu_0}{4\pi} \iiint \left[\frac{1}{r} \nabla' \cdot \bm{J}(\bm{x}')\right]\,\mathrm{d}V'
         \]
         另一方面，对于静电势$\varphi$：
         \[
@@ -236,7 +255,7 @@
         \]
         故由电荷守恒定律：
         \[
-            \nabla' \cdot \bm{J}(\bm{x}') + \frac{\partial\rho(\bm{x'}, t')}{\partial t'} = 0
+            \nabla' \cdot \bm{J}(\bm{x}', t') + \frac{\partial\rho(\bm{x'}, t')}{\partial t'} = 0
         \]
         得：
         \[
@@ -343,7 +362,9 @@
         \]
         球坐标下$\hat{x}=\hat{r}\sin\theta\cos\phi+\hat{\theta}\cos\theta\cos\phi-\hat{\phi}\sin\phi$，则
         \[
-            \hat{x} \times \hat{r} = -\hat{\theta}\sin\phi - \hat{\phi}\cos\theta\cos\phi,\quad
+            \hat{x} \times \hat{r} = -\hat{\theta}\sin\phi - \hat{\phi}\cos\theta\cos\phi
+        \]
+        \[
             (\hat{x} \times \hat{r}) \times \hat{r} = -\hat{\theta}\cos\theta\cos\phi + \hat{\phi}\sin\phi
         \]
         故$\bm{p}$和$\bm{p}'$产生的磁场为：
@@ -553,4 +574,3 @@
     \end{itemize}
 
 \end{document}
-
