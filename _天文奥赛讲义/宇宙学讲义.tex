@@ -1,30 +1,47 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,openany]{book}
 
-\usepackage{anyfontsize}
-\usepackage{amsmath,amssymb,mathrsfs,wasysym}
-\usepackage{autobreak}
-\allowdisplaybreaks
-\usepackage[shortlabels]{enumitem}
-\usepackage{setspace}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{amsthm}
-\usepackage[libertine,vvarbb]{newtxmath}
-\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
-\usepackage{bm}
+% 文章排版
 \usepackage{indentfirst}
 \setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+\usepackage{hyperref}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+
+% 设置数学字体
+
+% Linux Libertine 风格设置
+% 不需要 fontspec 和 unicode-math
+\usepackage[libertine,vvarbb]{newtx}
+\usepackage{bm}
+\renewcommand\mathbf\bm
+
+% 中文
 \usepackage[fontset=none]{ctex}
-\usepackage{fontspec}
-\setmainfont{Libertinus Serif}
-\setsansfont{Libertinus Sans}
-\setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium]
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta}
+\setCJKmainfont{SimSun}[BoldFont = Source Han Sans CN Medium, ItalicFont=KaiTi]
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyOmega\Omega
+    \renewcommand\Omega\varOmega
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
 
 \begin{document}
 
@@ -33,469 +50,386 @@
 \date{\today}
 \maketitle
 
-\section*{宇宙动力学}
-
-\subsection*{宇宙学原理}
-
-宇宙在\textbf{大尺度上}是\textbf{均匀的}（物质分布），\textbf{各向同性的}（物理规律）。
-
-\subsection*{从宇宙学原理导出Hubble定律的形式}
-
-首先这是一个显然成立的方程:
-\[
-\bm{v}_{B\rightarrow P} = \bm{v}_{A\rightarrow P} - \bm{v}_{B\rightarrow A}
-\]
-
-以$\bm{v}(\cdot)$表示起始于P点的长度矢量$\bm{r}$变率的函数，以$\bm{u}(\cdot)$表示起始于B点的长度矢量$\bm{a}$变率的函数。
-
-考虑一个在P点的观测者观察A、B两颗恒星的退行速度，另一个在B点的观测者观测A恒星的退行速度，我们有：
-
-\begin{minipage}{0.56\linewidth}
-    \begin{align*}
-        &\bm{v}(\bm{r'}) = \bm{v}(\bm{r}) - \bm{u}(\bm{a}),
-        \quad \bm{r'} = \bm{r} - \bm{a} \\
-        &\bm{v}(\bm{r} - \bm{a}) = \bm{v}(\bm{r}) - \bm{u}(\bm{a}) \\
-    \end{align*}
-\end{minipage}
-\begin{minipage}{0.4\linewidth}
-    \begin{center}
-        \begin{tikzpicture}[>=Stealth]
-            \draw [->] (0,0) -- (-1,2);
-            \draw [->] (0,0) -- (2,1.5);
-            \draw [->] (2,1.5) -- (-1,2);
-            \draw (-1.2,2.2) node {A};
-            \draw (2.25,1.5) node {B};
-            \draw (-0.05,-0.25) node {P};
-            \draw (0.5,2) node {$\bm{a}$};
-            \draw (-0.75,0.9) node {$\bm{r}$};
-            \draw (1.15,0.6) node {$\bm{r}'$};
-        \end{tikzpicture}
-    \end{center}
-\end{minipage}
-
-宇宙的各向同性意味着$\bm{v}(\cdot)$和$\bm{u}(\cdot)$的函数形式是相同的（速度的函数形式不能与你在宇宙的何处有关），于是有：
-\[
-\bm{v}(\bm{r} - \bm{a}) = \bm{v}(\bm{r}) - \bm{v}(\bm{a})
-\]
-
-同理可得：
-\[
-\bm{v}(k\bm{r}) = k\bm{v}(\bm{r}), \quad k \in \mathbb{R}
-\]
-
-这说明$\bm{v}(\cdot)$是$\bm{r}$的线性函数，满足此关系的速度函数只能是：
-\[
-\boxed{\bm{v}(\bm{r}) = H(t)\bm{r}}
-\]
-这便是\textbf{Hubble定律}。$H(t)$表示Hubble常数\textbf{可以随时间变化}（但是\textbf{不随空间变化}）。注意我们在这里并没有要求膨胀（可以是$H(t) \equiv 0$），但是只要宇宙学原理成立，而且宇宙正在膨胀，那么它必然满足这一规律。
-
-\subsection*{尺度因子与Hubble常数}
-
-考虑宇宙现在的一段长度$R_0$，因为宇宙在膨胀，在过去的某个$t$时刻这段长度应该是$R_t$，则\textbf{尺度因子}（无量纲量）定义为：
-\[
-\boxed{R(t) = \frac{R_t}{R_0}}
-\]
-
-显然，对\textbf{当前时刻}，$\boxed{R = 1}$。
-
-而Hubble常数定义为：
-\[
-\boxed{H = \frac{\dot{R}(t)}{R(t)}}
-\]
-
-并定义约化Hubble常数：
-\[
-h = \frac{H}{100\,\mathrm{km\cdot s^{-1}\cdot Mpc^{-1}}}
-\]
-
-注意$H$和$R$都是随时间变化的，所以我们说的Hubble常数都要加\textbf{“当前值”}才是约$70\,\mathrm{km\cdot s^{-1}\cdot Mpc^{-1}}$。
-
-\subsection*{宇宙学红移}
-
-过去某时刻$t$，某天体发射了一个光子，波长为$\lambda_t$，在当前被观测者观测到，此时波长为$\lambda_0$，从尺度因子的定义可以得到：
-\[
-\frac{\lambda_0}{\lambda_t} = \frac{R(0)}{R(t)}
-\]
-
-注意$\boxed{\lambda_t}$才是（发射时的）\textbf{静止波长}，$\boxed{\lambda_0}$是（接收到的）\textbf{红移以后的波长}，于是有：
-\[
-1 + z = 1 + \frac{\lambda_0 - \lambda_t}{\lambda_t} = \frac{\lambda_0}{\lambda_t} = \frac{R(0)}{R(t)}
-\]
-
-考虑到$R(0) = 1$，且$R(t) < 1$（发射时刻在过去）则有：
-\[
-1 + z = \frac{1}{R(t)} = \frac{1}{R} > 1
-\]
-
-故：
-\[
-\boxed{z = \frac{1}{R} - 1, \quad R = \frac{1}{1 + z}}
-\]
-
-这给出了宇宙学红移$z$与尺度因子$R$之间的关系。
-
-\subsection*{Newton宇宙学}
-
-膨胀宇宙的严格解需要用广义相对论才能得出，但是宇宙学原理告诉我们，宇宙各个局部的运动状态都是一样的，所以我们可以在一个十分小的局部内研究宇宙膨胀的动力学，在这个局部内星体的相对运动速度小于光速，于是可以利用Newton力学。考虑一个膨胀的球体，其质量守恒，体积以$V \propto R^3$变化，参考历元$t_0$时刻其密度为$\rho_0$，则任意时刻密度$\rho$与尺度因子$R$之间的关系为：
-\[
-\rho = \frac{\rho_0}{R^{3}}
-\]
-
-在牛顿引力的作用下，膨胀减速：
-\[
-\ddot{R} = -\frac{GM}{R^2} = -\frac{4\pi}{3}G \rho R = -\frac{4\pi G\rho_0}{3R^2}
-\]
-
-其中$R$为标度因子，负号表示引力沿径向向内（以向外为正方向）指向球心，（质量守恒，体积膨胀，密度并非常量）。
-两边同乘$\dot{R}$得到：
-\[
-\dot{R}\ddot{R} = -\frac{4\pi G\rho_0}{3R^2} \dot{R}
-\]
-
-两边同时积分：
-\[
-\frac{1}{2}\dot{R}^2 = \frac{4\pi G\rho_0}{3R} + C
-\]
-
-在广义相对论里面可以证明，\textbf{宇宙曲率参数}$\boxed{k = -2C}$，该参数描述了宇宙学的拓扑性质，宇宙诞生后$k$就保持不变。则上式可以写为：
-\[
-\boxed{\dot{R}^2 = \frac{8\pi G\rho_0}{3R} - k}
-\]
-
-下面分三种情况讨论：
-
-\textbf{若$k > 0$，宇宙闭合：}
-
-由$\ddot{R} < 0$得
-\[
-\dot{R}^2 \to 0,\qquad \frac{8\pi G\rho_0}{3R} \to k
-\]
-\begin{spacing}{2.0}
-宇宙在达到最大半径$\boxed{R_{\mathrm{max}} = \dfrac{8\pi G\rho_0}{3k}}$之后，开始收缩。
-\end{spacing}
-\bigskip
-
-\textbf{若$k < 0$，宇宙开放：}
-
-此时$\dot{R}^2 > 0$，$\dot{R} > 0$，$R \to +\infty$
-
-则有：（注意$k < 0$，$-k > 0$）
-\[
-\frac{8\pi G\rho_0}{3R} \to 0,\qquad \dot{R} \to \sqrt{-k}
-\]
-
-膨胀将永远继续下去，这样的宇宙是开放的。
-\bigskip
-
-\textbf{若$k = 0$，宇宙平直：}
-\[
-\dot{R}^2 = \frac{8\pi G\rho_0}{3R},\qquad \sqrt{R}\dot{R} = \sqrt{\frac{8\pi G\rho_0}{3}}
-\]
-
-\begin{spacing}{2.0}
-据定义，$\dot{R} = \dfrac{\mathrm{d}R}{\mathrm{d}t}$，分离变量后有：
-\end{spacing}
-
-\[
-\sqrt{R}\,\mathrm{d}R = \sqrt{\frac{8\pi G\rho_0}{3}}\mathrm{d}t
-\]
-
-两边积分得：
-\[
-\frac{2}{3}R^{\tfrac{3}{2}} = \sqrt{\frac{8\pi G\rho_0}{3}}t
-\]
-
-则
-\[
-\boxed{R = \sqrt[3]{6\pi G\rho_0}\cdot t^{\tfrac{2}{3}} \propto t^{\tfrac{2}{3}}}
-\]
-
-这说明宇宙总是在膨胀，但是膨胀速率减小。
-
-定义\textbf{减速因子}：
-\[
-\boxed{q = -\frac{R\ddot{R}}{\dot{R}^2}}
-\]
-
-这样的定义使$q$是一个正数，且分子、分母之间消去了长度和时间的量纲。即$q$是一个无量纲的量，并与选定的参考历元$t_0$无关。
-
-定义\textbf{宇宙临界密度：}
-\[
-\boxed{\rho_c = \frac{3H^2}{8\pi G}}
-\]
-
-其意义也可以从下式中理解：
-\[
-E = \frac{1}{2}m\dot{R}^2 - \frac{GMm}{R} = m\left(\frac{1}{2}H^2R^2 - \frac{G\rho_c R^3}{R}\right) = 0
-\]
-
-它与约化Hubble常数$h$的关系为：
-\[
-\rho_c(h) \approx 1.8785 \times 10^{-26}h^2\,\mathrm{kg/m^3}
-\]
-
-又定义\textbf{宇宙密度参数：}
-\[
-\boxed{\Omega_m = \frac{\rho}{\rho_c} = \frac{8\pi G\rho}{3H^2}}
-\]
-
-\begin{spacing}{2.0}
-因为$\ddot{R} = -\dfrac{4\pi}{3} G\rho R$，$H = \dfrac{\dot{R}}{R}$，故：
-\[
-q = \frac{4\pi G\rho}{3H^2} = \frac{1}{2}\Omega_m
-\]
-
-联立$\dot{R}^2 = \dfrac{8\pi G\rho_0}{3R}$及$H = \dfrac{\dot{R}}{R}$又得：
-\[
-H^2R^2 = \frac{8\pi G\rho_0}{3R}
-\]
-\end{spacing}
-
-则：
-\[
-H^2 = \frac{8\pi G\rho_0}{3R^3} = \frac{8\pi}{3}G\rho
-\]
-
-于是：
-\[
-\rho = \frac{3H^2}{8\pi G} = \rho_c,\qquad \Omega_m = 1,\qquad q = \frac{1}{2}
-\]
-
-综上，对于平直宇宙：$k = 0$，$\Omega_m = 1$，$q = \dfrac{1}{2}$
-
-\subsection*{宇宙学视界与Hubble距离}
-
-如果光源位于这样远的位置，使得观测者接收到的光子波长红移恰为无穷大（光子能量为零，即接收不到光子），则光源所在位置就被称为宇宙学视界。
-
-这里我们不加推导地给出宇宙学视界距离的表达式（严格推导较为复杂，并且需要用到Robertson-Walker度规）：
-\[
-\boxed{D = \frac{1}{1 - n}ct}
-\]
-
-其中$D$为视界半径，$c$为光速，$n$的意义为：真实宇宙半径$R \propto t^n$。
-
-Hubble距离定义为退行速度为光速的距离：
-\[
-\boxed{L_H = \frac{c}{H} \approx 2998h^{-1}\,\mathit{Mpc}}
-\]
-
-这给出了目前可见宇宙的近似大小。
-
-\subsection*{因果律}
-
-在$t=t_1$时尺度因子为$R_1$，光子最多前行距离为$ct_1$（忽略从大爆炸到光子脱耦的时间间隔）。
-
-在$t=t_2$时尺度因子为$R_2$，$x=0$和$x=ct_1$处发出的光经过距离$c(t_2-t_1)$到达观测者，则该两点在当前时刻看来的线距离为：
-\[
-c \, t_1\frac{R_2}{R_1}
-\]
-
-角距离为：
-\[
-\theta = \left(c \, t_1\frac{R_2}{R_1}\right) \div [c(t_2 - t_1)] = \frac{t_1 R_2}{(t_2 - t_1)R_1}
-\]
-
-当前时刻$R_2=1$，$t_2=t_0$为当前宇宙年龄，对于宇宙极早期$t_1=t$，
-$R_1=R$，$t_2 - t_1 \approx t_0$，应该有：
-\[
-\boxed{\theta_0 = \frac{t}{t_0 R}}
-\]
-
-也就是说，天空上张角大于$\theta_0$的两点之间在时间$t$之后没有因果联系。
-
-\section*{宇宙热力学}
-
-\subsection*{状态参量随空间的演化}
-
-在讨论宇宙的演化史时，我们经常需要知道状态参量$T$、$\rho$随时空变量$t$、$R$变化的规律。为此我们必须区分宇宙的两个组成部分：由光子组成的热辐射（记作$r$）和由有静质量粒子组成的物质（记作$m$）。光子是极端相对论性的，物质粒子一般是非相对论性的，由理想气体的压强公式：
-\[
-p = \frac{1}{3}n\overline{\bm{p}\cdot\bm{v}}
-\]
-
-其中$n$为粒子数密度，$\bm{p}$和$\bm{v}$分别为粒子的动量和速度，分别对辐射（$\overline{\bm{p}\cdot\bm{v}} = \bar{\varepsilon}$，$\bar{\varepsilon}$为单个粒子的平均动能）和物质（$\overline{\bm{p}\cdot\bm{v}} = 2\bar{\varepsilon}$）讨论得：
-\[
-\boxed{
-\left\{
-\begin{aligned}
-    &p_r = \frac{1}{3}u_r \\
-    &p_m = \frac{2}{3}u_m
-\end{aligned}
-\right.
-}
-\]
-
-其中$p$为压强，$u$为内能密度。
-
-宇宙膨胀可以用\textbf{绝热公式}描述：
-\[
-\boxed{\mathrm{d}U = -p\,\mathrm{d}V}
-\]
-
-下面分别讨论辐射和物质两种情况：
-
-\textbf{辐射的绝热膨胀：}
-
-将内能写成$U_r = u_r V$，则$\mathrm{d}U_r = V\mathrm{d}u_r + u_r\mathrm{d}V$，代入$p_r = \dfrac{1}{3}u_r$得：
-\[
-V\mathrm{d}u_r = \mathrm{d}U_r - u_r\mathrm{d}V = -p_r\mathrm{d}V - u_r\mathrm{d}V = -\frac{4}{3}u_r\mathrm{d}V
-\]
-
-即：
-\[
-\frac{\mathrm{d}u_r}{u_r} = -\frac{4}{3}\left(\frac{\mathrm{d}V}{V}\right)
-\]
-
-积分得：
-\[
-u_r \propto V^{-\tfrac{4}{3}} \propto R^{-4}
-\]
-
-因辐射的质量密度$\rho_r = \dfrac{u_r}{c^2}$，故有：
-\[
-\boxed{\rho_r \propto R^{-4}}
-\]
-
-又因为$\rho_r \propto T_r^{\,4}$（Stefan-Boltzmann定律），得到：
-\[
-\boxed{T_r \propto R^{-1}}
-\]
-\bigskip
-
-\textbf{物质的绝热膨胀：}
-
-将内能写成$U_m = N\overline{\varepsilon_m}$（$N$为总粒子数，$\overline{\varepsilon_m}$为单个粒子的平均动能），则$\mathrm{d}U_m = N\mathrm{d}\overline{\varepsilon_m}$。又因为：
-\[
-p_m = \frac{2}{3}u_m = \frac{2N\overline{\varepsilon_m}}{3V}
-\]
-
-于是可以将绝热公式$\mathrm{d}U = -p\,\mathrm{d}V$写为：
-\[
-N\mathrm{d}\overline{\varepsilon_m} = \frac{2N\overline{\varepsilon_m}\mathrm{d}V}{3V}
-\]
-
-即：
-\[
-\frac{\mathrm{d}\overline{\varepsilon_m}}{u_r} = -\frac{2}{3}\left(\frac{\mathrm{d}V}{V}\right)
-\]
-
-积分得：
-\[
-\overline{\varepsilon_m} \propto V^{-\tfrac{2}{3}} \propto R^{-2}
-\]
-
-因为$\overline{\varepsilon_m} \propto T_m$，故有：
-\[
-\boxed{T_m \propto R^{-2}}
-\]
-
-又因为质量守恒：$\rho_m V = \mathrm{const.}$，我们有：
-\[
-\rho_m \propto V^{-1} \propto R^{-3}
-\]
-
-由以上两式得：
-\[
-\boxed{\rho_m \propto T_m^{\,\tfrac{3}{2}}}
-\]
-
-\subsection*{宇宙的热演化规律}
-
-\textbf{宇宙从辐射统治转变为物质统治}：
-
-对比辐射膨胀规律$\rho_r \propto R^{-4}$与物质膨胀规律$\rho_m \propto R^{-3}$，可以看出，随着$R$的膨胀，$\rho_r$比$\rho_m$减小得快。让我们先来估算一下当前时刻（用下标0表示）$\rho_{r0}$和$\rho_{m0}$的大小。微波背景辐射的温度为$T_{r0}=2.7255\,\mathrm{K}$，按照Stefan-Boltzmann定律：
-\[
-\rho_{r0} = \frac{4\sigma}{c^3}T_{r0}^{\,4} = 4.645\times10^{-31}\,\mathrm{kg/m^3}
-\]
-
-而$\rho_{m0}$可以按照临界密度$\rho_c$估计：（宇宙近似是平直的，并取$h = 0.678$）
-\[
-\rho_{m0} = \rho_c = 8.635\times10^{-27}\,\mathrm{kg/m^3}
-\]
-
-则大约有$\rho_{m0} = 1.859 \times 10^{4}\rho_{r0}$。可见当今的宇宙是由物质统治的。
-
-设$\dfrac{\rho_m}{\rho_r} = k$，由于$\rho_r \propto R^{-4}$，$\rho_m \propto R^{-3}$，则：
-\[
-\frac{k_0}{k} = \frac{R_0}{R} = \frac{T_r}{T_{r0}}
-\]
-
-即在
-\[
-\frac{T_r}{T_{r0}} = \frac{\rho_{m0}}{\rho_{r0}} = 1.859 \times 10^4
-\]
-
-时，$\rho_r = \rho_m$（辐射与物质达到均衡）。那时的辐射温度$T_r = k_0 T_{r0} = 5.0667\times10^4\,\mathrm{K}$。由辐射——物质均衡时刻向上回溯，就进入辐射统治时期。时间上越早，辐射统治就越占优势，时间上越晚，物质统治就越占优势。极早期的宇宙里辐射是占绝对统治地位的。
-\bigskip
-
-\textbf{中性原子复合后辐射与物质产生温差}：
-
-由于$T_r \propto R^{-1}$，$T_m \propto R^{-2}$，在中性原子复合前由带电粒子组成的物质与辐射耦合在一起，共同处于热平衡态，温度相等。通常认为由辐射统治时期向物质统治时期的转变大体上发生在中性原子复合的时候，或此前不久。在辐射统治时期，共同温度等于$T_r$，在辐射与物质脱耦，中性原子复合后，随着$R$的增大，$T_m$下降得快，$T_r$下降得慢，$T_r > T_m$，差距越来越大。
-\bigskip
-
-\subsection*{状态参量随时间的演化}
-
-对于平直宇宙：
-\[
-E = \frac{1}{2}m\dot{R}^2 - \frac{GMm}{R} = \frac{1}{2}m\left(\dot{R}^2 - \frac{8\pi G\rho}{3R^2}\right) = 0
-\]
-
-可得：
-\[
-\frac{\dot{R}}{R} = \frac{\mathrm{d}\ln R}{\mathrm{d}t} = \sqrt{\frac{8\pi G\rho}{3}}
-\]
-
-又因为$\rho_r \propto R^{-4}$，$\rho_m \propto R^{-3}$，应该有：
-\[
-\frac{\mathrm{d}\ln R}{\mathrm{d}t} = -\frac{1}{4}\left(\frac{\mathrm{d}\ln\rho_r}{\mathrm{d}t}\right)
-\]
-\[
-\frac{\mathrm{d}\ln R}{\mathrm{d}t} = -\frac{1}{3}\left(\frac{\mathrm{d}\ln\rho_m}{\mathrm{d}t}\right)
-\]
-
-联立得：
-\[
--\frac{1}{4}\left(\frac{\mathrm{d}\ln\rho_r}{\mathrm{d}t}\right) = \sqrt{\frac{8\pi G\rho_r}{3}}
-\]
-\[
--\frac{1}{3}\left(\frac{\mathrm{d}\ln\rho_m}{\mathrm{d}t}\right) = \sqrt{\frac{8\pi G\rho_m}{3}}
-\]
-
-代入$\mathrm{d}\ln\rho = \dfrac{\mathrm{d}\rho}{\rho}$，分别解得：
-\[
-\frac{1}{2}\left(\rho_r^{-\tfrac{1}{2}} - \rho_{r0}^{-\tfrac{1}{2}}\right) = \sqrt{\frac{8\pi G}{3}}(t-t_0)
-\]
-\[
-\frac{2}{3}\left(\rho_m^{-\tfrac{1}{2}} - \rho_{m0}^{-\tfrac{1}{2}}\right) = \sqrt{\frac{8\pi G}{3}}(t-t_0)
-\]
-
-在$t \gg t_0$的情况下，$\rho_{r0} \gg \rho_r$，$\rho_{m0} \gg \rho_m$，上式中的初始项（带下标0的积分常数）可以忽略，于是得：
-\[
-t = \sqrt{\frac{3}{32\pi G\rho_r}} = \sqrt{\frac{1}{6\pi G\rho_m}}
-\]
-
-即对于辐射和物质都有：
-\[
-\boxed{t \propto \rho^{-\tfrac{1}{2}}}
-\]
-
-最终，我们得到这样的规律：
-\[
-\boxed{
-\left\{
-\begin{aligned}
-    &\text{辐射统治时期：}t \propto R^2,\qquad T_m = T_r \propto t^{-\tfrac{1}{2}} \\
-    &\text{物质统治时期：}t \propto R^{\tfrac{3}{2}},\qquad T_m \propto t^{-\tfrac{4}{3}},\qquad T_r \propto t^{-\tfrac{2}{3}} \\
-\end{aligned}
-\right.
-}
-\]
-
-\section*{参考书目}
-\bigskip
-\begin{enumerate}[{[1]\ },leftmargin=\parindent,align=left,labelwidth=\parindent,labelsep=0pt]
-	\item M. L. Kutner，天文学：物理新视野[\,M\,]。萧耐园，胡方浩译。长沙：湖南科学技术出版社，2005。
-	\item 向守平，天体物理概论[\,M\,]。安徽：中国科学技术大学出版社。
-	\item 赵凯华，罗蔚茵，新概念物理教程$\cdot$热学[\,M\,]。第二版。北京：高等教育出版社，1998。
+\tableofcontents
+
+\chapter{宇宙学原理}
+
+\section{宇宙学原理与Robertson-Walker度规}
+
+宇宙学中最重要的一个原理是\textbf{宇宙学原理}：\textbf{宇宙在大尺度上是均匀和各向同性的}。均匀（homogeneous）指的是宇宙中各点都是平等的，没有何处是特殊的；各向同性（isotropic）指的是相对于某一点，宇宙在各个方向上看起来都是一样的。均匀的不一定是各向同性的，各向同性的也不一定是均匀的。但是如果宇宙对任意一点都是各向同性的，那么它一定是均匀的。对于人类，我们只能从所在的地球乃至太阳系观测宇宙，可以得出宇宙对于我们是各向同性的结论，但如果我们接受\textbf{哥白尼原理}：\textbf{人类在观测宇宙时并非处于一个特殊地位}。即在宇宙的任何一点观测宇宙都和地球上观测的结果相同，则宇宙均匀和各向同性都随之成立。
+
+% Figure 1: homogeneous vs isotropic
+
+宇宙在多大尺度上符合宇宙学原理呢？典型星系团的尺度是$10^1\,\mathrm{Mpc}$的量级，超星系团可以达到$10^2\,\mathrm{Mpc}$，可观测宇宙的直径大约是$4.4\,\mathrm{Gpc}$。在数百个$\mathrm{Mpc}$的尺度上，宇宙看起来是光滑的，没有来自于局部引力塌陷形成的结构。例如，如果我们在天球相对的两端各取一个边长为$100\,\mathrm{Mpc}$的立方体，并计算其中物质的密度，两者应该给出极其相近的结果。宇宙微波背景辐射（CMB）的涨落甚至只有$10^{-6}\,\mathrm{K}$的量级。
+
+在宇宙学中，需要定义一种特别的理想观测者：基本观测者。这些观测者相对整个宇宙流体没有相对运动。宇宙流体由宇宙中所有物质（包括暗物质）平均后的运动来定义。简单地说，他们不受万有引力的轨道运动影响，只随着整个宇宙一起膨胀。
+
+我们首先要引入“度规”的概念。对于相隔无穷小的两个点，可以认为它们是直线相连，定义线元
+\begin{equation}
+    \dd{s}^2 = \sum_{i,j}g_{ij} \dd{x}^i \dd{x}^j,\quad x^i = t,\ x,\ y,\ z
+\end{equation}
+对于狭义相对论下的Minkowski时空：
+\begin{equation}
+    \dd{s}^2 = -(c\dd{t})^2 + \dd{x}^2 + \dd{y}^2 + \dd{z}^2
+\end{equation}
+根据宇宙学原理，宇宙空间的度规只能有如下的形式，称为\textbf{Robertson-Walker度规}，简称RW度规：
+\begin{equation}
+    \dd{s}^2 = -(c\dd{t})^2 + a^2(t) \left[\frac{\dd{r}^2}{1 - kr^2} + r^2\left(\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2\right)\right]
+\end{equation}
+其中，$a(t)$称为尺度因子，$k$为归一化的宇宙曲率。
+
+尺度因子$a(t)$描述了宇宙的膨胀率，我们可以定义：
+\begin{equation}
+    \mathbf{r} = a(t)\mathbf{x}
+\end{equation}
+其中$\mathbf{r}$称为物理坐标，而$\mathbf{x}$称为共动坐标。记现在的宇宙时间是$t_0$，规定当前的共动坐标等于测量到的物理坐标，即尺度因子$a(t_0) \equiv 1$。一般认为宇宙始终不断膨胀，则过去时刻的尺度因子$a(t)$总是小于1。我们可以这样来理解这个关系：想象宇宙的空间部分是在一个气球上面，星系可以看作球面上的点，而宇宙的演化类似于气球的膨胀，尺度因子代表气球的半径。对球面而言，球面上的点的相对位置是不变的，这就是共动坐标的含义。但对于外部观测者而言，整个气球是在膨胀的，气球上点的相对位置变大了。
+
+% Figure 2, the balloon model of expanding universe
+
+宇宙曲率$k$描述了宇宙的形状。$k$的取值有以下三种情况：
+\begin{enumerate}
+    \item $k = 0$：宇宙为一个平坦空间，最终会膨胀到一个最大半径，但膨胀速度趋于零；
+    \item $k = 1$：宇宙为一个球形空间，闭的，最终会塌缩到一点；
+    \item $k = -1$：宇宙为一个双曲空间，开的，最终会无限加速膨胀。
 \end{enumerate}
+
+\section{宇宙学红移与Hubble定律}
+
+红移的定义是：
+\begin{equation}
+    z \equiv \frac{\lambda}{\lambda_0} - 1
+\end{equation}
+其中$\lambda$为观测者接收到的波长，$\lambda_0$为光谱的实验室静止波长。在实际观测中，光子发射时的波长一般为静止波长，则有：
+\begin{equation}
+    z = \frac{\lambda_o}{\lambda_e} - 1
+\end{equation}
+下标$o$表示观测（observasion），$e$表示发射（emission）。随着宇宙膨胀，光子的波长也会随之膨胀：
+\begin{equation}
+    z = \frac{\lambda_o}{\lambda_e} - 1 = \frac{a(t_o)}{a(t_e)} - 1
+\end{equation}
+广义相对论对光子的严谨计算表明，这个结果不依赖于宇宙的膨胀历史，无论尺度因子的变化快慢如何，最终的结果只依赖于尺度因子在发射时刻和接收时刻的值。
+
+如果在当前时刻$t_0$我们接收到从遥远星系发出的光子，而发射光子时的宇宙时间为$t$。对于当前的观测者，尺度因子$a(t_0) = 1$，则有：
+\begin{equation}
+    z = \frac{1}{a(t)} - 1
+\end{equation}
+
+对于在过去不久的时刻发射的光子，$t = t_0 - \Delta t$，其中$\Delta t \ll t_0$，可以对上式做Taylor展开：
+\begin{equation}
+    1 + z = \frac{1}{a(t_0 - \Delta t)} = a(t_0) + \Delta t \dot{a}(t_0)
+\end{equation}
+我们引入一个参数，称为\textbf{Hubble常数}：
+\begin{equation}
+    H(t) \equiv \frac{\dot{a}(t)}{a(t)}
+\end{equation}
+Hubble常数实际上并非“常数”，它的值也会随着宇宙演化而改变，其当前值记为：
+\begin{equation}
+    H_0 = H(t_0) = \dot{a}(t_0)
+\end{equation}
+将(1.10)式代入(1.9)式，并注意到$a(t_0) = 1$，可得：
+\begin{equation}
+    1 + z = 1 + H_0 \Delta t
+\end{equation}
+即:
+\begin{equation}
+    z = H_0 \Delta t
+\end{equation}
+如果光子需要$\Delta t$时间到达观测者，则光子发射处距离观测者为$d = c\Delta t$，又因为径向的退行速度（按经典Doppler红移的定义）$v_r = cz$，可以得到\textbf{Hubble定律}：
+\begin{equation}
+    v_r = H_0 \Delta d
+\end{equation}
+注意，这仅在红移较小（$z \ll 1$）时成立。
+
+根据Planck卫星在2018年发表的测量结果：
+\begin{equation}
+    H_0 = 67.66\,\mathrm{km \cdot s^{-1} \cdot Mpc^{-1}}
+\end{equation}
+可以发现，Hubble常数实际上具有一个时间倒数的量纲（两个距离的量纲相消），于是有：
+\begin{equation}
+    H_0 = 2.193 \times 10^{-18}\,\mathrm{s^{-1}}
+\end{equation}
+由于测量的不确定性，实际计算中会将它参数化为：
+\begin{equation}
+    H_0 = 100h \,\mathrm{km \cdot s^{-1} \cdot Mpc^{-1}}
+\end{equation}
+则无量纲参数$h$如今的取值是$h = 0.6766$。
+
+通过哈勃常数可以给出宇宙年龄和尺度的典型值。宇宙年龄近似为\textbf{Hubble时间}：
+\begin{equation}
+    t_H = H_0^{-1} = 4.56 \times 10^{17}\,\mathrm{s} = 14.45 \,\mathrm{Gyr}
+\end{equation}
+可观测宇宙的尺度近似为\textbf{Hubble长度}：
+\begin{equation}
+    d_H = ct_H = 1.37 \times 10^{26}\,\mathrm{m} = 4.43\,\mathrm{Gpc}
+\end{equation}
+实际宇宙的年龄和长度与宇宙学模型（即宇宙各组分的比例）有关，在第三章会详细讲解。它们与Hubble时间和Hubble长度大多只相差一个约等于1的常数。
+
+\chapter{宇宙的演化}
+
+\section{Friedmann方程与流体方程}
+
+宇宙的演化由\textbf{Einstein方程}确定：
+\begin{equation}
+    G_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}
+\end{equation}
+方程的左边$G_{\mu\nu}$是Einstein张量，表征宇宙空间的弯曲；方程的右边$T_{\mu\nu}$是能动张量，表征空间中物质与能量的分布；$G$为万有引力常数，透过弱场近似以及慢速近似，可以从爱因斯坦场方程退化为牛顿重力定律。
+
+实际上我们可以在方程的左边加上一个与度规张量$g_{\mu\nu}$成正比的项，这样就得到方程：
+\begin{equation}
+    G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}
+\end{equation}
+这个比例系数$\Lambda$就称为\textbf{宇宙学常数}，现在一般认为这个常数表示宇宙中的暗能量，或称为真空能。
+
+宇宙尺度因子的演化取决于物质组分，不同的物质组分具有不同的物态方程：
+\begin{equation}
+    p = w\rho
+\end{equation}
+其中$p$为压强，$\rho$为密度，$w$是一个与时间无关的常数，称为物态参数。物质组分可以分为三类：
+\begin{enumerate}
+    \item $p_m = 0$，非相对论性的物质，一般简称为物质（或尘埃），包含重子物质和暗物质；
+    \item $p_r = \dfrac{1}{3}\rho_r$，相对论性的物质，即辐射，包含光子、中微子等；
+    \item $p_\Lambda = -\rho_\Lambda$，宇宙学常数。
+\end{enumerate}
+在RW度规下，将物态方程代入Einstein方程(1.17)式可以得到：
+\begin{align}
+    \left(\frac{\dot{a}}{a}\right)^2 &= \frac{8\pi G}{3}\rho - \frac{kc^2}{a^2} + \frac{\Lambda c^2}{3} \\
+    2 \frac{\ddot{a}}{a} + \left(\frac{\dot{a}}{a}\right)^2 &= - \frac{kc^2}{a^2} -\frac{8\pi G}{c^2}\rho + \Lambda c^2
+\end{align}
+这两个就是著名的\textbf{Friedmann方程}，由俄国物理学家Alexander Friedmann发表于1922年。它们互相独立，共同描述了一个均匀且各向同性的膨胀宇宙模型。
+
+另一个重要的方程是所谓\textbf{流体方程}：
+\begin{equation}
+    \dot{\rho} + 3\frac{\dot{a}}{a}\left(\rho + p\right) = 0
+\end{equation}
+这个方程可以从热力学第一定律$\mathrm{d}E = -P\mathrm{d}V + T\mathrm{d}S$中令$\mathrm{d}S = 0$得到，即宇宙是绝热膨胀的，和“宇宙外部”没有能量交换。
+
+\section{物质组分}
+
+首先，我们简要地讨论一下宇宙中的物质组分。通过流体方程(2.6)式，我们可以推导出不同的物质组分随尺度因子的演化。
+
+\begin{enumerate}
+    \item 对于物质，$p_m = 0$，代入(2.6)式得：
+    \begin{equation}
+        \dot{\rho}_m + 3\frac{\dot{a}}{a}\left(\rho_m + 0\right) = 0
+    \end{equation}
+    即：
+    \begin{equation}
+        \frac{\dot{\rho}_m}{\rho_m} = -3\frac{\dot{a}}{a}
+    \end{equation}
+    积分得：
+    \begin{equation}
+        \rho_m \propto a^{-3}
+    \end{equation}
+    即：
+    \begin{equation}
+        \rho_m(z) = \rho_{m,0}(1 + z)^3
+    \end{equation}
+
+    \item 对于辐射，$p_r = \dfrac{1}{3}\rho_r$，代入(2.6)式得：
+    \begin{equation}
+        \dot{\rho}_r + 3\frac{\dot{a}}{a}\left(\rho_r + \frac{1}{3}\rho_r\right) = 0
+    \end{equation}
+    即：
+    \begin{equation}
+        \frac{\dot{\rho}_r}{\rho_r} = -4\frac{\dot{a}}{a}
+    \end{equation}
+    积分得：
+    \begin{equation}
+        \rho_r \propto a^{-4}
+    \end{equation}
+    即：
+    \begin{equation}
+        \rho_r(z) = \rho_{r,0}(1 + z)^4
+    \end{equation}
+    由于辐射的衰减最快，在如今的宇宙中光子辐射的比重只有约$5.4 \times 10^{-5}$，中微子则占约$1.44 \times 10^{-3}$。一般在宇宙学演化的计算中可以忽略辐射的影响。
+
+    值得一提的是，宇宙中辐射能量密度的主要贡献（超过$99\%$）是宇宙微波背景辐射（CMB）。CMB光子能量分布在宇宙演化中保持黑体辐射的形式，根据Stefan-Boltzmann定律：
+    \begin{equation}
+        \rho_r \propto T^4
+    \end{equation}
+    则宇宙温度（即CMB的温度）和红移的关系为：
+    \begin{equation}
+        T(z) = T_0(1 + z)
+    \end{equation}
+
+    \item 对于宇宙学常数，$p_\Lambda = -\rho_\Lambda$，代入(2.6)式得：
+    \begin{equation}
+        \dot{\rho}_\Lambda + 3\frac{\dot{a}}{a}\left(\rho_\Lambda - \rho_\Lambda\right) = 0
+    \end{equation}
+    即：
+    \begin{equation}
+        \dot{\rho}_\Lambda = 0
+    \end{equation}
+    积分得：
+    \begin{equation}
+        \rho_\Lambda = \mathrm{const.}
+    \end{equation}
+    即宇宙学常数的能量密度并不随尺度因子而变化。
+\end{enumerate}
+
+在Friedmann方程(2.4)中，注意到方程左边实际上就是$H^2$，可以将方程化为：
+\begin{equation}
+    \frac{8\pi G}{3H^2}\rho - \frac{kc^2}{a^2 H^2} + \frac{\Lambda c^2}{3H^2} = 1
+\end{equation}
+定义\textbf{临界密度}：
+\begin{equation}
+    \rho_c = \frac{3H^2}{8\pi G}
+\end{equation}
+可以定义所谓的密度参数：
+\begin{align}
+    \Omega_m &= \frac{\rho}{\rho_c} = \frac{8\pi G}{3H^2}\rho,\quad \rho = \rho_m + \rho_r \approx \rho_m \\
+    \Omega_k &= \frac{\rho_k}{\rho_c} = -\frac{kc^2}{a^2 H^2},\quad \rho_k = -\frac{3kc^2}{8\pi Ga^2} \\
+    \Omega_\Lambda &= \frac{\rho_\Lambda}{\rho_c} = \frac{\Lambda c^2}{3H^2},\quad \rho_\Lambda = -\frac{\Lambda c^2}{8\pi G} \\
+\end{align}
+则(2.7)式化为：
+\begin{equation}
+    \Omega_m + \Omega_k + \Omega_\Lambda = 1
+\end{equation}
+根据Planck卫星在2018年发表的测量结果，这三个密度参数的值为：
+\begin{equation}
+    \Omega_m = 0.30966,\quad \Omega_k = 0,\quad \Omega_\Lambda = 0.68884
+\end{equation}
+重子物质、暗物质、光子和中微子的密度参数为：
+\begin{equation}
+    \Omega_b = 0.04897,\quad \Omega_{dm} = 0.26069,\quad \Omega_\gamma = 5.402 \times 10^{-5},\quad \Omega_\nu = 0.00144
+\end{equation}
+临界密度的值为：
+\begin{equation}
+    \rho_c = 8.5988 \times 10^{-27}\,\mathrm{kg/m^3}
+\end{equation}
+
+\section{Hubble常数的演化}
+
+从Friedmann方程可以看出，Hubble常数会随着时间演化，演化规律为：
+\begin{equation}
+    \left(\frac{H(z)}{H_0}\right)^2 = \Omega_{m,0}(1 + z)^3 + \Omega_{k,0} (1 + z)^2 + \Omega_{\Lambda,0}
+\end{equation}
+
+\chapter{宇宙学模型}
+
+最简单的情况是$k = \Lambda = 0$，即物质主导的、没有暗能量的平坦宇宙。这被称为\textbf{Einstein-de Sitter模型}，此时Friedmann方程(2.4)变为：
+\begin{equation}
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8\pi G}{3}\rho
+\end{equation}
+注意物质密度遵循$\rho = \rho_0 a^{-3}$，则有：
+\begin{equation}
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8\pi G}{3}\rho_0 a^{-3}
+\end{equation}
+由于$\rho_k = \rho_\Lambda = 0$当前的物质密度$\rho_0$还需满足：
+\begin{equation}
+    \rho_0 = \rho_c = \frac{3H_0^2}{8\pi G}
+\end{equation}
+则(3.3)式化简为：
+\begin{equation}
+    \dot{a} = \dv{a}{t} = \frac{H_0}{\sqrt{a}}
+\end{equation}
+最后积分得：
+\begin{equation}
+    a = \left(\frac{3}{2}H_0 t\right)^{\tfrac{2}{3}}
+\end{equation}
+这便是尺度因子随时间的变化关系。
+
+对于一个辐射主导的宇宙，同理有：
+\begin{equation}
+    \left(\frac{\dot{a}}{a}\right)^2 = \frac{8\pi G}{3}\rho_{r,0} a^{-4}
+\end{equation}
+则：
+\begin{equation}
+    a^2 H = \sqrt{\frac{8\pi G}{3}\rho_{r,0}} = \sqrt{H_0^2 \Omega_{r,0}}
+\end{equation}
+
+当前对宇宙的观测支持一个$k = 0$且$\Lambda > 0$的宇宙，可以计算得出它满足：
+\begin{equation}
+    a^3 = \frac{\Omega_{m,0}}{2\Omega_{\Lambda,0}}[\cosh(\sqrt{3\Lambda}t) - 1]
+\end{equation}
+
+\chapter{距离与红移}
+
+在宇宙中距离的定义和测量容易让人迷惑。在RW度规中，$r$给出的是共动距离，而物理距离$d = a(t)r$。然而物理距离具有操作性上的困难，无法直接测量，因此需要引进一些更具有操作性的距离概念。
+
+\section{光度距离}
+
+在静止的Euclid时空中，考虑一个距离我们$d$的光源，具有光度$L$，我们收到的光通量为：
+\begin{equation}
+    F = \frac{L}{4\pi d^2}
+\end{equation}
+因此如果知道光源的光度，利用测到的光通量，我们可以得到距离：
+\begin{equation}
+    d = \sqrt{\frac{L}{4\pi F}}
+\end{equation}
+在RW度规下，考虑一个在固定$d$处的光源，其光度为$L(t)$，它在宇宙时刻$t$处发光，并在$t_0$时刻被我们观测到。假设光源在时间段$\Delta t_e$内发出的光，波长为$\lambda_e$，在时间段$\Delta t_o$内被接收到，此时波长为$\lambda_o$。由于：
+\begin{equation}
+    \frac{\lambda_e}{\lambda_o} = \frac{\Delta t_e}{\Delta t_o} = \frac{a(t)}{a(t_0)} = \frac{1}{1 + z}
+\end{equation}
+光度和亮度本质衡量的是光的功率，即单位时间发射或接收的能量，而这两者分别为：
+\begin{equation}
+    P_e = \frac{hc}{\lambda_e\Delta t_e},\quad P_o = \frac{hc}{\lambda_o\Delta t_o}
+\end{equation}
+两者之比为：
+\begin{equation}
+    \frac{P_o}{P_e} = \left(\frac{a(t)}{a(t_0)}\right)^2 = \frac{1}{(1 + z)^2}
+\end{equation}
+即：
+\begin{equation}
+    F = \frac{L}{4\pi d^2} \cdot \frac{1}{(1 + z)^2}
+\end{equation}
+定义\textbf{光度距离}：
+\begin{equation}
+    d_L = d(1 + z)
+\end{equation}
+则：
+\begin{equation}
+    F = \frac{L}{4\pi d_L^2}
+\end{equation}
+
+\section{角直径距离}
+
+假设在距离$d$处有一个较大的光源（如星系团）直径为$D$，它在宇宙时刻$t$处发光，并在$t_0$时刻被我们观测到。观测到它在天上的角直径为$\theta$，则按照RW度规，光源直径应表示为：
+\begin{equation}
+    D = a(t)d\theta
+\end{equation}
+即距离为：
+\begin{equation}
+    d = \frac{D}{a(t)\theta}
+\end{equation}
+在静止的Euclid时空中，距离应为：
+\begin{equation}
+    d = \frac{D}{\theta}
+\end{equation}
+则可以定义\textbf{角直径距离}：
+\begin{equation}
+    d_A = \frac{D}{\theta} = \frac{d}{1 + z}
+\end{equation}
+
+% \section{视界}
+
+\chapter{黑洞}
+
+不旋转且不带电的黑洞称为\textbf{史瓦西黑洞}，其视界半径为：
+\begin{equation}
+    r_S = \frac{2GM}{c^2}
+\end{equation}
+所有进入视界的物质，包括光子，都不可能从视界出来。
+
+忽略掉$2\pi$等等的因子，普朗克质量的意义大约是一个史瓦西半径等同于康普顿波长的黑洞所带有的质量。这给出了微观粒子的质量上限。
+\begin{equation}
+    \frac{2Gm}{c^2} = \frac{2\pi\hbar}{mc}
+\end{equation}
+忽略数学常数可以化为：
+\begin{equation}
+    \frac{Gm}{c^2} = \frac{\hbar}{mc}
+\end{equation}
+解得：
+\begin{equation}
+    m_P = \sqrt{\frac{\hbar c}{G}} = 21.765\,\mu\mathrm{g}
+\end{equation}
+这黑洞的半径大约是普朗克长度：
+\begin{equation}
+    l_P = \sqrt{\frac{\hbar}{Gc^3}} = 1.616 \times 10^{-35}\,\mathrm{m}
+\end{equation}
+普朗克时间是普朗克长度除以光速：
+\begin{equation}
+    t_P = \sqrt{\frac{\hbar}{Gc^5}} = 5.391 \times 10^{-44}\,\mathrm{s}
+\end{equation}
 
 \end{document}

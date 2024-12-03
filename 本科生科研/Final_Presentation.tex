@@ -37,6 +37,10 @@
     urlcolor=cyan,
     citecolor=cyan,
 }
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage[backend=biber,sorting=none]{biblatex}
+\addbibresource{reference.bib}
 
 \title{\textbf{宇宙射线成像系统模拟}}
 \date{\kaishu{
@@ -60,11 +64,11 @@
 \begin{frame}{\textbf{基本原理}}
     \begin{itemize}
         \item 宇宙射线：来自外太空的高能粒子及其次级粒子。到达海平面的的宇宙射线中主要成分是μ子。
-        
+
         \item 宇宙射线中的μ子，平均能量在$3 \sim 4\,\mathrm{GeV}$之间。μ子的流强约为每分钟每平方厘米一个，速度接近光速。
 
         \item 通量稳定、天然易获取、易探测、对人体和被探测物质无副作用。
-        
+
         \item 利用μ子对未知物体进行鉴别和成像是一个很有前景的研究领域，尤其是对于重核物质的探测，在核安全领域有重要利用。
     \end{itemize}
 \end{frame}
@@ -93,14 +97,14 @@
         \lambda = \left(\frac{E_0}{p_0\beta c}\right)^2 \frac{1}{L_{\mathrm{rad}}} = \left(\frac{p}{p_0}\right)^2 \frac{\sigma_\theta^2}{L},\quad p_0 = 3\,\mathrm{GeV}/c^2
     \]
     $\lambda$越大，物质原子序数$Z$越大。
-    \\~\\
+
     成像算法目的：通过计算$\sigma_\theta$、$p$、$L$，还原成像区域散射强度$\lambda$的分布情况，进而得出被散射物质的位置和原子序数$Z$的高低。
 \end{frame}
 
 \begin{frame}{\textbf{成像算法研究}}
     \begin{itemize}
-        \item 研究PoCA算法并改进PoCA算法在$z$方向的成像质量 \\~\\
-        \item 比较比例算法与PoCA算法在判断不同Z值物质时的成像质量
+        \item 研究PoCA算法并改进PoCA算法在$z$方向的成像质量
+        \item 比较比例算法与PoCA算法在判断不同$Z$值物质时的成像质量
     \end{itemize}
 \end{frame}
 
@@ -112,11 +116,25 @@
         \includegraphics[width=0.4\linewidth]{PoCA.png}
     \end{figure}
     \begin{itemize}
-        \item PoCA：Point of Closest Approach，最基础的算法
+        \item PoCA：Point of Closest Approach，最基础的算法\cite{schultz2004image}
         \item 思路：将多次散射等效为一次散射，入射、出射矢量距离的中点为散射点，夹角为散射角，进而判断位置和原子序数
         \item 优点：算法稳定可靠，实现简单，时间复杂度低
         \item 缺点：由于散射角较小的限制，散射点在$z$方向（竖直方向）判断不精确，边缘处容易出界
     \end{itemize}
+    \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[>=Stealth,scale=0.5]
+            \draw [->] (3,0) -- (5,0);
+            \draw (4.5,0.35) node {\small $z$};
+            \draw [<-] (-5,0) -- (0,1);
+            \draw [<-] (0,1) -- (5,1.5);
+            \draw [<-,color=red,dashed] (-3,0.4) -- (5,1.5);
+            \fill (0,1) circle [radius=1.5pt];
+            \fill [red] (-3,0.4) circle [radius=1.5pt];
+            \draw (-0.25,1.35) node {\tiny $\mathbf{M}$};
+            \draw (-3.3,0.75) [red] node {\tiny $\mathbf{M}'$};
+        \end{tikzpicture}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{\textbf{PoCA算法相关研究}}
@@ -182,14 +200,14 @@
     注意到散射角越小，$z$方向的误差越大，考虑对散射角为$\theta$（以弧度为单位）的粒子事件进行如下操作：
     \begin{itemize}
         \item 设置标准差$\sigma = K\theta$，这里取$K=100$。
-    
+
         \item 对于正态分布$N(0,\sigma)$，在$[-n,n]$以内的概率是$\erf\left(\dfrac{n}{\sigma\sqrt{2}}\right)$，则有：
         \[
             \delta_1 = \erf\left(\frac{1}{\sigma\sqrt{2}}\right),\quad
             \delta_2 = \frac{1}{2}\left(\erf\left(\frac{2}{\sigma\sqrt{2}}\right) - \delta_1\right),\quad
-            \delta_3 = \frac{1}{2} - \frac{1}{2}\delta_1 - \delta_2
+            \delta_3 = \frac{1}{2} - \frac{\delta_1}{2} - \delta_2
         \]
-        
+
         \item 在PoCA散射点$\mathbf{M}(x,y,z)$处，$\lambda_{ij} = \delta_1\Delta\lambda$，在$(x,y,z+1)$和$(x,y,z-1)$的位置，$\lambda_{ij} = \delta_2\Delta\lambda$，在$(x,y,z+2)$和$(x,y,z-2)$的位置，$\lambda_{ij} = \delta_3\Delta\lambda$。
     \end{itemize}
 \end{frame}
@@ -210,7 +228,7 @@
 \begin{frame}{\textbf{比例算法}}
     \begin{columns}
         \begin{column}{0.6\linewidth}
-            文群刚等在2020年提出比例算法：
+            文群刚等在文献\cite{liu2020study}中提出比例算法：
             \begin{itemize}
                 \item 思路：散射角是一个类高斯分布，散射角的标准差$\sigma_\theta$随散射体的$Z$增大而增大。计算一定角度$\theta_0$内散射的事件占总事件数的比例$R$，比例越低，散射体的$Z$也就越大
                 \item 优点：几乎不利用散射角数据本身，提取有效数据，μ子动量对散射角标准差影响较小
@@ -228,9 +246,9 @@
 
 \begin{frame}{\textbf{比例算法相关研究}}
     \textbf{数据来源}
-    
+
     在研究组2014年的测试中，我们使用有效边长为$203\,\mathrm{mm} \times 203\,\mathrm{mm}$的RPC探测器对边长为$30\,\mathrm{mm}$的正方体铁块和铅块做了成像实验。
-    \\~\\
+
     这里运用比例算法对探测结果成像，并与PoCA算法的结果做对比。数据处理大约需要$40\,\mathrm{s}$，而PoCA算法只需要约$1\mathrm{s}$。
 \end{frame}
 
@@ -261,6 +279,12 @@
     \end{itemize}
 \end{frame}
 
+\section{参考文献}
+
+\begin{frame}{\textbf{参考文献}}
+    \printbibliography
+\end{frame}
+
 \begin{frame}[plain]
     \begin{center}
         \Huge
@@ -269,4 +293,3 @@
 \end{frame}
 
 \end{document}
-
