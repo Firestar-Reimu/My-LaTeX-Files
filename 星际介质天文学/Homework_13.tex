@@ -1,0 +1,212 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年5月31日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[41.1 (a)]
+    由题意：
+    \[
+        \rho(z) =
+        \begin{+cases}
+            &\rho,\quad |z| \leqslant H \\
+            &0,\quad |z| > H
+        \end{+cases}
+    \]
+    引力势$\Phi$满足Poisson方程：
+    \[
+        \nabla^2 \Phi = 4\pi G\rho(z)
+    \]
+    根据对称性，$\Phi$只有$z$方向的分量，即：
+    \[
+        \begin{+cases}
+            &\pdv[2,style-frac=\dfrac]{\Phi_1}{z} = 4\pi G\rho,\quad |z| \leqslant H \\
+            &\pdv[2,style-frac=\dfrac]{\Phi_2}{z} = 0,\quad |z| > H
+        \end{+cases}
+    \]
+    边界条件为：
+    \[
+        \Phi_1 = \nabla \Phi_1 = 0\quad (z = 0)
+    \]
+    \[
+        \Phi_1 = \Phi_2,\quad \nabla \Phi_1 = \nabla \Phi_2\quad (z = H)
+    \]
+    积分得：
+    \[
+        \Phi_1 = 2\pi G\rho z^2 + C_1 z + C_2
+    \]
+    \[
+        \Phi_2 = C_3 z + C_4
+    \]
+    根据$z = 0$处的边界条件：
+    \[
+        \nabla \Phi_1 = C_1 = 0,\quad \Phi_1 = C_2 = 0 \implies \Phi_1 = 2\pi G\rho z^2
+    \]
+    根据$z = H$处的边界条件：
+    \[
+        \nabla \Phi_2 = C_3 = 4\pi G\rho H,\quad \Phi_2 = C_3 H + C_4 = 2\pi G\rho H^2 \implies \Phi_2 = 4\pi G\rho Hz - 2\pi G\rho H^2
+    \]
+    故有：
+    \[
+        \Phi(z) =
+        \begin{+cases}
+            &2\pi G\rho z^2,\quad |z| \leqslant H \\
+            &4\pi G\rho Hz - 2\pi G\rho H^2,\quad |z| > H
+        \end{+cases}
+    \]
+    而重力加速度为：
+    \[
+        g(z) = -\nabla\Phi(z) =
+        \begin{+cases}
+            &-4\pi G\rho z,\quad |z| \leqslant H \\
+            &-4\pi G\rho H,\quad |z| > H
+        \end{+cases}
+    \]
+    当然也可以用Gauss定理求解重力加速度：
+    \[
+        \oiint_S \mathbf{g} \cdot \d{\mathbf{n}} = -4\pi G \iiint_V \rho \d{V}
+    \]
+    选取底面积为$S$、高度为$z$、底面位于$z=0$平面的柱体表面为闭合曲面，由于$z = 0$处$g = 0$，且根据对称性$\mathbf{g}$只有$z$方向的分量，可得：
+    \[
+        \begin{+cases}
+            &gS = -4\pi G (\rho Sz),\quad |z| \leqslant H \\
+            &gS = -4\pi G (\rho SH),\quad |z| > H
+        \end{+cases}
+    \]
+    同样可以得到：
+    \[
+        g(z) =
+        \begin{+cases}
+            &-4\pi G\rho z,\quad |z| \leqslant H \\
+            &-4\pi G\rho H,\quad |z| > H
+        \end{+cases}
+    \]
+
+    \medskip
+    \item[41.1 (b)]
+    磁压的表达式为$p_B = \dfrac{B^2}{8\pi}$，引力导致的气压为$p = -\rho(\nabla\Phi)z$，在气体盘内部两者平衡，则有：
+    \[
+        \nabla\ab(\frac{B^2}{8\pi}) = -\rho \nabla\Phi
+    \]
+    即：
+    \[
+        \odv*{\ab(\frac{B^2}{8\pi})}{z} = \rho g(z) = -4\pi G\rho^2 z,\quad |z| \leqslant H
+    \]
+    边界条件为：
+    \[
+        B = B_0\quad (z = H)
+    \]
+    解得：
+    \[
+        B(z) = \sqrt{B_0^2 - 16\pi^2 G\rho^2 (z^2 - H^2)},\quad |z| \leqslant H
+    \]
+    在气体盘中心处（$z = 0$）磁场最强，越往外磁场越弱。
+
+    \medskip
+    \item[41.1 (c)]
+    由(41.55)式：
+    \[
+        v_{in} = -\frac{m_i + m_n}{m_i m_n} \frac{1}{n_i n_n \ab<\sigma v>_{\mathrm{mt}}} \nabla\ab(\frac{B^2}{8\pi})
+    \]
+    可得在气体盘内部，双极性扩散的速度为：
+    \begin{align*}
+        v_{in}
+        &= \frac{m_i + m_n}{m_i m_n} \frac{1}{n_i n_n \ab<\sigma v>_{\mathrm{mt}}} \rho \nabla\Phi \\
+        &= -\frac{m_i + m_n}{m_i m_n} \frac{1}{n_i n_n \ab<\sigma v>_{\mathrm{mt}}} \rho g(z) \\
+        &= \frac{m_i + m_n}{m_i m_n} \frac{1}{n_i n_n \ab<\sigma v>_{\mathrm{mt}}} 4\pi G\rho^2 z \\
+        &= \frac{m_i + m_n}{m_i m_n} \frac{1}{(x_i \rho/m_n) (\rho/m_n) \ab<\sigma v>_{\mathrm{mt}}} 4\pi G\rho^2 z \\
+        &= \frac{m_i + m_n}{m_i m_n} \frac{m_n^2}{x_i \rho^2 \ab<\sigma v>_{\mathrm{mt}}} 4\pi G\rho^2 z \\
+        &= \frac{4\pi Gm_n (m_i + m_n) z}{x_i m_i \ab<\sigma v>_{\mathrm{mt}}}
+    \end{align*}
+
+    \medskip
+    \item[41.1 (d)]
+    在气体盘内部，双极性扩散的时标为：
+    \[
+        \tau = \frac{z}{v_{in}} = \frac{x_i m_i \ab<\sigma v>_{\mathrm{mt}}}{4\pi Gm_n (m_i + m_n)}
+    \]
+    代入数据得：
+    \[
+        \tau = \frac{10^{-6} \times 9 \times \ab(1.9 \times 10^{-9}\,\mathrm{cm^3/s})}{4\pi \times \ab(6.674 \times 10^{-8}\,\mathrm{cm^3 \cdot g^{-1} \cdot s^{-2}}) \times \ab(20 \times 1.6735 \times 10^{-24}\,\mathrm{g})} = 6.09 \times 10^{14}\,\mathrm{s}
+    \]
+    这相当于$1.93 \times 10^7\,\mathrm{yr}$。
+
+    \bigskip
+    \item[41.2]
+    根据理想气体状态方程$p_0 = nkT$，以及$c_s = \sqrt{p_0/\rho_0}$可得：
+    \begin{align*}
+        M_{\mathrm{BE}}
+        &= \frac{225}{32\sqrt{5\pi}} \frac{1}{(aG)^{3/2}}p_0^{3/2}\rho_0^{-2} \\
+        &= \frac{225}{32\sqrt{5\pi}} \frac{1}{(aG)^{3/2}} (nkT)^{3/2} (n\mu)^{-2} \\
+        &= \frac{225}{32\sqrt{5\pi}} \ab(\frac{k}{aG})^{3/2} \mu^{-2} T^{3/2} n^{-1/2}
+    \end{align*}
+    对于原始中性氢云，$n_{\mathrm{He}}/n_{\mathrm{H}} = 0.082$，则平均分子质量：
+    \[
+        \mu = \frac{\sum n_i m_i}{\sum n_i} = \frac{1 \times 1.008\,\mathrm{u} + 0.082 \times 4.026\,\mathrm{u}}{1 + 0.082} \approx 1.237\,\mathrm{u}
+    \]
+    代入$a = 1.67$，$n_{\mathrm{H}}(z) = 0.197\ab(\dfrac{1+z}{101})^3\,\mathrm{cm^{-3}}$和$T(z) = 180\ab(\dfrac{1+z}{101})^2\,\mathrm{K}$得：
+    \[
+        M_{\mathrm{BE}} = 5.02 \times 10^4 \ab(\frac{1+z}{101})^{3/2}\,M_\odot
+    \]
+
+    \bigskip
+    \item[41.3]
+    由题意，这是一个不旋转、无磁场的等温内核，其最大质量为Bonnor-Ebert质量$M_{\mathrm{BE}}$：
+    \[
+        M_{\mathrm{BE}} = \frac{225}{32\sqrt{5\pi}} \frac{c_s^4}{(aG)^{3/2}}\frac{1}{\sqrt{p_0}}
+    \]
+    在这个气体云中，氢主要以分子形式存在，则$n(\mathrm{H_2}) = 500\,\mathrm{cm^{-3}}$，注意还有氦元素，$n_{\mathrm{He}}/n_{\mathrm{H}} = 9.55 \times 10^{-2}$，则$n(\mathrm{He}) = 95.5\,\mathrm{cm^{-3}}$。
+
+    因此$n \approx 595.5\,\mathrm{cm^{-3}}$，平均分子质量：
+    \[
+        \mu = \frac{\sum n_i m_i}{\sum n_i} = \frac{500 \times 2.016\,\mathrm{u} + 95.5 \times 4.026\,\mathrm{u}}{500 + 95.5} \approx 2.338\,\mathrm{u}
+    \]
+    这个$\mu$值对分子氢云都适用。
+
+    根据理想气体状态方程$p_0 = nkT$，以及$c_s = \sqrt{p_0/\rho_0}$可得：
+    \begin{align*}
+        M_{\mathrm{BE}}
+        &= \frac{225}{32\sqrt{5\pi}} \frac{1}{(aG)^{3/2}}p_0^{3/2}\rho_0^{-2} \\
+        &= \frac{225}{32\sqrt{5\pi}} \frac{1}{(aG)^{3/2}} (nkT)^{3/2} (n\mu)^{-2} \\
+        &= \frac{225}{32\sqrt{5\pi}} \ab(\frac{k}{aG})^{3/2} \mu^{-2} T^{3/2} n^{-1/2} \\
+        &= 0.26 \times \ab(\frac{T}{10\,\mathrm{K}})^2 \ab(\frac{10^5\,\mathrm{cm^{-3}} \times 10\,\mathrm{K}}{nT})\,M_\odot \\
+        &= 0.26 \times (1.2)^2 \times \ab(\frac{10^6}{595.5 \times 12})^{1/2}\,M_\odot \\
+        &= 4.4\,M_\odot
+    \end{align*}
+    即最大可能形成的密度峰值区域的质量为$4.4\,M_\odot$。
+\end{enumerate}
+
+\end{document}

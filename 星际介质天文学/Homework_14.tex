@@ -1,0 +1,133 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年5月31日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[42.1 (a)]
+    假设：
+    \begin{itemize}
+        \item 所有能量$h\nu > 13.6\,\mathrm{eV}$的光子都被中性氢吸收；
+        \item 光致电离与复合平衡；
+        \item 复合发生在(14.2)章的B情况下，即能量$h\nu > 13.6\,\mathrm{eV}$的光子是光厚的，此时复合辐射出的$h\nu > 13.6\,\mathrm{eV}$的光子会立刻被重新吸收，通过光致电离产生新的离子和电子；
+        \item $\mathrm{H}\alpha$不会被尘埃消光；
+        \item $\mathrm{H}\alpha$没有其它来源。
+    \end{itemize}
+    考虑所有能量$h\nu > 13.6\,\mathrm{eV}$的光子导致情况B的复合辐射，速率常数为$\alpha_B$，而一部分复合辐射为$\mathrm{H}\alpha$，速率常数为$\alpha_{\mathrm{eff},\mathrm{H}\alpha}$，则$\mathrm{H}\alpha$的亮度为：（此处$E(\mathrm{H}\alpha) = hc/6564.6\,\ang = 3.026 \times 10^{-12}\,\mathrm{erg}$）
+    \[
+        F(\mathrm{H}\alpha) = \frac{Q_0 E(\mathrm{H\alpha})}{4\pi D^2} \times \frac{\alpha_{\mathrm{eff, H}\alpha}}{\alpha_B}
+    \]
+    于是有：
+    \[
+        Q_0 = \frac{4\pi D^2 F(\mathrm{H}\alpha)}{E(\mathrm{H}\alpha)} \times \frac{\alpha_B}{\alpha_{\mathrm{eff, H}\alpha}} = 1.37 \times 10^{53} \ab(\frac{\mathrm{SFR}}{M_\odot\,\mathrm{yr^{-1}}})\,\mathrm{s^{-1}}
+    \]
+    则：
+    \[
+        \frac{\mathrm{SFR}}{M_\odot\,\mathrm{yr^{-1}}} = \frac{4\pi D^2 F(\mathrm{H}\alpha)/E(\mathrm{H}\alpha)}{1.37 \times 10^{53}\,\mathrm{s^{-1}}} \times \frac{\alpha_B}{\alpha_{\mathrm{eff, H}\alpha}}
+    \]
+    代入(14.6)式给出的$\alpha_B$和(14.8)式给出的$\alpha_{\mathrm{eff},\mathrm{H}\alpha}$表达式：
+    \[
+        \alpha_B = 2.54 \times 10^{-13} Z^2 (T_4/Z^2)^{-0.816-0.021\ln(T_4/Z^2)}\,\mathrm{cm^3/s}
+    \]
+    \[
+        \alpha_{\mathrm{eff, H}\alpha} = 1.17 \times 10^{-13} (T_4)^{-0.942-0.031\ln{T_4}}\,\mathrm{cm^3/s}
+    \]
+    对于氢，$Z=1$，可得恒星形成率为：
+    \begin{align*}
+        \frac{\mathrm{SFR}}{M_\odot\,\mathrm{yr^{-1}}}
+        &= \frac{4\pi D^2 F(\mathrm{H}\alpha)/E(\mathrm{H}\alpha)}{1.37 \times 10^{53}\,\mathrm{s^{-1}}} \times \frac{\alpha_B}{\alpha_{\mathrm{eff, H}\alpha}} \\
+        &= \frac{4\pi D^2 F(\mathrm{H}\alpha)/E(\mathrm{H}\alpha)}{1.37 \times 10^{53}\,\mathrm{s^{-1}}} \times \frac{2.54 \times 10^{-13} T_4^{-0.816-0.021\ln{T_4}}}{1.17 \times 10^{-13} T_4^{-0.942-0.031\ln{T_4}}} \\
+        &= \frac{4\pi D^2 F(\mathrm{H}\alpha)}{1.91 \times 10^{41}\,\mathrm{erg/s}} \times T_4^{0.126+0.010\ln{T_4}}
+    \end{align*}
+
+    \medskip
+    \item[42.1 (b)]
+    假设：
+    \begin{itemize}
+        \item 所有能量$h\nu > 13.6\,\mathrm{eV}$的光子都被中性氢吸收；
+        \item 光致电离与复合平衡；
+        \item 复合发生在(14.2)章的情况B下，即能量$h\nu > 13.6\,\mathrm{eV}$的光子是光厚的，此时复合辐射出的$h\nu > 13.6\,\mathrm{eV}$的光子会立刻被重新吸收，通过光致电离产生新的离子和电子，因此$n=1$的复合不会减少气体的电离度；
+        \item 同一波段的其它辐射（如同步辐射和旋转尘埃辐射）可以忽略；
+        \item 气体云中的复合辐射与轫致辐射仅来源于氢原子，忽略氦和其它重元素的贡献。
+    \end{itemize}
+    考虑所有能量$h\nu > 13.6\,\mathrm{eV}$的光子导致情况B的复合辐射，速率常数为$\alpha_B$，而这其中的一部分产生轫致辐射，辐射速率如(10.8)式所示：
+    \[
+        j_{\mathrm{ff},\nu} = 3.35 \times 10^{-40} Z_i^{1.882} n_i n_e \nu_9^{-0.118} T_4^{-0.323}\,\mathrm{erg \cdot cm^3 \cdot s^{-1} \cdot {sr}^{-1} \cdot Hz^{-1}}
+    \]
+    则轫致辐射的亮度为：
+    \[
+        F_\nu = \frac{Q_0}{4\pi D^2} \times \frac{4\pi j_{\mathrm{ff},\nu}/(n_i n_e)}{\alpha_B}
+    \]
+    其中$n_i$为离子（即$\mathrm{H^+}$）的数密度，$n_e$为电子的数密度，对于氢$Z = 1$。
+
+    代入(14.6)式给出的$\alpha_B$可得：
+    \begin{align*}
+        F_\nu
+        &= \frac{Q_0}{D^2} \times \frac{j_{\mathrm{ff},\nu}/(n_i n_e)}{\alpha_B} \\
+        &= \frac{Q_0}{D^2} \times \frac{3.35 \times 10^{-40} \nu_9^{-0.118} T_4^{-0.323}}{2.54 \times 10^{-13} T_4^{-0.816-0.021\ln{T_4}}} \\
+        &\approx \frac{Q_0}{D^2} \times \ab(1.319 \times 10^{-27} \nu_9^{-0.118} T_4^{0.493})
+    \end{align*}
+    这里省略了指数上太小的对数项。
+
+    于是有：
+    \begin{align*}
+        Q_0
+        &= \frac{D^2 F_\nu}{1.319 \times 10^{-27}\,\mathrm{erg \cdot s^{-1} \cdot Hz^{-1}}} \nu_9^{-0.118} T_4^{0.493}\,\mathrm{s^{-1}} \\
+        &= \ab(7.582 \times 10^{26}\,\mathrm{s^{-1}}) \nu_9^{-0.118} T_4^{0.493} \times \frac{D^2 F_\nu}{\mathrm{erg \cdot s^{-1} \cdot Hz^{-1}}}
+    \end{align*}
+    则恒星形成率为：
+    \begin{align*}
+        \frac{\mathrm{SFR}}{M_\odot\,\mathrm{yr^{-1}}}
+        &= \frac{7.582 \times 10^{26}}{1.37 \times 10^{53}} \nu_9^{-0.118} T_4^{0.493} \times \frac{D^2 F_\nu}{\mathrm{erg \cdot s^{-1} \cdot Hz^{-1}}} \\
+        &= 5.53 \times 10^{-27} \nu_9^{-0.118} T_4^{0.493} \times \frac{D^2 F_\nu}{\mathrm{erg \cdot s^{-1} \cdot Hz^{-1}}}
+    \end{align*}
+
+    \bigskip
+    \item[42.2]
+    根据：
+    \[
+        \frac{\mathrm{SFR}}{M_\odot \cdot \mathrm{yr^{-1}}} = \frac{4\pi D^2 F(\mathrm{H}\alpha)}{1.52 \times 10^{40}\,\mathrm{erg/s}} T_4^{0.126+0.010\ln{T_4}}
+    \]
+    假设电离氢区的电子温度为$T = 10^4\,\mathrm{K}$，即$T_4 = 1$，则：
+    \[
+        \mathrm{SFR} = \frac{4\pi \times (3.086 \times 10^{19})^2 \times 4 \times 10^{-11}}{1.52 \times 10^{40}} M_\odot\,\mathrm{yr^{-1}} = 31.5\,M_\odot \cdot \mathrm{yr^{-1}}
+    \]
+    则电离氢发出光子的速率为：
+    \[
+        Q_0 = 1.37 \times 10^{53} \ab(\frac{\mathrm{SFR}}{M_\odot \cdot \mathrm{yr^{-1}}})\,\mathrm{s^{-1}} = 4.31 \times 10^{54}\,\mathrm{s^{-1}}
+    \]
+
+\end{enumerate}
+
+\end{document}

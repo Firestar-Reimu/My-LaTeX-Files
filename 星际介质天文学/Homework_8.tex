@@ -1,0 +1,188 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年4月19日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[5.1 (a)]
+    由(5.2)式得：
+    \[
+        E(v,J) = V_q(r_0) + h\nu_0\ab(v+\frac{1}{2}) + B_v J(J+1) = \Phi(v,r_0) + B_v J(J+1)
+    \]
+    即$v$和$r_0$固定时，只有最后一项随$J$改变而改变，则：
+    \[
+        E(v=0,\, J) - E(v=0,\, J=0) = B_v J(J+1) = \frac{\hbar^2}{2m_r r_0^2} J(J+1)
+    \]
+    对于$\mathrm{H_2}$，单个原子的约化质量为：
+    \[
+        m_r = \frac{m_H m_H}{m_H + m_H} = \frac{1}{2}m_H = \frac{1}{2} \times 1.0078\,\mathrm{u} = 0.5039\,\mathrm{u}
+    \]
+    则$B_v$的值为：
+    \[
+        B_v = \frac{\hbar^2}{2m_r r_0^2} = 7.554\,\mathrm{meV}
+    \]
+    故：
+    \[
+        E(v=0,\, J) - E(v=0,\, J=0) =
+        \begin{cases}
+            & 2B_v = 15.108\,\mathrm{meV},\quad J = 1 \\
+            & 6B_v = 45.325\,\mathrm{meV},\quad J = 2 \\
+            & 12B_v = 90.649\,\mathrm{meV},\quad J = 3
+        \end{cases}
+    \]
+    相应的温度为：
+    \[
+        [E(v=0,\, J) - E(v=0,\, J=0)]/k_{\mathrm{B}} =
+        \begin{cases}
+            & 175.32\,\mathrm{K},\quad J = 1 \\
+            & 525.97\,\mathrm{K},\quad J = 2 \\
+            & 1051.94\,\mathrm{K},\quad J = 3
+        \end{cases}
+    \]
+
+    \medskip
+    \item[5.1 (b)]
+    对于$\mathrm{HD}$，两个原子的质量不同，单个原子的约化质量为：
+    \[
+        m_r = \frac{m_H m_D}{m_H + m_D} = \frac{1.0078\,\mathrm{u} \times 2.0141\,\mathrm{u}}{1.0078\,\mathrm{u} + 2.0141\,\mathrm{u}} = 0.6717\,\mathrm{u}
+    \]
+    则$B_v$的值为：
+    \[
+        B_v = \frac{\hbar^2}{2m_r r_0^2} = 5.667\,\mathrm{meV}
+    \]
+    故：
+    \[
+        E(v=0,\, J) - E(v=0,\, J=0) =
+        \begin{cases}
+            & 2B_v = 11.334\,\mathrm{meV},\quad J = 1 \\
+            & 6B_v = 34.002\,\mathrm{meV},\quad J = 2 \\
+            & 12B_v = 68.004\,\mathrm{meV},\quad J = 3
+        \end{cases}
+    \]
+    相应的温度为：
+    \[
+        [E(v=0,\, J) - E(v=0,\, J=0)]/k_{\mathrm{B}} =
+        \begin{cases}
+            & 131.52\,\mathrm{K},\quad J = 1 \\
+            & 394.57\,\mathrm{K},\quad J = 2 \\
+            & 789.15\,\mathrm{K},\quad J = 3
+        \end{cases}
+    \]
+
+    \medskip
+    \item[5.1 (c)]
+    对于$\mathrm{H_2}$的$J = 2 \to 0$谱线，能量$E_{2 \to 0} = 45.325\,\mathrm{meV}$，则波长为：
+    \[
+        \lambda_{2 \to 0} = \frac{hc}{E_{2 \to 0}} = 27.355\,\um
+    \]
+    对于$\mathrm{H_2}$的$J = 3 \to 1$谱线，能量$E_{3 \to 1} = 90.649\,\mathrm{meV} - 15.108\,\mathrm{meV}$，则波长为：
+    \[
+        \lambda_{3 \to 1} = \frac{hc}{E_{3 \to 1}} = 16.413\,\um
+    \]
+
+    \medskip
+    \item[5.1 (d)]
+    对于$\mathrm{HD}$，波长最长的谱线对应于能量最小，即$J = 1 \to 0$，能量为$E_{1 \to 0} = 11.334\,\mathrm{meV}$，则波长为：
+    \[
+        \lambda_{1 \to 0} = \frac{hc}{E_{1 \to 0}} = 109.392\,\um
+    \]
+
+    \bigskip
+    \item[30.1 (a)]
+    由(13.3)式得：
+    \[
+        \sigma_{\mathrm{pe}} \approx \sigma_0 \ab(\frac{h\nu}{Z^2 I_H})^{-3} = \sigma_0 \ab(\frac{h\nu}{I_{\mathrm{H}}})^{-3},\quad I_{\mathrm{H}} = \frac{1}{2}\alpha^2 m_e c^2 = 13.66\,\mathrm{eV}
+    \]
+    又由(13.5)式得：
+    \[
+        \zeta = \int_{\nu_1}^{\nu_2} \sigma_{\mathrm{pe}} c \frac{u_\nu}{h\nu} \d{\nu} = \int_{h\nu_1}^{h\nu_2} \sigma_{\mathrm{pe}} c \frac{\nu u_\nu}{(h\nu)^2} \d{h\nu}
+    \]
+    记$h\nu_1 = 0.4\,\mathrm{keV}$、$h\nu_2 = 1\,\mathrm{keV}$，并记$E_0 = 400\,\mathrm{eV} = 0.4\,\mathrm{keV}$，得：
+    \begin{align*}
+        \zeta
+        &= \int_{h\nu_1}^{h\nu_2} \sigma_{\mathrm{pe}} \frac{c}{(h\nu)^2} (\nu u_\nu) \d(h\nu) \\
+        &= \int_{h\nu_1}^{h\nu_2} \sigma_0 \ab(\frac{h\nu}{I_{\mathrm{H}}})^{-3} \cdot \frac{c}{(h\nu)^2} \cdot u_0 \ab(\frac{h\nu}{E_0})^\beta \d(h\nu) \\
+        &= \frac{\sigma_0 I_{\mathrm{H}}^3 cu_0}{E_0^\beta} \int_{h\nu_1}^{h\nu_2} (h\nu)^{\beta-5} \d(h\nu) \\
+        &= \frac{\sigma_0 I_{\mathrm{H}}^3 cu_0}{E_0^\beta} \cdot \frac{h\nu_2^{\beta-4} - h\nu_1^{\beta-4}}{\beta - 4}
+    \end{align*}
+    代入数据得：
+    \[
+        \zeta = (2.5186 \times 10^{-6}\,\mathrm{keV^{-1}})u_0 c\sigma_0 \cdot \frac{1 - 0.4^{\beta - 4}}{0.4^\beta (\beta - 4)}
+    \]
+
+    \medskip
+    \item[30.1 (b)]
+    当$\beta = 2$时：
+    \[
+        \zeta = (2.5186 \times 10^{-6}\,\mathrm{keV^{-1}})u_0 c\sigma_0 \cdot \frac{1 - 0.4^{-2}}{0.4^{-2} \times (-2)} = 4.874 \times 10^{-21}\,\mathrm{s^{-1}}
+    \]
+    由$\zeta$的表达式可见：$\beta < 4$时，$h\nu_1^{\beta-4} > h\nu_2^{\beta-4}$，光致电离受低能X射线主导；$\beta > 4$时，$h\nu_2^{\beta-4} > h\nu_1^{\beta-4}$，光致电离受高能X射线主导。当$\beta = 2$时，光致电离受低能X射线主导。
+
+    \medskip
+    \item[30.1 (c)]
+    光子的平均能量可以如下计算：
+    \[
+        \ab<h\nu> = \frac{\int u_\nu \sigma_{\mathrm{pe}} \d{\nu}}{\int \frac{u_\nu}{h\nu} \sigma_{\mathrm{pe}} \d{\nu}} = \frac{\int \frac{h\nu u_\nu}{h\nu} \sigma_{\mathrm{pe}} \d{\nu}}{\int \frac{h\nu u_\nu}{(h\nu)^2} \sigma_{\mathrm{pe}} \d{\nu}} = \frac{\int \frac{\nu u_\nu}{h\nu} \sigma_{\mathrm{pe}} \d(h\nu)}{\int \frac{\nu u_\nu}{(h\nu)^2} \sigma_{\mathrm{pe}} \d(h\nu)}
+    \]
+    代入$\nu u_\nu = u_0 \ab(\dfrac{h\nu}{E_0})^\beta$，$\sigma_{\mathrm{pe}} = \sigma_0 \ab(\frac{h\nu}{I_{\mathrm{H}}})^{-3}$，并从$h\nu_1$到$h\nu_2$积分得：
+    \begin{align*}
+        \ab<h\nu>
+        &= \frac{u_0 E_0^{-\beta} \sigma_0 I_{\mathrm{H}}^{-3} \int_{h\nu_1}^{h\nu_2} (h\nu)^{\beta-4} \d(h\nu)}{u_0 E_0^{-\beta} \sigma_0 I_{\mathrm{H}}^{-3} \int_{h\nu_1}^{h\nu_2} (h\nu)^{\beta-5} \d(h\nu)} \\
+        &= \frac{\int_{h\nu_1}^{h\nu_2} (h\nu)^{\beta-4} \d(h\nu)}{\int_{h\nu_1}^{h\nu_2} (h\nu)^{\beta-5} \d(h\nu)} \\
+        &= \frac{\beta - 4}{\beta - 3} \cdot \frac{(h\nu_2)^{\beta - 3} - (h\nu_1)^{\beta - 3}}{(h\nu_2)^{\beta - 4} - (h\nu_1)^{\beta - 4}} \\
+        &= \frac{\beta - 4}{\beta - 3} \cdot \frac{1 - 0.4^{\beta - 3}}{1 - 0.4^{\beta - 4}}\,\mathrm{keV} \\
+    \end{align*}
+    当$\beta = 2$时：
+    \[
+        \ab<h\nu> = \frac{-2}{-1} \cdot \frac{1 - 0.4^{-1}}{1 - 0.4^{-2}}\,\mathrm{keV} = 571.4\,\mathrm{eV}
+    \]
+
+    \medskip
+    \item[30.1 (d)]
+    根据(13.6)式，每个光电子产生的二次电离次数为：
+    \[
+        \phi_s \approx \ab(1 - \frac{x_e}{1.2}) \ab(\frac{E - 15\,\mathrm{eV}}{35\,\mathrm{eV}}) \ab[1 + \frac{18x_e^{0.8}}{\ln(E/35\,\mathrm{eV})}]
+    \]
+    光电子的平均能量为$E = \ab<h\nu> - \Delta E$，此处$\Delta E$为$\mathrm{H}$和$\mathrm{He}$的平均电离能：
+    \[
+        \Delta E \approx 92.6\% \times 13.6\,\mathrm{eV} + 7.4\% \times 24.6\,\mathrm{eV} = 14.4\,\mathrm{eV}
+    \]
+    则$E = 557\,\mathrm{eV}$，计算得：
+    \[
+        \phi_s = \ab(1 - \frac{4 \times 10^{-4}}{1.2}) \ab(\frac{557 - 15}{35}) \ab[1 + \frac{18(4 \times 10^{-4})^{0.8}}{\ln(557/35)}] = 15.7
+    \]
+
+\end{enumerate}
+
+\end{document}

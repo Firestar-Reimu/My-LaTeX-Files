@@ -1,0 +1,65 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年5月3日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[32.1 (a)]
+    巨分子云的总质量为：
+    \begin{align*}
+        M_{\mathrm{tot}}
+        &= \int_{10^3\,M_\odot}^{M_u} M\d{N} \\
+        &= \int_{10^3\,M_\odot}^{M_u} M\odv{N}{M} \d{M} \\
+        &= \int_{10^3\,M_\odot}^{M_u} \odv{N}{\ln{M}} \d{M} \\
+        &= \int_{10^3\,M_\odot}^{M_u} N_u \ab(\frac{M}{M_u})^{-\alpha} \d{M} \\
+        &= \int_{10^3}^{6 \times 10^6} 63 \times \ab(\frac{x}{6 \times 10^6})^{-0.6}\,M_\odot \d{x},\quad x = \frac{M}{M_\odot} \\
+        &= 9.16 \times 10^8\,M_\odot
+    \end{align*}
+
+    \medskip
+    \item[32.1 (b)]
+    质量大于$10^6\,M_\odot$的巨分子云的数量为：
+    \begin{align*}
+        N(M > 10^6\,M_\odot)
+        &= \int_{10^6\,M_\odot}^{M_u} \d{N} \\
+        &= \int_{10^6\,M_\odot}^{M_u} \odv{N}{M} \d{M} \\
+        &= \int_{10^6\,M_\odot}^{M_u} \odv{N}{\ln{M}} \frac{\d{M}}{M} \\
+        &= \int_{10^6\,M_\odot}^{M_u} \frac{N_u}{M} \ab(\frac{M}{M_u})^{-\alpha} \d{M} \\
+        &= \int_{10^6}^{6 \times 10^6} \frac{63}{x} \times \ab(\frac{x}{6 \times 10^6})^{-0.6} \d{x},\quad x = \frac{M}{M_\odot} \\
+        &= 203
+    \end{align*}
+
+\end{enumerate}
+
+\end{document}

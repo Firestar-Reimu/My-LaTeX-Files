@@ -1,0 +1,130 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年3月29日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[23.1 (a)]
+    在$a_{\mathrm{max}} < 2\lambda/\pi$时，单个氢原子在波长$\lambda$处的消光截面$\sigma_{\mathrm{ext}}(\lambda)$可以推导如下：
+    \begin{align*}
+        \sigma_{\mathrm{ext}}(\lambda)
+        &= \int_0^{a_{\mathrm{max}}} \pi a^2 \cdot Q_{\mathrm{ext}}(a, \lambda) \cdot \ab(\frac{1}{n_H} \cdot \odv{n}{a}) \d{a} \\
+        &= \int_0^{a_{\mathrm{max}}} 2\pi a^2 \ab(\frac{\pi a}{2 \lambda})^\beta \cdot \frac{A_0}{a_0} \ab(\frac{a}{a_0})^{-p} \d{a} \\
+        &= 2\pi A_0 a_0^{p-1} \ab(\frac{\pi}{2\lambda})^\beta \int_0^{a_{\mathrm{max}}} a^{2 + \beta - p} \d{a} \\
+        &= 2\pi A_0 a_0^{p-1} \ab(\frac{\pi}{2\lambda})^\beta \frac{a_{\mathrm{max}}^{3 + \beta - p}}{3 + \beta - p} \\
+        &= \frac{2\pi A_0 a_0^2}{3 + \beta - p} \ab(\frac{\pi a_0}{2\lambda})^\beta \ab(\frac{a_{\mathrm{max}}}{a_0})^{3 + \beta - p}
+    \end{align*}
+    即：
+    \[
+        \frac{\sigma_{\mathrm{ext}}(\lambda)}{\pi A_0 a_0^2} = \frac{2}{3 + \beta - p} \ab(\frac{\pi a_0}{2\lambda})^\beta \ab(\frac{a_{\mathrm{max}}}{a_0})^{3 + \beta - p}
+    \]
+    代入数据得：
+    \[
+        \frac{\sigma_{\mathrm{ext}}(\lambda_V)}{\pi A_0 a_0^2} = \frac{2}{3 + 1.5 - 3.5} \ab(\frac{\pi \times 0.1\,\um}{2 \times 0.55\,\um})^{1.5} \ab(\frac{0.25\,\um}{0.1\,\um})^{3 + 1.5 - 3.5} = 0.763
+    \]
+
+    \medskip
+    \item[23.1 (b)]
+    由于：
+    \[
+        \sigma_{\mathrm{ext}}(\lambda) = \frac{2\pi A_0 a_0^2}{3 + \beta - p} \ab(\frac{\pi a_0}{2\lambda})^\beta \ab(\frac{a_{\mathrm{max}}}{a_0})^{3 + \beta - p} \propto \lambda^{-\beta}
+    \]
+    则：
+    \[
+        \frac{\sigma_{\mathrm{ext}}(\lambda_B)}{\sigma_{\mathrm{ext}}(\lambda_V)} = \ab(\frac{\lambda_B}{\lambda_V})^{-\beta}
+    \]
+    代入数据得：
+    \[
+        \frac{\sigma_{\mathrm{ext}}(\lambda_B)}{\sigma_{\mathrm{ext}}(\lambda_V)} = \ab(\frac{0.44\,\um}{0.55\,\um})^{-1.5} = 1.398
+    \]
+
+    \medskip
+    \item[23.1 (c)]
+    由$A(\lambda) = 1.086\tau(\lambda) = 1.086n \sigma_{\mathrm{ext}}(\lambda) l$得：
+    \begin{align*}
+        R_V
+        &= \frac{A_V}{A_B - A_V} \\
+        &= \frac{\tau_V}{\tau_B - \tau_V} \\
+        &= \frac{\sigma_{\mathrm{ext}}(\lambda_V)}{\sigma_{\mathrm{ext}}(\lambda_B) - \sigma_{\mathrm{ext}}(\lambda_V)} \\
+        &= \frac{1}{\sigma_{\mathrm{ext}}(\lambda_B) / \sigma_{\mathrm{ext}}(\lambda_V) - 1} \\
+        &= \frac{1}{1.398 - 1} \\
+        &= 2.515
+    \end{align*}
+
+    \medskip
+    \item[23.1 (d)]
+    在$a_{\mathrm{max}} > 2\lambda/\pi$时，单个氢原子在波长$\lambda$处的消光截面$\sigma_{\mathrm{ext}}(\lambda)$需要考虑$[0,\ 2\lambda/\pi]$和$[2\lambda/\pi,\ a_{\mathrm{max}}]$这两部分的贡献，分别有不同的形式：
+    \begin{align*}
+        \sigma_{\mathrm{ext}}(\lambda)
+        &= \int_0^{2\lambda/\pi} \pi a^2 \cdot Q_{\mathrm{ext}}(a, \lambda) \cdot \ab(\frac{1}{n_H} \cdot \odv{n}{a}) \d{a} + \int_{2\lambda/\pi}^{a_{\mathrm{max}}} \pi a^2 \cdot Q_{\mathrm{ext}}(a, \lambda) \cdot \ab(\frac{1}{n_H} \cdot \odv{n}{a}) \d{a} \\
+        &= \int_0^{2\lambda/\pi} 2\pi a^2 \ab(\frac{\pi a}{2 \lambda})^\beta \cdot \frac{A_0}{a_0} \ab(\frac{a}{a_0})^{-p} \d{a} + \int_{2\lambda/\pi}^{a_{\mathrm{max}}} 2\pi a^2 \cdot \frac{A_0}{a_0} \ab(\frac{a}{a_0})^{-p} \d{a} \\
+        &= 2\pi A_0 a_0^{p-1} \ab(\frac{\pi}{2\lambda})^\beta \int_0^{2\lambda/\pi} a^{2 + \beta - p} \d{a} + 2\pi A_0 a_0^{p-1} \int_{2\lambda/\pi}^{a_{\mathrm{max}}} a^{2 - p} \d{a} \\
+        &= 2\pi A_0 a_0^{p-1} \ab(\frac{\pi}{2\lambda})^\beta \frac{(2\lambda/\pi)^{3 + \beta - p}}{3 + \beta - p} + 2\pi A_0 a_0^{p-1} \ab[\frac{a_{\mathrm{max}}^{3 - p}}{3 - p} - \frac{(2\lambda/\pi)^{3 - p}}{3 - p}] \\
+        &= \frac{2\pi A_0 a_0^2}{3 + \beta - p} \ab(\frac{2\lambda}{\pi a_0})^{3 - p} + \frac{2\pi A_0 a_0^2}{3 - p} \ab[\ab(\frac{a_{\mathrm{max}}}{a_0})^{3 - p} - \ab(\frac{2\lambda}{\pi a_0})^{3 - p}]
+    \end{align*}
+    即：
+    \[
+        \frac{\sigma_{\mathrm{ext}}(\lambda)}{\pi A_0 a_0^2} = \frac{2}{3 + \beta - p} \ab(\frac{2\lambda}{\pi a_0})^{3 - p} + \frac{2}{3 - p} \ab[\ab(\frac{a_{\mathrm{max}}}{a_0})^{3 - p} - \ab(\frac{2\lambda}{\pi a_0})^{3 - p}]
+    \]
+
+    \medskip
+    \item[23.1 (e)]
+    对于$\lambda_V = 0.55\,\um$，$a_{\mathrm{max}} = 0.35\,\um < 2\lambda_V/\pi = 0.35014\,\um$，则：
+    \begin{align*}
+        \frac{\sigma_{\mathrm{ext}}(\lambda_V)}{\pi A_0 a_0^2}
+        &= \frac{2}{3 + \beta - p} \ab(\frac{\pi a_0}{2\lambda_V})^\beta \ab(\frac{a_{\mathrm{max}}}{a_0})^{3 + \beta - p} \\
+        &= \frac{2}{3 + 1.5 - 3.5} \ab(\frac{\pi \times 0.1\,\um}{2 \times 0.55\,\um})^{1.5} \ab(\frac{0.35\,\um}{0.1\,\um})^{3 + 1.5 - 3.5} \\
+        &= 1.068
+    \end{align*}
+    对于$\lambda_B = 0.44\,\um$，$a_{\mathrm{max}} = 0.35\,\um > 2\lambda_B/\pi = 0.28011\,\um$，则：
+    \begin{align*}
+        \frac{\sigma_{\mathrm{ext}}(\lambda_B)}{\pi A_0 a_0^2}
+        &= \frac{2}{3 + \beta - p} \ab(\frac{2\lambda_B}{\pi a_0})^{3 - p} + \frac{2}{3 - p} \ab[\ab(\frac{a_{\mathrm{max}}}{a_0})^{3 - p} - \ab(\frac{2\lambda_B}{\pi a_0})^{3 - p}] \\
+        &= \frac{2}{3 + 1.5 - 3.5} \ab(\frac{2 \times 0.44\,\um}{\pi \times 0.1\,\um})^{3 - 3.5} + \frac{2}{3 - 3.5} \ab[\ab(\frac{0.35\,\um}{0.1\,\um})^{3 - 3.5} - \ab(\frac{2 \times 0.44\,\um}{\pi \times 0.1\,\um})^{3 - 3.5}] \\
+        &= 1.447
+    \end{align*}
+    则$R_V$为：
+    \begin{align*}
+        R_V
+        &= \frac{A_V}{A_B - A_V} \\
+        &= \frac{\tau_V}{\tau_B - \tau_V} \\
+        &= \frac{\sigma_{\mathrm{ext}}(\lambda_V)}{\sigma_{\mathrm{ext}}(\lambda_B) - \sigma_{\mathrm{ext}}(\lambda_V)} \\
+        &= \frac{1}{\sigma_{\mathrm{ext}}(\lambda_B) / \sigma_{\mathrm{ext}}(\lambda_V) - 1} \\
+        &= \frac{1}{1.447 \div 1.068 - 1} \\
+        &= 2.823
+    \end{align*}
+
+\end{enumerate}
+
+\end{document}

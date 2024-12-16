@@ -18,7 +18,7 @@
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 \setmonofont{JetBrains Mono}
-\setCJKmainfont{SimSun}[BoldFont=Noto Sans CJK SC Medium, ItalicFont=KaiTi]
+\setCJKmainfont{SimSun}[BoldFont=Source Han Sans CN Medium, ItalicFont=KaiTi]
 \newCJKfontfamily{\kaishu}{KaiTi}
 
 \begin{document}
@@ -216,7 +216,7 @@ Ao(f) + Bo(f) = o(f),\quad o(f) + o(o(f)) = o(f)
     \]
 
     \paragraph{解}
-    
+
     取$\varepsilon=\dfrac{A-B}{2}$即可。
 
     \item 证明数列极限的四则运算法则。
@@ -241,7 +241,7 @@ Ao(f) + Bo(f) = o(f),\quad o(f) + o(o(f)) = o(f)
     \item 在复合函数极限定理中，“存在$\delta>0$使得在$0<|x-a|<\delta$时$f(x)\neq A$”的条件能否去掉？为什么？
 
     \paragraph{解}
-    
+
     不能丢掉，因为如果没有这个条件，只能导出$\lim\limits_{x\to a}g(f(x))=g(A)$，而不能导出$\lim\limits_{x\to a}g(f(x))=B$，例如构造一个函数$g(x)$，使得$x\neq A$时$g(x)\equiv B$且$g(A)\neq B$，则这样的函数满足定理的其余所有条件但无法推出结论。
 
     \item 若数列$\{x_n\}$满足$\lim\limits_{n\to+\infty}x_n=a$，证明：
@@ -252,7 +252,7 @@ Ao(f) + Bo(f) = o(f),\quad o(f) + o(o(f)) = o(f)
     \item 求$\lim\limits_{x\to-1}\left(\dfrac{1}{x+1}-\dfrac{3}{x^3+1}\right)$的值。
 
     \paragraph{解}
-    
+
     首先用$x^3+1=(x+1)(x^2-x+1)$化简，再分解因式消去$(x+1)$：
     \begin{align*}
         \lim_{x\to-1}\left(\frac{1}{x+1}-\frac{3}{x^3+1}\right)
@@ -429,13 +429,13 @@ f'(x) = \frac{1}{g'(y)}
     \item 已知函数$f(x)=\sin x-\ln(1+x)$，证明$f'(x)$在区间$\left(-1,\dfrac{\pi}{2}\right)$内有唯一一个极大值点。
 
     \paragraph{解}
-    
+
     对$f(x)$求导得：
     \[
     f'(x) = \cos x - \frac{1}{1+x},\quad f''(x) = -\sin x + \frac{1}{1+x^2}
     \]
     当$x\in\left(-1,\dfrac{\pi}{2}\right)$时，$f''(x)$单调递减，而$f''(0)>0$，$f''\left(\dfrac{\pi}{2}\right)<0$，可得$f'(x)$在$\left(-1,\dfrac{\pi}{2}\right)$有唯一一个零点，设为$a$。
-    
+
     则当$x\in(-1,a)$时，$f''(x)>0$，当$x\in\left(a,\dfrac{\pi}{2}\right)$时，$f''(x)<0$。
 
     所以$f'(a)=0$，$f''(x)$在$(-1,a)$上单调递增，在$\left(a,\dfrac{\pi}{2}\right)$上单调递减。故$f'(x)$在$\left(-1,\dfrac{\pi}{2}\right)$上存在唯一个极大值点。
@@ -443,7 +443,7 @@ f'(x) = \frac{1}{g'(y)}
     \item 求函数$f(x)=\arcsin x$在$x=0$处的Taylor展开式。
 
     \paragraph{解}
-    
+
     先考虑$f'(x)=\dfrac{1}{\sqrt{1-x^2}}$在$x=0$处的Taylor展开式，换元$u=x^2$并逐次求导展开求导：
     \begin{align*}
     \frac{1}{\sqrt{1+u}}
@@ -471,7 +471,7 @@ f'(x) = \frac{1}{g'(y)}
 
 \section{定义}
 
-\subsection{原函数}
+\subsection{不定积分}
 
 若对于任意$x\in(a,b)$，函数$F(x)$的导函数$F'(x)=f(x)$，则称$F(x)$为$f(x)$在$(a,b)$上的一个\textbf{原函数}。一个函数的原函数\textbf{不唯一}，若$F(x)$为$f(x)$在$(a,b)$上的一个原函数，则对任意的常数$C$，函数$F(x)+C$也是$f(x)$的一个原函数。$f(x)$原函数的一般表达式称为$f(x)$的\textbf{不定积分}，记作：
 \[
@@ -659,7 +659,7 @@ f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
     \]
 
     \paragraph{解}
-    
+
     \begin{align*}
         \int \mathrm{e}^{ax}\sin bx\,\mathrm{d}x
         &= \frac{1}{a}\int \sin bx\,\mathrm{d}\mathrm{e}^{ax} \\
@@ -683,7 +683,7 @@ f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
     \]
 
     \paragraph{解}
-    
+
     换元$u=x^n-1$得：
     \begin{align*}
         \int \frac{x^{2n-1}}{x^n-1}\,\mathrm{d}x
@@ -721,7 +721,7 @@ f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
     \]
 
     \paragraph{解}
-    
+
     用两次分部积分：
     \begin{align*}
         \int x^3(\ln x)^2\,\mathrm{d}x
@@ -740,7 +740,7 @@ f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
     \]
 
     \paragraph{解}
-    
+
     拆成两项积分：
     \begin{align*}
         \int \frac{4}{x^3+4x}\,\mathrm{d}x
@@ -755,7 +755,7 @@ f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
     \]
 
     \paragraph{解}
-    
+
     令$t = \sqrt x$，则：
     \begin{align*}
         \int_{0}^{1} \frac{\sqrt{x}}{1+\sqrt{x}}\,\mathrm{d}x
@@ -771,7 +771,7 @@ f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
     \]
 
     \paragraph{解}
-    
+
     $\arcsin x$的原函数可以通过分部积分法得出：
     \[
     \int \arcsin x\,\mathrm{d}x = x\arcsin x - \int \frac{x}{\sqrt{1-x^2}}\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + C
@@ -787,7 +787,7 @@ f(x)g'(x) = [f(x)g(x)]' - f'(x)g(x)
     \]
 
     \paragraph{解}
-    
+
     令$x = a\cos t$，则：
     \begin{align*}
         \int_0^a x^4\sqrt{a^2 -x^2}\,\mathrm{d}x
@@ -957,7 +957,7 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
     其中积分区域$S=\{(x,y)|0\leqslant y\leqslant1,x\leqslant y\leqslant x+1\}$。
 
     \paragraph{解}
-    
+
     先对$x$积分，再对$y$积分：
     \begin{align*}
         I
@@ -976,7 +976,7 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
     其中积分区域$S=\{(x,y,z)|0\leqslant z\leqslant 1-x,0\leqslant y\leqslant\ln(1+x),0\leqslant x\leqslant1\}$。
 
     \paragraph{解}
-    
+
     先对$y$积分，再对$z$积分，最后对$x$积分：
     \begin{align*}
         I
@@ -995,7 +995,7 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
     \item 有一个半径为$R$，高度为$h$的圆柱体，其密度分布为$\rho=\rho_0+A\sqrt{r}$（$\rho_0$、$A$为常数），求它的质量$m$。
 
     \paragraph{解}
-    
+
     由题意，在柱坐标下积分：
     \begin{align*}
         m
@@ -1009,7 +1009,7 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
     \item 有一个半径为$R$的球体，电荷体密度分布为$\rho=\rho_0\cos\theta$（$\rho_0$为常数），求它带的电荷量$q$。
 
     \paragraph{解}
-    
+
     由题意，在球坐标下积分：
     \begin{align*}
         q
@@ -1086,8 +1086,8 @@ P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
 
     \item 解微分方程：$x\dfrac{\mathrm{d}y}{\mathrm{d}x}-y=(x-1)\mathrm{e}^x$。
 
-    \paragraph{解} 
-    
+    \paragraph{解}
+
     本题可以用常数变易法求解，也可以使用全微分方程的解法：
     \[
     x\mathrm{d}y - y\mathrm{d}x = (x-1)\mathrm{e}^x\mathrm{d}x
@@ -1116,8 +1116,8 @@ P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
     x\frac{\mathrm{d}y}{\mathrm{d}x} + 2y = \sin x,\quad y(\pi) = \frac{1}{\pi}
     \]
 
-    \paragraph{解} 
-    
+    \paragraph{解}
+
     原方程化为：
     \[
     \frac{\mathrm{d}y}{\mathrm{d}x} + \frac{2y}{x} - \frac{\sin x}{x} = 0
@@ -1177,7 +1177,7 @@ P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
     \]
 
     \paragraph{解}
-    
+
     由(1)得：
     \[
     y = \frac{\mathrm{d}x}{\mathrm{d}t} - x,\quad \frac{\mathrm{d}y}{\mathrm{d}t} = \frac{\mathrm{d}^2 x}{\mathrm{d}t^2} - \frac{\mathrm{d}x}{\mathrm{d}t}
@@ -1290,7 +1290,7 @@ P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
     \item 已知$\bm{a}=(1,-1,4)$，$\bm{b}=(-5,1,-4)$，求$\bm{a}\cdot\bm{b}$和$\bm{a}\times\bm{b}$。
 
     \paragraph{解}
-    
+
     \[
     \bm{a} \cdot \bm{b} = -22,\quad \bm{a} \times \bm{b} = (0,-16,-4)
     \]
@@ -1298,7 +1298,7 @@ P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
     \item 已知$\bm{a}=(1,-1,4)$，$\bm{b}=(-5,1,-4)$，$\bm{c}=(8,1,0)$求$(\bm{a}\times\bm{b})\cdot\bm{c}$和$(\bm{a}\times\bm{b})\times\bm{c}$。
 
     \paragraph{解}
-    
+
     \[
     (\bm{a}\times\bm{b})\cdot\bm{c} = -16,\quad (\bm{a}\times\bm{b})\times\bm{c} = (4,-32,128)
     \]
@@ -1306,7 +1306,7 @@ P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
     \item 设矢量$\bm{r}=(x,y,z)$，其模长$r=\sqrt{x^2+y^2+z^2}$，求$\nabla\cdot\bm{r}$、$\nabla\times\bm{r}$、$\nabla\dfrac{1}{r}$和$\nabla^2\dfrac{1}{r}$。
 
     \paragraph{解}
-    
+
     \[
     \nabla\cdot\bm{r} = 3,\quad \nabla\times\bm{r} = \bm{0},
     \]
@@ -1336,7 +1336,7 @@ P(x,y(x),y'(x),\cdots,y^{(n)}(x)) \equiv 0,\quad \forall\ x\in(a,b)
     \bm{A}\times(\nabla\times\bm{A}) + (\bm{A}\cdot\nabla)\bm{A} = \frac{1}{2}\nabla(\bm{A}\cdot\bm{A})
     \]
     下面给出一种分量展开计算的方法：
-    
+
     等号两边的结果应是一个矢量。以$\hat{i}$方向分量为例：
     $\bm{A}\times(\nabla\times\bm{A})$的$\hat{i}$方向分量为：
     \begin{align*}

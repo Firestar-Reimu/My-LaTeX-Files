@@ -1,0 +1,257 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年5月17日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[36.1]
+    气体热运动的能量密度为：
+    \[
+        u_{\mathrm{thermal}} = \frac{3}{2}nkT
+    \]
+    气体整体运动的能量密度为：
+    \[
+        u_{\mathrm{flow}} = \frac{1}{2}n\mu v_2^2
+    \]
+    根据强激波的边界条件，对于单原子气体（$\gamma = \dfrac{5}{3}$），在激波面静止的参考系下：
+    \[
+        v_2 = \frac{v_s}{4},\quad kT = \frac{3}{16}\mu v_s^2
+    \]
+    则：
+    \[
+        u_{\mathrm{thermal}} = \frac{3}{2}nk \ab(\frac{3}{16}\mu v_s^2) = \frac{9}{32}n\mu v_s^2
+    \]
+    \[
+        u_{\mathrm{flow}} = \frac{1}{2}n\mu \ab(\frac{v_s}{4})^2 = \frac{1}{32}n\mu v_s^2
+    \]
+    两者之比为：
+    \[
+        \frac{u_{\mathrm{flow}}}{u_{\mathrm{thermal}}} = \frac{1}{9}
+    \]
+
+    \bigskip
+    \item[36.2 (a)]
+    根据(36.43)式，激波前体的尺度为：
+    \[
+        L = \frac{2v_{A0}^2}{v_s} \frac{m_n + m_i}{m_i} \frac{1}{n_{i0} \ab<\sigma v>_{in}},\quad v_{A0} = \frac{B_0}{\sqrt{4\pi n_{n0}m_n}}
+    \]
+    离子在激波前体中受Lorentz力减速，速度从$v_s$减小到$0$，平均速度为$v_s/2$，则离子在中性粒子场中的平均自由程为：
+    \[
+        l_i = \frac{v_s/2}{n_{n0} \ab<\sigma v>_{in}} = \frac{v_s}{2n_{n0} \ab<\sigma v>_{in}}
+    \]
+    则平均碰撞数为：
+    \[
+        N_i = \frac{L}{l_i} = \frac{4v_{A0}^2}{v_s^2} \frac{n_{n0}}{n_{i0}} \frac{m_n + m_i}{m_i} = \frac{B_0^2}{\pi v_s^2 n_{i0}} \frac{m_n + m_i}{m_n m_i}
+    \]
+
+    \medskip
+    \item[36.2 (b)]
+    由于离子的平均速度变为$v_s/2$，考虑一个单位面积的截面，单位时间内中性粒子通过该截面的粒子数是离子的2倍，表现为离子的数密度被压缩到原来的2倍，则中性粒子在离子场中的平均自由程为：
+    \[
+        l_n = \frac{v_s}{2n_{i0} \ab<\sigma v>_{in}}
+    \]
+    则平均碰撞数为：
+    \[
+        N_n = \frac{L}{l_i} = \frac{4v_{A0}^2}{v_s^2} = \frac{B_0^2}{\pi v_s^2 n_{n0}} \frac{m_n + m_i}{m_n m_i}
+    \]
+
+    \medskip
+    \item[36.2 (c)]
+    离子与中性粒子碰撞，离子的平均速度为$v_i = v_s/2$，中性粒子的平均速度为$v_n = v_s$，平均每次碰撞的动量传递为：
+    \[
+        \mu_{in} |v_i - v_n| = \frac{m_i m_n}{m_i + m_n} \frac{v_s}{2}
+    \]
+    则每个中性粒子动量的损失平均为：
+    \[
+        \Delta p = N_n \frac{m_i m_n}{m_i + m_n} \frac{v_s}{2} = \frac{B_0}{2\pi v_s n_{n0}}
+    \]
+
+    \medskip
+    \item[36.2 (d)]
+    中性粒子速度的损失平均为：
+    \[
+        \Delta v_n = \frac{\Delta p}{m_n} = \frac{B_0}{2\pi v_s n_{n_0} m_n}
+    \]
+
+    \bigskip
+    \item[36.3 (a)]
+    由于$T_0 = 0$，$B_0 = 0$，磁声速：
+    \[
+        V_s = \sqrt{\frac{\gamma p_0}{\rho_0} + \frac{B_0^2}{4\pi \rho_0}} = 0
+    \]
+    满足$v_s \gg V_s$的强激波条件，则对于单原子气体（$\gamma = 5/3$），激波后的粒子数密度为：
+    \[
+        n_s = \frac{\gamma + 1}{\gamma - 1}n_0 = 4n_0
+    \]
+
+    \medskip
+    \item[36.3 (b)]
+    在强激波条件下，激波后的温度为：
+    \[
+        T_s = \frac{3}{16} \frac{\mu v_s^2}{k}
+    \]
+
+    \medskip
+    \item[36.3 (c)]
+    热压强：
+    \[
+        n_s kT_s = 4n_0 k \frac{3}{16} \frac{\mu v_s^2}{k} = \frac{3}{4} n_0\mu v_s^2
+    \]
+    则热压强与气体冲压之比为：
+    \[
+        \frac{n_s kT_s}{n_0\mu v_s^2} = \frac{(3/4) n_0\mu v_s^2}{n_0\mu v_s^2} = \frac{3}{4}
+    \]
+
+    \bigskip
+    \item[36.3 (d)]
+    等压降温条件下，能量的衰减符合：
+    \[
+        \odv{E}{t} = -\Lambda,\quad E = \frac{5}{2}nkT
+    \]
+    这里的$(5/2)nk$是单原子气体的等压热容量，则有：
+    \begin{align*}
+        \odv{T}{t}
+        &= -\frac{\Lambda}{(5/2)nk} \\
+        &= -\frac{An^2 T^\alpha}{(5/2)nk} \\
+        &= -\frac{2AnT^\alpha}{5k}
+    \end{align*}
+    由于$nT = n_s T_s$，而$n_s T_s = \dfrac{3}{4k} n_0\mu v_s^2$是一个不变量，故有：
+    \[
+        \odv{T}{t} = -\frac{2An_s T_s}{5k} T^{\alpha-1}
+    \]
+    解得：
+    \[
+        -\frac{T^{2-\alpha}}{2-\alpha} + C = \frac{2An_s T_s}{5k}t
+    \]
+    设$t = 0$时$T = T_s$，则有：
+    \[
+        \frac{T_s^{2-\alpha} - T^{2-\alpha}}{2-\alpha} = \frac{2An_s T_s}{5k} t
+    \]
+    冷却到$T = 0$的时间为：
+    \[
+        t_{\mathrm{cool}} = \frac{5k}{2An_s T_s} \frac{T_s^{2-\alpha}}{2-\alpha}
+    \]
+    当$\alpha < 2$时，冷却时间是有限的。
+
+    对于轫致辐射，$\Lambda \propto n^2 T^{1/2}$，即$\alpha = 1/2 < 2$，故通过韧致辐射冷却到$T = 0$的时间是有限的。
+
+    \medskip
+    \item[36.3 (e)]
+    冷却过程中，流体运动的距离与时间的关系为：
+    \[
+        \d{x} = v\d{t}
+    \]
+    而根据质量守恒，流体的速度$v$与激波速度$v_s$之间的关系为：
+    \[
+        nv = n_0 v_s
+    \]
+    于是有：
+    \[
+        \d{x} = (n_0/n) v_s \d{t}
+    \]
+    则有：
+    \begin{align*}
+        \odv{T}{x}
+        &= \frac{1}{(n_0/n) v_s} \odv{T}{t} \\
+        &= \frac{n}{n_0 v_s} \odv{T}{t} \\
+        &= -\frac{n}{n_0 v_s} \frac{\Lambda}{(5/2)nk} \\
+        &= -\frac{2\Lambda}{5n_0 v_s k} \\
+        &= -\frac{2A n^2 T^\alpha}{5n_0 v_s k}
+    \end{align*}
+    再做变换$nT = n_s T_s$，得：
+    \[
+        \odv{T}{x} = -\frac{2A n_s^2 T_s^2}{5n_0 v_s k} T^{\alpha-2}
+    \]
+    解得：
+    \[
+        -\frac{T^{3-\alpha}}{3-\alpha} + C = \frac{2A n_s^2 T_s^2}{5n_0 v_s k} x
+    \]
+    设$t = 0$时$T = T_s$，则有：
+    \[
+        \frac{T_s^{3-\alpha} - T^{3-\alpha}}{3-\alpha} = \frac{2A n_s^2 T_s^2}{5n_0 v_s k} x
+    \]
+    冷却到$T = 0$的距离为：
+    \[
+        x_{\mathrm{cool}} = \frac{2A n_s^2 T_s^2}{5n_0 v_s k} \frac{T_s^{3-\alpha}}{3-\alpha} = \frac{2A n_s^2}{5n_0 v_s k} \frac{T_s^{1-\alpha}}{3-\alpha}
+    \]
+    当$\alpha < 3$时，冷却距离是有限的。注意这个条件实际上弱于冷却时间有限的条件$\alpha < 2$。
+
+    \bigskip
+    \item[36.4 (a)]
+    考虑吸积流的引力势能转化为动能，而吸积流的速度即为激波的速度：
+    \[
+        \frac{1}{2}\dot{M}v_s^2 = \frac{GM\dot{M}}{R}
+    \]
+    解得：
+    \[
+        v_s = \sqrt{\frac{2GM}{R}} = 6.947 \times 10^3\,\mathrm{km/s}
+    \]
+    在强激波条件下，激波扫过部分的温度为：
+    \[
+        T_s = \frac{3}{16} \frac{\mu v_s^2}{k} = 6.677 \times 10^8\,\mathrm{K}
+    \]
+    或用能量表示为：
+    \[
+        kT = 57.54\,\mathrm{keV}
+    \]
+    在激波扫过之前，氢的数密度为：
+    \[
+        n_{\mathrm{H0}} = \frac{\dot{M}}{\mu_{\mathrm{H}}} \frac{1}{4\pi R^2 v_s} = \frac{\dot{M}}{1.4m_{\mathrm{H}}} \frac{1}{4\pi R^2 v_s} = 1.018 \times 10^13\,\mathrm{cm^{-3}}
+    \]
+    则激波扫过部分的氢数密度为：
+    \[
+        n_{\mathrm{H}} = 4n_{\mathrm{H0}} = 4.073 \times 10^{13}\,\mathrm{cm^{-3}}
+    \]
+
+    \medskip
+    \item[36.4(b)]
+    吸积流的引力势能最终转化为辐射能，贡献白矮星的光度，即：
+    \[
+        L = \frac{GM\dot{M}}{R} = 1.52 \times 10^{34}\,\mathrm{erg/s} = 3.97 L_\odot
+    \]
+
+    \medskip
+    \item[36.4(c)]
+    根据Stefan-Boltzmann定律，有效温度满足：
+    \[
+        L = 4\pi R^2 \sigma T_{\mathrm{eff}}^4
+    \]
+    则有：
+    \[
+        T_{\mathrm{eff}} = \ab(\frac{L}{4\pi\sigma R^2})^{1/4} = 9.164 \times 10^4\,\mathrm{K}
+    \]
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,144 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年5月31日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[18.1]
+    由(18.9)式：
+    \[
+        \frac{I([\mathrm{O\,III}]5008)}{I(\mathrm{H}\beta)} = \frac{n(\mathrm{O\,III})}{n(\mathrm{H^+})} \times \frac{k_{03} E_{32} A_{32}}{\alpha_{\mathrm{eff, H}\beta} E_{\mathrm{H}\beta} (A_{31} + A_{32})}
+    \]
+    可得：
+    \[
+        \frac{n(\mathrm{O\,III})}{n(\mathrm{H^+})} = \frac{I([\mathrm{O\,III}]5008)}{I(\mathrm{H}\beta)} \times \frac{\alpha_{\mathrm{eff, H}\beta} E_{\mathrm{H}\beta} (A_{31} + A_{32})}{k_{03} E_{32} A_{32}}
+    \]
+    通过查表可以得知：
+    \[
+        A_{31} = 6.215 \times 10^{-3},\quad A_{32} = 1.814 \times 10^{-2}
+    \]
+    \[
+        E_{32} = \frac{hc}{5008.2\,\ang},\quad E_{\mathrm{H}\beta} = \frac{hc}{4862.7\,\ang}
+    \]
+    则有：
+    \begin{align*}
+        \frac{n(\mathrm{O\,III})}{n(\mathrm{H^+})}
+        &= \frac{I([\mathrm{O\,III}]5008)}{I(\mathrm{H}\beta)} \times \frac{\alpha_{\mathrm{eff, H}\beta}}{k_{03}} \times \frac{5008.2\,\ang}{4862.7\,\ang} \times \frac{6.215 \times 10^{-3} + 1.814 \times 10^{-2}}{1.814 \times 10^{-2}} \\
+        &= \frac{I([\mathrm{O\,III}]5008)}{I(\mathrm{H}\beta)} \times \frac{\alpha_{\mathrm{eff, H}\beta}}{k_{03}} \times 1.3828
+    \end{align*}
+    由(14.9)式得：
+    \[
+        \alpha_{\mathrm{eff, H}\beta} = 3.03 \times 10^{-14} T_4^{-0.874-0.058\ln{T_4}}\,\mathrm{cm^3/s} \approx 3.03 \times 10^{-14} T_4^{-0.87}\,\mathrm{cm^3/s}
+    \]
+    又由(18.10)式得：
+    \[
+        k_{03} = 8.629 \times 10^{-8} T_4^{-1/2} \frac{\Omega_{03}}{g_0} \mathrm{e}^{-E_{30}/kT}\,\mathrm{cm^3/s}
+    \]
+    其中$E_{30}/k = 29170\,\mathrm{K}$，$g_0 = 1$，且由表(F.2)可得：
+    \[
+        \Omega_{03} = 0.243 \times T_4^{0.120+0.031\ln{T_4}}
+    \]
+    可以近似$\Omega_{03}$与温度无关，即：
+    \[
+        \Omega_{03} \approx 0.243
+    \]
+    于是有：
+    \begin{align*}
+        k_{03}
+        &= 8.629 \times 10^{-8} T_4^{-1/2} \frac{\Omega_{03}}{g_0} \mathrm{e}^{-E_{30}/kT}\,\mathrm{cm^3/s} \\
+        &= 8.629 \times 10^{-8} T_4^{-0.5} \times 0.243 \mathrm{e}^{-29170\,\mathrm{K}/T}\,\mathrm{cm^3/s} \\
+        &= 2.097 \times 10^{-8} T_4^{-0.5} \mathrm{e}^{-2.917/T_4}\,\mathrm{cm^3/s}
+    \end{align*}
+    则有：
+    \begin{align*}
+        \frac{\alpha_{\mathrm{eff, H}\beta}}{k_{03}}
+        &= \frac{3.03 \times 10^{-14} T_4^{-0.874}}{2.097 \times 10^{-8} T_4^{-0.5} \mathrm{e}^{-2.917/T_4}} \\
+        &= 1.445 \times 10^{-6} T_4^{-0.37} \mathrm{e}^{-2.917/T_4}
+    \end{align*}
+    因此：
+    \begin{align*}
+        \frac{n(\mathrm{O\,III})}{n(\mathrm{H^+})}
+        &= \frac{I([\mathrm{O\,III}]5008)}{I(\mathrm{H}\beta)} \times \frac{\alpha_{\mathrm{eff, H}\beta}}{k_{03}} \times 1.3828 \\
+        &= \frac{I([\mathrm{O\,III}]5008)}{I(\mathrm{H}\beta)} \times \ab(1.445 \times 10^{-6} T_4^{-0.37} \mathrm{e}^{-2.917/T_4}) \times 1.3828 \\
+        &= 2.00 \times \frac{I([\mathrm{O\,III}]5008)}{I(\mathrm{H}\beta)} T_4^{-0.37} \mathrm{e}^{-2.917/T_4}
+    \end{align*}
+    即常数$C = 2.00$。
+
+    \bigskip
+    \item[18.2 (a)]
+    由图(18.2)和图(18.4)可知：
+    \[
+        \frac{I([\mathrm{O\,III}]4364.4\,\ang)}{I([\mathrm{O\,III}]5008.2\,\ang)} = 0.003 \implies
+        \begin{+cases}
+            & T = 7365.18\,\mathrm{K},\quad n_e = 10^5\,\mathrm{cm^{-3}} \\
+            & T = 7971.36\,\mathrm{K},\quad n_e = 10^4\,\mathrm{cm^{-3}} \\
+            & T = 8055.57\,\mathrm{K},\quad n_e \leqslant 10^3\,\mathrm{cm^{-3}}
+        \end{+cases}
+    \]
+    \[
+        \frac{I([\mathrm{O\,II}]3729.8\,\ang)}{I([\mathrm{O\,II}]3727.1\,\ang)} = 1.2 \implies n_e T_4^{-1/2} = 241.524\,\mathrm{cm^{-3}}
+    \]
+    可见$T \approx 8000\,\mathrm{K}$，即$T_4^{-1/2} \approx 0.8^{-1/2} = 1.12$，而$n_e T_4^{-1/2} = 241.524$说明$n_e$显然小于$10^3\,\mathrm{cm^{-3}}$。
+
+    取电子温度$T = 8055.57\,\mathrm{K}$，得电子数密度：
+    \[
+        n_e = \frac{241.524}{0.805557^{-1/2}} = 216.775\,\mathrm{cm^{-3}}
+    \]
+    综上，估计电子温度和数密度为$T = 8.06 \times 10^3\,\mathrm{K}$，$n_e = 217\,\mathrm{cm^{-3}}$。
+
+    \medskip
+    \item[18.2 (b)]
+    由视星等公式：
+    \[
+        m - m_0 = -2.5\log\ab(\frac{I}{I_0}) + C
+    \]
+    可得修正后$\mathrm{O\,III}$的谱线强度比为：
+    \[
+        \frac{I([\mathrm{O\,III}]4364.4\,\ang)}{I([\mathrm{O\,III}]5008.2\,\ang)} = \frac{0.003}{10^{-0.4/2.5}} = 0.004
+    \]
+    则由图(18.2)可得电子温度为：（仍然假设$n_e \leqslant 10^3\,\mathrm{cm^{-3}}$）
+    \[
+        T = 8641.97\,\mathrm{K}
+    \]
+    得电子数密度：
+    \[
+        n_e = \frac{241.524}{0.864197^{-1/2}} = 224.526\,\mathrm{cm^{-3}}
+    \]
+    综上，估计电子温度和数密度为$T = 8.64 \times 10^3\,\mathrm{K}$，$n_e = 225\,\mathrm{cm^{-3}}$
+
+\end{enumerate}
+
+\end{document}

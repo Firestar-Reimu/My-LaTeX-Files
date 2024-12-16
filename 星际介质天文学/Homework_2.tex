@@ -1,0 +1,97 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年3月8日}
+
+\begin{document}
+
+\maketitle
+
+\section*{第十二章}
+
+\begin{enumerate}
+    \item[12.1]
+    天狼星的光度为$L = 25L_\odot$，则在太阳附近其能量密度为：
+    \[
+        u = \odv{E}{V} = \frac{L\d{t}}{4\pi D^2 \cdot c\d{t}} = \frac{L}{4\pi D^2 c} = 3.95 \times 10^{-15}\,\mathrm{erg \cdot cm^{-3}}
+    \]
+    另一方面，从书中的表(12.1)可得，恒星的背景光贡献的能量密度为：
+    \[
+        u_{\mathrm{star}} = 1.05 \times 10^{-12}\,\mathrm{erg \cdot cm^{-3}}
+    \]
+    则天狼星贡献的能量密度占总星光比例为：
+    \[
+        \frac{u}{u_{\mathrm{star}}} = \frac{3.95 \times 10^{-15}\,\mathrm{erg \cdot cm^{-3}}}{1.05 \times 10^{-12}\,\mathrm{erg \cdot cm^{-3}}} = 0.38\%
+    \]
+
+    \bigskip
+    \item[12.2]
+    首先计算能量范围在$10.0 < h\nu < 13.6\,\mathrm{eV}$的光子对应的波长范围：
+    \[
+        \lambda = \frac{c}{\nu} = \frac{hc}{h\nu}
+    \]
+    则有：
+    \[
+        10.0 < h\nu < 13.6\,\mathrm{eV} \implies 912\,\ang < \lambda < 1240\,\ang
+    \]
+    对于(12.7)式的能谱，由于等号右边是波长的函数，可以将等号左边的$\nu u_\nu$替换为$\lambda u_\lambda$，证明如下：
+    \[
+        \nu = \frac{c}{\lambda} \implies \d{\nu} = -\frac{c}{\lambda^2} \d{\lambda} = -\frac{\nu}{\lambda} \d{\lambda} \implies \lambda \d{\nu} = -\nu \d{\lambda}
+    \]
+    而单位光谱间隔的能量密度可以分别以频率和波长的形式表示为：
+    \[
+        u_\nu \d{\nu} = u_\lambda \d{\lambda}
+    \]
+    两式相除即得：
+    \[
+        \nu u_\nu = \lambda u_\lambda
+    \]
+    能量范围在$10.0 < h\nu < 13.6\,\mathrm{eV}$的光子跨越了(12.7)式中的两段能谱，则其数密度为：
+    \[
+        n = \int_{0.0912\,\um}^{0.124\,\um} \frac{u_\lambda}{hc/\lambda} \d{\lambda} = \frac{1}{hc} \int_{0.0912\,\um}^{0.124\,\um} \lambda u_\lambda \d{\lambda}
+    \]
+    代入(12.7)式得：（系数$k_1 = 1.287 \times 10^{-9}\,\mathrm{erg \cdot cm^{-3}}$，$k_2 = 6.825 \times 10^{-13}\,\mathrm{erg \cdot cm^{-3}}$）
+    \begin{align*}
+        n
+        &= \frac{1}{hc} \ab[\int_{0.0912}^{0.11} k_1 (\lambda/\um)^{4.4172} \d{\lambda} + \int_{0.11}^{0.124} k_2 (\lambda/\um) \d{\lambda}] \\
+        &= \frac{1}{hc} \ab[\int_{0.0912}^{0.11} (k_1 \times 1\,\um) \lambda_0^{4.4172} \d{\lambda_0} + \int_{0.11}^{0.124} (k_2 \times 1\,\um) \lambda_0 \d{\lambda_0}],\quad \lambda_0 = \lambda/\um \\
+        &= \frac{1}{hc} \ab(\int_{0.0912}^{0.11} k'_1 \lambda_0^{4.4172} \d{\lambda_0} + \int_{0.11}^{0.124} k'_2 \lambda_0 \d{\lambda_0})
+    \end{align*}
+    其中$\lambda_0 = \lambda/\um$是无量纲的量，两个系数变为：
+    \[
+        k'_1 = 1.287 \times 10^{-13}\,\mathrm{erg \cdot cm^{-2}},\quad k'_2 = 6.825 \times 10^{-17}\,\mathrm{erg \cdot cm^{-2}}
+    \]
+    计算可得：
+    \begin{align*}
+        n
+        &= \frac{1}{hc} \times (9.715 \times 10^{-20}\,\mathrm{erg \cdot cm^{-2}} + 1.118 \times 10^{-19}\,\mathrm{erg \cdot cm^{-2}}) \\
+        &= \frac{2.089 \times 10^{-19}\,\mathrm{erg \cdot cm^{-2}}}{1.986 \times 10^{-16}\,\mathrm{erg \cdot cm}} \\
+        &= 1.05 \times 10^{-3}\,\mathrm{cm^{-3}}
+    \end{align*}
+
+\end{enumerate}
+
+\end{document}

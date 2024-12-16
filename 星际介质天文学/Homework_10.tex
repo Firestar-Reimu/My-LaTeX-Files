@@ -1,0 +1,100 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年5月10日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[31.1 (a)]
+    根据化学反应定律，对于基元反应$a\mathrm{A} + b\mathrm{B} \to c\mathrm{C} + d\mathrm{D}$，其反应速率为：
+    \[
+        R = \frac{1}{a} \odv{n(\mathrm{A})}{t} = \frac{1}{b} \odv{n(\mathrm{B})}{t} = -\frac{1}{c} \odv{n(\mathrm{C})}{t} = -\frac{1}{d} \odv{n(\mathrm{D})}{t} = k n(\mathrm{A})^a n(\mathrm{B}^b)
+    \]
+    故对于生成$\mathrm{H}^-$的反应$\mathrm{H} + e^- \to \mathrm{H}^- +h\nu$，反应速率为：
+    \[
+        R_1 = \odv{n(\mathrm{H}^-)}{t} = k_{\mathrm{ra}} n(\mathrm{H}) n(e^-)
+    \]
+    对于消耗$\mathrm{H}^-$的反应$\mathrm{H}^- + \mathrm{H} \to \mathrm{H}_2 + e^-$，反应速率为：
+    \[
+        R_2 = -\odv{n(\mathrm{H}^-)}{t} = k_{\mathrm{ad}} n(\mathrm{H}^-) n(\mathrm{H})
+    \]
+    对于消耗$\mathrm{H}^-$的反应$\mathrm{H}^- + h\nu \to \mathrm{H} + e^-$，反应速率为：
+    \[
+    R_3 = -\odv{n(\mathrm{H}^-)}{t} = \zeta_{\mathrm{pd}} n(\mathrm{H}^-)
+    \]
+    体系平衡稳定时，生成$\mathrm{H}^-$的速率与消耗$\mathrm{H}^-$的速率相等，此时：
+    \[
+        R_1 = R_2 + R_3
+    \]
+    即：
+    \[
+        k_{\mathrm{ra}} n(\mathrm{H}) n(e^-) = k_{\mathrm{ad}} n(\mathrm{H}^-) n(\mathrm{H}) + \zeta_{\mathrm{pd}} n(\mathrm{H}^-)
+    \]
+    则有：
+    \begin{align*}
+        \frac{n(\mathrm{H}^-)}{n(\mathrm{H})}
+        &= \frac{k_{\mathrm{ra}} n(e^-)}{k_{\mathrm{ad}} n(\mathrm{H}) + \zeta_{\mathrm{pd}}} \\
+        &= \frac{1.9 \times 10^{-16} T_2^{0.67} \times 0.02}{1.3 \times 10^{-9} \times 30 + 2.4 \times 10^{-7}} \\
+        &= 1.362 \times 10^{-11} T_2^{0.67}
+    \end{align*}
+
+    \medskip
+    \item[31.1 (b)]
+    参与$\mathrm{H}^-$的反应$\mathrm{H}^- + \mathrm{H} \to \mathrm{H}_2 + e^-$反应的$\mathrm{H}^-$比例为：
+    \begin{align*}
+        \frac{R_2}{R_2 + R_3}
+        &= \frac{k_{\mathrm{ad}} n(\mathrm{H}^-) n(\mathrm{H})}{k_{\mathrm{ad}} n(\mathrm{H}^-) n(\mathrm{H}) + \zeta_{\mathrm{pd}} n(\mathrm{H}^-)} \\
+        &= \frac{k_{\mathrm{ad}} n(\mathrm{H})}{k_{\mathrm{ad}} n(\mathrm{H}) + \zeta_{\mathrm{pd}}} \\
+        &= \frac{1.3 \times 10^{-9} \times 30}{1.3 \times 10^{-9} \times 30 + 2.4 \times 10^{-7}} \\
+        &= 0.14
+    \end{align*}
+
+    \medskip
+    \item[31.1 (c)]
+    由题意：
+    \begin{align*}
+        R_{\mathrm{H}^-}
+        &= \frac{k_{\mathrm{ad}} n(\mathrm{H}^-) n(\mathrm{H})}{n(\mathrm{H}) n(\mathrm{H})} \\
+        &= k_{\mathrm{ad}} \frac{n(\mathrm{H}^-)}{n(\mathrm{H})} \\
+        &= 1.3 \times 10^{-9} \times 1.36 \times 10^{-11} T_2^{0.67} \\
+        &= 1.77 \times 10^{-20} T_2^{0.67}\,\mathrm{cm^3/s}
+    \end{align*}
+    这个速率比尘埃催化生成$\mathrm{H}_2$的速率（由(31.11)式给出）：
+    \[
+        R_{\mathrm{gr}} = 7.3 \times 10^{17} T_2^{1/2} \ab<\epsilon_{\mathrm{gr}}> \Sigma_{-21}\,\mathrm{cm^3/s} \approx 3.65 \times 10^{-17} T_2^{1/2}\,\mathrm{cm^3/s}
+    \]
+    小了3个数量级。
+
+\end{enumerate}
+
+\end{document}

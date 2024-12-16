@@ -1,0 +1,99 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年3月15日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[21.1]
+    由$R_V$的定义：
+    \[
+        R_V = \frac{A_V}{A_B - A_V}
+    \]
+    如果$A(\lambda) \propto \nu \propto \dfrac{1}{\lambda}$，则：
+    \[
+        R_V = \frac{1/\lambda_V}{1/\lambda_B - 1/\lambda_V} = \frac{1/5470\,\ang}{1/4405\,\ang - 1/5470\,\ang} = 4.136
+    \]
+
+    \bigskip
+    \item[21.2]
+    由$R_V$的定义：
+    \[
+        R_V = \frac{A_V}{A_B - A_V}
+    \]
+    如果$A(\lambda) \propto \nu^\beta \propto \lambda^{-\beta}$，则：
+    \[
+        R_V = \frac{\lambda_V^{-\beta}}{\lambda_B^{-\beta} - \lambda_V^{-\beta}} = 3.1
+    \]
+    代入$\lambda_B = 4405\,\ang$、$\lambda_V = 5470\,\ang$，解得：
+    \[
+        \beta = 1.291
+    \]
+
+    \bigskip
+    \item[21.3 (a)]
+    考虑单位长度尘埃和氢原子的质量，单位长度的质量等于粒子的质量乘粒子的柱密度：
+    \[
+    \frac{M_{\mathrm{dust}}}{M_{\mathrm{H}}} = \frac{m_{\mathrm{dust}} N_{\mathrm{dust}}}{m_{\mathrm{H}} N_{\mathrm{H}}}
+    \]
+    单个尘埃粒子和氢原子的质量分别为：
+    \[
+        m_{\mathrm{dust}} = \frac{4}{3}\pi a^3 \rho,\quad m_{\mathrm{H}} = 1.008\,\mathrm{u} = 1.674 \times 10^{-24}\,\mathrm{g}
+    \]
+    又有：
+    \[
+        \frac{A_{0.55\,\um}}{N_{\mathrm{H}}} \approx 3.52 \times 10^{-22}\,\mathrm{mag \cdot cm^2}
+    \]
+    注意到$A = \dfrac{2.5}{\ln{10}} \tau = 1.086\tau$，且$\tau = n\sigma l = C_{\mathrm{ext}} N_{\mathrm{dust}}$，则有：
+    \[
+        1.086 C_{\mathrm{ext}} N_{\mathrm{dust}} = 3.52 \times 10^{-22}\,\mathrm{mag \cdot cm^2} N_{\mathrm{H}}
+    \]
+    即：
+    \[
+        \frac{N_{\mathrm{dust}}}{N_{\mathrm{H}}} = \frac{3.52 \times 10^{-22}\,\mathrm{mag \cdot cm^2}}{1.086\pi a^2 Q_{\mathrm{ext}}}
+    \]
+    于是有：
+    \begin{align*}
+        \frac{M_{\mathrm{dust}}}{M_{\mathrm{H}}}
+        &= \frac{m_{\mathrm{dust}} N_{\mathrm{dust}}}{m_{\mathrm{H}} N_{\mathrm{H}}} \\
+        &= \frac{(4\pi/3)a^3 \rho}{m_{\mathrm{H}}} \cdot \frac{3.52 \times 10^{-22}\,\mathrm{mag \cdot cm^2}}{1.086\pi a^2 Q_{\mathrm{ext}}} \\
+        &= \frac{(4\pi/3)a^3 \rho}{1.674 \times 10^{-24}\,\mathrm{g}} \cdot \frac{3.52 \times 10^{-22}\,\mathrm{mag \cdot cm^2}}{1.086\pi a^2 Q_{\mathrm{ext}}} \\
+        &= 258.2\,\mathrm{mag \cdot cm^2/g} \cdot \frac{a\rho}{Q_{\mathrm{ext}}}
+    \end{align*}
+
+    \medskip
+    \item[21.3 (b)]
+    代入$a = 0.1\,\um = 10^{-5}\,\mathrm{cm}$、$Q_{\mathrm{ext}} = 1.5$、$\rho = 3\,\mathrm{g/cm^3}$得：
+    \[
+        \frac{M_{\mathrm{dust}}}{M_{\mathrm{H}}} = \frac{a\rho}{Q_{\mathrm{ext}}} \cdot 258.2\,\mathrm{mag \cdot cm^2/g} = 5.164 \times 10^{-2}
+    \]
+
+\end{enumerate}
+
+\end{document}

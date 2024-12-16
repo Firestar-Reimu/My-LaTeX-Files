@@ -1,0 +1,128 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年3月1日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[1.1 (a)]
+    由题意，银河系银盘的体积为：
+    \[
+        V_{\mathrm{disk}} = \pi R_{\mathrm{disk}}^2 H = 141.4\,\mathrm{kpc^3} = 4.15 \times 10^{66}\,\mathrm{cm^{-3}}
+    \]
+    注意到氦原子核和氢原子核的数量比例为$\mathrm{He/H} = 0.1$，则它们的质量比例为：
+    \[
+        \frac{M_{\mathrm{He}}}{M_{\mathrm{H}}} = \frac{N_{\mathrm{He}} m_{\mathrm{He}}}{N_{\mathrm{H}} m_{\mathrm{H}}} = 0.1 \times \frac{4.0026\,\mathrm{u}}{1.008\,\mathrm{u}} = 0.4
+    \]
+    即氦元素的总质量是氢元素的$0.4$倍，氢和氦气体的总质量是氢元素总质量的$1.4$倍。
+
+    如果只考虑氢原子核，氢原子核的质量密度为：
+    \[
+        \rho_{\mathrm{H}} = \frac{M_{\mathrm{total}}}{V_{\mathrm{disk}}} = \frac{4 \times 10^9\,M_\odot}{V_{\mathrm{disk}}} \times \frac{1}{1.4} = 2.025 \times 10^7\,M_\odot \cdot \mathrm{cm^{-3}} = 1.37 \times 10^{-24}\,\mathrm{g \cdot cm^{-3}}
+    \]
+    其数密度为：
+    \[
+        n_{\mathrm{H}} = \frac{\rho_{\mathrm{H}}}{m_{\mathrm{H}}} = 0.82\,\mathrm{cm^{-3}}
+    \]
+
+    \medskip
+    \item[1.1 (b)]
+    尘埃粒子的总质量为：
+    \[
+        M_{\mathrm{dust}} = 0.7\% \times 4 \times 10^9\,M_\odot = 2.8 \times 10^{7}\,M_\odot = 5.57 \times 10^{40}\,\mathrm{g}
+    \]
+    单个尘埃粒子的质量为：
+    \[
+        m_{\mathrm{dust}} = \frac{4}{3}\pi a^3 \rho_{\mathrm{dust}} = 8.38 \times 10^{-15}\,\mathrm{g}
+    \]
+    则尘埃粒子的数量为：
+    \[
+        N_{\mathrm{dust}} = \frac{M_{\mathrm{dust}}}{m_{\mathrm{dust}}} = 6.65 \times 10^{51}
+    \]
+    其数密度为：
+    \[
+        n_{\mathrm{dust}} = \frac{N_{\mathrm{dust}}}{V_{\mathrm{disk}}} = 1.60 \times 10^{-15}\,\mathrm{cm^{-3}}
+    \]
+
+    \item[1.1 (c)]
+    由题意，$Q_{\mathrm{ext}}$为V波段消光截面与几何截面的比值，$Q_{\mathrm{ext}} \approx 1$说明消光截面$\sigma_{\mathrm{dust}}$约为$\pi a^2$，则沿银心到太阳光路的光深为：（光路长度$l = 8.5\,\mathrm{kpc}$）
+    \[
+        \tau = n_{\mathrm{dust}}\sigma_{\mathrm{dust}} l \approx n_{\mathrm{dust}} \pi a^2 l = 13.18
+    \]
+    又因为：
+    \[
+        \frac{I_\tau}{I_0} = \mathrm{e}^{-\tau},\quad A_V = m_\tau - m_0 = -2.5\log\ab(\frac{I_\tau}{I_0})
+    \]
+    则有：
+    \[
+        A_V = \frac{2.5}{\ln{10}}\tau = 1.086\tau = 14.31\,\mathrm{mag}
+    \]
+
+    \item[1.1 (d)]
+    已知单个分子云的半径为$R_{\mathrm{cloud}} = 15\,\mathrm{pc}$，则其体积为：
+    \[
+        V_{\mathrm{cloud}} = \frac{4}{3}\pi \times R_{\mathrm{cloud}}^3 = 1.414 \times 10^4\,\mathrm{pc^3} = 4.15 \times 10^{59}\,\mathrm{cm^3}
+    \]
+    单个分子云的质量为（注意氢和氦的总质量是氢总质量的$1.4$倍）：
+    \[
+        m_{\mathrm{cloud}} = V_{\mathrm{cloud}} \times n(\mathrm{H_2}) \times m(\mathrm{H_2}) \times 1.4 = 1.94 \times 10^{38}\,\mathrm{g} = 9.79 \times 10^4\,M_\odot
+    \]
+    分子云的个数为：
+    \[
+        N_{\mathrm{cloud}} = \frac{30\% \times M_{\mathrm{total}}}{m_{\mathrm{cloud}}} = 1.23 \times 10^4
+    \]
+
+    \item[1.1 (e)]
+    假设分子云在银盘内均匀随机分布，则可见光波段的消光的数学期望和没有分子云（气体和尘埃均匀分布）时一样，仍是$A_V = 14.31\,\mathrm{mag}$。
+
+    \item[1.1 (f)]
+    类比光深的推导，沿银心到太阳光路会碰撞到的分子云数量$N_{\mathrm{inter}}$的期望值为：
+    \[
+        \overline{N}_{\mathrm{inter}} = n_{\mathrm{cloud}} \sigma_{\mathrm{cloud}} l = \frac{N_{\mathrm{cloud}}}{V_{\mathrm{disk}}} \times \pi R_{\mathrm{cloud}}^2 \times l = 0.521
+    \]
+    假设光在行进过程中碰撞到的分子云数量满足Poisson分布，则有：
+    \[
+        P(N_{\mathrm{inter}} = k) = \frac{\mathrm{e}^{-\lambda} \lambda^k}{k!},\quad \lambda = \overline{N}_{\mathrm{inter}} = 0.521
+    \]
+    如果光不与任何分子云碰撞，则$k = 0$，概率为：
+    \[
+        P(N_{\mathrm{inter}} = 0) = \mathrm{e}^{-\lambda} = 0.594
+    \]
+
+    \item[1.1 (g)]
+    如果光不与任何分子云碰撞，则它穿过剩余$70\%$的均匀分布的气体和尘埃，沿银心到太阳光路的光深为：
+    \[
+        \tau = 70\% \times n_{\mathrm{dust}}\sigma_{\mathrm{dust}} l = 70\% \times 13.18 = 9.23
+    \]
+    消光也减小到原来的$70\%$：
+    \[
+        A_V = 1.086\tau = 10.02\,\mathrm{mag}
+    \]
+\end{enumerate}
+
+\end{document}

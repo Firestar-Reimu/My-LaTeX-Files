@@ -1,0 +1,105 @@
+\documentclass[a4paper,fontset=none]{ctexart}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+\usepackage{physics2}
+\usephysicsmodule{ab,op.legacy}
+\usepackage{fixdif,derivative}
+\newcommand{\um}{\upmu\mathrm{m}}
+\newcommand{\ang}{\text{\r{A}}}
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon{\varepsilon}
+}
+
+\setCJKmainfont{Source Han Serif CN}[BoldFont=Source Han Sans CN Medium,ItalicFont=FZKai-Z03]
+
+\title{\textbf{星际介质天文学作业}}
+\author{张植竣}
+\date{2024年4月5日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item[24.1]
+    由题意，碰撞频率满足：
+    \[
+        \odv{N}{t} = a^2 n_c \ab(\frac{8\pi kT_c}{m_c})^{1/2} \propto T^{1/2} \propto v
+    \]
+    即能量越大、速率越快的粒子，发生碰撞就越频繁。
+
+    而根据Maxwell分布函数，球坐标下，粒子速率的分布函数为：
+    \[
+        f(v) = 4\pi \ab(\frac{m}{2\pi kT})^{3/2} \mathrm{e}^{-mv^2/2kT} v^2
+    \]
+    因此用$v$为权重对能量加权平均可得$E^n$的平均值：
+    \begin{align*}
+        \ab<E^n>
+        &= \frac{\int_0^{+\infty} (mv^2/2)^n v f(v) \d{v}}{\int_0^{+\infty} v f(v) \d{v}} \\
+        &= \frac{\int_0^{+\infty} (mv^2/2)^n v \mathrm{e}^{-mv^2/2kT} v^2 \d{v}}{\int_0^{+\infty} v \mathrm{e}^{-mv^2/2kT} v^2 \d{v}} \\
+        &= \frac{\int_0^{+\infty} (mv^2/2)^n \mathrm{e}^{-mv^2/2kT} v^2 \d(v^2/2)}{\int_0^{+\infty} \mathrm{e}^{-mv^2/2kT} v^2 \d(v^2/2)} \\
+        &= \frac{(kT)^n \int_0^{+\infty} x^{n+1} \mathrm{e}^{-x} \d{x}}{\int_0^{+\infty} x \mathrm{e}^{-x} \d{x}},\quad x = \frac{mv^2}{2kT} \\
+        &= \frac{(kT)^n \Gamma(n+2)}{\Gamma(2)} \\
+        &= (kT)^n (n+1)!
+    \end{align*}
+    当$n = 1$时，$\ab<E> = 2kT$。
+
+    \bigskip
+    \item[24.4 (a)]
+    根据热平衡方程(24.17)式：
+    \[
+        4\pi a^2 \ab<Q_{\mathrm{abs}}>_{T} \sigma T^4 = \pi a^2 \ab<Q_{\mathrm{abs}}>_* u_* c
+    \]
+    又由(24.11)及(24.12)式可知，$\ab<Q_{\mathrm{abs}}>_T \propto \lambda^{-\beta}$时，设$\ab<Q_{\mathrm{abs}}>_T = Q_0(\lambda/\lambda_0)^{-\beta}$：
+    \[
+        \ab<Q_{\mathrm{abs}}>_T = \frac{15}{\pi^4} \Gamma(4+\beta) \zeta(4+\beta) Q_0 \ab(\frac{kT\lambda_0}{hc})^\beta
+    \]
+    则有：
+    \[
+        4\pi a^2 \sigma T^4 \cdot \frac{15}{\pi^4} \Gamma(4+\beta) \zeta(4+\beta) Q_0 \ab(\frac{kT\lambda_0}{hc})^\beta = \pi a^2 \ab<Q_{\mathrm{abs}}>_* u_* c
+    \]
+    化简得：
+    \[
+        T = \ab(\frac{hc}{k\lambda_0})^{\beta/(4+\beta)} \ab[\frac{\pi^4 \ab<Q_{\mathrm{abs}}>_* u_* c}{60 \Gamma(4+\beta) \zeta(4+\beta) Q_0\sigma}]^{1/(4+\beta)}
+    \]
+    此即为(24.18)式，即：
+    \[
+        T \propto u_*^{1/(4+\beta)}
+    \]
+    如果恒星辐射的光谱不变，强度变为原来的$U$倍，则：
+    \[
+        T' = T U^{1/(4+\beta)}
+    \]
+
+    \medskip
+    \item[24.4 (b)]
+    若$U = 100$，$\beta = 1.5$，则分子云的温度为：
+    \[
+        T' = 18\,\mathrm{K} \times 100^{1/(4+1.5)} = 41.58\,\mathrm{K}
+    \]
+    根据Wien位移定理，$\lambda I_\lambda$的峰值波长位于：
+    \[
+        \lambda_{\mathrm{peak}}(\lambda I_\lambda) = \frac{hc}{3.92kT} \propto T^{-1}
+    \]
+    故当前的峰值波长为：
+    \[
+        \lambda_{\mathrm{peak}}(\lambda I_\lambda) = 140\,\um \times \frac{18\,\mathrm{K}}{41.58\,\mathrm{K}} = 60.61\,\um
+    \]
+
+\end{enumerate}
+
+\end{document}
