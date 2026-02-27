@@ -16,7 +16,7 @@
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 \setmonofont{JetBrains Mono}
-\setCJKmainfont{Adobe Song Std}[BoldFont=Noto Sans CJK SC Medium, ItalicFont=Adobe Kaiti Std]
+\setCJKmainfont{SimSun}[BoldFont=Source Han Sans CN]
 \newCJKfontfamily\kaishu{Adobe Kaiti Std}
 \AtBeginDocument{
     \let\uglyepsilon\epsilon
@@ -26,8 +26,22 @@
 \usepackage{graphicx}
 \usepackage{physics}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{angles,quotes,calc,shadings,arrows.meta}
 \usepackage{tikz-3dplot}
+
+% Style to set camera angle, like PGFPlots `view` style
+\tikzset{viewport/.style 2 args={
+    x={({cos(-#1)*1cm},{sin(-#1)*sin(#2)*1cm})},
+    y={({-sin(-#1)*1cm},{cos(-#1)*sin(#2)*1cm})},
+    z={(0,{cos(#2)*1cm})}
+}}
+
+% Convert from spherical to cartesian coordinates
+\newcommand{\ToXYZ}[2]{
+    {sin(#1)*cos(#2)}, % X coordinate
+    {cos(#1)*cos(#2)}, % Y coordinate
+    {sin(#2)}          % Z (vertical) coordinate
+}
 
 \begin{document}
 
@@ -40,30 +54,49 @@
 
 \subsection{球面三角公式的推导}
 
-\begin{center}
-    \tdplotsetmaincoords{60}{30}
-    \pgfmathsetmacro{\rvec}{1}
-    \pgfmathsetmacro{\thetavec}{30}
-    \pgfmathsetmacro{\phivec}{30}
-    \begin{tikzpicture}[scale=3,tdplot_main_coords,>=Stealth]
-        \shade[tdplot_screen_coords,ball color = white] (0,0) circle (\rvec);
-        \coordinate (O) at (0,0,0);
-        \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec};
-        \draw[->] (0,0,0) -- (1.5,0,0) node[anchor=west]{$x$};
-        \draw[->] (0,0,0) -- (0,1.5,0) node[anchor=west]{$y$};
-        \draw[->] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z$};
-        \draw[thick,color=red,->] (O) -- (P) node[midway,above] {$r$};
-        \draw (O) node[anchor=east] {$O$};
-        \fill[radius=0.5pt,color=red] (P) circle node[anchor=west] {$P$};
-        \draw[dashed, color=red] (O) -- (Pxy);
-        \draw[dashed, color=red] (P) -- (Pxy);
-        \tdplotdrawarc{(0,0,0)}{0.3}{0}{\phivec}{anchor=west}{$\phi$};
-        \tdplotsetthetaplanecoords{\phivec};
-        \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.3}{0}{\thetavec}{anchor=south}{$\theta$};
-        \tdplotdrawarc{(0,0,0)}{\rvec}{-150}{30}{}{};
-        \tdplotdrawarc[dashed]{(0,0,0)}{\rvec}{30}{210}{}{};
-    \end{tikzpicture}
-\end{center}
+\tdplotsetmaincoords{60}{120}
+\pgfmathsetmacro{\rvec}{1}
+\pgfmathsetmacro{\thetavec}{45}
+\pgfmathsetmacro{\phivec}{60}
+\pgfmathsetmacro{\epsilonvec}{30}
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=3,tdplot_main_coords,>=Stealth]
+    \shade[tdplot_screen_coords,ball color = white] (0,0) circle (\rvec);
+    \coordinate (O) at (0,0,0);
+    \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+
+    % 原坐标系 Oxyz
+    \draw[->,thick] (0,0,0) -- (2,0,0) node[anchor=east]{$x$};
+    \draw[->,thick] (0,0,0) -- (0,1.5,0) node[anchor=west]{$y$};
+    \draw[->,thick] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z$};
+
+    \draw[thick,color=red,->] (O) -- (P) node[near end,above] {$r$};
+    \draw (O) node[anchor=east] {$O$};
+    \fill[radius=0.5pt,color=red] (P) circle node[anchor=west] {$P$};
+    \draw[dashed, color=red] (O) -- (Pxy);
+    \draw[dashed, color=red] (P) -- (Pxy);
+    \pic[draw, angle radius=0.25cm, color=red] {right angle=O--Pxy--P};
+
+    % 用 angles 库重写 phi 角度
+    % 定义 x 轴上的点和 Pxy 投影方向的点
+    \coordinate (Xaxis) at (0.5,0,0);
+    \coordinate (PhiPoint) at ({0.5*cos(\phivec)},{0.5*sin(\phivec)},0);
+    \pic[draw, angle radius=0.5cm, angle eccentricity=1.5, "$\phi$"] {angle=Xaxis--O--PhiPoint};
+
+    % 用 angles 库重写 theta 角度（在旋转坐标系中）
+    \tdplotsetthetaplanecoords{\phivec}
+    \begin{scope}[tdplot_rotated_coords]
+        \coordinate (Zrot) at (0.5,0,0);
+        \coordinate (ThetaPoint) at ({0.5*cos(\thetavec)},{0.5*sin(\thetavec)},0);
+        \pic[draw, angle radius=0.5cm, angle eccentricity=1.5, "$\theta$"] {angle=ThetaPoint--O--Zrot};
+    \end{scope}
+
+    \tdplotdrawarc{(0,0,0)}{\rvec}{-60}{120}{}{}
+    \tdplotdrawarc[dashed]{(0,0,0)}{\rvec}{120}{300}{}{}
+\end{tikzpicture}
+\end{figure}
 
 首先我们需要认识\textbf{球坐标}$(r,\theta,\phi)$，其中$r$称为\textbf{径向距离}，$\theta$称为\textbf{极角}，$\phi$称为\textbf{方位角}。
 
@@ -80,37 +113,65 @@
 \]
 按照国际标准化组织（ISO）建立的约定，球坐标记为$(r,\theta,\phi)$，其中$r$代表径向距离，$\theta$代表极角，$\phi$代表方位角。这种标记通常被物理界的学者所采用。在数学界，球坐标的标记也是$(r,\theta,\phi)$，但极角与方位角的标记正好相反：$\theta$代表方位角，$\phi$代表极角。数学界的标记被认为“提供了对常用的极坐标系记号的逻辑扩展，$\theta$仍是在$Oxy$平面上的角度而$\phi$是在这个平面之外的角度”。
 
-\begin{center}
-    \tdplotsetmaincoords{60}{30}
-    \pgfmathsetmacro{\rvec}{1}
-    \pgfmathsetmacro{\thetavec}{30}
-    \pgfmathsetmacro{\phivec}{30}
-    \pgfmathsetmacro{\epsilonvec}{-30}
-    \begin{tikzpicture}[scale=3,tdplot_main_coords,>=Stealth]
-        \shade[tdplot_screen_coords,ball color = white] (0,0) circle (\rvec);
-        \coordinate (O) at (0,0,0);
-        \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec};
-        \draw[->] (0,0,0) -- (1.5,0,0) node[anchor=west]{$x$};
-        \draw[->] (0,0,0) -- (0,1.5,0) node[anchor=west]{$y,y'$};
-        \draw[->] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z$};
-        \draw[thick,color=red,->] (O) -- (P);
-        \draw (O) node[anchor=east] {$O,O'$};
-        \fill[radius=0.5pt,color=red] (P) circle node[anchor=west] {$P$};
-        \tdplotdrawarc{(0,0,0)}{\rvec}{-150}{30}{}{};
-        \tdplotdrawarc[dashed]{(0,0,0)}{\rvec}{30}{210}{}{};
-        \tdplotsetthetaplanecoords{0};
-        \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.3}{0}{\epsilonvec}{anchor=south}{$\epsilon$};
+\tdplotsetmaincoords{60}{120}
+\pgfmathsetmacro{\rvec}{1}
+\pgfmathsetmacro{\thetavec}{45}
+\pgfmathsetmacro{\phivec}{60}
+\pgfmathsetmacro{\epsilonvec}{30}
 
-        \tdplotsetrotatedcoords{0}{\epsilonvec}{0};
-        \draw[->,tdplot_rotated_coords,color=blue] (0,0,0) -- (1.5,0,0) node[anchor=west]{$x'$};
-        \draw[->,tdplot_rotated_coords,color=blue] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z'$};
-        \tdplotdrawarc[tdplot_rotated_coords,color=blue]{(0,0,0)}{\rvec}{-150}{30}{}{};
-        \tdplotdrawarc[tdplot_rotated_coords,dashed,color=blue]{(0,0,0)}{\rvec}{30}{210}{}{};
-    \end{tikzpicture}
-\end{center}
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=3,tdplot_main_coords,>=Stealth]
+    \shade[tdplot_screen_coords,ball color = white] (0,0) circle (\rvec);
+    \coordinate (O) at (0,0,0);
+    \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
 
+    % 原坐标系 Oxyz
+    \draw[->,thick] (0,0,0) -- (2,0,0) node[anchor=east]{$x$};
+    \draw[->,thick] (0,0,0) -- (0,1.5,0) node[anchor=west]{$y$};
+    \draw[->,thick] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z$};
 
-如果在同一个球面上确定两个直角坐标系$O-xyz$和$O-x'y'z'$，它们的原点$O$和$y$轴重合，$x$轴和$z$轴相互转动了一个角度$\epsilon$，它们描述球面上同一个点$P$时，球坐标为：
+    \draw[thick,color=red,->] (O) -- (P) node[near end,above] {$r$};
+    \draw (O) node[anchor=east] {$O$};
+    \fill[radius=0.5pt,color=red] (P) circle node[anchor=west] {$P$};
+    \draw[dashed, color=red] (O) -- (Pxy);
+    \draw[dashed, color=red] (P) -- (Pxy);
+    \pic[draw, angle radius=0.25cm, color=red] {right angle=O--Pxy--P};
+
+    % 用 angles 库重写 phi 角度
+    % 定义 x 轴上的点和 Pxy 投影方向的点
+    \coordinate (Xaxis) at (0.5,0,0);
+    \coordinate (PhiPoint) at ({0.5*cos(\phivec)},{0.5*sin(\phivec)},0);
+    \pic[draw, angle radius=0.5cm, angle eccentricity=1.5, "$\phi$"] {angle=Xaxis--O--PhiPoint};
+
+    % 用 angles 库重写 theta 角度（在旋转坐标系中）
+    \tdplotsetthetaplanecoords{\phivec}
+    \begin{scope}[tdplot_rotated_coords]
+        \coordinate (Zrot) at (0.5,0,0);
+        \coordinate (ThetaPoint) at ({0.5*cos(\thetavec)},{0.5*sin(\thetavec)},0);
+        \pic[draw, angle radius=0.5cm, angle eccentricity=1.5, "$\theta$"] {angle=ThetaPoint--O--Zrot};
+    \end{scope}
+
+    \tdplotdrawarc{(0,0,0)}{\rvec}{-60}{120}{}{}
+    \tdplotdrawarc[dashed]{(0,0,0)}{\rvec}{120}{300}{}{}
+
+    % 绕X轴逆时针旋转30度的坐标系 Ox'y'z'
+    \tdplotsetrotatedcoords{-90}{\epsilonvec}{90}
+    \draw[->,blue,thick,tdplot_rotated_coords] (0,0,0) -- (2,0,0) node[anchor=north west]{$x'$};
+    \draw[->,blue,thick,tdplot_rotated_coords] (0,0,0) -- (0,1.5,0) node[anchor=south]{$y'$};
+    \draw[->,blue,thick,tdplot_rotated_coords] (0,0,0) -- (0,0,1.5) node[anchor=south west]{$z'$};
+
+    % 用 angles 库重写坐标系旋转 alpha 角度（在 Oyz 平面）
+    \tdplotsetthetaplanecoords{90}
+    \begin{scope}[tdplot_rotated_coords]
+        \coordinate (Yaxis) at (0,0.5,0);
+        \coordinate (Yprime) at (0,{0.5*sin(\epsilonvec)},{0.5*cos(\epsilonvec)});
+        \pic[draw, blue, ->, angle radius=0.7cm, angle eccentricity=1.3, "$\epsilon$"] {angle=Yaxis--O--Yprime};
+    \end{scope}
+\end{tikzpicture}
+\end{figure}
+
+如果在同一个球面上确定两个直角坐标系$Oxyz$和$Ox'y'z'$，它们的原点$O$和$x$轴重合，$y$轴和$z$轴相互转动了一个角度$\epsilon$，它们描述球面上同一个点$P$时，球坐标为：
 \[
     x = r\sin\theta\cos\phi,\quad
     y = r\sin\theta\sin\phi,\quad
@@ -130,44 +191,45 @@
     \end{cases}
 \end{equation}
 
-\begin{center}
-    \begin{tikzpicture}[>=Stealth]
-        \draw (0,0) node[anchor=north east] {$O,O'$};
-        \draw[->] (0,0) -- (4,0) node[anchor=west]{$x$};
-        \draw[->] (0,0) -- (0,4) node[anchor=west]{$z$};
-        \draw[->,color=blue] (1.125,0.649519) -- (3.464102,2) node[anchor=west,rotate=30]{$x'$};
-        \draw[->,color=blue] (0,0) -- (-2,3.464102) node[anchor=west,rotate=30]{$z'$};
-        \fill[radius=1pt,color=red] (1.5,3) circle node[anchor=south west] {$P$};
-        \draw[dashed] (1.5,3) -- (1.5,0);
-        \draw (1.5,0) node[anchor=north] {$x$};
-        \draw[dashed] (1.5,3) -- (0,3);
-        \draw (0,3) node[anchor=south east] {$z$};
-        \draw[dashed,color=blue] (1.5,3) -- (2.424038,1.399519);
-        \draw[color=blue] (2.424038,1.399519) node[anchor=north west,rotate=30] {$x'$};
-        \draw[dashed,color=blue] (1.5,3) -- (-0.924038,1.600481);
-        \draw[color=blue] (-0.924038,1.600481) node[anchor=east,rotate=30] {$z'$};
-        \draw (0.5,0) arc [start angle=0,radius=0.5,delta angle=30];
-        \draw (0.65,0.175) node {$\epsilon$};
-        \draw (0,0.5) arc [start angle=90,radius=0.5,delta angle=30];
-        \draw (-0.175,0.65) node {$\epsilon$};
-        \draw[dashed] (1.5,0) -- (1.125,0.649519);
-        \draw[color=brown] (0,0) -- (1.125,0.649519) node[midway,above,rotate=30] {$x\cos\epsilon$};
-        \draw[dashed] (2.424038,1.399519) -- (3.232051,0);
-        \draw[dashed,color=magenta] (2.799038,0.75) -- (1.5,0) node[midway,above,rotate=30] {$z\sin\epsilon$};
-        \draw[dashed] (0,3) -- (-1.299038,2.25);
-        \draw[dashed,color=orange] (0,3) -- (0.375,2.350481) node[midway,right,rotate=30] {$x\sin\epsilon$};
-        \draw[line width=0,color=blue] (0,0) -- (-1.299038,2.25) node[left,rotate=30] {$z\cos\epsilon$};
-    \end{tikzpicture}
-\end{center}
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=1.5,>=Stealth]
+    \draw (0,0) node[anchor=north east] {$O$};
+    \draw[->] (0,0) -- (4,0) node[anchor=west]{$y$};
+    \draw[->] (0,0) -- (0,4) node[anchor=west]{$z$};
+    \draw[->,color=blue] (1.125,0.649519) -- (3.464102,2) node[anchor=west,rotate=30]{$y'$};
+    \draw[->,color=blue] (0,0) -- (-2,3.464102) node[anchor=west,rotate=30]{$z'$};
+    \fill[radius=1pt,color=red] (1.5,3) circle node[anchor=south west] {$P$};
+    \draw[dashed] (1.5,3) -- (1.5,0);
+    \draw (1.5,0) node[anchor=north] {$y$};
+    \draw[dashed] (1.5,3) -- (0,3);
+    \draw (0,3) node[anchor=south east] {$z$};
+    \draw[dashed,color=blue] (1.5,3) -- (2.424038,1.399519);
+    \draw[color=blue] (2.424038,1.399519) node[anchor=north west,rotate=30] {$y'$};
+    \draw[dashed,color=blue] (1.5,3) -- (-0.924038,1.600481);
+    \draw[color=blue] (-0.924038,1.600481) node[anchor=east,rotate=30] {$z'$};
+    \draw (0.5,0) arc [start angle=0,radius=0.5,delta angle=30];
+    \draw (0.65,0.175) node {$\epsilon$};
+    \draw (0,0.5) arc [start angle=90,radius=0.5,delta angle=30];
+    \draw (-0.175,0.65) node {$\epsilon$};
+    \draw[dashed] (1.5,0) -- (1.125,0.649519);
+    \draw[color=brown] (0,0) -- (1.125,0.649519) node[pos=0.6,above,rotate=30] {$y\cos\epsilon$};
+    \draw[dashed] (2.424038,1.399519) -- (3.232051,0);
+    \draw[dashed,color=magenta] (2.799038,0.75) -- (1.5,0) node[midway,above,rotate=30] {$z\sin\epsilon$};
+    \draw[dashed] (0,3) -- (-1.299038,2.25);
+    \draw[dashed,color=orange] (0,3) -- (0.375,2.350481) node[midway,right,rotate=30] {$y\sin\epsilon$};
+    \draw[semithick,color=green!75!black] (0,0) -- (-1.299038,2.25) node[left,rotate=30] {$z\cos\epsilon$};
+\end{tikzpicture}
+\end{figure}
 
-如图，$(x,z)$和$(x',z')$之间还有关系：
+如图，$(y,z)$和$(y',z')$之间还有关系：
 \begin{equation}
     \begin{cases}
-        & x' = x\cos\epsilon + z\sin\epsilon \\
-        & z' = z\cos\epsilon - x\sin\epsilon
+        & y' = y\cos\epsilon + z\sin\epsilon \\
+        & z' = z\cos\epsilon - y\sin\epsilon
     \end{cases}
 \end{equation}
-又显然有$y=y'$和$r'=r$，代入(1)得：
+又显然有$x=x'$和$r'=r$，代入(1)得：
 \begin{equation}
     \begin{cases}
         & \sin\theta'\cos\phi' = \sin\theta\cos\phi\cos\epsilon + \cos\theta\sin\epsilon \\
@@ -226,6 +288,461 @@
         & a^2 = b^2 + c^2 - 2bc\cos A
     \end{cases}
 \end{equation}
+
+\subsection{赤道坐标系介绍}
+
+赤道坐标系的基本圈是天赤道，也就是地球赤道在天球上的投影，南北两极分别是北天极和南天极，也是地球自转轴在天球上的投影。赤道坐标系的赤道坐标系所定义的经度和纬度分别称为赤经$\alpha$和赤纬$\delta$。经度起始点是春分点，自西向东增加，范围是$0^\circ \sim 360^\circ$，但实际上更常用时间单位表示，即$0^{\mathrm{h}} \sim 24^{\mathrm{h}}$。纬度从赤道向南北两极分别度量。赤道坐标系是一种全球坐标系，天体在赤道坐标系的位置（在精度要求不高的情况下）可以被认为是绝对的，与观测者所在的位置和观测时间无关。
+
+\subsection{时角坐标系介绍}
+
+时角坐标系则是一个衍生于赤道坐标系的地方天球坐标系，它同样以天球赤道为基准，但使用时角$t$和赤纬$\delta$作为坐标。纬度的定义和赤道坐标系一致，而时角表示天体相对于当地子午线的角距离。时角从子午圈（经过观测地北点、南点和天顶的大圆）开始度量，自东向西增加，范围是$0^\circ \sim 360^\circ$，但实际上更常用时间单位表示，即$0^{\mathrm{h}} \sim 24^{\mathrm{h}}$。一般约定：天体上中天时，时角$t = 0^{\mathrm{h}}$，之后时角逐渐增加，天体下中天时，$t = 12^{\mathrm{h}}$。可以看出，时角坐标系是一个与观测者位置和时间密切相关的坐标系。
+
+对于遥远的恒星，其时角转动$360^\circ$的时间是一个恒星日（约$23^{\mathrm{h}}56^{\mathrm{m}}4^{\mathrm{s}}$平太阳时），将其平分为$24^{\mathrm{h}}$则是恒星时。我们约定：某地的地方恒星时表示当地春分点的时角。根据定义可得，对于任何一颗恒星，时角$t$与恒星时$s$、赤经$\alpha$之间的关系为：
+\[
+    s = \alpha + t
+\]
+如果该恒星恰好上中天，此时$t = 0^{\mathrm{h}}$，则$s = \alpha$，即该恒星的赤经就是当时的恒星时。天文台用中星仪望远镜观测每一颗上中天的恒星，就可以用它们的赤经来测量和校准恒星时，这就是天文台测时的原理。
+
+\subsection{地平坐标系介绍}
+
+地平坐标系是一种以观测者所在地点为中心的天球坐标系，使用方位角$A$和高度角$h$来描述天体的位置。方位角是天体在地平面上的方向角，通常从正北方向开始顺时针测量（北为$0^\circ$，东为$90^\circ$）；高度角是天体相对于地平面的角高度，从地平圈向天顶和天底度量，地平线以上为正，地平线以下为负。除高度角外，也可以用天顶距描述天体高度，定义为天顶和天体之间的角距离$z = 90^\circ - h$。需要注意的是，在天文中，常使用从南点向西度量方位角的规定，由于在北半球看来，大多数天体出现在南方天空，上中天（时角的零点）也位于北天极和南点之间，这种规定在某些情况下更为方便，本文也主要采用这种约定。
+
+显然，地平坐标系同样是一个与观测者位置和时间密切相关的坐标系。对于观测者，地平坐标系也是最直观、最容易确定的坐标系，高度和方位角的大小也比较容易的估算或测量。但由于任何一个自然天体都在天球上有东升西落的周日视运动，它们的地平坐标随时都在变化之中，这是地平坐标系不方便的地方。
+
+\subsection{使用球面三角推导转换公式}
+
+设天体的赤纬为$\delta$，时角为$t$，方位角（从南向西）为$A$，高度角为$h$，观测者的纬度为$\varphi$，则可以使用球面三角学中的正弦定理和余弦定理来推导转换公式。球面三角的正弦定理为：
+\[
+    \frac{\sin{a}}{\sin{A}} = \frac{\sin{b}}{\sin{B}} = \frac{\sin{c}}{\sin{C}}
+\]
+球面三角的边的余弦公式为：
+\[
+    \cos{a} = \cos{b}\cos{c} + \cos{A}\sin{b}\sin{c}
+\]
+球面三角的角的余弦公式为：
+\[
+    \cos{A} = -\cos{B}\cos{C} + \cos{a}\sin{B}\sin{C}
+\]
+
+\def\RotationX{90}
+\def\RotationY{18}
+\def\Latitude{60}
+\pgfmathsetmacro{\EquatorTilt}{90-\Latitude}
+
+\def\azimuth{60}
+\def\altitude{60}
+\def\declination{38.68218745}
+\def\hourAngle{33.69006753}
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=4,>=Stealth]
+
+    % 外圈天球
+    \shade[ball color=gray, opacity=0.3] (0,0) circle (1);
+
+    \begin{scope}[viewport={\RotationX}{\RotationY}]
+
+        % ===== 地平坐标系 (Horizontal System) =====
+
+        % 地平圈 (Horizon)
+        \draw[semithick, variable=\t, smooth]
+            plot[domain=0:180] (\ToXYZ{\t}{0});
+        \draw[semithick, densely dashed, variable=\t, smooth]
+            plot[domain=180:360] (\ToXYZ{\t}{0});
+
+        % 子午圈 (Meridian)
+        \draw[variable=\t, smooth]
+            plot[domain=0:180] (\ToXYZ{0}{\t});
+        \draw[densely dashed, variable=\t, smooth]
+            plot[domain=180:360] (\ToXYZ{0}{\t});
+
+        % ===== 赤道坐标系 (Equatorial System) =====
+
+        % 天赤道 (Celestial Equator)
+        \draw[semithick, red, variable=\t, smooth, rotate around x=\EquatorTilt]
+            plot[domain=0:180] (\ToXYZ{\t}{0});
+        \draw[semithick, red, densely dashed, variable=\t, smooth, rotate around x=\EquatorTilt]
+            plot[domain=180:360] (\ToXYZ{\t}{0});
+
+        % ===== 定义关键点坐标 =====
+
+        % 天顶 Z
+        \coordinate (Z) at (0, 0, 1);
+
+        % 北天极 P
+        \coordinate (P) at (0, {-cos(\Latitude)}, {sin(\Latitude)});
+
+        % 天体 M
+        \coordinate (M) at (\ToXYZ{\azimuth}{\altitude});
+
+        % ===== 时角圈（赤经圈） =====
+
+        \draw[brown, variable=\t, smooth, rotate around x=\EquatorTilt, rotate around z=-\hourAngle]
+            plot[domain=-90:90] (\ToXYZ{0}{\t});
+        \draw[brown, densely dashed, variable=\t, smooth, rotate around x=\EquatorTilt, rotate around z=-\hourAngle]
+            plot[domain=90:270] (\ToXYZ{0}{\t});
+
+        % ===== 球面三角形 Z-P-M =====
+
+        % 边 ZP
+        \draw[green!75!black, very thick, variable=\t, smooth, rotate around x=90]
+            plot[domain=0:90-\Latitude] (\ToXYZ{0}{\t});
+        \node[green!75!black, font=\footnotesize, rotate around x=90, rotate=15] at (\ToXYZ{0}{90-\Latitude-15}) [above=-2pt] {$90^\circ - \varphi$};
+
+        % 边 PM
+        \draw[green!90!black, very thick, variable=\t, smooth, rotate around x=\EquatorTilt, rotate around z=-\hourAngle]
+            plot[domain=90:\declination] (\ToXYZ{0}{\t});
+        \node[green!90!black, font=\footnotesize, rotate around x=\EquatorTilt, rotate around z=-\hourAngle, rotate=-10] at (\ToXYZ{0}{\declination+25}) [below] {$90^\circ - \delta$};
+
+        % 边 MZ
+        \draw[green!50!black, very thick, variable=\t, smooth, rotate around z=-\azimuth]
+            plot[domain=\altitude:90] (\ToXYZ{0}{\t});
+        \node[green!50!black, font=\footnotesize, rotate around z=-\azimuth, rotate=-45] at (\ToXYZ{0}{\altitude+15}) [above] {$90^\circ - h$};
+
+        % ===== 角度标注（使用靠近顶点的辅助点） =====
+
+        % 角PZM: 在PZ弧上找靠近Z的点P'，在MZ弧上找靠近Z的点M'
+        \begin{scope}[rotate around x=90]
+            \coordinate (Pprime_Z) at (\ToXYZ{0}{5});
+        \end{scope}
+
+        \begin{scope}[rotate around z=-\azimuth]
+            \coordinate (Mprime_Z) at (\ToXYZ{0}{85});
+        \end{scope}
+
+        \pic[draw, orange!75!red, font=\footnotesize, angle radius=0.2cm, angle eccentricity=1.5, "$180^\circ - A$"] {angle=Pprime_Z--Z--Mprime_Z};
+
+        % 角ZPS=t: 在ZP弧上找靠近P的点Z'，在PS弧上找靠近P的点S'
+        \begin{scope}[rotate around x=90]
+            \coordinate (Zprime_P) at (\ToXYZ{0}{90-\Latitude-10});
+        \end{scope}
+
+        \begin{scope}[rotate around x=\EquatorTilt, rotate around z=-\hourAngle]
+            \coordinate (Sprime_P) at (\ToXYZ{0}{80});
+        \end{scope}
+
+        \pic[draw, teal, font=\footnotesize, angle radius=0.75cm, angle eccentricity=1, right, "$t$"] {angle=Sprime_P--P--Zprime_P};
+
+        % ===== 标记关键点 =====
+
+        \node[circle, fill=black, inner sep=1.5pt, label={above:$Z$}] at (Z) {};
+
+        \node[circle, fill=black, inner sep=1pt, label={left:$N$}]
+            (N) at (\ToXYZ{180}{0}) {};
+
+        \node[circle, fill=black, inner sep=1pt, label={right:$S$}]
+            (S) at (\ToXYZ{0}{0}) {};
+
+        \node[circle, fill=black, inner sep=1pt, label={below right:$W$}]
+            (W) at (\ToXYZ{90}{0}) {};
+
+        \node[circle, fill=black, inner sep=1pt, label={above left:$E$}]
+            (E) at (\ToXYZ{270}{0}) {};
+
+        \node[circle, fill=blue, inner sep=1.5pt, label={above left:$P$}] at (P) {};
+
+        \node[circle, fill=black, inner sep=2pt, label={right:$O$}] at (0,0,0) {};
+
+        \node[circle, fill=red, inner sep=2pt, label={above right:$M$}] at (M) {};
+
+        \draw[->, thick, red] (0,0,0) -- (M);
+
+        % ===== 标记角度 =====
+
+        % 高度角 h
+        \draw[thick, blue, variable=\t, smooth, rotate around z=-\azimuth]
+            plot[domain=0:\altitude] (\ToXYZ{0}{\t});
+        \node[blue] at (\ToXYZ{\azimuth}{25}) [left] {$h$};
+
+        % 方位角 A
+        \draw[thick, orange!75!red, variable=\t, smooth]
+            plot[domain=0:\azimuth] (\ToXYZ{\t}{0});
+        \node[orange!75!red] at (\ToXYZ{40}{0}) [above] {$A$};
+
+        % 纬度 φ
+        \draw[thick, violet, variable=\t, smooth, rotate around x=90]
+            plot[domain=90:90-\Latitude] (\ToXYZ{0}{\t});
+        \node[violet] at (0, {-cos(30)}, {sin(30)}) [left] {$\varphi$};
+
+        % 赤纬 δ
+        \draw[thick, brown!75!black, variable=\t, smooth, rotate around x=\EquatorTilt, rotate around z=-\hourAngle]
+            plot[domain=0:\declination] (\ToXYZ{0}{\t});
+        \node[brown!75!black] at (\ToXYZ{\hourAngle}{20}) [right=3pt, rotate around x=\EquatorTilt] {$\delta$};
+
+        % 时角 t
+        \draw[thick, teal, variable=\t, smooth, rotate around x=\EquatorTilt]
+            plot[domain=0:\hourAngle] (\ToXYZ{\t}{0});
+        \node[teal] at (\ToXYZ{25}{0}) [right, rotate around x=\EquatorTilt] {$t$};
+
+        % ===== 直角符号辅助点 =====
+
+        % 时角圈与天赤道交点
+        \begin{scope}[rotate around x=\EquatorTilt]
+            \coordinate (EquatorPoint) at (\ToXYZ{\hourAngle}{0});
+            \coordinate (EquatorPoint1) at (\ToXYZ{\hourAngle-3}{0});
+            \coordinate (EquatorPoint2) at (\ToXYZ{\hourAngle+3}{0});
+        \end{scope}
+
+        \begin{scope}[rotate around x=\EquatorTilt, rotate around z=-\hourAngle]
+            \coordinate (HourCirclePoint1) at (\ToXYZ{0}{3});
+            \coordinate (HourCirclePoint2) at (\ToXYZ{0}{-3});
+        \end{scope}
+
+        % 高度角弧与地平圈交点
+        \coordinate (HorizonPoint) at (\ToXYZ{\azimuth}{0});
+        \coordinate (HorizonPoint1) at (\ToXYZ{\azimuth-3}{0});
+        \coordinate (HorizonPoint2) at (\ToXYZ{\azimuth+3}{0});
+
+        \begin{scope}[rotate around z=-\azimuth]
+            \coordinate (AltitudePoint1) at (\ToXYZ{0}{3});
+            \coordinate (AltitudePoint2) at (\ToXYZ{0}{-3});
+        \end{scope}
+
+        % ===== 绘制直角符号 =====
+
+        \pic[draw, angle radius=0.15cm, angle eccentricity=1.5] {right angle=EquatorPoint1--EquatorPoint--HourCirclePoint1};
+
+        \pic[draw, angle radius=0.15cm, angle eccentricity=1.5] {right angle=HorizonPoint1--HorizonPoint--AltitudePoint1};
+    \end{scope}
+\end{tikzpicture}
+\end{figure}
+
+考虑一个球面三角形，其顶点分别为天体位置（$M$）、天顶（$Z$）和天极（$P$），该三角形是地平坐标系与时角/赤道坐标系转换中的基本三角形，称为天文三角形。在天文三角形中有：
+\[
+    PM = 90^\circ - \delta, \quad MZ = 90^\circ - h, \quad ZP = 90^\circ - \varphi
+\]
+\[
+    \angle{ZPM} = t,\quad \angle{PZM} = 180^\circ - A
+\]
+对$\angle{ZPM}$和$\angle{PZM}$，根据正弦定理有：
+\[
+    \frac{\sin{90^\circ - h}}{\sin{t}} = \frac{\sin{90^\circ - \delta}}{\sin{A}}
+\]
+即：
+\begin{equation}
+    \frac{\cos{\delta}}{\sin{A}} = \frac{\cos{h}}{\sin{t}}
+\end{equation}
+对$\angle{ZPM}$（作为角$A$），根据边的余弦定理有：
+\begin{equation}
+    \sin{h} = \sin{\delta} \sin{\varphi} + \cos{t} \cos{\delta} \cos{\varphi}
+\end{equation}
+对$\angle{PZM}$（作为角$A$），根据边的余弦定理有：
+\begin{equation}
+    \sin{\delta} = \sin{h} \sin{\varphi} - \cos{A} \cos{h} \cos{\varphi}
+\end{equation}
+这便是时角坐标系与地平坐标系之间的转换公式。注意，如果方位角$A$是从北向东测量的，则$\angle{PZM} = 360^\circ - A = -A$，公式中的$\sin{A}$和$\cos{A}$都要相应加上负号。
+
+如果已知天体的赤纬$\delta$、时角$t$和观测者的纬度$\varphi$，则可以使用上述公式计算出天体在地平坐标系中的方位角$A$和高度角$h$。例如已知某恒星坐标为$\delta = 45^\circ$，$t = 3^{\mathrm{h}} = 45^\circ$，观测者的纬度为$\varphi = 30^\circ$，则可以计算出天体的高度角$h$和方位角$A$。具体计算步骤如下，先用(2)式计算高度角$h$：
+\[
+    \sin{h} = \sin{45^\circ} \sin{30^\circ} + \cos{45^\circ} \cos{45^\circ} \cos{30^\circ} = 0.7866
+\]
+\[
+    h = \arcsin{0.7866} = 51.87^\circ
+\]
+再用(1)式计算方位角$A$：
+\[
+    \sin{A} = \frac{\cos{\delta} \sin{t}}{\cos{h}} = \frac{\cos{45^\circ} \sin{45^\circ}}{\cos{51.87^\circ}} = 0.8097
+\]
+注意这给出两个解：$54.07^\circ$和$125.93^\circ$，需要判断象限。代入(3)式验证：
+\[
+    \cos{A} = \frac{\sin{h} \sin{\phi} - \sin{\delta}}{\cos{h} \cos{\phi}} = -0.5868
+\]
+这说明$A$在第二象限，因此该天体的方位角为$125.93^\circ$。
+
+同样地，如果已知天体的方位角$A$、高度角$h$和观测者的纬度$\varphi$，也可以使用这些公式计算出天体在时角坐标系中的赤纬$\delta$和时角$t$。例如观测到某恒星位置在$A = 60^\circ$，$h = 60^\circ$，纬度$\varphi = 60^\circ$，则可以计算出天体的赤纬$\delta$和时角$t$。具体计算步骤如下，先用(3)式计算赤纬$\delta$：
+\[
+    \sin{\delta} = \sin{60^\circ} \sin{60^\circ} - \cos{60^\circ} \cos{60^\circ} \cos{60^\circ} = 0.625
+\]
+\[
+    \delta = \arcsin{0.625} = 38.68^\circ
+\]
+再用(1)式计算时角$t$：（可以判断$t$在第一象限）
+\[
+    \sin{t} = \frac{\sin{A} \cos{h}}{\cos{\delta}} = \frac{\sin{60^\circ} \cos{60^\circ}}{\cos{38.68^\circ}} = 0.5547
+\]
+\[
+    t = \arcsin{0.5547} = 33.69^\circ = 2^{\mathrm{h}} 15^{\mathrm{m}} 46^{\mathrm{s}}
+\]
+对黄道坐标系、银道坐标系也有类似的转换公式。同一个天体在两个球面坐标系中坐标的变换关系的一般建立方法是：构造一个包含这两个坐标系极点和天体位置的球面三角形，通过该基本三角形，利用球面三角学的基本定理推导出转换公式。
+
+\section{使用坐标旋转推导转换公式}
+
+时角坐标系和地平坐标系之间的转换可以通过一系列坐标旋转来实现。首先，将时角坐标系绕天球赤道旋转，使得天体位置与地平坐标系的方位角对齐。然后，再绕观测者的纬度旋转，使得天体位置与地平坐标系的高度角对齐。通过这些旋转，可以得到从时角坐标系到地平坐标系的转换公式。由于坐标旋转可以使用矩阵表示，因此可以通过矩阵乘法来实现坐标转换，这在计算机实现中非常方便。
+
+\tdplotsetmaincoords{60}{120}
+\pgfmathsetmacro{\rvec}{1}
+\pgfmathsetmacro{\thetavec}{45}
+\pgfmathsetmacro{\phivec}{60}
+\pgfmathsetmacro{\epsilonvec}{30}
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=3,tdplot_main_coords,>=Stealth]
+    \shade[tdplot_screen_coords,ball color = white] (0,0) circle (\rvec);
+    \coordinate (O) at (0,0,0);
+    \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+
+    % 原坐标系 Oxyz
+    \draw[->,thick] (0,0,0) -- (2,0,0) node[anchor=east]{$x$};
+    \draw[->,thick] (0,0,0) -- (0,1.5,0) node[anchor=west]{$y$};
+    \draw[->,thick] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z$};
+
+    \draw[thick,color=red,->] (O) -- (P) node[near end,above] {$r$};
+    \draw (O) node[anchor=east] {$O$};
+    \fill[radius=0.5pt,color=red] (P) circle node[anchor=west] {$P$};
+    \draw[dashed, color=red] (O) -- (Pxy);
+    \draw[dashed, color=red] (P) -- (Pxy);
+
+    % 用 angles 库重写 phi 角度
+    % 定义 x 轴上的点和 Pxy 投影方向的点
+    \coordinate (Xaxis) at (0.5,0,0);
+    \coordinate (PhiPoint) at ({0.5*cos(\phivec)},{0.5*sin(\phivec)},0);
+    \pic[draw, angle radius=0.5cm, angle eccentricity=1.5, "$\phi$"] {angle=Xaxis--O--PhiPoint};
+
+    % 用 angles 库重写 theta 角度（在旋转坐标系中）
+    \tdplotsetthetaplanecoords{\phivec}
+    \begin{scope}[tdplot_rotated_coords]
+        \coordinate (Zrot) at (0.5,0,0);
+        \coordinate (ThetaPoint) at ({0.5*cos(\thetavec)},{0.5*sin(\thetavec)},0);
+        \pic[draw, angle radius=0.5cm, angle eccentricity=1.5, "$\theta$"] {angle=ThetaPoint--O--Zrot};
+    \end{scope}
+
+    \tdplotdrawarc{(0,0,0)}{\rvec}{-60}{120}{}{}
+    \tdplotdrawarc[dashed]{(0,0,0)}{\rvec}{120}{300}{}{}
+
+    % 绕X轴逆时针旋转30度的坐标系 Ox'y'z'
+    \tdplotsetrotatedcoords{-90}{\epsilonvec}{90}
+    \draw[->,blue,thick,tdplot_rotated_coords] (0,0,0) -- (2,0,0) node[anchor=north west]{$x'$};
+    \draw[->,blue,thick,tdplot_rotated_coords] (0,0,0) -- (0,1.5,0) node[anchor=south]{$y'$};
+    \draw[->,blue,thick,tdplot_rotated_coords] (0,0,0) -- (0,0,1.5) node[anchor=south west]{$z'$};
+
+    % 用 angles 库重写坐标系旋转 alpha 角度（在 Oyz 平面）
+    \tdplotsetthetaplanecoords{90}
+    \begin{scope}[tdplot_rotated_coords]
+        \coordinate (Yaxis) at (0,0.5,0);
+        \coordinate (Yprime) at (0,{0.5*sin(\epsilonvec)},{0.5*cos(\epsilonvec)});
+        \pic[draw, blue, ->, angle radius=0.7cm, angle eccentricity=1.3, "$\epsilon$"] {angle=Yaxis--O--Yprime};
+    \end{scope}
+\end{tikzpicture}
+\end{figure}
+
+对于一个球面坐标系（右手系），可以将球面坐标系中的点$(x, y, z)$用球坐标$(r, \theta, \phi)$表示：
+\[
+    x = r \sin{\theta} \cos{\phi}, \quad y = r \sin{\theta} \sin{\phi}, \quad z = r \cos{\theta}
+\]
+其中$\theta$是极角，$\phi$是方位角（这里需要与地理纬度$\varphi$区分）。
+
+对于天球，半径可以归一化为$r = 1$，则一个点的位置可以用$(\theta, \phi)$表示为一个列向量：
+\[
+    \mqty[x' \\ y' \\ z'] = \mqty[\sin{\theta} \cos{\phi} \\ \sin{\theta} \sin{\phi} \\ \cos{\theta}]
+\]
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=1.5,>=Stealth]
+    \draw (0,0) node[anchor=north east] {$O$};
+    \draw[->] (0,0) -- (4,0) node[anchor=west]{$y$};
+    \draw[->] (0,0) -- (0,4) node[anchor=west]{$z$};
+    \draw[->,color=blue] (1.125,0.649519) -- (3.464102,2) node[anchor=west,rotate=30]{$y'$};
+    \draw[->,color=blue] (0,0) -- (-2,3.464102) node[anchor=west,rotate=30]{$z'$};
+    \fill[radius=1pt,color=red] (1.5,3) circle node[anchor=south west] {$P$};
+    \draw[dashed] (1.5,3) -- (1.5,0);
+    \draw (1.5,0) node[anchor=north] {$y$};
+    \draw[dashed] (1.5,3) -- (0,3);
+    \draw (0,3) node[anchor=south east] {$z$};
+    \draw[dashed,color=blue] (1.5,3) -- (2.424038,1.399519);
+    \draw[color=blue] (2.424038,1.399519) node[anchor=north west,rotate=30] {$y'$};
+    \draw[dashed,color=blue] (1.5,3) -- (-0.924038,1.600481);
+    \draw[color=blue] (-0.924038,1.600481) node[anchor=east,rotate=30] {$z'$};
+    \draw (0.5,0) arc [start angle=0,radius=0.5,delta angle=30];
+    \draw (0.65,0.175) node {$\epsilon$};
+    \draw (0,0.5) arc [start angle=90,radius=0.5,delta angle=30];
+    \draw (-0.175,0.65) node {$\epsilon$};
+    \draw[dashed] (1.5,0) -- (1.125,0.649519);
+    \draw[color=brown] (0,0) -- (1.125,0.649519) node[pos=0.6,above,rotate=30] {$y\cos\epsilon$};
+    \draw[dashed] (2.424038,1.399519) -- (3.232051,0);
+    \draw[dashed,color=magenta] (2.799038,0.75) -- (1.5,0) node[midway,above,rotate=30] {$z\sin\epsilon$};
+    \draw[dashed] (0,3) -- (-1.299038,2.25);
+    \draw[dashed,color=orange] (0,3) -- (0.375,2.350481) node[midway,right,rotate=30] {$y\sin\epsilon$};
+    \draw[semithick,color=green!75!black] (0,0) -- (-1.299038,2.25) node[left,rotate=30] {$z\cos\epsilon$};
+\end{tikzpicture}
+\end{figure}
+
+设坐标系$S'$是由坐标系$S$绕$x$轴逆时针旋转$\epsilon$角得到的，则有：
+\[
+    \begin{cases}
+        x' = x \\
+        y' = y\cos\epsilon + z\sin\epsilon \\
+        z' = -y\sin\epsilon + z\cos\epsilon
+    \end{cases}
+\]
+根据矩阵的表示方法，可以将上述变换表示为：
+\[
+    \mqty[\sin{\theta'} \cos{\phi'} \\ \sin{\theta'} \sin{\phi'} \\ \cos{\theta'}] =
+    \mqty[1 & 0 & 0 \\ 0 & \cos\epsilon & \sin\epsilon \\ 0 & -\sin\epsilon & \cos\epsilon]
+    \mqty[\sin{\theta} \cos{\phi} \\ \sin{\theta} \sin{\phi} \\ \cos{\theta}]
+\]
+这其实就是球面三角基本的三个方程：正弦定理、边的五元素公式和边的余弦定理。
+
+现在分析时角坐标系和地平坐标系。设地平坐标系为$Oxyz$，$x$轴朝西方，$y$轴朝南方，$z$轴朝天顶方向。此时高度角$h = 90^\circ - \theta$，方位角（由南向西）$A = 90^\circ - \phi$。时角坐标系为$Ox'y'z'$，则可以将时角坐标系看作是地平坐标系绕$x$轴逆时针旋转$\epsilon$角得到的坐标系，其中$\epsilon$为观测者所在纬度的余角$90^\circ - \varphi$。在时角坐标系中，赤纬$\delta = 90^\circ - \theta'$，时角$t = 90^\circ - \phi'$。因此，可以通过上述坐标旋转公式，将时角坐标系中的点$(\delta, t)$转换为地平坐标系中的点$(h, A)$，从而得到两者之间的转换关系：
+\[
+    \mqty[\cos{\delta} \sin{t} \\ \cos{\delta} \cos{t} \\ \sin{\delta}] =
+    \mqty[1 & 0 & 0 \\ 0 & \sin{\varphi} & \cos{\varphi} \\ 0 & -\cos{\varphi} & \sin{\varphi}]
+    \mqty[\cos{h} \sin{A} \\ \cos{h} \cos{A} \\ \sin{h}]
+\]
+写成分量形式就是：
+\[
+    \begin{cases}
+        & \cos{\delta}\sin{t} = \cos{h}\sin{A} \\
+        & \cos{\delta}\cos{t} = \sin{\varphi}\cos{h}\cos{A} + \cos{\varphi}\sin{h} \\
+        & \sin{\delta} = -\cos{\varphi}\cos{h}\cos{A} + \sin{\varphi}\sin{h}
+    \end{cases}
+\]
+这和前面使用球面三角学推导的转换公式是一致的。
+
+该矩阵是一个旋转矩阵，其逆矩阵即为其转置矩阵，因此可以通过相同的方法将地平坐标系转换为时角坐标系。具体地，可以将地平坐标系中的点$(h, A)$通过上述逆变换转换为时角坐标系中的点$(\delta, t)$，从而得到两者之间的转换关系：
+\[
+    \mqty[\cos{h} \sin{A} \\ \cos{h} \cos{A} \\ \sin{h}] =
+    \mqty[1 & 0 & 0 \\ 0 & \sin{\varphi} & -\cos{\varphi} \\ 0 & \cos{\varphi} & \sin{\varphi}]
+    \mqty[\cos{\delta} \sin{t} \\ \cos{\delta} \cos{t} \\ \sin{\delta}]
+\]
+写成分量形式就是：
+\[
+    \begin{cases}
+        & \cos{h}\sin{A} = \cos{\delta}\sin{t} \\
+        & \cos{h}\cos{A} = \sin{\varphi}\cos{\delta}\cos{t} - \cos{\varphi}\sin{\delta} \\
+        & \sin{h} = \cos{\varphi}\cos{\delta}\cos{t} + \sin{\varphi}\sin{\delta}
+    \end{cases}
+\]
+这同样和前面使用球面三角学推导的转换公式是一致的。
+
+这里仅用时角坐标系转地平坐标系为例。已知某恒星坐标为$\delta = 45^\circ$，$t = 3^{\mathrm{h}} = 45^\circ$，观测者的纬度为$\varphi = 30^\circ$，则写出位置向量：
+\[
+    \mqty[\cos{\delta} \sin{t} \\ \cos{\delta} \cos{t} \\ \sin{\delta}] =
+    \mqty[\cos{45^\circ} \sin{45^\circ} \\ \cos{45^\circ} \cos{45^\circ} \\ \sin{45^\circ}] =
+    \mqty[0.5 \\ 0.5 \\ 0.7071]
+\]
+写出旋转矩阵：
+\[
+    \mqty[1 & 0 & 0 \\ 0 & \sin{30^\circ} & -\cos{30^\circ} \\ 0 & \cos{30^\circ} & \sin{30^\circ}] =
+    \mqty[1 & 0 & 0 \\ 0 & 0.5 & -0.8660 \\ 0 & 0.8660 & 0.5]
+\]
+进行矩阵乘法：
+\[
+    \mqty[\cos{h} \sin{A} \\ \cos{h} \cos{A} \\ \sin{h}] =
+    \mqty[1 & 0 & 0 \\ 0 & 0.5 & -0.8660 \\ 0 & 0.8660 & 0.5]
+    \mqty[0.5 \\ 0.5 \\ 0.7071] =
+    \mqty[0.5 \\ -0.3624 \\ 0.7866]
+\]
+由此可以计算出高度角$h$和方位角$A$（注意判断象限）：
+\[
+    h = \arcsin{0.7866} = 51.87^\circ
+\]
+\[
+    A = \arctan{\frac{0.5}{-0.3624}} = 125.93^\circ
+\]
+这和前面使用球面三角学得到的结果相同。
 
 \newpage
 \section{例题}
@@ -410,38 +927,73 @@
 \subsection{航线的最南点（IOAA2015-T15）}
 
 一架飞机从秘鲁首都利马（Lima）飞往印度尼西亚的日惹（Yogyakarta）。飞机选择了最短的航线，请计算航线上最南点$P$的纬度。已知利马的地理经度为$\lambda_L = -77^\circ1'$（西经），纬度为$\phi_L = -12^\circ2'$（南纬）；日惹的地理经度为$\lambda_Y = 110^\circ26'$（东经），纬度为$\phi_Y = -7^\circ47'$（南纬）。
-
-\begin{center}
-    \tdplotsetmaincoords{100}{270}
-    \begin{tikzpicture}[scale=3,tdplot_main_coords,>=Stealth]
-        \shade[tdplot_screen_coords,ball color = white] (0,0) circle (1);
-        \coordinate (O) at (0,0,0);
-        \tdplotsetcoord{L}{1}{90}{-50};
-        \tdplotsetcoord{Y}{1}{90}{60};
-        \tdplotsetcoord{N}{1}{0}{0};
-        \tdplotsetcoord{S}{1}{180}{0};
-        \tdplotsetcoord{P}{1}{90}{10};
-        \draw (L) node[right] {$L$};
-        \draw (Y) node[left] {$Y$};
-        \draw (N) node[above] {$N$};
-        \draw (S) node[below] {$S$};
-        \draw (P) node[anchor=south west] {$P$};
-        \tdplotdrawarc{(0,0,0)}{1}{-50}{60}{}{};
-        \tdplotsetthetaplanecoords{-50};
-        \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{1}{0}{180}{}{};
-        \tdplotsetthetaplanecoords{60};
-        \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{1}{0}{180}{}{};
-        \tdplotsetthetaplanecoords{10};
-        \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{1}{0}{180}{}{};
-    \end{tikzpicture}
-\end{center}
 \bigskip
+
+% ---------------- Camera ----------------
+\def\RotationX{180}
+\def\RotationY{0}
+% ---------------- Geographic coordinates ----------------
+% Lima
+\def\Llon{-77.0166667}
+\def\Llat{-12.0333333}
+% Yogyakarta
+\def\Ylon{110.4333333}
+\def\Ylat{-7.7833333}
+% Southernmost point of the great circle
+\def\Plon{-162.4763889}
+\def\Plat{-69.6269444}
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=3,>=Stealth]
+    % ================= Sphere =================
+    \shade[ball color = white] (0,0) circle (1);
+    \begin{scope}[viewport={\RotationX}{\RotationY}]
+        % ================= Points =================
+        \coordinate (L) at (\ToXYZ{\Llon}{\Llat});
+        \coordinate (Y) at (\ToXYZ{\Ylon}{\Ylat});
+        \coordinate (P) at (\ToXYZ{\Plon}{\Plat});
+        \coordinate (N) at (0,0,1);
+        \coordinate (S) at (0,0,-1);
+
+        \fill [red] (L) circle (0.5pt) node[right] {$L$};
+        \fill [red] (Y) circle (0.5pt) node[left]  {$Y$};
+        \fill [blue] (P) circle (0.5pt) node[above left] {$P$};
+        \fill (S) circle (0.5pt) node[below] {$S$};
+        \fill (N) circle (0.5pt) node[above] {$N$};
+
+        % ================= Meridian through Y, L, P =================
+        \draw[dashed, variable=\t, smooth, rotate around z=-\Ylon] plot[domain=-90:90] (\ToXYZ{0}{\t});
+        \draw[dashed, variable=\t, smooth, rotate around z=-\Llon] plot[domain=-90:90] (\ToXYZ{0}{\t});
+        \draw[dashed, variable=\t, smooth, rotate around z=-\Plon] plot[domain=-90:90] (\ToXYZ{0}{\t});
+
+        % ================= Flight path: rotated equator =================
+        \begin{scope}[rotate around z=-\Plon, rotate around x=\Plat]
+            \draw[<-, blue, variable=\t, smooth] plot [domain=-81.6937381:77.1504053] (\ToXYZ{\t}{0});
+        \end{scope}
+
+        % ================= Auxiliary points for right angle at P =================
+        % Tangent along the meridian
+        \begin{scope}[rotate around z=-\Plon, rotate around x=\Plat]
+            \coordinate (Pmer) at (\ToXYZ{0}{5});
+        \end{scope}
+
+        % Tangent along the flight path
+        \begin{scope}[rotate around z=-\Plon, rotate around x=\Plat]
+            \coordinate (Peq) at (\ToXYZ{5}{0});
+        \end{scope}
+
+        % ================= Right angle marker: angle YPS = 90° =================
+        \pic[draw, angle radius=0.15cm] {right angle=Pmer--P--Peq};
+    \end{scope}
+\end{tikzpicture}
+\end{figure}
 
 \paragraph{解：}
 
 首先证明：如果$P$是轨迹的最南点，则从南极$S$到$P$的大圆弧与飞机航线（大圆弧$YL$）垂直，且通过北极$N$，即大圆弧$SP$就是$P$所在经线的一部分。证明如下：
 
-由于经过南极的大圆弧一定经过南极的对跖点（位于球直径两端的点），也就是北极点，所以从南极$S$到$P$的大圆弧也会通过北极$N$，即大圆弧$SP$就是$P$所在经线的一部分。
+由于经过南极的大圆弧一定经过南极的对跖点（位于球直径两端的点），也就是北极点，所以从南极$S$到$P$的大圆弧也会通过北极$N$，即大圆弧$SP$就是$P$所在经线的一部分。接下来证明$SP$与$YL$垂直。
 
 在球面三角形$YSP$中，由正弦定理得：
 \[
@@ -453,21 +1005,24 @@
 \]
 达到极小值。
 
-另一方面，$p$是常数，$Y$也是常数（因为球面三角形$YLS$是固定的），所以$\sin p\sin Y$是常数。当$P=90^\circ$时，大圆弧$SP$与大圆弧$YL$垂直，$\sin P$达到最大值，$\sin y$则达到极小值，$y$达到极小值。
+另一方面，$p = \widearc{YS}$是常数，$Y = \angle LYS$也是常数（因为球面三角形$YLS$是固定的），所以$\sin p\sin Y$是常数。当$P=90^\circ$时，大圆弧$SP$与大圆弧$YL$垂直，$\sin P$达到最大值，$\sin y$则达到极小值，$y$达到极小值。
 
-在三角形$YSL$中，我们有：
+如图，在三角形$YSL$中，我们有：（选择使$\angle YSL < 180^\circ$的球面三角形，即飞越太平洋而非大西洋的航线）
 \[
     \widearc{YS} = 82^\circ13',\quad \widearc{LS} = 77^\circ58',\quad \angle YSL = (180^\circ - 77^\circ1') + (180^\circ - 110^\circ26') = 172^\circ33'
 \]
 根据余弦定理求弧$\widearc{YL}$：
 \[
-    \cos(\widearc{YL}) = \cos(\widearc{YS})\cos(\widearc{LS}) + \sin(\widearc{YS})\sin(\widearc{LS})\cos(\angle YSL)
+    \cos(\widearc{YL}) = \cos(\widearc{YS})\cos(\widearc{LS}) + \sin(\widearc{YS})\sin(\widearc{LS})\cos(\angle YSL) = -0.9326
 \]
-得到$\widearc{YL} = 158^\circ50'39''$。
+得到$\widearc{YL} = 158^\circ50'39''$（取小于$180^\circ$的解）。
 
 再用余弦定理求角$Y=\angle LYS$：
 \[
     \cos(\widearc{LS}) = \cos(\widearc{YS})\cos(\widearc{YL}) + \sin(\widearc{YS})\sin(\widearc{YL})\cos(\angle LYS)
+\]
+\[
+    \cos(\angle LYS) = \frac{\cos(\widearc{LS}) - \cos(\widearc{YS})\cos(\widearc{YL})}{\sin(\widearc{YS})\sin(\widearc{YL})} = 0.9362
 \]
 得到$Y = 20^\circ34'16''$。
 
@@ -475,7 +1030,11 @@
 \[
     \sin y = \frac{\sin p\sin Y}{\sin P} = \sin p\sin Y
 \]
-得$y = 20^\circ22'23''$，则$P$点的纬度为$-90^\circ + 20^\circ22'23'' = -69^\circ37'37''$（南纬）。
+即：
+\[
+    \sin(\widearc{PS}) = \sin(\widearc{YS}) \sin(\angle LYS) = 0.3481
+\]
+得$\widearc{PS} = 20^\circ22'23''$，则$P$点的纬度为$-90^\circ + 20^\circ22'23'' = -69^\circ37'37''$（南纬）。
 
 \newpage
 \section{练习题}
@@ -483,7 +1042,7 @@
 1. 已知黄赤交角为$\epsilon=23^\circ26'$，黄白交角为$\psi=5^\circ9'$，如果八意永琳在幻想乡持续观测月亮的升起并记录升起时的方位角，方位角最大值与最小值之差为多少？幻想乡的地理纬度为$\phi = +39^\circ59'$（北纬），忽略大气折射和黄白交角的波动。（答案：$77^\circ16'36''$）
 \bigskip
 
-2. 接例题4，计算航线上最南点$P$的经度。（答案：西经$162^\circ28'33''$）
+2. 接例题4，计算航线上最南点$P$的经度。（答案：西经$162^\circ28'35''$）
 \bigskip
 
 3. 由于地球的岁差，有没有可能在一个时间，天狼星永远不会从波兰克拉科夫升起，而老人星会升起和落下？黄赤交角为$\epsilon=23^\circ26'$，克拉科夫的纬度为$\phi = +50^\circ6'$（北纬）。天狼星的赤经$\alpha_1=\mathrm{6^h45^m}$，赤纬$\delta_1=-16^\circ43'$；北银极的赤经$\alpha_2=\mathrm{6^h24^m}$，赤纬$\delta_2=-52^\circ42'$。（IOAA2011-T12）
@@ -496,7 +1055,7 @@
 其中$\epsilon$为黄赤交角。对于纬度在$\phi = +49^\circ34'$（北纬）、地方恒星时为$s = \mathrm{0^h51^m}$的观测者，找出银道圈在地平坐标系$(A,h)$下类似的方程形式$h = f(A)$。北银极的赤经$\alpha^*=\mathrm{12^h51.4^m}$，赤纬$\delta^*=27^\circ8'$。（IOAA2011-T13）
 \bigskip
 
-5. 假设有一个使徒正好站在南极圈上，定义地平面上的直角坐标系$Oxy$，原点$O$为使徒的基座，$x$轴为东西方向，$y$轴为南北方向。在南半球，太阳高挂的某个“至日”那天使徒的影长最短，忽略太阳当日赤纬方向的移动，写出描述使徒顶端在地平面投影所画出的圆锥曲线的方程。忽略大气折射，黄赤交角为$\epsilon=23^\circ26'$，使徒的高度为$H=39.60\,\mathrm{m}$。（IOAA2012-T15）
+5. 假设有一个机动战士高达正好站在南极圈上，定义地平面上的直角坐标系$Oxy$，原点$O$为高达的基座，$x$轴为东西方向，$y$轴为南北方向。在南半球，太阳高挂的某个“至日”那天高达的影长最短，忽略太阳当日赤纬方向的移动，写出描述高达顶端在地平面投影所画出的圆锥曲线的方程。忽略大气折射，黄赤交角为$\epsilon=23^\circ26'$，高达的高度为$H=39.60\,\mathrm{m}$。（IOAA2012-T15）
 \bigskip
 
 
