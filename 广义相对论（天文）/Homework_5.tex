@@ -1,0 +1,272 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业五}}
+\author{国家天文台 张植竣}
+\date{2025年10月18日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 伪球面上的线元可以写成：
+    \[
+        \dd{s}^2 = a^2 \qty(\dd{X}^2 + \mathrm{e}^{-2|X|} \dd{\theta}^2)
+    \]
+    其中$X \in (-\infty, \infty)$，$\theta \in (0, 2\pi)$。证明伪球面的面积为$A = 4\pi a^2$。
+
+    \textcolor{blue}{
+    由题意，伪球面上的度规为：
+    \[
+        g_{\mu\nu} = \mqty[a^2 & 0 \\ 0 & a^2 \mathrm{e}^{-2|X|}]
+    \]
+    则伪球面上的面元为：
+    \[
+        \dd{A} = \sqrt{|g_{\mu\nu}|} \dd{x}^0 \dd{x}^1 = \sqrt{a^2 \cdot a^2 \mathrm{e}^{-2|X|}} \dd{X} \dd{\theta} = a^2 \mathrm{e}^{-|X|} \dd{X} \dd{\theta}
+    \]
+    对面元积分得：
+    \[
+        A = \int_0^{2\pi} \dd{\theta} \int_{-\infty}^{+\infty} a^2 \mathrm{e}^{-|X|} \dd{X} = 2\pi a^2 \qty(\int_{-\infty}^{0} \mathrm{e}^{X} \dd{X} + \int_{0}^{+\infty} \mathrm{e}^{-X} \dd{X}) = 4\pi a^2
+    \]
+    }
+
+    \item 证明上半个伪球面（$X > 0$）上的测地线方程为：
+    \[
+        (\theta - \theta_0)^2 + e^{2X} = L^2
+    \]
+
+    \textcolor{blue}{
+    由题意，上半个伪球面的度规为：
+    \[
+        g_{\mu\nu} = \mqty[a^2 & 0 \\ 0 & a^2 \mathrm{e}^{-2X}]
+    \]
+    之前已经计算出上半个伪球面上的Christoffel符号为：
+    \[
+        \Gamma^0_{11} = -\frac{1}{2} g^{00} \partial_0 g_{11} = \mathrm{e}^{-2X},\quad \Gamma^1_{01} = \Gamma^1_{10} = \frac{1}{2} g^{11} \partial_0 g_{11} = -1
+    \]
+    测地线方程的定义为：
+    \[
+        \dv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda} = 0
+    \]
+    则存在如下测地线：
+    \[
+        \dv[2]{X}{\lambda} + \mathrm{e}^{-2X} \qty(\dv{\theta}{\lambda})^2 = 0,\quad \dv[2]{\theta}{\lambda} - 2 \dv{X}{\lambda} \dv{\theta}{\lambda} = 0
+    \]
+    由第二个方程，设$\rho = \dfrac{\dd{\theta}}{\dd{\lambda}}$，则有：
+    \[
+        \dv{\rho}{\lambda} = 2\rho \dv{X}{\lambda} \implies \frac{1}{\rho} \dv{\rho}{\lambda} = \dv{\ln{\rho}}{\lambda} = \dv{2X}{\lambda}
+    \]
+    积分得：
+    \[
+        \ln{\rho} = 2X + C \implies \rho = \dv{\theta}{\lambda} = C \mathrm{e}^{2X}
+    \]
+    将结果代入第一个方程：
+    \[
+        \dv[2]{X}{\lambda} + \mathrm{e}^{-2X} \qty(C\mathrm{e}^{2X})^2 = \dv[2]{X}{\lambda} + C^2 \mathrm{e}^{2X} = 0
+    \]
+    这是一个关于$X$的二阶微分方程，我们可以如下技巧来降阶，将方程两边同乘以$\dfrac{\dd{X}}{\dd{\lambda}}$：
+    \[
+        \dv{X}{\lambda} \dv[2]{X}{\lambda} = -C^2 \mathrm{e}^{2X} \dv{X}{\lambda}
+    \]
+    这样可以凑出全微分：
+    \[
+        \frac{1}{2} \dv{\lambda}\qty(\dv{X}{\lambda})^2 = -\frac{C^2}{2} \dv{\lambda}(\mathrm{e}^{2X})
+    \]
+    即：
+    \[
+        \dv{\lambda}\qty[\qty(\dv{X}{\lambda})^2 + C^2 \mathrm{e}^{2X}] = 0
+    \]
+    因此有：（$E$为积分常数）
+    \[
+        \qty(\dv{X}{\lambda})^2 + C^2 \mathrm{e}^{2X} = E
+    \]
+    即：
+    \[
+        \dv{X}{\lambda} = \sqrt{E - C^2 \mathrm{e}^{2X}}
+    \]
+    和$\dfrac{\dd{\theta}}{\dd{\lambda}} = C \mathrm{e}^{2X}$联立，用链式法则消去$\lambda$：
+    \[
+        \dv{\theta}{X} = \frac{\dv*{\theta}{\lambda}}{\dv*{X}{\lambda}} = \frac{C e^{2X}}{\sqrt{E - C^2 \mathrm{e}^{2X}}}
+    \]
+    分离变量并积分：
+    \[
+        \int \dd{\theta} = \int \frac{C e^{2X}}{\sqrt{E - C^2 \mathrm{e}^{2X}}} \dd{X}
+    \]
+    为了解这个积分，我们进行换元，令$u = \mathrm{e}^X$，则$\dd{u} = \mathrm{e}^{X} \dd{X}$，$u\dd{u} = \mathrm{e}^{2X} \dd{X}$，得到：
+    \[
+        \int \dd{\theta} = \int \frac{Cu}{\sqrt{E - C^2 u^2}} \dd{u}
+    \]
+    再次换元，令$v = E - C^2 u^2$，则$\dd{v} = -2C^2 u \dd{u}$，$u \dd{u} = -\dfrac{1}{2C^2} \dd{v}$，得到：
+    \[
+        \int \dd{\theta} = \int \frac{C}{\sqrt{v}} \qty(-\frac{1}{2C^2} \dd{v}) = -\frac{1}{2C} \int v^{-1/2} \dd{v}
+    \]
+    积分得：
+    \[
+        \theta = -\frac{1}{C}\sqrt{v} + \theta_0
+    \]
+    这里的$\theta_0$是一个新的积分常数。 \\
+    将$v$和$u$还原得：
+    \[
+        \theta - \theta_0 = -\frac{1}{C}\sqrt{E - C^2 e^{2X}}
+    \]
+    两边平方即得：
+    \[
+        (\theta - \theta_0)^2 = \frac{1}{C^2} \qty(E - C^2 e^{2X}) = \frac{E}{C^2} - e^{2X}
+    \]
+    定义$L^2 = E/C^2$（这里$C \neq 0$），整理得：
+    \[
+        (\theta - \theta_0)^2 + e^{2X} = L^2
+    \]
+    }
+
+    \item 标量场的普通微商等于协变微商：
+    \[
+        \nabla_\mu \varphi = \partial_\mu \varphi
+    \]
+    利用这一性质和逆变矢量的协变微商公式：
+    \[
+        \nabla_\mu A^\lambda = \partial_\mu A^\lambda + \Gamma^\lambda_{\mu\nu} A^\nu
+    \]
+    导出协变矢量的协变微商公式：
+    \[
+        \nabla_\mu A_\lambda = \partial_\mu A_\lambda - \Gamma^\nu_{\mu\lambda} A_\nu
+    \]
+
+    \textcolor{blue}{
+    构造一个标量场如下：
+    \[
+        \varphi = A^\lambda A_\lambda
+    \]
+    这里的$A^\lambda$和$A_\lambda$是任意的矢量。 \\
+    于是有：
+    \begin{align*}
+        \nabla_\mu \varphi
+        &= \nabla_\mu \qty(A^\lambda A_\lambda) \\
+        &= A^\lambda \nabla_\mu A_\lambda + A_\lambda \nabla_\mu A^\lambda \\
+        &= A^\lambda \nabla_\mu A_\lambda + A_\lambda \qty(\partial_\mu A^\lambda + \Gamma^\lambda_{\mu\nu} A^\nu) \\
+        &= A^\lambda \nabla_\mu A_\lambda + A_\lambda \partial_\mu A^\lambda + A_\lambda \Gamma^\lambda_{\mu\nu} A^\nu
+    \end{align*}
+    同时：
+    \[
+        \nabla_\mu \varphi = \partial_\mu \varphi = \partial_\mu (A^\lambda A_\lambda) = A^\lambda \partial_\mu A_\lambda + A_\lambda \partial_\mu A^\lambda
+    \]
+    联立得：
+    \[
+        A^\lambda \nabla_\mu A_\lambda = A^\lambda \partial_\mu A_\lambda - A_\lambda \Gamma^\lambda_{\mu\nu} A^\nu
+    \]
+    对于最后一项，$\lambda$和$\nu$是被求和的哑指标，可以交换位置：
+    \[
+        A^\lambda \nabla_\mu A_\lambda = A^\lambda \partial_\mu A_\lambda - A_\nu \Gamma^\nu_{\mu\lambda} A^\lambda
+    \]
+    这样就可以提取出公因子$A^\lambda$，即：
+    \[
+        A^\lambda \qty(\nabla_\mu A_\lambda - \partial_\mu A_\lambda + A_\nu \Gamma^\nu_{\mu\lambda}) = 0
+    \]
+    因为这个等式对于任意的逆变矢量场$A^\lambda$都必须成立，所以括号内的表达式必须为零，即：
+    \[
+        \nabla_\mu A_\lambda = \partial_\mu A_\lambda - \Gamma^\nu_{\mu\lambda} A_\nu
+    \]
+    这便是协变矢量的协变微商公式。
+    }
+
+    \item 利用：
+    \[
+        \nabla_\alpha \qty(T^{\mu\nu} A_\mu A_\nu) = \partial_\alpha \qty(T^{\mu\nu} A_\mu A_\nu)
+    \]
+    以及：
+    \[
+        \nabla_\alpha A_\mu = \partial_\alpha A_\mu - \Gamma^\lambda_{\mu\alpha} A_\lambda
+    \]
+    证明：
+    \[
+        \nabla_\lambda T^{\mu\nu} = \partial_\lambda T^{\mu\nu} + \Gamma^\mu_{\alpha\lambda} T^{\alpha\nu} + \Gamma^\nu_{\alpha\lambda} T^{\mu\alpha}
+    \]
+
+    \textcolor{blue}{
+    与上一题同理，将$\nabla_\alpha (T^{\mu\nu} A_\mu A_\nu)$完全分解：
+    \begin{align*}
+        \nabla_\alpha (T^{\mu\nu} A_\mu A_\nu)
+        &= A_\mu \nabla_\alpha \qty(T^{\mu\nu} A_\nu) + A_\nu \nabla_\alpha \qty(T^{\mu\nu} A_\mu) + T^{\mu\nu} \nabla_\alpha \qty(A_\mu A_\nu) \\
+        &= \qty(A_\mu A_\nu \nabla_\alpha T^{\mu\nu} + A_\mu T^{\mu\nu} \nabla_\alpha A_\nu) + \qty(A_\nu A_\mu \nabla_\alpha T^{\mu\nu} + A_\nu T^{\mu\nu} \nabla_\alpha A_\mu) \\
+        &\quad + \qty(T^{\mu\nu} A_\mu \nabla_\alpha A_\nu + T^{\mu\nu} A_\nu \nabla_\alpha A_\mu) \\
+        &= 2A_\mu A_\nu \nabla_\alpha T^{\mu\nu} + 2T^{\mu\nu} A_\mu \nabla_\alpha A_\nu + 2T^{\mu\nu} A_\nu \nabla_\alpha A_\mu \\
+        &= 2A_\mu A_\nu \nabla_\alpha T^{\mu\nu} + 2T^{\mu\nu} A_\mu \qty(\partial_\alpha A_\nu - \Gamma^\lambda_{\nu\alpha} A_\lambda) + 2T^{\mu\nu} A_\nu \qty(\partial_\alpha A_\mu - \Gamma^\lambda_{\mu\alpha} A_\lambda)
+    \end{align*}
+    同时，根据同样的分解方式有：
+    \begin{align*}
+        \nabla_\alpha (T^{\mu\nu} A_\mu A_\nu)
+        &= \partial_\alpha (T^{\mu\nu} A_\mu A_\nu) \\
+        &= 2A_\mu A_\nu \partial_\alpha T^{\mu\nu} + 2T^{\mu\nu} A_\mu \partial_\alpha A_\nu + 2T^{\mu\nu} A_\nu \partial_\alpha A_\mu
+    \end{align*}
+    联立并消去一个因子2得：
+    \[
+        A_\mu A_\nu \nabla_\alpha T^{\mu\nu} = A_\mu A_\nu \partial_\alpha T^{\mu\nu} + T^{\mu\nu} A_\mu \Gamma^\lambda_{\nu\alpha} A_\lambda + T^{\mu\nu} A_\nu \Gamma^\lambda_{\mu\alpha} A_\lambda
+    \]
+    整理得：
+    \[
+        A_\mu A_\nu \nabla_\alpha T^{\mu\nu} = A_\mu A_\nu \partial_\alpha T^{\mu\nu} + A_\mu A_\lambda \Gamma^\lambda_{\nu\alpha} T^{\mu\nu} + A_\lambda A_\nu \Gamma^\lambda_{\mu\alpha} T^{\mu\nu}
+    \]
+    对于倒数第二项，$\lambda$和$\nu$是被求和的哑指标，可以交换位置；同样地，对于最后一项，$\lambda$和$\mu$是被求和的哑指标，可以交换位置：
+    \[
+        A_\mu A_\nu \nabla_\alpha T^{\mu\nu} = A_\mu A_\nu \partial_\alpha T^{\mu\nu} + A_\mu A_\nu \Gamma^\nu_{\lambda\alpha} T^{\mu\lambda} + A_\mu A_\nu \Gamma^\mu_{\lambda\alpha} T^{\lambda\nu}
+    \]
+    这样就可以提取出公因子$A_\mu A_\nu$，即：
+    \[
+        A_\mu A_\nu \qty(\nabla_\alpha T^{\mu\nu} - \partial_\alpha T^{\mu\nu} - \Gamma^\nu_{\lambda\alpha} T^{\mu\lambda} - \Gamma^\mu_{\lambda\alpha} T^{\lambda\nu}) = 0
+    \]
+    因为这个等式对于任意的逆变矢量场$A^\lambda$都必须成立，所以括号内的表达式必须为零，即：
+    \[
+        \nabla_\alpha T^{\mu\nu} = \partial_\alpha T^{\mu\nu} + \Gamma^\mu_{\lambda\alpha} T^{\lambda\nu} + \Gamma^\nu_{\lambda\alpha} T^{\mu\lambda}
+    \]
+    与题目中的形式对比，只需要将所有的指标符号$\lambda$和$\alpha$交换重命名即可：
+    \[
+        \nabla_\lambda T^{\mu\nu} = \partial_\lambda T^{\mu\nu} + \Gamma^\mu_{\alpha\lambda} T^{\alpha\nu} + \Gamma^\nu_{\alpha\lambda} T^{\mu\alpha}
+    \]
+    }
+
+\end{enumerate}
+
+\end{document}

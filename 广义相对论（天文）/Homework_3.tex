@@ -1,0 +1,131 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业三}}
+\author{国家天文台 张植竣}
+\date{2025年10月10日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 写出Schwarzschild度规的各协变分量和逆变分量。
+    \[
+        \dd{s}^2 = -\qty(1 - \frac{2M}{r}) \dd{t}^2 + \qty(1 - \frac{2M}{r})^{-1} \dd{r}^2 + r^2 \dd{\theta}^2 + r^2 \sin^2\theta \dd{\phi}^2
+    \]
+
+    \textcolor{blue}{
+    协变分量可以直接写出：
+    \[
+        g_{00} = -\qty(1 - \frac{2M}{r}),\quad g_{11} = \qty(1 - \frac{2M}{r})^{-1},\quad g_{22} = r^2,\quad g_{33} = r^2 \sin^2\theta
+    \]
+    其他分量均为零。 \\
+    逆变分量可以通过矩阵求逆得到：
+    \[
+        g^{\mu\nu} g_{\nu\sigma} = \delta^\mu_\sigma \implies g^{\mu\nu} = g_{\mu\nu}^{-1}
+    \]
+    对于对角矩阵，将每个对角元取倒数即可：
+    \[
+        g^{00} = -\qty(1 - \frac{2M}{r})^{-1},\quad g^{11} = \qty(1 - \frac{2M}{r}),\quad g^{22} = \frac{1}{r^2},\quad g^{33} = \frac{1}{r^2 \sin^2\theta}
+    \]
+    其他分量均为零。
+    }
+
+    \item 证明通过坐标变换，Schwarzschild度规可以写成：
+    \[
+        \dd{s}^2 = -\frac{(1 - M/2x)^2}{(1 + M/2x)^2} \dd{t}^2 + \qty(1 + \frac{M}{2x})^4 \qty[\dd{x}^2 + x^2 (\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2)]
+    \]
+
+    \textcolor{blue}{
+    将题中形式与原始形式：
+    \[
+        \dd{s}^2 = -\qty(1 - \frac{2M}{r}) \dd{t}^2 + \qty(1 - \frac{2M}{r})^{-1} \dd{r}^2 + r^2 \dd{\theta}^2 + r^2 \sin^2\theta \dd{\phi}^2
+    \]
+    对比，可以有如下对应关系：
+    \[
+        \begin{+cases}
+            -\dfrac{(1 - M/2x)^2}{(1 + M/2x)^2} = -\qty(1 - \dfrac{2M}{r}) \\
+            \qty(1 + \dfrac{M}{2x})^4 \dd{x}^2 = \qty(1 - \dfrac{2M}{r})^{-1} \dd{r}^2 \\
+            \qty(1 + \dfrac{M}{2x})^4 x^2 = r^2 \\
+            \qty(1 + \dfrac{M}{2x})^4 x^2 \sin^2\theta = r^2 \sin^2\theta
+        \end{+cases}
+    \]
+    从第三、四式中可以最快得出：
+    \[
+        r = \qty(1 + \frac{M}{2x})^2 x = x + M + \frac{M^2}{4x}
+    \]
+    可以证明：
+    \begin{align*}
+        1 - \frac{2M}{r}
+        &= 1 - \frac{2M}{\qty(1 + M/2x)^2 x} \\
+        &= 1 - \frac{2M \cdot 4x}{\qty(1 + M/2x)^2 x \cdot 4x} \\
+        &= 1 - \frac{8Mx}{(2x + M)^2} \\
+        &= \frac{(2x + M)^2 - 8Mx}{(2x + M)^2} \\
+        &= \frac{4x^2 + 4Mx + M^2 - 8Mx}{(2x + M)^2} \\
+        &= \frac{4x^2 - 4Mx + M^2}{(2x + M)^2} \\
+        &= \frac{(2x - M)^2}{(2x + M)^2} \\
+        &= \frac{(1 - M/2x)^2}{(1 + M/2x)^2}
+    \end{align*}
+    以及：
+    \[
+        \dv{r}{x} = \dv{x} \qty(x + M + \frac{M^2}{4x}) = 1 - \frac{M^2}{4x^2} = \frac{4x^2 - M^2}{4x^2}
+    \]
+    即：
+    \[
+        \dd{r} = \frac{4x^2 - M^2}{4x^2} \dd{x} = \frac{(2x - M)(2x + M)}{4x^2} \dd{x} = \qty(1 - \frac{M}{2x}) \qty(1 + \frac{M}{2x}) \dd{x}
+    \]
+    因此：
+    \begin{align*}
+        \qty(1 - \frac{2M}{r})^{-1} \dd{r}^2
+        &= \frac{(1 + M/2x)^2}{(1 - M/2x)^2} \qty(\frac{4x^2 - M^2}{4x^2})^2 \dd{x}^2 \\
+        &= \frac{(1 + M/2x)^2}{(1 - M/2x)^2} \qty(1 - \frac{M}{2x})^2 \qty(1 + \frac{M}{2x})^2 \dd{x}^2 \\
+        &= \qty(1 + \frac{M}{2x})^4 \dd{x}^2
+    \end{align*}
+    综上，题中形式与原始形式等价。
+    }
+
+\end{enumerate}
+
+\end{document}

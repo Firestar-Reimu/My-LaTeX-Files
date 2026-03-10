@@ -1,0 +1,174 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业二}}
+\author{国家天文台 张植竣}
+\date{2025年10月3日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 利用带电粒子的张量运动方程$\dfrac{\dd{p^\mu}}{\dd{\tau}} = qF^{\mu\nu} u_\nu$（$u_\nu$为粒子的四维速度），导出其一个分量运动方程$\dfrac{\dd{\mathscr{E}}}{\dd{t}} = q\mathbf{E} \cdot \mathbf{v}$，其中$\mathscr{E}$为粒子的能量，矢量$\mathbf{E}$为电场。并解释方程的意义。
+
+    \textcolor{blue}{
+        首先写出四维动量$p^\mu$和四维速度$u_\nu$的定义：
+        \[
+            p^\mu = (\mathscr{E}/c, p_x, p_y, p_z),\quad u_\nu = \gamma(c, v_x, v_y, v_z)
+        \]
+        以及电磁场张量$F^{\mu\nu}$的分量形式：
+        \[
+            F^{\mu\nu} =
+            \begin{bmatrix}
+            0 & E_x/c & E_y/c & E_z/c \\
+            -E_x/c & 0 & B_z & -B_y \\
+            -E_y/c & -B_z & 0 & B_x \\
+            -E_z/c & B_y & -B_x & 0
+            \end{bmatrix}
+        \]
+        现在我们关注四维动量方程的时间分量（$\mu = 0$）：
+        \[
+            \pdv{p^0}{\tau} = qF^{0\nu} u_\nu
+        \]
+        即：
+        \[
+            \frac{1}{c} \pdv{\mathscr{E}}{\tau} = q \frac{\gamma}{c} \qty(E_x v_x + E_y v_y + E_z v_z) = q \frac{\gamma}{c} \mathbf{E} \cdot \mathbf{v}
+        \]
+        由于固有时和坐标时的转换关系$\dd{\tau} = \dd{t}/\gamma$，我们有：
+        \[
+            \dv{\mathscr{E}}{t} = q \mathbf{E} \cdot \mathbf{v}
+        \]
+        该方程表明，带电粒子的能量变化率仅与电场$\mathbf{E}$和粒子速度$\mathbf{v}$的点积有关，而与磁场$\mathbf{B}$无关。这是因为磁场对粒子做的功为零，磁场只能改变粒子的运动方向，而不能改变其动能。
+    }
+
+    \item 利用光子的四维波矢量在两个惯性系之间的变换关系，推导静止系光子的波长与运动系的波长之间的关系（Doppler效应）。
+
+    \textcolor{blue}{
+        光子的四维波矢量定义为$k^\mu = (k, \mathbf{k})$，其中$k = 2\pi/\lambda$是波矢的大小（波数），$\mathbf{k} = (k_x, k_y, k_z)$是波矢的矢量表示。对于一个沿$x$轴方向以速度$v$相对于静止系运动的参考系，四维波矢量的变换关系由Lorentz变换给出：
+        \[
+            k'^\mu = \Lambda^\mu_{\ \nu} k^\nu
+        \]
+        其中$\Lambda^\mu_{\ \nu}$是Lorentz变换矩阵。对于沿$x$轴方向运动的参考系，Lorentz变换矩阵为：
+        \[
+            \Lambda^\mu_{\ \nu} =
+            \begin{bmatrix}
+            \gamma & -\beta\gamma & 0 & 0 \\
+            -\beta\gamma & \gamma & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+            \end{bmatrix}
+        \]
+        如果光子发射时是沿着与$x$轴成$\theta$角的方向，则接收器接收到的光子与$x'$轴成$\theta'$角。因此我们可以将$k^\mu$和$k'^\mu$表示为：
+        \[
+            k^\mu = \frac{2\pi}{\lambda} \qty(1, \cos\theta, \sin\theta, 0),\quad k'^\mu = \frac{2\pi}{\lambda'} \qty(1, \cos\theta', \sin\theta', 0)
+        \]
+        代入$k'^\mu = \Lambda^\mu_{\ \nu} k^\nu$，我们得到：
+        \[
+            \begin{+cases}
+                \dfrac{1}{\lambda'} = \dfrac{\gamma}{\lambda} (1 - \beta\cos\theta) \\
+                \dfrac{\cos\theta'}{\lambda'} = \dfrac{\gamma}{\lambda} (\cos\theta - \beta) \\
+                \dfrac{\sin\theta'}{\lambda'} = \dfrac{\sin\theta}{\lambda}
+            \end{+cases}
+        \]
+        由第一式得：
+        \[
+            \lambda' = \frac{\lambda}{\gamma(1 - \beta\cos\theta)}
+        \]
+        将第二、三式相除得：
+        \[
+            \tan\theta' = \frac{\sin\theta}{\gamma(\cos\theta - \beta)} = \frac{\tan\theta}{\gamma(1 - \beta\sec\theta)}
+        \]
+        第一个公式实际上就是狭义相对论中Doppler效应的公式，当$\theta = 0$时退化为：
+        \[
+            \lambda' = \lambda\sqrt{\frac{1 + \beta}{1 - \beta}}
+        \]
+        当$v > 0$时，表示接收器远离光源，$\lambda' > \lambda$，观测到的波长变长（红移）；当$v < 0$时，表示接收器接近光源，$\lambda' < \lambda$，观测到的波长变短（蓝移）。 \\
+        特别地，当$\theta = \pi/2$时，表示接收器垂直于光源运动方向，此时波长变为：
+        \[
+            \lambda' = \gamma\lambda > \lambda
+        \]
+        光线仍发生红移，这称为横向Doppler效应。
+    }
+    \item 对于初始速度为零的点质量$m = 1$，现施加恒定的三维力$\mathbf{F} = 1$，粒子将做加速运动。请根据狭义相对论力学求出粒子三维速度$v$随坐标时间$t$变化的关系。
+
+    \textcolor{blue}{
+        在狭义相对论中，动量定理依然成立：（四维Newton第二定律的空间分量方程）
+        \[
+            \mathbf{F} = \dv{\mathbf{p}}{t}
+        \]
+        其中动量$\mathbf{p}$与速度$\mathbf{v}$的关系为：
+        \[
+            \mathbf{p} = \gamma m \mathbf{v}
+        \]
+        由题意，对于质量$m = 1$和恒定力$\mathbf{F} = 1$，初速度为0的粒子将做加速直线运动，我们有：
+        \[
+            1 = \dv{t}(\gamma v)
+        \]
+        直接积分得：
+        \[
+            t = \gamma v = \frac{v}{\sqrt{1 - \dfrac{v^2}{c^2}}}
+        \]
+        反向解出$v$随$t$的关系如下，先对上式两边平方：
+        \[
+            t^2 = \frac{v^2}{1 - \dfrac{v^2}{c^2}} = \frac{v^2 c^2}{c^2 - v^2}
+        \]
+        两边同乘$(c^2 - v^2)$，得：
+        \[
+            t^2 c^2 - v^2 t^2 = v^2 c^2
+        \]
+        整理得：
+        \[
+            v^2 (t^2 + c^2) = t^2 c^2
+        \]
+        因此：
+        \[
+            v = \frac{tc}{\sqrt{t^2 + c^2}}
+        \]
+        该公式表明，随着时间$t$的增加，粒子的速度$v$逐渐接近光速$c$，但永远不会达到或超过$c$，这符合狭义相对论的基本原理。
+    }
+
+\end{enumerate}
+
+\end{document}

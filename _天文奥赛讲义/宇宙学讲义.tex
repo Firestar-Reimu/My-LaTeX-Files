@@ -1,53 +1,32 @@
-\documentclass[a4paper,openany]{book}
+\documentclass[fontset=none,openany,a4paper]{ctexbook}
 
-% 文章排版
-\usepackage{indentfirst}
-\setlength{\parindent}{0em}
+\usepackage{anyfontsize}
+\usepackage{amsmath,amssymb,mathrsfs,wasysym}
 \usepackage{autobreak}
 \allowdisplaybreaks
+\usepackage{graphicx,caption}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso,frak=euler,bb=ams]{mathalfa}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
-\usepackage{anyfontsize}
-\usepackage{hyperref}
-
-% 数学物理宏包
-\usepackage{amsmath}
-\usepackage{esint}
-\usepackage{tabularray}
-\UseTblrLibrary{amsmath}
-\usepackage{physics}
-\renewcommand\div\divisionsymbol
-
-% 设置数学字体
-
-% Linux Libertine 风格设置
-% 不需要 fontspec 和 unicode-math
-\usepackage[libertine,vvarbb]{newtx}
-\usepackage{bm}
-\renewcommand\mathbf\bm
-
-% 中文
-\usepackage[fontset=none]{ctex}
-\setCJKmainfont{SimSun}[BoldFont = Source Han Sans CN Medium, ItalicFont=KaiTi]
-
-% 符号重定义
-\AtBeginDocument{
-    \let\uglyepsilon\epsilon
-    \renewcommand\epsilon\varepsilon
-    \let\uglyOmega\Omega
-    \renewcommand\Omega\varOmega
-    \let\uglyleq\leq
-    \renewcommand\leq\leqslant
-    \let\uglygeq\geq
-    \renewcommand\geq\geqslant
-}
+\linespread{1.25}
+\usepackage{fontspec}
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmonofont{JetBrains Mono}
+\setCJKmainfont{SimSun}[BoldFont=Source Han Sans CN Medium, ItalicFont=KaiTi]
+\newCJKfontfamily{\kaishu}{KaiTi}
 
 \begin{document}
 
-\title{\textbf{宇宙学讲义}}
-\author{北京大学\ \ \ \ 张植竣}
-\date{\today}
+\title{\Huge\textbf{宇宙学讲义}}
+\author{\kaishu\Large 北京大学\ \ \ \ 张植竣}
+\date{\kaishu\Large 2022年1月26日}
 \maketitle
 
 \tableofcontents
@@ -80,9 +59,9 @@
 
 尺度因子$a(t)$描述了宇宙的膨胀率，我们可以定义：
 \begin{equation}
-    \mathbf{r} = a(t)\mathbf{x}
+    \bm{r} = a(t)\bm{x}
 \end{equation}
-其中$\mathbf{r}$称为物理坐标，而$\mathbf{x}$称为共动坐标。记现在的宇宙时间是$t_0$，规定当前的共动坐标等于测量到的物理坐标，即尺度因子$a(t_0) \equiv 1$。一般认为宇宙始终不断膨胀，则过去时刻的尺度因子$a(t)$总是小于1。我们可以这样来理解这个关系：想象宇宙的空间部分是在一个气球上面，星系可以看作球面上的点，而宇宙的演化类似于气球的膨胀，尺度因子代表气球的半径。对球面而言，球面上的点的相对位置是不变的，这就是共动坐标的含义。但对于外部观测者而言，整个气球是在膨胀的，气球上点的相对位置变大了。
+其中$\bm{r}$称为物理坐标，而$\bm{x}$称为共动坐标。记现在的宇宙时间是$t_0$，规定当前的共动坐标等于测量到的物理坐标，即尺度因子$a(t_0) \equiv 1$。一般认为宇宙始终不断膨胀，则过去时刻的尺度因子$a(t)$总是小于1。我们可以这样来理解这个关系：想象宇宙的空间部分是在一个气球上面，星系可以看作球面上的点，而宇宙的演化类似于气球的膨胀，尺度因子代表气球的半径。对球面而言，球面上的点的相对位置是不变的，这就是共动坐标的含义。但对于外部观测者而言，整个气球是在膨胀的，气球上点的相对位置变大了。
 
 % Figure 2, the balloon model of expanding universe
 

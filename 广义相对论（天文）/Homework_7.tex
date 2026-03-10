@@ -1,0 +1,120 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业七}}
+\author{国家天文台 张植竣}
+\date{2025年10月24日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 证明Einstein场方程：
+    \[
+        R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = \kappa T_{\mu\nu}
+    \]
+    可以写为：
+    \[
+        R_{\mu\nu} = \kappa \qty(T_{\mu\nu} - \frac{1}{2} g_{\mu\nu} T)
+    \]
+    其中$T = T^{\mu}_{\ \mu}$是能动张量的迹。
+
+    \textcolor{blue}{
+    比较两个等式：
+    \[
+        \begin{+cases}
+            & R_{\mu\nu} = \dfrac{1}{2} g_{\mu\nu} R + \kappa T_{\mu\nu} \\
+            & R_{\mu\nu} = -\dfrac{1}{2} g_{\mu\nu} \kappa T + \kappa T_{\mu\nu}
+        \end{+cases}
+    \]
+    那么只需要证明$R = -\kappa T$即可。 \\
+    证明如下，对Einstein场方程等号两边都作用$g^{\mu\nu}$：
+    \[
+        g^{\mu\nu} \qty(R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R) = g^{\mu\nu} \qty(\kappa T_{\mu\nu})
+    \]
+    由于：
+    \[
+        g^{\mu\nu} R_{\mu\nu} = R,\quad g^{\mu\nu} g_{\mu\nu} = \delta^\mu_{\ \mu} = 4,\quad g^{\mu\nu} T_{\mu\nu} = T
+    \]
+    该等式变为：
+    \[
+        R - \frac{1}{2} \times 4 R = -R = \kappa T
+    \]
+    因此：
+    \[
+        R_{\mu\nu} = \dfrac{1}{2} g_{\mu\nu} R + \kappa T_{\mu\nu} = -\dfrac{1}{2} g_{\mu\nu} \kappa T + \kappa T_{\mu\nu} = \kappa \qty(T_{\mu\nu} - \frac{1}{2} g_{\mu\nu} T)
+    \]
+    }
+
+    \item 证明真空Einstein场方程可以写为$R_{\mu\nu} = 0$。
+
+    \textcolor{blue}{
+    真空Einstein场方程为：
+    \[
+        G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = 0
+    \]
+    对真空Einstein场方程等号两边都作用$g^{\mu\nu}$：
+    \[
+        g^{\mu\nu} \qty(R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R) = 0
+    \]
+    由于：
+    \[
+        g^{\mu\nu} R_{\mu\nu} = R,\quad g^{\mu\nu} g_{\mu\nu} = \delta^\mu_{\ \mu} = 4
+    \]
+    该等式变为：
+    \[
+        R - \frac{1}{2} \times 4 R = -R = 0
+    \]
+    即$R = 0$，因此：
+    \[
+        R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} \times 0 = 0
+    \]
+    故真空Einstein场方程可以写为$R_{\mu\nu} = 0$。
+    }
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,137 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath,amssymb}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业十一}}
+\author{国家天文台 张植竣}
+\date{2025年11月28日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 将度规分解为Minkowski度规加上一个对称的微小扰动：
+    \[
+        g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}
+    \]
+    其中$|h_{\mu\nu}| \ll 1$。证明在这种线性近似下：
+    \[
+        R^\sigma_{\mu\nu\rho} = \frac{1}{2} \qty(\partial_\nu \partial_\mu h^\sigma_{\ \rho} + \partial_\rho \partial^\sigma h_{\mu\nu} - \partial_\nu \partial^\sigma h_{\mu\rho} - \partial_\rho \partial_\mu h^\sigma_{\ \nu})
+    \]
+    \[
+        R_{\mu\nu} = \frac{1}{2} \qty(\partial_\nu \partial_\rho h^\rho_{\ \mu} + \partial_\rho \partial_\mu h^\rho_{\ \nu} - \partial_\nu \partial_\mu h - \Box^2 h_{\mu\nu})
+    \]
+    \[
+        R = \partial_\rho \partial_\mu h^{\rho\mu} - \Box^2 h
+    \]
+    从而进一步证明线性Einstein场方程为：
+    \[
+        \partial_\nu \partial_\mu h + \Box^2 h_{\mu\nu} - \partial_\nu \partial_\rho h^\rho_{\ \mu} - \partial_\rho \partial_\mu h^\rho_{\ \nu} - \eta_{\mu\nu} \qty(\Box^2 h - \partial_\rho \partial_\sigma h^{\sigma\rho}) = 2\kappa T_{\mu\nu}
+    \]
+
+    \textcolor{blue}{
+    在线性近似下：
+    \[
+        g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu},\quad g^{\mu\nu} \approx \eta^{\mu\nu} - h^{\mu\nu}
+    \]
+    且$\eta_{\mu\nu}$的导数为零：
+    \[
+        \partial_\rho g_{\mu\nu} = \partial_\rho (\eta_{\mu\nu} + h_{\mu\nu}) = \partial_\rho h_{\mu\nu}
+    \]
+    则首先计算微小扰动下的Christoffel符号：
+    \begin{align*}
+        \Gamma^\sigma_{\mu\nu}
+        &= \frac{1}{2} g^{\sigma\rho} (\partial_\mu g_{\nu\rho} + \partial_\nu g_{\mu\rho} - \partial_\rho g_{\mu\nu}) \\
+        &\approx \frac{1}{2} (\eta^{\sigma\rho} - h^{\sigma\rho}) \qty[\partial_\mu (\eta_{\nu\rho} + h_{\nu\rho}) + \partial_\nu (\eta_{\mu\rho} + h_{\mu\rho}) - \partial_\rho (\eta_{\mu\nu} + h_{\mu\nu})] \\
+        &= \frac{1}{2} \eta^{\sigma\rho} (\partial_\mu h_{\nu\rho} + \partial_\nu h_{\mu\rho} - \partial_\rho h_{\mu\nu}) + \mathcal{O}(h^2) \\
+        &= \frac{1}{2} \qty(\partial_\mu h^\sigma_{\ \nu} + \partial_\nu h^\sigma_{\ \mu} - \partial^\sigma h_{\mu\nu})
+    \end{align*}
+    代入Riemann曲率张量的定义：
+    \begin{align*}
+        R^\sigma_{\mu\nu\rho}
+        &= \partial_\nu \Gamma^\sigma_{\mu\rho} - \partial_\rho \Gamma^\sigma_{\mu\nu} \\
+        &= \partial_\nu \qty[\frac{1}{2} \qty(\partial_\mu h^\sigma_{\ \rho} + \partial_\rho h^\sigma_{\ \mu} - \partial^\sigma h_{\mu\rho})] - \partial_\rho \qty[\frac{1}{2} \qty(\partial_\mu h^\sigma_{\ \nu} + \partial_\nu h^\sigma_{\ \mu} - \partial^\sigma h_{\mu\nu})] \\
+        &= \frac{1}{2} \qty[\qty(\partial_\nu \partial_\mu h^\sigma_{\ \rho} + \partial_\nu \partial_\rho h^\sigma_{\ \mu} - \partial_\nu \partial^\sigma h_{\mu\rho}) - \qty(\partial_\rho \partial_\mu h^\sigma_{\ \nu} + \partial_\rho \partial_\nu h^\sigma_{\ \mu} - \partial_\rho \partial^\sigma h_{\mu\nu})] \\
+        &= \frac{1}{2}\qty(\partial_\nu \partial_\mu h^\sigma_{\ \rho} + \partial_\rho \partial^\sigma h_{\mu\nu} - \partial_\nu \partial^\sigma h_{\mu\rho} - \partial_\rho \partial_\mu h^\sigma_{\ \nu})
+    \end{align*}
+    则：
+    \[
+        R^\sigma_{\mu\rho\nu} = -R^\sigma_{\mu\nu\rho} = \frac{1}{2} \qty(\partial_\rho \partial_\mu h^\sigma_{\ \nu} + \partial_\nu \partial^\sigma h_{\mu\rho} - \partial_\rho \partial^\sigma h_{\mu\nu} - \partial_\nu \partial_\mu h^\sigma_{\ \rho})
+    \]
+    接下来，计算Ricci张量：
+    \begin{align*}
+        R_{\mu\nu}
+        &= R^\sigma_{\mu\sigma\nu} \\
+        &= \frac{1}{2} \qty(\partial_\sigma \partial_\mu h^\sigma_{\ \nu} + \partial_\nu \partial^\sigma h_{\mu\sigma} - \partial_\sigma \partial^\sigma h_{\mu\nu} - \partial_\nu \partial_\mu h^\sigma_{\ \sigma}) \\
+        &= \frac{1}{2} \qty(\partial_\rho \partial_\mu h^\rho_{\ \nu} + \partial_\rho \partial_\nu h^\rho_{\ \mu} - \Box^2 h_{\mu\nu} - \partial_\nu \partial_\mu h)
+    \end{align*}
+    此处的$\Box^2 = \partial_\sigma \partial^\sigma$为d'Alembert算符，$h = h^\sigma_{\ \sigma}$为$h_{\mu\nu}$的迹。 \\
+    最后，计算标量曲率：
+    \begin{align*}
+        R
+        &= g^{\mu\nu} R_{\mu\nu} \\
+        &\approx \eta^{\mu\nu} R_{\mu\nu} \\
+        &= \frac{1}{2} \eta^{\mu\nu} \qty(\partial_\rho \partial_\mu h^\rho_{\ \nu} + \partial_\rho \partial_\nu h^\rho_{\ \mu} - \Box^2 h_{\mu\nu} - \partial_\nu \partial_\mu h) \\
+        &= \frac{1}{2} \qty(\partial_\rho \partial_\mu h^{\rho\mu} + \partial_\rho \partial_\nu h^{\rho\nu} - \Box^2 h - \partial^\mu \partial_\mu h) \\
+        &= \partial_\rho \partial_\mu h^{\rho\mu} - \Box^2 h
+    \end{align*}
+    代入Einstein场方程：
+    \begin{align*}
+        R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = -\kappa T_{\mu\nu}
+    \end{align*}
+    得到线性Einstein场方程：
+    \[
+        \frac{1}{2} \qty(\partial_\rho \partial_\mu h^\rho_{\ \nu} + \partial_\rho \partial_\nu h^\rho_{\ \mu} - \Box^2 h_{\mu\nu} - \partial_\nu \partial_\mu h) - \frac{1}{2} (\eta_{\mu\nu} + h_{\mu\nu}) \qty(\partial_\rho \partial_\sigma h^{\sigma\rho} - \Box^2 h) = -\kappa T_{\mu\nu}
+    \]
+    忽略高阶小量，整理得：
+    \[
+        \partial_\nu \partial_\mu h + \Box^2 h_{\mu\nu} - \partial_\nu \partial_\rho h^\rho_{\ \mu} - \partial_\rho \partial_\mu h^\rho_{\ \nu} - \eta_{\mu\nu} \qty(\Box^2 h - \partial_\rho \partial_\sigma h^{\sigma\rho}) = 2\kappa T_{\mu\nu}
+    \]
+    证毕。
+    }
+
+\end{enumerate}
+
+\end{document}

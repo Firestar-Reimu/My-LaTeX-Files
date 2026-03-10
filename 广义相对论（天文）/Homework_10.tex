@@ -1,0 +1,96 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业十}}
+\author{国家天文台 张植竣}
+\date{2025年11月15日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 一个极端的Kerr黑洞可以通过从最后稳定圆轨道吸积反向旋转的粒子而自转减慢至Schwarzschild黑洞。证明这将使黑洞的质量增加$22.5\%$，并且在这个过程中$4.7\%$的吸积质量被辐射掉。
+
+    \textcolor{blue}{
+        初始状态是一个极端Kerr黑洞，质量为$m_K$，对于反向旋转的粒子，最后稳定圆轨道半径为$r_{ms} = 9m_K$。最终状态是一个Schwarzschild黑洞，质量为$m_S$，最后稳定圆轨道半径为$r_{ms} = 6m_S$。 \\
+        根据守恒定律：
+        \[
+            r_{ms} m = \mathrm{const.}
+        \]
+        则有：
+        \[
+            9m_K^2 = 6m_S^2
+        \]
+        解得：
+        \[
+            m_S = \frac{\sqrt{6}}{2} m_K \approx 1.2247 m_K
+        \]
+        这证明了质量增加了约$22.5\%$。 \\
+        但是考虑吸积过程需要积分，积分中注意$r_{ms}$是$m$的函数，在任意时刻有$r_{ms} = 6m_S^2/m$，因此：
+        \[
+            \dd{m_0} = \frac{\dd{m}}{\sqrt{1 - \dfrac{2m}{3r_{ms}}}} = \frac{\dd{m}}{\sqrt{1 - \dfrac{m^2}{9m_S^2}}}
+        \]
+        将$r_{ms}$代入上式并积分：（此处根据之前的结果$m_K = \dfrac{\sqrt{6}}{3}m_S$）
+        \[
+            \Delta m_0 = \int_{m_K}^{m_S} \frac{\dd{m}}{\sqrt{1 - \dfrac{m^2}{9m_S^2}}} = \eval{3m_S \arcsin(\frac{m}{3m_S})}_{m_K}^{m_S} = 3m_S \qty[\arcsin(\frac{1}{3}) - \arcsin(\frac{\sqrt{6}}{9})] = 0.1926 m_S
+        \]
+        换算成Kerr黑洞的质量：
+        \[
+            0.1926 m_S = 0.1926 \times \frac{\sqrt{6}}{2} m_K = 0.2359 m_K
+        \]
+        对比吸积质量的增加：
+        \[
+            \Delta m = m_S - m_K = \qty(\frac{\sqrt{6}}{2} - 1)m_K = 0.2247 m_K
+        \]
+        吸积质量被辐射掉的比例为：
+        \[
+            \frac{\Delta m_0 - \Delta m}{\Delta m_0} = \frac{0.2359 m_K - 0.2247 m_K}{0.2359 m_K} = 0.047
+        \]
+        这证明了在这个过程中约有$4.7\%$的吸积质量被辐射掉。
+    }
+\end{enumerate}
+
+\end{document}

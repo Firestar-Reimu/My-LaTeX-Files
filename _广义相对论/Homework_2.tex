@@ -1,0 +1,894 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath,amssymb}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arsech}{arsech}
+\newcommand{\trans}{\text{\textsf{T}}}
+
+\usepackage{fontspec}
+\setmainfont{Lucida Bright OT}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO}
+\setmathfont[StylisticSet=4,sans-style=italic]{Lucida Bright Math OT}
+\setmathfont[range={\mathscr,\mathbfscr}]{Lucida Bright Math OT}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论\ \ \ \ 第二次作业}}
+\author{张植竣 1900011604}
+\date{2023年4月23日}
+
+\begin{document}
+
+\maketitle
+
+\section*{第五章}
+
+\begin{enumerate}
+    \item[7.]
+    由题意，度规张量为$g_{\mu\nu} = \diag(-x^2, 1)$，其逆为$g^{\mu\nu} = \diag(-x^{-2}, 1)$。
+
+    由于度规张量为对角矩阵，Christoffel符号的计算可以简化为：
+    \[
+        \Gamma^0_{00} = \frac{1}{2} g^{00} \partial_0 g_{00},\quad \Gamma^0_{01} = \Gamma^0_{10} = \frac{1}{2} g^{00} \partial_1 g_{00},\quad \Gamma^0_{11} = - \frac{1}{2} g^{00} \partial_0 g_{11}
+    \]
+    \[
+        \Gamma^1_{00} = -\frac{1}{2} g^{11} \partial_1 g_{00},\quad \Gamma^1_{01} = \Gamma^1_{10} = \frac{1}{2} g^{11} \partial_0 g_{11},\quad \Gamma^1_{11} = \frac{1}{2} g^{11} \partial_1 g_{11}
+    \]
+    对于对角度规$g_{\mu\nu}$，Christoffel符号$\Gamma^\sigma_{\mu\nu}$只有在$\sigma$、$\mu$、$\nu$至少有两个值相同的情况下才可能非零，而对于二维空间，任意三个指标组合一定有两个是相同的，因此这些分量原则上都是非零的。
+
+    但由于$\partial_0 g_{00} = \partial_0 g_{11} = \partial_1 g_{11} = 0$，所以非零的分量只有：
+    \[
+        \Gamma^0_{01} = \Gamma^0_{10} = \frac{1}{2} g^{00} \partial_1 g_{00} = -\frac{1}{2x^2} \cdot (-2x) = -\frac{1}{x}
+    \]
+    \[
+        \Gamma^1_{00} = -\frac{1}{2} g^{11} \partial_1 g_{00} = -\frac{1}{2} \cdot (-2x) = x
+    \]
+    测地线方程的定义为：
+    \[
+        \dv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda} = 0
+    \]
+    则存在如下测地线：
+    \[
+        \dv[2]{t}{\lambda} + \frac{2}{x} \dv{x}{\lambda} \dv{t}{\lambda} = 0,\quad \dv[2]{x}{\lambda} + x \qty(\dv{t}{\lambda})^2 = 0
+    \]
+    或者写为：
+    \[
+        \ddot{t} + \frac{2}{x}\dot{x}\dot{t} = 0,\quad \ddot{x} + x \dot{t}^2 = 0
+    \]
+    类时测地线要求：
+    \[
+        2K = g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu = -1
+    \]
+    即：
+    \[
+        -x^2 \dot{t}^2 + \dot{x}^2 + 1 = 0
+    \]
+    与$\ddot{x} + x \dot{t}^2 = 0$联立得：
+    \[
+        x \ddot{x} + \dot{x}^2 + 1 = 0
+    \]
+    注意到方程的前两项$x \ddot{x} + \dot{x}^2$非常接近某个乘积的导数，实际上它正是：
+    \[
+        \dv{\lambda}(x \dot{x}) = x \ddot{x} + \dot{x}^2
+    \]
+    因此有：
+    \[
+        \dv{x \dot{x}}{\lambda} = -1
+    \]
+    积分得：
+    \[
+        x \dot{x} = x \dv{x}{\lambda} = -\lambda + C_1
+    \]
+    这是一个可分离变量的一阶微分方程。我们将变量分离：
+    \[
+        x \dd{x} = (-\lambda + C_1) \dd{\lambda}
+    \]
+    再积分得到：
+    \[
+        \frac{1}{2}x^2 = -\frac{1}{2}\lambda^2 + C_1 \lambda + C_2
+    \]
+    整理得：
+    \[
+        x^2 = -(\lambda - A)^2 + B
+    \]
+    其中$A$、$B$为积分常数，这里配方的理由之后会看到。
+
+    再回到第一条测地线方程$\ddot{t} + \dfrac{2}{x}\dot{x}\dot{t} = 0$，这是一个关于$\dot{t}$的一阶线性微分方程。令$\tau = \dot{t}$，则有：
+    \[
+        \dv{\tau}{\lambda} = -\frac{2}{x} \dv{x}{\lambda} \tau
+    \]
+    分离变量得：
+    \[
+        \frac{\dd{\tau}}{\tau} = -2 \frac{\dd{x}}{x}
+    \]
+    积分得：
+    \[
+        \tau = \dot{t} = \frac{C}{x^2},\quad (C \neq 0)
+    \]
+    再代入$x(\lambda)$的表达式则有：
+    \[
+        \dot{t} = \dv{t}{\lambda} = \frac{C}{-(\lambda - A)^2 + B}
+    \]
+    这里出现了3个积分常数$A$、$B$、$C$，它们之间不是独立的，注意到还有一个方程$\ddot{x} + x\dot{t}^2 = 0$，代入如下关系：
+    \[
+        \ddot{x} = \dv[2]{x}{\lambda} = -\frac{B}{\qty[-(\lambda - A)^2 + B]^{3/2}} = -\frac{B}{x^3},\quad \dot{t} = \frac{C}{x^2}
+    \]
+    可以得到：
+    \[
+        -\frac{B}{x^3} + x\frac{C^2}{x^4} = 0
+    \]
+    即：
+    \[
+        B = C^2
+    \]
+    于是有：
+    \[
+        \dot{t} = \dv{t}{\lambda} = \frac{C}{-(\lambda - A)^2 + C^2}
+    \]
+    这在分离变量后是可以积分的：
+    \[
+        \int \dd{t} = \int \frac{C}{-(\lambda - A)^2 + C^2} \dd{\lambda}
+    \]
+    积分公式为：
+    \[
+        \int \frac{1}{ax^2 + bx + c} \dd{x} = \frac{2}{\Delta} \artanh{\frac{2ax + b}{\Delta}}\quad (\Delta = b^2 - 4ac > 0)
+    \]
+    而此处$\Delta = 4A^2 + 4(-A^2 + C^2) = 4C^2 > 0$，积分得：
+    \[
+        t = \artanh{\frac{\lambda - A}{C}} + t_0
+    \]
+    即：
+    \[
+        C\tanh(t - t_0) = \lambda - A
+    \]
+    最后代入：
+    \[
+        x^2 = -(\lambda - A)^2 + B = -(\lambda - A)^2 + C^2
+    \]
+    得到：
+    \[
+        x^2 = C^2 - C^2\tanh^2(t - t_0)
+    \]
+    使用双曲函数恒等式$1 - \tanh^2{x} = \sech^2{x}$，得到：
+    \[
+        x^2 = C^2\sech^2(t - t_0)
+    \]
+    即：
+    \[
+        x = \frac{C}{\cosh(t - t_0)}
+    \]
+
+    \bigskip
+    \item[8.]
+    零测地线满足：
+    \[
+        \dv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda} = 0
+    \]
+    以及：
+    \[
+        g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu = 0
+    \]
+    那么首先在共形变换下：
+    \[
+        \tilde{g}_{\mu\nu} \dot{x}^\mu \dot{x}^\nu = \mathrm{e}^{\Omega(x)} g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu = 0
+    \]
+    即零性保持不变。
+
+    另一方面，对于Christoffel符号：
+    \[
+        \Gamma^\mu_{\rho\sigma} = \frac{1}{2} g^{\mu\nu} \qty(\partial_\rho g_{\sigma\nu} + \partial_\sigma g_{\nu\rho} - \partial_\nu g_{\rho\sigma})
+    \]
+    在共形变换后：（注意$\partial_\rho \mathrm{e}^{\Omega(x)} = \mathrm{e}^{\Omega(x)} \partial_\rho \Omega(x)$，以及$g^{\mu\nu} g_{\sigma\nu} = g^{\mu\nu} g_{\nu\sigma} = \delta^{\mu}_{\ \sigma}$）
+    \begin{align*}
+        \tilde{\Gamma}^\mu_{\rho\sigma}
+        &= \frac{1}{2} \tilde{g}^{\mu\nu} \qty(\partial_\rho \tilde{g}_{\sigma\nu} + \partial_\sigma \tilde{g}_{\nu\rho} - \partial_\nu \tilde{g}_{\rho\sigma}) \\
+        &= \frac{1}{2} \mathrm{e}^{-\Omega} g^{\mu\nu} \qty[\partial_\rho \qty(\mathrm{e}^\Omega {g}_{\sigma\nu}) + \partial_\sigma \qty(\mathrm{e}^\Omega {g}_{\nu\rho}) - \partial_\nu \qty(\mathrm{e}^\Omega {g}_{\rho\sigma})] \\
+        &= \frac{1}{2} \mathrm{e}^{-\Omega} g^{\mu\nu} \left[\qty(\mathrm{e}^\Omega \partial_\rho {g}_{\sigma\nu} + {g}_{\sigma\nu} \mathrm{e}^\Omega \partial_\rho \Omega) + \qty(\mathrm{e}^\Omega \partial_\sigma {g}_{\nu\rho} + {g}_{\nu\rho} \mathrm{e}^\Omega \partial_\sigma \Omega)\right. \\
+        &\quad \left. - \qty(\mathrm{e}^\Omega \partial_\nu {g}_{\rho\sigma} + {g}_{\rho\sigma} \mathrm{e}^\Omega \partial_\nu \Omega)\right] \\
+        &= \frac{1}{2} g^{\mu\nu} \qty[\partial_\rho g_{\sigma\nu} + \partial_\sigma g_{\nu\rho} - \partial_\nu g_{\rho\sigma} + \qty(g_{\sigma\nu} \partial_\rho \Omega + g_{\nu\rho} \partial_\sigma \Omega - g_{\rho\sigma} \partial_\nu \Omega)] \\
+        &= \Gamma^\mu_{\rho\sigma} + \frac{1}{2} \qty(\delta^\mu_{\ \sigma} \partial_\rho \Omega + \delta^\mu_{\ \rho} \partial_\sigma \Omega - g^{\mu\nu} g_{\rho\sigma} \partial_\nu \Omega)
+    \end{align*}
+    记$C^\mu_{\rho\sigma} = \dfrac{1}{2} \qty(\delta^\mu_{\ \sigma} \partial_\rho \Omega + \delta^\mu_{\ \rho} \partial_\sigma \Omega - g^{\mu\nu} g_{\rho\sigma} \partial_\nu \Omega)$，则共形变换之后的零测地线方程：
+    \[
+        \tilde{f}(\lambda) = \dv[2]{x^\mu}{\lambda} + \tilde{\Gamma}^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda} = \dv[2]{x^\mu}{\lambda} + (\Gamma^\mu_{\rho\sigma} + C^\mu_{\rho\sigma}) \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda}
+    \]
+    和原来的零测地线方程对比多出来一项：
+    \[
+        C^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda}
+    \]
+    又因为：
+    \begin{align*}
+        2 C^\mu_{\rho\sigma} \dot{x}^\rho \dot{x}^\sigma
+        &= \delta^\mu_{\ \sigma} \dot{x}^\rho \dot{x}^\sigma \partial_\rho \Omega + \delta^\mu_{\ \rho} \dot{x}^\rho \dot{x}^\sigma \partial_\sigma \Omega - g^{\mu\nu} g_{\rho\sigma} \dot{x}^\rho \dot{x}^\sigma \partial_\nu \Omega \\
+        &= \dot{x}^\rho \dot{x}^\mu \partial_\rho \Omega + \dot{x}^\mu \dot{x}^\sigma \partial_\sigma \Omega - g^{\mu\nu} g_{\rho\sigma} \dot{x}^\rho \dot{x}^\sigma \partial_\nu \Omega \\
+        &= 2 \dot{x}^\rho \dot{x}^\mu \partial_\rho \Omega - g^{\mu\nu} g_{\rho\sigma} \dot{x}^\rho \dot{x}^\sigma \partial_\nu \Omega \\
+        &= 2 \dot{x}^\rho \dot{x}^\mu \partial_\rho \Omega
+    \end{align*}
+    其中最后一步使用了类光条件$g_{\rho\sigma} \dot{x}^\rho \dot{x}^\sigma = 0$，因此：
+    \[
+        C^\mu_{\rho\sigma} \dot{x}^\rho \dot{x}^\sigma = \dot{x}^\rho \dot{x}^\mu \partial_\rho \Omega = \dot{x}^\mu \qty(\pdv{\Omega}{x_\rho} \dv{x^\rho}{\lambda}) = \dot{x}^\mu \dv{\Omega}{\lambda}
+    \]
+    它满足广义的测地线方程：
+    \[
+        \dv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda} = f(\lambda) \dv{x^\mu}{\lambda}
+    \]
+    这意味着该曲线是测地线，但共形变换后$\lambda$并非该测地线的仿射参数。可以证明，若该测地线的仿射参数为$\tau$，则满足：
+    \[
+        \dv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda} = \qty(\frac{\dv*[2]{\tau}{\lambda}}{\dv*{\tau}{\lambda}}) \dv{x^\mu}{\lambda}
+    \]
+    即：
+    \[
+        f(\lambda) = \qty(\frac{\dv*[2]{\tau}{\lambda}}{\dv*{\tau}{\lambda}}) = \dv{\lambda} \ln\abs{\dv{\tau}{\lambda}} = \dv{\Omega}{\lambda}
+    \]
+    则通过选择仿射参数：
+    \[
+        \tau = A \int \mathrm{e}^{\Omega(\lambda)} \dd{\lambda} + B
+    \]
+    可以使得该曲线满足测地线方程：
+    \[
+        \dv[2]{x^\mu}{\tau} + \Gamma^\mu_{\rho\sigma} \dv{x^\rho}{\tau} \dv{x^\sigma}{\tau} = 0
+    \]
+    这可以用链式法则验证：（所有加点的写法均是对$\lambda$求导）
+    \[
+        \dv{x^\mu}{\tau} = \dv{x^\mu}{\lambda} \dv{\lambda}{\tau} = \frac{\dot{x}^\mu}{\dot{\tau}},\quad \dv[2]{x^\mu}{\tau} = \dv{\lambda} \qty(\frac{\dot{x}^\mu}{\dot{\tau}}) \dv{\lambda}{\tau} = \frac{1}{\dot{\tau}^2} \qty(\ddot{x}^\mu - \frac{\ddot{\tau}}{\dot{\tau}} \dot{x}^\mu)
+    \]
+
+    \bigskip
+    \item[13.(a)]
+    对于静止在地面的粒子，不妨设它在坐标原点，其四维时空坐标为：
+    \[
+        x^\mu = (t, 0, 0, 0)
+    \]
+    则其4-速度只有一个非零分量：
+    \[
+        u^\mu = (u, 0, 0, 0) = u \delta_0^\mu
+    \]
+    再由归一化条件$g_{\mu\nu} u^\mu u^\nu = -1$得：
+    \[
+        -N^2 u^2 = -1
+    \]
+    则$u = N^{-1}$，因此$u^\mu = N^{-1} \delta_0^\mu$。
+
+    \bigskip
+    \item[13.(b)]
+    粒子的4-加速度为：
+    \[
+        a^\mu = \frac{\mathrm{D} u^\mu}{\dd \tau} = \dv{u^\mu}{\tau} + \Gamma^\mu_{\nu\sigma} u^\sigma
+    \]
+    或者写为（注意$\dfrac{\dd u^\mu}{\dd \tau} = \dfrac{\dd x^\nu}{\dd \tau} \dfrac{\partial u^\mu}{\partial x^\nu} = u^\nu \partial_\nu u^\mu$）：
+    \[
+        a^\mu = u^\nu \nabla_\nu u^\mu = u^\nu \partial_\nu u^\mu + \Gamma^\mu_{\nu\sigma} u^\sigma
+    \]
+    代入$u^\mu = (N^{-1}, 0, 0, 0)$得：
+    \begin{align*}
+        a^\mu
+        &= u^\nu (\partial_\nu u^\mu + \Gamma^\mu_{\nu\sigma} u^\sigma) \\
+        &= u^0 (\partial_0 u^\mu + \Gamma^\mu_{0\sigma} u^\sigma) \\
+        &= u^0 \Gamma^\mu_{0\sigma} u^\sigma
+    \end{align*}
+    最后一步是因为度规是静态的（$g_{\mu\nu}$不依赖于时间$x^0$）和静止粒子（位置与时间无关），$u^\mu$的所有分量也不依赖于$x^0$，因此$\partial_0 u^\mu = 0$。
+
+    又因为$i = 1,2,3$（下同）时$u^i = 0$，可以得到：
+    \[
+        a^\mu = u^0 \qty(\Gamma^\mu_{00} u^0 + \Gamma^\mu_{0i} u^i) = u^0 \Gamma^\mu_{00} u^0
+    \]
+    即：
+    \[
+        a^\mu = \qty(u^0)^2 \Gamma^\mu_{00} = \frac{1}{N^2} \Gamma^\mu_{00}
+    \]
+    现在计算$\Gamma^\mu_{00}$的值：
+    \[
+        \Gamma^\mu_{00} = \frac{1}{2}g^{\mu\lambda} \qty(\partial_0 g_{\lambda 0} + \partial_0 g_{\lambda 0} - \partial_\lambda g_{00})
+    \]
+    因为度规是静态的，$\partial_0 g_{\mu\nu} = 0$，则：
+    \[
+        \Gamma^\mu_{00} = -\frac{1}{2}g^{\mu\lambda} \partial_\lambda g_{00}
+    \]
+    代入$g_{00} = -N^2$得：
+    \[
+        \Gamma^\mu_{00} = -\frac{1}{2}g^{\mu\lambda} \partial_\lambda (-N^2) = -\frac{1}{2}g^{\mu\lambda} (-2N \partial_\lambda N) = g^{\mu\lambda} N \partial_\lambda N
+    \]
+    最后代入$a^\mu$的表达式：
+    \[
+        a^\mu = \frac{1}{N^2} \Gamma^\mu_{00} = \frac{1}{N} g^{\mu\lambda} \partial_\lambda N
+    \]
+    对于一个静态度规，$N$只依赖空间坐标，$\partial_0 N = 0$，且$g^{0i} = g^{i0} = 0$，则：
+    \[
+        a^0 = \frac{1}{N} \qty(g^{00} \partial_0 N + g^{0i} \partial_i N) = 0
+    \]
+    \[
+        a^i = \frac{1}{N} \qty(g^{i0} \partial_0 N + g^{ij} \partial_j N) = \frac{1}{N} g^{ij} \partial_j N
+    \]
+    故例子的4-加速度只和空间有关：
+    \[
+        a^\mu = \qty(0, \frac{1}{N} g^{ij} \partial_j N)
+    \]
+    其大小为：
+    \[
+        a = \sqrt{a^\mu a_\mu} = \frac{1}{N} \abs{\nabla N} = \frac{1}{N} \sqrt{g_{ij} \qty(g^{ik} \partial_k N) \qty(g^{jl} \partial_l N)}
+    \]
+    根据逆度规的定义，$g_{ij} g^{jk} = \delta_i^k$，则：
+    \[
+        a^2 = \frac{1}{N^2} \qty(\delta_i^k \partial_k N) \qty(g^{il} \partial_l N) = \frac{1}{N^2} g^{kl} \partial_k N \partial_l N
+    \]
+    而$g^{kl} \partial_k N \partial_l N$正是空间中$N$的梯度$\nabla N$的平方，因此：
+    \[
+        a = \frac{1}{N} \abs{\nabla N}
+    \]
+
+    \bigskip
+    \item[14.]
+    由题意，度规张量为$g_{\mu\nu} = \diag(y^{-2}, y^{-2})$，其逆为$g^{\mu\nu} = \diag(y^2, y^2)$。
+
+    由于度规张量为对角矩阵，Christoffel符号的计算可以简化为：
+    \[
+        \Gamma^0_{00} = \frac{1}{2} g^{00} \partial_0 g_{00},\quad \Gamma^0_{01} = \Gamma^0_{10} = \frac{1}{2} g^{00} \partial_1 g_{00},\quad \Gamma^0_{11} = - \frac{1}{2} g^{00} \partial_0 g_{11}
+    \]
+    \[
+        \Gamma^1_{00} = -\frac{1}{2} g^{11} \partial_1 g_{00},\quad \Gamma^1_{01} = \Gamma^1_{10} = \frac{1}{2} g^{11} \partial_0 g_{11},\quad \Gamma^1_{11} = \frac{1}{2} g^{11} \partial_1 g_{11}
+    \]
+    对于对角度规$g_{\mu\nu}$，Christoffel符号$\Gamma^\sigma_{\mu\nu}$只有在$\sigma$、$\mu$、$\nu$至少有两个值相同的情况下才可能非零，而对于二维空间，任意三个指标组合一定有两个是相同的，因此这些分量原则上都是非零的。
+
+    但由于$\partial_0 g_{00} = \partial_0 g_{11} = 0$，所以非零的分量只有：
+    \[
+        \Gamma^0_{01} = \Gamma^0_{10} = \frac{1}{2} g^{00} \partial_1 g_{00} = \frac{1}{2} y^2 \cdot (-2 y^{-3}) = -\frac{1}{y}
+    \]
+    \[
+        \Gamma^1_{00} = -\frac{1}{2} g^{11} \partial_1 g_{00} = -\frac{1}{2} y^2 \cdot (-2 y^{-3}) = \frac{1}{y}
+    \]
+    \[
+        \Gamma^1_{11} = \frac{1}{2} g^{11} \partial_1 g_{11} = \frac{1}{2} y^2 \cdot (-2 y^{-3}) = -\frac{1}{y}
+    \]
+    测地线方程的定义为：
+    \[
+        \dv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\rho\sigma} \dv{x^\rho}{\lambda} \dv{x^\sigma}{\lambda} = 0
+    \]
+    则存在如下测地线：
+    \[
+        \ddot{x} - \frac{2}{y} \dot{x} \dot{y} = 0,\quad \ddot{y} + \frac{1}{y} \qty(\dot{x}^2 - \dot{y}^2) = 0
+    \]
+    首先解第一个方程：
+    \[
+        \frac{\ddot{x}}{\dot{x}} = 2 \frac{\dot{y}}{y}
+    \]
+    积分得：
+    \[
+        \ln{\dot{x}} = 2\ln{y} + C_1
+    \]
+    或者写为：
+    \[
+        \dot{x} = C y^2
+    \]
+    此处需要分情况讨论：
+    \begin{enumerate}
+        \item[(1)]
+        如果$C = 0$，则$\dot{x} = 0$，这意味着$x$是一个常数。
+
+        将$\dot{x} = 0$代入第二个方程可以得到：
+        \[
+            \ddot{y} - \frac{1}{y} \dot{y}^2 = 0
+        \]
+        可以凑出全微分：
+        \[
+            y \qty(\frac{\ddot{y}}{y} - \frac{\dot{y}^2}{y^2}) = y \dv{\lambda} \qty(\frac{\dot{y}}{y}) = 0
+        \]
+        于是有：
+        \[
+            \frac{\dot{y}}{y} = y \dv{y}{\lambda} = C_2
+        \]
+        积分得：
+        \[
+            \ln{y} = C_2 \lambda + C_3
+        \]
+        即最终的解为：
+        \[
+            x = A,\quad y = B \mathrm{e}^{k\lambda} > 0
+        \]
+        因此，第一类测地线是垂直于$x$轴的直线。
+
+        \item[(2)]
+        如果$C \neq 0$，则有：
+        \[
+            \dot{x} = C y^2
+        \]
+        接下来有三种方法解出测地线的方程，下面按照速度由快到慢排列：
+        \begin{itemize}
+            \item 方法一：将$\dot{x} = C y^2$代入类时测地线条件：（因为度规是正定的，$g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu > 0$，归一化后只能取1）
+            \[
+                g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu = 1
+            \]
+            即：
+            \[
+                \frac{1}{y^2} \qty(\dot{x}^2 + \dot{y}^2) = \frac{1}{y^2} \qty(C^2 y^4 + \dot{y}^2) = 1
+            \]
+            即：
+            \[
+                \dot{y} = \pm y \sqrt{1 - C^2 y^2}
+            \]
+            但之后不直接解出$y(\lambda)$，而是解出$y(x)$，考虑：
+            \[
+                \dv{y}{x} = \frac{\dot{y}}{\dot{x}} = \frac{\dot{y}}{C y^2}
+            \]
+            则有：
+            \[
+                \dv{y}{x} = \frac{\dot{y}}{C y^2} = \pm \frac{y \sqrt{1 - C^2 y^2}}{C y^2} = \pm \frac{\sqrt{1 - C^2 y^2}}{C y}
+            \]
+            分离变量得：
+            \[
+                \frac{Cy}{\sqrt{1 - C^2 y^2}} \dd{y} = \pm \dd{x}
+            \]
+            这显然是可以积分的，积分得：
+            \[
+                -\frac{1}{C} \sqrt{1 - C^2 y^2} = \pm x - x_0
+            \]
+            整理得：（这里的$D$可以取任意实数，所以不需要正负号，下同）
+            \[
+                (x - x_0)^2 + y^2 = \frac{1}{C^2}
+            \]
+            由于我们处于$y > 0$的上半平面，第二类测地线是圆心在$x$轴上的半圆。
+
+            \item 方法二：同样将$\dot{x} = C y^2$代入类时测地线条件，得到：
+            \[
+                \dot{y} = \pm y \sqrt{1 - C^2 y^2}
+            \]
+            直接解这个方程，分离变量：
+            \[
+                \frac{\dd{y}}{y \sqrt{1 - C^2 y^2}} = \pm \dd{\lambda}
+            \]
+            这个方程是可以积分的，需要用到以下公式：（可以用$u = \sech{v}$换元证明）
+            \[
+                \frac{\dd{u}}{u \sqrt{1 - u^2}} = -\arsech{u}
+            \]
+            则积分得到：
+            \[
+                -\arsech{Cy} = \pm(\lambda + K)
+            \]
+            即：（上半平面要求$y > 0$，且$\sech{x}$是恒大于零的偶函数）
+            \[
+                y = \frac{1}{C} \sech(\lambda + K) \quad (C > 0)
+            \]
+            下一步解$x(\lambda)$的方程，回到$\dot{x} = Cy^2$，我们有：
+            \[
+                \dot{x} = \dv{x}{\lambda} = \frac{C}{C^2} \sech^2(\lambda + K) = \frac{1}{C} \sech^2(\lambda + K)
+            \]
+            分离变量得：
+            \[
+                \dd{x} = \frac{1}{C} \sech^2(\lambda + K) \dd{\lambda}
+            \]
+            注意$(\tanh{u})' = \sech^2{u}$，因此这个积分也可以直接计算：
+            \[
+                (x - x_0) = \frac{1}{C} \tanh(\lambda + K),\quad (C > 0)
+            \]
+            再和$y = \dfrac{1}{C} \sech(\lambda + K)$联立，使用恒等式$\sech^2{x} + \tanh^2{x} = 1$，同样可以得到：
+            \[
+                (x - x_0)^2 + y^2 = \frac{1}{C^2},\quad (y > 0)
+            \]
+            这也是圆心在$x$轴上的半圆。
+
+            \item 方法三：将$\dot{x} = C y^2$直接代入第二个测地线方程：
+            \[
+                \ddot{y} + \frac{1}{y} \qty(C^2 y^4 - \dot{y}^2) = 0
+            \]
+            整理得：
+            \[
+                \ddot{y} = -\frac{1}{y} \qty(C^2 y^4 - \dot{y}^2)
+            \]
+            此时令$\eta = \dfrac{\dd{y}}{\dd{x}}$，则有：
+            \[
+                \dot{y} = \dv{y}{\lambda} = \dv{y}{x} \dv{x}{\lambda} = \eta \dot{x} = \eta C y^2
+            \]
+            \begin{align*}
+                \ddot{y}
+                &= \dv{\lambda} \qty(\eta C y^2) \\
+                &= C y^2 \dv{\eta}{\lambda} + \eta C (2y \dot{y}) \\
+                &= C y^2 \dv{\eta}{x} \dot{x} + 2y \eta C (\eta C y^2) \\
+                &= C^2 y^3 \qty(y \dv{\eta}{x} + 2 \eta^2)
+            \end{align*}
+            将其代入第二条测地线方程得：
+            \[
+                C^2 y^3 \qty(y \dv{\eta}{x} + 2 \eta^2) + \frac{1}{y} \qty(C^2 y^4 - \eta^2 C^2 y^4) = 0
+            \]
+            同样要求$C \neq 0$且$y > 0$，则可以约去$C^2 y^3$，得到：
+            \[
+                y \dv{\eta}{x} + \eta^2 + 1 = 0
+            \]
+            把它写成$y$和$x$的形式：
+            \[
+                y \dv[2]{y}{x} + \qty(\dv{y}{x})^2 + 1 = 0
+            \]
+            这个方程的前两项实际上可以凑出一个全微分：
+            \[
+                \dv{x} \qty(y \dv{y}{x}) + 1 = 0
+            \]
+            积分得：
+            \[
+                y \dv{y}{x} = -x + x_0
+            \]
+            再次分离变量：
+            \[
+                y \dd{y} = (-x + x_0) \dd{x}
+            \]
+            积分得：
+            \[
+                \frac{1}{2} y^2 = -\frac{1}{2} (x - x_0)^2 + E
+            \]
+            整理得：（此处$F = 2E$）
+            \[
+                (x - x_0)^2 + y^2 = F,\quad (y > 0)
+            \]
+            这和前两种方法得到的结果是一致的。
+        \end{itemize}
+        \textbf{附录}：证明对于测地线，$L = g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu$在选定的参数下只有0和$\pm1$两种归一化形式。
+
+        首先，对于测地线，$L = g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu$沿曲线是守恒量。证明如下：
+        \[
+            \dv{L}{\lambda} = \dv{g_{\mu\nu}}{\lambda} \dot{x}^\mu \dot{x}^\nu + g_{\mu\nu} \ddot{x}^\mu \dot{x^\nu} + g_{\mu\nu} \dot{x}^\mu \ddot{x}^\nu
+        \]
+        对于第一项，使用链式法则：
+        \[
+            \dv{g_{\mu\nu}}{\lambda} = \pdv{g_{\mu\nu}}{x^\rho} \dv{x^\rho}{\lambda} = \partial_\rho g_{\mu\nu} \dot{x}^\rho
+        \]
+        对于后两项，由于度规的对称性$g_{\mu\nu} = g_{\nu\mu}$，实际上是相同的，则有：
+        \[
+            \dv{L}{\lambda} = \partial_\rho g_{\mu\nu} \dot{x}^\rho \dot{x}^\mu \dot{x}^\nu + 2g_{\mu\nu} \ddot{x}^\mu \dot{x^\nu}
+        \]
+        又根据测地线方程：
+        \[
+            \ddot{x}^\mu + \Gamma^{\mu}_{\sigma\rho} \dot{x}^\sigma \dot{x}^\rho = 0
+        \]
+        则将$\ddot{x}^\mu$代入得：
+        \[
+            \dv{L}{\lambda} = \partial_\rho g_{\mu\nu} \dot{x}^\rho \dot{x}^\mu \dot{x}^\nu - 2g_{\mu\nu} \Gamma^{\mu}_{\sigma\rho} \dot{x}^\sigma \dot{x}^\rho \dot{x}^\nu
+        \]
+        对第二项的哑指标重命名（$\sigma \leftrightarrow \mu$），统一$\dot{x}$的指标：
+        \[
+            \dv{L}{\lambda}
+            = \partial_\rho g_{\mu\nu} \dot{x}^\rho \dot{x}^\mu \dot{x}^\nu - 2g_{\sigma\nu} \Gamma^{\sigma}_{\mu\rho} \dot{x}^\mu \dot{x}^\rho \dot{x}^\nu
+            = \qty(\partial_\rho g_{\mu\nu} - 2g_{\sigma\nu} \Gamma^{\sigma}_{\mu\rho}) \dot{x}^\rho \dot{x}^\mu \dot{x}^\nu
+        \]
+        又因为：
+        \[
+            \Gamma^{\sigma}_{\mu\rho} = \frac{1}{2} g^{\sigma\nu} \qty(\partial_\mu g_{\rho\nu} + \partial_\rho g_{\nu\mu} - \partial_\nu g_{\mu\rho})
+        \]
+        因此：（注意$g_{\mu\nu} = g_{\nu\mu}$）
+        \begin{align*}
+            \partial_\rho g_{\mu\nu} - 2g_{\sigma\nu} \Gamma^{\sigma}_{\mu\rho}
+            &= \partial_\rho g_{\mu\nu} - 2g_{\sigma\nu} \cdot \frac{1}{2} g^{\sigma\nu} \qty(\partial_\mu g_{\rho\nu} + \partial_\rho g_{\nu\mu} - \partial_\nu g_{\mu\rho}) \\
+            &= \partial_\rho g_{\mu\nu} - \qty(\partial_\mu g_{\rho\nu} + \partial_\rho g_{\nu\mu} - \partial_\nu g_{\mu\rho}) \\
+            &= \partial_\nu g_{\mu\rho} - \partial_\mu g_{\rho\nu}
+        \end{align*}
+        于是有：
+        \[
+            \dv{L}{\lambda} = \qty(\partial_\nu g_{\mu\rho} - \partial_\mu g_{\rho\nu}) \dot{x}^\rho \dot{x}^\mu \dot{x}^\nu = \partial_\nu g_{\mu\rho} \dot{x}^\rho \dot{x}^\mu \dot{x}^\nu - \partial_\mu g_{\rho\nu} \dot{x}^\rho \dot{x}^\mu \dot{x}^\nu
+        \]
+        显然对于第二项，将哑指标重命名（$\mu \to \nu$,$\nu \to \rho$，$\rho \to \mu$），即可发现两项相等而符号相反，因此：
+        \[
+            \dv{L}{\lambda} = 0
+        \]
+        这就证明了$L$沿测地线是守恒量。
+
+        其次，如果$L \neq 0$，可以通过重新参数化测地线来使得$L$取值为$\pm 1$。设新的参数为$\tilde{\lambda}$，满足：
+        \[
+            \dv{\tilde{\lambda}}{\lambda} = \sqrt{\abs{L}}
+        \]
+        则有：
+        \[
+            \dv{x^\mu}{\tilde{\lambda}} = \dv{x^\mu}{\lambda} \dv{\lambda}{\tilde{\lambda}} = \frac{\dot{x}^\mu}{\sqrt{\abs{L}}}
+        \]
+        因此：
+        \[
+            \tilde{L}
+            = g_{\mu\nu} \dv{x^\mu}{\tilde{\lambda}} \dv{x^\nu}{\tilde{\lambda}}
+            = g_{\mu\nu} \frac{\dot{x}^\mu}{\sqrt{\abs{L}}} \frac{\dot{x}^\nu}{\sqrt{\abs{L}}}
+            = \frac{1}{\abs{L}} g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu
+            = \frac{L}{\abs{L}}
+            = \pm 1
+        \]
+        综上所述，测地线的归一化形式只能是0和$\pm 1$，当$\lambda = s$（弧长）时，$L = \pm 1$：
+        \[
+            g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu = g_{\mu\nu} \dv{x^\mu}{s} \dv{x^\nu}{s} = \frac{\dd{s}^2}{\dd{s}^2} = 1
+        \]
+        当$\lambda = \tau$（固有时间）时，$L = -1$：
+        \[
+            \dd{\tau}^2 = -\dd{s}^2 = -g_{\mu\nu} \dd{x^\mu} \dd{x^\nu}
+        \]
+        对于零测地线，无法通过重新参数化来改变$L$的值，因此只能保持$L = 0$。
+
+        从物理意义上，$L$代表了粒子的四维速度的平方。$L$的符号代表了测地线的类型：类时测地线（$L < 0$）对应于有质量粒子的轨迹，类空间测地线（$L > 0$）对应于虚粒子的轨迹，零测地线（$L = 0$）对应于光子的轨迹。
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage
+\section*{第六章}
+
+\begin{enumerate}
+    \item[4.]
+    由于三维中Weyl张量恒为0，可以写出：
+    \[
+        C_{\rho\sigma\mu\nu} = R_{\rho\sigma\mu\nu} - \frac{2}{n - 2} \qty(g_{\rho[\mu} R_{\nu]\sigma} - g_{\sigma[\mu} R_{\nu]\rho}) + \frac{2}{(n - 1) (n - 2)} R g_{\rho[\mu} g_{\nu]\sigma} = 0
+    \]
+    展开可得：
+    \[
+        R_{\rho\sigma\mu\nu} = g_{\rho\mu} R_{\nu\sigma} - g_{\rho\nu} R_{\mu\sigma} - g_{\sigma\mu} R_{\nu\rho} + g_{\rho\nu} R_{\mu\rho} - \frac{R}{2} (g_{\rho\mu} g_{\nu\sigma} - g_{\rho\nu} g_{\mu\sigma})
+    \]
+
+    \bigskip
+    \item[10.(a)]
+    证明等式：
+    \[
+        \nabla_\mu \nabla_\sigma \xi^\rho = R^\rho_{\ \sigma\mu\nu} \xi^\nu
+    \]
+    这个恒等式联系了Killing矢量的二阶协变导数与Riemann曲率张量。
+
+    考虑Killing方程$\nabla_\sigma \xi_\rho + \nabla_\rho \xi_\sigma = 0$，对其再取协变导数，有：
+    \begin{equation}
+        \nabla_\mu \nabla_\sigma \xi_\rho + \nabla_\mu \nabla_\rho \xi_\sigma = 0
+    \end{equation}
+    通过指标轮换得：
+    \begin{equation}
+        \nabla_\sigma \nabla_\rho \xi_\mu + \nabla_\sigma \nabla_\mu \xi_\rho = 0
+    \end{equation}
+    \begin{equation}
+        \nabla_\rho \nabla_\mu \xi_\sigma + \nabla_\rho \nabla_\sigma \xi_\mu = 0
+    \end{equation}
+    则(1) + (2) - (3)得：（交换子$[\nabla_\mu, \nabla_\rho] \xi_\sigma$定义为$\nabla_\mu \nabla_\rho \xi_\sigma - \nabla_\rho \nabla_\mu \xi_\sigma$）
+    \[
+        \nabla_\mu \nabla_\sigma \xi_\rho + \nabla_\sigma \nabla_\mu \xi_\rho + [\nabla_\mu, \nabla_\rho] \xi_\sigma + [\nabla_\sigma, \nabla_\rho] \xi_\mu = 0
+    \]
+    注意到：
+    \begin{align*}
+        \nabla_\mu \nabla_\sigma \xi_\rho + \nabla_\sigma \nabla_\mu \xi_\rho
+        &= 2\nabla_\mu \nabla_\sigma \xi_\rho - \nabla_\mu \nabla_\sigma \xi_\rho + \nabla_\sigma \nabla_\mu \xi_\rho \\
+        &= 2\nabla_\mu \nabla_\sigma \xi_\rho + [\nabla_\sigma, \nabla_\mu] \xi_\rho
+    \end{align*}
+    可得：
+    \[
+        2\nabla_\mu \nabla_\sigma \xi_\rho + [\nabla_\sigma, \nabla_\mu] \xi_\rho + [\nabla_\mu, \nabla_\rho] \xi_\sigma + [\nabla_\sigma, \nabla_\rho] \xi_\mu = 0
+    \]
+    这一步也可以用(1) + (2) - (3) - (1)，并使用Killing方程$\nabla_\sigma \xi_\rho + \nabla_\rho \xi_\sigma = 0$得到。
+
+    再使用Riemann张量的定义：
+    \[
+        [\nabla_\mu, \nabla_\sigma] \xi_\rho = R_{\mu\sigma\rho\nu} \xi^\nu = R_{\rho\nu\mu\sigma} \xi^\nu
+    \]
+    可得：
+    \[
+        2\nabla_\mu \nabla_\sigma \xi_\rho + R_{\rho\nu\sigma\mu} \xi^\nu + R_{\sigma\nu\mu\rho} \xi^\nu + R_{\mu\nu\sigma\rho} \xi^\nu = 0
+    \]
+    利用Riemann张量的对称性$R_{\mu\nu\rho\sigma} = R_{\rho\sigma\mu\nu}$，上式可以写为：
+    \[
+        2\nabla_\mu \nabla_\sigma \xi_\rho + \qty(R_{\rho\nu\sigma\mu} + R_{\mu\rho\sigma\nu} + R_{\sigma\rho\mu\nu}) \xi^\nu = 0
+    \]
+    利用Riemann张量的反对称性$R_{\mu\nu\rho\sigma} = -R_{\nu\mu\rho\sigma}$和$R_{\mu\nu\rho\sigma} = -R_{\mu\nu\sigma\rho}$，可得：
+    \[
+        R_{\mu\rho\sigma\nu} = -R_{\rho\mu\sigma\nu} = R_{\rho\mu\nu\sigma},\quad R_{\sigma\rho\mu\nu} = -R_{\rho\sigma\mu\nu}
+    \]
+    于是有：
+    \[
+        2\nabla_\mu \nabla_\sigma \xi_\rho + \qty(R_{\rho\nu\sigma\mu} + R_{\rho\mu\nu\sigma} - R_{\rho\sigma\mu\nu}) \xi^\nu = 0
+    \]
+    又因为第一Bianchi恒等式：
+    \[
+        R_{\rho\nu\sigma\mu} + R_{\rho\mu\nu\sigma} + R_{\rho\sigma\mu\nu} = 0
+    \]
+    可得：
+    \[
+        2\nabla_\mu \nabla_\sigma \xi_\rho - 2R_{\rho\sigma\mu\nu} \xi^\nu = 0
+    \]
+    因此有：
+    \[
+        \nabla_\mu \nabla_\sigma \xi_\rho = R_{\rho\sigma\mu\nu} \xi^\nu
+    \]
+    升高一个指标$\rho$得：
+    \[
+        \nabla_\mu \nabla_\sigma \xi^\rho = R^{\rho}_{\ \sigma\mu\nu} \xi^\nu
+    \]
+    证毕。
+
+    \bigskip
+    \item[10.(b)]
+    证明等式：
+    \[
+        \xi^\lambda \nabla_\lambda R = 0
+    \]
+    这个等式表明，沿着Killing矢量的方向，Ricci标量$R$的方向导数为零。
+
+    由第二Bianchi恒等式：
+    \[
+        \nabla_{[\lambda} R_{\rho\sigma]\mu\nu} = \nabla_\lambda R_{\rho\sigma\mu\nu} + \nabla_\rho R_{\sigma\lambda\mu\nu} + \nabla_\sigma R_{\lambda\rho\mu\nu} = 0
+    \]
+    于是有：
+    \begin{align*}
+        g^{\nu\sigma} g^{\mu\lambda} \nabla_{[\lambda} R_{\rho\sigma]\mu\nu}
+        &= g^{\nu\sigma} g^{\mu\lambda} \qty(\nabla_\lambda R_{\rho\sigma\mu\nu} + \nabla_\rho R_{\sigma\lambda\mu\nu} + \nabla_\sigma R_{\lambda\rho\mu\nu}) \\
+        &= \nabla^\mu \qty(g^{\nu\sigma} R_{\rho\sigma\mu\nu}) + \nabla_\rho \qty(g^{\nu\sigma} g^{\mu\lambda} R_{\sigma\lambda\mu\nu}) + \nabla^\nu \qty(g^{\mu\lambda} R_{\lambda\rho\mu\nu}) \\
+        &= \nabla^\mu \qty(g^{\nu\sigma} R_{\rho\sigma\mu\nu}) - \nabla_\rho \qty(g^{\nu\sigma} g^{\mu\lambda} R_{\lambda\sigma\mu\nu}) + \nabla^\nu \qty(g^{\mu\lambda} R_{\lambda\rho\mu\nu}) \\
+        &= \nabla^\mu R_{\rho\mu} - \nabla_\rho R + \nabla^\nu R_{\rho\nu} \\
+        &= 2 \nabla^\mu R_{\rho\mu} - \nabla_\rho R \\
+        &= 0
+    \end{align*}
+    即：
+    \[
+        \nabla_\rho R = 2 \nabla^\mu R_{\rho\mu}
+    \]
+    这说明：
+    \[
+        \xi^\lambda \nabla_\lambda R = 2 \xi^\lambda \nabla^\mu R_{\lambda\mu}
+    \]
+    再考察：
+    \[
+        \nabla^\mu (R_{\mu\nu} \xi^\nu) = \xi^\nu \nabla^\mu R_{\mu\nu} + R_{\mu\nu} \nabla^\mu \xi^\nu
+    \]
+    由于Killing方程$\nabla_\mu \xi_\nu + \nabla_\nu \xi_\mu = 0$，而$R_{\mu\nu} = R_{\nu\mu}$，则第二项：
+    \[
+        R_{\mu\nu} \nabla^\mu \xi^\nu = R_{\nu\mu} \nabla^\nu \xi^\mu = -R_{\mu\nu} \nabla^\mu \xi^\nu = 0
+    \]
+    即：
+    \[
+        \nabla^\mu (R_{\mu\nu} \xi^\nu) = \xi^\nu \nabla^\mu R_{\mu\nu}
+    \]
+    则：（注意Ricci张量是对称张量，$R_{\mu\nu} = R_{\nu\mu}$）
+    \[
+        \xi^\lambda \nabla_\lambda R = 2 \nabla^\mu (R_{\mu\lambda} \xi^\lambda)
+    \]
+    下一步根据上题中证明的等式缩并得：
+    \[
+        \nabla_\mu \nabla_\sigma \xi^\rho = R^\rho_{\ \sigma\mu\nu} \xi^\nu \implies \nabla_\mu \nabla_\sigma \xi^\mu = R_{\sigma\nu} \xi^\nu
+    \]
+    于是有：
+    \[
+        \xi^\lambda \nabla_\lambda R = 2 \nabla^\mu (\nabla_\nu \nabla_\mu \xi^\nu)
+    \]
+    下面证明$\nabla^\mu \nabla_\nu \nabla_\mu \xi^\nu = 0$，首先调整一下指标的位置：
+    \[
+        \nabla^\mu \nabla_\nu \nabla_\mu \xi^\nu = \nabla_\mu \nabla_\nu \nabla^\mu \xi^\nu
+    \]
+    首先用Killing方程$\nabla_\mu \xi_\nu + \nabla_\nu \xi_\mu = 0$，有：
+    \begin{equation}
+        \nabla_\mu \nabla_\nu \nabla^\mu \xi^\nu = -\nabla_\mu \nabla_\nu \nabla^\nu \xi^\mu
+        \tag{$\ast$}
+    \end{equation}
+    再使用协变导数的交换子与Riemann张量的关系：
+    \[
+        [\nabla_\mu, \nabla_\nu] T^{\alpha\beta} = R^\alpha_{\ \lambda\mu\nu} T^{\lambda\beta} + R^\beta_{\ \lambda\mu\nu} T^{\alpha\lambda}
+    \]
+    即：
+    \[
+        [\nabla_\mu, \nabla_\nu] \nabla^\alpha \xi^\beta = R^\alpha_{\ \lambda\mu\nu} \nabla^\lambda \xi^\beta + R^\beta_{\ \lambda\mu\nu} \nabla^\alpha \xi^\lambda
+    \]
+    则有：
+    \[
+        [\nabla_\mu, \nabla_\nu] \nabla^\nu \xi^\mu = R^\nu_{\ \lambda\mu\nu} \nabla^\lambda \xi^\mu + R^\mu_{\ \lambda\mu\nu} \nabla^\nu \xi^\lambda = -R_{\lambda\mu} \nabla^\lambda \xi^\mu + R_{\lambda\nu} \nabla^\nu \xi^\lambda = 0
+    \]
+    注意最后一项$R_{\lambda\nu} \nabla^\nu \xi^\lambda = R_{\nu\lambda} \nabla^\nu \xi^\lambda$（Ricci张量的对称性），对哑指标重命名（$\nu \to \lambda$，$\lambda \to \mu$）后与第一项相同但符号相反，因此两项之和为零。
+
+    于是有：
+    \[
+        [\nabla_\mu, \nabla_\nu] \nabla^\nu \xi^\mu = 0 \implies \nabla_\mu \nabla_\nu \nabla^\nu \xi^\mu = \nabla_\nu \nabla_\mu \nabla^\nu \xi^\mu
+    \]
+    对等式右边的哑指标交换重命名（$\mu \leftrightarrow \nu$）得：
+    \[
+        \nabla_\mu \nabla_\nu \nabla^\nu \xi^\mu = \nabla_\mu \nabla_\nu \nabla^\mu \xi^\nu
+    \]
+    和($\ast$)式对比可以发现：
+    \[
+        \nabla_\mu \nabla_\nu \nabla^\nu \xi^\mu = \nabla_\mu \nabla_\nu \nabla^\mu \xi^\nu = -\nabla_\mu \nabla_\nu \nabla^\nu \xi^\mu
+    \]
+    所以有：
+    \[
+        \nabla_\mu \nabla_\nu \nabla^\nu \xi^\mu = 0
+    \]
+    即$\nabla_\mu \nabla_\nu \nabla^\mu \xi^\nu = 0$，最后有：
+    \[
+        \xi^\lambda \nabla_\lambda R = 2 \nabla^\mu (\nabla_\nu \nabla_\mu \xi^\nu) = 0
+    \]
+
+    \bigskip
+    \item[13.]
+    $n$维双曲空间的Poincaré度规为：
+    \[
+        \dd{s}^2 = \frac{L^2}{r^2} (\dd{r}^2 + \dd{\mathbf{x}}^2)
+    \]
+    则：（$i$表示除了第零个坐标$r$之外所有的坐标$\mathbf{x}$）
+    \[
+        g_{rr} = g_{ii} = \frac{L^2}{r^2},\quad (i = 1, 2, 3, \cdots, n-1)
+    \]
+    其逆为：
+    \[
+        g^{rr} = g^{ii} = \frac{r^2}{L^2}
+    \]
+    由于度规张量为对角矩阵，Christoffel符号的计算可以简化为：
+    \[
+        \Gamma^\lambda_{\lambda\lambda} = \frac{1}{2} g^{\lambda\lambda} \partial_\lambda g_{\lambda\lambda},\quad
+        \Gamma^\lambda_{\lambda\mu} = \frac{1}{2} g^{\lambda\lambda} \partial_\mu g_{\lambda\lambda},\quad
+        \Gamma^\lambda_{\mu\mu} = - \frac{1}{2} g^{\lambda\lambda} \partial_\lambda g_{\mu\mu}
+    \]
+    计算得：
+    \[
+        \Gamma^r_{rr} = -\frac{1}{r},\quad \Gamma^r_{ii} = \frac{1}{r},\quad \Gamma^i_{ri} = \Gamma^i_{ir} = -\frac{1}{r}
+    \]
+    其余分量均为零。
+
+    由Riemann曲率张量的定义：
+    \[
+        R^\rho_{\ \sigma\mu\nu} = \partial_\mu \Gamma^\rho_{\nu\sigma} - \partial_\nu \Gamma^\rho_{\mu\sigma} + \Gamma^\rho_{\mu\lambda} \Gamma^\lambda_{\nu\sigma} - \Gamma^\rho_{\nu\lambda} \Gamma^\lambda_{\mu\sigma}
+    \]
+    计算得非零分量为：
+    \[
+        R^r_{\ iri} = \partial_r \Gamma^r_{ii} - \partial_i \Gamma^r_{ri} + \Gamma^r_{r\lambda} \Gamma^\lambda_{ii} - \Gamma^r_{i\lambda} \Gamma^\lambda_{ri} = -\frac{1}{r^2} - 0 + \Gamma^r_{rr} \Gamma^r_{ii} - \Gamma^r_{ii} \Gamma^i_{ri} = -\frac{1}{r^2}
+    \]
+    \[
+        R^i_{\ rir} = \partial_i \Gamma^i_{rr} - \partial_r \Gamma^i_{ir} + \Gamma^i_{i\lambda} \Gamma^\lambda_{rr} - \Gamma^i_{r\lambda} \Gamma^\lambda_{ir} = -\frac{1}{r^2} - 0 + \Gamma^i_{ir} \Gamma^r_{rr} - \Gamma^i_{ri} \Gamma^i_{ir} = -\frac{1}{r^2}
+    \]
+    \[
+        R^i_{\ jij} = \partial_i \Gamma^i_{jj} - \partial_j \Gamma^i_{ij} + \Gamma^i_{i\lambda} \Gamma^\lambda_{jj} - \Gamma^i_{j\lambda} \Gamma^\lambda_{ij} = 0 - 0 + \Gamma^i_{ir} \Gamma^r_{jj} - \Gamma^i_{ji} \Gamma^j_{ij} = -\frac{1}{r^2},\quad (i \neq j)
+    \]
+    其余分量均为零。
+
+    由Ricci张量的定义：
+    \[
+        R_{\mu\nu} = R^\lambda_{\ \mu\lambda\nu} = g^{\lambda\rho} R_{\mu\lambda\nu\rho}
+    \]
+    计算得：
+    \[
+        R_{rr} = g^{\lambda\rho} R_{\mu\lambda\nu\rho} = g^{ii} R_{riri} = g^{ii} g_{rr} R^r_{\ iri} = (n-1) \frac{r^2}{L^2} \cdot \frac{L^2}{r^2} \cdot \qty(-\frac{1}{r^2}) = -\frac{n-1}{r^2}
+    \]
+    这里的求和是对$i$从1到$n-1$进行的，共有$n-1$项。
+
+    又有：
+    \[
+        R_{ii} = g^{\lambda\rho} R_{\mu\lambda\nu\rho} = g^{rr} R_{irir} + g^{jj} R_{ijij} = g^{rr} g_{ii} R^i_{\ rir} + \sum_{j \neq i} g^{jj} g_{ii} R^i_{\ jij} = -\frac{n-1}{r^2}
+    \]
+    这里的求和结果是因为对于每个固定的$i$，$j$可以取除$i$之外的$n-2$个值，加上$r$对应的一个值，共有$n-1$项。
+
+    其余分量均为零：
+    \[
+        R_{ri} = R_{ir} = R_{ij} = 0,\quad (i \neq j)
+    \]
+    最后由Ricci标量的定义：
+    \[
+        R = g^{\mu\nu} R_{\mu\nu} = g^{rr} R_{rr} + g^{ii} R_{ii}
+    \]
+    得到标量曲率：
+    \[
+        R = \frac{r^2}{L^2} \cdot \qty(-\frac{n-1}{r^2}) + (n-1) \frac{r^2}{L^2} \cdot \qty(-\frac{n-1}{r^2}) = -\frac{n(n-1)}{L^2}
+    \]
+\end{enumerate}
+
+\end{document}

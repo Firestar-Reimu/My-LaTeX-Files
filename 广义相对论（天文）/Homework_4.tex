@@ -1,0 +1,182 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业四}}
+\author{国家天文台 张植竣}
+\date{2025年10月13日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 采用Euclid直角坐标系，伪球面的参数方程为：
+    \[
+        \begin{+cases}
+            x = a \cos\theta \sech{u} \\
+            y = a \sin\theta \sech{u} \\
+            z = a \qty(u - \tanh{u})
+        \end{+cases},\quad u \in (-\infty, +\infty),\ \theta \in [0, 2\pi)
+    \]
+    证明伪球面上的线元为：
+    \[
+        \dd{s}^2 = a^2 \qty(\tanh^2{u} \dd{u}^2 + \sech^2{u} \dd{\theta}^2)
+    \]
+
+    \textcolor{blue}{
+    伪球面上的线元为：
+    \[
+        \dd{s}^2 = \dd{x}^2 + \dd{y}^2 + \dd{z}^2 = \qty(\pdv{x}{\theta} \dd{\theta} + \pdv{x}{u} \dd{u})^2 + \qty(\pdv{y}{\theta} \dd{\theta} + \pdv{y}{u} \dd{u})^2 + \qty(\pdv{z}{u} \dd{u})^2
+    \]
+    计算各偏导数：（注意$\tanh{u}$的导数为$\sech^2{u}$，$\sech{u}$的导数为$-\sech{u} \tanh{u}$）
+    \[
+        \pdv{x}{\theta} = -a \sin\theta \sech{u},\quad \pdv{x}{u} = -a \cos\theta \sech{u} \tanh{u}
+    \]
+    \[
+        \pdv{y}{\theta} = a \cos\theta \sech{u},\quad \pdv{y}{u} = -a \sin\theta \sech{u} \tanh{u}
+    \]
+    \[
+        \pdv{z}{u} = a \qty(1 - \sech^2{u}) = a \tanh^2{u}
+    \]
+    于是有：
+    \[
+        \dd{x} = -a \sin\theta \sech{u} \dd{\theta} - a \cos\theta \sech{u} \tanh{u} \dd{u}
+    \]
+    \[
+        \dd{y} = a \cos\theta \sech{u} \dd{\theta} - a \sin\theta \sech{u} \tanh{u} \dd{u}
+    \]
+    \[
+        \dd{z} = a \tanh^2{u} \dd{u}
+    \]
+    将各导数代入线元表达式，并利用三角恒等式$\sin^2\theta + \cos^2\theta = 1$，得到：
+    \[
+        \dd{s}^2 = a^2 \sech^2{u} \dd{\theta}^2 + a^2 \qty(\sech^2{u} \tanh^2{u} + \tanh^4{u}) \dd{u}^2
+    \]
+    再利用双曲函数恒等式$\sech^2{u} + \tanh^2{u} = 1$，可化简为：
+    \[
+        \dd{s}^2 = a^2 \qty(\tanh^2{u} \dd{u}^2 + \sech^2{u} \dd{\theta}^2)
+    \]
+    }
+
+    \item 证明通过坐标变换，伪球面上的线元可以写成：
+    \[
+        \dd{s}^2 = a^2 \qty(\dd{X}^2 + \mathrm{e}^{-2|X|} \dd{\theta}^2)
+    \]
+
+    \textcolor{blue}{
+    由上一问的结果：
+    \[
+        \dd{s}^2 = a^2 \qty(\tanh^2{u} \dd{u}^2 + \sech^2{u} \dd{\theta}^2) = a^2 \qty(\dd{X}^2 + \mathrm{e}^{-2|X|} \dd{\theta}^2)
+    \]
+    对比得：
+    \[
+        \tanh^2{u} \dd{u}^2 = \dd{X}^2,\quad \sech^2{u} = \mathrm{e}^{-2|X|}
+    \]
+    对第一式开方，取正号（因为$\tanh{u} > 0$时，$\dd{u}$与$\dd{X}$同号）：
+    \[
+        \tanh{u} \dd{u} = \dd{X}
+    \]
+    积分得：
+    \[
+        X = \ln(\cosh{u}) + C
+    \]
+    取$u = 0$时$X = 0$，则$C = 0$，所以：
+    \[
+        X = \ln(\cosh{u})
+    \]
+    或由第二式开方，取正号（因为$\sech{u} > 0$）：
+    \[
+        \sech{u} = \mathrm{e}^{-|X|} \implies \cosh{u} = \mathrm{e}^{|X|} \implies |X| = \ln(\cosh{u})
+    \]
+    取绝对值是因为这样可以将$X$定义在$(-\infty, +\infty)$上，而$\cosh{u} \geq 1$，等式右侧恒不小于0。 \\
+    综上，令$|X| = \ln(\cosh{u})$，则：
+    \[
+        \dd{s}^2 = a^2 \qty(\dd{X}^2 + \mathrm{e}^{-2|X|} \dd{\theta}^2)
+    \]
+    }
+
+    \item 基于问题2的线元，计算伪球面的Christoffel符号。
+
+    \textcolor{blue}{
+    由问题2的线元：
+    \[
+        \dd{s}^2 = a^2 \qty(\dd{X}^2 + \mathrm{e}^{-2|X|} \dd{\theta}^2)
+    \]
+    可得度规张量及其逆：
+    \[
+        g_{\mu\nu} = a^2 \mqty[1 & 0 \\ 0 & \mathrm{e}^{-2|X|}],\quad g^{\mu\nu} = \frac{1}{a^2} \mqty[1 & 0 \\ 0 & \mathrm{e}^{2|X|}]
+    \]
+    Christoffel符号的定义为：
+    \[
+        \Gamma^\sigma_{\mu\nu} = \frac{1}{2} g^{\sigma\rho} \qty(\partial_\mu g_{\nu\rho} + \partial_\nu g_{\mu\rho} - \partial_\rho g_{\mu\nu})
+    \]
+    由于度规张量为对角矩阵，Christoffel符号的计算可以简化为：
+    \[
+        \Gamma^0_{00} = \frac{1}{2} g^{00} \partial_0 g_{00},\quad \Gamma^0_{01} = \Gamma^0_{10} = \frac{1}{2} g^{00} \partial_1 g_{00},\quad \Gamma^0_{11} = - \frac{1}{2} g^{00} \partial_0 g_{11}
+    \]
+    \[
+        \Gamma^1_{00} = -\frac{1}{2} g^{11} \partial_1 g_{00},\quad \Gamma^1_{01} = \Gamma^1_{10} = \frac{1}{2} g^{11} \partial_0 g_{11},\quad \Gamma^1_{11} = \frac{1}{2} g^{11} \partial_1 g_{11}
+    \]
+    这些分量原则上都是非零的，但由于$\partial_0 g_{00} = \partial_1 g_{00} = \partial_1 g_{11} = 0$，所以非零的分量只有：
+    \[
+        \Gamma^0_{11} = -\frac{1}{2} g^{00} \partial_0 g_{11} = -\frac{1}{2a^2} \cdot \partial_X \qty(a^2 \mathrm{e}^{-2|X|}) = -\frac{1}{2a^2} \qty(-2a^2 \mathrm{e}^{-2|X|} \sgn{X}) = \mathrm{e}^{-2|X|} \sgn{X}
+    \]
+    \[
+        \Gamma^1_{01} = \Gamma^1_{10} = \frac{1}{2} g^{11} \partial_0 g_{11} = \frac{1}{2a^2} \mathrm{e}^{2|X|} \cdot \partial_X \qty(a^2 \mathrm{e}^{-2|X|}) = \frac{1}{2a^2} \mathrm{e}^{2|X|} \cdot \qty(-2a^2 \mathrm{e}^{-2|X|} \sgn{X}) = -\sgn{X}
+    \]
+    其中$\sgn{X}$为符号函数（绝对值函数的导数），定义为：
+    \[
+        \sgn{X} =
+        \begin{cases}
+            1, & X > 0 \\
+            0, & X = 0 \\
+            -1, & X < 0
+        \end{cases}
+    \]
+    对于对角度规$g_{\mu\nu}$，Christoffel符号$\Gamma^\sigma_{\mu\nu}$只有在$\sigma$、$\mu$、$\nu$至少有两个值相同的情况下才可能非零，而对于二维空间，任意三个指标组合一定有两个是相同的。
+    }
+\end{enumerate}
+
+\end{document}

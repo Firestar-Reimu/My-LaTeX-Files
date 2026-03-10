@@ -1,4 +1,4 @@
-\documentclass[fontset=none,openany]{ctexbook}
+\documentclass[fontset=none,openany,a4paper]{ctexbook}
 
 \usepackage{anyfontsize}
 \usepackage{amsmath,amssymb,mathrsfs,wasysym}
@@ -24,8 +24,8 @@
 \begin{document}
 
 \title{\Huge\textbf{高等数学讲义}}
-\author{\LARGE\textit{北京大学\ \ \ \ 张植竣}}
-\date{\LARGE\kaishu{\today}}
+\author{\kaishu\Large 北京大学\ \ \ \ 张植竣}
+\date{\kaishu\Large 2022年1月26日}
 \maketitle
 
 \tableofcontents
@@ -897,7 +897,7 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
 
 \subsection{面元}
 
-二重积分的面元$\mathrm{d}\sigma$在不同的坐标系中有不同的值。直角坐标系中$\mathrm{d}\sigma=\mathrm{d}x\mathrm{d}y$，极坐标系（柱坐标系）下$\mathrm{d}\sigma=r\mathrm{d}r\mathrm{d}\theta$。
+二重积分的面元$\mathrm{d}\sigma$在不同的坐标系中有不同的值。直角坐标系中$\mathrm{d}\sigma=\mathrm{d}x\mathrm{d}y$，极坐标系下$\mathrm{d}\sigma=r\mathrm{d}r\mathrm{d}\theta$。对于柱坐标系，柱面上的面元为$\mathrm{d}\sigma=r\mathrm{d}\theta\mathrm{d}z$。对于球坐标系，球面上的面元为$\mathrm{d}\sigma=r^2\sin\theta\mathrm{d}r\mathrm{d}\theta\mathrm{d}\varphi$。
 
 \subsection{体元}
 
@@ -905,12 +905,16 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
 
 \subsection{二重积分}
 
+二重积分常用于计算一个二维区域的体积（此时$f(x,y) = 1$）。同时，二重积分也可以用来计算一个平面区域内某个物理量的总量。例如：对一个平面区域内的密度函数进行二重积分可以得到该区域内的总质量。正如单变量的正函数的定积分代表函数图像和$x$轴之间区域的面积一样，正的双变量函数的双重积分也可以代表函数所定义的曲面和包含函数定义域的平面之间所夹的区域的体积。
+
 计算二重积分的基本方法是将二重积分的计算转化为连续计算两个定积分，即计算累次积分：
 \[
 \iint\limits_S f(x,y)\,\mathrm{d}x\mathrm{d}y = \int_a^b\left[\int_{y_1(x)}^{y_2(x)} f(x,y)\,\mathrm{d}y\right]\,\mathrm{d}x
 \]
 
 \subsection{三重积分}
+
+三重积分常用于计算一个三维区域的体积（此时$f(x,y,z) = 1$），或者计算一个三维区域内某个物理量的总量。例如：对一个三维区域内的密度函数进行三重积分可以得到该区域内的总质量。
 
 计算三重积分的基本方法是将三重积分的计算转化为计算一个定积分和一个二重积分：
 \[
@@ -942,7 +946,27 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
 
     \item 在极坐标中求圆$r=a$的面积。
 
+    \paragraph{解}
+
+    圆$r = a$的面积元素$\mathrm{d}\sigma = r\,\mathrm{d}r\mathrm{d}\theta$，分别对$r$和$\theta$积分：
+    \begin{align*}
+        V
+        &= \iint\limits_S \mathrm{d}\sigma \\
+        &= \int_0^{2\pi} \mathrm{d}\theta \int_0^a r\,\mathrm{d}r \\
+        &= \pi a^2
+    \end{align*}
+
     \item 在球坐标中求球$r=a$的体积。
+
+    \paragraph{解}
+
+    球$r = a$的体元素$\mathrm{d}V = r^2\sin\theta\,\mathrm{d}r\mathrm{d}\theta\mathrm{d}\varphi$，分别对$r$、$\theta$和$\varphi$积分：
+    \begin{align*}
+        V
+        &= \iiint\limits_V \mathrm{d}V \\
+        &= \int_0^{2\pi} \mathrm{d}\varphi \int_0^\pi \sin\theta\,\mathrm{d}\theta \int_0^a r^2\,\mathrm{d}r \\
+        &= \frac{4}{3}\pi a^3
+    \end{align*}
 
 \end{enumerate}
 
@@ -973,7 +997,7 @@ A_i = \lim_{x_i\to a_i}\frac{\Delta f}{\Delta x} = \lim_{x\to a}\frac{f((x_1,x_2
     \[
     I = \iiint\limits_V 2(xy+yz+zx)\mathrm{e}^y\,\mathrm{d}x\mathrm{d}y\mathrm{d}z
     \]
-    其中积分区域$S=\{(x,y,z)|0\leqslant z\leqslant 1-x,0\leqslant y\leqslant\ln(1+x),0\leqslant x\leqslant1\}$。
+    其中积分区域$V=\{(x,y,z)|0\leqslant z\leqslant 1-x,0\leqslant y\leqslant\ln(1+x),0\leqslant x\leqslant1\}$。
 
     \paragraph{解}
 

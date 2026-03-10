@@ -1,0 +1,528 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath,amssymb}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arsech}{arsech}
+\newcommand{\trans}{\text{\textsf{T}}}
+
+\usepackage{fontspec}
+\setmainfont{Lucida Bright OT}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,math-style=ISO,bold-style=ISO}
+\setmathfont[StylisticSet=4,sans-style=italic]{Lucida Bright Math OT}
+\setmathfont[range={\mathscr,\mathbfscr}]{Lucida Bright Math OT}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论\ \ \ \ 第三次作业}}
+\author{张植竣 1900011604}
+\date{2023年6月4日}
+
+\begin{document}
+
+\maketitle
+
+\section*{第八章}
+
+\begin{enumerate}
+    \item[5.(a)]
+    由题意，静止观测者的4-速度为：
+    \[
+        u^\mu_{\mathrm{obs}} = (u^t, u^r, u^\theta, u^\phi) = (u^t, 0, 0, 0 )
+    \]
+    Schwarzschild度规为：
+    \[
+        \dd{s}^2 = -\qty(1 - \frac{2GM}{r}) \dd{t}^2 + \qty(1 - \frac{2GM}{r})^{-1} \dd{r}^2 + r^2 \dd{\theta}^2 + r^2 \sin^2\theta \dd{\phi}^2
+    \]
+    记$k = 1 - \dfrac{2GM}{R}$，由归一化条件$u_\mu u^\mu = -1$，有：
+    \[
+        -k (u^t)^2 = -1 \Rightarrow u^t = \dfrac{1}{\sqrt{k}}
+    \]
+    因此：
+    \[
+        u^\mu_{\mathrm{obs}} = \qty(\frac{1}{\sqrt{k}}, 0, 0, 0 )
+    \]
+    建立沿径向的观测者坐标系，要求：
+    \[
+        \hat{e}_t = u^\mu_{\mathrm{obs}}, \quad
+        \hat{e}_r \parallel \hat{r}
+    \]
+    由归一化条件$g_{\mu\nu} \hat{e}_r^\mu \hat{e}_r^\nu = 1$可得：
+    \[
+        \hat{e}_r = \qty(0, \sqrt{k}, 0, 0)
+    \]
+    同理可得观测者的正交归一基底为：
+    \[
+        \hat{e}_t = \qty(\frac{1}{\sqrt{k}}, 0, 0, 0), \quad
+        \hat{e}_r = \qty(0, \sqrt{k}, 0, 0), \quad
+        \hat{e}_\theta = \qty(0, 0, \frac{1}{R}, 0), \quad
+        \hat{e}_\phi = \qty(0, 0, 0, \frac{1}{R\sin\theta})
+    \]
+    设入射质子的4-动量为$p^\mu = (p^t, p^r, 0, 0)$，则在观测者坐标系下，质子的能量为：
+    \[
+        E = -p_\mu (\hat{e}_t)^\mu = -g_{tt} p^t (\hat{e}_t)^t = k \cdot p^t \cdot \frac{1}{\sqrt{k}} = \sqrt{k} p^t
+    \]
+    质子的动量为：（$i = r, \theta, \phi$）
+    \[
+        P = p_\mu (\hat{e}_i)^\mu = g_{rr} p^r (\hat{e}_r)^r = \frac{1}{k} \cdot p^r \cdot \sqrt{k} = \frac{p^r}{\sqrt{k}}
+    \]
+    而4-动量的归一化条件为：（等价于$g_{\mu\nu} u^\mu u_\mu = -1$）
+    \[
+        g_{\mu\nu} p^\mu p_\mu = -k (p^t)^2 + \frac{1}{k} (p^r)^2 = -m_0^2
+    \]
+    因此：
+    \[
+        E^2 - P^2 = k (p^t)^2 - \frac{1}{k} (p^r)^2 = m_0^2
+    \]
+    其中$m_0$为质子的静止质量，这个关系和狭义相对论相同。
+
+    \item[5.(b)]
+    由上一问的答案，反之即得Schwarzschild坐标下质子的4-动量：
+    \[
+        p^\mu = (p^t, p^r, 0, 0) = \qty(\frac{E}{\sqrt{k}}, P \sqrt{k}, 0, 0)
+    \]
+    即：
+    \[
+        p^\mu = \qty(E \qty(1 - \frac{2GM}{R})^{-1/2}, P \qty(1 - \frac{2GM}{R})^{1/2}, 0, 0)
+    \]
+
+    \item[6.(a)]
+    稳定的圆周运动要求：
+    \[
+        \frac{1}{2}E^2 = V(r),\quad \pdv{V}{r} = 0
+    \]
+    其中有效势为：
+    \[
+        V(r) = \frac{1}{2} - \frac{GM}{r} + \frac{L^2}{2r^2} - \frac{GM L^2}{r^3}
+    \]
+    则：
+    \[
+        \pdv{V}{r} = -\frac{GM}{r^2} - \frac{L^2}{r^3} + \frac{3GM L^2}{r^4} = 0
+    \]
+    解得对于某个圆周轨道半径$R$有：
+    \[
+        L = \sqrt{\frac{GMR}{1 - 3GM/R}}
+    \]
+    代入$R = 7GM$得：
+    \[
+        L = \frac{7}{2}GM
+    \]
+    计算出有效势：
+    \[
+        V(7GM) = \frac{1}{2} - \frac{GM}{7GM} + \frac{(7GM/2)^2}{2(7GM)^2} - \frac{GM (7GM/2)^2}{(7GM)^3} = \frac{25}{56} = \frac{1}{2}E^2
+    \]
+    解得：
+    \[
+        E = \frac{5\sqrt{7}}{14}
+    \]
+    轨道周期为：
+    \[
+        T = \frac{2\pi}{\omega},\quad \omega = \dv{\phi}{t} = \dv{\phi}{\tau} \div \dv{t}{\tau}
+    \]
+    其中：
+    \[
+        \dv{\phi}{\tau} = \frac{L}{R^2} = \frac{7GM/2}{(7GM)^2} = \frac{1}{14 GM}
+    \]
+    \[
+        \dv{t}{\tau} = \frac{E}{1 - 2GM/R} = \frac{5\sqrt{7}/14}{1 - 2/7} = \frac{\sqrt{7}}{2}
+    \]
+    因此：
+    \[
+        \omega = \frac{1}{14 GM} \div \frac{\sqrt{7}}{2} = \frac{1}{7\sqrt{7} GM}
+    \]
+    \[
+        T = \frac{2\pi}{\omega} = 14\sqrt{7}\pi GM
+    \]
+
+    \item[6.(b)]
+    对于飞船上的钟，其测量的时间就是本征时$\tau$，则角速度为：
+    \[
+        \omega_{\mathrm{obs}} = \dv{\phi}{\tau} = \frac{1}{14 GM}
+    \]
+    轨道周期为：
+    \[
+        T_{\mathrm{obs}} = \frac{2\pi}{\omega_{\mathrm{obs}}} = 28\pi GM
+    \]
+
+    \item[7.(a)]
+    在Schwarzschild度规下，光线的运动方程为：
+    \[
+        \dd{s}^2 = -\qty(1 - \frac{2GM}{r}) \dd{t}^2 + \qty(1 - \frac{2GM}{r})^{-1} \dd{r}^2 + r^2 \dd{\Omega}^2 = 0
+    \]
+    径向入射光线满足$\dd{\Omega} = 0$，因此：
+    \[
+        -\qty(1 - \frac{2GM}{r}) \dd{t}^2 + \qty(1 - \frac{2GM}{r})^{-1} \dd{r}^2 = 0
+    \]
+    即：
+    \[
+        \dv{r}{t} = \pm \qty(1 - \frac{2GM}{r})
+    \]
+    取正值，$r = r_1$处信号的瞬时坐标速度为：
+    \[
+        \dv{r}{t} = 1 - \frac{2GM}{r_1}
+    \]
+
+    \item[7.(b)]
+    对于无穷远处的观测者，测量的时间就是坐标时$t$，则信号在$r = r_1$和$r = r_2$之间往返的时间为：
+    \[
+        \Delta t = 2\int_{r_1}^{r_2} \dv{t}{r} \dd{r} = 2\int_{r_1}^{r_2} \frac{1}{1 - 2GM/r} \dd{r} = 2(r_2 - r_1) + 4GM \ln\frac{r_2 - 2GM}{r_1 - 2GM}
+    \]
+
+    \item[7.(c)]
+    对于$r = r_1$处的观测者，测量的时间是当地的固有时$\tau$，其与坐标时$t$的关系为：
+    \[
+        \dd{\tau} = \sqrt{1 - \frac{2GM}{r_1}} \dd{t}
+    \]
+    因此信号在$r = r_1$和$r = r_2$之间往返的时间为：
+    \[
+        \Delta \tau = \sqrt{1 - \frac{2GM}{r_1}} \Delta t = \sqrt{1 - \frac{2GM}{r_1}} \qty[2(r_2 - r_1) + 4GM \ln\frac{r_2 - 2GM}{r_1 - 2GM}]
+    \]
+
+    \item[15.(a)]
+    近似的Schwarzschild度规为：
+    \[
+        \dd{s}^2 = -\qty(1 - \frac{2GM}{r}) \dd{t}^2 + \qty(1 + \frac{2GM}{r}) \qty(\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
+    \]
+    可以看出该度规的空间部分是球对称的，因此可以使用球坐标系：（记$R_s = 2GM$，下同）
+    \[
+        \dd{s}^2 = -\qty(1 - \frac{R_s}{r}) \dd{t}^2 + \qty(1 + \frac{R_s}{r}) \qty(\dd{r}^2 + r^2 \dd{\theta}^2 + r^2 \sin^2\theta \dd{\phi}^2)
+    \]
+    和Schwarzschild度规的情况同理，可以找到类时Killing矢量$\xi^\mu = (1,0,0,0)$，因此得到守恒的能量：
+    \[
+        E = -g_{\mu\nu} \xi^\mu u^\nu = \qty(1 - \frac{R_s}{r}) \dv{t}{\lambda}
+    \]
+    同理，由于旋转对称性，光子总可以设为在$\theta = \pi/2$平面内运动，因此可以找到类空间Killing矢量$\eta^\mu = (0,0,0,1)$，得到守恒的角动量：
+    \[
+        L = g_{\mu\nu} \eta^\mu u^\nu = \qty(1 + \frac{R_s}{r}) r^2 \sin{\theta} \dv{\phi}{\lambda} = \qty(1 + \frac{R_s}{r}) r^2 \dv{\phi}{\lambda}
+    \]
+    再利用粒子运动4-速度的归一化条件$-g_{\mu\nu} u^\mu u^\nu = \varepsilon$，即：
+    \[
+        -\qty(1 - \frac{R_s}{r}) \qty(\dv{t}{\lambda})^2 + \qty(1 + \frac{R_s}{r}) \qty[\qty(\dv{r}{\lambda})^2 + r^2 \qty(\dv{\phi}{\lambda})^2] = -\varepsilon
+    \]
+    对于有质量粒子，$\varepsilon = 1$；对于光子，$\varepsilon = 0$。只考虑光子的情况，代入上面两个守恒量，得到：
+    \[
+        -E^2 + \qty(1 - \frac{R_s^2}{r^2}) \qty(\dv{r}{\lambda})^2 + \qty(\frac{r - R_s}{r + R_s}) \frac{L^2}{r^2} = 0
+    \]
+    再使用：
+    \[
+        \dv{r}{\lambda} = \dv{r}{\phi} \cdot \dv{\phi}{\lambda} = \dv{r}{\phi} \cdot \qty(1 + \frac{R_s}{r})^{-1} \frac{L}{r^2}
+    \]
+    可以得到光子的轨道方程为：
+    \[
+        E^2 = \qty(\frac{r - R_s}{r + R_s}) \frac{L^2}{r^4} \qty(\dv{r}{\phi})^2 + \qty(\frac{r - R_s}{r + R_s}) \frac{L^2}{r^2} = \qty(\frac{r - R_s}{r + R_s}) \frac{L^2}{r^4} \qty[\qty(\dv{r}{\phi})^2 + r^2]
+    \]
+    引入参数$x = \dfrac{2L^2}{R_s r}$，并记$a = \dfrac{R_s^2}{2L^2}$，则上式可写为：
+    \[
+        E^2 = \frac{a}{2} \qty(\frac{1 - ax}{1 + ax}) \qty[\qty(\dv{x}{\phi})^2 + x^2]
+    \]
+    即：
+    \[
+        \qty(\dv{x}{\phi})^2 + x^2 = \frac{2E^2}{a} \qty(\frac{1 + ax}{1 - ax})
+    \]
+    这是一个关于$\left(\dfrac{\dd{x}}{\dd{\phi}}\right)^2$（相当于动能）的类能量方程，对$\phi$再求一次导数，得到轨道方程：
+    \[
+        2 \dv[2]{x}{\phi} \dv{x}{\phi} + 2x \dv{x}{\phi} = 4E^2 \qty(1 - ax)^{-2} \dv{x}{\phi}
+    \]
+    消去$2\dfrac{\dd{x}}{\dd{\phi}}$之后得到：
+    \[
+        \dv[2]{x}{\phi} + x = 2E^2 \qty(1 - ax)^{-2}
+    \]
+    这是一个类似于力的方程，对应于轨道力学中的Binet方程。
+
+    对此方程，我们可以做微扰的处理。在一阶近似下，方程为：
+    \[
+        \dv[2]{x}{\phi} + x = 2E^2
+    \]
+    这是可以直接求解的，其解为：
+    \[
+        x = \frac{2EL}{R_s} \sin(\phi - \phi_0) + 2E^2
+    \]
+    第一项描述的正是入射参数为$b = \dfrac{L}{E}$的直线$r = \dfrac{b}{\sin(\phi - \phi_0)}$，对应于Newton引力的情况。第二项（微扰项）描述了引力对光子轨道的偏转。
+
+    不失一般性取$\phi_0 = 0$，光线从无穷远处并射出到无穷远，对应$r \to \infty$，即$x \to 0$，则入射和出射时的角度满足：
+    \[
+        0 = \frac{2EL}{R_s} \sin\phi + 2E^2 \implies \sin\phi = -\frac{R_s E}{L} = -\frac{2GM}{b}
+    \]
+    角度$\phi$非常接近$0$或$\pi$，设两个根为$\phi_1 = -\alpha$和$\phi_2 = \pi + \alpha$，利用小角近似$\alpha \approx \sin\alpha$，则有：
+    \[
+        \sin(-\alpha) = -\frac{2GM}{b} \implies \alpha = \frac{2GM}{b}
+    \]
+    光线的偏转角为：
+    \[
+        \Delta \phi = 2\alpha = \frac{4GM}{b}
+    \]
+    这证明了该弱场近似度规能够给出与广义相对论精确解一致的光线偏折结果。
+
+    \item[15.(b)]
+    对于有质量粒子，$\varepsilon = 1$，类似地可以得到测地线方程为：
+    \[
+        -\qty(1 - \frac{R_s}{r}) \qty(\dv{t}{\lambda})^2 + \qty(1 + \frac{R_s}{r}) \qty[\qty(\dv{r}{\lambda})^2 + r^2 \qty(\dv{\phi}{\lambda})^2] = -1
+    \]
+    代入$E$和$L$得：
+    \[
+        -E^2 + \qty(1 - \frac{R_s^2}{r^2}) \qty(\dv{r}{\lambda})^2 + \qty(\frac{r - R_s}{r + R_s}) \frac{L^2}{r^2} = -\qty(1 - \frac{R_s}{r})
+    \]
+    写成$\dfrac{\dd{r}}{\dd{\phi}}$的形式：
+    \[
+        E^2 = \qty(\frac{r - R_s}{r + R_s}) \frac{L^2}{r^4} \qty[\qty(\dv{r}{\phi})^2 + r^2] + \qty(1 - \frac{R_s}{r})
+    \]
+    轨道能量方程为：（其中$x = \dfrac{2L^2}{R_s r}$，$a = \dfrac{R_s^2}{2L^2}$）
+    \[
+        E^2 = \frac{a}{2} \qty(\frac{1 - ax}{1 + ax}) \qty[\qty(\dv{x}{\phi})^2 + x^2] + (1 - ax)
+    \]
+    即：
+    \[
+        \qty(\dv{x}{\phi})^2 + x^2 + \frac{2}{a}(1 + ax) = \frac{2E^2}{a} \qty(\frac{1 + ax}{1 - ax})
+    \]
+    对$\phi$再求一次导数，得到轨道Binet方程：
+    \[
+        \dv[2]{x}{\phi} + x + 1 = 2E^2 \qty(1 - ax)^{-2}
+    \]
+    在Newton引力近似下$E = 1$，此时方程给出：
+    \[
+        \dv[2]{x}{\phi} + x + 1 = 2 \qty(1 - ax)^{-2}
+    \]
+    使用微扰法求解，设$x = x_0 + x_1$，零阶方程为：
+    \[
+        \dv[2]{x_0}{\phi} + x_0 + 1 = 2
+    \]
+    解得：
+    \[
+        x_0 = 1 + e\cos(\phi - \phi_0)
+    \]
+    不失一般性取$\phi_0 = 0$，将$x_0 = 1 + e\cos{\phi}$代入方程：
+    \[
+        \dv[2]{x}{\phi} + x + 1 = 2 (1 - ax)^{-2}
+    \]
+    即：
+    \[
+        \dv[2]{(x_0 + x_1)}{\phi} + (x_0 + x_1) + 1 = 2 \qty[1 - a(x_0 + x_1)]^{-2}
+    \]
+    展开右边并忽略高阶小量（$ax_1$和$a^2$及更高阶项都忽略），得到一阶方程：
+    \[
+        \dv[2]{x_0}{\phi} + \dv[2]{x_1}{\phi} + x_0 + x_1 + 1 = 2 \qty[1 - a(x_0 + x_1)]^{-2} \approx 2 (1 + 2a x_0)
+    \]
+    利用零阶方程得：
+    \[
+        \dv[2]{x_1}{\phi} + x_1 = 4a x_0 = 4a (1 + e\cos{\phi})
+    \]
+    这解得：
+    \[
+        x_1 = 4a + 2ae\phi \sin{\phi}
+    \]
+    其中第二项给出了轨道的进动效应。完整的轨道方程为：
+    \[
+        x = 1 + e\cos{\phi} + 2ae\phi \sin{\phi} \approx 1 + e\cos(\phi - 2a\phi)
+    \]
+    可见轨道每转动$2\pi$，近点进动角为：
+    \[
+        \Delta\phi = 2\pi \cdot 2a = \frac{2\pi R_s^2}{L^2} = \frac{8\pi G^2 M^2}{L^2}
+    \]
+    与广义相对论的精确解$\Delta\phi_0 = \dfrac{6\pi G^2 M^2}{L^2}$相比，该弱场近似度规给出正确值的$\dfrac{4}{3}$。
+\end{enumerate}
+
+\clearpage
+\section*{第九章}
+
+\begin{enumerate}
+    \item[1.(a)]
+    对于有质量粒子，仿射参数$\lambda$可以取为固有时$\tau$。
+
+    记$k = 1 - \dfrac{2GM}{r}$（下同），由$E = \qty(1 - \dfrac{2GM}{r}) \dfrac{\dd t}{\dd\tau}$得：
+    \[
+        \dv{t}{\tau} = \dv{t}{\lambda} = \frac{E}{k}
+    \]
+    有质量粒子的测地线为：
+    \[
+        \frac{1}{2} \qty(\dv{r}{\lambda})^2 + V(r) = \frac{1}{2} E^2,\quad V(r) = \frac{1}{2} \epsilon - \frac{GM}{r} \epsilon + \frac{L^2}{2r^2} - \frac{GM L^2}{r^3}
+    \]
+    由题意$\epsilon = 1$，粒子从无穷远处静止落下，因此$L = 0$，则：
+    \[
+        \frac{1}{2} \qty(\dv{r}{\tau})^2 + V(r) = \frac{1}{2} E^2,\quad V(r) = \frac{1}{2} - \frac{GM}{r}
+    \]
+    即：
+    \[
+        \qty(\dv{r}{\tau})^2 = E^2 - k
+    \]
+    因此：（取负号表示粒子向内落入黑洞）
+    \[
+        \dv{r}{\tau} = -\sqrt{E^2 - k}
+    \]
+    则粒子的4-速度为：
+    \[
+        u^\mu = \qty(\dv{t}{\tau}, \dv{r}{\tau}, 0, 0) = \qty(\frac{E}{k}, -\sqrt{E^2 - k}, 0, 0)
+    \]
+    粒子从$r = 3GM$下落到$r = 2GM$的固有时为：
+    \[
+        \Delta \tau = \int_{3GM}^{2GM} \dv{\tau}{r} \dd{r} = \int_{3GM}^{2GM} \frac{\dd{r}}{-\sqrt{E^2 - k}}
+    \]
+    代入$E = 0.95$得：
+    \[
+        \Delta \tau = \int_{3GM}^{2GM} \frac{\dd{r}}{-\sqrt{0.95^2 - (1 - 2GM/r)}} = 1.1918GM
+    \]
+
+
+    \item[1.(b)]
+    与(a)同理，粒子从$r = 2GM$下落到$r = 0$的固有时为：
+    \[
+        \Delta \tau = \int_{2GM}^{0} \dv{\tau}{r} \dd{r} = \int_{2GM}^{0} \frac{\dd{r}}{-\sqrt{E^2 - k}} = 1.3745GM
+    \]
+
+    \item[1.(c)]
+    在$r = 2.001GM$处：
+    \[
+        \dv{t}{\tau} = \frac{E}{k} = \frac{0.95}{1 - \dfrac{2GM}{2.001GM}} = 1900.95
+    \]
+    \[
+        \dv{r}{\tau} = -\sqrt{E^2 - k} = -\sqrt{0.95^2 - \qty(1 - \frac{2GM}{2.001GM})} = -0.9497
+    \]
+    因此粒子的4-速度为：
+    \[
+        u^\mu = \qty(\dv{t}{\tau}, \dv{r}{\tau}, 0, 0) = \qty(1900.95, -0.9497, 0, 0)
+    \]
+
+    \item[1.(d)]
+    一般地，如果发射器和接收器都没有固定在空间某位置，而是运动的，红移公式推导如下：
+
+    在一个具有度规$g_{\mu\nu}$的时空流形，如果发射器在$E$处，而接收器在$R$处，则它们分别探测到光子的能量为：
+    \[
+        \mathscr{E}_E = -p_{\mu}(E) u^{\mu}(E),\quad \mathscr{E}_R = -p_{\mu}(R) u^{\mu}(R)
+    \]
+    其中$p^\mu$为光子的4-动量，$u^\mu$为发射器或接收器的4-速度。则光子频率之比为：
+    \[
+        \frac{\nu_R}{\nu_E} = \frac{\mathscr{E}_R}{\mathscr{E}_E} = \frac{p_{\mu}(R) u^{\mu}(R)}{p_{\mu}(E) u^{\mu}(E)}
+    \]
+    红移为：
+    \[
+        z = \frac{\nu_E}{\nu_R} - 1 = \frac{p_{\mu}(E) u^{\mu}(E)}{p_{\mu}(R) u^{\mu}(R)} - 1
+    \]
+    由于光子走径向的零测地线，设其4-动量为$p^\mu = (p^t, p^r, 0, 0)$，则由归一化条件$g_{\mu\nu} p^\mu p^\nu = 0$，有：
+    \[
+        -k (p^t)^2 + \frac{1}{k} (p^r)^2 = 0 \Rightarrow p^r = \pm k p^t
+    \]
+    取正号表示光子向外传播，则：
+    \[
+        p^\mu = (p^t, k p^t, 0, 0)
+    \]
+    又因为光子的能量$E = \qty(1 - \dfrac{2GM}{r(R)}) \dfrac{\dd t}{\dd \lambda} = k p^t$守恒，有：
+    \[
+        \qty(1 - \frac{2GM}{r(R)}) p^t(R) = \qty(1 - \frac{2GM}{r(E)}) p^t(E)
+    \]
+    代入$r(E) = 2.001GM$，$r(R) = +\infty$，得：
+    \[
+        p^t(R) = \qty(1 - \frac{2GM}{2.001GM}) p^t(E)
+    \]
+    记$k_E = 1 - \dfrac{2GM}{2.001GM} = \dfrac{1}{2001}$，$p^t_0 = p^t(E)$，则发射器处光子的4-动量为：
+    \[
+        p^\mu(E) = \qty(p^t_0, k_E p^t_0, 0, 0)
+    \]
+    接收器处光子的4-动量为：
+    \[
+        p^\mu(R) = \qty(k_E p^t_0, k_E^2 p^t_0, 0, 0)
+    \]
+
+    另一方面，发射器的4-速度为：
+    \[
+        u^\mu(E) = \qty(\frac{E}{k_E}, -\sqrt{E^2 - k_E}, 0, 0)
+    \]
+    接收器在无穷远处静止，因此其4-速度为：
+    \[
+        u^\mu(R) = (1, 0, 0, 0)
+    \]
+    还需要考虑到度规的影响，发射器和接收器处的度规分别为：
+    \[
+        g_{\mu\nu}(E) = \mathrm{diag}(-k_E, \frac{1}{k_E}, r(E)^2, r(E)^2 \sin^2\theta)
+    \]
+    \[
+        g_{\mu\nu}(R) = \mathrm{diag}(-1, 1, r(R)^2, r(R)^2 \sin^2\theta)
+    \]
+    综上，光子在发射器和接收器处的频率之比为：
+    \begin{align*}
+        \frac{\nu_E}{\nu_R}
+        &= \frac{p_{\mu}(E) u^{\mu}(E)}{p_{\mu}(R) u^{\mu}(R)} \\
+        &= \frac{g_{\mu\nu} p^\mu(E) u^\nu(E)}{g_{\mu\nu} p^\mu(R) u^\nu(R)} \\
+        &= \frac{-k_E p^t_0 \cdot \dfrac{E}{k_E} + \dfrac{1}{k_E} k_E p^t_0 \cdot \qty(-\sqrt{E^2 - k_E})}{-k_E p^t_0 \cdot 1 + k_E^2 p^t_0 \cdot 0} \\
+        &= \frac{-p^t_0 E - p^t_0 \sqrt{E^2 - k_E}}{-p^t_0 k_E} \\
+        &= \frac{E + \sqrt{E^2 - k_E}}{k_E}
+    \end{align*}
+    代入$E = 0.95$，$k_E = \dfrac{1}{2001}$得：
+    \[
+        \frac{\nu_E}{\nu_R} = 3801.37
+    \]
+    因此红移为：
+    \[
+        z = \frac{\nu_E}{\nu_R} - 1 = 3800.37
+    \]
+
+    \item[3.]
+    由$r = \rho \qty(1 + \dfrac{\mu}{2\rho})^2$可得：
+    \[
+        \frac{2\mu}{r} = \frac{2\mu}{\rho} \qty(1 + \frac{\mu}{2\rho})^{-2}
+    \]
+    \[
+        \dv{r}{\rho} = 1 - \frac{\mu^2}{4\rho^2} = \qty(1 + \frac{\mu}{2\rho}) \qty(1 - \frac{\mu}{2\rho})
+    \]
+    于是有：
+    \begin{align*}
+        \dd{s}^2
+        &= -\qty(1 - \frac{2\mu}{r}) \dd{t}^2 + \qty(1 - \frac{2\mu}{r})^{-1} \dd{r}^2 + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2) \\
+        &= -\qty[1 - \frac{2\mu}{\rho} \qty(1 + \frac{\mu}{2\rho})^{-2}] \dd{t}^2 + \qty[1 - \frac{2\mu}{\rho} \qty(1 + \frac{\mu}{2\rho})^{-2}]^{-1} \dd{r}^2 + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2) \\
+        &= -\qty(1 - \frac{\mu}{2\rho})^2 \qty(1 + \frac{\mu}{2\rho})^{-2} \dd{t}^2 + \qty(1 - \frac{\mu}{2\rho})^{-2} \qty(1 + \frac{\mu}{2\rho})^2 \dd{r}^2 + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2)
+    \end{align*}
+    最后一步使用了这样一个关系：
+    \[
+        1 - \frac{2\mu}{\rho} \qty(1 + \frac{\mu}{2\rho})^{-2} = \qty(1 - \frac{\mu}{2\rho})^2 \qty(1 + \frac{\mu}{2\rho})^{-2}
+    \]
+    证明如下：
+
+    两边同乘$\qty(1 + \dfrac{\mu}{2\rho})^2$得：
+    \[
+        \qty(1 + \frac{\mu}{2\rho})^2 - \frac{2\mu}{\rho} = \qty(1 - \frac{\mu}{2\rho})^2
+    \]
+    即：
+    \[
+        1 + \frac{\mu}{\rho} + \frac{\mu^2}{4\rho^2} - \frac{2\mu}{\rho} = 1 - \frac{\mu}{\rho} + \frac{\mu^2}{4\rho^2}
+    \]
+    这显然是成立的。
+
+    最后代入$r(\rho)$和$\dfrac{\dd{r}}{\dd{\rho}}$得：
+    \[
+        \dd{s}^2 = -\qty(1 - \frac{\mu}{2\rho})^2 \qty(1 + \frac{\mu}{2\rho})^{-2} \dd{t}^2 + \qty(1 + \frac{\mu}{2\rho})^4 \dd{\rho}^2 + \qty(1 + \frac{\mu}{2\rho})^4 \rho^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2)
+    \]
+\end{enumerate}
+
+\end{document}

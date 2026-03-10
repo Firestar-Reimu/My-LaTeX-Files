@@ -1,0 +1,141 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业六}}
+\author{国家天文台 张植竣}
+\date{2025年10月21日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 已知$F^{\mu\nu}$是一个反对称张量，$T_{\mu\nu}$是一个对称张量，证明$F^{\mu\nu}T_{\mu\nu}=0$。
+
+    \textcolor{blue}{
+    由于$F^{\mu\nu}$是反对称的，即$F^{\mu\nu} = -F^{\nu\mu}$，而$T_{\mu\nu}$是对称的，即$T_{\mu\nu} = T_{\nu\mu}$，我们有：
+    \[
+    F^{\mu\nu}T_{\mu\nu} = -F^{\nu\mu}T_{\nu\mu}
+    \]
+    另一方面，交换重命名$\mu$和$\nu$不应该改变求和的结果，因此我们也有：
+    \[
+    F^{\mu\nu}T_{\mu\nu} = F^{\nu\mu}T_{\nu\mu}
+    \]
+    这意味着：
+    \[
+    -F^{\nu\mu}T_{\nu\mu} = F^{\nu\mu}T_{\nu\mu}
+    \]
+    因此：
+    \[
+        F^{\mu\nu}T_{\mu\nu} = 0
+    \]
+    }
+
+    \item 从Bianchi恒等式出发，证明Einstein张量的散度恒为零。
+
+    \textcolor{blue}{
+    Bianchi恒等式为：
+    \[
+        \nabla_\lambda R_{\mu\nu\rho\sigma} + \nabla_\rho R_{\mu\nu\sigma\lambda} + \nabla_\sigma R_{\mu\nu\lambda\rho} = 0
+    \]
+    Ricci张量定义为Riemann张量的如下收缩：
+    \[
+        R_{\nu\sigma} = R^{\mu}_{\ \nu\mu\sigma} = g^{\mu\rho} R_{\mu\nu\rho\sigma}
+    \]
+    Ricci标量定义为Ricci张量的如下收缩：
+    \[
+        R = R^{\mu}_{\ \mu} = g^{\mu\nu} R_{\mu\nu}
+    \]
+    Einstein张量的定义为：
+    \[
+        G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu}
+    \]
+    Einstein张量的散度为$\nabla^\mu G_{\mu\nu}$，我们需要证明$\nabla^\mu G_{\mu\nu} = 0$。 \\
+    该证明需要对Bianchi恒等式做两次收缩：
+    \[
+        g^{\mu\rho} g^{\nu\sigma} \qty(\nabla_\lambda R_{\mu\nu\rho\sigma} + \nabla_\rho R_{\mu\nu\sigma\lambda} + \nabla_\sigma R_{\mu\nu\lambda\rho}) = 0
+    \]
+    对第一项：
+    \[
+        g^{\mu\rho} g^{\nu\sigma} \nabla_\lambda R_{\mu\nu\rho\sigma}
+        = \nabla_\lambda (g^{\mu\rho} g^{\nu\sigma} R_{\mu\nu\rho\sigma})
+        = \nabla_\lambda R
+    \]
+    对第二项：
+    \begin{align*}
+        g^{\mu\rho} g^{\nu\sigma} \nabla_\rho R_{\mu\nu\sigma\lambda}
+        &= \qty(g^{\mu\rho} \nabla_\rho) \qty(g^{\nu\sigma} R_{\mu\nu\sigma\lambda}) \\
+        &= \qty(g^{\mu\rho} \nabla_\rho) \qty(-g^{\nu\sigma} R_{\nu\mu\sigma\lambda}) \\
+        &= -\nabla^\mu R_{\mu\lambda}
+    \end{align*}
+    对第三项：
+    \begin{align*}
+        g^{\mu\rho} g^{\nu\sigma} \nabla_\sigma R_{\mu\nu\lambda\rho}
+        &= \qty(g^{\nu\sigma} \nabla_\sigma) \qty(g^{\mu\rho} R_{\mu\nu\lambda\rho}) \\
+        &= \qty(g^{\nu\sigma} \nabla_\sigma) \qty(-g^{\mu\rho} R_{\mu\nu\rho\lambda}) \\
+        &= -\nabla^\nu R_{\nu\lambda}
+    \end{align*}
+    将三项合并得：
+    \[
+        \nabla_\lambda R - \nabla^\mu R_{\mu\lambda} - \nabla^\nu R_{\nu\lambda} = 0
+    \]
+    即：
+    \[
+        \nabla^\mu R_{\mu\lambda} = \frac{1}{2} \nabla_\lambda R
+    \]
+    因此：
+    \begin{align*}
+        \nabla^\mu G_{\mu\nu}
+        &= \nabla^\mu R_{\mu\nu} - \frac{1}{2} \nabla^\mu (g_{\mu\nu} R) \\
+        &= \nabla^\mu R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} \nabla^\mu R \\
+        &= \nabla^\mu R_{\mu\nu} - \frac{1}{2} \nabla_\nu R \\
+        &= 0
+    \end{align*}
+    这就证明了Einstein张量的散度恒为零。
+    }
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,156 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\trans}{\text{\textsf{T}}}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业一}}
+\author{国家天文台 张植竣}
+\date{2025年9月26日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 什么是固有时？
+
+    \textcolor{blue}{
+        固有时是指在与物体相对静止的参考系（本征系）中，测量一个物体从事件A到事件B所经历的时间间隔，这是一个Lorentz不变量。
+    }
+
+    \item 什么是类时世界线？类光世界线？类空世界线？
+
+    \textcolor{blue}{
+        类时世界线是指在时空中，物体的速度小于光速的世界线，在其上的切矢量满足$\eta_{\mu\nu} V^\mu V^\nu < 0$，线元$\dd{s}^2 < 0$（此处度规号差为$(-, +, +, +)$，下同）。类光世界线是指物体的速度等于光速的世界线，在其上的切矢量满足$\eta_{\mu\nu} V^\mu V^\nu = 0$，线元$\dd{s}^2 = 0$。类空世界线是指物体的速度大于光速的世界线，在其上的切矢量满足$\eta_{\mu\nu} V^\mu V^\nu > 0$，线元$\dd{s}^2 > 0$。
+    }
+    \item 固有时与类时世界线有何关系？
+
+    \textcolor{blue}{
+        固有时是类时世界线上两个事件之间的时间间隔。对于类时世界线上的一个（有质量的）物体，类时世界线的线长的绝对值就是该物体的固有时。
+    }
+
+    \item 什么是惯性系？非惯性系？
+
+    \textcolor{blue}{
+        惯性系是指在该参考系中，Newton运动定律成立的参考系，即没有任何外力作用时，物体保持静止或匀速直线运动的参考系，且质点受力与加速度的关系符合$\mathbf{F} = m\mathbf{a}$，作用力等于反作用力。非惯性系是指在该参考系中，Newton运动定律不成立的参考系，即存在加速度或旋转的参考系，此时质点受力与加速度的关系不符合$\mathbf{F} = m\mathbf{a}$。
+    }
+
+    \item Lorentz变换的本质是什么？
+
+    \textcolor{blue}{
+        Lorentz变换的本质是Minkowski空间内保持时空间隔不变的线性变换。它描述了在不同惯性参考系之间，时空坐标如何相互转换，同时确保光速在所有惯性参考系中保持不变。
+    }
+\end{enumerate}
+
+\clearpage
+\section*{第二章}
+
+\begin{enumerate}
+    \item 在参考系$\Sigma$中，有两个物体都以速度$u$沿$x$轴运动，在$\Sigma$系看来，它们一直保持距离$L$不变。今有一观察者以速度$v$沿$x$轴运动，他看到这两个物体的距离是多少？
+
+    \textcolor{blue}{
+        \textbf{方法一：使用固有距离求解} \\
+        在$\Sigma$系中，两个物体的距离为$L$。但这不是它们的固有距离，固有距离应该是在“相对两个物体静止”的参考系下测量的距离。 \\
+        设这个参考系为$\Sigma_0$，它相对于$\Sigma$系以速度$-u$运动。则在$\Sigma_0$系中，两个物体静止，它们的距离为固有距离$L_0$。由长度收缩公式，有：
+        \[
+            L = \frac{L_0}{\gamma_u} = L_0 \sqrt{1 - \frac{u^2}{c^2}} \implies L_0 = L\gamma_u = \frac{L}{\sqrt{1 - \dfrac{u^2}{c^2}}}
+        \]
+        现在考虑观察者所在的参考系$\Sigma'$，它相对于$\Sigma$系以速度$v$运动。则$\Sigma''$系的观测者看物体（$\Sigma_0$系）的速度为：
+        \[
+            u' = \frac{u - v}{1-\dfrac{uv}{c^2}}
+        \]
+        即在$\Sigma'$系中，两个物体以速度$u'$运动，它们的距离$L'$为：
+        \[
+            L' = \frac{L_0}{\gamma_{u'}} = L_0 \sqrt{1 - \frac{u'^2}{c^2}} = L \sqrt{1 - \frac{v^2}{c^2}} \cdot \frac{1}{1 - \dfrac{uv}{c^2}}
+        \]
+        最后一步需要一个引理：
+        \[
+            \gamma_{u'} = \gamma_u \gamma_v \qty(1 - \frac{uv}{c^2})
+        \]
+        证明如下，首先：
+        \[
+            \gamma_{u'} = \frac{1}{\sqrt{1 - \dfrac{u'^2}{c^2}}} = \frac{1}{\sqrt{1 - \dfrac{1}{c^2} \qty(\dfrac{u-v}{1-\dfrac{uv}{c^2}})^2}} = \frac{1 - \dfrac{uv}{c^2}}{\sqrt{\qty(1 - \dfrac{uv}{c^2})^2 - \dfrac{(u-v)^2}{c^2}}}
+        \]
+        对于分母，因为：
+        \[
+            \qty(1 - \dfrac{uv}{c^2})^2 - \dfrac{(u-v)^2}{c^2} = 1 + \frac{u^2 v^2}{c^4} - \frac{u^2}{c^2} - \frac{v^2}{c^2} = \qty(1 - \frac{u^2}{c^2}) \qty(1 - \frac{v^2}{c^2})
+        \]
+        所以：
+        \[
+            \frac{1 - \dfrac{uv}{c^2}}{\sqrt{\qty(1 - \dfrac{uv}{c^2})^2 - \dfrac{(u-v)^2}{c^2}}} = \frac{1 - \dfrac{uv}{c^2}}{\sqrt{\qty(1 - \dfrac{u^2}{c^2}) \qty(1 - \dfrac{v^2}{c^2})}} = \gamma_u \gamma_v \qty(1 - \frac{uv}{c^2})
+        \]
+        综上所述：
+        \[
+            L' = \frac{L_0}{\gamma_{u'}} = \frac{L\gamma_u}{\gamma_u \gamma_v \qty(1 - \dfrac{uv}{c^2})} = \frac{L}{\gamma_v \qty(1 - \dfrac{uv}{c^2})} = L \sqrt{1 - \frac{v^2}{c^2}} \cdot \frac{1}{1 - \dfrac{uv}{c^2}}
+        \]
+        \textbf{方法二：使用时空坐标的Lorentz变换求解} \\
+        设两个物体分别为A、B。在$\Sigma$系中，两个物体的位置分别为$(x_A, ct_A)$、$(x_B, ct_B)$，并满足$x_A = ut_A$，$x_B = ut_B + L$。 \\
+        现在考虑观察者所在的参考系$\Sigma'$，他看到这两个物体的距离是在$\Sigma'$系下“同时”看到的两个物体的位置之差。而因为A和B有不同的位置坐标，因此在$\Sigma'$系下“同时”，在$\Sigma$系下并不“同时”。 \\
+        为方便考虑，我们设在$\Sigma$系下，物体A在$t_A = 0$时刻的位置为$x_A = 0$，物体B在$t_B = 0$时刻的位置为$x_B = L$。 \\
+        现在考虑物体A在$\Sigma'$系下的时空坐标。由Lorentz变换，有：
+        \[
+            (x_A, ct_A) = (0, 0) \implies (x_A', ct_A') = (0, 0)
+        \]
+        即此时在$\Sigma'$系下，时间$t_A'$也为0。 \\
+        假设观测者在$t'_A = t'_B = 0$时观测，那么此时物体B在$\Sigma$系下的时间不为0。设物体B在$\Sigma$系下的时间为$t_B$，则由Lorentz变换，有：
+        \[
+            \begin{cases}
+                x_B = \gamma_v (x'_B + \beta_v ct_B) = \gamma_v x'_B \\
+                ct_B = \gamma_v (ct'_B + \beta_v x'_B) = \gamma_v \beta_v x'_B \\
+                x_B = ut_B + L
+            \end{cases}
+        \]
+        解得：
+        \[
+            x_B = \frac{L}{1 - \dfrac{uv}{c^2}},\quad t_B = \frac{L}{1 - \dfrac{uv}{c^2}} \qty(\frac{\beta_v}{c})
+        \]
+        那么此时物体B在$\Sigma'$系下的位置为：（利用$t_B = \dfrac{\beta_v}{c} x_B$）
+        \[
+            x'_B = \gamma_v (x_B - \beta_v ct_B) = \gamma_v \qty(1 - \beta_v^2) x_B = \frac{x_B}{\gamma_v} = \frac{L}{\gamma_v \qty(1 - \dfrac{uv}{c^2})}
+        \]
+        同时$t'_B = 0$（可以验证）。 \\
+        综上所述，在$\Sigma'$系下$t'_A = t'_B = 0$时，物体A的位置为$x'_A = 0$，B的位置为$x'_B = \dfrac{L}{\gamma_v \qty(1 - \dfrac{uv}{c^2})}$，因此它们的距离为：
+        \[
+            L' = x'_B - x'_A = \frac{L}{\gamma_v \qty(1 - \dfrac{uv}{c^2})} = L \sqrt{1 - \frac{v^2}{c^2}} \cdot \frac{1}{1 - \dfrac{uv}{c^2}}
+        \]
+    }
+\end{enumerate}
+
+\end{document}

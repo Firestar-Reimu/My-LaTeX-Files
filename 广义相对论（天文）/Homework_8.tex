@@ -1,0 +1,172 @@
+\documentclass[a4paper]{article}
+
+% 文章排版
+\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+\usepackage{autobreak}
+\allowdisplaybreaks
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{top=3cm,bottom=3cm,left=2cm,right=2cm}
+\usepackage{anyfontsize}
+
+% 数学物理宏包
+\usepackage{amsmath}
+\usepackage{physics}
+\renewcommand\div\divisionsymbol
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\trans}{\text{\textsf{T}}}
+\usepackage{tabularray}
+\UseTblrLibrary{amsmath}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\unimathsetup{mathrm=sym,mathbf=sym,mathsf=sym,bold-style=ISO}
+\setmathfont{STIX Two Math}
+
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont=Source Han Sans CN,ItalicFont=FZKai-Z03]
+\setCJKsansfont{Source Han Sans CN}
+
+% 符号重定义
+\AtBeginDocument{
+    \let\uglyepsilon\epsilon
+    \renewcommand\epsilon\varepsilon
+    \let\uglyleq\leq
+    \renewcommand\leq\leqslant
+    \let\uglygeq\geq
+    \renewcommand\geq\geqslant
+}
+
+
+% 题目
+\title{\textbf{广义相对论（天文方向）\ \ \ \ 作业八}}
+\author{国家天文台 张植竣}
+\date{2025年10月31日}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 普通标量场$\varphi$的协变能动张量为：
+    \[
+        T_{\mu\nu} = (\nabla_\mu \varphi)(\nabla_\nu \varphi) - \frac{1}{2} g_{\mu\nu} \nabla^\sigma \varphi \nabla_\sigma \varphi + g_{\mu\nu} V(\varphi)
+    \]
+    在Schwarzschild背景下，标量场只是半径$r$的函数。已知Schwarzschild度规为：
+    \[
+        \dd s^2 = -\qty(1 - \frac{2M}{r}) \dd t^2 + \qty(1 - \frac{2M}{r})^{-1} \dd r^2 + r^2 \dd \theta^2 + r^2 \sin^2\theta \dd \phi^2
+    \]
+    请计算协变能动张量在该度规下的各个分量。
+
+    \textcolor{blue}{
+    在史瓦西度规下，标量场$\varphi$只是$r$的函数，则：
+    \[
+        \nabla_\mu \varphi = \pdv{\varphi}{r} \delta^r_{\mu}
+    \]
+    记$\dfrac{\dd\varphi}{\dd r} = \varphi'$，则协变能动张量的第一项为：
+    \[
+        A_{rr} = (\nabla_r \varphi)(\nabla_r \varphi) = \varphi'^2,\quad A_{tt} = A_{\theta\theta} = A_{\varphi\varphi} = 0
+    \]
+    同时：
+    \begin{align*}
+        \nabla^\sigma \varphi \nabla_\sigma \varphi
+        & = g^{\mu\nu} (\nabla_\mu \varphi)(\nabla_\nu \varphi) \\
+        & = g^{rr} (\nabla_r \varphi)(\nabla_r \varphi) \\
+        & = \qty(1 - \frac{2M}{r}) \varphi'^2
+    \end{align*}
+    因此协变能动张量的第二项为：
+    \[
+        B_{\mu\nu} = -\frac{1}{2} g_{\mu\nu} \nabla^\sigma \varphi \nabla_\sigma \varphi = \frac{1}{2} g_{\mu\nu} \qty(1 - \frac{2M}{r}) \varphi'^2
+    \]
+    即：
+    \[
+        B_{tt} = \frac{1}{2} \qty(1 - \frac{2M}{r}) \varphi'^2,\quad B_{rr} = -\frac{1}{2} \varphi'^2
+    \]
+    \[
+        B_{\theta\theta} = -\frac{1}{2} r^2 \qty(1 - \frac{2M}{r}) \varphi'^2,\quad B_{\varphi\varphi} = -\frac{1}{2} r^2 \sin^2\theta \qty(1 - \frac{2M}{r}) \varphi'^2
+    \]
+    第三项为$C_{\mu\nu} = g_{\mu\nu} V(\varphi)$，即：
+    \[
+        C_{tt} = -\qty(1 - \frac{2M}{r}) V(\varphi),\quad C_{rr} = \qty(1 - \frac{2M}{r})^{-1} V(\varphi),
+    \]
+    \[
+        C_{\theta\theta} = r^2 V(\varphi),\quad C_{\varphi\varphi} = r^2 \sin^2\theta V(\varphi)
+    \]
+    最终各分量为：
+    \[
+        T_{tt} = \frac{1}{2} \qty(1 - \frac{2M}{r}) \varphi'^2 - \qty(1 - \frac{2M}{r}) V(\varphi)
+    \]
+    \[
+        T_{rr} = \frac{1}{2} \varphi'^2 + \qty(1 - \frac{2M}{r})^{-1} V(\varphi)
+    \]
+    \[
+        T_{\theta\theta} = -\frac{1}{2} r^2 \qty(1 - \frac{2M}{r}) \varphi'^2 + r^2 V(\varphi)
+    \]
+    \[
+        T_{\phi\phi} = -\frac{1}{2} r^2 \sin^2\theta \qty(1 - \frac{2M}{r}) \varphi'^2 + r^2 \sin^2\theta V(\varphi)
+    \]
+    其余非对角项均为零。
+    }
+
+    \item 在FRW宇宙背景下，标量场只是时间$t$的函数，计算协变能动张量在FRW宇宙背景中的各个分量。已知FRW度规为：
+    \[
+        \dd s^2 = -\dd t^2 + a^2(t) \qty(\dd r^2 + r^2 \dd \theta^2 + r^2 \sin^2\theta \dd \phi^2)
+    \]
+
+    \textcolor{blue}{
+    在FRW宇宙背景下，标量场$\varphi$只是时间$t$的函数，则：
+    \[
+        \nabla_\mu \varphi = \pdv{\varphi}{t} \delta^t_{\mu}
+    \]
+    记$\dfrac{\dd\varphi}{\dd r} = \dot{\varphi}$，则协变能动张量的第一项为：
+    \[
+        A_{tt} = (\nabla_t \varphi)(\nabla_t \varphi) = \dot{\varphi}^2,\quad A_{rr} = A_{\theta\theta} = A_{\varphi\varphi} = 0
+    \]
+    同时：
+    \begin{align*}
+        \nabla^\sigma \varphi \nabla_\sigma \varphi
+        & = g^{\mu\nu} (\nabla_\mu \varphi)(\nabla_\nu \varphi) \\
+        & = g^{tt} (\nabla_t \varphi)(\nabla_t \varphi) \\
+        & = -\dot{\varphi}^2
+    \end{align*}
+    因此协变能动张量的第二项为：
+    \[
+        B_{\mu\nu} = -\frac{1}{2} g_{\mu\nu} \nabla^\sigma \varphi \nabla_\sigma \varphi = \frac{1}{2} g_{\mu\nu} \dot{\varphi}^2
+    \]
+    即：
+    \[
+        B_{tt} = -\frac{1}{2} \dot{\varphi}^2,\quad B_{rr} = \frac{1}{2} a^2(t) \dot{\varphi}^2,
+    \]
+    \[
+        B_{\theta\theta} = \frac{1}{2} a^2(t) r^2 \dot{\varphi}^2,\quad B_{\varphi\varphi} = \frac{1}{2} a^2(t) r^2 \sin^2\theta \dot{\varphi}^2
+    \]
+    第三项为$C_{\mu\nu} = g_{\mu\nu} V(\varphi)$，即：
+    \[
+        C_{tt} = -V(\varphi),\quad C_{rr} = a^2(t) V(\varphi),
+    \]
+    \[
+        C_{\theta\theta} = a^2(t) r^2 V(\varphi),\quad C_{\varphi\varphi} = a^2(t) r^2 \sin^2\theta V(\varphi)
+    \]
+    最终各分量为：
+    \[
+        T_{tt} = \frac{1}{2} \dot{\varphi}^2 - V(\varphi)
+    \]
+    \[
+        T_{rr} = a^2(t) \qty[\frac{1}{2} \dot{\varphi}^2 + V(\varphi)]
+    \]
+    \[
+        T_{\theta\theta} = a^2(t) r^2 \qty[\frac{1}{2} \dot{\varphi}^2 + V(\varphi)]
+    \]
+    \[
+        T_{\phi\phi} = a^2(t) r^2 \sin^2\theta \qty[\frac{1}{2} \dot{\varphi}^2 + V(\varphi)]
+    \]
+    其余非对角项均为零。
+    }
+
+\end{enumerate}
+
+\end{document}
