@@ -182,12 +182,11 @@
     y' = r'\sin\theta'\sin\phi',\quad
     z' = r'\cos\theta'
 \]
-即：
+如下图，在旋转过程中，$(y,z)$和$(y',z')$之间还有关系：
 \begin{equation}
     \begin{cases}
-        & r\sin\theta\cos\phi = r'\sin\theta'\cos\phi' \\
-        & r\sin\theta\sin\phi = r'\sin\theta'\sin\phi' \\
-        & r\cos\theta = r'\cos\theta'
+        & y' = y\cos\epsilon + z\sin\epsilon \\
+        & z' = z\cos\epsilon - y\sin\epsilon
     \end{cases}
 \end{equation}
 
@@ -222,13 +221,6 @@
 \end{tikzpicture}
 \end{figure}
 
-如图，$(y,z)$和$(y',z')$之间还有关系：
-\begin{equation}
-    \begin{cases}
-        & y' = y\cos\epsilon + z\sin\epsilon \\
-        & z' = z\cos\epsilon - y\sin\epsilon
-    \end{cases}
-\end{equation}
 又显然有$x=x'$和$r'=r$，代入(1)得：
 \begin{equation}
     \begin{cases}
@@ -291,7 +283,7 @@
 
 \subsection{赤道坐标系介绍}
 
-赤道坐标系的基本圈是天赤道，也就是地球赤道在天球上的投影，南北两极分别是北天极和南天极，也是地球自转轴在天球上的投影。赤道坐标系的赤道坐标系所定义的经度和纬度分别称为赤经$\alpha$和赤纬$\delta$。经度起始点是春分点，自西向东增加，范围是$0^\circ \sim 360^\circ$，但实际上更常用时间单位表示，即$0^{\mathrm{h}} \sim 24^{\mathrm{h}}$。纬度从赤道向南北两极分别度量。赤道坐标系是一种全球坐标系，天体在赤道坐标系的位置（在精度要求不高的情况下）可以被认为是绝对的，与观测者所在的位置和观测时间无关。
+赤道坐标系的基本圈是天赤道，也就是地球赤道在天球上的投影，南北两极分别是北天极和南天极，也是地球自转轴在天球上的投影。赤道坐标系的赤道坐标系所定义的经度和纬度分别称为赤经$\alpha$和赤纬$\delta$。经度起始点是春分点，自西向东增加，范围是$0^\circ \sim 360^\circ$，但实际上更常用时间单位表示，即$0^{\mathrm{h}} \sim 24^{\mathrm{h}}$。纬度从赤道向南北两极分别度量。赤道坐标系是一种全球坐标系，天体在赤道坐标系的位置（在不要求非常高精度的情况下）可以被认为是绝对的，与观测者所在的位置和观测时间无关。
 
 \subsection{时角坐标系介绍}
 
